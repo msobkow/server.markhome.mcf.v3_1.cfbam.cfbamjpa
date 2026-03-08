@@ -1,0 +1,125 @@
+
+// Description: Java 25 JPA Default Factory implementation for UInt16Col.
+
+/*
+ *	server.markhome.mcf.CFBam
+ *
+ *	Copyright (c) 2016-2026 Mark Stephen Sobkow
+ *	
+ *	Mark's Code Fractal 3.1 CFBam - Business Application Model
+ *	
+ *	This file is part of Mark's Code Fractal CFBam.
+ *	
+ *	Mark's Code Fractal CFBam is available under dual commercial license from
+ *	Mark Stephen Sobkow, or under the terms of the GNU General Public License,
+ *	Version 3 or later.
+ *	
+ *	Mark's Code Fractal CFBam is free software: you can redistribute it and/or
+ *	modify it under the terms of the GNU General Public License as published by
+ *	the Free Software Foundation, either version 3 of the License, or
+ *	(at your option) any later version.
+ *	
+ *	Mark's Code Fractal CFBam is distributed in the hope that it will be useful,
+ *	but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *	GNU General Public License for more details.
+ *	
+ *	You should have received a copy of the GNU General Public License
+ *	along with Mark's Code Fractal CFBam.  If not, see <https://www.gnu.org/licenses/>.
+ *	
+ *	If you wish to modify and use this code without publishing your changes,
+ *	or integrate it with proprietary code, please contact Mark Stephen Sobkow
+ *	for a commercial license at mark.sobkow@gmail.com
+ *	
+ */
+
+package server.markhome.mcf.v3_1.cfbam.cfbam.jpa;
+
+import java.lang.reflect.*;
+import java.net.*;
+import java.rmi.*;
+import java.sql.*;
+import java.text.*;
+import java.util.*;
+import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.text.StringEscapeUtils;
+import server.markhome.mcf.v3_1.cflib.*;
+import server.markhome.mcf.v3_1.cflib.dbutil.*;
+import server.markhome.mcf.v3_1.cfsec.cfsec.*;
+import server.markhome.mcf.v3_1.cfint.cfint.*;
+import server.markhome.mcf.v3_1.cfbam.cfbam.*;
+import server.markhome.mcf.v3_1.cfsec.cfsec.jpa.*;
+import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
+
+/*
+ *	CFBamUInt16ColFactory JPA implementation for UInt16Col
+ */
+public class CFBamJpaUInt16ColDefaultFactory
+    implements ICFBamUInt16ColFactory
+{
+    public CFBamJpaUInt16ColDefaultFactory() {
+    }
+
+    @Override
+    public ICFBamUInt16ColByTableIdxKey newByTableIdxKey() {
+	ICFBamUInt16ColByTableIdxKey key =
+            new CFBamJpaUInt16ColByTableIdxKey();
+	return( key );
+    }
+
+	public CFBamJpaUInt16ColByTableIdxKey ensureByTableIdxKey(ICFBamUInt16ColByTableIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamJpaUInt16ColByTableIdxKey) {
+			return( (CFBamJpaUInt16ColByTableIdxKey)key );
+		}
+		else {
+			CFBamJpaUInt16ColByTableIdxKey mapped = new CFBamJpaUInt16ColByTableIdxKey();
+			mapped.setRequiredTableId( key.getRequiredTableId() );
+			return( mapped );
+		}
+	}
+
+    @Override
+    public ICFBamUInt16Col newRec() {
+        ICFBamUInt16Col rec =
+            new CFBamJpaUInt16Col();
+        return( rec );
+    }
+
+	public CFBamJpaUInt16Col ensureRec(ICFBamUInt16Col rec) {
+		if( rec == null ) {
+			return( null );
+		}
+		else if (rec instanceof CFBamJpaUInt16Col) {
+			return( (CFBamJpaUInt16Col)rec );
+		}
+		else {
+			CFBamJpaUInt16Col mapped = new CFBamJpaUInt16Col();
+			mapped.set(rec);
+			return( mapped );
+		}
+	}
+
+    @Override
+    public ICFBamUInt16ColH newHRec() {
+        ICFBamUInt16ColH hrec =
+            new CFBamJpaUInt16ColH();
+        return( hrec );
+    }
+
+	public CFBamJpaUInt16ColH ensureHRec(ICFBamUInt16ColH hrec) {
+		if (hrec == null) {
+			return( null );
+		}
+		else if( hrec instanceof CFBamJpaUInt16ColH) {
+			return( (CFBamJpaUInt16ColH)hrec );
+		}
+		else {
+			CFBamJpaUInt16ColH mapped = new CFBamJpaUInt16ColH();
+			mapped.set(hrec);
+			return( mapped );
+		}
+	}
+}

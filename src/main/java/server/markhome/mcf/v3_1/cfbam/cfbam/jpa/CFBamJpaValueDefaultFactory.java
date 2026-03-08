@@ -1,0 +1,279 @@
+
+// Description: Java 25 JPA Default Factory implementation for Value.
+
+/*
+ *	server.markhome.mcf.CFBam
+ *
+ *	Copyright (c) 2016-2026 Mark Stephen Sobkow
+ *	
+ *	Mark's Code Fractal 3.1 CFBam - Business Application Model
+ *	
+ *	This file is part of Mark's Code Fractal CFBam.
+ *	
+ *	Mark's Code Fractal CFBam is available under dual commercial license from
+ *	Mark Stephen Sobkow, or under the terms of the GNU General Public License,
+ *	Version 3 or later.
+ *	
+ *	Mark's Code Fractal CFBam is free software: you can redistribute it and/or
+ *	modify it under the terms of the GNU General Public License as published by
+ *	the Free Software Foundation, either version 3 of the License, or
+ *	(at your option) any later version.
+ *	
+ *	Mark's Code Fractal CFBam is distributed in the hope that it will be useful,
+ *	but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *	GNU General Public License for more details.
+ *	
+ *	You should have received a copy of the GNU General Public License
+ *	along with Mark's Code Fractal CFBam.  If not, see <https://www.gnu.org/licenses/>.
+ *	
+ *	If you wish to modify and use this code without publishing your changes,
+ *	or integrate it with proprietary code, please contact Mark Stephen Sobkow
+ *	for a commercial license at mark.sobkow@gmail.com
+ *	
+ */
+
+package server.markhome.mcf.v3_1.cfbam.cfbam.jpa;
+
+import java.lang.reflect.*;
+import java.net.*;
+import java.rmi.*;
+import java.sql.*;
+import java.text.*;
+import java.util.*;
+import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.text.StringEscapeUtils;
+import server.markhome.mcf.v3_1.cflib.*;
+import server.markhome.mcf.v3_1.cflib.dbutil.*;
+import server.markhome.mcf.v3_1.cfsec.cfsec.*;
+import server.markhome.mcf.v3_1.cfint.cfint.*;
+import server.markhome.mcf.v3_1.cfbam.cfbam.*;
+import server.markhome.mcf.v3_1.cfsec.cfsec.jpa.*;
+import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
+
+/*
+ *	CFBamValueFactory JPA implementation for Value
+ */
+public class CFBamJpaValueDefaultFactory
+    implements ICFBamValueFactory
+{
+    public CFBamJpaValueDefaultFactory() {
+    }
+
+    @Override
+    public ICFBamValueHPKey newHPKey() {
+        ICFBamValueHPKey hpkey =
+            new CFBamJpaValueHPKey();
+        return( hpkey );
+    }
+
+	public CFBamJpaValueHPKey ensureHPKey(ICFBamValueHPKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if( key instanceof CFBamJpaValueHPKey) {
+			return( (CFBamJpaValueHPKey)key );
+		}
+		else {
+			CFBamJpaValueHPKey mapped = new CFBamJpaValueHPKey();
+			mapped.setAuditClusterId(key.getAuditClusterId());
+			mapped.setAuditActionId(key.getAuditActionId());
+			mapped.setAuditSessionId(key.getAuditSessionId());
+			mapped.setAuditStamp(key.getAuditStamp());
+			mapped.setRequiredId( key.getRequiredId() );
+			return( mapped );
+		}
+	}
+
+    @Override
+    public ICFBamValueByUNameIdxKey newByUNameIdxKey() {
+	ICFBamValueByUNameIdxKey key =
+            new CFBamJpaValueByUNameIdxKey();
+	return( key );
+    }
+
+	public CFBamJpaValueByUNameIdxKey ensureByUNameIdxKey(ICFBamValueByUNameIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamJpaValueByUNameIdxKey) {
+			return( (CFBamJpaValueByUNameIdxKey)key );
+		}
+		else {
+			CFBamJpaValueByUNameIdxKey mapped = new CFBamJpaValueByUNameIdxKey();
+			mapped.setRequiredScopeId( key.getRequiredScopeId() );
+			mapped.setRequiredName( key.getRequiredName() );
+			return( mapped );
+		}
+	}
+
+    @Override
+    public ICFBamValueByScopeIdxKey newByScopeIdxKey() {
+	ICFBamValueByScopeIdxKey key =
+            new CFBamJpaValueByScopeIdxKey();
+	return( key );
+    }
+
+	public CFBamJpaValueByScopeIdxKey ensureByScopeIdxKey(ICFBamValueByScopeIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamJpaValueByScopeIdxKey) {
+			return( (CFBamJpaValueByScopeIdxKey)key );
+		}
+		else {
+			CFBamJpaValueByScopeIdxKey mapped = new CFBamJpaValueByScopeIdxKey();
+			mapped.setRequiredScopeId( key.getRequiredScopeId() );
+			return( mapped );
+		}
+	}
+
+    @Override
+    public ICFBamValueByDefSchemaIdxKey newByDefSchemaIdxKey() {
+	ICFBamValueByDefSchemaIdxKey key =
+            new CFBamJpaValueByDefSchemaIdxKey();
+	return( key );
+    }
+
+	public CFBamJpaValueByDefSchemaIdxKey ensureByDefSchemaIdxKey(ICFBamValueByDefSchemaIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamJpaValueByDefSchemaIdxKey) {
+			return( (CFBamJpaValueByDefSchemaIdxKey)key );
+		}
+		else {
+			CFBamJpaValueByDefSchemaIdxKey mapped = new CFBamJpaValueByDefSchemaIdxKey();
+			mapped.setOptionalDefSchemaId( key.getOptionalDefSchemaId() );
+			return( mapped );
+		}
+	}
+
+    @Override
+    public ICFBamValueByPrevIdxKey newByPrevIdxKey() {
+	ICFBamValueByPrevIdxKey key =
+            new CFBamJpaValueByPrevIdxKey();
+	return( key );
+    }
+
+	public CFBamJpaValueByPrevIdxKey ensureByPrevIdxKey(ICFBamValueByPrevIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamJpaValueByPrevIdxKey) {
+			return( (CFBamJpaValueByPrevIdxKey)key );
+		}
+		else {
+			CFBamJpaValueByPrevIdxKey mapped = new CFBamJpaValueByPrevIdxKey();
+			mapped.setOptionalPrevId( key.getOptionalPrevId() );
+			return( mapped );
+		}
+	}
+
+    @Override
+    public ICFBamValueByNextIdxKey newByNextIdxKey() {
+	ICFBamValueByNextIdxKey key =
+            new CFBamJpaValueByNextIdxKey();
+	return( key );
+    }
+
+	public CFBamJpaValueByNextIdxKey ensureByNextIdxKey(ICFBamValueByNextIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamJpaValueByNextIdxKey) {
+			return( (CFBamJpaValueByNextIdxKey)key );
+		}
+		else {
+			CFBamJpaValueByNextIdxKey mapped = new CFBamJpaValueByNextIdxKey();
+			mapped.setOptionalNextId( key.getOptionalNextId() );
+			return( mapped );
+		}
+	}
+
+    @Override
+    public ICFBamValueByContPrevIdxKey newByContPrevIdxKey() {
+	ICFBamValueByContPrevIdxKey key =
+            new CFBamJpaValueByContPrevIdxKey();
+	return( key );
+    }
+
+	public CFBamJpaValueByContPrevIdxKey ensureByContPrevIdxKey(ICFBamValueByContPrevIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamJpaValueByContPrevIdxKey) {
+			return( (CFBamJpaValueByContPrevIdxKey)key );
+		}
+		else {
+			CFBamJpaValueByContPrevIdxKey mapped = new CFBamJpaValueByContPrevIdxKey();
+			mapped.setRequiredScopeId( key.getRequiredScopeId() );
+			mapped.setOptionalPrevId( key.getOptionalPrevId() );
+			return( mapped );
+		}
+	}
+
+    @Override
+    public ICFBamValueByContNextIdxKey newByContNextIdxKey() {
+	ICFBamValueByContNextIdxKey key =
+            new CFBamJpaValueByContNextIdxKey();
+	return( key );
+    }
+
+	public CFBamJpaValueByContNextIdxKey ensureByContNextIdxKey(ICFBamValueByContNextIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamJpaValueByContNextIdxKey) {
+			return( (CFBamJpaValueByContNextIdxKey)key );
+		}
+		else {
+			CFBamJpaValueByContNextIdxKey mapped = new CFBamJpaValueByContNextIdxKey();
+			mapped.setRequiredScopeId( key.getRequiredScopeId() );
+			mapped.setOptionalNextId( key.getOptionalNextId() );
+			return( mapped );
+		}
+	}
+
+    @Override
+    public ICFBamValue newRec() {
+        ICFBamValue rec =
+            new CFBamJpaValue();
+        return( rec );
+    }
+
+	public CFBamJpaValue ensureRec(ICFBamValue rec) {
+		if( rec == null ) {
+			return( null );
+		}
+		else if (rec instanceof CFBamJpaValue) {
+			return( (CFBamJpaValue)rec );
+		}
+		else {
+			CFBamJpaValue mapped = new CFBamJpaValue();
+			mapped.set(rec);
+			return( mapped );
+		}
+	}
+
+    @Override
+    public ICFBamValueH newHRec() {
+        ICFBamValueH hrec =
+            new CFBamJpaValueH();
+        return( hrec );
+    }
+
+	public CFBamJpaValueH ensureHRec(ICFBamValueH hrec) {
+		if (hrec == null) {
+			return( null );
+		}
+		else if( hrec instanceof CFBamJpaValueH) {
+			return( (CFBamJpaValueH)hrec );
+		}
+		else {
+			CFBamJpaValueH mapped = new CFBamJpaValueH();
+			mapped.set(hrec);
+			return( mapped );
+		}
+	}
+}
