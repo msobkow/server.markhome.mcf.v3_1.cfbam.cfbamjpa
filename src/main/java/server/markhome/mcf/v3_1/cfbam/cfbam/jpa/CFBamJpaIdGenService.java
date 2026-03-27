@@ -122,6 +122,15 @@ public class CFBamJpaIdGenService {
 	}
 
 	/**
+	 *	Generate a TweakIdGen CFLibDbKeyHash256 id.
+	 *
+	 *		@return A pseudo-randomly generated CFLibDBKeyHash128 value
+	 */
+	public CFLibDbKeyHash256 generateTweakIdGen() {
+		return( new CFLibDbKeyHash256(0) );
+	}
+
+	/**
 	 *	Generate a ScopeIdGen CFLibDbKeyHash256 id.
 	 *
 	 *		@return A pseudo-randomly generated CFLibDBKeyHash128 value

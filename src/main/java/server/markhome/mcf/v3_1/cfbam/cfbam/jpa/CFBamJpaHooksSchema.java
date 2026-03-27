@@ -101,6 +101,15 @@ public class CFBamJpaHooksSchema {
 	private CFBamJpaTableRepository tableRepository;
 
 	@Autowired
+	private CFBamJpaTweakRepository tweakRepository;
+
+	@Autowired
+	private CFBamJpaTableTweakRepository tableTweakRepository;
+
+	@Autowired
+	private CFBamJpaSchemaTweakRepository schemaTweakRepository;
+
+	@Autowired
 	private CFBamJpaValueRepository valueRepository;
 
 	@Autowired
@@ -522,6 +531,18 @@ public class CFBamJpaHooksSchema {
 	@Autowired
 	@Qualifier("cfbam31JpaTableService")
 	private CFBamJpaTableService tableService;
+
+	@Autowired
+	@Qualifier("cfbam31JpaTweakService")
+	private CFBamJpaTweakService tweakService;
+
+	@Autowired
+	@Qualifier("cfbam31JpaTableTweakService")
+	private CFBamJpaTableTweakService tableTweakService;
+
+	@Autowired
+	@Qualifier("cfbam31JpaSchemaTweakService")
+	private CFBamJpaSchemaTweakService schemaTweakService;
 
 	@Autowired
 	@Qualifier("cfbam31JpaValueService")
@@ -1137,6 +1158,36 @@ public class CFBamJpaHooksSchema {
 				"ERROR - do not know how to dynamically resolve Spring beans from POJO code yet and AspectJ did not resolve it either" );
 		}
 		return( tableRepository );
+	}
+
+	public CFBamJpaTweakRepository getTweakRepository() {
+		if ( tweakRepository == null ) {
+			// Dynamically resolve the repository by interface type
+			throw new CFLibNotImplementedYetException( getClass(), "getTweakRepository",
+				"ERROR - do not know how to dynamically resolve Spring beans from POJO code yet and AspectJ did not resolve it either",
+				"ERROR - do not know how to dynamically resolve Spring beans from POJO code yet and AspectJ did not resolve it either" );
+		}
+		return( tweakRepository );
+	}
+
+	public CFBamJpaTableTweakRepository getTableTweakRepository() {
+		if ( tableTweakRepository == null ) {
+			// Dynamically resolve the repository by interface type
+			throw new CFLibNotImplementedYetException( getClass(), "getTableTweakRepository",
+				"ERROR - do not know how to dynamically resolve Spring beans from POJO code yet and AspectJ did not resolve it either",
+				"ERROR - do not know how to dynamically resolve Spring beans from POJO code yet and AspectJ did not resolve it either" );
+		}
+		return( tableTweakRepository );
+	}
+
+	public CFBamJpaSchemaTweakRepository getSchemaTweakRepository() {
+		if ( schemaTweakRepository == null ) {
+			// Dynamically resolve the repository by interface type
+			throw new CFLibNotImplementedYetException( getClass(), "getSchemaTweakRepository",
+				"ERROR - do not know how to dynamically resolve Spring beans from POJO code yet and AspectJ did not resolve it either",
+				"ERROR - do not know how to dynamically resolve Spring beans from POJO code yet and AspectJ did not resolve it either" );
+		}
+		return( schemaTweakRepository );
 	}
 
 	public CFBamJpaValueRepository getValueRepository() {
@@ -2497,6 +2548,36 @@ public class CFBamJpaHooksSchema {
 				"ERROR - do not know how to dynamically resolve Spring beans from POJO code yet and AspectJ did not resolve it either" );
 		}
 		return( tableService );
+	}
+
+	public CFBamJpaTweakService getTweakService() {
+		if ( tweakService == null ) {
+			// Dynamically resolve the repository by qualifier name
+			throw new CFLibNotImplementedYetException( getClass(), "getTweakService",
+				"ERROR - do not know how to dynamically resolve Spring beans from POJO code yet and AspectJ did not resolve it either",
+				"ERROR - do not know how to dynamically resolve Spring beans from POJO code yet and AspectJ did not resolve it either" );
+		}
+		return( tweakService );
+	}
+
+	public CFBamJpaTableTweakService getTableTweakService() {
+		if ( tableTweakService == null ) {
+			// Dynamically resolve the repository by qualifier name
+			throw new CFLibNotImplementedYetException( getClass(), "getTableTweakService",
+				"ERROR - do not know how to dynamically resolve Spring beans from POJO code yet and AspectJ did not resolve it either",
+				"ERROR - do not know how to dynamically resolve Spring beans from POJO code yet and AspectJ did not resolve it either" );
+		}
+		return( tableTweakService );
+	}
+
+	public CFBamJpaSchemaTweakService getSchemaTweakService() {
+		if ( schemaTweakService == null ) {
+			// Dynamically resolve the repository by qualifier name
+			throw new CFLibNotImplementedYetException( getClass(), "getSchemaTweakService",
+				"ERROR - do not know how to dynamically resolve Spring beans from POJO code yet and AspectJ did not resolve it either",
+				"ERROR - do not know how to dynamically resolve Spring beans from POJO code yet and AspectJ did not resolve it either" );
+		}
+		return( schemaTweakService );
 	}
 
 	public CFBamJpaValueService getValueService() {

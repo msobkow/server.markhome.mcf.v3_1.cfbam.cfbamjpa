@@ -18,6 +18,12 @@
         <class>server.markhome.mcf.v3_1.cfbam.cfbam.jpa.CFBamJpaServerProcH</class>
         <class>server.markhome.mcf.v3_1.cfbam.cfbam.jpa.CFBamJpaTable</class>
         <class>server.markhome.mcf.v3_1.cfbam.cfbam.jpa.CFBamJpaTableH</class>
+        <class>server.markhome.mcf.v3_1.cfbam.cfbam.jpa.CFBamJpaTweak</class>
+        <class>server.markhome.mcf.v3_1.cfbam.cfbam.jpa.CFBamJpaTweakH</class>
+        <class>server.markhome.mcf.v3_1.cfbam.cfbam.jpa.CFBamJpaTableTweak</class>
+        <class>server.markhome.mcf.v3_1.cfbam.cfbam.jpa.CFBamJpaTableTweakH</class>
+        <class>server.markhome.mcf.v3_1.cfbam.cfbam.jpa.CFBamJpaSchemaTweak</class>
+        <class>server.markhome.mcf.v3_1.cfbam.cfbam.jpa.CFBamJpaSchemaTweakH</class>
         <class>server.markhome.mcf.v3_1.cfbam.cfbam.jpa.CFBamJpaValue</class>
         <class>server.markhome.mcf.v3_1.cfbam.cfbam.jpa.CFBamJpaValueH</class>
         <class>server.markhome.mcf.v3_1.cfbam.cfbam.jpa.CFBamJpaAtom</class>

@@ -99,6 +99,15 @@ public class CFBamJpaSchemaService {
 	private CFBamJpaTableService tableService;
 
 	@Autowired
+	private CFBamJpaTweakService tweakService;
+
+	@Autowired
+	private CFBamJpaTableTweakService tabletweakService;
+
+	@Autowired
+	private CFBamJpaSchemaTweakService schematweakService;
+
+	@Autowired
 	private CFBamJpaValueService valueService;
 
 	@Autowired
@@ -521,6 +530,9 @@ public class CFBamJpaSchemaService {
 		bootstrapTableSecurity(auth, "ServerObjFunc", true, false, "Tenant");
 		bootstrapTableSecurity(auth, "ServerProc", true, false, "Tenant");
 		bootstrapTableSecurity(auth, "Table", true, false, "Tenant");
+		bootstrapTableSecurity(auth, "Tweak", true, false, "Tenant");
+		bootstrapTableSecurity(auth, "TableTweak", true, false, "Tenant");
+		bootstrapTableSecurity(auth, "SchemaTweak", true, false, "Tenant");
 		bootstrapTableSecurity(auth, "Value", true, false, "Tenant");
 		bootstrapTableSecurity(auth, "Atom", true, false, "Tenant");
 		bootstrapTableSecurity(auth, "BlobDef", true, false, "Tenant");

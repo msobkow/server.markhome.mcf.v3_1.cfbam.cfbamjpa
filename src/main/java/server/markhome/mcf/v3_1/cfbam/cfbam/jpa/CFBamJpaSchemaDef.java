@@ -88,6 +88,8 @@ public class CFBamJpaSchemaDef extends CFBamJpaScope
 	protected Set<CFBamJpaValue> optionalComponentsTypes;
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="requiredContainerSchema")
 	protected Set<CFBamJpaSchemaRef> optionalComponentsSchemaRefs;
+	@OneToMany(fetch=FetchType.LAZY, mappedBy="optionalLookupDefSchema")
+	protected Set<CFBamJpaTweak> optionalComponentsTweaks;
 
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="CTenantId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
@@ -218,6 +220,14 @@ public class CFBamJpaSchemaDef extends CFBamJpaScope
 	public List<ICFBamSchemaRef> getOptionalComponentsSchemaRefs() {
 		List<ICFBamSchemaRef> retlist = new ArrayList<>(optionalComponentsSchemaRefs.size());
 		for (CFBamJpaSchemaRef cur: optionalComponentsSchemaRefs) {
+			retlist.add(cur);
+		}
+		return( retlist );
+	}
+	@Override
+	public List<ICFBamTweak> getOptionalComponentsTweaks() {
+		List<ICFBamTweak> retlist = new ArrayList<>(optionalComponentsTweaks.size());
+		for (CFBamJpaTweak cur: optionalComponentsTweaks) {
 			retlist.add(cur);
 		}
 		return( retlist );
