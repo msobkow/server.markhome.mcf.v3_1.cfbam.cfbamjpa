@@ -189,7 +189,9 @@ public class CFBamJpaSchema
 	protected ICFSecSecTentGrpIncTable tableSecTentGrpInc;
 	protected ICFSecSecTentGrpMembTable tableSecTentGrpMemb;
 	protected ICFSecSecUserTable tableSecUser;
+	protected ICFSecSecUserEMConfTable tableSecUserEMConf;
 	protected ICFSecSecUserPWHistoryTable tableSecUserPWHistory;
+	protected ICFSecSecUserPWResetTable tableSecUserPWReset;
 	protected ICFSecSecUserPasswordTable tableSecUserPassword;
 	protected ICFBamServerListFuncTable tableServerListFunc;
 	protected ICFBamServerMethodTable tableServerMethod;
@@ -360,7 +362,9 @@ public class CFBamJpaSchema
 	protected ICFSecSecTentGrpIncFactory factorySecTentGrpInc;
 	protected ICFSecSecTentGrpMembFactory factorySecTentGrpMemb;
 	protected ICFSecSecUserFactory factorySecUser;
+	protected ICFSecSecUserEMConfFactory factorySecUserEMConf;
 	protected ICFSecSecUserPWHistoryFactory factorySecUserPWHistory;
+	protected ICFSecSecUserPWResetFactory factorySecUserPWReset;
 	protected ICFSecSecUserPasswordFactory factorySecUserPassword;
 	protected ICFBamServerListFuncFactory factoryServerListFunc;
 	protected ICFBamServerMethodFactory factoryServerMethod;
@@ -2956,7 +2960,9 @@ public class CFBamJpaSchema
 		tableSecTentGrpInc = null;
 		tableSecTentGrpMemb = null;
 		tableSecUser = null;
+		tableSecUserEMConf = null;
 		tableSecUserPWHistory = null;
+		tableSecUserPWReset = null;
 		tableSecUserPassword = null;
 		tableServerListFunc = null;
 		tableServerMethod = null;
@@ -3127,7 +3133,9 @@ public class CFBamJpaSchema
 		factorySecTentGrpInc = new CFSecJpaSecTentGrpIncDefaultFactory();
 		factorySecTentGrpMemb = new CFSecJpaSecTentGrpMembDefaultFactory();
 		factorySecUser = new CFSecJpaSecUserDefaultFactory();
+		factorySecUserEMConf = new CFSecJpaSecUserEMConfDefaultFactory();
 		factorySecUserPWHistory = new CFSecJpaSecUserPWHistoryDefaultFactory();
+		factorySecUserPWReset = new CFSecJpaSecUserPWResetDefaultFactory();
 		factorySecUserPassword = new CFSecJpaSecUserPasswordDefaultFactory();
 		factoryServerListFunc = new CFBamJpaServerListFuncDefaultFactory();
 		factoryServerMethod = new CFBamJpaServerMethodDefaultFactory();
@@ -5130,6 +5138,22 @@ public class CFBamJpaSchema
 		factorySecUser = value;
 	}
 
+	public ICFSecSecUserEMConfTable getTableSecUserEMConf() {
+		return( tableSecUserEMConf );
+	}
+
+	public void setTableSecUserEMConf( ICFSecSecUserEMConfTable value ) {
+		tableSecUserEMConf = value;
+	}
+
+	public ICFSecSecUserEMConfFactory getFactorySecUserEMConf() {
+		return( factorySecUserEMConf );
+	}
+
+	public void setFactorySecUserEMConf( ICFSecSecUserEMConfFactory value ) {
+		factorySecUserEMConf = value;
+	}
+
 	public ICFSecSecUserPWHistoryTable getTableSecUserPWHistory() {
 		return( tableSecUserPWHistory );
 	}
@@ -5144,6 +5168,22 @@ public class CFBamJpaSchema
 
 	public void setFactorySecUserPWHistory( ICFSecSecUserPWHistoryFactory value ) {
 		factorySecUserPWHistory = value;
+	}
+
+	public ICFSecSecUserPWResetTable getTableSecUserPWReset() {
+		return( tableSecUserPWReset );
+	}
+
+	public void setTableSecUserPWReset( ICFSecSecUserPWResetTable value ) {
+		tableSecUserPWReset = value;
+	}
+
+	public ICFSecSecUserPWResetFactory getFactorySecUserPWReset() {
+		return( factorySecUserPWReset );
+	}
+
+	public void setFactorySecUserPWReset( ICFSecSecUserPWResetFactory value ) {
+		factorySecUserPWReset = value;
 	}
 
 	public ICFSecSecUserPasswordTable getTableSecUserPassword() {
