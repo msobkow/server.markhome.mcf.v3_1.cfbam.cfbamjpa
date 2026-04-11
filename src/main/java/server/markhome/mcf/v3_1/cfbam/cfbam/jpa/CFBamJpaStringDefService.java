@@ -792,4 +792,5 @@ public class CFBamJpaStringDefService {
 	// CFBamAtom specified delete-by-index methods
 
 	// CFBamStringDef specified delete-by-index methods
+
 }

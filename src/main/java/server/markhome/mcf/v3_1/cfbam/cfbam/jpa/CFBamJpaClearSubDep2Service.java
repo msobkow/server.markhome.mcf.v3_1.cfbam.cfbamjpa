@@ -618,4 +618,5 @@ public class CFBamJpaClearSubDep2Service {
 	public void deleteByUNameIdx(ICFBamClearSubDep2ByUNameIdxKey key) {
 		cfbam31ClearSubDep2Repository.deleteByUNameIdx(key.getRequiredClearSubDep1Id(), key.getRequiredName());
 	}
+
 }

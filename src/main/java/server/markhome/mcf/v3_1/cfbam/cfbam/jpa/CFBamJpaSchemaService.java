@@ -1571,4 +1571,5 @@ public class CFBamJpaSchemaService {
 	}		
 
 
+		// Customized schematweak [CFSec::CFBam].JpaSchemaServiceCustomServices
 }

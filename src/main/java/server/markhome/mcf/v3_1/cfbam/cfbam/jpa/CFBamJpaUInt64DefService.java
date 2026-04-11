@@ -808,4 +808,5 @@ public class CFBamJpaUInt64DefService {
 	// CFBamAtom specified delete-by-index methods
 
 	// CFBamUInt64Def specified delete-by-index methods
+
 }

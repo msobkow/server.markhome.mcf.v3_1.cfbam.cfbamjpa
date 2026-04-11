@@ -758,4 +758,5 @@ public class CFBamJpaUuid6DefService {
 	// CFBamAtom specified delete-by-index methods
 
 	// CFBamUuid6Def specified delete-by-index methods
+
 }

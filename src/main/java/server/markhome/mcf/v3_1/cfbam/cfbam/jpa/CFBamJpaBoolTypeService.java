@@ -850,4 +850,5 @@ public class CFBamJpaBoolTypeService {
 	public void deleteBySchemaIdx(ICFBamBoolTypeBySchemaIdxKey key) {
 		cfbam31BoolTypeRepository.deleteBySchemaIdx(key.getRequiredSchemaDefId());
 	}
+
 }

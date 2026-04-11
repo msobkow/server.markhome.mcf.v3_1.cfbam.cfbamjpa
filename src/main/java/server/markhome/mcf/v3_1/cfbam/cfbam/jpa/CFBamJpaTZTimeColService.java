@@ -847,4 +847,5 @@ public class CFBamJpaTZTimeColService {
 	public void deleteByTableIdx(ICFBamTZTimeColByTableIdxKey key) {
 		cfbam31TZTimeColRepository.deleteByTableIdx(key.getRequiredTableId());
 	}
+
 }

@@ -847,4 +847,5 @@ public class CFBamJpaUuidTypeService {
 	public void deleteBySchemaIdx(ICFBamUuidTypeBySchemaIdxKey key) {
 		cfbam31UuidTypeRepository.deleteBySchemaIdx(key.getRequiredSchemaDefId());
 	}
+
 }

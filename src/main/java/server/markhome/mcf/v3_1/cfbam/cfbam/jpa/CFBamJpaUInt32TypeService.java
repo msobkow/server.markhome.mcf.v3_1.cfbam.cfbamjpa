@@ -897,4 +897,5 @@ public class CFBamJpaUInt32TypeService {
 	public void deleteBySchemaIdx(ICFBamUInt32TypeBySchemaIdxKey key) {
 		cfbam31UInt32TypeRepository.deleteBySchemaIdx(key.getRequiredSchemaDefId());
 	}
+
 }

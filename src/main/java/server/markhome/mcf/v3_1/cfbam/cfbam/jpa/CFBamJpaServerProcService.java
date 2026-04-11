@@ -584,4 +584,5 @@ public class CFBamJpaServerProcService {
 	}
 
 	// CFBamServerProc specified delete-by-index methods
+
 }

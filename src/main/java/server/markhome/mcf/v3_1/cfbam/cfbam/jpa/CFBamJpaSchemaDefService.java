@@ -842,4 +842,5 @@ public class CFBamJpaSchemaDefService {
 	public void deleteByPubURIIdx(ICFBamSchemaDefByPubURIIdxKey key) {
 		cfbam31SchemaDefRepository.deleteByPubURIIdx(key.getRequiredCTenantId(), key.getRequiredPublishURI());
 	}
+
 }

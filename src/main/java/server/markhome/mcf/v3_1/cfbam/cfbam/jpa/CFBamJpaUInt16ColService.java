@@ -897,4 +897,5 @@ public class CFBamJpaUInt16ColService {
 	public void deleteByTableIdx(ICFBamUInt16ColByTableIdxKey key) {
 		cfbam31UInt16ColRepository.deleteByTableIdx(key.getRequiredTableId());
 	}
+
 }

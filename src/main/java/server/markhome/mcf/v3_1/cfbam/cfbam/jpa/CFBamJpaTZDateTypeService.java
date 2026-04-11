@@ -847,4 +847,5 @@ public class CFBamJpaTZDateTypeService {
 	public void deleteBySchemaIdx(ICFBamTZDateTypeBySchemaIdxKey key) {
 		cfbam31TZDateTypeRepository.deleteBySchemaIdx(key.getRequiredSchemaDefId());
 	}
+
 }

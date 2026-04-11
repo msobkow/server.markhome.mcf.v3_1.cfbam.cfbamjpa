@@ -652,4 +652,5 @@ public class CFBamJpaServerObjFuncService {
 	public void deleteByRetTblIdx(ICFBamServerObjFuncByRetTblIdxKey key) {
 		cfbam31ServerObjFuncRepository.deleteByRetTblIdx(key.getOptionalRetTableId());
 	}
+
 }

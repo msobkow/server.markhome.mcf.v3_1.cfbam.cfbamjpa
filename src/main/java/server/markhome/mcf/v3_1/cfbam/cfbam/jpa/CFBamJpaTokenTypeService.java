@@ -880,4 +880,5 @@ public class CFBamJpaTokenTypeService {
 	public void deleteBySchemaIdx(ICFBamTokenTypeBySchemaIdxKey key) {
 		cfbam31TokenTypeRepository.deleteBySchemaIdx(key.getRequiredSchemaDefId());
 	}
+
 }

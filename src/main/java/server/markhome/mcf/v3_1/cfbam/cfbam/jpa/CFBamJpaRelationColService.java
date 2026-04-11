@@ -898,4 +898,5 @@ public class CFBamJpaRelationColService {
 	public void deleteByRelNextIdx(ICFBamRelationColByRelNextIdxKey key) {
 		cfbam31RelationColRepository.deleteByRelNextIdx(key.getRequiredRelationId(), key.getOptionalNextId());
 	}
+
 }

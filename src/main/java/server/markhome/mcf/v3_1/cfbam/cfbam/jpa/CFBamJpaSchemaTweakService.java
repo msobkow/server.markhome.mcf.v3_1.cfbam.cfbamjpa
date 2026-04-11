@@ -729,4 +729,5 @@ public class CFBamJpaSchemaTweakService {
 	public void deleteBySchemaIdx(ICFBamSchemaTweakBySchemaIdxKey key) {
 		cfbam31SchemaTweakRepository.deleteBySchemaIdx(key.getRequiredSchemaDefId());
 	}
+
 }

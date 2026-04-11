@@ -881,4 +881,5 @@ public class CFBamJpaStringColService {
 	public void deleteByTableIdx(ICFBamStringColByTableIdxKey key) {
 		cfbam31StringColRepository.deleteByTableIdx(key.getRequiredTableId());
 	}
+
 }

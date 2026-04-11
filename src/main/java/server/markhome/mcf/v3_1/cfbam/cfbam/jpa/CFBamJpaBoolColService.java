@@ -850,4 +850,5 @@ public class CFBamJpaBoolColService {
 	public void deleteByTableIdx(ICFBamBoolColByTableIdxKey key) {
 		cfbam31BoolColRepository.deleteByTableIdx(key.getRequiredTableId());
 	}
+
 }

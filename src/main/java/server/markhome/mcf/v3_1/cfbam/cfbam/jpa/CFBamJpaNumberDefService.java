@@ -826,4 +826,5 @@ public class CFBamJpaNumberDefService {
 	// CFBamAtom specified delete-by-index methods
 
 	// CFBamNumberDef specified delete-by-index methods
+
 }

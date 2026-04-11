@@ -740,4 +740,5 @@ public class CFBamJpaValueService {
 	public void deleteByContNextIdx(ICFBamValueByContNextIdxKey key) {
 		cfbam31ValueRepository.deleteByContNextIdx(key.getRequiredScopeId(), key.getOptionalNextId());
 	}
+
 }

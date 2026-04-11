@@ -1019,4 +1019,5 @@ public class CFBamJpaId32GenService {
 	}
 
 	// CFBamId32Gen specified delete-by-index methods
+
 }

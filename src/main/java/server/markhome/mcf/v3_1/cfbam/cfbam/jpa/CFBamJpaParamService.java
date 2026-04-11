@@ -804,4 +804,5 @@ public class CFBamJpaParamService {
 	public void deleteByContNextIdx(ICFBamParamByContNextIdxKey key) {
 		cfbam31ParamRepository.deleteByContNextIdx(key.getRequiredServerMethodId(), key.getOptionalNextId());
 	}
+
 }

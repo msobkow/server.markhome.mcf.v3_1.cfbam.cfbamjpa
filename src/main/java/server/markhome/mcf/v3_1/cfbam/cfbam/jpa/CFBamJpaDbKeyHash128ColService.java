@@ -847,4 +847,5 @@ public class CFBamJpaDbKeyHash128ColService {
 	public void deleteByTableIdx(ICFBamDbKeyHash128ColByTableIdxKey key) {
 		cfbam31DbKeyHash128ColRepository.deleteByTableIdx(key.getRequiredTableId());
 	}
+
 }

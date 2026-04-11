@@ -729,4 +729,5 @@ public class CFBamJpaTableTweakService {
 	public void deleteByTableIdx(ICFBamTableTweakByTableIdxKey key) {
 		cfbam31TableTweakRepository.deleteByTableIdx(key.getRequiredTableId());
 	}
+
 }

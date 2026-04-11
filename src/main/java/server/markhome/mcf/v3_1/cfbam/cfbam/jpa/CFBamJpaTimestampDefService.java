@@ -758,4 +758,5 @@ public class CFBamJpaTimestampDefService {
 	// CFBamAtom specified delete-by-index methods
 
 	// CFBamTimestampDef specified delete-by-index methods
+
 }

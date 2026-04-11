@@ -758,4 +758,5 @@ public class CFBamJpaTZTimestampDefService {
 	// CFBamAtom specified delete-by-index methods
 
 	// CFBamTZTimestampDef specified delete-by-index methods
+
 }

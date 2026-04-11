@@ -945,4 +945,5 @@ public class CFBamJpaDoubleTypeService {
 	public void deleteBySchemaIdx(ICFBamDoubleTypeBySchemaIdxKey key) {
 		cfbam31DoubleTypeRepository.deleteBySchemaIdx(key.getRequiredSchemaDefId());
 	}
+
 }

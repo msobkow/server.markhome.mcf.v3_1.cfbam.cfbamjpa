@@ -791,4 +791,5 @@ public class CFBamJpaNmTokensDefService {
 	// CFBamAtom specified delete-by-index methods
 
 	// CFBamNmTokensDef specified delete-by-index methods
+
 }

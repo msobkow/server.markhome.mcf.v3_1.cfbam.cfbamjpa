@@ -618,4 +618,5 @@ public class CFBamJpaPopTopDepService {
 	public void deleteByUNameIdx(ICFBamPopTopDepByUNameIdxKey key) {
 		cfbam31PopTopDepRepository.deleteByUNameIdx(key.getRequiredContRelationId(), key.getRequiredName());
 	}
+
 }

@@ -618,4 +618,5 @@ public class CFBamJpaPopSubDep2Service {
 	public void deleteByUNameIdx(ICFBamPopSubDep2ByUNameIdxKey key) {
 		cfbam31PopSubDep2Repository.deleteByUNameIdx(key.getRequiredPopSubDep1Id(), key.getRequiredName());
 	}
+
 }

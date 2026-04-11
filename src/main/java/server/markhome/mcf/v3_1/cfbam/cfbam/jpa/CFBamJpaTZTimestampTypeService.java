@@ -847,4 +847,5 @@ public class CFBamJpaTZTimestampTypeService {
 	public void deleteBySchemaIdx(ICFBamTZTimestampTypeBySchemaIdxKey key) {
 		cfbam31TZTimestampTypeRepository.deleteBySchemaIdx(key.getRequiredSchemaDefId());
 	}
+
 }

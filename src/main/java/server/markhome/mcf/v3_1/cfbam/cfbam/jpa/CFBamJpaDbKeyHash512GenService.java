@@ -921,4 +921,5 @@ public class CFBamJpaDbKeyHash512GenService {
 	}
 
 	// CFBamDbKeyHash512Gen specified delete-by-index methods
+
 }

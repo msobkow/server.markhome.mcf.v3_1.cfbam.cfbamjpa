@@ -932,4 +932,5 @@ public class CFBamJpaTableService {
 	public void deleteByQualTableIdx(ICFBamTableByQualTableIdxKey key) {
 		cfbam31TableRepository.deleteByQualTableIdx(key.getOptionalQualifyingTableId());
 	}
+
 }

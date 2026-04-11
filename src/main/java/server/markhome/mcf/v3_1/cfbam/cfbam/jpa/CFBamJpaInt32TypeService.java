@@ -945,4 +945,5 @@ public class CFBamJpaInt32TypeService {
 	public void deleteBySchemaIdx(ICFBamInt32TypeBySchemaIdxKey key) {
 		cfbam31Int32TypeRepository.deleteBySchemaIdx(key.getRequiredSchemaDefId());
 	}
+
 }

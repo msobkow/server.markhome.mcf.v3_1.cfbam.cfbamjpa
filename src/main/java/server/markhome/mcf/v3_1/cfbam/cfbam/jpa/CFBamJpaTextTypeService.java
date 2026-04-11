@@ -881,4 +881,5 @@ public class CFBamJpaTextTypeService {
 	public void deleteBySchemaIdx(ICFBamTextTypeBySchemaIdxKey key) {
 		cfbam31TextTypeRepository.deleteBySchemaIdx(key.getRequiredSchemaDefId());
 	}
+
 }

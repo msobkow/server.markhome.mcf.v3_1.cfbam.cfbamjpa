@@ -847,4 +847,5 @@ public class CFBamJpaDbKeyHash384TypeService {
 	public void deleteBySchemaIdx(ICFBamDbKeyHash384TypeBySchemaIdxKey key) {
 		cfbam31DbKeyHash384TypeRepository.deleteBySchemaIdx(key.getRequiredSchemaDefId());
 	}
+
 }

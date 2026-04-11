@@ -900,4 +900,5 @@ public class CFBamJpaTableColService {
 	public void deleteByDataIdx(ICFBamTableColByDataIdxKey key) {
 		cfbam31TableColRepository.deleteByDataIdx(key.getOptionalDataId());
 	}
+
 }

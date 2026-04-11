@@ -880,4 +880,5 @@ public class CFBamJpaBlobTypeService {
 	public void deleteBySchemaIdx(ICFBamBlobTypeBySchemaIdxKey key) {
 		cfbam31BlobTypeRepository.deleteBySchemaIdx(key.getRequiredSchemaDefId());
 	}
+
 }

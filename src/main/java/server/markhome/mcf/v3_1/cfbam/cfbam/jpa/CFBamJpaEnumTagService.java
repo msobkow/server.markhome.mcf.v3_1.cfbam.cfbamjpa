@@ -611,4 +611,5 @@ public class CFBamJpaEnumTagService {
 	public void deleteByNextIdx(ICFBamEnumTagByNextIdxKey key) {
 		cfbam31EnumTagRepository.deleteByNextIdx(key.getOptionalNextId());
 	}
+
 }

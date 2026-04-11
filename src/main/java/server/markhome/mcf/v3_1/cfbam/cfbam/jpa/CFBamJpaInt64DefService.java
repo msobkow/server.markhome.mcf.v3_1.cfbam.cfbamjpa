@@ -856,4 +856,5 @@ public class CFBamJpaInt64DefService {
 	// CFBamAtom specified delete-by-index methods
 
 	// CFBamInt64Def specified delete-by-index methods
+
 }

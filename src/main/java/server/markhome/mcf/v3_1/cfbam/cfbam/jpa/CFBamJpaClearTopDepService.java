@@ -756,4 +756,5 @@ public class CFBamJpaClearTopDepService {
 	public void deleteByNextIdx(ICFBamClearTopDepByNextIdxKey key) {
 		cfbam31ClearTopDepRepository.deleteByNextIdx(key.getOptionalNextId());
 	}
+
 }

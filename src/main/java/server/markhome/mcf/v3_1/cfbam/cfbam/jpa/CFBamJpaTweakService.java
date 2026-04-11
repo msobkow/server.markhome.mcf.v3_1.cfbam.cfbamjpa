@@ -640,4 +640,5 @@ public class CFBamJpaTweakService {
 	public void deleteByUDefIdx(ICFBamTweakByUDefIdxKey key) {
 		cfbam31TweakRepository.deleteByUDefIdx(key.getRequiredTenantId(), key.getRequiredScopeId(), key.getOptionalDefSchemaTenantId(), key.getOptionalDefSchemaId(), key.getRequiredName());
 	}
+
 }

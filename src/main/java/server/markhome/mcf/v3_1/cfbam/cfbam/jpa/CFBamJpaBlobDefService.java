@@ -791,4 +791,5 @@ public class CFBamJpaBlobDefService {
 	// CFBamAtom specified delete-by-index methods
 
 	// CFBamBlobDef specified delete-by-index methods
+
 }

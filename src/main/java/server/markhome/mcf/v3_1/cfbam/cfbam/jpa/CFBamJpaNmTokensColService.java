@@ -880,4 +880,5 @@ public class CFBamJpaNmTokensColService {
 	public void deleteByTableIdx(ICFBamNmTokensColByTableIdxKey key) {
 		cfbam31NmTokensColRepository.deleteByTableIdx(key.getRequiredTableId());
 	}
+
 }

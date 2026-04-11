@@ -758,4 +758,5 @@ public class CFBamJpaDbKeyHash160DefService {
 	// CFBamAtom specified delete-by-index methods
 
 	// CFBamDbKeyHash160Def specified delete-by-index methods
+
 }
