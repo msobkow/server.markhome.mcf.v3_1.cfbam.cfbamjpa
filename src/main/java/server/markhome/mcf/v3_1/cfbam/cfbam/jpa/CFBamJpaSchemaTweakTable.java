@@ -337,6 +337,55 @@ public class CFBamJpaSchemaTweakTable implements ICFBamSchemaTweakTable
 		schema.getJpaHooksSchema().getSchemaTweakService().deleteByDefSchemaIdx(argKey.getOptionalDefSchemaId());
 	}
 
+	/**
+	 *	Delete the SchemaTweak instances identified by the key UDefIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	TenantId	The SchemaTweak key attribute of the instance generating the id.
+	 *
+	 *	@param	ScopeId	The SchemaTweak key attribute of the instance generating the id.
+	 *
+	 *	@param	DefSchemaTenantId	The SchemaTweak key attribute of the instance generating the id.
+	 *
+	 *	@param	DefSchemaId	The SchemaTweak key attribute of the instance generating the id.
+	 *
+	 *	@param	Name	The SchemaTweak key attribute of the instance generating the id.
+	 */
+	@Override
+	public void deleteSchemaTweakByUDefIdx( ICFSecAuthorization Authorization,
+		CFLibDbKeyHash256 argTenantId,
+		CFLibDbKeyHash256 argScopeId,
+		CFLibDbKeyHash256 argDefSchemaTenantId,
+		CFLibDbKeyHash256 argDefSchemaId,
+		String argName )
+	{
+		schema.getJpaHooksSchema().getSchemaTweakService().deleteByUDefIdx(argTenantId,
+		argScopeId,
+		argDefSchemaTenantId,
+		argDefSchemaId,
+		argName);
+	}
+
+
+	/**
+	 *	Delete the SchemaTweak instances identified by the key UDefIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	argKey	The key identifying the instances to be deleted.
+	 */
+	@Override
+	public void deleteSchemaTweakByUDefIdx( ICFSecAuthorization Authorization,
+		ICFBamTweakByUDefIdxKey argKey )
+	{
+		schema.getJpaHooksSchema().getSchemaTweakService().deleteByUDefIdx(argKey.getRequiredTenantId(),
+			argKey.getRequiredScopeId(),
+			argKey.getOptionalDefSchemaTenantId(),
+			argKey.getOptionalDefSchemaId(),
+			argKey.getRequiredName());
+	}
+
 
 	/**
 	 *	Read the derived SchemaTweak record instance by primary key.
@@ -492,6 +541,39 @@ public class CFBamJpaSchemaTweakTable implements ICFBamSchemaTweakTable
 			retset[idx++] = cur;
 		}
 		return( retset );
+	}
+
+	/**
+	 *	Read the derived SchemaTweak record instance identified by the unique key UDefIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	TenantId	The SchemaTweak key attribute of the instance generating the id.
+	 *
+	 *	@param	ScopeId	The SchemaTweak key attribute of the instance generating the id.
+	 *
+	 *	@param	DefSchemaTenantId	The SchemaTweak key attribute of the instance generating the id.
+	 *
+	 *	@param	DefSchemaId	The SchemaTweak key attribute of the instance generating the id.
+	 *
+	 *	@param	Name	The SchemaTweak key attribute of the instance generating the id.
+	 *
+	 *	@return The record instance for the specified key, or null if there is
+	 *		no such existing key value.
+	 */
+	@Override
+	public ICFBamSchemaTweak readDerivedByUDefIdx( ICFSecAuthorization Authorization,
+		CFLibDbKeyHash256 argTenantId,
+		CFLibDbKeyHash256 argScopeId,
+		CFLibDbKeyHash256 argDefSchemaTenantId,
+		CFLibDbKeyHash256 argDefSchemaId,
+		String argName )
+	{
+		return( schema.getJpaHooksSchema().getSchemaTweakService().findByUDefIdx(argTenantId,
+		argScopeId,
+		argDefSchemaTenantId,
+		argDefSchemaId,
+		argName) );
 	}
 
 	/**
@@ -660,6 +742,37 @@ public class CFBamJpaSchemaTweakTable implements ICFBamSchemaTweakTable
 		CFLibDbKeyHash256 argDefSchemaId )
 	{
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByDefSchemaIdx");
+	}
+
+	/**
+	 *	Read the specific SchemaTweak record instance identified by the unique key UDefIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	TenantId	The SchemaTweak key attribute of the instance generating the id.
+	 *
+	 *	@param	ScopeId	The SchemaTweak key attribute of the instance generating the id.
+	 *
+	 *	@param	DefSchemaTenantId	The SchemaTweak key attribute of the instance generating the id.
+	 *
+	 *	@param	DefSchemaId	The SchemaTweak key attribute of the instance generating the id.
+	 *
+	 *	@param	Name	The SchemaTweak key attribute of the instance generating the id.
+	 *
+	 *	@return The record instance for the specified key, or null if there is
+	 *		no such existing key value.
+	 *
+	 *	@throws	CFLibNotSupportedException thrown by client-side implementations.
+	 */
+	@Override
+	public ICFBamSchemaTweak readRecByUDefIdx( ICFSecAuthorization Authorization,
+		CFLibDbKeyHash256 argTenantId,
+		CFLibDbKeyHash256 argScopeId,
+		CFLibDbKeyHash256 argDefSchemaTenantId,
+		CFLibDbKeyHash256 argDefSchemaId,
+		String argName )
+	{
+		throw new CFLibNotImplementedYetException(getClass(), "readRecByUDefIdx");
 	}
 
 	/**

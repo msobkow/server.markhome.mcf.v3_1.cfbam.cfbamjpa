@@ -170,6 +170,35 @@ public interface CFBamJpaTweakRepository extends JpaRepository<CFBamJpaTweak, CF
 		return( findByDefSchemaIdx(key.getOptionalDefSchemaId()));
 	}
 
+	/**
+	 *	Read an entity using the columns of the CFBamTweakByUDefIdxKey as arguments.
+	 *
+	 *		@param requiredTenantId
+	 *		@param requiredScopeId
+	 *		@param optionalDefSchemaTenantId
+	 *		@param optionalDefSchemaId
+	 *		@param requiredName
+	 *
+	 *		@return The found entity, typically from the JPA cache, or null if no such entity exists.
+	 */
+	@Query("select r from CFBamJpaTweak r where r.requiredTenantId = :tenantId and r.requiredScopeId = :scopeId and r.optionalDefSchemaTenantId = :defSchemaTenantId and r.optionalLookupDefSchema.requiredId = :defSchemaId and r.requiredName = :name")
+	CFBamJpaTweak findByUDefIdx(@Param("tenantId") CFLibDbKeyHash256 requiredTenantId,
+		@Param("scopeId") CFLibDbKeyHash256 requiredScopeId,
+		@Param("defSchemaTenantId") CFLibDbKeyHash256 optionalDefSchemaTenantId,
+		@Param("defSchemaId") CFLibDbKeyHash256 optionalDefSchemaId,
+		@Param("name") String requiredName);
+
+	/**
+	 *	CFBamTweakByUDefIdxKey entity reader convenience method for object-based access.
+	 *
+	 *		@param key The CFBamTweakByUDefIdxKey instance to use for the query arguments.
+	 *
+	 *		@return The found entity, typically from the JPA cache, or null if no such entity exists.
+	 */
+	default CFBamJpaTweak findByUDefIdx(ICFBamTweakByUDefIdxKey key) {
+		return( findByUDefIdx(key.getRequiredTenantId(), key.getRequiredScopeId(), key.getOptionalDefSchemaTenantId(), key.getOptionalDefSchemaId(), key.getRequiredName()));
+	}
+
 	// CFBamJpaTweak specified delete-by-index methods
 
 	/**
@@ -278,6 +307,37 @@ public interface CFBamJpaTweakRepository extends JpaRepository<CFBamJpaTweak, CF
 		return( lockByDefSchemaIdx(key.getOptionalDefSchemaId()));
 	}
 
+	/**
+	 *	Argument-based lock database entity for compatibility with the current MSS code factory code base, uses @Transactional to acquire a JPA entity locks, which may or may not imply an actual database lock during the transaction.
+	 *
+	 *		@param requiredTenantId
+	 *		@param requiredScopeId
+	 *		@param optionalDefSchemaTenantId
+	 *		@param optionalDefSchemaId
+	 *		@param requiredName
+	 *
+	 *		@return The locked entity, refreshed from the data store, or null if no such entity exists.
+	 */
+	@Transactional
+	@Lock(LockModeType.WRITE)
+	@Query("select r from CFBamJpaTweak r where r.requiredTenantId = :tenantId and r.requiredScopeId = :scopeId and r.optionalDefSchemaTenantId = :defSchemaTenantId and r.optionalLookupDefSchema.requiredId = :defSchemaId and r.requiredName = :name")
+	CFBamJpaTweak lockByUDefIdx(@Param("tenantId") CFLibDbKeyHash256 requiredTenantId,
+		@Param("scopeId") CFLibDbKeyHash256 requiredScopeId,
+		@Param("defSchemaTenantId") CFLibDbKeyHash256 optionalDefSchemaTenantId,
+		@Param("defSchemaId") CFLibDbKeyHash256 optionalDefSchemaId,
+		@Param("name") String requiredName);
+
+	/**
+	 *	CFBamTweakByUDefIdxKey based lock method for object-based access.
+	 *
+	 *		@param key The key of the entity to be locked.
+	 *
+	 *		@return The locked entity, refreshed from the data store, or null if no such entity exists.
+	 */
+	default CFBamJpaTweak lockByUDefIdx(ICFBamTweakByUDefIdxKey key) {
+		return( lockByUDefIdx(key.getRequiredTenantId(), key.getRequiredScopeId(), key.getOptionalDefSchemaTenantId(), key.getOptionalDefSchemaId(), key.getRequiredName()));
+	}
+
 	// CFBamJpaTweak specified delete-by-index methods
 
 	/**
@@ -366,6 +426,33 @@ public interface CFBamJpaTweakRepository extends JpaRepository<CFBamJpaTweak, CF
 	 */
 	default void deleteByDefSchemaIdx(ICFBamTweakByDefSchemaIdxKey key) {
 		deleteByDefSchemaIdx(key.getOptionalDefSchemaId());
+	}
+
+	/**
+	 *	Argument-based delete entity for compatibility with the current MSS code factory code base, uses @Transactional to acquire a JPA entity lock, which may or may not imply an actual database lock during the transaction.
+	 *
+	 *		@param requiredTenantId
+	 *		@param requiredScopeId
+	 *		@param optionalDefSchemaTenantId
+	 *		@param optionalDefSchemaId
+	 *		@param requiredName
+	 */
+	@Transactional
+	@Modifying
+	@Query("delete from CFBamJpaTweak r where r.requiredTenantId = :tenantId and r.requiredScopeId = :scopeId and r.optionalDefSchemaTenantId = :defSchemaTenantId and r.optionalLookupDefSchema.requiredId = :defSchemaId and r.requiredName = :name")
+	void deleteByUDefIdx(@Param("tenantId") CFLibDbKeyHash256 requiredTenantId,
+		@Param("scopeId") CFLibDbKeyHash256 requiredScopeId,
+		@Param("defSchemaTenantId") CFLibDbKeyHash256 optionalDefSchemaTenantId,
+		@Param("defSchemaId") CFLibDbKeyHash256 optionalDefSchemaId,
+		@Param("name") String requiredName);
+
+	/**
+	 *	CFBamTweakByUDefIdxKey based lock method for object-based access.
+	 *
+	 *		@param key The CFBamTweakByUDefIdxKey of the entity to be locked.
+	 */
+	default void deleteByUDefIdx(ICFBamTweakByUDefIdxKey key) {
+		deleteByUDefIdx(key.getRequiredTenantId(), key.getRequiredScopeId(), key.getOptionalDefSchemaTenantId(), key.getOptionalDefSchemaId(), key.getRequiredName());
 	}
 
 }

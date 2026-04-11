@@ -198,6 +198,7 @@ public class CFBamJpaTweakService {
 		existing.setRequiredTenantId(data.getRequiredTenantId());
 		existing.setOptionalDefSchemaTenantId(data.getOptionalDefSchemaTenantId());
 		existing.setRequiredName(data.getRequiredName());
+		existing.setRequiredReplacesInherited(data.getRequiredReplacesInherited());
 		existing.setRequiredTweakGelText(data.getRequiredTweakGelText());
 		// Update the audit columns
 		data.setUpdatedAt(LocalDateTime.now());
@@ -328,6 +329,42 @@ public class CFBamJpaTweakService {
 		return( cfbam31TweakRepository.findByDefSchemaIdx(key.getOptionalDefSchemaId()));
 	}
 
+	/**
+	 *	Find an entity using the columns of the ICFBamTweakByUDefIdxKey as arguments.
+	 *
+	 *		@param requiredTenantId
+	 *		@param requiredScopeId
+	 *		@param optionalDefSchemaTenantId
+	 *		@param optionalDefSchemaId
+	 *		@param requiredName
+	 *
+	 *		@return The found entity, or null if no such entity exists.
+	 */
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
+	public CFBamJpaTweak findByUDefIdx(@Param("tenantId") CFLibDbKeyHash256 requiredTenantId,
+		@Param("scopeId") CFLibDbKeyHash256 requiredScopeId,
+		@Param("defSchemaTenantId") CFLibDbKeyHash256 optionalDefSchemaTenantId,
+		@Param("defSchemaId") CFLibDbKeyHash256 optionalDefSchemaId,
+		@Param("name") String requiredName) {
+		return( cfbam31TweakRepository.findByUDefIdx(requiredTenantId,
+			requiredScopeId,
+			optionalDefSchemaTenantId,
+			optionalDefSchemaId,
+			requiredName));
+	}
+
+	/**
+	 *	ICFBamTweakByUDefIdxKey entity finder convenience method for object-based access.
+	 *
+	 *		@param key The ICFBamTweakByUDefIdxKey instance to use for the query arguments.
+	 *
+	 *		@return The found entity, or null if no such entity exists.
+	 */
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
+	public CFBamJpaTweak findByUDefIdx(ICFBamTweakByUDefIdxKey key) {
+		return( cfbam31TweakRepository.findByUDefIdx(key.getRequiredTenantId(), key.getRequiredScopeId(), key.getOptionalDefSchemaTenantId(), key.getOptionalDefSchemaId(), key.getRequiredName()));
+	}
+
 	// CFBamTweak specified lock-by-index methods
 
 	/**
@@ -441,6 +478,42 @@ public class CFBamJpaTweakService {
 		return( cfbam31TweakRepository.lockByDefSchemaIdx(key.getOptionalDefSchemaId()));
 	}
 
+	/**
+	 *	Argument-based lock database entity for compatibility with the current MSS code factory code base, uses @Transactional to acquire a JPA entity locks, which may or may not imply an actual database lock during the transaction.
+	 *
+	 *		@param requiredTenantId
+	 *		@param requiredScopeId
+	 *		@param optionalDefSchemaTenantId
+	 *		@param optionalDefSchemaId
+	 *		@param requiredName
+	 *
+	 *		@return The locked entity, refreshed from the data store, or null if no such entity exists.
+	 */
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
+	public CFBamJpaTweak lockByUDefIdx(@Param("tenantId") CFLibDbKeyHash256 requiredTenantId,
+		@Param("scopeId") CFLibDbKeyHash256 requiredScopeId,
+		@Param("defSchemaTenantId") CFLibDbKeyHash256 optionalDefSchemaTenantId,
+		@Param("defSchemaId") CFLibDbKeyHash256 optionalDefSchemaId,
+		@Param("name") String requiredName) {
+		return( cfbam31TweakRepository.lockByUDefIdx(requiredTenantId,
+			requiredScopeId,
+			optionalDefSchemaTenantId,
+			optionalDefSchemaId,
+			requiredName));
+	}
+
+	/**
+	 *	ICFBamTweakByUDefIdxKey based lock method for object-based access.
+	 *
+	 *		@param key The key of the entity to be locked.
+	 *
+	 *		@return The locked entity, refreshed from the data store, or null if no such entity exists.
+	 */
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
+	public CFBamJpaTweak lockByUDefIdx(ICFBamTweakByUDefIdxKey key) {
+		return( cfbam31TweakRepository.lockByUDefIdx(key.getRequiredTenantId(), key.getRequiredScopeId(), key.getOptionalDefSchemaTenantId(), key.getOptionalDefSchemaId(), key.getRequiredName()));
+	}
+
 	// CFBamTweak specified delete-by-index methods
 
 	/**
@@ -534,5 +607,37 @@ public class CFBamJpaTweakService {
 	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public void deleteByDefSchemaIdx(ICFBamTweakByDefSchemaIdxKey key) {
 		cfbam31TweakRepository.deleteByDefSchemaIdx(key.getOptionalDefSchemaId());
+	}
+
+	/**
+	 *	Argument-based delete entity for compatibility with the current MSS code factory code base, uses @Transactional to acquire a JPA entity lock, which may or may not imply an actual database lock during the transaction.
+	 *
+	 *		@param requiredTenantId
+	 *		@param requiredScopeId
+	 *		@param optionalDefSchemaTenantId
+	 *		@param optionalDefSchemaId
+	 *		@param requiredName
+	 */
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
+	public void deleteByUDefIdx(@Param("tenantId") CFLibDbKeyHash256 requiredTenantId,
+		@Param("scopeId") CFLibDbKeyHash256 requiredScopeId,
+		@Param("defSchemaTenantId") CFLibDbKeyHash256 optionalDefSchemaTenantId,
+		@Param("defSchemaId") CFLibDbKeyHash256 optionalDefSchemaId,
+		@Param("name") String requiredName) {
+		cfbam31TweakRepository.deleteByUDefIdx(requiredTenantId,
+			requiredScopeId,
+			optionalDefSchemaTenantId,
+			optionalDefSchemaId,
+			requiredName);
+	}
+
+	/**
+	 *	ICFBamTweakByUDefIdxKey based lock method for object-based access.
+	 *
+	 *		@param key The ICFBamTweakByUDefIdxKey of the entity to be locked.
+	 */
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
+	public void deleteByUDefIdx(ICFBamTweakByUDefIdxKey key) {
+		cfbam31TweakRepository.deleteByUDefIdx(key.getRequiredTenantId(), key.getRequiredScopeId(), key.getOptionalDefSchemaTenantId(), key.getOptionalDefSchemaId(), key.getRequiredName());
 	}
 }

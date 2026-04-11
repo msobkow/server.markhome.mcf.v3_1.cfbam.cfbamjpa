@@ -182,6 +182,31 @@ public class CFBamJpaTweakDefaultFactory
 	}
 
     @Override
+    public ICFBamTweakByUDefIdxKey newByUDefIdxKey() {
+	ICFBamTweakByUDefIdxKey key =
+            new CFBamJpaTweakByUDefIdxKey();
+	return( key );
+    }
+
+	public CFBamJpaTweakByUDefIdxKey ensureByUDefIdxKey(ICFBamTweakByUDefIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamJpaTweakByUDefIdxKey) {
+			return( (CFBamJpaTweakByUDefIdxKey)key );
+		}
+		else {
+			CFBamJpaTweakByUDefIdxKey mapped = new CFBamJpaTweakByUDefIdxKey();
+			mapped.setRequiredTenantId( key.getRequiredTenantId() );
+			mapped.setRequiredScopeId( key.getRequiredScopeId() );
+			mapped.setOptionalDefSchemaTenantId( key.getOptionalDefSchemaTenantId() );
+			mapped.setOptionalDefSchemaId( key.getOptionalDefSchemaId() );
+			mapped.setRequiredName( key.getRequiredName() );
+			return( mapped );
+		}
+	}
+
+    @Override
     public ICFBamTweak newRec() {
         ICFBamTweak rec =
             new CFBamJpaTweak();

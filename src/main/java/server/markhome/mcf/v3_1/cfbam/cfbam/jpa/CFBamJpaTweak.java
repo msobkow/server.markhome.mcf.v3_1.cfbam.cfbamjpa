@@ -70,7 +70,8 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 		@Index(name = "TweakUNameIdx", columnList = "ScopeId, safe_name", unique = true),
 		@Index(name = "TweakTenantIdx", columnList = "TenantId", unique = false),
 		@Index(name = "TweakScopeIdx", columnList = "ScopeId", unique = false),
-		@Index(name = "TweakDefSchemaDefIdx", columnList = "defschid", unique = false)
+		@Index(name = "TweakDefSchemaDefIdx", columnList = "defschid", unique = false),
+		@Index(name = "TweakUDefIdx", columnList = "TenantId, ScopeId, defschtentid, defschid, safe_name", unique = true)
 	}
 )
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -123,6 +124,8 @@ public class CFBamJpaTweak
 	protected CFLibDbKeyHash256 optionalDefSchemaTenantId;
 	@Column( name="safe_name", nullable=false, length=192 )
 	protected String requiredName;
+	@Column( name="repl_inh", nullable=false )
+	protected boolean requiredReplacesInherited;
 	@Column( name="twk_gel_txt", nullable=false, length=2000000 )
 	protected String requiredTweakGelText;
 
@@ -132,6 +135,7 @@ public class CFBamJpaTweak
 		requiredScopeId = CFLibDbKeyHash256.fromHex( ICFBamTweak.SCOPEID_INIT_VALUE.toString() );
 		optionalDefSchemaTenantId = CFLibDbKeyHash256.nullGet();
 		requiredName = ICFBamTweak.NAME_INIT_VALUE;
+		requiredReplacesInherited = ICFBamTweak.REPLACESINHERITED_INIT_VALUE;
 		requiredTweakGelText = ICFBamTweak.TWEAKGELTEXT_INIT_VALUE;
 	}
 
@@ -355,6 +359,16 @@ public class CFBamJpaTweak
 	}
 
 	@Override
+	public boolean getRequiredReplacesInherited() {
+		return( requiredReplacesInherited );
+	}
+
+	@Override
+	public void setRequiredReplacesInherited( boolean value ) {
+		requiredReplacesInherited = value;
+	}
+
+	@Override
 	public String getRequiredTweakGelText() {
 		return( requiredTweakGelText );
 	}
@@ -487,6 +501,9 @@ public class CFBamJpaTweak
 					return( false );
 				}
 			}
+			if( getRequiredReplacesInherited() != rhs.getRequiredReplacesInherited() ) {
+				return( false );
+			}
 			if( getRequiredTweakGelText() != null ) {
 				if( rhs.getRequiredTweakGelText() != null ) {
 					if( ! getRequiredTweakGelText().equals( rhs.getRequiredTweakGelText() ) ) {
@@ -607,6 +624,9 @@ public class CFBamJpaTweak
 				if( rhs.getRequiredName() != null ) {
 					return( false );
 				}
+			}
+			if( getRequiredReplacesInherited() != rhs.getRequiredReplacesInherited() ) {
+				return( false );
 			}
 			if( getRequiredTweakGelText() != null ) {
 				if( rhs.getRequiredTweakGelText() != null ) {
@@ -735,6 +755,85 @@ public class CFBamJpaTweak
 			}
 			return( true );
 		}
+		else if (obj instanceof ICFBamTweakByUDefIdxKey) {
+			ICFBamTweakByUDefIdxKey rhs = (ICFBamTweakByUDefIdxKey)obj;
+			if( getRequiredTenantId() != null ) {
+				if( rhs.getRequiredTenantId() != null ) {
+					if( ! getRequiredTenantId().equals( rhs.getRequiredTenantId() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredTenantId() != null ) {
+					return( false );
+				}
+			}
+			if( getRequiredScopeId() != null ) {
+				if( rhs.getRequiredScopeId() != null ) {
+					if( ! getRequiredScopeId().equals( rhs.getRequiredScopeId() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredScopeId() != null ) {
+					return( false );
+				}
+			}
+			if( getOptionalDefSchemaTenantId() != null ) {
+				if( rhs.getOptionalDefSchemaTenantId() != null ) {
+					if( ! getOptionalDefSchemaTenantId().equals( rhs.getOptionalDefSchemaTenantId() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getOptionalDefSchemaTenantId() != null ) {
+					return( false );
+				}
+			}
+			if( getOptionalDefSchemaId() != null ) {
+				if( rhs.getOptionalDefSchemaId() != null ) {
+					if( ! getOptionalDefSchemaId().equals( rhs.getOptionalDefSchemaId() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getOptionalDefSchemaId() != null ) {
+					return( false );
+				}
+			}
+			if( getRequiredName() != null ) {
+				if( rhs.getRequiredName() != null ) {
+					if( ! getRequiredName().equals( rhs.getRequiredName() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredName() != null ) {
+					return( false );
+				}
+			}
+			return( true );
+		}
 		else {
 			return( false );
 		}
@@ -758,6 +857,12 @@ public class CFBamJpaTweak
 		}
 		if( getRequiredName() != null ) {
 			hashCode = hashCode + getRequiredName().hashCode();
+		}
+		if( getRequiredReplacesInherited() ) {
+			hashCode = ( hashCode * 2 ) + 1;
+		}
+		else {
+			hashCode = hashCode * 2;
 		}
 		if( getRequiredTweakGelText() != null ) {
 			hashCode = hashCode + getRequiredTweakGelText().hashCode();
@@ -878,6 +983,16 @@ public class CFBamJpaTweak
 			}
 			else if (rhs.getRequiredName() != null) {
 				return( -1 );
+			}
+			if( getRequiredReplacesInherited() ) {
+				if( ! rhs.getRequiredReplacesInherited() ) {
+					return( 1 );
+				}
+			}
+			else {
+				if( rhs.getRequiredReplacesInherited() ) {
+					return( -1 );
+				}
 			}
 			if (getRequiredTweakGelText() != null) {
 				if (rhs.getRequiredTweakGelText() != null) {
@@ -1019,6 +1134,16 @@ public class CFBamJpaTweak
 			else if (rhs.getRequiredName() != null) {
 				return( -1 );
 			}
+			if( getRequiredReplacesInherited() ) {
+				if( ! rhs.getRequiredReplacesInherited() ) {
+					return( 1 );
+				}
+			}
+			else {
+				if( rhs.getRequiredReplacesInherited() ) {
+					return( -1 );
+				}
+			}
 			if (getRequiredTweakGelText() != null) {
 				if (rhs.getRequiredTweakGelText() != null) {
 					cmp = getRequiredTweakGelText().compareTo( rhs.getRequiredTweakGelText() );
@@ -1123,6 +1248,84 @@ public class CFBamJpaTweak
 			}
 			return( 0 );
 		}
+		else if (obj instanceof ICFBamTweakByUDefIdxKey) {
+			ICFBamTweakByUDefIdxKey rhs = (ICFBamTweakByUDefIdxKey)obj;
+			if (getRequiredTenantId() != null) {
+				if (rhs.getRequiredTenantId() != null) {
+					cmp = getRequiredTenantId().compareTo( rhs.getRequiredTenantId() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredTenantId() != null) {
+				return( -1 );
+			}
+			if (getRequiredScopeId() != null) {
+				if (rhs.getRequiredScopeId() != null) {
+					cmp = getRequiredScopeId().compareTo( rhs.getRequiredScopeId() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredScopeId() != null) {
+				return( -1 );
+			}
+			if( getOptionalDefSchemaTenantId() != null ) {
+				if( rhs.getOptionalDefSchemaTenantId() != null ) {
+					cmp = getOptionalDefSchemaTenantId().compareTo( rhs.getOptionalDefSchemaTenantId() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else {
+				if( rhs.getOptionalDefSchemaTenantId() != null ) {
+					return( -1 );
+				}
+			}
+			if( getOptionalDefSchemaId() != null ) {
+				if( rhs.getOptionalDefSchemaId() != null ) {
+					cmp = getOptionalDefSchemaId().compareTo( rhs.getOptionalDefSchemaId() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else {
+				if( rhs.getOptionalDefSchemaId() != null ) {
+					return( -1 );
+				}
+			}
+			if (getRequiredName() != null) {
+				if (rhs.getRequiredName() != null) {
+					cmp = getRequiredName().compareTo( rhs.getRequiredName() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredName() != null) {
+				return( -1 );
+			}
+			return( 0 );
+		}
 		else {
 			throw new CFLibUnsupportedClassException( getClass(),
 				"compareTo",
@@ -1150,6 +1353,7 @@ public class CFBamJpaTweak
 		setRequiredTenantId(src.getRequiredTenantId());
 		setOptionalDefSchemaTenantId(src.getOptionalDefSchemaTenantId());
 		setRequiredName(src.getRequiredName());
+		setRequiredReplacesInherited(src.getRequiredReplacesInherited());
 		setRequiredTweakGelText(src.getRequiredTweakGelText());
 	}
 
@@ -1166,6 +1370,7 @@ public class CFBamJpaTweak
 		setRequiredTenantId(src.getRequiredTenantId());
 		setOptionalDefSchemaTenantId(src.getOptionalDefSchemaTenantId());
 		setRequiredName(src.getRequiredName());
+		setRequiredReplacesInherited(src.getRequiredReplacesInherited());
 		setRequiredTweakGelText(src.getRequiredTweakGelText());
 	}
 
@@ -1181,6 +1386,7 @@ public class CFBamJpaTweak
 			+ " OptionalDefSchemaTenantId=" + ( ( getOptionalDefSchemaTenantId() == null ) ? "null" : "\"" + getOptionalDefSchemaTenantId().toString() + "\"" )
 			+ " OptionalDefSchemaId=" + ( ( getOptionalDefSchemaId() == null ) ? "null" : "\"" + getOptionalDefSchemaId().toString() + "\"" )
 			+ " RequiredName=" + "\"" + StringEscapeUtils.escapeXml11( getRequiredName() ) + "\""
+			+ " RequiredReplacesInherited=" + (( getRequiredReplacesInherited() ) ? "\"true\"" : "\"false\"" )
 			+ " RequiredTweakGelText=" + "\"" + StringEscapeUtils.escapeXml11( getRequiredTweakGelText() ) + "\"";
 		return( ret );
 	}
