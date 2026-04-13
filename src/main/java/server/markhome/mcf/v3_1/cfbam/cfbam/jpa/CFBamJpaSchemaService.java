@@ -503,22 +503,29 @@ public class CFBamJpaSchemaService {
 
 	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "$secdbschemaname$TransactionManager")
 	public void bootstrapAllTablesSecurity() {
+		bootstrapAllTablesSecurity(ICFSecSchema.getSysClusterId(), ICFSecSchema.getSysTenantId());
+	}
+
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "$secdbschemaname$TransactionManager")
+	public void bootstrapAllTablesSecurity(CFLibDbKeyHash256 clusterId, CFLibDbKeyHash256 tenantId) {
 		LocalDateTime now = LocalDateTime.now();
 		ICFSecSecSession bootstrapSession;
 		CFLibDbKeyHash256 bootstrapSessionID = new CFLibDbKeyHash256(0);
 
 		ICFSecAuthorization auth = new CFSecAuthorization();
 		auth.setAuthUuid6(CFLibUuid6.generateUuid6());
-		auth.setSecClusterId(ICFSecSchema.getSysClusterId());
-		auth.setSecTenantId(ICFSecSchema.getSysTenantId());
+		auth.setSecClusterId(clusterId);
+		auth.setSecTenantId(tenantId);
 		auth.setSecSessionId(bootstrapSessionID);
+
+		CFLibDbKeyHash256 sysAdminUID = ICFSecSchema.getSysAdminId();
 
 //ICFSecSchema.getSysTenantId(), ICFSecSchema.getSysAdminId()
 		bootstrapSession = ICFSecSchema.getBackingCFSec().getFactorySecSession().newRec();
 		bootstrapSession.setRequiredRevision(1);
 		bootstrapSession.setRequiredSecSessionId(bootstrapSessionID);
-		bootstrapSession.setRequiredSecUserId(ICFSecSchema.getSysAdminId());
-		bootstrapSession.setOptionalSecProxyId(ICFSecSchema.getSysAdminId());
+		bootstrapSession.setRequiredSecUserId(sysAdminUID);
+		bootstrapSession.setOptionalSecProxyId(sysAdminUID);
 		bootstrapSession.setRequiredStart(now);
 		bootstrapSession.setOptionalFinish(null);
 		bootstrapSession = ICFSecSchema.getBackingCFSec().getTableSecSession().createSecSession(auth, bootstrapSession);
@@ -534,159 +541,340 @@ public class CFBamJpaSchemaService {
 			throw new CFLibNullArgumentException(getClass(), "bootstrapAllTablesSecurity", 0, "secSysGroupPublic");
 		}
 		
-		ICFSecSecClusGrp secSysClusGroupSysAdmin = ICFSecSchema.getBackingCFSec().getTableSecClusGrp().readDerivedByUNameIdx(auth, ICFSecSchema.getSysClusterId(), "sysclusteradmin");
-		if (secSysClusGroupSysAdmin == null) {
-			throw new CFLibNullArgumentException(getClass(), "bootstrapAllTablesSecurity", 0, "secSysClusGroupSysAdmin");
+		ICFSecCluster secCluster = ICFSecSchema.getBackingCFSec().getTableCluster().readDerived(auth, clusterId);
+		if (secCluster == null) {
+			throw new CFLibNullArgumentException(getClass(), "bootstrapAllTablesSecurity", 0, "secCluster<" + clusterId.toString() + ">");
 		}
-
-		ICFSecSecTentGrp secSysTentGroupSysAdmin = ICFSecSchema.getBackingCFSec().getTableSecTentGrp().readDerivedByUNameIdx(auth, ICFSecSchema.getSysTenantId(), "systenantadmin");
-		if (secSysTentGroupSysAdmin == null) {
-			throw new CFLibNullArgumentException(getClass(), "bootstrapAllTablesSecurity", 0, "secSysTentGroupSysAdmin");
+		
+		ICFSecTenant secTenant = ICFSecSchema.getBackingCFSec().getTableTenant().readDerived(auth, tenantId);
+		if (secTenant == null) {
+			throw new CFLibNullArgumentException(getClass(), "bootstrapAllTablesSecurity", 0, "secTenant<" + tenantId.toString() + ">");
 		}
+	
+		bootstrapAllTablesSecurity(auth, sysAdminUID, bootstrapSession, secSysGroupSysAdmin, secSysGroupPublic, secCluster, secTenant);
 
-		bootstrapTableSecurity(auth, now, "Scope", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "SchemaDef", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "SchemaRef", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "ServerMethod", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "ServerObjFunc", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "ServerProc", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "Table", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "Tweak", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "TableTweak", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "SchemaTweak", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "Value", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "Atom", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "BlobDef", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "BlobType", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "BoolDef", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "BoolType", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "Chain", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "ClearDep", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "ClearSubDep1", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "ClearSubDep2", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "ClearSubDep3", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "ClearTopDep", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "DateDef", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "DateType", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "DelDep", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "DelSubDep1", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "DelSubDep2", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "DelSubDep3", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "DelTopDep", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "DoubleDef", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "DoubleType", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "EnumTag", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "FloatDef", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "FloatType", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "Index", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "IndexCol", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "Int16Def", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "Int16Type", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "Int32Def", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "Int32Type", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "Int64Def", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "Int64Type", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "NmTokenDef", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "NmTokenType", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "NmTokensDef", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "NmTokensType", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "NumberDef", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "NumberType", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "Param", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "PopDep", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "PopSubDep1", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "PopSubDep2", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "PopSubDep3", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "PopTopDep", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "Relation", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "RelationCol", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "ServerListFunc", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "DbKeyHash128Def", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "DbKeyHash128Col", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "DbKeyHash128Type", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "DbKeyHash128Gen", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "DbKeyHash160Def", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "DbKeyHash160Col", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "DbKeyHash160Type", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "DbKeyHash160Gen", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "DbKeyHash224Def", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "DbKeyHash224Col", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "DbKeyHash224Type", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "DbKeyHash224Gen", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "DbKeyHash256Def", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "DbKeyHash256Col", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "DbKeyHash256Type", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "DbKeyHash256Gen", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "DbKeyHash384Def", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "DbKeyHash384Col", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "DbKeyHash384Type", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "DbKeyHash384Gen", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "DbKeyHash512Def", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "DbKeyHash512Col", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "DbKeyHash512Type", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "DbKeyHash512Gen", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "StringDef", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "StringType", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "TZDateDef", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "TZDateType", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "TZTimeDef", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "TZTimeType", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "TZTimestampDef", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "TZTimestampType", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "TableCol", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "TextDef", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "TextType", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "TimeDef", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "TimeType", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "TimestampDef", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "TimestampType", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "TokenDef", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "TokenType", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "UInt16Def", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "UInt16Type", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "UInt32Def", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "UInt32Type", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "UInt64Def", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "UInt64Type", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "UuidDef", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "Uuid6Def", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "UuidType", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "Uuid6Type", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "BlobCol", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "BoolCol", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "DateCol", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "DoubleCol", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "EnumDef", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "EnumType", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "FloatCol", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "Id16Gen", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "Id32Gen", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "Id64Gen", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "Int16Col", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "Int32Col", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "Int64Col", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "NmTokenCol", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "NmTokensCol", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "NumberCol", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "StringCol", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "TZDateCol", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "TZTimeCol", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "TZTimestampCol", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "TextCol", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "TimeCol", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "TimestampCol", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "TokenCol", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "UInt16Col", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "UInt32Col", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "UInt64Col", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "UuidCol", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "Uuid6Col", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "UuidGen", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
-		bootstrapTableSecurity(auth, now, "Uuid6Gen", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
 		if (bootstrapSession != null && bootstrapSessionID != null && !bootstrapSessionID.isNull() && bootstrapSession.getOptionalFinish() == null) {
 			bootstrapSession.setOptionalFinish(LocalDateTime.now());
 			bootstrapSession = ICFSecSchema.getBackingCFSec().getTableSecSession().updateSecSession(auth, bootstrapSession);
 		}
+	}
+
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "$secdbschemaname$TransactionManager")
+	public void bootstrapAllTablesSecurity(ICFSecAuthorization auth,
+		CFLibDbKeyHash256 sysAdminUID,
+		ICFSecSecSession bootstrapSession,
+		ICFSecSecSysGrp secSysGroupSysAdmin,
+		ICFSecSecSysGrp secSysGroupPublic,
+		ICFSecCluster secCluster,
+		ICFSecTenant secTenant)
+	{
+		LocalDateTime now = LocalDateTime.now();
+
+		CFLibDbKeyHash256 bootstrapSessionID = bootstrapSession.getRequiredSecSessionId();
+		if (secSysGroupSysAdmin == null) {
+			throw new CFLibNullArgumentException(getClass(), "bootstrapAllTablesSecurity", 0, "secSysGroupSysAdmin");
+		}
+		if (secSysGroupPublic == null) {
+			throw new CFLibNullArgumentException(getClass(), "bootstrapAllTablesSecurity", 0, "secSysGroupPublic");
+		}
+		if (secCluster == null) {
+			throw new CFLibNullArgumentException(getClass(), "bootstrapAllTablesSecurity", 0, "secCluster");
+		}
+		if (secTenant == null) {
+			throw new CFLibNullArgumentException(getClass(), "bootstrapAllTablesSecurity", 0, "secTenant");
+		}
+
+		ICFSecSecSysGrp secSysClusGroupSysAdmin = ICFSecSchema.getBackingCFSec().getTableSecSysGrp().readDerivedByUNameIdx(auth, secCluster.getRequiredFullDomName().toLowerCase() + "clusteradmin");
+		if (secSysClusGroupSysAdmin == null) {
+			secSysClusGroupSysAdmin = ICFSecSchema.getBackingCFSec().getFactorySecSysGrp().newRec();
+			secSysClusGroupSysAdmin.setCreatedAt(now);
+			secSysClusGroupSysAdmin.setCreatedByUserId(sysAdminUID);
+			secSysClusGroupSysAdmin.setUpdatedAt(now);
+			secSysClusGroupSysAdmin.setUpdatedByUserId(sysAdminUID);
+			secSysClusGroupSysAdmin.setRequiredName(secCluster.getRequiredFullDomName().toLowerCase() + "clusteradmin");
+			secSysClusGroupSysAdmin.setRequiredRevision(1);
+			secSysClusGroupSysAdmin = ICFSecSchema.getBackingCFSec().getTableSecSysGrp().createSecSysGrp(auth, secSysClusGroupSysAdmin);
+		}
+		CFLibDbKeyHash256 secSysClusGroupSysAdminID = secSysClusGroupSysAdmin.getRequiredSecSysGrpId();
+
+		ICFSecSecSysGrpInc secSysClusGroupSysAdminIncSysadmin = ICFSecSchema.getBackingCFSec().getTableSecSysGrpInc().readDerived(auth, secSysClusGroupSysAdminID, secSysGroupSysAdmin.getRequiredName());
+		if (secSysClusGroupSysAdminIncSysadmin == null) {
+			secSysClusGroupSysAdminIncSysadmin = ICFSecSchema.getBackingCFSec().getFactorySecSysGrpInc().newRec();
+			secSysClusGroupSysAdminIncSysadmin.setRequiredContainerGroup(secSysClusGroupSysAdminID);
+			secSysClusGroupSysAdminIncSysadmin.setCreatedAt(now);
+			secSysClusGroupSysAdminIncSysadmin.setCreatedByUserId(sysAdminUID);
+			secSysClusGroupSysAdminIncSysadmin.setUpdatedAt(now);
+			secSysClusGroupSysAdminIncSysadmin.setUpdatedByUserId(sysAdminUID);
+			secSysClusGroupSysAdminIncSysadmin.setRequiredParentSubGroup(secSysGroupSysAdmin.getRequiredName());
+			secSysClusGroupSysAdminIncSysadmin.setRequiredRevision(1);
+			secSysClusGroupSysAdminIncSysadmin = ICFSecSchema.getBackingCFSec().getTableSecSysGrpInc().createSecSysGrpInc(auth, secSysClusGroupSysAdminIncSysadmin);
+		}
+
+		ICFSecSecSysGrp secSysTentGroupSysAdmin = ICFSecSchema.getBackingCFSec().getTableSecSysGrp().readDerivedByUNameIdx(auth, secTenant.getRequiredTenantName().toLowerCase() + "tenantadmin");
+		if (secSysTentGroupSysAdmin == null) {
+			secSysTentGroupSysAdmin = ICFSecSchema.getBackingCFSec().getFactorySecSysGrp().newRec();
+			secSysTentGroupSysAdmin.setCreatedAt(now);
+			secSysTentGroupSysAdmin.setCreatedByUserId(sysAdminUID);
+			secSysTentGroupSysAdmin.setUpdatedAt(now);
+			secSysTentGroupSysAdmin.setUpdatedByUserId(sysAdminUID);
+			secSysTentGroupSysAdmin.setRequiredName(secTenant.getRequiredTenantName().toLowerCase() + "tenantadmin");
+			secSysTentGroupSysAdmin.setRequiredRevision(1);
+			secSysTentGroupSysAdmin = ICFSecSchema.getBackingCFSec().getTableSecSysGrp().createSecSysGrp(auth, secSysTentGroupSysAdmin);
+		}
+		CFLibDbKeyHash256 secSysTentGroupSysAdminID = secSysTentGroupSysAdmin.getRequiredSecSysGrpId();
+
+		ICFSecSecSysGrpInc secSysTentGroupSysAdminIncClusadmin = ICFSecSchema.getBackingCFSec().getTableSecSysGrpInc().readDerived(auth, secSysTentGroupSysAdminID, secSysClusGroupSysAdmin.getRequiredName());
+		if (secSysTentGroupSysAdminIncClusadmin == null) {
+			secSysTentGroupSysAdminIncClusadmin = ICFSecSchema.getBackingCFSec().getFactorySecSysGrpInc().newRec();
+			secSysTentGroupSysAdminIncClusadmin.setRequiredContainerGroup(secSysTentGroupSysAdminID);
+			secSysTentGroupSysAdminIncClusadmin.setCreatedAt(now);
+			secSysTentGroupSysAdminIncClusadmin.setCreatedByUserId(sysAdminUID);
+			secSysTentGroupSysAdminIncClusadmin.setUpdatedAt(now);
+			secSysTentGroupSysAdminIncClusadmin.setUpdatedByUserId(sysAdminUID);
+			secSysTentGroupSysAdminIncClusadmin.setRequiredParentSubGroup(secSysClusGroupSysAdmin.getRequiredName());
+			secSysTentGroupSysAdminIncClusadmin.setRequiredRevision(1);
+			secSysTentGroupSysAdminIncClusadmin = ICFSecSchema.getBackingCFSec().getTableSecSysGrpInc().createSecSysGrpInc(auth, secSysTentGroupSysAdminIncClusadmin);
+		}
+
+		ICFSecSecClusGrp secClusGroupSysAdmin = ICFSecSchema.getBackingCFSec().getTableSecClusGrp().readDerivedByUNameIdx(auth, secCluster.getRequiredId(), secCluster.getRequiredFullDomName().toLowerCase() + "clusteradmin");
+		if (secClusGroupSysAdmin == null) {
+			secClusGroupSysAdmin = ICFSecSchema.getBackingCFSec().getFactorySecClusGrp().newRec();
+			secClusGroupSysAdmin.setCreatedAt(now);
+			secClusGroupSysAdmin.setCreatedByUserId(sysAdminUID);
+			secClusGroupSysAdmin.setUpdatedAt(now);
+			secClusGroupSysAdmin.setUpdatedByUserId(sysAdminUID);
+			secClusGroupSysAdmin.setRequiredName(secCluster.getRequiredFullDomName().toLowerCase() + "clusteradmin");
+			secClusGroupSysAdmin.setRequiredOwnerCluster(secCluster.getRequiredId());
+			secClusGroupSysAdmin.setRequiredRevision(1);
+			secClusGroupSysAdmin = ICFSecSchema.getBackingCFSec().getTableSecClusGrp().createSecClusGrp(auth, secClusGroupSysAdmin);
+		}
+		CFLibDbKeyHash256 secClusGroupSysAdminID = secClusGroupSysAdmin.getRequiredSecClusGrpId();
+
+		ICFSecSecClusGrpInc secClusGroupSysAdminIncSysadmin = ICFSecSchema.getBackingCFSec().getTableSecClusGrpInc().readDerived(auth, secSysClusGroupSysAdminID, secSysGroupSysAdmin.getRequiredName());
+		if (secClusGroupSysAdminIncSysadmin == null) {
+			secClusGroupSysAdminIncSysadmin = ICFSecSchema.getBackingCFSec().getFactorySecClusGrpInc().newRec();
+			secClusGroupSysAdminIncSysadmin.setRequiredContainerGroup(secClusGroupSysAdminID);
+			secClusGroupSysAdminIncSysadmin.setCreatedAt(now);
+			secClusGroupSysAdminIncSysadmin.setCreatedByUserId(sysAdminUID);
+			secClusGroupSysAdminIncSysadmin.setUpdatedAt(now);
+			secClusGroupSysAdminIncSysadmin.setUpdatedByUserId(sysAdminUID);
+			secClusGroupSysAdminIncSysadmin.setRequiredParentSubGroup(secSysGroupSysAdmin.getRequiredName());
+			secClusGroupSysAdminIncSysadmin.setRequiredRevision(1);
+			secClusGroupSysAdminIncSysadmin = ICFSecSchema.getBackingCFSec().getTableSecClusGrpInc().createSecClusGrpInc(auth, secClusGroupSysAdminIncSysadmin);
+		}
+
+		ICFSecSecClusGrp secClusGroupTentAdmin = ICFSecSchema.getBackingCFSec().getTableSecClusGrp().readDerivedByUNameIdx(auth, secCluster.getRequiredId(), secTenant.getRequiredTenantName().toLowerCase() + "tenantadmin");
+		if (secClusGroupTentAdmin == null) {
+			secClusGroupTentAdmin = ICFSecSchema.getBackingCFSec().getFactorySecClusGrp().newRec();
+			secClusGroupTentAdmin.setCreatedAt(now);
+			secClusGroupTentAdmin.setCreatedByUserId(sysAdminUID);
+			secClusGroupTentAdmin.setUpdatedAt(now);
+			secClusGroupTentAdmin.setUpdatedByUserId(sysAdminUID);
+			secClusGroupTentAdmin.setRequiredName(secTenant.getRequiredTenantName().toLowerCase() + "tenantadmin");
+			secClusGroupTentAdmin.setRequiredOwnerCluster(secCluster.getRequiredId());
+			secClusGroupTentAdmin.setRequiredRevision(1);
+			secClusGroupTentAdmin = ICFSecSchema.getBackingCFSec().getTableSecClusGrp().createSecClusGrp(auth, secClusGroupTentAdmin);
+		}
+		CFLibDbKeyHash256 secClusGroupTentAdminID = secClusGroupTentAdmin.getRequiredSecClusGrpId();
+
+		ICFSecSecClusGrpInc secClusGroupTentAdminIncClusadmin = ICFSecSchema.getBackingCFSec().getTableSecClusGrpInc().readDerived(auth, secClusGroupTentAdminID, secSysClusGroupSysAdmin.getRequiredName());
+		if( secClusGroupTentAdminIncClusadmin == null) {
+			secClusGroupTentAdminIncClusadmin = ICFSecSchema.getBackingCFSec().getFactorySecClusGrpInc().newRec();
+			secClusGroupTentAdminIncClusadmin.setRequiredContainerGroup(secClusGroupTentAdminID);
+			secClusGroupTentAdminIncClusadmin.setCreatedAt(now);
+			secClusGroupTentAdminIncClusadmin.setCreatedByUserId(sysAdminUID);
+			secClusGroupTentAdminIncClusadmin.setUpdatedAt(now);
+			secClusGroupTentAdminIncClusadmin.setUpdatedByUserId(sysAdminUID);
+			secClusGroupTentAdminIncClusadmin.setRequiredParentSubGroup(secClusGroupSysAdmin.getRequiredName());
+			secClusGroupTentAdminIncClusadmin.setRequiredRevision(1);
+			secClusGroupTentAdminIncClusadmin = ICFSecSchema.getBackingCFSec().getTableSecClusGrpInc().createSecClusGrpInc(auth, secClusGroupTentAdminIncClusadmin);
+		}
+
+		ICFSecSecTentGrp secTentGroupSysAdmin = ICFSecSchema.getBackingCFSec().getTableSecTentGrp().readDerivedByUNameIdx(auth, secTenant.getRequiredId(), secTenant.getRequiredTenantName().toLowerCase() + "tenantadmin");
+		if (secTentGroupSysAdmin == null) {
+			secTentGroupSysAdmin = ICFSecSchema.getBackingCFSec().getFactorySecTentGrp().newRec();
+			secTentGroupSysAdmin.setCreatedAt(now);
+			secTentGroupSysAdmin.setCreatedByUserId(sysAdminUID);
+			secTentGroupSysAdmin.setUpdatedAt(now);
+			secTentGroupSysAdmin.setUpdatedByUserId(sysAdminUID);
+			secTentGroupSysAdmin.setRequiredName(secTenant.getRequiredTenantName().toLowerCase() + "tenantadmin");
+			secTentGroupSysAdmin.setRequiredOwnerTenant(secTenant);
+			secTentGroupSysAdmin.setRequiredRevision(1);
+			secTentGroupSysAdmin = ICFSecSchema.getBackingCFSec().getTableSecTentGrp().createSecTentGrp(auth, secTentGroupSysAdmin);
+		}
+		CFLibDbKeyHash256 secTentGroupSysAdminID = secTentGroupSysAdmin.getRequiredSecTentGrpId();
+
+		ICFSecSecTentGrpInc secTentGroupSysAdminIncClusadmin = ICFSecSchema.getBackingCFSec().getTableSecTentGrpInc().readDerived(auth, secTentGroupSysAdminID, secSysClusGroupSysAdmin.getRequiredName());
+		if (secTentGroupSysAdminIncClusadmin == null) {
+			secTentGroupSysAdminIncClusadmin = ICFSecSchema.getBackingCFSec().getFactorySecTentGrpInc().newRec();
+			secTentGroupSysAdminIncClusadmin.setRequiredContainerGroup(secTentGroupSysAdminID);
+			secTentGroupSysAdminIncClusadmin.setCreatedAt(now);
+			secTentGroupSysAdminIncClusadmin.setCreatedByUserId(sysAdminUID);
+			secTentGroupSysAdminIncClusadmin.setUpdatedAt(now);
+			secTentGroupSysAdminIncClusadmin.setUpdatedByUserId(sysAdminUID);
+			secTentGroupSysAdminIncClusadmin.setRequiredParentSubGroup(secClusGroupSysAdmin.getRequiredName());
+			secTentGroupSysAdminIncClusadmin.setRequiredRevision(1);
+			secTentGroupSysAdminIncClusadmin = ICFSecSchema.getBackingCFSec().getTableSecTentGrpInc().createSecTentGrpInc(auth, secTentGroupSysAdminIncClusadmin);
+		}
+	
+		bootstrapAllTablesSecurity(auth, bootstrapSession, sysAdminUID, secSysGroupSysAdmin, secSysGroupPublic, secClusGroupSysAdmin, secTentGroupSysAdmin);
+
+		if (bootstrapSession != null && bootstrapSessionID != null && !bootstrapSessionID.isNull() && bootstrapSession.getOptionalFinish() == null) {
+			bootstrapSession.setOptionalFinish(LocalDateTime.now());
+			bootstrapSession = ICFSecSchema.getBackingCFSec().getTableSecSession().updateSecSession(auth, bootstrapSession);
+		}
+	}
+
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "$secdbschemaname$TransactionManager")
+	public void bootstrapAllTablesSecurity(ICFSecAuthorization auth,
+		ICFSecSecSession bootstrapSession,
+		CFLibDbKeyHash256 sysAdminUID,
+		ICFSecSecSysGrp secSysGroupSysAdmin,
+		ICFSecSecSysGrp secSysGroupPublic,
+		ICFSecSecClusGrp secSysClusGroupSysAdmin,
+		ICFSecSecTentGrp secSysTentGroupSysAdmin)
+	{
+		CFLibDbKeyHash256 bootstrapSessionID = bootstrapSession.getRequiredSecSessionId();
+
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "Scope", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "SchemaDef", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "SchemaRef", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "ServerMethod", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "ServerObjFunc", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "ServerProc", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "Table", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "Tweak", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "TableTweak", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "SchemaTweak", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "Value", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "Atom", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "BlobDef", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "BlobType", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "BoolDef", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "BoolType", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "Chain", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "ClearDep", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "ClearSubDep1", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "ClearSubDep2", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "ClearSubDep3", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "ClearTopDep", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "DateDef", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "DateType", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "DelDep", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "DelSubDep1", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "DelSubDep2", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "DelSubDep3", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "DelTopDep", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "DoubleDef", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "DoubleType", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "EnumTag", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "FloatDef", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "FloatType", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "Index", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "IndexCol", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "Int16Def", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "Int16Type", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "Int32Def", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "Int32Type", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "Int64Def", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "Int64Type", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "NmTokenDef", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "NmTokenType", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "NmTokensDef", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "NmTokensType", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "NumberDef", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "NumberType", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "Param", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "PopDep", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "PopSubDep1", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "PopSubDep2", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "PopSubDep3", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "PopTopDep", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "Relation", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "RelationCol", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "ServerListFunc", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "DbKeyHash128Def", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "DbKeyHash128Col", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "DbKeyHash128Type", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "DbKeyHash128Gen", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "DbKeyHash160Def", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "DbKeyHash160Col", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "DbKeyHash160Type", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "DbKeyHash160Gen", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "DbKeyHash224Def", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "DbKeyHash224Col", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "DbKeyHash224Type", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "DbKeyHash224Gen", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "DbKeyHash256Def", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "DbKeyHash256Col", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "DbKeyHash256Type", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "DbKeyHash256Gen", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "DbKeyHash384Def", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "DbKeyHash384Col", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "DbKeyHash384Type", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "DbKeyHash384Gen", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "DbKeyHash512Def", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "DbKeyHash512Col", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "DbKeyHash512Type", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "DbKeyHash512Gen", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "StringDef", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "StringType", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "TZDateDef", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "TZDateType", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "TZTimeDef", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "TZTimeType", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "TZTimestampDef", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "TZTimestampType", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "TableCol", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "TextDef", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "TextType", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "TimeDef", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "TimeType", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "TimestampDef", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "TimestampType", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "TokenDef", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "TokenType", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "UInt16Def", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "UInt16Type", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "UInt32Def", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "UInt32Type", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "UInt64Def", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "UInt64Type", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "UuidDef", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "Uuid6Def", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "UuidType", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "Uuid6Type", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "BlobCol", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "BoolCol", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "DateCol", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "DoubleCol", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "EnumDef", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "EnumType", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "FloatCol", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "Id16Gen", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "Id32Gen", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "Id64Gen", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "Int16Col", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "Int32Col", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "Int64Col", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "NmTokenCol", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "NmTokensCol", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "NumberCol", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "StringCol", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "TZDateCol", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "TZTimeCol", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "TZTimestampCol", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "TextCol", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "TimeCol", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "TimestampCol", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "TokenCol", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "UInt16Col", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "UInt32Col", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "UInt64Col", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "UuidCol", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "Uuid6Col", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "UuidGen", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
+		bootstrapTableSecurity(auth, LocalDateTime.now(), "Uuid6Gen", true, false, "Tenant", secSysGroupPublic, secSysGroupSysAdmin, secSysClusGroupSysAdmin, secSysTentGroupSysAdmin);
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "$secdbschemaname$TransactionManager")
