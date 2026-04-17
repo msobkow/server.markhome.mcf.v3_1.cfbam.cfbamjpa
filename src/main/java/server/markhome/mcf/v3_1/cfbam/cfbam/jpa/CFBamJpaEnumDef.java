@@ -76,8 +76,6 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 public class CFBamJpaEnumDef extends CFBamJpaInt16Def
 	implements ICFBamEnumDef
 {
-	@OneToMany(fetch=FetchType.LAZY, mappedBy="requiredContainerEnumDef")
-	protected Set<CFBamJpaEnumTag> requiredComponentsTag;
 
 
 	public CFBamJpaEnumDef() {
@@ -89,14 +87,6 @@ public class CFBamJpaEnumDef extends CFBamJpaInt16Def
 		return( ICFBamEnumDef.CLASS_CODE );
 	}
 
-	@Override
-	public List<ICFBamEnumTag> getRequiredComponentsTag() {
-		List<ICFBamEnumTag> retlist = new ArrayList<>(requiredComponentsTag.size());
-		for (CFBamJpaEnumTag cur: requiredComponentsTag) {
-			retlist.add(cur);
-		}
-		return( retlist );
-	}
 	@Override
 	public boolean equals( Object obj ) {
 		if (obj == null) {

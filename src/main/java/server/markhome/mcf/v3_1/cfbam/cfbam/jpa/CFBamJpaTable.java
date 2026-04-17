@@ -102,20 +102,6 @@ public class CFBamJpaTable extends CFBamJpaScope
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
 	@JoinColumn( name="PrimIdxId" )
 	protected CFBamJpaIndex optionalLookupPrimaryIndex;
-	@OneToMany(fetch=FetchType.LAZY, mappedBy="requiredContainerFromTable")
-	protected Set<CFBamJpaRelation> optionalComponentsRelation;
-	@OneToMany(fetch=FetchType.LAZY, mappedBy="requiredContainerTable")
-	protected Set<CFBamJpaIndex> optionalComponentsIndex;
-	@OneToMany(fetch=FetchType.LAZY, mappedBy="requiredLookupToTable")
-	protected Set<CFBamJpaRelation> optionalChildrenReverseRelations;
-	@OneToMany(fetch=FetchType.LAZY, mappedBy="requiredContainerTable")
-	protected Set<CFBamJpaChain> optionalComponentsChains;
-	@OneToMany(fetch=FetchType.LAZY, mappedBy="requiredContainerTable")
-	protected Set<CFBamJpaDelTopDep> optionalComponentsDelDep;
-	@OneToMany(fetch=FetchType.LAZY, mappedBy="requiredContainerTable")
-	protected Set<CFBamJpaClearTopDep> optionalComponentsClearDep;
-	@OneToMany(fetch=FetchType.LAZY, mappedBy="requiredContainerForTable")
-	protected Set<CFBamJpaServerMethod> optionalComponentsServerMethods;
 
 	@Column( name="safe_name", nullable=false, length=192 )
 	protected String requiredName;
@@ -358,108 +344,6 @@ public class CFBamJpaTable extends CFBamJpaScope
 		setOptionalLookupPrimaryIndex(targetRec);
 	}
 
-	@Override
-	public List<ICFBamRelation> getOptionalComponentsRelation() {
-		List<ICFBamRelation> retlist = new ArrayList<>(optionalComponentsRelation.size());
-		for (CFBamJpaRelation cur: optionalComponentsRelation) {
-			retlist.add(cur);
-		}
-		return( retlist );
-	}
-	@Override
-	public List<ICFBamIndex> getOptionalComponentsIndex() {
-		List<ICFBamIndex> retlist = new ArrayList<>(optionalComponentsIndex.size());
-		for (CFBamJpaIndex cur: optionalComponentsIndex) {
-			retlist.add(cur);
-		}
-		return( retlist );
-	}
-	@Override
-	public List<ICFBamValue> getOptionalComponentsColumns() {
-		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
-		if (targetBackingSchema == null) {
-			throw new CFLibNullArgumentException(getClass(), "setOptionalComponentsColumns", 0, "ICFBamSchema.getBackingCFBam()");
-		}
-		ICFBamValueTable targetTable = targetBackingSchema.getTableValue();
-		if (targetTable == null) {
-			throw new CFLibNullArgumentException(getClass(), "setOptionalComponentsColumns", 0, "ICFBamSchema.getBackingCFBam().getTableValue()");
-		}
-		ICFBamValue[] targetArr = targetTable.readDerivedByScopeIdx(null, getRequiredId());
-		if( targetArr != null ) {
-			List<ICFBamValue> results = new ArrayList<>(targetArr.length);
-			for (int idx = 0; idx < targetArr.length; idx++) {
-				results.add(targetArr[idx]);
-			}
-			return( results );
-		}
-		else {
-			List<ICFBamValue> results = new ArrayList<>();
-			return( results );
-		}
-	}
-	@Override
-	public List<ICFBamRelation> getOptionalChildrenReverseRelations() {
-		List<ICFBamRelation> retlist = new ArrayList<>(optionalChildrenReverseRelations.size());
-		for (CFBamJpaRelation cur: optionalChildrenReverseRelations) {
-			retlist.add(cur);
-		}
-		return( retlist );
-	}
-	@Override
-	public List<ICFBamChain> getOptionalComponentsChains() {
-		List<ICFBamChain> retlist = new ArrayList<>(optionalComponentsChains.size());
-		for (CFBamJpaChain cur: optionalComponentsChains) {
-			retlist.add(cur);
-		}
-		return( retlist );
-	}
-	@Override
-	public List<ICFBamDelTopDep> getOptionalComponentsDelDep() {
-		List<ICFBamDelTopDep> retlist = new ArrayList<>(optionalComponentsDelDep.size());
-		for (CFBamJpaDelTopDep cur: optionalComponentsDelDep) {
-			retlist.add(cur);
-		}
-		return( retlist );
-	}
-	@Override
-	public List<ICFBamClearTopDep> getOptionalComponentsClearDep() {
-		List<ICFBamClearTopDep> retlist = new ArrayList<>(optionalComponentsClearDep.size());
-		for (CFBamJpaClearTopDep cur: optionalComponentsClearDep) {
-			retlist.add(cur);
-		}
-		return( retlist );
-	}
-	@Override
-	public List<ICFBamServerMethod> getOptionalComponentsServerMethods() {
-		List<ICFBamServerMethod> retlist = new ArrayList<>(optionalComponentsServerMethods.size());
-		for (CFBamJpaServerMethod cur: optionalComponentsServerMethods) {
-			retlist.add(cur);
-		}
-		return( retlist );
-	}
-	@Override
-	public List<ICFBamTweak> getOptionalComponentsTweaks() {
-		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
-		if (targetBackingSchema == null) {
-			throw new CFLibNullArgumentException(getClass(), "setOptionalComponentsTweaks", 0, "ICFBamSchema.getBackingCFBam()");
-		}
-		ICFBamTweakTable targetTable = targetBackingSchema.getTableTweak();
-		if (targetTable == null) {
-			throw new CFLibNullArgumentException(getClass(), "setOptionalComponentsTweaks", 0, "ICFBamSchema.getBackingCFBam().getTableTweak()");
-		}
-		ICFBamTweak[] targetArr = targetTable.readDerivedByScopeIdx(null, getRequiredId());
-		if( targetArr != null ) {
-			List<ICFBamTweak> results = new ArrayList<>(targetArr.length);
-			for (int idx = 0; idx < targetArr.length; idx++) {
-				results.add(targetArr[idx]);
-			}
-			return( results );
-		}
-		else {
-			List<ICFBamTweak> results = new ArrayList<>();
-			return( results );
-		}
-	}
 	@Override
 	public CFLibDbKeyHash256 getRequiredSchemaDefId() {
 		ICFBamSchemaDef result = getRequiredContainerSchemaDef();

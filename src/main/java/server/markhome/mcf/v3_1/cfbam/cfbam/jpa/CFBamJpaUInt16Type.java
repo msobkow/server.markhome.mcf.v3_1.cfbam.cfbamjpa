@@ -77,15 +77,13 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 public class CFBamJpaUInt16Type extends CFBamJpaUInt16Def
 	implements ICFBamUInt16Type
 {
+	@ManyToOne(fetch=FetchType.LAZY, optional=false)
+	@JoinColumn( name="SchemaDefId" )
+	protected CFBamJpaSchemaDef requiredContainerSchemaDef;
 
-	@AttributeOverrides({
-		@AttributeOverride(name="bytes", column = @Column( name="SchemaDefId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
-	})
-	protected CFLibDbKeyHash256 requiredSchemaDefId;
 
 	public CFBamJpaUInt16Type() {
 		super();
-		requiredSchemaDefId = CFLibDbKeyHash256.fromHex( ICFBamUInt16Type.SCHEMADEFID_INIT_VALUE.toString() );
 	}
 
 	@Override
@@ -95,6 +93,23 @@ public class CFBamJpaUInt16Type extends CFBamJpaUInt16Def
 
 	@Override
 	public ICFBamSchemaDef getRequiredContainerSchemaDef() {
+		return( requiredContainerSchemaDef );
+	}
+	@Override
+	public void setRequiredContainerSchemaDef(ICFBamSchemaDef argObj) {
+		if(argObj == null) {
+			throw new CFLibNullArgumentException(getClass(), "setContainerSchemaDef", 1, "argObj");
+		}
+		else if (argObj instanceof CFBamJpaSchemaDef) {
+			requiredContainerSchemaDef = (CFBamJpaSchemaDef)argObj;
+		}
+		else {
+			throw new CFLibUnsupportedClassException(getClass(), "setContainerSchemaDef", "argObj", argObj, "CFBamJpaSchemaDef");
+		}
+	}
+
+	@Override
+	public void setRequiredContainerSchemaDef(CFLibDbKeyHash256 argSchemaDefId) {
 		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
 		if (targetBackingSchema == null) {
 			throw new CFLibNullArgumentException(getClass(), "setRequiredContainerSchemaDef", 0, "ICFBamSchema.getBackingCFBam()");
@@ -103,27 +118,19 @@ public class CFBamJpaUInt16Type extends CFBamJpaUInt16Def
 		if (targetTable == null) {
 			throw new CFLibNullArgumentException(getClass(), "setRequiredContainerSchemaDef", 0, "ICFBamSchema.getBackingCFBam().getTableSchemaDef()");
 		}
-		ICFBamSchemaDef targetRec = targetTable.readDerivedByIdIdx(null, getRequiredSchemaDefId());
-		return(targetRec);
-	}
-	@Override
-	public void setRequiredContainerSchemaDef(ICFBamSchemaDef argObj) {
-		if(argObj == null) {
-			throw new CFLibNullArgumentException(getClass(), "setContainerSchemaDef", 1, "argObj");
-		}
-		else {
-			requiredSchemaDefId = argObj.getRequiredId();
-		}
-	}
-
-	@Override
-	public void setRequiredContainerSchemaDef(CFLibDbKeyHash256 argSchemaDefId) {
-		requiredSchemaDefId = argSchemaDefId;
+		ICFBamSchemaDef targetRec = targetTable.readDerived(null, argSchemaDefId);
+		setRequiredContainerSchemaDef(targetRec);
 	}
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredSchemaDefId() {
-		return( requiredSchemaDefId );
+		ICFBamSchemaDef result = getRequiredContainerSchemaDef();
+		if (result != null) {
+			return result.getRequiredId();
+		}
+		else {
+			return( ICFBamSchemaDef.ID_INIT_VALUE );
+		}
 	}
 
 	@Override

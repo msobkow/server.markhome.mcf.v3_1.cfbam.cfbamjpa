@@ -77,15 +77,13 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 public class CFBamJpaDateCol extends CFBamJpaDateDef
 	implements ICFBamDateCol
 {
+	@ManyToOne(fetch=FetchType.LAZY, optional=false)
+	@JoinColumn( name="TableId" )
+	protected CFBamJpaTable requiredContainerTable;
 
-	@AttributeOverrides({
-		@AttributeOverride(name="bytes", column = @Column( name="TableId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
-	})
-	protected CFLibDbKeyHash256 requiredTableId;
 
 	public CFBamJpaDateCol() {
 		super();
-		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamDateCol.TABLEID_INIT_VALUE.toString() );
 	}
 
 	@Override
@@ -95,6 +93,23 @@ public class CFBamJpaDateCol extends CFBamJpaDateDef
 
 	@Override
 	public ICFBamTable getRequiredContainerTable() {
+		return( requiredContainerTable );
+	}
+	@Override
+	public void setRequiredContainerTable(ICFBamTable argObj) {
+		if(argObj == null) {
+			throw new CFLibNullArgumentException(getClass(), "setContainerTable", 1, "argObj");
+		}
+		else if (argObj instanceof CFBamJpaTable) {
+			requiredContainerTable = (CFBamJpaTable)argObj;
+		}
+		else {
+			throw new CFLibUnsupportedClassException(getClass(), "setContainerTable", "argObj", argObj, "CFBamJpaTable");
+		}
+	}
+
+	@Override
+	public void setRequiredContainerTable(CFLibDbKeyHash256 argTableId) {
 		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
 		if (targetBackingSchema == null) {
 			throw new CFLibNullArgumentException(getClass(), "setRequiredContainerTable", 0, "ICFBamSchema.getBackingCFBam()");
@@ -103,27 +118,19 @@ public class CFBamJpaDateCol extends CFBamJpaDateDef
 		if (targetTable == null) {
 			throw new CFLibNullArgumentException(getClass(), "setRequiredContainerTable", 0, "ICFBamSchema.getBackingCFBam().getTableTable()");
 		}
-		ICFBamTable targetRec = targetTable.readDerivedByIdIdx(null, getRequiredTableId());
-		return(targetRec);
-	}
-	@Override
-	public void setRequiredContainerTable(ICFBamTable argObj) {
-		if(argObj == null) {
-			throw new CFLibNullArgumentException(getClass(), "setContainerTable", 1, "argObj");
-		}
-		else {
-			requiredTableId = argObj.getRequiredId();
-		}
-	}
-
-	@Override
-	public void setRequiredContainerTable(CFLibDbKeyHash256 argTableId) {
-		requiredTableId = argTableId;
+		ICFBamTable targetRec = targetTable.readDerived(null, argTableId);
+		setRequiredContainerTable(targetRec);
 	}
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredTableId() {
-		return( requiredTableId );
+		ICFBamTable result = getRequiredContainerTable();
+		if (result != null) {
+			return result.getRequiredId();
+		}
+		else {
+			return( ICFBamTable.ID_INIT_VALUE );
+		}
 	}
 
 	@Override

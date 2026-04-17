@@ -81,8 +81,6 @@ public class CFBamJpaClearSubDep2 extends CFBamJpaClearDep
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
 	@JoinColumn( name="contclrdep1id" )
 	protected CFBamJpaClearSubDep1 requiredContainerClearSubDep1;
-	@OneToMany(fetch=FetchType.LAZY, mappedBy="requiredContainerClearSubDep2")
-	protected Set<CFBamJpaClearSubDep3> optionalComponentsClearDep;
 
 	@Column( name="safe_name", nullable=false, length=192 )
 	protected String requiredName;
@@ -128,14 +126,6 @@ public class CFBamJpaClearSubDep2 extends CFBamJpaClearDep
 		setRequiredContainerClearSubDep1(targetRec);
 	}
 
-	@Override
-	public List<ICFBamClearSubDep3> getOptionalComponentsClearDep() {
-		List<ICFBamClearSubDep3> retlist = new ArrayList<>(optionalComponentsClearDep.size());
-		for (CFBamJpaClearSubDep3 cur: optionalComponentsClearDep) {
-			retlist.add(cur);
-		}
-		return( retlist );
-	}
 	@Override
 	public CFLibDbKeyHash256 getRequiredClearSubDep1Id() {
 		ICFBamClearSubDep1 result = getRequiredContainerClearSubDep1();

@@ -89,8 +89,6 @@ public class CFBamJpaDelTopDep extends CFBamJpaDelDep
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
 	@JoinColumn( name="NextId" )
 	protected CFBamJpaDelTopDep optionalLookupNext;
-	@OneToMany(fetch=FetchType.LAZY, mappedBy="requiredContainerDelTopDep")
-	protected Set<CFBamJpaDelSubDep1> optionalComponentsDelDep;
 
 	@Column( name="safe_name", nullable=false, length=192 )
 	protected String requiredName;
@@ -198,14 +196,6 @@ public class CFBamJpaDelTopDep extends CFBamJpaDelDep
 		setOptionalLookupNext(targetRec);
 	}
 
-	@Override
-	public List<ICFBamDelSubDep1> getOptionalComponentsDelDep() {
-		List<ICFBamDelSubDep1> retlist = new ArrayList<>(optionalComponentsDelDep.size());
-		for (CFBamJpaDelSubDep1 cur: optionalComponentsDelDep) {
-			retlist.add(cur);
-		}
-		return( retlist );
-	}
 	@Override
 	public String getRequiredName() {
 		return( requiredName );

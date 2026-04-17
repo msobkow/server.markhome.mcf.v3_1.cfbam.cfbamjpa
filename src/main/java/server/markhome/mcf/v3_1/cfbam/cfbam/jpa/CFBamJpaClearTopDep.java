@@ -89,8 +89,6 @@ public class CFBamJpaClearTopDep extends CFBamJpaClearDep
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
 	@JoinColumn( name="NextId" )
 	protected CFBamJpaClearTopDep optionalLookupNext;
-	@OneToMany(fetch=FetchType.LAZY, mappedBy="requiredContainerClearTopDep")
-	protected Set<CFBamJpaClearSubDep1> optionalComponentsClearDep;
 
 	@Column( name="safe_name", nullable=false, length=192 )
 	protected String requiredName;
@@ -198,14 +196,6 @@ public class CFBamJpaClearTopDep extends CFBamJpaClearDep
 		setOptionalLookupNext(targetRec);
 	}
 
-	@Override
-	public List<ICFBamClearSubDep1> getOptionalComponentsClearDep() {
-		List<ICFBamClearSubDep1> retlist = new ArrayList<>(optionalComponentsClearDep.size());
-		for (CFBamJpaClearSubDep1 cur: optionalComponentsClearDep) {
-			retlist.add(cur);
-		}
-		return( retlist );
-	}
 	@Override
 	public CFLibDbKeyHash256 getRequiredTableId() {
 		ICFBamTable result = getRequiredContainerTable();

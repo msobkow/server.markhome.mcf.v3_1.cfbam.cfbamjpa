@@ -101,10 +101,6 @@ public class CFBamJpaRelation extends CFBamJpaScope
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
 	@JoinColumn( name="NarrowedId" )
 	protected CFBamJpaRelation optionalLookupNarrowed;
-	@OneToMany(fetch=FetchType.LAZY, mappedBy="requiredContainerRelation")
-	protected Set<CFBamJpaRelationCol> optionalComponentsColumns;
-	@OneToMany(fetch=FetchType.LAZY, mappedBy="requiredContainerContRelation")
-	protected Set<CFBamJpaPopTopDep> optionalComponentsPopDep;
 
 	@Column( name="safe_name", nullable=false, length=192 )
 	protected String requiredName;
@@ -338,22 +334,6 @@ public class CFBamJpaRelation extends CFBamJpaScope
 		setOptionalLookupNarrowed(targetRec);
 	}
 
-	@Override
-	public List<ICFBamRelationCol> getOptionalComponentsColumns() {
-		List<ICFBamRelationCol> retlist = new ArrayList<>(optionalComponentsColumns.size());
-		for (CFBamJpaRelationCol cur: optionalComponentsColumns) {
-			retlist.add(cur);
-		}
-		return( retlist );
-	}
-	@Override
-	public List<ICFBamPopTopDep> getOptionalComponentsPopDep() {
-		List<ICFBamPopTopDep> retlist = new ArrayList<>(optionalComponentsPopDep.size());
-		for (CFBamJpaPopTopDep cur: optionalComponentsPopDep) {
-			retlist.add(cur);
-		}
-		return( retlist );
-	}
 	@Override
 	public CFLibDbKeyHash256 getRequiredTableId() {
 		ICFBamTable result = getRequiredContainerFromTable();

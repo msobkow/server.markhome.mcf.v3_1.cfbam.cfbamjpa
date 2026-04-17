@@ -92,7 +92,7 @@ public interface CFBamJpaDoubleColRepository extends JpaRepository<CFBamJpaDoubl
 	 *
 	 *		@return The found entity, typically from the JPA cache, or null if no such entity exists.
 	 */
-	@Query("select r from CFBamJpaValue r where r.requiredScopeId = :scopeId and r.requiredName = :name")
+	@Query("select r from CFBamJpaValue r where r.requiredContainerScope.requiredId = :scopeId and r.requiredName = :name")
 	CFBamJpaDoubleCol findByUNameIdx(@Param("scopeId") CFLibDbKeyHash256 requiredScopeId,
 		@Param("name") String requiredName);
 
@@ -114,7 +114,7 @@ public interface CFBamJpaDoubleColRepository extends JpaRepository<CFBamJpaDoubl
 	 *
 	 *		@return List&lt;CFBamJpaDoubleCol&gt; of the found entities, typically from the JPA cache, or an empty list if no such entities exist.
 	 */
-	@Query("select r from CFBamJpaValue r where r.requiredScopeId = :scopeId")
+	@Query("select r from CFBamJpaValue r where r.requiredContainerScope.requiredId = :scopeId")
 	List<CFBamJpaDoubleCol> findByScopeIdx(@Param("scopeId") CFLibDbKeyHash256 requiredScopeId);
 
 	/**
@@ -199,7 +199,7 @@ public interface CFBamJpaDoubleColRepository extends JpaRepository<CFBamJpaDoubl
 	 *
 	 *		@return List&lt;CFBamJpaDoubleCol&gt; of the found entities, typically from the JPA cache, or an empty list if no such entities exist.
 	 */
-	@Query("select r from CFBamJpaValue r where r.requiredScopeId = :scopeId and r.optionalLookupPrev.requiredId = :prevId")
+	@Query("select r from CFBamJpaValue r where r.requiredContainerScope.requiredId = :scopeId and r.optionalLookupPrev.requiredId = :prevId")
 	List<CFBamJpaDoubleCol> findByContPrevIdx(@Param("scopeId") CFLibDbKeyHash256 requiredScopeId,
 		@Param("prevId") CFLibDbKeyHash256 optionalPrevId);
 
@@ -222,7 +222,7 @@ public interface CFBamJpaDoubleColRepository extends JpaRepository<CFBamJpaDoubl
 	 *
 	 *		@return List&lt;CFBamJpaDoubleCol&gt; of the found entities, typically from the JPA cache, or an empty list if no such entities exist.
 	 */
-	@Query("select r from CFBamJpaValue r where r.requiredScopeId = :scopeId and r.optionalLookupNext.requiredId = :nextId")
+	@Query("select r from CFBamJpaValue r where r.requiredContainerScope.requiredId = :scopeId and r.optionalLookupNext.requiredId = :nextId")
 	List<CFBamJpaDoubleCol> findByContNextIdx(@Param("scopeId") CFLibDbKeyHash256 requiredScopeId,
 		@Param("nextId") CFLibDbKeyHash256 optionalNextId);
 
@@ -250,7 +250,7 @@ public interface CFBamJpaDoubleColRepository extends JpaRepository<CFBamJpaDoubl
 	 *
 	 *		@return List&lt;CFBamJpaDoubleCol&gt; of the found entities, typically from the JPA cache, or an empty list if no such entities exist.
 	 */
-	@Query("select r from CFBamJpaDoubleCol r where r.requiredTableId = :tableId")
+	@Query("select r from CFBamJpaDoubleCol r where r.requiredContainerTable.requiredId = :tableId")
 	List<CFBamJpaDoubleCol> findByTableIdx(@Param("tableId") CFLibDbKeyHash256 requiredTableId);
 
 	/**
@@ -288,7 +288,7 @@ public interface CFBamJpaDoubleColRepository extends JpaRepository<CFBamJpaDoubl
 	 */
 	@Transactional
 	@Lock(LockModeType.WRITE)
-	@Query("select r from CFBamJpaValue r where r.requiredScopeId = :scopeId and r.requiredName = :name")
+	@Query("select r from CFBamJpaValue r where r.requiredContainerScope.requiredId = :scopeId and r.requiredName = :name")
 	CFBamJpaDoubleCol lockByUNameIdx(@Param("scopeId") CFLibDbKeyHash256 requiredScopeId,
 		@Param("name") String requiredName);
 
@@ -312,7 +312,7 @@ public interface CFBamJpaDoubleColRepository extends JpaRepository<CFBamJpaDoubl
 	 */
 	@Transactional
 	@Lock(LockModeType.WRITE)
-	@Query("select r from CFBamJpaValue r where r.requiredScopeId = :scopeId")
+	@Query("select r from CFBamJpaValue r where r.requiredContainerScope.requiredId = :scopeId")
 	List<CFBamJpaDoubleCol> lockByScopeIdx(@Param("scopeId") CFLibDbKeyHash256 requiredScopeId);
 
 	/**
@@ -405,7 +405,7 @@ public interface CFBamJpaDoubleColRepository extends JpaRepository<CFBamJpaDoubl
 	 */
 	@Transactional
 	@Lock(LockModeType.WRITE)
-	@Query("select r from CFBamJpaValue r where r.requiredScopeId = :scopeId and r.optionalLookupPrev.requiredId = :prevId")
+	@Query("select r from CFBamJpaValue r where r.requiredContainerScope.requiredId = :scopeId and r.optionalLookupPrev.requiredId = :prevId")
 	List<CFBamJpaDoubleCol> lockByContPrevIdx(@Param("scopeId") CFLibDbKeyHash256 requiredScopeId,
 		@Param("prevId") CFLibDbKeyHash256 optionalPrevId);
 
@@ -430,7 +430,7 @@ public interface CFBamJpaDoubleColRepository extends JpaRepository<CFBamJpaDoubl
 	 */
 	@Transactional
 	@Lock(LockModeType.WRITE)
-	@Query("select r from CFBamJpaValue r where r.requiredScopeId = :scopeId and r.optionalLookupNext.requiredId = :nextId")
+	@Query("select r from CFBamJpaValue r where r.requiredContainerScope.requiredId = :scopeId and r.optionalLookupNext.requiredId = :nextId")
 	List<CFBamJpaDoubleCol> lockByContNextIdx(@Param("scopeId") CFLibDbKeyHash256 requiredScopeId,
 		@Param("nextId") CFLibDbKeyHash256 optionalNextId);
 
@@ -460,7 +460,7 @@ public interface CFBamJpaDoubleColRepository extends JpaRepository<CFBamJpaDoubl
 	 */
 	@Transactional
 	@Lock(LockModeType.WRITE)
-	@Query("select r from CFBamJpaDoubleCol r where r.requiredTableId = :tableId")
+	@Query("select r from CFBamJpaDoubleCol r where r.requiredContainerTable.requiredId = :tableId")
 	List<CFBamJpaDoubleCol> lockByTableIdx(@Param("tableId") CFLibDbKeyHash256 requiredTableId);
 
 	/**
@@ -494,7 +494,7 @@ public interface CFBamJpaDoubleColRepository extends JpaRepository<CFBamJpaDoubl
 	 */
 	@Transactional
 	@Modifying
-	@Query("delete from CFBamJpaValue r where r.requiredScopeId = :scopeId and r.requiredName = :name")
+	@Query("delete from CFBamJpaValue r where r.requiredContainerScope.requiredId = :scopeId and r.requiredName = :name")
 	void deleteByUNameIdx(@Param("scopeId") CFLibDbKeyHash256 requiredScopeId,
 		@Param("name") String requiredName);
 
@@ -514,7 +514,7 @@ public interface CFBamJpaDoubleColRepository extends JpaRepository<CFBamJpaDoubl
 	 */
 	@Transactional
 	@Modifying
-	@Query("delete from CFBamJpaValue r where r.requiredScopeId = :scopeId")
+	@Query("delete from CFBamJpaValue r where r.requiredContainerScope.requiredId = :scopeId")
 	void deleteByScopeIdx(@Param("scopeId") CFLibDbKeyHash256 requiredScopeId);
 
 	/**
@@ -591,7 +591,7 @@ public interface CFBamJpaDoubleColRepository extends JpaRepository<CFBamJpaDoubl
 	 */
 	@Transactional
 	@Modifying
-	@Query("delete from CFBamJpaValue r where r.requiredScopeId = :scopeId and r.optionalLookupPrev.requiredId = :prevId")
+	@Query("delete from CFBamJpaValue r where r.requiredContainerScope.requiredId = :scopeId and r.optionalLookupPrev.requiredId = :prevId")
 	void deleteByContPrevIdx(@Param("scopeId") CFLibDbKeyHash256 requiredScopeId,
 		@Param("prevId") CFLibDbKeyHash256 optionalPrevId);
 
@@ -612,7 +612,7 @@ public interface CFBamJpaDoubleColRepository extends JpaRepository<CFBamJpaDoubl
 	 */
 	@Transactional
 	@Modifying
-	@Query("delete from CFBamJpaValue r where r.requiredScopeId = :scopeId and r.optionalLookupNext.requiredId = :nextId")
+	@Query("delete from CFBamJpaValue r where r.requiredContainerScope.requiredId = :scopeId and r.optionalLookupNext.requiredId = :nextId")
 	void deleteByContNextIdx(@Param("scopeId") CFLibDbKeyHash256 requiredScopeId,
 		@Param("nextId") CFLibDbKeyHash256 optionalNextId);
 
@@ -638,7 +638,7 @@ public interface CFBamJpaDoubleColRepository extends JpaRepository<CFBamJpaDoubl
 	 */
 	@Transactional
 	@Modifying
-	@Query("delete from CFBamJpaDoubleCol r where r.requiredTableId = :tableId")
+	@Query("delete from CFBamJpaDoubleCol r where r.requiredContainerTable.requiredId = :tableId")
 	void deleteByTableIdx(@Param("tableId") CFLibDbKeyHash256 requiredTableId);
 
 	/**

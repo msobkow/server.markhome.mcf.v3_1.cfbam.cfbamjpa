@@ -82,14 +82,6 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 public class CFBamJpaSchemaDef extends CFBamJpaScope
 	implements ICFBamSchemaDef
 {
-	@OneToMany(fetch=FetchType.LAZY, mappedBy="requiredContainerSchemaDef")
-	protected Set<CFBamJpaTable> optionalComponentsTables;
-	@OneToMany(fetch=FetchType.LAZY, mappedBy="optionalLookupDefSchema")
-	protected Set<CFBamJpaValue> optionalComponentsTypes;
-	@OneToMany(fetch=FetchType.LAZY, mappedBy="requiredContainerSchema")
-	protected Set<CFBamJpaSchemaRef> optionalComponentsSchemaRefs;
-	@OneToMany(fetch=FetchType.LAZY, mappedBy="optionalLookupDefSchema")
-	protected Set<CFBamJpaTweak> optionalComponentsTweaks;
 
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="CTenantId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
@@ -200,38 +192,6 @@ public class CFBamJpaSchemaDef extends CFBamJpaScope
 		requiredCTenantId = argCTenantId;
 	}
 
-	@Override
-	public List<ICFBamTable> getOptionalComponentsTables() {
-		List<ICFBamTable> retlist = new ArrayList<>(optionalComponentsTables.size());
-		for (CFBamJpaTable cur: optionalComponentsTables) {
-			retlist.add(cur);
-		}
-		return( retlist );
-	}
-	@Override
-	public List<ICFBamValue> getOptionalComponentsTypes() {
-		List<ICFBamValue> retlist = new ArrayList<>(optionalComponentsTypes.size());
-		for (CFBamJpaValue cur: optionalComponentsTypes) {
-			retlist.add(cur);
-		}
-		return( retlist );
-	}
-	@Override
-	public List<ICFBamSchemaRef> getOptionalComponentsSchemaRefs() {
-		List<ICFBamSchemaRef> retlist = new ArrayList<>(optionalComponentsSchemaRefs.size());
-		for (CFBamJpaSchemaRef cur: optionalComponentsSchemaRefs) {
-			retlist.add(cur);
-		}
-		return( retlist );
-	}
-	@Override
-	public List<ICFBamTweak> getOptionalComponentsTweaks() {
-		List<ICFBamTweak> retlist = new ArrayList<>(optionalComponentsTweaks.size());
-		for (CFBamJpaTweak cur: optionalComponentsTweaks) {
-			retlist.add(cur);
-		}
-		return( retlist );
-	}
 	@Override
 	public CFLibDbKeyHash256 getRequiredCTenantId() {
 		return( requiredCTenantId );

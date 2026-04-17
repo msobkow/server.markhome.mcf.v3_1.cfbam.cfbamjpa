@@ -85,8 +85,6 @@ public class CFBamJpaIndex extends CFBamJpaScope
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
 	@JoinColumn( name="defschid" )
 	protected CFBamJpaSchemaDef optionalLookupDefSchema;
-	@OneToMany(fetch=FetchType.LAZY, mappedBy="requiredContainerIndex")
-	protected Set<CFBamJpaIndexCol> optionalComponentsColumns;
 
 	@Column( name="safe_name", nullable=false, length=192 )
 	protected String requiredName;
@@ -187,14 +185,6 @@ public class CFBamJpaIndex extends CFBamJpaScope
 		setOptionalLookupDefSchema(targetRec);
 	}
 
-	@Override
-	public List<ICFBamIndexCol> getOptionalComponentsColumns() {
-		List<ICFBamIndexCol> retlist = new ArrayList<>(optionalComponentsColumns.size());
-		for (CFBamJpaIndexCol cur: optionalComponentsColumns) {
-			retlist.add(cur);
-		}
-		return( retlist );
-	}
 	@Override
 	public CFLibDbKeyHash256 getRequiredTableId() {
 		ICFBamTable result = getRequiredContainerTable();

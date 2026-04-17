@@ -97,6 +97,9 @@ public class CFBamJpaValue
 	protected Set<CFBamJpaIndexCol> optionalChildrenRefIndexCol;
 	protected int requiredRevision;
 
+	@ManyToOne(fetch=FetchType.LAZY, optional=false)
+	@JoinColumn( name="ScopeId" )
+	protected CFBamJpaScope requiredContainerScope;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
 	@JoinColumn( name="defschid" )
 	protected CFBamJpaSchemaDef optionalLookupDefSchema;
@@ -122,10 +125,6 @@ public class CFBamJpaValue
 
 	@Column(name="UpdatedAt", nullable=false)
 	protected LocalDateTime updatedAt = LocalDateTime.now();
-	@AttributeOverrides({
-		@AttributeOverride(name="bytes", column = @Column( name="ScopeId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
-	})
-	protected CFLibDbKeyHash256 requiredScopeId;
 	@Column( name="safe_name", nullable=false, length=192 )
 	protected String requiredName;
 	@Column( name="short_name", nullable=true, length=16 )
@@ -147,7 +146,6 @@ public class CFBamJpaValue
 
 	public CFBamJpaValue() {
 		requiredId = CFLibDbKeyHash256.fromHex( ICFBamValue.ID_INIT_VALUE.toString() );
-		requiredScopeId = CFLibDbKeyHash256.fromHex( ICFBamValue.SCOPEID_INIT_VALUE.toString() );
 		requiredName = ICFBamValue.NAME_INIT_VALUE;
 		optionalShortName = null;
 		optionalLabel = null;
@@ -182,6 +180,23 @@ public class CFBamJpaValue
 	}
 	@Override
 	public ICFBamScope getRequiredContainerScope() {
+		return( requiredContainerScope );
+	}
+	@Override
+	public void setRequiredContainerScope(ICFBamScope argObj) {
+		if(argObj == null) {
+			throw new CFLibNullArgumentException(getClass(), "setContainerScope", 1, "argObj");
+		}
+		else if (argObj instanceof CFBamJpaScope) {
+			requiredContainerScope = (CFBamJpaScope)argObj;
+		}
+		else {
+			throw new CFLibUnsupportedClassException(getClass(), "setContainerScope", "argObj", argObj, "CFBamJpaScope");
+		}
+	}
+
+	@Override
+	public void setRequiredContainerScope(CFLibDbKeyHash256 argScopeId) {
 		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
 		if (targetBackingSchema == null) {
 			throw new CFLibNullArgumentException(getClass(), "setRequiredContainerScope", 0, "ICFBamSchema.getBackingCFBam()");
@@ -190,22 +205,8 @@ public class CFBamJpaValue
 		if (targetTable == null) {
 			throw new CFLibNullArgumentException(getClass(), "setRequiredContainerScope", 0, "ICFBamSchema.getBackingCFBam().getTableScope()");
 		}
-		ICFBamScope targetRec = targetTable.readDerivedByIdIdx(null, getRequiredScopeId());
-		return(targetRec);
-	}
-	@Override
-	public void setRequiredContainerScope(ICFBamScope argObj) {
-		if(argObj == null) {
-			throw new CFLibNullArgumentException(getClass(), "setContainerScope", 1, "argObj");
-		}
-		else {
-			requiredScopeId = argObj.getRequiredId();
-		}
-	}
-
-	@Override
-	public void setRequiredContainerScope(CFLibDbKeyHash256 argScopeId) {
-		requiredScopeId = argScopeId;
+		ICFBamScope targetRec = targetTable.readDerived(null, argScopeId);
+		setRequiredContainerScope(targetRec);
 	}
 
 	@Override
@@ -392,7 +393,13 @@ public class CFBamJpaValue
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredScopeId() {
-		return( requiredScopeId );
+		ICFBamScope result = getRequiredContainerScope();
+		if (result != null) {
+			return result.getRequiredId();
+		}
+		else {
+			return( ICFBamScope.ID_INIT_VALUE );
+		}
 	}
 
 	@Override

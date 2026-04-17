@@ -92,7 +92,7 @@ public interface CFBamJpaTableTweakRepository extends JpaRepository<CFBamJpaTabl
 	 *
 	 *		@return The found entity, typically from the JPA cache, or null if no such entity exists.
 	 */
-	@Query("select r from CFBamJpaTweak r where r.requiredScopeId = :scopeId and r.requiredName = :name")
+	@Query("select r from CFBamJpaTweak r where r.requiredContainerScopeDef.requiredId = :scopeId and r.requiredName = :name")
 	CFBamJpaTableTweak findByUNameIdx(@Param("scopeId") CFLibDbKeyHash256 requiredScopeId,
 		@Param("name") String requiredName);
 
@@ -135,7 +135,7 @@ public interface CFBamJpaTableTweakRepository extends JpaRepository<CFBamJpaTabl
 	 *
 	 *		@return List&lt;CFBamJpaTableTweak&gt; of the found entities, typically from the JPA cache, or an empty list if no such entities exist.
 	 */
-	@Query("select r from CFBamJpaTweak r where r.requiredScopeId = :scopeId")
+	@Query("select r from CFBamJpaTweak r where r.requiredContainerScopeDef.requiredId = :scopeId")
 	List<CFBamJpaTableTweak> findByScopeIdx(@Param("scopeId") CFLibDbKeyHash256 requiredScopeId);
 
 	/**
@@ -181,7 +181,7 @@ public interface CFBamJpaTableTweakRepository extends JpaRepository<CFBamJpaTabl
 	 *
 	 *		@return The found entity, typically from the JPA cache, or null if no such entity exists.
 	 */
-	@Query("select r from CFBamJpaTweak r where r.requiredTenantId = :tenantId and r.requiredScopeId = :scopeId and r.optionalDefSchemaTenantId = :defSchemaTenantId and r.optionalLookupDefSchema.requiredId = :defSchemaId and r.requiredName = :name")
+	@Query("select r from CFBamJpaTweak r where r.requiredTenantId = :tenantId and r.requiredContainerScopeDef.requiredId = :scopeId and r.optionalDefSchemaTenantId = :defSchemaTenantId and r.optionalLookupDefSchema.requiredId = :defSchemaId and r.requiredName = :name")
 	CFBamJpaTableTweak findByUDefIdx(@Param("tenantId") CFLibDbKeyHash256 requiredTenantId,
 		@Param("scopeId") CFLibDbKeyHash256 requiredScopeId,
 		@Param("defSchemaTenantId") CFLibDbKeyHash256 optionalDefSchemaTenantId,
@@ -208,7 +208,7 @@ public interface CFBamJpaTableTweakRepository extends JpaRepository<CFBamJpaTabl
 	 *
 	 *		@return List&lt;CFBamJpaTableTweak&gt; of the found entities, typically from the JPA cache, or an empty list if no such entities exist.
 	 */
-	@Query("select r from CFBamJpaTableTweak r where r.requiredTableId = :tableId")
+	@Query("select r from CFBamJpaTableTweak r where r.requiredContainerTableDef.requiredId = :tableId")
 	List<CFBamJpaTableTweak> findByTableIdx(@Param("tableId") CFLibDbKeyHash256 requiredTableId);
 
 	/**
@@ -246,7 +246,7 @@ public interface CFBamJpaTableTweakRepository extends JpaRepository<CFBamJpaTabl
 	 */
 	@Transactional
 	@Lock(LockModeType.WRITE)
-	@Query("select r from CFBamJpaTweak r where r.requiredScopeId = :scopeId and r.requiredName = :name")
+	@Query("select r from CFBamJpaTweak r where r.requiredContainerScopeDef.requiredId = :scopeId and r.requiredName = :name")
 	CFBamJpaTableTweak lockByUNameIdx(@Param("scopeId") CFLibDbKeyHash256 requiredScopeId,
 		@Param("name") String requiredName);
 
@@ -293,7 +293,7 @@ public interface CFBamJpaTableTweakRepository extends JpaRepository<CFBamJpaTabl
 	 */
 	@Transactional
 	@Lock(LockModeType.WRITE)
-	@Query("select r from CFBamJpaTweak r where r.requiredScopeId = :scopeId")
+	@Query("select r from CFBamJpaTweak r where r.requiredContainerScopeDef.requiredId = :scopeId")
 	List<CFBamJpaTableTweak> lockByScopeIdx(@Param("scopeId") CFLibDbKeyHash256 requiredScopeId);
 
 	/**
@@ -343,7 +343,7 @@ public interface CFBamJpaTableTweakRepository extends JpaRepository<CFBamJpaTabl
 	 */
 	@Transactional
 	@Lock(LockModeType.WRITE)
-	@Query("select r from CFBamJpaTweak r where r.requiredTenantId = :tenantId and r.requiredScopeId = :scopeId and r.optionalDefSchemaTenantId = :defSchemaTenantId and r.optionalLookupDefSchema.requiredId = :defSchemaId and r.requiredName = :name")
+	@Query("select r from CFBamJpaTweak r where r.requiredTenantId = :tenantId and r.requiredContainerScopeDef.requiredId = :scopeId and r.optionalDefSchemaTenantId = :defSchemaTenantId and r.optionalLookupDefSchema.requiredId = :defSchemaId and r.requiredName = :name")
 	CFBamJpaTableTweak lockByUDefIdx(@Param("tenantId") CFLibDbKeyHash256 requiredTenantId,
 		@Param("scopeId") CFLibDbKeyHash256 requiredScopeId,
 		@Param("defSchemaTenantId") CFLibDbKeyHash256 optionalDefSchemaTenantId,
@@ -372,7 +372,7 @@ public interface CFBamJpaTableTweakRepository extends JpaRepository<CFBamJpaTabl
 	 */
 	@Transactional
 	@Lock(LockModeType.WRITE)
-	@Query("select r from CFBamJpaTableTweak r where r.requiredTableId = :tableId")
+	@Query("select r from CFBamJpaTableTweak r where r.requiredContainerTableDef.requiredId = :tableId")
 	List<CFBamJpaTableTweak> lockByTableIdx(@Param("tableId") CFLibDbKeyHash256 requiredTableId);
 
 	/**
@@ -406,7 +406,7 @@ public interface CFBamJpaTableTweakRepository extends JpaRepository<CFBamJpaTabl
 	 */
 	@Transactional
 	@Modifying
-	@Query("delete from CFBamJpaTweak r where r.requiredScopeId = :scopeId and r.requiredName = :name")
+	@Query("delete from CFBamJpaTweak r where r.requiredContainerScopeDef.requiredId = :scopeId and r.requiredName = :name")
 	void deleteByUNameIdx(@Param("scopeId") CFLibDbKeyHash256 requiredScopeId,
 		@Param("name") String requiredName);
 
@@ -445,7 +445,7 @@ public interface CFBamJpaTableTweakRepository extends JpaRepository<CFBamJpaTabl
 	 */
 	@Transactional
 	@Modifying
-	@Query("delete from CFBamJpaTweak r where r.requiredScopeId = :scopeId")
+	@Query("delete from CFBamJpaTweak r where r.requiredContainerScopeDef.requiredId = :scopeId")
 	void deleteByScopeIdx(@Param("scopeId") CFLibDbKeyHash256 requiredScopeId);
 
 	/**
@@ -487,7 +487,7 @@ public interface CFBamJpaTableTweakRepository extends JpaRepository<CFBamJpaTabl
 	 */
 	@Transactional
 	@Modifying
-	@Query("delete from CFBamJpaTweak r where r.requiredTenantId = :tenantId and r.requiredScopeId = :scopeId and r.optionalDefSchemaTenantId = :defSchemaTenantId and r.optionalLookupDefSchema.requiredId = :defSchemaId and r.requiredName = :name")
+	@Query("delete from CFBamJpaTweak r where r.requiredTenantId = :tenantId and r.requiredContainerScopeDef.requiredId = :scopeId and r.optionalDefSchemaTenantId = :defSchemaTenantId and r.optionalLookupDefSchema.requiredId = :defSchemaId and r.requiredName = :name")
 	void deleteByUDefIdx(@Param("tenantId") CFLibDbKeyHash256 requiredTenantId,
 		@Param("scopeId") CFLibDbKeyHash256 requiredScopeId,
 		@Param("defSchemaTenantId") CFLibDbKeyHash256 optionalDefSchemaTenantId,
@@ -512,7 +512,7 @@ public interface CFBamJpaTableTweakRepository extends JpaRepository<CFBamJpaTabl
 	 */
 	@Transactional
 	@Modifying
-	@Query("delete from CFBamJpaTableTweak r where r.requiredTableId = :tableId")
+	@Query("delete from CFBamJpaTableTweak r where r.requiredContainerTableDef.requiredId = :tableId")
 	void deleteByTableIdx(@Param("tableId") CFLibDbKeyHash256 requiredTableId);
 
 	/**

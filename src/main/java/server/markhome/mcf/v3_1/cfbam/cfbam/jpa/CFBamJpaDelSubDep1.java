@@ -81,8 +81,6 @@ public class CFBamJpaDelSubDep1 extends CFBamJpaDelDep
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
 	@JoinColumn( name="contdeldepid" )
 	protected CFBamJpaDelTopDep requiredContainerDelTopDep;
-	@OneToMany(fetch=FetchType.LAZY, mappedBy="requiredContainerDelSubDep1")
-	protected Set<CFBamJpaDelSubDep2> optionalComponentsDelDep;
 
 	@Column( name="safe_name", nullable=false, length=192 )
 	protected String requiredName;
@@ -128,14 +126,6 @@ public class CFBamJpaDelSubDep1 extends CFBamJpaDelDep
 		setRequiredContainerDelTopDep(targetRec);
 	}
 
-	@Override
-	public List<ICFBamDelSubDep2> getOptionalComponentsDelDep() {
-		List<ICFBamDelSubDep2> retlist = new ArrayList<>(optionalComponentsDelDep.size());
-		for (CFBamJpaDelSubDep2 cur: optionalComponentsDelDep) {
-			retlist.add(cur);
-		}
-		return( retlist );
-	}
 	@Override
 	public CFLibDbKeyHash256 getRequiredDelTopDepId() {
 		ICFBamDelTopDep result = getRequiredContainerDelTopDep();

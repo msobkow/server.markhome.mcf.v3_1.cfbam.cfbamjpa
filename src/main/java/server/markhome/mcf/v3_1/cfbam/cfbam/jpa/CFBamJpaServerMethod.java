@@ -85,8 +85,6 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
 	@JoinColumn( name="TableId" )
 	protected CFBamJpaTable requiredContainerForTable;
-	@OneToMany(fetch=FetchType.LAZY, mappedBy="requiredContainerServerMeth")
-	protected Set<CFBamJpaParam> optionalComponentsParams;
 
 	@Column( name="safe_name", nullable=false, length=192 )
 	protected String requiredName;
@@ -193,14 +191,6 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 		setRequiredContainerForTable(targetRec);
 	}
 
-	@Override
-	public List<ICFBamParam> getOptionalComponentsParams() {
-		List<ICFBamParam> retlist = new ArrayList<>(optionalComponentsParams.size());
-		for (CFBamJpaParam cur: optionalComponentsParams) {
-			retlist.add(cur);
-		}
-		return( retlist );
-	}
 	@Override
 	public CFLibDbKeyHash256 getRequiredTableId() {
 		ICFBamTable result = getRequiredContainerForTable();

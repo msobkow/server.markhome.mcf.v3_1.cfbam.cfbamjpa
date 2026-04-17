@@ -81,8 +81,6 @@ public class CFBamJpaPopSubDep1 extends CFBamJpaPopDep
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
 	@JoinColumn( name="contpopdepid" )
 	protected CFBamJpaPopTopDep requiredContainerContPopTopDep;
-	@OneToMany(fetch=FetchType.LAZY, mappedBy="requiredContainerPopSubDep1")
-	protected Set<CFBamJpaPopSubDep2> optionalComponentsPopDep;
 
 	@Column( name="safe_name", nullable=false, length=192 )
 	protected String requiredName;
@@ -128,14 +126,6 @@ public class CFBamJpaPopSubDep1 extends CFBamJpaPopDep
 		setRequiredContainerContPopTopDep(targetRec);
 	}
 
-	@Override
-	public List<ICFBamPopSubDep2> getOptionalComponentsPopDep() {
-		List<ICFBamPopSubDep2> retlist = new ArrayList<>(optionalComponentsPopDep.size());
-		for (CFBamJpaPopSubDep2 cur: optionalComponentsPopDep) {
-			retlist.add(cur);
-		}
-		return( retlist );
-	}
 	@Override
 	public CFLibDbKeyHash256 getRequiredPopTopDepId() {
 		ICFBamPopTopDep result = getRequiredContainerContPopTopDep();
