@@ -108,6 +108,9 @@ public class CFBamJpaSchemaService {
 	private CFBamJpaSchemaTweakService schematweakService;
 
 	@Autowired
+	private CFBamJpaIndexTweakService indextweakService;
+
+	@Autowired
 	private CFBamJpaValueService valueService;
 
 	@Autowired

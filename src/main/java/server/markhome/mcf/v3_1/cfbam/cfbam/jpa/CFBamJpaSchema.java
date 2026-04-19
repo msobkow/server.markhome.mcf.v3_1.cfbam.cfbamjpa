@@ -144,6 +144,7 @@ public class CFBamJpaSchema
 	protected ICFBamId64GenTable tableId64Gen;
 	protected ICFBamIndexTable tableIndex;
 	protected ICFBamIndexColTable tableIndexCol;
+	protected ICFBamIndexTweakTable tableIndexTweak;
 	protected ICFBamInt16ColTable tableInt16Col;
 	protected ICFBamInt16DefTable tableInt16Def;
 	protected ICFBamInt16TypeTable tableInt16Type;
@@ -317,6 +318,7 @@ public class CFBamJpaSchema
 	protected ICFBamId64GenFactory factoryId64Gen;
 	protected ICFBamIndexFactory factoryIndex;
 	protected ICFBamIndexColFactory factoryIndexCol;
+	protected ICFBamIndexTweakFactory factoryIndexTweak;
 	protected ICFBamInt16ColFactory factoryInt16Col;
 	protected ICFBamInt16DefFactory factoryInt16Def;
 	protected ICFBamInt16TypeFactory factoryInt16Type;
@@ -571,6 +573,20 @@ public class CFBamJpaSchema
 		}
 		else {
 			throw new CFLibNullArgumentException(CFBamJpaSchema.class, "wireRecConstructors", 0, "ICFBamSchema.getClassMapByBackingClassCode(ICFBamSchemaTweak.CLASS_CODE)[" + ICFBamSchemaTweak.CLASS_CODE + "]");
+		}
+	
+		entry = ICFBamSchema.getClassMapByBackingClassCode(ICFBamIndexTweak.CLASS_CODE);
+		if (entry != null) {
+			entry.setBackingRecConstructor( new BackingRecConstructor() {
+				@Override
+				public Object instantiate() {
+					ICFBamIndexTweak ret = new CFBamJpaIndexTweak();
+					return(ret);
+				}
+			});
+		}
+		else {
+			throw new CFLibNullArgumentException(CFBamJpaSchema.class, "wireRecConstructors", 0, "ICFBamSchema.getClassMapByBackingClassCode(ICFBamIndexTweak.CLASS_CODE)[" + ICFBamIndexTweak.CLASS_CODE + "]");
 		}
 	
 		entry = ICFBamSchema.getClassMapByBackingClassCode(ICFBamValue.CLASS_CODE);
@@ -2413,6 +2429,9 @@ public class CFBamJpaSchema
 		if (tableSchemaTweak == null || !(tableSchemaTweak instanceof CFBamJpaSchemaTweakTable)) {
 			tableSchemaTweak = new CFBamJpaSchemaTweakTable(this);
 		}
+		if (tableIndexTweak == null || !(tableIndexTweak instanceof CFBamJpaIndexTweakTable)) {
+			tableIndexTweak = new CFBamJpaIndexTweakTable(this);
+		}
 		if (tableValue == null || !(tableValue instanceof CFBamJpaValueTable)) {
 			tableValue = new CFBamJpaValueTable(this);
 		}
@@ -2915,6 +2934,7 @@ public class CFBamJpaSchema
 		tableId64Gen = null;
 		tableIndex = null;
 		tableIndexCol = null;
+		tableIndexTweak = null;
 		tableInt16Col = null;
 		tableInt16Def = null;
 		tableInt16Type = null;
@@ -3088,6 +3108,7 @@ public class CFBamJpaSchema
 		factoryId64Gen = new CFBamJpaId64GenDefaultFactory();
 		factoryIndex = new CFBamJpaIndexDefaultFactory();
 		factoryIndexCol = new CFBamJpaIndexColDefaultFactory();
+		factoryIndexTweak = new CFBamJpaIndexTweakDefaultFactory();
 		factoryInt16Col = new CFBamJpaInt16ColDefaultFactory();
 		factoryInt16Def = new CFBamJpaInt16DefDefaultFactory();
 		factoryInt16Type = new CFBamJpaInt16TypeDefaultFactory();
@@ -4416,6 +4437,22 @@ public class CFBamJpaSchema
 
 	public void setFactoryIndexCol( ICFBamIndexColFactory value ) {
 		factoryIndexCol = value;
+	}
+
+	public ICFBamIndexTweakTable getTableIndexTweak() {
+		return( tableIndexTweak );
+	}
+
+	public void setTableIndexTweak( ICFBamIndexTweakTable value ) {
+		tableIndexTweak = value;
+	}
+
+	public ICFBamIndexTweakFactory getFactoryIndexTweak() {
+		return( factoryIndexTweak );
+	}
+
+	public void setFactoryIndexTweak( ICFBamIndexTweakFactory value ) {
+		factoryIndexTweak = value;
 	}
 
 	public ICFBamInt16ColTable getTableInt16Col() {

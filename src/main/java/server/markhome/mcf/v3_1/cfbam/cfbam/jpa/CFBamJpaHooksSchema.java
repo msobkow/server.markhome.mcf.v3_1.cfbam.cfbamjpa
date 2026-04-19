@@ -110,6 +110,9 @@ public class CFBamJpaHooksSchema {
 	private CFBamJpaSchemaTweakRepository schemaTweakRepository;
 
 	@Autowired
+	private CFBamJpaIndexTweakRepository indexTweakRepository;
+
+	@Autowired
 	private CFBamJpaValueRepository valueRepository;
 
 	@Autowired
@@ -543,6 +546,10 @@ public class CFBamJpaHooksSchema {
 	@Autowired
 	@Qualifier("cfbam31JpaSchemaTweakService")
 	private CFBamJpaSchemaTweakService schemaTweakService;
+
+	@Autowired
+	@Qualifier("cfbam31JpaIndexTweakService")
+	private CFBamJpaIndexTweakService indexTweakService;
 
 	@Autowired
 	@Qualifier("cfbam31JpaValueService")
@@ -1188,6 +1195,16 @@ public class CFBamJpaHooksSchema {
 				"ERROR - do not know how to dynamically resolve Spring beans from POJO code yet and AspectJ did not resolve it either" );
 		}
 		return( schemaTweakRepository );
+	}
+
+	public CFBamJpaIndexTweakRepository getIndexTweakRepository() {
+		if ( indexTweakRepository == null ) {
+			// Dynamically resolve the repository by interface type
+			throw new CFLibNotImplementedYetException( getClass(), "getIndexTweakRepository",
+				"ERROR - do not know how to dynamically resolve Spring beans from POJO code yet and AspectJ did not resolve it either",
+				"ERROR - do not know how to dynamically resolve Spring beans from POJO code yet and AspectJ did not resolve it either" );
+		}
+		return( indexTweakRepository );
 	}
 
 	public CFBamJpaValueRepository getValueRepository() {
@@ -2578,6 +2595,16 @@ public class CFBamJpaHooksSchema {
 				"ERROR - do not know how to dynamically resolve Spring beans from POJO code yet and AspectJ did not resolve it either" );
 		}
 		return( schemaTweakService );
+	}
+
+	public CFBamJpaIndexTweakService getIndexTweakService() {
+		if ( indexTweakService == null ) {
+			// Dynamically resolve the repository by qualifier name
+			throw new CFLibNotImplementedYetException( getClass(), "getIndexTweakService",
+				"ERROR - do not know how to dynamically resolve Spring beans from POJO code yet and AspectJ did not resolve it either",
+				"ERROR - do not know how to dynamically resolve Spring beans from POJO code yet and AspectJ did not resolve it either" );
+		}
+		return( indexTweakService );
 	}
 
 	public CFBamJpaValueService getValueService() {
