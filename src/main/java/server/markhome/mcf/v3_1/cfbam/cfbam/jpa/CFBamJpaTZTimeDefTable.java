@@ -120,12 +120,12 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSysAdminId();
+		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
 		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
 			permissionGranted = true;
 		}
 		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
-			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSysAdminId()");
+			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
 			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "createtztimedef");
@@ -182,12 +182,12 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSysAdminId();
+		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
 		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
 			permissionGranted = true;
 		}
 		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
-			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSysAdminId()");
+			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
 			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "updatetztimedef");
@@ -243,12 +243,12 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSysAdminId();
+		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
 		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
 			permissionGranted = true;
 		}
 		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
-			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSysAdminId()");
+			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
 			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "deletetztimedef");
@@ -298,12 +298,12 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSysAdminId();
+		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
 		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
 			permissionGranted = true;
 		}
 		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
-			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSysAdminId()");
+			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
 			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "deletetztimedef");
@@ -345,12 +345,12 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSysAdminId();
+		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
 		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
 			permissionGranted = true;
 		}
 		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
-			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSysAdminId()");
+			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
 			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "deletetztimedef");
@@ -391,12 +391,12 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSysAdminId();
+		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
 		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
 			permissionGranted = true;
 		}
 		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
-			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSysAdminId()");
+			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
 			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "deletetztimedef");
@@ -436,12 +436,12 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSysAdminId();
+		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
 		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
 			permissionGranted = true;
 		}
 		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
-			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSysAdminId()");
+			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
 			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "deletetztimedef");
@@ -481,12 +481,12 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSysAdminId();
+		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
 		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
 			permissionGranted = true;
 		}
 		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
-			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSysAdminId()");
+			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
 			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "deletetztimedef");
@@ -525,12 +525,12 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSysAdminId();
+		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
 		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
 			permissionGranted = true;
 		}
 		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
-			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSysAdminId()");
+			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
 			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "deletetztimedef");
@@ -570,12 +570,12 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSysAdminId();
+		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
 		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
 			permissionGranted = true;
 		}
 		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
-			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSysAdminId()");
+			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
 			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "deletetztimedef");
@@ -614,12 +614,12 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSysAdminId();
+		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
 		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
 			permissionGranted = true;
 		}
 		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
-			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSysAdminId()");
+			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
 			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "deletetztimedef");
@@ -659,12 +659,12 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSysAdminId();
+		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
 		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
 			permissionGranted = true;
 		}
 		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
-			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSysAdminId()");
+			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
 			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "deletetztimedef");
@@ -703,12 +703,12 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSysAdminId();
+		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
 		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
 			permissionGranted = true;
 		}
 		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
-			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSysAdminId()");
+			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
 			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "deletetztimedef");
@@ -748,12 +748,12 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSysAdminId();
+		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
 		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
 			permissionGranted = true;
 		}
 		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
-			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSysAdminId()");
+			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
 			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "deletetztimedef");
@@ -795,12 +795,12 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSysAdminId();
+		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
 		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
 			permissionGranted = true;
 		}
 		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
-			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSysAdminId()");
+			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
 			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "deletetztimedef");
@@ -841,12 +841,12 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSysAdminId();
+		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
 		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
 			permissionGranted = true;
 		}
 		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
-			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSysAdminId()");
+			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
 			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "deletetztimedef");
@@ -889,12 +889,12 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSysAdminId();
+		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
 		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
 			permissionGranted = true;
 		}
 		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
-			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSysAdminId()");
+			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
 			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "deletetztimedef");
@@ -935,12 +935,12 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSysAdminId();
+		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
 		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
 			permissionGranted = true;
 		}
 		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
-			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSysAdminId()");
+			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
 			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "deletetztimedef");
@@ -984,12 +984,12 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSysAdminId();
+		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
 		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
 			permissionGranted = true;
 		}
 		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
-			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSysAdminId()");
+			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
 			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readtztimedef");
@@ -1039,12 +1039,12 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSysAdminId();
+		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
 		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
 			permissionGranted = true;
 		}
 		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
-			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSysAdminId()");
+			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
 			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "updatetztimedef");
@@ -1089,12 +1089,12 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSysAdminId();
+		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
 		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
 			permissionGranted = true;
 		}
 		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
-			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSysAdminId()");
+			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
 			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readtztimedef");
@@ -1154,12 +1154,12 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSysAdminId();
+		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
 		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
 			permissionGranted = true;
 		}
 		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
-			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSysAdminId()");
+			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
 			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readtztimedef");
@@ -1212,12 +1212,12 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSysAdminId();
+		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
 		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
 			permissionGranted = true;
 		}
 		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
-			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSysAdminId()");
+			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
 			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readtztimedef");
@@ -1267,12 +1267,12 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSysAdminId();
+		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
 		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
 			permissionGranted = true;
 		}
 		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
-			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSysAdminId()");
+			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
 			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readtztimedef");
@@ -1331,12 +1331,12 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSysAdminId();
+		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
 		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
 			permissionGranted = true;
 		}
 		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
-			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSysAdminId()");
+			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
 			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readtztimedef");
@@ -1395,12 +1395,12 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSysAdminId();
+		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
 		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
 			permissionGranted = true;
 		}
 		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
-			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSysAdminId()");
+			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
 			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readtztimedef");
@@ -1459,12 +1459,12 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSysAdminId();
+		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
 		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
 			permissionGranted = true;
 		}
 		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
-			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSysAdminId()");
+			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
 			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readtztimedef");
@@ -1526,12 +1526,12 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSysAdminId();
+		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
 		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
 			permissionGranted = true;
 		}
 		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
-			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSysAdminId()");
+			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
 			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readtztimedef");
@@ -1594,12 +1594,12 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSysAdminId();
+		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
 		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
 			permissionGranted = true;
 		}
 		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
-			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSysAdminId()");
+			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
 			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readtztimedef");
@@ -1662,12 +1662,12 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSysAdminId();
+		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
 		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
 			permissionGranted = true;
 		}
 		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
-			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSysAdminId()");
+			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
 			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readtztimedef");
@@ -1711,12 +1711,12 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSysAdminId();
+		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
 		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
 			permissionGranted = true;
 		}
 		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
-			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSysAdminId()");
+			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
 			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "updatetztimedef");
@@ -1753,12 +1753,12 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSysAdminId();
+		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
 		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
 			permissionGranted = true;
 		}
 		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
-			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSysAdminId()");
+			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
 			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readtztimedef");
@@ -1803,12 +1803,12 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSysAdminId();
+		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
 		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
 			permissionGranted = true;
 		}
 		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
-			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSysAdminId()");
+			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
 			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readtztimedef");
@@ -1855,12 +1855,12 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSysAdminId();
+		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
 		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
 			permissionGranted = true;
 		}
 		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
-			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSysAdminId()");
+			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
 			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readtztimedef");
@@ -1903,12 +1903,12 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSysAdminId();
+		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
 		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
 			permissionGranted = true;
 		}
 		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
-			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSysAdminId()");
+			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
 			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readtztimedef");
@@ -1951,12 +1951,12 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSysAdminId();
+		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
 		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
 			permissionGranted = true;
 		}
 		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
-			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSysAdminId()");
+			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
 			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readtztimedef");
@@ -1999,12 +1999,12 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSysAdminId();
+		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
 		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
 			permissionGranted = true;
 		}
 		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
-			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSysAdminId()");
+			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
 			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readtztimedef");
@@ -2047,12 +2047,12 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSysAdminId();
+		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
 		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
 			permissionGranted = true;
 		}
 		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
-			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSysAdminId()");
+			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
 			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readtztimedef");
@@ -2098,12 +2098,12 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSysAdminId();
+		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
 		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
 			permissionGranted = true;
 		}
 		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
-			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSysAdminId()");
+			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
 			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readtztimedef");
@@ -2149,12 +2149,12 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSysAdminId();
+		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
 		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
 			permissionGranted = true;
 		}
 		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
-			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSysAdminId()");
+			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
 			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readtztimedef");
@@ -2192,12 +2192,12 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSysAdminId();
+		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
 		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
 			permissionGranted = true;
 		}
 		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
-			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSysAdminId()");
+			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
 			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "updatetztimedef");
@@ -2235,12 +2235,12 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSysAdminId();
+		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
 		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
 			permissionGranted = true;
 		}
 		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
-			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSysAdminId()");
+			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
 			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "updatetztimedef");
