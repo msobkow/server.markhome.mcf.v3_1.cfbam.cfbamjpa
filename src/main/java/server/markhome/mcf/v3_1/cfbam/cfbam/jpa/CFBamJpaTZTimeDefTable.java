@@ -120,21 +120,15 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "createtztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), "createtztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "createtztimedef");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), Authorization.getSecTenantId(), "createtztimedef");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTZTimeDefTable.TABLE_NAME, "createtztimedef", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -147,9 +141,10 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			CFBamJpaTZTimeDef jparec = (CFBamJpaTZTimeDef)rec;
 			CFBamJpaTZTimeDef retval = schema.getJpaHooksSchema().getTZTimeDefService().create(jparec);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,TenantId,'readtztimedef'), clear retval to null if not a member
+			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readtztimedef'), clear retval to null if not a member
+			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
 			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-			if (!ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effTenantId, "readtztimedef")) {
+			if (!ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readtztimedef")) {
 				retval = null;
 			}
 		}
@@ -182,21 +177,15 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "updatetztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), "updatetztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "updatetztimedef");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), ICFSecSchema.getSysTenantId(), "updatetztimedef");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTZTimeDefTable.TABLE_NAME, "updatetztimedef", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -209,9 +198,10 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			CFBamJpaTZTimeDef jparec = (CFBamJpaTZTimeDef)rec;
 			CFBamJpaTZTimeDef retval = schema.getJpaHooksSchema().getTZTimeDefService().update(jparec);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,TenantId,'readtztimedef'), clear retval to null if not a member
+			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readtztimedef'), clear retval to null if not a member
+			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
 			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-			if (!ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effTenantId, "readtztimedef")) {
+			if (!ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readtztimedef")) {
 				retval = null;
 			}
 		}
@@ -243,21 +233,15 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "deletetztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), "deletetztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "deletetztimedef");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), ICFSecSchema.getSysTenantId(), "deletetztimedef");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTZTimeDefTable.TABLE_NAME, "deletetztimedef", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -298,21 +282,15 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "deletetztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), "deletetztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "deletetztimedef");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), ICFSecSchema.getSysTenantId(), "deletetztimedef");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTZTimeDefTable.TABLE_NAME, "deletetztimedef", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -345,21 +323,15 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "deletetztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), "deletetztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "deletetztimedef");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), ICFSecSchema.getSysTenantId(), "deletetztimedef");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTZTimeDefTable.TABLE_NAME, "deletetztimedef", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -391,21 +363,15 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "deletetztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), "deletetztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "deletetztimedef");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), ICFSecSchema.getSysTenantId(), "deletetztimedef");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTZTimeDefTable.TABLE_NAME, "deletetztimedef", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -436,21 +402,15 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "deletetztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), "deletetztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "deletetztimedef");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), ICFSecSchema.getSysTenantId(), "deletetztimedef");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTZTimeDefTable.TABLE_NAME, "deletetztimedef", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -481,21 +441,15 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "deletetztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), "deletetztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "deletetztimedef");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), ICFSecSchema.getSysTenantId(), "deletetztimedef");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTZTimeDefTable.TABLE_NAME, "deletetztimedef", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -525,21 +479,15 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "deletetztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), "deletetztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "deletetztimedef");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), ICFSecSchema.getSysTenantId(), "deletetztimedef");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTZTimeDefTable.TABLE_NAME, "deletetztimedef", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -570,21 +518,15 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "deletetztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), "deletetztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "deletetztimedef");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), ICFSecSchema.getSysTenantId(), "deletetztimedef");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTZTimeDefTable.TABLE_NAME, "deletetztimedef", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -614,21 +556,15 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "deletetztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), "deletetztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "deletetztimedef");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), ICFSecSchema.getSysTenantId(), "deletetztimedef");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTZTimeDefTable.TABLE_NAME, "deletetztimedef", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -659,21 +595,15 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "deletetztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), "deletetztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "deletetztimedef");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), ICFSecSchema.getSysTenantId(), "deletetztimedef");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTZTimeDefTable.TABLE_NAME, "deletetztimedef", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -703,21 +633,15 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "deletetztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), "deletetztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "deletetztimedef");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), ICFSecSchema.getSysTenantId(), "deletetztimedef");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTZTimeDefTable.TABLE_NAME, "deletetztimedef", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -748,21 +672,15 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "deletetztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), "deletetztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "deletetztimedef");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), ICFSecSchema.getSysTenantId(), "deletetztimedef");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTZTimeDefTable.TABLE_NAME, "deletetztimedef", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -795,21 +713,15 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "deletetztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), "deletetztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "deletetztimedef");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), ICFSecSchema.getSysTenantId(), "deletetztimedef");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTZTimeDefTable.TABLE_NAME, "deletetztimedef", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -841,21 +753,15 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "deletetztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), "deletetztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "deletetztimedef");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), ICFSecSchema.getSysTenantId(), "deletetztimedef");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTZTimeDefTable.TABLE_NAME, "deletetztimedef", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -889,21 +795,15 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "deletetztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), "deletetztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "deletetztimedef");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), ICFSecSchema.getSysTenantId(), "deletetztimedef");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTZTimeDefTable.TABLE_NAME, "deletetztimedef", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -935,21 +835,15 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "deletetztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), "deletetztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "deletetztimedef");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), ICFSecSchema.getSysTenantId(), "deletetztimedef");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTZTimeDefTable.TABLE_NAME, "deletetztimedef", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -984,21 +878,15 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readtztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), "readtztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "readtztimedef");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), Authorization.getSecTenantId(), "readtztimedef");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTZTimeDefTable.TABLE_NAME, "readtztimedef", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -1006,9 +894,10 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 
 		ICFBamTZTimeDef retval = schema.getJpaHooksSchema().getTZTimeDefService().find(PKey);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,TenantId,'readtztimedef'), clear retval to null if not a member
+			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readtztimedef'), clear retval to null if not a member
+			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
 			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-			if (!ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effTenantId, "readtztimedef")) {
+			if (!ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readtztimedef")) {
 				retval = null;
 			}
 		}
@@ -1039,21 +928,15 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "updatetztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), "updatetztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "updatetztimedef");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), ICFSecSchema.getSysTenantId(), "updatetztimedef");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTZTimeDefTable.TABLE_NAME, "updatetztimedef", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -1061,9 +944,10 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 
 		ICFBamTZTimeDef retval = schema.getJpaHooksSchema().getTZTimeDefService().lockByIdIdx(PKey);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,TenantId,'readtztimedef'), clear retval to null if not a member
+			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readtztimedef'), clear retval to null if not a member
+			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
 			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-			if (!ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effTenantId, "readtztimedef")) {
+			if (!ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readtztimedef")) {
 				retval = null;
 			}
 		}
@@ -1089,21 +973,15 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readtztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), "readtztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "readtztimedef");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), Authorization.getSecTenantId(), "readtztimedef");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTZTimeDefTable.TABLE_NAME, "readtztimedef", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -1114,8 +992,9 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			ArrayList<CFBamJpaTZTimeDef> finallist = new ArrayList<>();
 			for (var retval: retlist) {
 				if(retval != null) {
+					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
 					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effTenantId, "readtztimedef")) {
+					if (ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readtztimedef")) {
 						finallist.add(retval);
 					}
 				}
@@ -1154,21 +1033,15 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readtztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), "readtztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "readtztimedef");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), Authorization.getSecTenantId(), "readtztimedef");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTZTimeDefTable.TABLE_NAME, "readtztimedef", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -1176,9 +1049,10 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 
 		ICFBamTZTimeDef retval = schema.getJpaHooksSchema().getTZTimeDefService().find(argId);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,TenantId,'readtztimedef'), clear retval to null if not a member
+			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readtztimedef'), clear retval to null if not a member
+			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
 			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-			if (!ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effTenantId, "readtztimedef")) {
+			if (!ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readtztimedef")) {
 				retval = null;
 			}
 		}
@@ -1212,21 +1086,15 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readtztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), "readtztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "readtztimedef");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), Authorization.getSecTenantId(), "readtztimedef");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTZTimeDefTable.TABLE_NAME, "readtztimedef", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -1235,9 +1103,10 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 		ICFBamTZTimeDef retval = schema.getJpaHooksSchema().getTZTimeDefService().findByUNameIdx(argScopeId,
 		argName);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,TenantId,'readtztimedef'), clear retval to null if not a member
+			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readtztimedef'), clear retval to null if not a member
+			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
 			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-			if (!ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effTenantId, "readtztimedef")) {
+			if (!ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readtztimedef")) {
 				retval = null;
 			}
 		}
@@ -1267,21 +1136,15 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readtztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), "readtztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "readtztimedef");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), Authorization.getSecTenantId(), "readtztimedef");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTZTimeDefTable.TABLE_NAME, "readtztimedef", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -1292,8 +1155,9 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			ArrayList<CFBamJpaTZTimeDef> finallist = new ArrayList<>();
 			for (var retval: retlist) {
 				if(retval != null) {
+					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
 					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effTenantId, "readtztimedef")) {
+					if (ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readtztimedef")) {
 						finallist.add(retval);
 					}
 				}
@@ -1331,21 +1195,15 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readtztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), "readtztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "readtztimedef");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), Authorization.getSecTenantId(), "readtztimedef");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTZTimeDefTable.TABLE_NAME, "readtztimedef", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -1356,8 +1214,9 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			ArrayList<CFBamJpaTZTimeDef> finallist = new ArrayList<>();
 			for (var retval: retlist) {
 				if(retval != null) {
+					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
 					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effTenantId, "readtztimedef")) {
+					if (ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readtztimedef")) {
 						finallist.add(retval);
 					}
 				}
@@ -1395,21 +1254,15 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readtztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), "readtztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "readtztimedef");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), Authorization.getSecTenantId(), "readtztimedef");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTZTimeDefTable.TABLE_NAME, "readtztimedef", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -1420,8 +1273,9 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			ArrayList<CFBamJpaTZTimeDef> finallist = new ArrayList<>();
 			for (var retval: retlist) {
 				if(retval != null) {
+					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
 					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effTenantId, "readtztimedef")) {
+					if (ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readtztimedef")) {
 						finallist.add(retval);
 					}
 				}
@@ -1459,21 +1313,15 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readtztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), "readtztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "readtztimedef");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), Authorization.getSecTenantId(), "readtztimedef");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTZTimeDefTable.TABLE_NAME, "readtztimedef", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -1484,8 +1332,9 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			ArrayList<CFBamJpaTZTimeDef> finallist = new ArrayList<>();
 			for (var retval: retlist) {
 				if(retval != null) {
+					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
 					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effTenantId, "readtztimedef")) {
+					if (ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readtztimedef")) {
 						finallist.add(retval);
 					}
 				}
@@ -1526,21 +1375,15 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readtztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), "readtztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "readtztimedef");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), Authorization.getSecTenantId(), "readtztimedef");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTZTimeDefTable.TABLE_NAME, "readtztimedef", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -1552,8 +1395,9 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			ArrayList<CFBamJpaTZTimeDef> finallist = new ArrayList<>();
 			for (var retval: retlist) {
 				if(retval != null) {
+					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
 					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effTenantId, "readtztimedef")) {
+					if (ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readtztimedef")) {
 						finallist.add(retval);
 					}
 				}
@@ -1594,21 +1438,15 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readtztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), "readtztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "readtztimedef");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), Authorization.getSecTenantId(), "readtztimedef");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTZTimeDefTable.TABLE_NAME, "readtztimedef", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -1620,8 +1458,9 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			ArrayList<CFBamJpaTZTimeDef> finallist = new ArrayList<>();
 			for (var retval: retlist) {
 				if(retval != null) {
+					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
 					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effTenantId, "readtztimedef")) {
+					if (ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readtztimedef")) {
 						finallist.add(retval);
 					}
 				}
@@ -1662,21 +1501,15 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readtztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), "readtztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "readtztimedef");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), Authorization.getSecTenantId(), "readtztimedef");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTZTimeDefTable.TABLE_NAME, "readtztimedef", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -1711,21 +1544,15 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "updatetztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), "updatetztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "updatetztimedef");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), ICFSecSchema.getSysTenantId(), "updatetztimedef");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTZTimeDefTable.TABLE_NAME, "updatetztimedef", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -1753,21 +1580,15 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readtztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), "readtztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "readtztimedef");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), Authorization.getSecTenantId(), "readtztimedef");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTZTimeDefTable.TABLE_NAME, "readtztimedef", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -1803,21 +1624,15 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readtztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), "readtztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "readtztimedef");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), Authorization.getSecTenantId(), "readtztimedef");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTZTimeDefTable.TABLE_NAME, "readtztimedef", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -1855,21 +1670,15 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readtztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), "readtztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "readtztimedef");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), Authorization.getSecTenantId(), "readtztimedef");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTZTimeDefTable.TABLE_NAME, "readtztimedef", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -1903,21 +1712,15 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readtztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), "readtztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "readtztimedef");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), Authorization.getSecTenantId(), "readtztimedef");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTZTimeDefTable.TABLE_NAME, "readtztimedef", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -1951,21 +1754,15 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readtztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), "readtztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "readtztimedef");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), Authorization.getSecTenantId(), "readtztimedef");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTZTimeDefTable.TABLE_NAME, "readtztimedef", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -1999,21 +1796,15 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readtztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), "readtztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "readtztimedef");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), Authorization.getSecTenantId(), "readtztimedef");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTZTimeDefTable.TABLE_NAME, "readtztimedef", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -2047,21 +1838,15 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readtztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), "readtztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "readtztimedef");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), Authorization.getSecTenantId(), "readtztimedef");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTZTimeDefTable.TABLE_NAME, "readtztimedef", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -2098,21 +1883,15 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readtztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), "readtztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "readtztimedef");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), Authorization.getSecTenantId(), "readtztimedef");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTZTimeDefTable.TABLE_NAME, "readtztimedef", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -2149,21 +1928,15 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readtztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), "readtztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "readtztimedef");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), Authorization.getSecTenantId(), "readtztimedef");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTZTimeDefTable.TABLE_NAME, "readtztimedef", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -2192,21 +1965,15 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "updatetztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), "updatetztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "updatetztimedef");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), ICFSecSchema.getSysTenantId(), "updatetztimedef");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTZTimeDefTable.TABLE_NAME, "updatetztimedef", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -2235,21 +2002,15 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "updatetztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), "updatetztimedef");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "updatetztimedef");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), ICFSecSchema.getSysTenantId(), "updatetztimedef");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTZTimeDefTable.TABLE_NAME, "updatetztimedef", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"

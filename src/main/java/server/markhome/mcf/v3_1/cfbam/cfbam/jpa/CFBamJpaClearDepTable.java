@@ -120,21 +120,15 @@ public class CFBamJpaClearDepTable implements ICFBamClearDepTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "createcleardep");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), "createcleardep");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "createcleardep");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), Authorization.getSecTenantId(), "createcleardep");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearDepTable.TABLE_NAME, "createcleardep", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -147,9 +141,10 @@ public class CFBamJpaClearDepTable implements ICFBamClearDepTable
 			CFBamJpaClearDep jparec = (CFBamJpaClearDep)rec;
 			CFBamJpaClearDep retval = schema.getJpaHooksSchema().getClearDepService().create(jparec);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,TenantId,'readcleardep'), clear retval to null if not a member
+			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readcleardep'), clear retval to null if not a member
+			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
 			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-			if (!ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effTenantId, "readcleardep")) {
+			if (!ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readcleardep")) {
 				retval = null;
 			}
 		}
@@ -182,21 +177,15 @@ public class CFBamJpaClearDepTable implements ICFBamClearDepTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "updatecleardep");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), "updatecleardep");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "updatecleardep");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), ICFSecSchema.getSysTenantId(), "updatecleardep");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearDepTable.TABLE_NAME, "updatecleardep", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -209,9 +198,10 @@ public class CFBamJpaClearDepTable implements ICFBamClearDepTable
 			CFBamJpaClearDep jparec = (CFBamJpaClearDep)rec;
 			CFBamJpaClearDep retval = schema.getJpaHooksSchema().getClearDepService().update(jparec);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,TenantId,'readcleardep'), clear retval to null if not a member
+			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readcleardep'), clear retval to null if not a member
+			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
 			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-			if (!ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effTenantId, "readcleardep")) {
+			if (!ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readcleardep")) {
 				retval = null;
 			}
 		}
@@ -243,21 +233,15 @@ public class CFBamJpaClearDepTable implements ICFBamClearDepTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "deletecleardep");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), "deletecleardep");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "deletecleardep");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), ICFSecSchema.getSysTenantId(), "deletecleardep");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearDepTable.TABLE_NAME, "deletecleardep", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -298,21 +282,15 @@ public class CFBamJpaClearDepTable implements ICFBamClearDepTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "deletecleardep");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), "deletecleardep");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "deletecleardep");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), ICFSecSchema.getSysTenantId(), "deletecleardep");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearDepTable.TABLE_NAME, "deletecleardep", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -343,21 +321,15 @@ public class CFBamJpaClearDepTable implements ICFBamClearDepTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "deletecleardep");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), "deletecleardep");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "deletecleardep");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), ICFSecSchema.getSysTenantId(), "deletecleardep");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearDepTable.TABLE_NAME, "deletecleardep", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -387,21 +359,15 @@ public class CFBamJpaClearDepTable implements ICFBamClearDepTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "deletecleardep");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), "deletecleardep");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "deletecleardep");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), ICFSecSchema.getSysTenantId(), "deletecleardep");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearDepTable.TABLE_NAME, "deletecleardep", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -432,21 +398,15 @@ public class CFBamJpaClearDepTable implements ICFBamClearDepTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "deletecleardep");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), "deletecleardep");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "deletecleardep");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), ICFSecSchema.getSysTenantId(), "deletecleardep");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearDepTable.TABLE_NAME, "deletecleardep", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -476,21 +436,15 @@ public class CFBamJpaClearDepTable implements ICFBamClearDepTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "deletecleardep");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), "deletecleardep");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "deletecleardep");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), ICFSecSchema.getSysTenantId(), "deletecleardep");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearDepTable.TABLE_NAME, "deletecleardep", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -520,21 +474,15 @@ public class CFBamJpaClearDepTable implements ICFBamClearDepTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "deletecleardep");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), "deletecleardep");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "deletecleardep");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), ICFSecSchema.getSysTenantId(), "deletecleardep");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearDepTable.TABLE_NAME, "deletecleardep", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -565,21 +513,15 @@ public class CFBamJpaClearDepTable implements ICFBamClearDepTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "deletecleardep");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), "deletecleardep");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "deletecleardep");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), ICFSecSchema.getSysTenantId(), "deletecleardep");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearDepTable.TABLE_NAME, "deletecleardep", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -613,21 +555,15 @@ public class CFBamJpaClearDepTable implements ICFBamClearDepTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readcleardep");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), "readcleardep");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "readcleardep");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), Authorization.getSecTenantId(), "readcleardep");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearDepTable.TABLE_NAME, "readcleardep", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -635,9 +571,10 @@ public class CFBamJpaClearDepTable implements ICFBamClearDepTable
 
 		ICFBamClearDep retval = schema.getJpaHooksSchema().getClearDepService().find(PKey);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,TenantId,'readcleardep'), clear retval to null if not a member
+			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readcleardep'), clear retval to null if not a member
+			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
 			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-			if (!ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effTenantId, "readcleardep")) {
+			if (!ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readcleardep")) {
 				retval = null;
 			}
 		}
@@ -668,21 +605,15 @@ public class CFBamJpaClearDepTable implements ICFBamClearDepTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "updatecleardep");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), "updatecleardep");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "updatecleardep");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), ICFSecSchema.getSysTenantId(), "updatecleardep");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearDepTable.TABLE_NAME, "updatecleardep", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -690,9 +621,10 @@ public class CFBamJpaClearDepTable implements ICFBamClearDepTable
 
 		ICFBamClearDep retval = schema.getJpaHooksSchema().getClearDepService().lockByIdIdx(PKey);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,TenantId,'readcleardep'), clear retval to null if not a member
+			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readcleardep'), clear retval to null if not a member
+			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
 			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-			if (!ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effTenantId, "readcleardep")) {
+			if (!ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readcleardep")) {
 				retval = null;
 			}
 		}
@@ -718,21 +650,15 @@ public class CFBamJpaClearDepTable implements ICFBamClearDepTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readcleardep");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), "readcleardep");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "readcleardep");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), Authorization.getSecTenantId(), "readcleardep");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearDepTable.TABLE_NAME, "readcleardep", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -743,8 +669,9 @@ public class CFBamJpaClearDepTable implements ICFBamClearDepTable
 			ArrayList<CFBamJpaClearDep> finallist = new ArrayList<>();
 			for (var retval: retlist) {
 				if(retval != null) {
+					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
 					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effTenantId, "readcleardep")) {
+					if (ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readcleardep")) {
 						finallist.add(retval);
 					}
 				}
@@ -783,21 +710,15 @@ public class CFBamJpaClearDepTable implements ICFBamClearDepTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readcleardep");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), "readcleardep");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "readcleardep");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), Authorization.getSecTenantId(), "readcleardep");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearDepTable.TABLE_NAME, "readcleardep", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -805,9 +726,10 @@ public class CFBamJpaClearDepTable implements ICFBamClearDepTable
 
 		ICFBamClearDep retval = schema.getJpaHooksSchema().getClearDepService().find(argId);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,TenantId,'readcleardep'), clear retval to null if not a member
+			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readcleardep'), clear retval to null if not a member
+			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
 			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-			if (!ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effTenantId, "readcleardep")) {
+			if (!ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readcleardep")) {
 				retval = null;
 			}
 		}
@@ -837,21 +759,15 @@ public class CFBamJpaClearDepTable implements ICFBamClearDepTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readcleardep");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), "readcleardep");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "readcleardep");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), Authorization.getSecTenantId(), "readcleardep");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearDepTable.TABLE_NAME, "readcleardep", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -862,8 +778,9 @@ public class CFBamJpaClearDepTable implements ICFBamClearDepTable
 			ArrayList<CFBamJpaClearDep> finallist = new ArrayList<>();
 			for (var retval: retlist) {
 				if(retval != null) {
+					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
 					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effTenantId, "readcleardep")) {
+					if (ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readcleardep")) {
 						finallist.add(retval);
 					}
 				}
@@ -901,21 +818,15 @@ public class CFBamJpaClearDepTable implements ICFBamClearDepTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readcleardep");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), "readcleardep");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "readcleardep");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), Authorization.getSecTenantId(), "readcleardep");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearDepTable.TABLE_NAME, "readcleardep", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -926,8 +837,9 @@ public class CFBamJpaClearDepTable implements ICFBamClearDepTable
 			ArrayList<CFBamJpaClearDep> finallist = new ArrayList<>();
 			for (var retval: retlist) {
 				if(retval != null) {
+					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
 					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effTenantId, "readcleardep")) {
+					if (ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readcleardep")) {
 						finallist.add(retval);
 					}
 				}
@@ -965,21 +877,15 @@ public class CFBamJpaClearDepTable implements ICFBamClearDepTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readcleardep");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), "readcleardep");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "readcleardep");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), Authorization.getSecTenantId(), "readcleardep");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearDepTable.TABLE_NAME, "readcleardep", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -990,8 +896,9 @@ public class CFBamJpaClearDepTable implements ICFBamClearDepTable
 			ArrayList<CFBamJpaClearDep> finallist = new ArrayList<>();
 			for (var retval: retlist) {
 				if(retval != null) {
+					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
 					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effTenantId, "readcleardep")) {
+					if (ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readcleardep")) {
 						finallist.add(retval);
 					}
 				}
@@ -1032,21 +939,15 @@ public class CFBamJpaClearDepTable implements ICFBamClearDepTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readcleardep");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), "readcleardep");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "readcleardep");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), Authorization.getSecTenantId(), "readcleardep");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearDepTable.TABLE_NAME, "readcleardep", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -1081,21 +982,15 @@ public class CFBamJpaClearDepTable implements ICFBamClearDepTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "updatecleardep");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), "updatecleardep");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "updatecleardep");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), ICFSecSchema.getSysTenantId(), "updatecleardep");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearDepTable.TABLE_NAME, "updatecleardep", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -1123,21 +1018,15 @@ public class CFBamJpaClearDepTable implements ICFBamClearDepTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readcleardep");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), "readcleardep");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "readcleardep");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), Authorization.getSecTenantId(), "readcleardep");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearDepTable.TABLE_NAME, "readcleardep", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -1173,21 +1062,15 @@ public class CFBamJpaClearDepTable implements ICFBamClearDepTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readcleardep");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), "readcleardep");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "readcleardep");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), Authorization.getSecTenantId(), "readcleardep");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearDepTable.TABLE_NAME, "readcleardep", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -1221,21 +1104,15 @@ public class CFBamJpaClearDepTable implements ICFBamClearDepTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readcleardep");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), "readcleardep");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "readcleardep");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), Authorization.getSecTenantId(), "readcleardep");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearDepTable.TABLE_NAME, "readcleardep", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -1269,21 +1146,15 @@ public class CFBamJpaClearDepTable implements ICFBamClearDepTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readcleardep");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), "readcleardep");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "readcleardep");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), Authorization.getSecTenantId(), "readcleardep");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearDepTable.TABLE_NAME, "readcleardep", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -1317,21 +1188,15 @@ public class CFBamJpaClearDepTable implements ICFBamClearDepTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readcleardep");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), "readcleardep");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "readcleardep");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), Authorization.getSecTenantId(), "readcleardep");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearDepTable.TABLE_NAME, "readcleardep", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"

@@ -120,21 +120,15 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "createindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), "createindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "createindextweak");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), Authorization.getSecTenantId(), "createindextweak");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "createindextweak", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -147,9 +141,10 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			CFBamJpaIndexTweak jparec = (CFBamJpaIndexTweak)rec;
 			CFBamJpaIndexTweak retval = schema.getJpaHooksSchema().getIndexTweakService().create(jparec);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,TenantId,'readindextweak'), clear retval to null if not a member
+			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readindextweak'), clear retval to null if not a member
+			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
 			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-			if (!ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effTenantId, "readindextweak")) {
+			if (!ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readindextweak")) {
 				retval = null;
 			}
 		}
@@ -182,21 +177,15 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "updateindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), "updateindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "updateindextweak");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), ICFSecSchema.getSysTenantId(), "updateindextweak");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "updateindextweak", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -209,9 +198,10 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			CFBamJpaIndexTweak jparec = (CFBamJpaIndexTweak)rec;
 			CFBamJpaIndexTweak retval = schema.getJpaHooksSchema().getIndexTweakService().update(jparec);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,TenantId,'readindextweak'), clear retval to null if not a member
+			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readindextweak'), clear retval to null if not a member
+			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
 			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-			if (!ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effTenantId, "readindextweak")) {
+			if (!ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readindextweak")) {
 				retval = null;
 			}
 		}
@@ -243,21 +233,15 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "deleteindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), "deleteindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "deleteindextweak");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), ICFSecSchema.getSysTenantId(), "deleteindextweak");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "deleteindextweak", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -298,21 +282,15 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "deleteindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), "deleteindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "deleteindextweak");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), ICFSecSchema.getSysTenantId(), "deleteindextweak");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "deleteindextweak", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -343,21 +321,15 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "deleteindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), "deleteindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "deleteindextweak");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), ICFSecSchema.getSysTenantId(), "deleteindextweak");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "deleteindextweak", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -387,21 +359,15 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "deleteindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), "deleteindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "deleteindextweak");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), ICFSecSchema.getSysTenantId(), "deleteindextweak");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "deleteindextweak", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -434,21 +400,15 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "deleteindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), "deleteindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "deleteindextweak");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), ICFSecSchema.getSysTenantId(), "deleteindextweak");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "deleteindextweak", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -480,21 +440,15 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "deleteindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), "deleteindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "deleteindextweak");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), ICFSecSchema.getSysTenantId(), "deleteindextweak");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "deleteindextweak", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -525,21 +479,15 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "deleteindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), "deleteindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "deleteindextweak");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), ICFSecSchema.getSysTenantId(), "deleteindextweak");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "deleteindextweak", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -570,21 +518,15 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "deleteindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), "deleteindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "deleteindextweak");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), ICFSecSchema.getSysTenantId(), "deleteindextweak");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "deleteindextweak", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -614,21 +556,15 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "deleteindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), "deleteindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "deleteindextweak");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), ICFSecSchema.getSysTenantId(), "deleteindextweak");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "deleteindextweak", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -659,21 +595,15 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "deleteindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), "deleteindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "deleteindextweak");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), ICFSecSchema.getSysTenantId(), "deleteindextweak");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "deleteindextweak", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -703,21 +633,15 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "deleteindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), "deleteindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "deleteindextweak");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), ICFSecSchema.getSysTenantId(), "deleteindextweak");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "deleteindextweak", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -748,21 +672,15 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "deleteindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), "deleteindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "deleteindextweak");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), ICFSecSchema.getSysTenantId(), "deleteindextweak");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "deleteindextweak", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -804,21 +722,15 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "deleteindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), "deleteindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "deleteindextweak");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), ICFSecSchema.getSysTenantId(), "deleteindextweak");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "deleteindextweak", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -853,21 +765,15 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "deleteindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), "deleteindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "deleteindextweak");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), ICFSecSchema.getSysTenantId(), "deleteindextweak");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "deleteindextweak", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -905,21 +811,15 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), "readindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "readindextweak");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), Authorization.getSecTenantId(), "readindextweak");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "readindextweak", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -927,9 +827,10 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 
 		ICFBamIndexTweak retval = schema.getJpaHooksSchema().getIndexTweakService().find(PKey);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,TenantId,'readindextweak'), clear retval to null if not a member
+			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readindextweak'), clear retval to null if not a member
+			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
 			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-			if (!ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effTenantId, "readindextweak")) {
+			if (!ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readindextweak")) {
 				retval = null;
 			}
 		}
@@ -960,21 +861,15 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "updateindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), "updateindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "updateindextweak");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), ICFSecSchema.getSysTenantId(), "updateindextweak");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "updateindextweak", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -982,9 +877,10 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 
 		ICFBamIndexTweak retval = schema.getJpaHooksSchema().getIndexTweakService().lockByIdIdx(PKey);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,TenantId,'readindextweak'), clear retval to null if not a member
+			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readindextweak'), clear retval to null if not a member
+			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
 			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-			if (!ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effTenantId, "readindextweak")) {
+			if (!ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readindextweak")) {
 				retval = null;
 			}
 		}
@@ -1010,21 +906,15 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), "readindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "readindextweak");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), Authorization.getSecTenantId(), "readindextweak");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "readindextweak", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -1035,8 +925,9 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			ArrayList<CFBamJpaIndexTweak> finallist = new ArrayList<>();
 			for (var retval: retlist) {
 				if(retval != null) {
+					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
 					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effTenantId, "readindextweak")) {
+					if (ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readindextweak")) {
 						finallist.add(retval);
 					}
 				}
@@ -1075,21 +966,15 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), "readindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "readindextweak");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), Authorization.getSecTenantId(), "readindextweak");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "readindextweak", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -1097,9 +982,10 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 
 		ICFBamIndexTweak retval = schema.getJpaHooksSchema().getIndexTweakService().find(argId);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,TenantId,'readindextweak'), clear retval to null if not a member
+			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readindextweak'), clear retval to null if not a member
+			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
 			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-			if (!ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effTenantId, "readindextweak")) {
+			if (!ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readindextweak")) {
 				retval = null;
 			}
 		}
@@ -1133,21 +1019,15 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), "readindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "readindextweak");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), Authorization.getSecTenantId(), "readindextweak");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "readindextweak", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -1156,9 +1036,10 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 		ICFBamIndexTweak retval = schema.getJpaHooksSchema().getIndexTweakService().findByUNameIdx(argScopeId,
 		argName);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,TenantId,'readindextweak'), clear retval to null if not a member
+			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readindextweak'), clear retval to null if not a member
+			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
 			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-			if (!ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effTenantId, "readindextweak")) {
+			if (!ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readindextweak")) {
 				retval = null;
 			}
 		}
@@ -1188,21 +1069,15 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), "readindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "readindextweak");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), Authorization.getSecTenantId(), "readindextweak");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "readindextweak", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -1213,8 +1088,9 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			ArrayList<CFBamJpaIndexTweak> finallist = new ArrayList<>();
 			for (var retval: retlist) {
 				if(retval != null) {
+					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
 					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effTenantId, "readindextweak")) {
+					if (ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readindextweak")) {
 						finallist.add(retval);
 					}
 				}
@@ -1252,21 +1128,15 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), "readindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "readindextweak");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), Authorization.getSecTenantId(), "readindextweak");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "readindextweak", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -1277,8 +1147,9 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			ArrayList<CFBamJpaIndexTweak> finallist = new ArrayList<>();
 			for (var retval: retlist) {
 				if(retval != null) {
+					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
 					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effTenantId, "readindextweak")) {
+					if (ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readindextweak")) {
 						finallist.add(retval);
 					}
 				}
@@ -1316,21 +1187,15 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), "readindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "readindextweak");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), Authorization.getSecTenantId(), "readindextweak");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "readindextweak", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -1341,8 +1206,9 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			ArrayList<CFBamJpaIndexTweak> finallist = new ArrayList<>();
 			for (var retval: retlist) {
 				if(retval != null) {
+					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
 					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effTenantId, "readindextweak")) {
+					if (ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readindextweak")) {
 						finallist.add(retval);
 					}
 				}
@@ -1393,21 +1259,15 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), "readindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "readindextweak");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), Authorization.getSecTenantId(), "readindextweak");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "readindextweak", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -1419,9 +1279,10 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 		argDefSchemaId,
 		argName);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,TenantId,'readindextweak'), clear retval to null if not a member
+			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readindextweak'), clear retval to null if not a member
+			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
 			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-			if (!ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effTenantId, "readindextweak")) {
+			if (!ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readindextweak")) {
 				retval = null;
 			}
 		}
@@ -1451,21 +1312,15 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), "readindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "readindextweak");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), Authorization.getSecTenantId(), "readindextweak");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "readindextweak", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -1476,8 +1331,9 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			ArrayList<CFBamJpaIndexTweak> finallist = new ArrayList<>();
 			for (var retval: retlist) {
 				if(retval != null) {
+					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
 					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effTenantId, "readindextweak")) {
+					if (ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readindextweak")) {
 						finallist.add(retval);
 					}
 				}
@@ -1518,21 +1374,15 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), "readindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "readindextweak");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), Authorization.getSecTenantId(), "readindextweak");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "readindextweak", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -1567,21 +1417,15 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysTenantId(), "updateindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), "updateindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "updateindextweak");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), ICFSecSchema.getSysTenantId(), "updateindextweak");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "updateindextweak", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -1609,21 +1453,15 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), "readindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "readindextweak");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), Authorization.getSecTenantId(), "readindextweak");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "readindextweak", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -1659,21 +1497,15 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), "readindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "readindextweak");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), Authorization.getSecTenantId(), "readindextweak");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "readindextweak", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -1711,21 +1543,15 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), "readindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "readindextweak");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), Authorization.getSecTenantId(), "readindextweak");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "readindextweak", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -1759,21 +1585,15 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), "readindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "readindextweak");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), Authorization.getSecTenantId(), "readindextweak");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "readindextweak", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -1807,21 +1627,15 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), "readindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "readindextweak");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), Authorization.getSecTenantId(), "readindextweak");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "readindextweak", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -1855,21 +1669,15 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), "readindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "readindextweak");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), Authorization.getSecTenantId(), "readindextweak");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "readindextweak", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -1916,21 +1724,15 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), "readindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "readindextweak");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), Authorization.getSecTenantId(), "readindextweak");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "readindextweak", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
@@ -1964,21 +1766,15 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
 		}
 		// Check for "system" user
-		CFLibDbKeyHash256 sysAdminId = ICFSecSchema.getSystemId();
-		if ((!permissionGranted) && (sysAdminId != null && !sysAdminId.isNull() && sysAdminId.equals(authUserId))) {
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
 			permissionGranted = true;
 		}
-		else if ((!permissionGranted) && (sysAdminId == null || sysAdminId.isNull())) {
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
 			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
 		}
 		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecTenantId(), "readindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), "readindextweak");
-		}
-		if(!permissionGranted) {
-			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(Authorization.getSecUserId(), "readindextweak");
+			permissionGranted = ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), Authorization.getSecTenantId(), "readindextweak");
 		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "readindextweak", authUserId.toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
