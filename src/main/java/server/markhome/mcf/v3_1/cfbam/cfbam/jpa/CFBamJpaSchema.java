@@ -182,6 +182,11 @@ public class CFBamJpaSchema
 	protected ICFSecSecClusGrpTable tableSecClusGrp;
 	protected ICFSecSecClusGrpIncTable tableSecClusGrpInc;
 	protected ICFSecSecClusGrpMembTable tableSecClusGrpMemb;
+	protected ICFSecSecClusRoleTable tableSecClusRole;
+	protected ICFSecSecClusRoleMembTable tableSecClusRoleMemb;
+	protected ICFSecSecRoleTable tableSecRole;
+	protected ICFSecSecRoleEnablesTable tableSecRoleEnables;
+	protected ICFSecSecRoleMembTable tableSecRoleMemb;
 	protected ICFSecSecSessionTable tableSecSession;
 	protected ICFSecSecSysGrpTable tableSecSysGrp;
 	protected ICFSecSecSysGrpIncTable tableSecSysGrpInc;
@@ -189,6 +194,8 @@ public class CFBamJpaSchema
 	protected ICFSecSecTentGrpTable tableSecTentGrp;
 	protected ICFSecSecTentGrpIncTable tableSecTentGrpInc;
 	protected ICFSecSecTentGrpMembTable tableSecTentGrpMemb;
+	protected ICFSecSecTentRoleTable tableSecTentRole;
+	protected ICFSecSecTentRoleMembTable tableSecTentRoleMemb;
 	protected ICFSecSecUserTable tableSecUser;
 	protected ICFSecSecUserEMConfTable tableSecUserEMConf;
 	protected ICFSecSecUserPWHistoryTable tableSecUserPWHistory;
@@ -356,6 +363,11 @@ public class CFBamJpaSchema
 	protected ICFSecSecClusGrpFactory factorySecClusGrp;
 	protected ICFSecSecClusGrpIncFactory factorySecClusGrpInc;
 	protected ICFSecSecClusGrpMembFactory factorySecClusGrpMemb;
+	protected ICFSecSecClusRoleFactory factorySecClusRole;
+	protected ICFSecSecClusRoleMembFactory factorySecClusRoleMemb;
+	protected ICFSecSecRoleFactory factorySecRole;
+	protected ICFSecSecRoleEnablesFactory factorySecRoleEnables;
+	protected ICFSecSecRoleMembFactory factorySecRoleMemb;
 	protected ICFSecSecSessionFactory factorySecSession;
 	protected ICFSecSecSysGrpFactory factorySecSysGrp;
 	protected ICFSecSecSysGrpIncFactory factorySecSysGrpInc;
@@ -363,6 +375,8 @@ public class CFBamJpaSchema
 	protected ICFSecSecTentGrpFactory factorySecTentGrp;
 	protected ICFSecSecTentGrpIncFactory factorySecTentGrpInc;
 	protected ICFSecSecTentGrpMembFactory factorySecTentGrpMemb;
+	protected ICFSecSecTentRoleFactory factorySecTentRole;
+	protected ICFSecSecTentRoleMembFactory factorySecTentRoleMemb;
 	protected ICFSecSecUserFactory factorySecUser;
 	protected ICFSecSecUserEMConfFactory factorySecUserEMConf;
 	protected ICFSecSecUserPWHistoryFactory factorySecUserPWHistory;
@@ -2972,6 +2986,11 @@ public class CFBamJpaSchema
 		tableSecClusGrp = null;
 		tableSecClusGrpInc = null;
 		tableSecClusGrpMemb = null;
+		tableSecClusRole = null;
+		tableSecClusRoleMemb = null;
+		tableSecRole = null;
+		tableSecRoleEnables = null;
+		tableSecRoleMemb = null;
 		tableSecSession = null;
 		tableSecSysGrp = null;
 		tableSecSysGrpInc = null;
@@ -2979,6 +2998,8 @@ public class CFBamJpaSchema
 		tableSecTentGrp = null;
 		tableSecTentGrpInc = null;
 		tableSecTentGrpMemb = null;
+		tableSecTentRole = null;
+		tableSecTentRoleMemb = null;
 		tableSecUser = null;
 		tableSecUserEMConf = null;
 		tableSecUserPWHistory = null;
@@ -3146,6 +3167,11 @@ public class CFBamJpaSchema
 		factorySecClusGrp = new CFSecJpaSecClusGrpDefaultFactory();
 		factorySecClusGrpInc = new CFSecJpaSecClusGrpIncDefaultFactory();
 		factorySecClusGrpMemb = new CFSecJpaSecClusGrpMembDefaultFactory();
+		factorySecClusRole = new CFSecJpaSecClusRoleDefaultFactory();
+		factorySecClusRoleMemb = new CFSecJpaSecClusRoleMembDefaultFactory();
+		factorySecRole = new CFSecJpaSecRoleDefaultFactory();
+		factorySecRoleEnables = new CFSecJpaSecRoleEnablesDefaultFactory();
+		factorySecRoleMemb = new CFSecJpaSecRoleMembDefaultFactory();
 		factorySecSession = new CFSecJpaSecSessionDefaultFactory();
 		factorySecSysGrp = new CFSecJpaSecSysGrpDefaultFactory();
 		factorySecSysGrpInc = new CFSecJpaSecSysGrpIncDefaultFactory();
@@ -3153,6 +3179,8 @@ public class CFBamJpaSchema
 		factorySecTentGrp = new CFSecJpaSecTentGrpDefaultFactory();
 		factorySecTentGrpInc = new CFSecJpaSecTentGrpIncDefaultFactory();
 		factorySecTentGrpMemb = new CFSecJpaSecTentGrpMembDefaultFactory();
+		factorySecTentRole = new CFSecJpaSecTentRoleDefaultFactory();
+		factorySecTentRoleMemb = new CFSecJpaSecTentRoleMembDefaultFactory();
 		factorySecUser = new CFSecJpaSecUserDefaultFactory();
 		factorySecUserEMConf = new CFSecJpaSecUserEMConfDefaultFactory();
 		factorySecUserPWHistory = new CFSecJpaSecUserPWHistoryDefaultFactory();
@@ -3222,36 +3250,6 @@ public class CFBamJpaSchema
 	}
 
 	@Override
-	public boolean isMemberOfTenantGroup(CFLibDbKeyHash256 userId, CFLibDbKeyHash256 clusterId, CFLibDbKeyHash256 tenantId, String permissionName) {
-		return ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(userId, clusterId, tenantId, permissionName);
-	}
-
-	@Override
-	public boolean isMemberOfTenantGroup(String userLogin, CFLibDbKeyHash256 clusterId, CFLibDbKeyHash256 tenantId, String permissionName) {
-		return ICFSecSchema.getBackingCFSec().isMemberOfTenantGroup(userLogin, clusterId, tenantId, permissionName);
-	}
-
-	@Override
-	public boolean isMemberOfClusterGroup(CFLibDbKeyHash256 userId, CFLibDbKeyHash256 clusterId, String permissionName) {
-		return ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(userId, clusterId, permissionName);
-	}
-
-	@Override
-	public boolean isMemberOfClusterGroup(String userLogin, CFLibDbKeyHash256 clusterId, String permissionName) {
-		return ICFSecSchema.getBackingCFSec().isMemberOfClusterGroup(userLogin, clusterId, permissionName);
-	}
-
-	@Override
-	public boolean isMemberOfSystemGroup(CFLibDbKeyHash256 userId, String permissionName) {
-		return ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(userId, permissionName);
-	}
-
-	@Override
-	public boolean isMemberOfSystemGroup(String userLogin, String permissionName) {
-		return ICFSecSchema.getBackingCFSec().isMemberOfSystemGroup(userLogin, permissionName);
-	}
-
-	@Override
 	public short nextISOCcyIdGen() {
 		throw new CFLibNotImplementedYetException( getClass(), "nextISOCcyIdGen" );
 	}
@@ -3318,7 +3316,19 @@ public class CFBamJpaSchema
 	}
 
 	@Override
+	public CFLibDbKeyHash256 nextSecClusRoleIdGen() {
+		CFLibDbKeyHash256 retval = new CFLibDbKeyHash256(0);
+		return( retval );
+	}
+
+	@Override
 	public CFLibDbKeyHash256 nextSecTentGrpIdGen() {
+		CFLibDbKeyHash256 retval = new CFLibDbKeyHash256(0);
+		return( retval );
+	}
+
+	@Override
+	public CFLibDbKeyHash256 nextSecTentRoleIdGen() {
 		CFLibDbKeyHash256 retval = new CFLibDbKeyHash256(0);
 		return( retval );
 	}
@@ -5077,6 +5087,86 @@ public class CFBamJpaSchema
 		factorySecClusGrpMemb = value;
 	}
 
+	public ICFSecSecClusRoleTable getTableSecClusRole() {
+		return( tableSecClusRole );
+	}
+
+	public void setTableSecClusRole( ICFSecSecClusRoleTable value ) {
+		tableSecClusRole = value;
+	}
+
+	public ICFSecSecClusRoleFactory getFactorySecClusRole() {
+		return( factorySecClusRole );
+	}
+
+	public void setFactorySecClusRole( ICFSecSecClusRoleFactory value ) {
+		factorySecClusRole = value;
+	}
+
+	public ICFSecSecClusRoleMembTable getTableSecClusRoleMemb() {
+		return( tableSecClusRoleMemb );
+	}
+
+	public void setTableSecClusRoleMemb( ICFSecSecClusRoleMembTable value ) {
+		tableSecClusRoleMemb = value;
+	}
+
+	public ICFSecSecClusRoleMembFactory getFactorySecClusRoleMemb() {
+		return( factorySecClusRoleMemb );
+	}
+
+	public void setFactorySecClusRoleMemb( ICFSecSecClusRoleMembFactory value ) {
+		factorySecClusRoleMemb = value;
+	}
+
+	public ICFSecSecRoleTable getTableSecRole() {
+		return( tableSecRole );
+	}
+
+	public void setTableSecRole( ICFSecSecRoleTable value ) {
+		tableSecRole = value;
+	}
+
+	public ICFSecSecRoleFactory getFactorySecRole() {
+		return( factorySecRole );
+	}
+
+	public void setFactorySecRole( ICFSecSecRoleFactory value ) {
+		factorySecRole = value;
+	}
+
+	public ICFSecSecRoleEnablesTable getTableSecRoleEnables() {
+		return( tableSecRoleEnables );
+	}
+
+	public void setTableSecRoleEnables( ICFSecSecRoleEnablesTable value ) {
+		tableSecRoleEnables = value;
+	}
+
+	public ICFSecSecRoleEnablesFactory getFactorySecRoleEnables() {
+		return( factorySecRoleEnables );
+	}
+
+	public void setFactorySecRoleEnables( ICFSecSecRoleEnablesFactory value ) {
+		factorySecRoleEnables = value;
+	}
+
+	public ICFSecSecRoleMembTable getTableSecRoleMemb() {
+		return( tableSecRoleMemb );
+	}
+
+	public void setTableSecRoleMemb( ICFSecSecRoleMembTable value ) {
+		tableSecRoleMemb = value;
+	}
+
+	public ICFSecSecRoleMembFactory getFactorySecRoleMemb() {
+		return( factorySecRoleMemb );
+	}
+
+	public void setFactorySecRoleMemb( ICFSecSecRoleMembFactory value ) {
+		factorySecRoleMemb = value;
+	}
+
 	public ICFSecSecSessionTable getTableSecSession() {
 		return( tableSecSession );
 	}
@@ -5187,6 +5277,38 @@ public class CFBamJpaSchema
 
 	public void setFactorySecTentGrpMemb( ICFSecSecTentGrpMembFactory value ) {
 		factorySecTentGrpMemb = value;
+	}
+
+	public ICFSecSecTentRoleTable getTableSecTentRole() {
+		return( tableSecTentRole );
+	}
+
+	public void setTableSecTentRole( ICFSecSecTentRoleTable value ) {
+		tableSecTentRole = value;
+	}
+
+	public ICFSecSecTentRoleFactory getFactorySecTentRole() {
+		return( factorySecTentRole );
+	}
+
+	public void setFactorySecTentRole( ICFSecSecTentRoleFactory value ) {
+		factorySecTentRole = value;
+	}
+
+	public ICFSecSecTentRoleMembTable getTableSecTentRoleMemb() {
+		return( tableSecTentRoleMemb );
+	}
+
+	public void setTableSecTentRoleMemb( ICFSecSecTentRoleMembTable value ) {
+		tableSecTentRoleMemb = value;
+	}
+
+	public ICFSecSecTentRoleMembFactory getFactorySecTentRoleMemb() {
+		return( factorySecTentRoleMemb );
+	}
+
+	public void setFactorySecTentRoleMemb( ICFSecSecTentRoleMembFactory value ) {
+		factorySecTentRoleMemb = value;
 	}
 
 	public ICFSecSecUserTable getTableSecUser() {
@@ -6179,39 +6301,6 @@ public class CFBamJpaSchema
 
 	public void setFactoryValue( ICFBamValueFactory value ) {
 		factoryValue = value;
-	}
-
-	/**
-	 *	Get the Table Permissions interface for the schema.
-	 *
-	 *	@return	The Table Permissions interface for the schema.
-	 *
-	 *	@throws CFLibNotSupportedException thrown by client-side implementations.
-	 */
-	public static ICFSecTablePerms getTablePerms() {
-		return(CFSecJpaSchema.getTablePerms());
-	}
-
-	/**
-	 *	Get the Table Permissions interface cast to this schema's implementation.
-	 *
-	 *	@return The Table Permissions interface for this schema.
-	 */
-	public static ICFBamTablePerms getCFBamTablePerms() {
-		return (ICFBamTablePerms)getTablePerms();
-	}
-
-	/**
-	 *	Set the Table Permissions interface for the schema.  All fractal subclasses of
-	 *	the ICFSecTablePerms implement at least that interface plus their own
-	 *	accessors.
-	 *
-	 *	@param	value	The Table Permissions interface to be used by the schema.
-	 *
-	 *	@throws CFLibNotSupportedException thrown by client-side implementations.
-	 */
-	public static void setTablePerms( ICFSecTablePerms value ) {
-		CFSecJpaSchema.setTablePerms(value);
 	}
 
 	public void bootstrapSchema(CFSecTableInfo tableInfo[]) {
