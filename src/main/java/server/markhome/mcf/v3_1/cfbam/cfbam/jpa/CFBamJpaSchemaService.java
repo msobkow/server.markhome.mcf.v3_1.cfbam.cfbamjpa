@@ -497,6 +497,12 @@ public class CFBamJpaSchemaService {
 	@Autowired
 	private CFBamJpaUuid6GenService uuid6genService;
 
+	@Autowired
+	private CFBamJpaRoleDefService roledefService;
+
+	@Autowired
+	private CFBamJpaSchemaRoleService schemaroleService;
+
 
 	public void bootstrapSchema(CFSecTableInfo tableInfo[]) {
 		ICFSecSchema.getBackingCFSec().bootstrapSchema(tableInfo);

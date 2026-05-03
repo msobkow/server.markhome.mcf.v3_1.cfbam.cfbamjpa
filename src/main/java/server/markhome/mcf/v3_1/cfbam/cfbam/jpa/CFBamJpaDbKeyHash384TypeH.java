@@ -74,7 +74,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
     }
 )
 @Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorValue("43082")
+@DiscriminatorValue("43086")
 @Transactional(Transactional.TxType.SUPPORTS)
 @PersistenceContext(unitName = "CFBamPU")
 public class CFBamJpaDbKeyHash384TypeH extends CFBamJpaDbKeyHash384DefH

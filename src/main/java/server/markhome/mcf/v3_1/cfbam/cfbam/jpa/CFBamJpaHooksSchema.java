@@ -500,6 +500,12 @@ public class CFBamJpaHooksSchema {
 	private CFBamJpaUuid6GenRepository uuid6GenRepository;
 
 	@Autowired
+	private CFBamJpaRoleDefRepository roleDefRepository;
+
+	@Autowired
+	private CFBamJpaSchemaRoleRepository schemaRoleRepository;
+
+	@Autowired
 	@Qualifier("cfbam31JpaSchemaService")
 	private CFBamJpaSchemaService schemaService;
 
@@ -1066,6 +1072,14 @@ public class CFBamJpaHooksSchema {
 	@Autowired
 	@Qualifier("cfbam31JpaUuid6GenService")
 	private CFBamJpaUuid6GenService uuid6GenService;
+
+	@Autowired
+	@Qualifier("cfbam31JpaRoleDefService")
+	private CFBamJpaRoleDefService roleDefService;
+
+	@Autowired
+	@Qualifier("cfbam31JpaSchemaRoleService")
+	private CFBamJpaSchemaRoleService schemaRoleService;
 
 	public LocalContainerEntityManagerFactoryBean getEntityManagerFactoryBean() {
 		if ( cfbam31EntityManagerFactory == null ) {
@@ -2497,6 +2511,26 @@ public class CFBamJpaHooksSchema {
 		return( uuid6GenRepository );
 	}
 
+	public CFBamJpaRoleDefRepository getRoleDefRepository() {
+		if ( roleDefRepository == null ) {
+			// Dynamically resolve the repository by interface type
+			throw new CFLibNotImplementedYetException( getClass(), "getRoleDefRepository",
+				"ERROR - do not know how to dynamically resolve Spring beans from POJO code yet and AspectJ did not resolve it either",
+				"ERROR - do not know how to dynamically resolve Spring beans from POJO code yet and AspectJ did not resolve it either" );
+		}
+		return( roleDefRepository );
+	}
+
+	public CFBamJpaSchemaRoleRepository getSchemaRoleRepository() {
+		if ( schemaRoleRepository == null ) {
+			// Dynamically resolve the repository by interface type
+			throw new CFLibNotImplementedYetException( getClass(), "getSchemaRoleRepository",
+				"ERROR - do not know how to dynamically resolve Spring beans from POJO code yet and AspectJ did not resolve it either",
+				"ERROR - do not know how to dynamically resolve Spring beans from POJO code yet and AspectJ did not resolve it either" );
+		}
+		return( schemaRoleRepository );
+	}
+
 	public CFBamJpaScopeService getScopeService() {
 		if ( scopeService == null ) {
 			// Dynamically resolve the repository by qualifier name
@@ -3895,5 +3929,25 @@ public class CFBamJpaHooksSchema {
 				"ERROR - do not know how to dynamically resolve Spring beans from POJO code yet and AspectJ did not resolve it either" );
 		}
 		return( uuid6GenService );
+	}
+
+	public CFBamJpaRoleDefService getRoleDefService() {
+		if ( roleDefService == null ) {
+			// Dynamically resolve the repository by qualifier name
+			throw new CFLibNotImplementedYetException( getClass(), "getRoleDefService",
+				"ERROR - do not know how to dynamically resolve Spring beans from POJO code yet and AspectJ did not resolve it either",
+				"ERROR - do not know how to dynamically resolve Spring beans from POJO code yet and AspectJ did not resolve it either" );
+		}
+		return( roleDefService );
+	}
+
+	public CFBamJpaSchemaRoleService getSchemaRoleService() {
+		if ( schemaRoleService == null ) {
+			// Dynamically resolve the repository by qualifier name
+			throw new CFLibNotImplementedYetException( getClass(), "getSchemaRoleService",
+				"ERROR - do not know how to dynamically resolve Spring beans from POJO code yet and AspectJ did not resolve it either",
+				"ERROR - do not know how to dynamically resolve Spring beans from POJO code yet and AspectJ did not resolve it either" );
+		}
+		return( schemaRoleService );
 	}
 }

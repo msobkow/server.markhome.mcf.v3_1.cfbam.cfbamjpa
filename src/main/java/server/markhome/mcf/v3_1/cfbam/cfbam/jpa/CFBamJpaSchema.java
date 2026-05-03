@@ -175,8 +175,10 @@ public class CFBamJpaSchema
 	protected ICFBamPopTopDepTable tablePopTopDep;
 	protected ICFBamRelationTable tableRelation;
 	protected ICFBamRelationColTable tableRelationCol;
+	protected ICFBamRoleDefTable tableRoleDef;
 	protected ICFBamSchemaDefTable tableSchemaDef;
 	protected ICFBamSchemaRefTable tableSchemaRef;
+	protected ICFBamSchemaRoleTable tableSchemaRole;
 	protected ICFBamSchemaTweakTable tableSchemaTweak;
 	protected ICFBamScopeTable tableScope;
 	protected ICFSecSecClusGrpTable tableSecClusGrp;
@@ -356,8 +358,10 @@ public class CFBamJpaSchema
 	protected ICFBamPopTopDepFactory factoryPopTopDep;
 	protected ICFBamRelationFactory factoryRelation;
 	protected ICFBamRelationColFactory factoryRelationCol;
+	protected ICFBamRoleDefFactory factoryRoleDef;
 	protected ICFBamSchemaDefFactory factorySchemaDef;
 	protected ICFBamSchemaRefFactory factorySchemaRef;
+	protected ICFBamSchemaRoleFactory factorySchemaRole;
 	protected ICFBamSchemaTweakFactory factorySchemaTweak;
 	protected ICFBamScopeFactory factoryScope;
 	protected ICFSecSecClusGrpFactory factorySecClusGrp;
@@ -2409,6 +2413,34 @@ public class CFBamJpaSchema
 			throw new CFLibNullArgumentException(CFBamJpaSchema.class, "wireRecConstructors", 0, "ICFBamSchema.getClassMapByBackingClassCode(ICFBamUuid6Gen.CLASS_CODE)[" + ICFBamUuid6Gen.CLASS_CODE + "]");
 		}
 	
+		entry = ICFBamSchema.getClassMapByBackingClassCode(ICFBamRoleDef.CLASS_CODE);
+		if (entry != null) {
+			entry.setBackingRecConstructor( new BackingRecConstructor() {
+				@Override
+				public Object instantiate() {
+					ICFBamRoleDef ret = new CFBamJpaRoleDef();
+					return(ret);
+				}
+			});
+		}
+		else {
+			throw new CFLibNullArgumentException(CFBamJpaSchema.class, "wireRecConstructors", 0, "ICFBamSchema.getClassMapByBackingClassCode(ICFBamRoleDef.CLASS_CODE)[" + ICFBamRoleDef.CLASS_CODE + "]");
+		}
+	
+		entry = ICFBamSchema.getClassMapByBackingClassCode(ICFBamSchemaRole.CLASS_CODE);
+		if (entry != null) {
+			entry.setBackingRecConstructor( new BackingRecConstructor() {
+				@Override
+				public Object instantiate() {
+					ICFBamSchemaRole ret = new CFBamJpaSchemaRole();
+					return(ret);
+				}
+			});
+		}
+		else {
+			throw new CFLibNullArgumentException(CFBamJpaSchema.class, "wireRecConstructors", 0, "ICFBamSchema.getClassMapByBackingClassCode(ICFBamSchemaRole.CLASS_CODE)[" + ICFBamSchemaRole.CLASS_CODE + "]");
+		}
+	
 	}
 
 	@Override
@@ -2833,6 +2865,12 @@ public class CFBamJpaSchema
 		if (tableUuid6Gen == null || !(tableUuid6Gen instanceof CFBamJpaUuid6GenTable)) {
 			tableUuid6Gen = new CFBamJpaUuid6GenTable(this);
 		}
+		if (tableRoleDef == null || !(tableRoleDef instanceof CFBamJpaRoleDefTable)) {
+			tableRoleDef = new CFBamJpaRoleDefTable(this);
+		}
+		if (tableSchemaRole == null || !(tableSchemaRole instanceof CFBamJpaSchemaRoleTable)) {
+			tableSchemaRole = new CFBamJpaSchemaRoleTable(this);
+		}
 	}
 
 	@Override		
@@ -2979,8 +3017,10 @@ public class CFBamJpaSchema
 		tablePopTopDep = null;
 		tableRelation = null;
 		tableRelationCol = null;
+		tableRoleDef = null;
 		tableSchemaDef = null;
 		tableSchemaRef = null;
+		tableSchemaRole = null;
 		tableSchemaTweak = null;
 		tableScope = null;
 		tableSecClusGrp = null;
@@ -3160,8 +3200,10 @@ public class CFBamJpaSchema
 		factoryPopTopDep = new CFBamJpaPopTopDepDefaultFactory();
 		factoryRelation = new CFBamJpaRelationDefaultFactory();
 		factoryRelationCol = new CFBamJpaRelationColDefaultFactory();
+		factoryRoleDef = new CFBamJpaRoleDefDefaultFactory();
 		factorySchemaDef = new CFBamJpaSchemaDefDefaultFactory();
 		factorySchemaRef = new CFBamJpaSchemaRefDefaultFactory();
+		factorySchemaRole = new CFBamJpaSchemaRoleDefaultFactory();
 		factorySchemaTweak = new CFBamJpaSchemaTweakDefaultFactory();
 		factoryScope = new CFBamJpaScopeDefaultFactory();
 		factorySecClusGrp = new CFSecJpaSecClusGrpDefaultFactory();
@@ -3419,6 +3461,12 @@ public class CFBamJpaSchema
 
 	@Override
 	public CFLibDbKeyHash256 nextValueIdGen() {
+		CFLibDbKeyHash256 retval = new CFLibDbKeyHash256(0);
+		return( retval );
+	}
+
+	@Override
+	public CFLibDbKeyHash256 nextRoleIdGen() {
 		CFLibDbKeyHash256 retval = new CFLibDbKeyHash256(0);
 		return( retval );
 	}
@@ -4975,6 +5023,22 @@ public class CFBamJpaSchema
 		factoryRelationCol = value;
 	}
 
+	public ICFBamRoleDefTable getTableRoleDef() {
+		return( tableRoleDef );
+	}
+
+	public void setTableRoleDef( ICFBamRoleDefTable value ) {
+		tableRoleDef = value;
+	}
+
+	public ICFBamRoleDefFactory getFactoryRoleDef() {
+		return( factoryRoleDef );
+	}
+
+	public void setFactoryRoleDef( ICFBamRoleDefFactory value ) {
+		factoryRoleDef = value;
+	}
+
 	public ICFBamSchemaDefTable getTableSchemaDef() {
 		return( tableSchemaDef );
 	}
@@ -5005,6 +5069,22 @@ public class CFBamJpaSchema
 
 	public void setFactorySchemaRef( ICFBamSchemaRefFactory value ) {
 		factorySchemaRef = value;
+	}
+
+	public ICFBamSchemaRoleTable getTableSchemaRole() {
+		return( tableSchemaRole );
+	}
+
+	public void setTableSchemaRole( ICFBamSchemaRoleTable value ) {
+		tableSchemaRole = value;
+	}
+
+	public ICFBamSchemaRoleFactory getFactorySchemaRole() {
+		return( factorySchemaRole );
+	}
+
+	public void setFactorySchemaRole( ICFBamSchemaRoleFactory value ) {
+		factorySchemaRole = value;
 	}
 
 	public ICFBamSchemaTweakTable getTableSchemaTweak() {

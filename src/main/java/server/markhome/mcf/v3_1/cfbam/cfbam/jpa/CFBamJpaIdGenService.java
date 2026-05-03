@@ -148,4 +148,13 @@ public class CFBamJpaIdGenService {
 		return( new CFLibDbKeyHash256(0) );
 	}
 
+	/**
+	 *	Generate a RoleIdGen CFLibDbKeyHash256 id.
+	 *
+	 *		@return A pseudo-randomly generated CFLibDBKeyHash128 value
+	 */
+	public CFLibDbKeyHash256 generateRoleIdGen() {
+		return( new CFLibDbKeyHash256(0) );
+	}
+
 }

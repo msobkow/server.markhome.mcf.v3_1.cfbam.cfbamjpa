@@ -81,7 +81,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 )
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "class_code", discriminatorType = DiscriminatorType.INTEGER)
-@DiscriminatorValue("43017")
+@DiscriminatorValue("43021")
 @Transactional(Transactional.TxType.SUPPORTS)
 @PersistenceContext(unitName = "CFBamPU")
 public class CFBamJpaValueH

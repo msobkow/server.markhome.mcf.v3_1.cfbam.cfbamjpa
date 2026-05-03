@@ -284,6 +284,10 @@
         <class>server.markhome.mcf.v3_1.cfbam.cfbam.jpa.CFBamJpaUuidGenH</class>
         <class>server.markhome.mcf.v3_1.cfbam.cfbam.jpa.CFBamJpaUuid6Gen</class>
         <class>server.markhome.mcf.v3_1.cfbam.cfbam.jpa.CFBamJpaUuid6GenH</class>
+        <class>server.markhome.mcf.v3_1.cfbam.cfbam.jpa.CFBamJpaRoleDef</class>
+        <class>server.markhome.mcf.v3_1.cfbam.cfbam.jpa.CFBamJpaRoleDefH</class>
+        <class>server.markhome.mcf.v3_1.cfbam.cfbam.jpa.CFBamJpaSchemaRole</class>
+        <class>server.markhome.mcf.v3_1.cfbam.cfbam.jpa.CFBamJpaSchemaRoleH</class>
         <properties>
             <!-- Example properties, adjust for your DBMS -->
             <property name="hibernate.transaction.jta.platform" value="org.hibernate.engine.transaction.jta.platform.internal.SpringJtaPlatform"/>
