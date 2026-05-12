@@ -738,11 +738,13 @@ public class CFBamJpaUInt64DefTable implements ICFBamUInt64DefTable
 		CFLibDbKeyHash256 argId )
 	{
 		final String S_ProcName = "readDerivedByIdIdx";
-		boolean permissionGranted = canReadUInt64Def(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadUInt64Def(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt64DefTable.TABLE_NAME, "readuint64def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		ICFBamUInt64Def retval = schema.getJpaHooksSchema().getUInt64DefService().find(argId);
 		if(retval != null) {
 			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readuint64def'), clear retval to null if not a member
@@ -773,11 +775,13 @@ public class CFBamJpaUInt64DefTable implements ICFBamUInt64DefTable
 		String argName )
 	{
 		final String S_ProcName = "readDerivedByUNameIdx";
-		boolean permissionGranted = canReadUInt64Def(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadUInt64Def(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt64DefTable.TABLE_NAME, "readuint64def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		ICFBamUInt64Def retval = schema.getJpaHooksSchema().getUInt64DefService().findByUNameIdx(argScopeId,
 		argName);
 		if(retval != null) {
@@ -805,11 +809,13 @@ public class CFBamJpaUInt64DefTable implements ICFBamUInt64DefTable
 		CFLibDbKeyHash256 argScopeId )
 	{
 		final String S_ProcName = "readDerivedByScopeIdx";
-		boolean permissionGranted = canReadUInt64Def(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadUInt64Def(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt64DefTable.TABLE_NAME, "readuint64def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		List<CFBamJpaUInt64Def> retlist = schema.getJpaHooksSchema().getUInt64DefService().findByScopeIdx(argScopeId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaUInt64Def> finallist = new ArrayList<>();
@@ -846,11 +852,13 @@ public class CFBamJpaUInt64DefTable implements ICFBamUInt64DefTable
 		CFLibDbKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "readDerivedByDefSchemaIdx";
-		boolean permissionGranted = canReadUInt64Def(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadUInt64Def(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt64DefTable.TABLE_NAME, "readuint64def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		List<CFBamJpaUInt64Def> retlist = schema.getJpaHooksSchema().getUInt64DefService().findByDefSchemaIdx(argDefSchemaId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaUInt64Def> finallist = new ArrayList<>();
@@ -887,11 +895,13 @@ public class CFBamJpaUInt64DefTable implements ICFBamUInt64DefTable
 		CFLibDbKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "readDerivedByPrevIdx";
-		boolean permissionGranted = canReadUInt64Def(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadUInt64Def(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt64DefTable.TABLE_NAME, "readuint64def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		List<CFBamJpaUInt64Def> retlist = schema.getJpaHooksSchema().getUInt64DefService().findByPrevIdx(argPrevId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaUInt64Def> finallist = new ArrayList<>();
@@ -928,11 +938,13 @@ public class CFBamJpaUInt64DefTable implements ICFBamUInt64DefTable
 		CFLibDbKeyHash256 argNextId )
 	{
 		final String S_ProcName = "readDerivedByNextIdx";
-		boolean permissionGranted = canReadUInt64Def(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadUInt64Def(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt64DefTable.TABLE_NAME, "readuint64def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		List<CFBamJpaUInt64Def> retlist = schema.getJpaHooksSchema().getUInt64DefService().findByNextIdx(argNextId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaUInt64Def> finallist = new ArrayList<>();
@@ -972,11 +984,13 @@ public class CFBamJpaUInt64DefTable implements ICFBamUInt64DefTable
 		CFLibDbKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "readDerivedByContPrevIdx";
-		boolean permissionGranted = canReadUInt64Def(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadUInt64Def(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt64DefTable.TABLE_NAME, "readuint64def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		List<CFBamJpaUInt64Def> retlist = schema.getJpaHooksSchema().getUInt64DefService().findByContPrevIdx(argScopeId,
 		argPrevId);
 		if(retlist != null) {
@@ -1017,11 +1031,13 @@ public class CFBamJpaUInt64DefTable implements ICFBamUInt64DefTable
 		CFLibDbKeyHash256 argNextId )
 	{
 		final String S_ProcName = "readDerivedByContNextIdx";
-		boolean permissionGranted = canReadUInt64Def(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadUInt64Def(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt64DefTable.TABLE_NAME, "readuint64def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		List<CFBamJpaUInt64Def> retlist = schema.getJpaHooksSchema().getUInt64DefService().findByContNextIdx(argScopeId,
 		argNextId);
 		if(retlist != null) {
@@ -1131,11 +1147,13 @@ public class CFBamJpaUInt64DefTable implements ICFBamUInt64DefTable
 		CFLibDbKeyHash256 argId )
 	{
 		final String S_ProcName = "readRecByIdIdx";
-		boolean permissionGranted = canReadUInt64Def(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadUInt64Def(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt64DefTable.TABLE_NAME, "readuint64def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByIdIdx");
 	}
 
@@ -1159,11 +1177,13 @@ public class CFBamJpaUInt64DefTable implements ICFBamUInt64DefTable
 		String argName )
 	{
 		final String S_ProcName = "readRecByUNameIdx";
-		boolean permissionGranted = canReadUInt64Def(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadUInt64Def(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt64DefTable.TABLE_NAME, "readuint64def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByUNameIdx");
 	}
 
@@ -1183,11 +1203,13 @@ public class CFBamJpaUInt64DefTable implements ICFBamUInt64DefTable
 		CFLibDbKeyHash256 argScopeId )
 	{
 		final String S_ProcName = "readRecByScopeIdx";
-		boolean permissionGranted = canReadUInt64Def(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadUInt64Def(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt64DefTable.TABLE_NAME, "readuint64def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByScopeIdx");
 	}
 
@@ -1207,11 +1229,13 @@ public class CFBamJpaUInt64DefTable implements ICFBamUInt64DefTable
 		CFLibDbKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "readRecByDefSchemaIdx";
-		boolean permissionGranted = canReadUInt64Def(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadUInt64Def(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt64DefTable.TABLE_NAME, "readuint64def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByDefSchemaIdx");
 	}
 
@@ -1231,11 +1255,13 @@ public class CFBamJpaUInt64DefTable implements ICFBamUInt64DefTable
 		CFLibDbKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "readRecByPrevIdx";
-		boolean permissionGranted = canReadUInt64Def(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadUInt64Def(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt64DefTable.TABLE_NAME, "readuint64def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByPrevIdx");
 	}
 
@@ -1255,11 +1281,13 @@ public class CFBamJpaUInt64DefTable implements ICFBamUInt64DefTable
 		CFLibDbKeyHash256 argNextId )
 	{
 		final String S_ProcName = "readRecByNextIdx";
-		boolean permissionGranted = canReadUInt64Def(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadUInt64Def(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt64DefTable.TABLE_NAME, "readuint64def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByNextIdx");
 	}
 
@@ -1282,11 +1310,13 @@ public class CFBamJpaUInt64DefTable implements ICFBamUInt64DefTable
 		CFLibDbKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "readRecByContPrevIdx";
-		boolean permissionGranted = canReadUInt64Def(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadUInt64Def(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt64DefTable.TABLE_NAME, "readuint64def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByContPrevIdx");
 	}
 
@@ -1309,11 +1339,13 @@ public class CFBamJpaUInt64DefTable implements ICFBamUInt64DefTable
 		CFLibDbKeyHash256 argNextId )
 	{
 		final String S_ProcName = "readRecByContNextIdx";
-		boolean permissionGranted = canReadUInt64Def(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadUInt64Def(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt64DefTable.TABLE_NAME, "readuint64def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByContNextIdx");
 	}
 

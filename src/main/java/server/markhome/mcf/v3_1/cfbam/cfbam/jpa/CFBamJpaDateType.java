@@ -78,7 +78,7 @@ public class CFBamJpaDateType extends CFBamJpaDateDef
 	implements ICFBamDateType
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="SchemaDefId" )
+	@JoinColumn( name="SchemaDefId", referencedColumnName="Id" )
 	protected CFBamJpaSchemaDef requiredContainerSchemaDef;
 
 

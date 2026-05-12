@@ -738,11 +738,13 @@ public class CFBamJpaAtomTable implements ICFBamAtomTable
 		CFLibDbKeyHash256 argId )
 	{
 		final String S_ProcName = "readDerivedByIdIdx";
-		boolean permissionGranted = canReadAtom(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadAtom(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamAtomTable.TABLE_NAME, "readatom", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		ICFBamAtom retval = schema.getJpaHooksSchema().getAtomService().find(argId);
 		if(retval != null) {
 			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readatom'), clear retval to null if not a member
@@ -773,11 +775,13 @@ public class CFBamJpaAtomTable implements ICFBamAtomTable
 		String argName )
 	{
 		final String S_ProcName = "readDerivedByUNameIdx";
-		boolean permissionGranted = canReadAtom(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadAtom(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamAtomTable.TABLE_NAME, "readatom", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		ICFBamAtom retval = schema.getJpaHooksSchema().getAtomService().findByUNameIdx(argScopeId,
 		argName);
 		if(retval != null) {
@@ -805,11 +809,13 @@ public class CFBamJpaAtomTable implements ICFBamAtomTable
 		CFLibDbKeyHash256 argScopeId )
 	{
 		final String S_ProcName = "readDerivedByScopeIdx";
-		boolean permissionGranted = canReadAtom(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadAtom(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamAtomTable.TABLE_NAME, "readatom", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		List<CFBamJpaAtom> retlist = schema.getJpaHooksSchema().getAtomService().findByScopeIdx(argScopeId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaAtom> finallist = new ArrayList<>();
@@ -846,11 +852,13 @@ public class CFBamJpaAtomTable implements ICFBamAtomTable
 		CFLibDbKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "readDerivedByDefSchemaIdx";
-		boolean permissionGranted = canReadAtom(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadAtom(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamAtomTable.TABLE_NAME, "readatom", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		List<CFBamJpaAtom> retlist = schema.getJpaHooksSchema().getAtomService().findByDefSchemaIdx(argDefSchemaId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaAtom> finallist = new ArrayList<>();
@@ -887,11 +895,13 @@ public class CFBamJpaAtomTable implements ICFBamAtomTable
 		CFLibDbKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "readDerivedByPrevIdx";
-		boolean permissionGranted = canReadAtom(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadAtom(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamAtomTable.TABLE_NAME, "readatom", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		List<CFBamJpaAtom> retlist = schema.getJpaHooksSchema().getAtomService().findByPrevIdx(argPrevId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaAtom> finallist = new ArrayList<>();
@@ -928,11 +938,13 @@ public class CFBamJpaAtomTable implements ICFBamAtomTable
 		CFLibDbKeyHash256 argNextId )
 	{
 		final String S_ProcName = "readDerivedByNextIdx";
-		boolean permissionGranted = canReadAtom(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadAtom(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamAtomTable.TABLE_NAME, "readatom", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		List<CFBamJpaAtom> retlist = schema.getJpaHooksSchema().getAtomService().findByNextIdx(argNextId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaAtom> finallist = new ArrayList<>();
@@ -972,11 +984,13 @@ public class CFBamJpaAtomTable implements ICFBamAtomTable
 		CFLibDbKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "readDerivedByContPrevIdx";
-		boolean permissionGranted = canReadAtom(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadAtom(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamAtomTable.TABLE_NAME, "readatom", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		List<CFBamJpaAtom> retlist = schema.getJpaHooksSchema().getAtomService().findByContPrevIdx(argScopeId,
 		argPrevId);
 		if(retlist != null) {
@@ -1017,11 +1031,13 @@ public class CFBamJpaAtomTable implements ICFBamAtomTable
 		CFLibDbKeyHash256 argNextId )
 	{
 		final String S_ProcName = "readDerivedByContNextIdx";
-		boolean permissionGranted = canReadAtom(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadAtom(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamAtomTable.TABLE_NAME, "readatom", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		List<CFBamJpaAtom> retlist = schema.getJpaHooksSchema().getAtomService().findByContNextIdx(argScopeId,
 		argNextId);
 		if(retlist != null) {
@@ -1131,11 +1147,13 @@ public class CFBamJpaAtomTable implements ICFBamAtomTable
 		CFLibDbKeyHash256 argId )
 	{
 		final String S_ProcName = "readRecByIdIdx";
-		boolean permissionGranted = canReadAtom(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadAtom(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamAtomTable.TABLE_NAME, "readatom", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByIdIdx");
 	}
 
@@ -1159,11 +1177,13 @@ public class CFBamJpaAtomTable implements ICFBamAtomTable
 		String argName )
 	{
 		final String S_ProcName = "readRecByUNameIdx";
-		boolean permissionGranted = canReadAtom(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadAtom(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamAtomTable.TABLE_NAME, "readatom", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByUNameIdx");
 	}
 
@@ -1183,11 +1203,13 @@ public class CFBamJpaAtomTable implements ICFBamAtomTable
 		CFLibDbKeyHash256 argScopeId )
 	{
 		final String S_ProcName = "readRecByScopeIdx";
-		boolean permissionGranted = canReadAtom(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadAtom(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamAtomTable.TABLE_NAME, "readatom", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByScopeIdx");
 	}
 
@@ -1207,11 +1229,13 @@ public class CFBamJpaAtomTable implements ICFBamAtomTable
 		CFLibDbKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "readRecByDefSchemaIdx";
-		boolean permissionGranted = canReadAtom(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadAtom(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamAtomTable.TABLE_NAME, "readatom", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByDefSchemaIdx");
 	}
 
@@ -1231,11 +1255,13 @@ public class CFBamJpaAtomTable implements ICFBamAtomTable
 		CFLibDbKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "readRecByPrevIdx";
-		boolean permissionGranted = canReadAtom(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadAtom(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamAtomTable.TABLE_NAME, "readatom", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByPrevIdx");
 	}
 
@@ -1255,11 +1281,13 @@ public class CFBamJpaAtomTable implements ICFBamAtomTable
 		CFLibDbKeyHash256 argNextId )
 	{
 		final String S_ProcName = "readRecByNextIdx";
-		boolean permissionGranted = canReadAtom(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadAtom(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamAtomTable.TABLE_NAME, "readatom", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByNextIdx");
 	}
 
@@ -1282,11 +1310,13 @@ public class CFBamJpaAtomTable implements ICFBamAtomTable
 		CFLibDbKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "readRecByContPrevIdx";
-		boolean permissionGranted = canReadAtom(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadAtom(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamAtomTable.TABLE_NAME, "readatom", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByContPrevIdx");
 	}
 
@@ -1309,11 +1339,13 @@ public class CFBamJpaAtomTable implements ICFBamAtomTable
 		CFLibDbKeyHash256 argNextId )
 	{
 		final String S_ProcName = "readRecByContNextIdx";
-		boolean permissionGranted = canReadAtom(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadAtom(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamAtomTable.TABLE_NAME, "readatom", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByContNextIdx");
 	}
 

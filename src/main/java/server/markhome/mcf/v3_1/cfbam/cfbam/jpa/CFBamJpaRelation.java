@@ -84,22 +84,22 @@ public class CFBamJpaRelation extends CFBamJpaScope
 	implements ICFBamRelation
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="defschid" )
+	@JoinColumn( name="defschid", referencedColumnName="Id" )
 	protected CFBamJpaSchemaDef optionalLookupDefSchema;
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="TableId" )
+	@JoinColumn( name="TableId", referencedColumnName="Id" )
 	protected CFBamJpaTable requiredContainerFromTable;
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="FromIndexId" )
+	@JoinColumn( name="FromIndexId", referencedColumnName="Id" )
 	protected CFBamJpaIndex requiredLookupFromIndex;
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="ToTableId" )
+	@JoinColumn( name="ToTableId", referencedColumnName="Id" )
 	protected CFBamJpaTable requiredLookupToTable;
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="ToIndexId" )
+	@JoinColumn( name="ToIndexId", referencedColumnName="Id" )
 	protected CFBamJpaIndex requiredLookupToIndex;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="NarrowedId" )
+	@JoinColumn( name="NarrowedId", referencedColumnName="Id" )
 	protected CFBamJpaRelation optionalLookupNarrowed;
 
 	@Column( name="safe_name", nullable=false, length=192 )

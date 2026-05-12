@@ -779,11 +779,13 @@ public class CFBamJpaBlobColTable implements ICFBamBlobColTable
 		CFLibDbKeyHash256 argId )
 	{
 		final String S_ProcName = "readDerivedByIdIdx";
-		boolean permissionGranted = canReadBlobCol(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadBlobCol(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamBlobColTable.TABLE_NAME, "readblobcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		ICFBamBlobCol retval = schema.getJpaHooksSchema().getBlobColService().find(argId);
 		if(retval != null) {
 			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readblobcol'), clear retval to null if not a member
@@ -814,11 +816,13 @@ public class CFBamJpaBlobColTable implements ICFBamBlobColTable
 		String argName )
 	{
 		final String S_ProcName = "readDerivedByUNameIdx";
-		boolean permissionGranted = canReadBlobCol(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadBlobCol(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamBlobColTable.TABLE_NAME, "readblobcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		ICFBamBlobCol retval = schema.getJpaHooksSchema().getBlobColService().findByUNameIdx(argScopeId,
 		argName);
 		if(retval != null) {
@@ -846,11 +850,13 @@ public class CFBamJpaBlobColTable implements ICFBamBlobColTable
 		CFLibDbKeyHash256 argScopeId )
 	{
 		final String S_ProcName = "readDerivedByScopeIdx";
-		boolean permissionGranted = canReadBlobCol(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadBlobCol(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamBlobColTable.TABLE_NAME, "readblobcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		List<CFBamJpaBlobCol> retlist = schema.getJpaHooksSchema().getBlobColService().findByScopeIdx(argScopeId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaBlobCol> finallist = new ArrayList<>();
@@ -887,11 +893,13 @@ public class CFBamJpaBlobColTable implements ICFBamBlobColTable
 		CFLibDbKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "readDerivedByDefSchemaIdx";
-		boolean permissionGranted = canReadBlobCol(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadBlobCol(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamBlobColTable.TABLE_NAME, "readblobcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		List<CFBamJpaBlobCol> retlist = schema.getJpaHooksSchema().getBlobColService().findByDefSchemaIdx(argDefSchemaId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaBlobCol> finallist = new ArrayList<>();
@@ -928,11 +936,13 @@ public class CFBamJpaBlobColTable implements ICFBamBlobColTable
 		CFLibDbKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "readDerivedByPrevIdx";
-		boolean permissionGranted = canReadBlobCol(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadBlobCol(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamBlobColTable.TABLE_NAME, "readblobcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		List<CFBamJpaBlobCol> retlist = schema.getJpaHooksSchema().getBlobColService().findByPrevIdx(argPrevId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaBlobCol> finallist = new ArrayList<>();
@@ -969,11 +979,13 @@ public class CFBamJpaBlobColTable implements ICFBamBlobColTable
 		CFLibDbKeyHash256 argNextId )
 	{
 		final String S_ProcName = "readDerivedByNextIdx";
-		boolean permissionGranted = canReadBlobCol(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadBlobCol(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamBlobColTable.TABLE_NAME, "readblobcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		List<CFBamJpaBlobCol> retlist = schema.getJpaHooksSchema().getBlobColService().findByNextIdx(argNextId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaBlobCol> finallist = new ArrayList<>();
@@ -1013,11 +1025,13 @@ public class CFBamJpaBlobColTable implements ICFBamBlobColTable
 		CFLibDbKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "readDerivedByContPrevIdx";
-		boolean permissionGranted = canReadBlobCol(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadBlobCol(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamBlobColTable.TABLE_NAME, "readblobcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		List<CFBamJpaBlobCol> retlist = schema.getJpaHooksSchema().getBlobColService().findByContPrevIdx(argScopeId,
 		argPrevId);
 		if(retlist != null) {
@@ -1058,11 +1072,13 @@ public class CFBamJpaBlobColTable implements ICFBamBlobColTable
 		CFLibDbKeyHash256 argNextId )
 	{
 		final String S_ProcName = "readDerivedByContNextIdx";
-		boolean permissionGranted = canReadBlobCol(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadBlobCol(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamBlobColTable.TABLE_NAME, "readblobcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		List<CFBamJpaBlobCol> retlist = schema.getJpaHooksSchema().getBlobColService().findByContNextIdx(argScopeId,
 		argNextId);
 		if(retlist != null) {
@@ -1100,11 +1116,13 @@ public class CFBamJpaBlobColTable implements ICFBamBlobColTable
 		CFLibDbKeyHash256 argTableId )
 	{
 		final String S_ProcName = "readDerivedByTableIdx";
-		boolean permissionGranted = canReadBlobCol(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadBlobCol(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamBlobColTable.TABLE_NAME, "readblobcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		List<CFBamJpaBlobCol> retlist = schema.getJpaHooksSchema().getBlobColService().findByTableIdx(argTableId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaBlobCol> finallist = new ArrayList<>();
@@ -1213,11 +1231,13 @@ public class CFBamJpaBlobColTable implements ICFBamBlobColTable
 		CFLibDbKeyHash256 argId )
 	{
 		final String S_ProcName = "readRecByIdIdx";
-		boolean permissionGranted = canReadBlobCol(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadBlobCol(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamBlobColTable.TABLE_NAME, "readblobcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByIdIdx");
 	}
 
@@ -1241,11 +1261,13 @@ public class CFBamJpaBlobColTable implements ICFBamBlobColTable
 		String argName )
 	{
 		final String S_ProcName = "readRecByUNameIdx";
-		boolean permissionGranted = canReadBlobCol(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadBlobCol(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamBlobColTable.TABLE_NAME, "readblobcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByUNameIdx");
 	}
 
@@ -1265,11 +1287,13 @@ public class CFBamJpaBlobColTable implements ICFBamBlobColTable
 		CFLibDbKeyHash256 argScopeId )
 	{
 		final String S_ProcName = "readRecByScopeIdx";
-		boolean permissionGranted = canReadBlobCol(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadBlobCol(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamBlobColTable.TABLE_NAME, "readblobcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByScopeIdx");
 	}
 
@@ -1289,11 +1313,13 @@ public class CFBamJpaBlobColTable implements ICFBamBlobColTable
 		CFLibDbKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "readRecByDefSchemaIdx";
-		boolean permissionGranted = canReadBlobCol(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadBlobCol(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamBlobColTable.TABLE_NAME, "readblobcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByDefSchemaIdx");
 	}
 
@@ -1313,11 +1339,13 @@ public class CFBamJpaBlobColTable implements ICFBamBlobColTable
 		CFLibDbKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "readRecByPrevIdx";
-		boolean permissionGranted = canReadBlobCol(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadBlobCol(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamBlobColTable.TABLE_NAME, "readblobcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByPrevIdx");
 	}
 
@@ -1337,11 +1365,13 @@ public class CFBamJpaBlobColTable implements ICFBamBlobColTable
 		CFLibDbKeyHash256 argNextId )
 	{
 		final String S_ProcName = "readRecByNextIdx";
-		boolean permissionGranted = canReadBlobCol(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadBlobCol(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamBlobColTable.TABLE_NAME, "readblobcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByNextIdx");
 	}
 
@@ -1364,11 +1394,13 @@ public class CFBamJpaBlobColTable implements ICFBamBlobColTable
 		CFLibDbKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "readRecByContPrevIdx";
-		boolean permissionGranted = canReadBlobCol(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadBlobCol(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamBlobColTable.TABLE_NAME, "readblobcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByContPrevIdx");
 	}
 
@@ -1391,11 +1423,13 @@ public class CFBamJpaBlobColTable implements ICFBamBlobColTable
 		CFLibDbKeyHash256 argNextId )
 	{
 		final String S_ProcName = "readRecByContNextIdx";
-		boolean permissionGranted = canReadBlobCol(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadBlobCol(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamBlobColTable.TABLE_NAME, "readblobcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByContNextIdx");
 	}
 
@@ -1415,11 +1449,13 @@ public class CFBamJpaBlobColTable implements ICFBamBlobColTable
 		CFLibDbKeyHash256 argTableId )
 	{
 		final String S_ProcName = "readRecByTableIdx";
-		boolean permissionGranted = canReadBlobCol(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadBlobCol(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamBlobColTable.TABLE_NAME, "readblobcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByTableIdx");
 	}
 

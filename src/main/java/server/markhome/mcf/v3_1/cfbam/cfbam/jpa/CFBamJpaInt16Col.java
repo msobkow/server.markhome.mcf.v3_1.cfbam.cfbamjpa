@@ -78,7 +78,7 @@ public class CFBamJpaInt16Col extends CFBamJpaInt16Def
 	implements ICFBamInt16Col
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="TableId" )
+	@JoinColumn( name="TableId", referencedColumnName="Id" )
 	protected CFBamJpaTable requiredContainerTable;
 
 

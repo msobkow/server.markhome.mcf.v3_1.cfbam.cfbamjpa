@@ -78,7 +78,7 @@ public class CFBamJpaTextCol extends CFBamJpaTextDef
 	implements ICFBamTextCol
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="TableId" )
+	@JoinColumn( name="TableId", referencedColumnName="Id" )
 	protected CFBamJpaTable requiredContainerTable;
 
 

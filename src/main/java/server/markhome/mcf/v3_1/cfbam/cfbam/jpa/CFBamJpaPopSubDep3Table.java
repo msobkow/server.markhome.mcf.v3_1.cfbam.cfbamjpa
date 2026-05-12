@@ -646,11 +646,13 @@ public class CFBamJpaPopSubDep3Table implements ICFBamPopSubDep3Table
 		CFLibDbKeyHash256 argId )
 	{
 		final String S_ProcName = "readDerivedByIdIdx";
-		boolean permissionGranted = canReadPopSubDep3(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadPopSubDep3(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep3Table.TABLE_NAME, "readpopsubdep3", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		ICFBamPopSubDep3 retval = schema.getJpaHooksSchema().getPopSubDep3Service().find(argId);
 		if(retval != null) {
 			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readpopsubdep3'), clear retval to null if not a member
@@ -677,11 +679,13 @@ public class CFBamJpaPopSubDep3Table implements ICFBamPopSubDep3Table
 		CFLibDbKeyHash256 argTenantId )
 	{
 		final String S_ProcName = "readDerivedByTenantIdx";
-		boolean permissionGranted = canReadPopSubDep3(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadPopSubDep3(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep3Table.TABLE_NAME, "readpopsubdep3", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		List<CFBamJpaPopSubDep3> retlist = schema.getJpaHooksSchema().getPopSubDep3Service().findByTenantIdx(argTenantId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaPopSubDep3> finallist = new ArrayList<>();
@@ -718,11 +722,13 @@ public class CFBamJpaPopSubDep3Table implements ICFBamPopSubDep3Table
 		CFLibDbKeyHash256 argRelationId )
 	{
 		final String S_ProcName = "readDerivedByRelationIdx";
-		boolean permissionGranted = canReadPopSubDep3(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadPopSubDep3(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep3Table.TABLE_NAME, "readpopsubdep3", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		List<CFBamJpaPopSubDep3> retlist = schema.getJpaHooksSchema().getPopSubDep3Service().findByRelationIdx(argRelationId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaPopSubDep3> finallist = new ArrayList<>();
@@ -759,11 +765,13 @@ public class CFBamJpaPopSubDep3Table implements ICFBamPopSubDep3Table
 		CFLibDbKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "readDerivedByDefSchemaIdx";
-		boolean permissionGranted = canReadPopSubDep3(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadPopSubDep3(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep3Table.TABLE_NAME, "readpopsubdep3", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		List<CFBamJpaPopSubDep3> retlist = schema.getJpaHooksSchema().getPopSubDep3Service().findByDefSchemaIdx(argDefSchemaId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaPopSubDep3> finallist = new ArrayList<>();
@@ -800,11 +808,13 @@ public class CFBamJpaPopSubDep3Table implements ICFBamPopSubDep3Table
 		CFLibDbKeyHash256 argPopSubDep2Id )
 	{
 		final String S_ProcName = "readDerivedByPopSubDep2Idx";
-		boolean permissionGranted = canReadPopSubDep3(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadPopSubDep3(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep3Table.TABLE_NAME, "readpopsubdep3", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		List<CFBamJpaPopSubDep3> retlist = schema.getJpaHooksSchema().getPopSubDep3Service().findByPopSubDep2Idx(argPopSubDep2Id);
 		if(retlist != null) {
 			ArrayList<CFBamJpaPopSubDep3> finallist = new ArrayList<>();
@@ -845,11 +855,13 @@ public class CFBamJpaPopSubDep3Table implements ICFBamPopSubDep3Table
 		String argName )
 	{
 		final String S_ProcName = "readDerivedByUNameIdx";
-		boolean permissionGranted = canReadPopSubDep3(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadPopSubDep3(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep3Table.TABLE_NAME, "readpopsubdep3", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		ICFBamPopSubDep3 retval = schema.getJpaHooksSchema().getPopSubDep3Service().findByUNameIdx(argPopSubDep2Id,
 		argName);
 		if(retval != null) {
@@ -949,11 +961,13 @@ public class CFBamJpaPopSubDep3Table implements ICFBamPopSubDep3Table
 		CFLibDbKeyHash256 argId )
 	{
 		final String S_ProcName = "readRecByIdIdx";
-		boolean permissionGranted = canReadPopSubDep3(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadPopSubDep3(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep3Table.TABLE_NAME, "readpopsubdep3", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByIdIdx");
 	}
 
@@ -973,11 +987,13 @@ public class CFBamJpaPopSubDep3Table implements ICFBamPopSubDep3Table
 		CFLibDbKeyHash256 argTenantId )
 	{
 		final String S_ProcName = "readRecByTenantIdx";
-		boolean permissionGranted = canReadPopSubDep3(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadPopSubDep3(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep3Table.TABLE_NAME, "readpopsubdep3", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByTenantIdx");
 	}
 
@@ -997,11 +1013,13 @@ public class CFBamJpaPopSubDep3Table implements ICFBamPopSubDep3Table
 		CFLibDbKeyHash256 argRelationId )
 	{
 		final String S_ProcName = "readRecByRelationIdx";
-		boolean permissionGranted = canReadPopSubDep3(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadPopSubDep3(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep3Table.TABLE_NAME, "readpopsubdep3", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByRelationIdx");
 	}
 
@@ -1021,11 +1039,13 @@ public class CFBamJpaPopSubDep3Table implements ICFBamPopSubDep3Table
 		CFLibDbKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "readRecByDefSchemaIdx";
-		boolean permissionGranted = canReadPopSubDep3(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadPopSubDep3(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep3Table.TABLE_NAME, "readpopsubdep3", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByDefSchemaIdx");
 	}
 
@@ -1045,11 +1065,13 @@ public class CFBamJpaPopSubDep3Table implements ICFBamPopSubDep3Table
 		CFLibDbKeyHash256 argPopSubDep2Id )
 	{
 		final String S_ProcName = "readRecByPopSubDep2Idx";
-		boolean permissionGranted = canReadPopSubDep3(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadPopSubDep3(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep3Table.TABLE_NAME, "readpopsubdep3", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByPopSubDep2Idx");
 	}
 
@@ -1073,11 +1095,13 @@ public class CFBamJpaPopSubDep3Table implements ICFBamPopSubDep3Table
 		String argName )
 	{
 		final String S_ProcName = "readRecByUNameIdx";
-		boolean permissionGranted = canReadPopSubDep3(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadPopSubDep3(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep3Table.TABLE_NAME, "readpopsubdep3", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByUNameIdx");
 	}
 }

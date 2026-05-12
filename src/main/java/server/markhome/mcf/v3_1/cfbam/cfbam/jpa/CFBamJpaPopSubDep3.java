@@ -79,7 +79,7 @@ public class CFBamJpaPopSubDep3 extends CFBamJpaPopDep
 	implements ICFBamPopSubDep3
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="contpopdep2id" )
+	@JoinColumn( name="contpopdep2id", referencedColumnName="Id" )
 	protected CFBamJpaPopSubDep2 requiredContainerPopSubDep2;
 
 	@Column( name="safe_name", nullable=false, length=192 )

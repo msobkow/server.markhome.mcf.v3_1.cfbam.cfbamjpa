@@ -80,10 +80,10 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 	implements ICFBamServerMethod
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="defschid" )
+	@JoinColumn( name="defschid", referencedColumnName="Id" )
 	protected CFBamJpaSchemaDef optionalLookupDefSchema;
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="TableId" )
+	@JoinColumn( name="TableId", referencedColumnName="Id" )
 	protected CFBamJpaTable requiredContainerForTable;
 
 	@Column( name="safe_name", nullable=false, length=192 )

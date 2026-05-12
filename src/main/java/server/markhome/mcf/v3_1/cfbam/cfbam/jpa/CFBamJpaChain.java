@@ -89,16 +89,16 @@ public class CFBamJpaChain
 	protected int requiredRevision;
 
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="TableId" )
+	@JoinColumn( name="TableId", referencedColumnName="Id" )
 	protected CFBamJpaTable requiredContainerTable;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="defschid" )
+	@JoinColumn( name="defschid", referencedColumnName="Id" )
 	protected CFBamJpaSchemaDef optionalLookupDefSchema;
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="PrevRelationId" )
+	@JoinColumn( name="PrevRelationId", referencedColumnName="Id" )
 	protected CFBamJpaRelation requiredLookupPrevRel;
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="NextRelationId" )
+	@JoinColumn( name="NextRelationId", referencedColumnName="Id" )
 	protected CFBamJpaRelation requiredLookupNextRel;
 
 	@AttributeOverrides({

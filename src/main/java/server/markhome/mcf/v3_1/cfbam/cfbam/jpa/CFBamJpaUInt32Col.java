@@ -78,7 +78,7 @@ public class CFBamJpaUInt32Col extends CFBamJpaUInt32Def
 	implements ICFBamUInt32Col
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="TableId" )
+	@JoinColumn( name="TableId", referencedColumnName="Id" )
 	protected CFBamJpaTable requiredContainerTable;
 
 

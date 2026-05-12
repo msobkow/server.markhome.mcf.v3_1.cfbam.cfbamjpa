@@ -81,13 +81,13 @@ public class CFBamJpaClearTopDep extends CFBamJpaClearDep
 	implements ICFBamClearTopDep
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="TableId" )
+	@JoinColumn( name="TableId", referencedColumnName="Id" )
 	protected CFBamJpaTable requiredContainerTable;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="PrevId" )
+	@JoinColumn( name="PrevId", referencedColumnName="Id" )
 	protected CFBamJpaClearTopDep optionalLookupPrev;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="NextId" )
+	@JoinColumn( name="NextId", referencedColumnName="Id" )
 	protected CFBamJpaClearTopDep optionalLookupNext;
 
 	@Column( name="safe_name", nullable=false, length=192 )

@@ -78,7 +78,7 @@ public class CFBamJpaDbKeyHash512Type extends CFBamJpaDbKeyHash512Def
 	implements ICFBamDbKeyHash512Type
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="SchemaDefId" )
+	@JoinColumn( name="SchemaDefId", referencedColumnName="Id" )
 	protected CFBamJpaSchemaDef requiredContainerSchemaDef;
 
 

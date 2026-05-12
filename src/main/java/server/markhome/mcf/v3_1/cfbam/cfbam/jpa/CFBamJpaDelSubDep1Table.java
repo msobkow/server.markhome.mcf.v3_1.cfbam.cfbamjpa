@@ -646,11 +646,13 @@ public class CFBamJpaDelSubDep1Table implements ICFBamDelSubDep1Table
 		CFLibDbKeyHash256 argId )
 	{
 		final String S_ProcName = "readDerivedByIdIdx";
-		boolean permissionGranted = canReadDelSubDep1(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadDelSubDep1(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDelSubDep1Table.TABLE_NAME, "readdelsubdep1", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		ICFBamDelSubDep1 retval = schema.getJpaHooksSchema().getDelSubDep1Service().find(argId);
 		if(retval != null) {
 			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readdelsubdep1'), clear retval to null if not a member
@@ -677,11 +679,13 @@ public class CFBamJpaDelSubDep1Table implements ICFBamDelSubDep1Table
 		CFLibDbKeyHash256 argTenantId )
 	{
 		final String S_ProcName = "readDerivedByTenantIdx";
-		boolean permissionGranted = canReadDelSubDep1(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadDelSubDep1(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDelSubDep1Table.TABLE_NAME, "readdelsubdep1", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		List<CFBamJpaDelSubDep1> retlist = schema.getJpaHooksSchema().getDelSubDep1Service().findByTenantIdx(argTenantId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaDelSubDep1> finallist = new ArrayList<>();
@@ -718,11 +722,13 @@ public class CFBamJpaDelSubDep1Table implements ICFBamDelSubDep1Table
 		CFLibDbKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "readDerivedByDefSchemaIdx";
-		boolean permissionGranted = canReadDelSubDep1(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadDelSubDep1(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDelSubDep1Table.TABLE_NAME, "readdelsubdep1", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		List<CFBamJpaDelSubDep1> retlist = schema.getJpaHooksSchema().getDelSubDep1Service().findByDefSchemaIdx(argDefSchemaId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaDelSubDep1> finallist = new ArrayList<>();
@@ -759,11 +765,13 @@ public class CFBamJpaDelSubDep1Table implements ICFBamDelSubDep1Table
 		CFLibDbKeyHash256 argRelationId )
 	{
 		final String S_ProcName = "readDerivedByDelDepIdx";
-		boolean permissionGranted = canReadDelSubDep1(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadDelSubDep1(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDelSubDep1Table.TABLE_NAME, "readdelsubdep1", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		List<CFBamJpaDelSubDep1> retlist = schema.getJpaHooksSchema().getDelSubDep1Service().findByDelDepIdx(argRelationId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaDelSubDep1> finallist = new ArrayList<>();
@@ -800,11 +808,13 @@ public class CFBamJpaDelSubDep1Table implements ICFBamDelSubDep1Table
 		CFLibDbKeyHash256 argDelTopDepId )
 	{
 		final String S_ProcName = "readDerivedByDelTopDepIdx";
-		boolean permissionGranted = canReadDelSubDep1(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadDelSubDep1(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDelSubDep1Table.TABLE_NAME, "readdelsubdep1", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		List<CFBamJpaDelSubDep1> retlist = schema.getJpaHooksSchema().getDelSubDep1Service().findByDelTopDepIdx(argDelTopDepId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaDelSubDep1> finallist = new ArrayList<>();
@@ -845,11 +855,13 @@ public class CFBamJpaDelSubDep1Table implements ICFBamDelSubDep1Table
 		String argName )
 	{
 		final String S_ProcName = "readDerivedByUNameIdx";
-		boolean permissionGranted = canReadDelSubDep1(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadDelSubDep1(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDelSubDep1Table.TABLE_NAME, "readdelsubdep1", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		ICFBamDelSubDep1 retval = schema.getJpaHooksSchema().getDelSubDep1Service().findByUNameIdx(argDelTopDepId,
 		argName);
 		if(retval != null) {
@@ -949,11 +961,13 @@ public class CFBamJpaDelSubDep1Table implements ICFBamDelSubDep1Table
 		CFLibDbKeyHash256 argId )
 	{
 		final String S_ProcName = "readRecByIdIdx";
-		boolean permissionGranted = canReadDelSubDep1(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadDelSubDep1(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDelSubDep1Table.TABLE_NAME, "readdelsubdep1", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByIdIdx");
 	}
 
@@ -973,11 +987,13 @@ public class CFBamJpaDelSubDep1Table implements ICFBamDelSubDep1Table
 		CFLibDbKeyHash256 argTenantId )
 	{
 		final String S_ProcName = "readRecByTenantIdx";
-		boolean permissionGranted = canReadDelSubDep1(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadDelSubDep1(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDelSubDep1Table.TABLE_NAME, "readdelsubdep1", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByTenantIdx");
 	}
 
@@ -997,11 +1013,13 @@ public class CFBamJpaDelSubDep1Table implements ICFBamDelSubDep1Table
 		CFLibDbKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "readRecByDefSchemaIdx";
-		boolean permissionGranted = canReadDelSubDep1(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadDelSubDep1(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDelSubDep1Table.TABLE_NAME, "readdelsubdep1", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByDefSchemaIdx");
 	}
 
@@ -1021,11 +1039,13 @@ public class CFBamJpaDelSubDep1Table implements ICFBamDelSubDep1Table
 		CFLibDbKeyHash256 argRelationId )
 	{
 		final String S_ProcName = "readRecByDelDepIdx";
-		boolean permissionGranted = canReadDelSubDep1(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadDelSubDep1(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDelSubDep1Table.TABLE_NAME, "readdelsubdep1", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByDelDepIdx");
 	}
 
@@ -1045,11 +1065,13 @@ public class CFBamJpaDelSubDep1Table implements ICFBamDelSubDep1Table
 		CFLibDbKeyHash256 argDelTopDepId )
 	{
 		final String S_ProcName = "readRecByDelTopDepIdx";
-		boolean permissionGranted = canReadDelSubDep1(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadDelSubDep1(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDelSubDep1Table.TABLE_NAME, "readdelsubdep1", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByDelTopDepIdx");
 	}
 
@@ -1073,11 +1095,13 @@ public class CFBamJpaDelSubDep1Table implements ICFBamDelSubDep1Table
 		String argName )
 	{
 		final String S_ProcName = "readRecByUNameIdx";
-		boolean permissionGranted = canReadDelSubDep1(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadDelSubDep1(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDelSubDep1Table.TABLE_NAME, "readdelsubdep1", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByUNameIdx");
 	}
 }

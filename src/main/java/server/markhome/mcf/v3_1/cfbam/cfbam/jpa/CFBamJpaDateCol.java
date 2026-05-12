@@ -78,7 +78,7 @@ public class CFBamJpaDateCol extends CFBamJpaDateDef
 	implements ICFBamDateCol
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="TableId" )
+	@JoinColumn( name="TableId", referencedColumnName="Id" )
 	protected CFBamJpaTable requiredContainerTable;
 
 

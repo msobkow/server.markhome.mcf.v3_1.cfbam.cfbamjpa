@@ -78,7 +78,7 @@ public class CFBamJpaStringType extends CFBamJpaStringDef
 	implements ICFBamStringType
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="SchemaDefId" )
+	@JoinColumn( name="SchemaDefId", referencedColumnName="Id" )
 	protected CFBamJpaSchemaDef requiredContainerSchemaDef;
 
 

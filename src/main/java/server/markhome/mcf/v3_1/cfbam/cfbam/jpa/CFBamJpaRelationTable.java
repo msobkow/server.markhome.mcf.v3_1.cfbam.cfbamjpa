@@ -769,11 +769,13 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 		CFLibDbKeyHash256 argId )
 	{
 		final String S_ProcName = "readDerivedByIdIdx";
-		boolean permissionGranted = canReadRelation(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadRelation(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationTable.TABLE_NAME, "readrelation", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		ICFBamRelation retval = schema.getJpaHooksSchema().getRelationService().find(argId);
 		if(retval != null) {
 			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readrelation'), clear retval to null if not a member
@@ -800,11 +802,13 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 		CFLibDbKeyHash256 argTenantId )
 	{
 		final String S_ProcName = "readDerivedByTenantIdx";
-		boolean permissionGranted = canReadRelation(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadRelation(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationTable.TABLE_NAME, "readrelation", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		List<CFBamJpaRelation> retlist = schema.getJpaHooksSchema().getRelationService().findByTenantIdx(argTenantId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaRelation> finallist = new ArrayList<>();
@@ -845,11 +849,13 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 		String argName )
 	{
 		final String S_ProcName = "readDerivedByUNameIdx";
-		boolean permissionGranted = canReadRelation(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadRelation(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationTable.TABLE_NAME, "readrelation", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		ICFBamRelation retval = schema.getJpaHooksSchema().getRelationService().findByUNameIdx(argTableId,
 		argName);
 		if(retval != null) {
@@ -877,11 +883,13 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 		CFLibDbKeyHash256 argTableId )
 	{
 		final String S_ProcName = "readDerivedByRelTableIdx";
-		boolean permissionGranted = canReadRelation(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadRelation(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationTable.TABLE_NAME, "readrelation", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		List<CFBamJpaRelation> retlist = schema.getJpaHooksSchema().getRelationService().findByRelTableIdx(argTableId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaRelation> finallist = new ArrayList<>();
@@ -918,11 +926,13 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 		CFLibDbKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "readDerivedByDefSchemaIdx";
-		boolean permissionGranted = canReadRelation(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadRelation(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationTable.TABLE_NAME, "readrelation", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		List<CFBamJpaRelation> retlist = schema.getJpaHooksSchema().getRelationService().findByDefSchemaIdx(argDefSchemaId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaRelation> finallist = new ArrayList<>();
@@ -959,11 +969,13 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 		CFLibDbKeyHash256 argFromIndexId )
 	{
 		final String S_ProcName = "readDerivedByFromKeyIdx";
-		boolean permissionGranted = canReadRelation(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadRelation(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationTable.TABLE_NAME, "readrelation", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		List<CFBamJpaRelation> retlist = schema.getJpaHooksSchema().getRelationService().findByFromKeyIdx(argFromIndexId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaRelation> finallist = new ArrayList<>();
@@ -1000,11 +1012,13 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 		CFLibDbKeyHash256 argToTableId )
 	{
 		final String S_ProcName = "readDerivedByToTblIdx";
-		boolean permissionGranted = canReadRelation(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadRelation(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationTable.TABLE_NAME, "readrelation", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		List<CFBamJpaRelation> retlist = schema.getJpaHooksSchema().getRelationService().findByToTblIdx(argToTableId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaRelation> finallist = new ArrayList<>();
@@ -1041,11 +1055,13 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 		CFLibDbKeyHash256 argToIndexId )
 	{
 		final String S_ProcName = "readDerivedByToKeyIdx";
-		boolean permissionGranted = canReadRelation(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadRelation(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationTable.TABLE_NAME, "readrelation", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		List<CFBamJpaRelation> retlist = schema.getJpaHooksSchema().getRelationService().findByToKeyIdx(argToIndexId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaRelation> finallist = new ArrayList<>();
@@ -1082,11 +1098,13 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 		CFLibDbKeyHash256 argNarrowedId )
 	{
 		final String S_ProcName = "readDerivedByNarrowedIdx";
-		boolean permissionGranted = canReadRelation(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadRelation(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationTable.TABLE_NAME, "readrelation", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		List<CFBamJpaRelation> retlist = schema.getJpaHooksSchema().getRelationService().findByNarrowedIdx(argNarrowedId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaRelation> finallist = new ArrayList<>();
@@ -1195,11 +1213,13 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 		CFLibDbKeyHash256 argId )
 	{
 		final String S_ProcName = "readRecByIdIdx";
-		boolean permissionGranted = canReadRelation(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadRelation(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationTable.TABLE_NAME, "readrelation", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByIdIdx");
 	}
 
@@ -1219,11 +1239,13 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 		CFLibDbKeyHash256 argTenantId )
 	{
 		final String S_ProcName = "readRecByTenantIdx";
-		boolean permissionGranted = canReadRelation(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadRelation(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationTable.TABLE_NAME, "readrelation", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByTenantIdx");
 	}
 
@@ -1247,11 +1269,13 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 		String argName )
 	{
 		final String S_ProcName = "readRecByUNameIdx";
-		boolean permissionGranted = canReadRelation(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadRelation(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationTable.TABLE_NAME, "readrelation", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByUNameIdx");
 	}
 
@@ -1271,11 +1295,13 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 		CFLibDbKeyHash256 argTableId )
 	{
 		final String S_ProcName = "readRecByRelTableIdx";
-		boolean permissionGranted = canReadRelation(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadRelation(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationTable.TABLE_NAME, "readrelation", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByRelTableIdx");
 	}
 
@@ -1295,11 +1321,13 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 		CFLibDbKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "readRecByDefSchemaIdx";
-		boolean permissionGranted = canReadRelation(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadRelation(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationTable.TABLE_NAME, "readrelation", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByDefSchemaIdx");
 	}
 
@@ -1319,11 +1347,13 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 		CFLibDbKeyHash256 argFromIndexId )
 	{
 		final String S_ProcName = "readRecByFromKeyIdx";
-		boolean permissionGranted = canReadRelation(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadRelation(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationTable.TABLE_NAME, "readrelation", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByFromKeyIdx");
 	}
 
@@ -1343,11 +1373,13 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 		CFLibDbKeyHash256 argToTableId )
 	{
 		final String S_ProcName = "readRecByToTblIdx";
-		boolean permissionGranted = canReadRelation(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadRelation(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationTable.TABLE_NAME, "readrelation", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByToTblIdx");
 	}
 
@@ -1367,11 +1399,13 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 		CFLibDbKeyHash256 argToIndexId )
 	{
 		final String S_ProcName = "readRecByToKeyIdx";
-		boolean permissionGranted = canReadRelation(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadRelation(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationTable.TABLE_NAME, "readrelation", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByToKeyIdx");
 	}
 
@@ -1391,11 +1425,13 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 		CFLibDbKeyHash256 argNarrowedId )
 	{
 		final String S_ProcName = "readRecByNarrowedIdx";
-		boolean permissionGranted = canReadRelation(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadRelation(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationTable.TABLE_NAME, "readrelation", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByNarrowedIdx");
 	}
 }

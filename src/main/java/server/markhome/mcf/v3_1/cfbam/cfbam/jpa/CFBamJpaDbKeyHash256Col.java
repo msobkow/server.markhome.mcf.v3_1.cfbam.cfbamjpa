@@ -78,7 +78,7 @@ public class CFBamJpaDbKeyHash256Col extends CFBamJpaDbKeyHash256Def
 	implements ICFBamDbKeyHash256Col
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="TableId" )
+	@JoinColumn( name="TableId", referencedColumnName="Id" )
 	protected CFBamJpaTable requiredContainerTable;
 
 

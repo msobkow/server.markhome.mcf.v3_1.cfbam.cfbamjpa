@@ -79,10 +79,10 @@ public class CFBamJpaTableCol extends CFBamJpaValue
 	implements ICFBamTableCol
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="TableId" )
+	@JoinColumn( name="TableId", referencedColumnName="Id" )
 	protected CFBamJpaTable requiredContainerTable;
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="DataId" )
+	@JoinColumn( name="DataId", referencedColumnName="Id" )
 	protected CFBamJpaValue requiredParentDataType;
 
 	@Column( name="DbName", nullable=true, length=32 )

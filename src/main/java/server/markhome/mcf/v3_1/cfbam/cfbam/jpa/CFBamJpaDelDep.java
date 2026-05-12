@@ -79,10 +79,10 @@ public class CFBamJpaDelDep extends CFBamJpaScope
 	implements ICFBamDelDep
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="RelationId" )
+	@JoinColumn( name="RelationId", referencedColumnName="Id" )
 	protected CFBamJpaRelation requiredLookupRelation;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="defschid" )
+	@JoinColumn( name="defschid", referencedColumnName="Id" )
 	protected CFBamJpaSchemaDef optionalLookupDefSchema;
 
 

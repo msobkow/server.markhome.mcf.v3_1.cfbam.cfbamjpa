@@ -78,7 +78,7 @@ public class CFBamJpaInt64Col extends CFBamJpaInt64Def
 	implements ICFBamInt64Col
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="TableId" )
+	@JoinColumn( name="TableId", referencedColumnName="Id" )
 	protected CFBamJpaTable requiredContainerTable;
 
 

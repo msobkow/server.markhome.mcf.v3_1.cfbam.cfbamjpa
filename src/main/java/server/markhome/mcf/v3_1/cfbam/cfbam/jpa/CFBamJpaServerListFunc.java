@@ -78,7 +78,7 @@ public class CFBamJpaServerListFunc extends CFBamJpaServerMethod
 	implements ICFBamServerListFunc
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="rettblid" )
+	@JoinColumn( name="rettblid", referencedColumnName="Id" )
 	protected CFBamJpaTable optionalLookupRetTable;
 
 

@@ -646,11 +646,13 @@ public class CFBamJpaEnumTagTable implements ICFBamEnumTagTable
 		CFLibDbKeyHash256 argId )
 	{
 		final String S_ProcName = "readDerivedByIdIdx";
-		boolean permissionGranted = canReadEnumTag(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadEnumTag(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamEnumTagTable.TABLE_NAME, "readenumtag", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		ICFBamEnumTag retval = schema.getJpaHooksSchema().getEnumTagService().find(argId);
 		if(retval != null) {
 			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readenumtag'), clear retval to null if not a member
@@ -677,11 +679,13 @@ public class CFBamJpaEnumTagTable implements ICFBamEnumTagTable
 		CFLibDbKeyHash256 argEnumId )
 	{
 		final String S_ProcName = "readDerivedByEnumIdx";
-		boolean permissionGranted = canReadEnumTag(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadEnumTag(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamEnumTagTable.TABLE_NAME, "readenumtag", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		List<CFBamJpaEnumTag> retlist = schema.getJpaHooksSchema().getEnumTagService().findByEnumIdx(argEnumId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaEnumTag> finallist = new ArrayList<>();
@@ -718,11 +722,13 @@ public class CFBamJpaEnumTagTable implements ICFBamEnumTagTable
 		CFLibDbKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "readDerivedByDefSchemaIdx";
-		boolean permissionGranted = canReadEnumTag(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadEnumTag(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamEnumTagTable.TABLE_NAME, "readenumtag", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		List<CFBamJpaEnumTag> retlist = schema.getJpaHooksSchema().getEnumTagService().findByDefSchemaIdx(argDefSchemaId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaEnumTag> finallist = new ArrayList<>();
@@ -763,11 +769,13 @@ public class CFBamJpaEnumTagTable implements ICFBamEnumTagTable
 		String argName )
 	{
 		final String S_ProcName = "readDerivedByEnumNameIdx";
-		boolean permissionGranted = canReadEnumTag(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadEnumTag(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamEnumTagTable.TABLE_NAME, "readenumtag", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		ICFBamEnumTag retval = schema.getJpaHooksSchema().getEnumTagService().findByEnumNameIdx(argEnumId,
 		argName);
 		if(retval != null) {
@@ -795,11 +803,13 @@ public class CFBamJpaEnumTagTable implements ICFBamEnumTagTable
 		CFLibDbKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "readDerivedByPrevIdx";
-		boolean permissionGranted = canReadEnumTag(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadEnumTag(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamEnumTagTable.TABLE_NAME, "readenumtag", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		List<CFBamJpaEnumTag> retlist = schema.getJpaHooksSchema().getEnumTagService().findByPrevIdx(argPrevId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaEnumTag> finallist = new ArrayList<>();
@@ -836,11 +846,13 @@ public class CFBamJpaEnumTagTable implements ICFBamEnumTagTable
 		CFLibDbKeyHash256 argNextId )
 	{
 		final String S_ProcName = "readDerivedByNextIdx";
-		boolean permissionGranted = canReadEnumTag(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadEnumTag(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamEnumTagTable.TABLE_NAME, "readenumtag", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		List<CFBamJpaEnumTag> retlist = schema.getJpaHooksSchema().getEnumTagService().findByNextIdx(argNextId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaEnumTag> finallist = new ArrayList<>();
@@ -949,11 +961,13 @@ public class CFBamJpaEnumTagTable implements ICFBamEnumTagTable
 		CFLibDbKeyHash256 argId )
 	{
 		final String S_ProcName = "readRecByIdIdx";
-		boolean permissionGranted = canReadEnumTag(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadEnumTag(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamEnumTagTable.TABLE_NAME, "readenumtag", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByIdIdx");
 	}
 
@@ -973,11 +987,13 @@ public class CFBamJpaEnumTagTable implements ICFBamEnumTagTable
 		CFLibDbKeyHash256 argEnumId )
 	{
 		final String S_ProcName = "readRecByEnumIdx";
-		boolean permissionGranted = canReadEnumTag(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadEnumTag(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamEnumTagTable.TABLE_NAME, "readenumtag", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByEnumIdx");
 	}
 
@@ -997,11 +1013,13 @@ public class CFBamJpaEnumTagTable implements ICFBamEnumTagTable
 		CFLibDbKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "readRecByDefSchemaIdx";
-		boolean permissionGranted = canReadEnumTag(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadEnumTag(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamEnumTagTable.TABLE_NAME, "readenumtag", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByDefSchemaIdx");
 	}
 
@@ -1025,11 +1043,13 @@ public class CFBamJpaEnumTagTable implements ICFBamEnumTagTable
 		String argName )
 	{
 		final String S_ProcName = "readRecByEnumNameIdx";
-		boolean permissionGranted = canReadEnumTag(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadEnumTag(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamEnumTagTable.TABLE_NAME, "readenumtag", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByEnumNameIdx");
 	}
 
@@ -1049,11 +1069,13 @@ public class CFBamJpaEnumTagTable implements ICFBamEnumTagTable
 		CFLibDbKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "readRecByPrevIdx";
-		boolean permissionGranted = canReadEnumTag(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadEnumTag(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamEnumTagTable.TABLE_NAME, "readenumtag", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByPrevIdx");
 	}
 
@@ -1073,11 +1095,13 @@ public class CFBamJpaEnumTagTable implements ICFBamEnumTagTable
 		CFLibDbKeyHash256 argNextId )
 	{
 		final String S_ProcName = "readRecByNextIdx";
-		boolean permissionGranted = canReadEnumTag(S_ProcName, Authorization);
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadEnumTag(S_ProcName, Authorization);
+		}
 		if (!permissionGranted) {
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamEnumTagTable.TABLE_NAME, "readenumtag", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
-
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByNextIdx");
 	}
 

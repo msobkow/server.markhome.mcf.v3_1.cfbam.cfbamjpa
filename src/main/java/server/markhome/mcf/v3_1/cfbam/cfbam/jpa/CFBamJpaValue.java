@@ -98,16 +98,16 @@ public class CFBamJpaValue
 	protected int requiredRevision;
 
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="ScopeId" )
+	@JoinColumn( name="ScopeId", referencedColumnName="Id" )
 	protected CFBamJpaScope requiredContainerScope;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="defschid" )
+	@JoinColumn( name="defschid", referencedColumnName="Id" )
 	protected CFBamJpaSchemaDef optionalLookupDefSchema;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="PrevId" )
+	@JoinColumn( name="PrevId", referencedColumnName="Id" )
 	protected CFBamJpaValue optionalLookupPrev;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="NextId" )
+	@JoinColumn( name="NextId", referencedColumnName="Id" )
 	protected CFBamJpaValue optionalLookupNext;
 
 	@AttributeOverrides({

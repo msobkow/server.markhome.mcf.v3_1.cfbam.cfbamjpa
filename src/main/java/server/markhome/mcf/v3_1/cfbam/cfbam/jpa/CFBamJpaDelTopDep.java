@@ -81,13 +81,13 @@ public class CFBamJpaDelTopDep extends CFBamJpaDelDep
 	implements ICFBamDelTopDep
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="TableId" )
+	@JoinColumn( name="TableId", referencedColumnName="Id" )
 	protected CFBamJpaTable requiredContainerTable;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="PrevId" )
+	@JoinColumn( name="PrevId", referencedColumnName="Id" )
 	protected CFBamJpaDelTopDep optionalLookupPrev;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="NextId" )
+	@JoinColumn( name="NextId", referencedColumnName="Id" )
 	protected CFBamJpaDelTopDep optionalLookupNext;
 
 	@Column( name="safe_name", nullable=false, length=192 )

@@ -79,7 +79,7 @@ public class CFBamJpaDelSubDep3 extends CFBamJpaDelDep
 	implements ICFBamDelSubDep3
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="contdeldep2id" )
+	@JoinColumn( name="contdeldep2id", referencedColumnName="Id" )
 	protected CFBamJpaDelSubDep2 requiredContainerDelSubDep2;
 
 	@Column( name="safe_name", nullable=false, length=192 )

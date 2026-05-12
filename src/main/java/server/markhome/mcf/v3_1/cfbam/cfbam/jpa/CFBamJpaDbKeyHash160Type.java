@@ -78,7 +78,7 @@ public class CFBamJpaDbKeyHash160Type extends CFBamJpaDbKeyHash160Def
 	implements ICFBamDbKeyHash160Type
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="SchemaDefId" )
+	@JoinColumn( name="SchemaDefId", referencedColumnName="Id" )
 	protected CFBamJpaSchemaDef requiredContainerSchemaDef;
 
 

@@ -89,16 +89,16 @@ public class CFBamJpaEnumTag
 	protected int requiredRevision;
 
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="EnumId" )
+	@JoinColumn( name="EnumId", referencedColumnName="Id" )
 	protected CFBamJpaEnumDef requiredContainerEnumDef;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="defschid" )
+	@JoinColumn( name="defschid", referencedColumnName="Id" )
 	protected CFBamJpaSchemaDef optionalLookupDefSchema;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="PrevId" )
+	@JoinColumn( name="PrevId", referencedColumnName="Id" )
 	protected CFBamJpaEnumTag optionalLookupPrev;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="NextId" )
+	@JoinColumn( name="NextId", referencedColumnName="Id" )
 	protected CFBamJpaEnumTag optionalLookupNext;
 
 	@AttributeOverrides({

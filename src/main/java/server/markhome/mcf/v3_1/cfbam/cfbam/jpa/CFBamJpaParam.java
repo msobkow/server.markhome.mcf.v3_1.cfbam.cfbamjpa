@@ -92,19 +92,19 @@ public class CFBamJpaParam
 	protected int requiredRevision;
 
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="srvmeth_id" )
+	@JoinColumn( name="srvmeth_id", referencedColumnName="Id" )
 	protected CFBamJpaServerMethod requiredContainerServerMeth;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="defschid" )
+	@JoinColumn( name="defschid", referencedColumnName="Id" )
 	protected CFBamJpaSchemaDef optionalLookupDefSchema;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="PrevId" )
+	@JoinColumn( name="PrevId", referencedColumnName="Id" )
 	protected CFBamJpaParam optionalLookupPrev;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="NextId" )
+	@JoinColumn( name="NextId", referencedColumnName="Id" )
 	protected CFBamJpaParam optionalLookupNext;
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="TpId" )
+	@JoinColumn( name="TpId", referencedColumnName="Id" )
 	protected CFBamJpaValue requiredLookupType;
 
 	@AttributeOverrides({

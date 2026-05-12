@@ -78,7 +78,7 @@ public class CFBamJpaTZTimestampCol extends CFBamJpaTZTimestampDef
 	implements ICFBamTZTimestampCol
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="TableId" )
+	@JoinColumn( name="TableId", referencedColumnName="Id" )
 	protected CFBamJpaTable requiredContainerTable;
 
 

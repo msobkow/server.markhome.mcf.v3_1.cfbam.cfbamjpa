@@ -78,7 +78,7 @@ public class CFBamJpaDbKeyHash224Col extends CFBamJpaDbKeyHash224Def
 	implements ICFBamDbKeyHash224Col
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="TableId" )
+	@JoinColumn( name="TableId", referencedColumnName="Id" )
 	protected CFBamJpaTable requiredContainerTable;
 
 

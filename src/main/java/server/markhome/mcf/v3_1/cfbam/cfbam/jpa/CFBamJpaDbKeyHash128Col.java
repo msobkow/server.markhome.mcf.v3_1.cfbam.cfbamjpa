@@ -78,7 +78,7 @@ public class CFBamJpaDbKeyHash128Col extends CFBamJpaDbKeyHash128Def
 	implements ICFBamDbKeyHash128Col
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="TableId" )
+	@JoinColumn( name="TableId", referencedColumnName="Id" )
 	protected CFBamJpaTable requiredContainerTable;
 
 

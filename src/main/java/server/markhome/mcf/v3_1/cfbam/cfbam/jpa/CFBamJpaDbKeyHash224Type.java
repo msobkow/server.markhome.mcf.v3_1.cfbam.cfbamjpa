@@ -78,7 +78,7 @@ public class CFBamJpaDbKeyHash224Type extends CFBamJpaDbKeyHash224Def
 	implements ICFBamDbKeyHash224Type
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="SchemaDefId" )
+	@JoinColumn( name="SchemaDefId", referencedColumnName="Id" )
 	protected CFBamJpaSchemaDef requiredContainerSchemaDef;
 
 

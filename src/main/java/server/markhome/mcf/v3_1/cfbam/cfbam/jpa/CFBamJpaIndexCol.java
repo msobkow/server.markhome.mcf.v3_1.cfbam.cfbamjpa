@@ -96,19 +96,19 @@ public class CFBamJpaIndexCol
 	protected int requiredRevision;
 
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="IndexId" )
+	@JoinColumn( name="IndexId", referencedColumnName="Id" )
 	protected CFBamJpaIndex requiredContainerIndex;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="defschid" )
+	@JoinColumn( name="defschid", referencedColumnName="Id" )
 	protected CFBamJpaSchemaDef optionalLookupDefSchema;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="PrevId" )
+	@JoinColumn( name="PrevId", referencedColumnName="Id" )
 	protected CFBamJpaIndexCol optionalLookupPrev;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="NextId" )
+	@JoinColumn( name="NextId", referencedColumnName="Id" )
 	protected CFBamJpaIndexCol optionalLookupNext;
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="ColumnId" )
+	@JoinColumn( name="ColumnId", referencedColumnName="Id" )
 	protected CFBamJpaValue requiredLookupColumn;
 
 	@AttributeOverrides({

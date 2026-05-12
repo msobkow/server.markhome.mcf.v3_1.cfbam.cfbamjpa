@@ -93,22 +93,22 @@ public class CFBamJpaRelationCol
 	protected int requiredRevision;
 
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="RelationId" )
+	@JoinColumn( name="RelationId", referencedColumnName="Id" )
 	protected CFBamJpaRelation requiredContainerRelation;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="defschid" )
+	@JoinColumn( name="defschid", referencedColumnName="Id" )
 	protected CFBamJpaSchemaDef optionalLookupDefSchema;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="PrevId" )
+	@JoinColumn( name="PrevId", referencedColumnName="Id" )
 	protected CFBamJpaRelationCol optionalLookupPrev;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="NextId" )
+	@JoinColumn( name="NextId", referencedColumnName="Id" )
 	protected CFBamJpaRelationCol optionalLookupNext;
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="FromColId" )
+	@JoinColumn( name="FromColId", referencedColumnName="Id" )
 	protected CFBamJpaIndexCol requiredLookupFromCol;
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="ToColId" )
+	@JoinColumn( name="ToColId", referencedColumnName="Id" )
 	protected CFBamJpaIndexCol requiredLookupToCol;
 
 	@AttributeOverrides({

@@ -78,7 +78,7 @@ public class CFBamJpaEnumType extends CFBamJpaEnumDef
 	implements ICFBamEnumType
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="SchemaDefId" )
+	@JoinColumn( name="SchemaDefId", referencedColumnName="Id" )
 	protected CFBamJpaSchemaDef requiredContainerSchemaDef;
 
 

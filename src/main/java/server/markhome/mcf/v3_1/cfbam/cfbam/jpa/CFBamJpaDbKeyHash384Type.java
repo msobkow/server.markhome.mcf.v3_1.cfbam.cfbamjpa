@@ -78,7 +78,7 @@ public class CFBamJpaDbKeyHash384Type extends CFBamJpaDbKeyHash384Def
 	implements ICFBamDbKeyHash384Type
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="SchemaDefId" )
+	@JoinColumn( name="SchemaDefId", referencedColumnName="Id" )
 	protected CFBamJpaSchemaDef requiredContainerSchemaDef;
 
 

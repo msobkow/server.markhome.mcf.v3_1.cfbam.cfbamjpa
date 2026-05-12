@@ -78,7 +78,7 @@ public class CFBamJpaUInt64Type extends CFBamJpaUInt64Def
 	implements ICFBamUInt64Type
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="SchemaDefId" )
+	@JoinColumn( name="SchemaDefId", referencedColumnName="Id" )
 	protected CFBamJpaSchemaDef requiredContainerSchemaDef;
 
 

@@ -82,16 +82,16 @@ public class CFBamJpaSchemaRef extends CFBamJpaScope
 	implements ICFBamSchemaRef
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="SchemaId" )
+	@JoinColumn( name="SchemaId", referencedColumnName="Id" )
 	protected CFBamJpaSchemaDef requiredContainerSchema;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="RefSchId" )
+	@JoinColumn( name="RefSchId", referencedColumnName="Id" )
 	protected CFBamJpaSchemaDef optionalLookupRefSchema;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="PrevId" )
+	@JoinColumn( name="PrevId", referencedColumnName="Id" )
 	protected CFBamJpaSchemaRef optionalLookupPrev;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="NextId" )
+	@JoinColumn( name="NextId", referencedColumnName="Id" )
 	protected CFBamJpaSchemaRef optionalLookupNext;
 
 	@Column( name="safe_name", nullable=false, length=192 )

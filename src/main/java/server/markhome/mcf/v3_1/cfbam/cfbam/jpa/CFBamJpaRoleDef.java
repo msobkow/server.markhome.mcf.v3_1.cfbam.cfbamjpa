@@ -91,10 +91,10 @@ public class CFBamJpaRoleDef
 	protected int requiredRevision;
 
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="ScopeId" )
+	@JoinColumn( name="ScopeId", referencedColumnName="Id" )
 	protected CFBamJpaScope requiredContainerScopeDef;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="defschid" )
+	@JoinColumn( name="defschid", referencedColumnName="Id" )
 	protected CFBamJpaSchemaDef optionalLookupDefSchema;
 
 	@AttributeOverrides({

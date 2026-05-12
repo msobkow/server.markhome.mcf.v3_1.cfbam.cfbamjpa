@@ -78,7 +78,7 @@ public class CFBamJpaUInt32Type extends CFBamJpaUInt32Def
 	implements ICFBamUInt32Type
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="SchemaDefId" )
+	@JoinColumn( name="SchemaDefId", referencedColumnName="Id" )
 	protected CFBamJpaSchemaDef requiredContainerSchemaDef;
 
 

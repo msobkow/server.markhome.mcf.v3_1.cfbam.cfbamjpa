@@ -85,22 +85,22 @@ public class CFBamJpaTable extends CFBamJpaScope
 	implements ICFBamTable
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="SchemaDefId" )
+	@JoinColumn( name="SchemaDefId", referencedColumnName="Id" )
 	protected CFBamJpaSchemaDef requiredContainerSchemaDef;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="defschid" )
+	@JoinColumn( name="defschid", referencedColumnName="Id" )
 	protected CFBamJpaSchemaDef optionalLookupDefSchema;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="LookIdxId" )
+	@JoinColumn( name="LookIdxId", referencedColumnName="Id" )
 	protected CFBamJpaIndex optionalLookupLookupIndex;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="AltIdxId" )
+	@JoinColumn( name="AltIdxId", referencedColumnName="Id" )
 	protected CFBamJpaIndex optionalLookupAltIndex;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="QualTblId" )
+	@JoinColumn( name="QualTblId", referencedColumnName="Id" )
 	protected CFBamJpaTable optionalLookupQualTable;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="PrimIdxId" )
+	@JoinColumn( name="PrimIdxId", referencedColumnName="Id" )
 	protected CFBamJpaIndex optionalLookupPrimaryIndex;
 
 	@Column( name="safe_name", nullable=false, length=192 )

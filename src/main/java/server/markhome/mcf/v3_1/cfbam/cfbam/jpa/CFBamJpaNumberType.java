@@ -78,7 +78,7 @@ public class CFBamJpaNumberType extends CFBamJpaNumberDef
 	implements ICFBamNumberType
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="SchemaDefId" )
+	@JoinColumn( name="SchemaDefId", referencedColumnName="Id" )
 	protected CFBamJpaSchemaDef requiredContainerSchemaDef;
 
 

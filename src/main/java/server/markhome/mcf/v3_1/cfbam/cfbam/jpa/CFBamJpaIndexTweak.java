@@ -78,7 +78,7 @@ public class CFBamJpaIndexTweak extends CFBamJpaTweak
 	implements ICFBamIndexTweak
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="IndexId" )
+	@JoinColumn( name="IndexId", referencedColumnName="Id" )
 	protected CFBamJpaIndex requiredContainerIndexDef;
 
 

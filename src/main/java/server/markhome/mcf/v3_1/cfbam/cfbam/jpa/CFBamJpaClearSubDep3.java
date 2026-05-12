@@ -79,7 +79,7 @@ public class CFBamJpaClearSubDep3 extends CFBamJpaClearDep
 	implements ICFBamClearSubDep3
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="contclrdep2id" )
+	@JoinColumn( name="contclrdep2id", referencedColumnName="Id" )
 	protected CFBamJpaClearSubDep2 requiredContainerClearSubDep2;
 
 	@Column( name="safe_name", nullable=false, length=192 )

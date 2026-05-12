@@ -78,7 +78,7 @@ public class CFBamJpaFloatType extends CFBamJpaFloatDef
 	implements ICFBamFloatType
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="SchemaDefId" )
+	@JoinColumn( name="SchemaDefId", referencedColumnName="Id" )
 	protected CFBamJpaSchemaDef requiredContainerSchemaDef;
 
 
