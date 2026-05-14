@@ -122,7 +122,7 @@ public class CFBamJpaClearSubDep3 extends CFBamJpaClearDep
 		if (targetTable == null) {
 			throw new CFLibNullArgumentException(getClass(), "setRequiredContainerClearSubDep2", 0, "ICFBamSchema.getBackingCFBam().getTableClearSubDep2()");
 		}
-		ICFBamClearSubDep2 targetRec = targetTable.readDerived(null, argClearSubDep2Id);
+		ICFBamClearSubDep2 targetRec = targetTable.readDerived(ICFSecSchema.getAuthorizationCallback().getEffectiveAuthorization(), argClearSubDep2Id);
 		setRequiredContainerClearSubDep2(targetRec);
 	}
 

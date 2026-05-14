@@ -71,7 +71,7 @@ import server.markhome.mcf.v3_1.cfbam.cfbam.*;
  *	Services for schema CFBam defined in server.markhome.mcf.v3_1.cfbam.cfbam.jpa
  *	using the CFBam*Repository objects to access the data directly, bypassing normal application security for the bootstrap and login processing.
  */
-@Service("cfbamJpaSchemaService")
+@Service("cfbam31JpaSchemaService")
 public class CFBamJpaSchemaService {
 
 	@Autowired

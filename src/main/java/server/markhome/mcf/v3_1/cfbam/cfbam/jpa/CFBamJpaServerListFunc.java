@@ -118,7 +118,7 @@ public class CFBamJpaServerListFunc extends CFBamJpaServerMethod
 		if (targetTable == null) {
 			throw new CFLibNullArgumentException(getClass(), "setOptionalLookupRetTable", 0, "ICFBamSchema.getBackingCFBam().getTableTable()");
 		}
-		ICFBamTable targetRec = targetTable.readDerived(null, argRetTableId);
+		ICFBamTable targetRec = targetTable.readDerived(ICFSecSchema.getAuthorizationCallback().getEffectiveAuthorization(), argRetTableId);
 		setOptionalLookupRetTable(targetRec);
 	}
 

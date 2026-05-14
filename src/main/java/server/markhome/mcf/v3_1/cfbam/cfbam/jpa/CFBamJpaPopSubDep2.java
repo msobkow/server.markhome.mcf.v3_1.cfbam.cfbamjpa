@@ -122,7 +122,7 @@ public class CFBamJpaPopSubDep2 extends CFBamJpaPopDep
 		if (targetTable == null) {
 			throw new CFLibNullArgumentException(getClass(), "setRequiredContainerPopSubDep1", 0, "ICFBamSchema.getBackingCFBam().getTablePopSubDep1()");
 		}
-		ICFBamPopSubDep1 targetRec = targetTable.readDerived(null, argPopSubDep1Id);
+		ICFBamPopSubDep1 targetRec = targetTable.readDerived(ICFSecSchema.getAuthorizationCallback().getEffectiveAuthorization(), argPopSubDep1Id);
 		setRequiredContainerPopSubDep1(targetRec);
 	}
 

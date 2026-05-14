@@ -122,7 +122,7 @@ public class CFBamJpaDelSubDep2 extends CFBamJpaDelDep
 		if (targetTable == null) {
 			throw new CFLibNullArgumentException(getClass(), "setRequiredContainerDelSubDep1", 0, "ICFBamSchema.getBackingCFBam().getTableDelSubDep1()");
 		}
-		ICFBamDelSubDep1 targetRec = targetTable.readDerived(null, argDelSubDep1Id);
+		ICFBamDelSubDep1 targetRec = targetTable.readDerived(ICFSecSchema.getAuthorizationCallback().getEffectiveAuthorization(), argDelSubDep1Id);
 		setRequiredContainerDelSubDep1(targetRec);
 	}
 
