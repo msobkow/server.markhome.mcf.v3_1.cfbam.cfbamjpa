@@ -91,7 +91,7 @@ public interface CFBamJpaDelTopDepRepository extends JpaRepository<CFBamJpaDelTo
 	 *
 	 *		@return List&lt;CFBamJpaDelTopDep&gt; of the found entities, typically from the JPA cache, or an empty list if no such entities exist.
 	 */
-	@Query("select r from CFBamJpaScope r where r.$reference Column reference SuperiorCandidateRelationCol reference Relation lower OptionalOrRequired$$reference Column reference SuperiorCandidateRelationCol reference Relation RelationType$$reference Column reference SuperiorCandidateRelationCol reference Relation Suffix$.$reference Column reference SuperiorCandidateRelationCol SchemaJpaRepositoryChaseRelationToCol$")
+	@Query("select r from CFBamJpaScope r where r.requiredOwnerTenant.requiredId = :tenantId")
 	List<CFBamJpaDelTopDep> findByTenantIdx(@Param("tenantId") CFLibDbKeyHash256 requiredTenantId);
 
 	/**
@@ -260,7 +260,7 @@ public interface CFBamJpaDelTopDepRepository extends JpaRepository<CFBamJpaDelTo
 	 */
 	@Transactional
 	@Lock(LockModeType.WRITE)
-	@Query("select r from CFBamJpaScope r where r.$reference Column reference SuperiorCandidateRelationCol reference Relation lower OptionalOrRequired$$reference Column reference SuperiorCandidateRelationCol reference Relation RelationType$$reference Column reference SuperiorCandidateRelationCol reference Relation Suffix$.$reference Column reference SuperiorCandidateRelationCol SchemaJpaRepositoryChaseRelationToCol$")
+	@Query("select r from CFBamJpaScope r where r.requiredOwnerTenant.requiredId = :tenantId")
 	List<CFBamJpaDelTopDep> lockByTenantIdx(@Param("tenantId") CFLibDbKeyHash256 requiredTenantId);
 
 	/**
@@ -437,7 +437,7 @@ public interface CFBamJpaDelTopDepRepository extends JpaRepository<CFBamJpaDelTo
 	 */
 	@Transactional
 	@Modifying
-	@Query("delete from CFBamJpaScope r where r.$reference Column reference SuperiorCandidateRelationCol reference Relation lower OptionalOrRequired$$reference Column reference SuperiorCandidateRelationCol reference Relation RelationType$$reference Column reference SuperiorCandidateRelationCol reference Relation Suffix$.$reference Column reference SuperiorCandidateRelationCol SchemaJpaRepositoryChaseRelationToCol$")
+	@Query("delete from CFBamJpaScope r where r.requiredOwnerTenant.requiredId = :tenantId")
 	void deleteByTenantIdx(@Param("tenantId") CFLibDbKeyHash256 requiredTenantId);
 
 	/**
