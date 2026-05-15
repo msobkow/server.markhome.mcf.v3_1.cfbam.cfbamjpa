@@ -156,6 +156,9 @@ public class CFBamJpaInt16DefService {
 				ICFBamInt16Def.MAXVALUE_MAX_VALUE );
 		}
 		try {
+			if(data.getPKey() != null && !data.getPKey().isNull() && cfbam31Int16DefRepository.existsById((CFLibDbKeyHash256)data.getPKey())) {
+				return( (CFBamJpaInt16Def)(cfbam31Int16DefRepository.findById((CFLibDbKeyHash256)(data.getPKey())).get()));
+			}
 			if (data.getRequiredId() == null || data.getRequiredId().isNull()) {
 				data.setRequiredId(new CFLibDbKeyHash256(0));
 				generatedRequiredId = true;
@@ -163,9 +166,6 @@ public class CFBamJpaInt16DefService {
 			LocalDateTime now = LocalDateTime.now();
 			data.setCreatedAt(now);
 			data.setUpdatedAt(now);
-			if(data.getPKey() != null && cfbam31Int16DefRepository.existsById((CFLibDbKeyHash256)data.getPKey())) {
-				return( (CFBamJpaInt16Def)(cfbam31Int16DefRepository.findById((CFLibDbKeyHash256)(data.getPKey())).get()));
-			}
 			return cfbam31Int16DefRepository.save(data);
 		}
 		catch(Exception ex) {

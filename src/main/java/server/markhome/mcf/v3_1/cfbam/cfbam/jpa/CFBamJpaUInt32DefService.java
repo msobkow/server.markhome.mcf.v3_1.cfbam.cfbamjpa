@@ -132,6 +132,9 @@ public class CFBamJpaUInt32DefService {
 				ICFBamUInt32Def.MAXVALUE_MIN_VALUE );
 		}
 		try {
+			if(data.getPKey() != null && !data.getPKey().isNull() && cfbam31UInt32DefRepository.existsById((CFLibDbKeyHash256)data.getPKey())) {
+				return( (CFBamJpaUInt32Def)(cfbam31UInt32DefRepository.findById((CFLibDbKeyHash256)(data.getPKey())).get()));
+			}
 			if (data.getRequiredId() == null || data.getRequiredId().isNull()) {
 				data.setRequiredId(new CFLibDbKeyHash256(0));
 				generatedRequiredId = true;
@@ -139,9 +142,6 @@ public class CFBamJpaUInt32DefService {
 			LocalDateTime now = LocalDateTime.now();
 			data.setCreatedAt(now);
 			data.setUpdatedAt(now);
-			if(data.getPKey() != null && cfbam31UInt32DefRepository.existsById((CFLibDbKeyHash256)data.getPKey())) {
-				return( (CFBamJpaUInt32Def)(cfbam31UInt32DefRepository.findById((CFLibDbKeyHash256)(data.getPKey())).get()));
-			}
 			return cfbam31UInt32DefRepository.save(data);
 		}
 		catch(Exception ex) {

@@ -114,6 +114,9 @@ public class CFBamJpaDateTypeService {
 				"data.requiredSchemaDefId");
 		}
 		try {
+			if(data.getPKey() != null && !data.getPKey().isNull() && cfbam31DateTypeRepository.existsById((CFLibDbKeyHash256)data.getPKey())) {
+				return( (CFBamJpaDateType)(cfbam31DateTypeRepository.findById((CFLibDbKeyHash256)(data.getPKey())).get()));
+			}
 			if (data.getRequiredId() == null || data.getRequiredId().isNull()) {
 				data.setRequiredId(new CFLibDbKeyHash256(0));
 				generatedRequiredId = true;
@@ -121,9 +124,6 @@ public class CFBamJpaDateTypeService {
 			LocalDateTime now = LocalDateTime.now();
 			data.setCreatedAt(now);
 			data.setUpdatedAt(now);
-			if(data.getPKey() != null && cfbam31DateTypeRepository.existsById((CFLibDbKeyHash256)data.getPKey())) {
-				return( (CFBamJpaDateType)(cfbam31DateTypeRepository.findById((CFLibDbKeyHash256)(data.getPKey())).get()));
-			}
 			return cfbam31DateTypeRepository.save(data);
 		}
 		catch(Exception ex) {

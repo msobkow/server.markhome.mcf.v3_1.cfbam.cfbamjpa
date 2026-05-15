@@ -132,6 +132,9 @@ public class CFBamJpaServerMethodService {
 				"data.requiredCsMethodBody");
 		}
 		try {
+			if(data.getPKey() != null && !data.getPKey().isNull() && cfbam31ServerMethodRepository.existsById((CFLibDbKeyHash256)data.getPKey())) {
+				return( (CFBamJpaServerMethod)(cfbam31ServerMethodRepository.findById((CFLibDbKeyHash256)(data.getPKey())).get()));
+			}
 			if (data.getRequiredId() == null || data.getRequiredId().isNull()) {
 				data.setRequiredId(new CFLibDbKeyHash256(0));
 				generatedRequiredId = true;
@@ -139,9 +142,6 @@ public class CFBamJpaServerMethodService {
 			LocalDateTime now = LocalDateTime.now();
 			data.setCreatedAt(now);
 			data.setUpdatedAt(now);
-			if(data.getPKey() != null && cfbam31ServerMethodRepository.existsById((CFLibDbKeyHash256)data.getPKey())) {
-				return( (CFBamJpaServerMethod)(cfbam31ServerMethodRepository.findById((CFLibDbKeyHash256)(data.getPKey())).get()));
-			}
 			return cfbam31ServerMethodRepository.save(data);
 		}
 		catch(Exception ex) {

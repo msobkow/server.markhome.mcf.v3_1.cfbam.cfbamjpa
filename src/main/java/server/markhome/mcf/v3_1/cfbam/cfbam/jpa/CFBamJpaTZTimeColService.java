@@ -114,6 +114,9 @@ public class CFBamJpaTZTimeColService {
 				"data.requiredTableId");
 		}
 		try {
+			if(data.getPKey() != null && !data.getPKey().isNull() && cfbam31TZTimeColRepository.existsById((CFLibDbKeyHash256)data.getPKey())) {
+				return( (CFBamJpaTZTimeCol)(cfbam31TZTimeColRepository.findById((CFLibDbKeyHash256)(data.getPKey())).get()));
+			}
 			if (data.getRequiredId() == null || data.getRequiredId().isNull()) {
 				data.setRequiredId(new CFLibDbKeyHash256(0));
 				generatedRequiredId = true;
@@ -121,9 +124,6 @@ public class CFBamJpaTZTimeColService {
 			LocalDateTime now = LocalDateTime.now();
 			data.setCreatedAt(now);
 			data.setUpdatedAt(now);
-			if(data.getPKey() != null && cfbam31TZTimeColRepository.existsById((CFLibDbKeyHash256)data.getPKey())) {
-				return( (CFBamJpaTZTimeCol)(cfbam31TZTimeColRepository.findById((CFLibDbKeyHash256)(data.getPKey())).get()));
-			}
 			return cfbam31TZTimeColRepository.save(data);
 		}
 		catch(Exception ex) {

@@ -114,6 +114,9 @@ public class CFBamJpaDbKeyHash256ColService {
 				"data.requiredTableId");
 		}
 		try {
+			if(data.getPKey() != null && !data.getPKey().isNull() && cfbam31DbKeyHash256ColRepository.existsById((CFLibDbKeyHash256)data.getPKey())) {
+				return( (CFBamJpaDbKeyHash256Col)(cfbam31DbKeyHash256ColRepository.findById((CFLibDbKeyHash256)(data.getPKey())).get()));
+			}
 			if (data.getRequiredId() == null || data.getRequiredId().isNull()) {
 				data.setRequiredId(new CFLibDbKeyHash256(0));
 				generatedRequiredId = true;
@@ -121,9 +124,6 @@ public class CFBamJpaDbKeyHash256ColService {
 			LocalDateTime now = LocalDateTime.now();
 			data.setCreatedAt(now);
 			data.setUpdatedAt(now);
-			if(data.getPKey() != null && cfbam31DbKeyHash256ColRepository.existsById((CFLibDbKeyHash256)data.getPKey())) {
-				return( (CFBamJpaDbKeyHash256Col)(cfbam31DbKeyHash256ColRepository.findById((CFLibDbKeyHash256)(data.getPKey())).get()));
-			}
 			return cfbam31DbKeyHash256ColRepository.save(data);
 		}
 		catch(Exception ex) {

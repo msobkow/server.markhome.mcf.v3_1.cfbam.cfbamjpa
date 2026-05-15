@@ -140,6 +140,9 @@ public class CFBamJpaNumberDefService {
 				ICFBamNumberDef.PRECIS_MAX_VALUE );
 		}
 		try {
+			if(data.getPKey() != null && !data.getPKey().isNull() && cfbam31NumberDefRepository.existsById((CFLibDbKeyHash256)data.getPKey())) {
+				return( (CFBamJpaNumberDef)(cfbam31NumberDefRepository.findById((CFLibDbKeyHash256)(data.getPKey())).get()));
+			}
 			if (data.getRequiredId() == null || data.getRequiredId().isNull()) {
 				data.setRequiredId(new CFLibDbKeyHash256(0));
 				generatedRequiredId = true;
@@ -147,9 +150,6 @@ public class CFBamJpaNumberDefService {
 			LocalDateTime now = LocalDateTime.now();
 			data.setCreatedAt(now);
 			data.setUpdatedAt(now);
-			if(data.getPKey() != null && cfbam31NumberDefRepository.existsById((CFLibDbKeyHash256)data.getPKey())) {
-				return( (CFBamJpaNumberDef)(cfbam31NumberDefRepository.findById((CFLibDbKeyHash256)(data.getPKey())).get()));
-			}
 			return cfbam31NumberDefRepository.save(data);
 		}
 		catch(Exception ex) {

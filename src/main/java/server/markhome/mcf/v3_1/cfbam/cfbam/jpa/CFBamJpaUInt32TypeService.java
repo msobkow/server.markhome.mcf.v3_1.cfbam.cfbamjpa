@@ -138,6 +138,9 @@ public class CFBamJpaUInt32TypeService {
 				"data.requiredSchemaDefId");
 		}
 		try {
+			if(data.getPKey() != null && !data.getPKey().isNull() && cfbam31UInt32TypeRepository.existsById((CFLibDbKeyHash256)data.getPKey())) {
+				return( (CFBamJpaUInt32Type)(cfbam31UInt32TypeRepository.findById((CFLibDbKeyHash256)(data.getPKey())).get()));
+			}
 			if (data.getRequiredId() == null || data.getRequiredId().isNull()) {
 				data.setRequiredId(new CFLibDbKeyHash256(0));
 				generatedRequiredId = true;
@@ -145,9 +148,6 @@ public class CFBamJpaUInt32TypeService {
 			LocalDateTime now = LocalDateTime.now();
 			data.setCreatedAt(now);
 			data.setUpdatedAt(now);
-			if(data.getPKey() != null && cfbam31UInt32TypeRepository.existsById((CFLibDbKeyHash256)data.getPKey())) {
-				return( (CFBamJpaUInt32Type)(cfbam31UInt32TypeRepository.findById((CFLibDbKeyHash256)(data.getPKey())).get()));
-			}
 			return cfbam31UInt32TypeRepository.save(data);
 		}
 		catch(Exception ex) {

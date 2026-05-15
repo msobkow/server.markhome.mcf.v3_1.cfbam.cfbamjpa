@@ -108,6 +108,9 @@ public class CFBamJpaParamService {
 				"data.requiredName");
 		}
 		try {
+			if(data.getPKey() != null && !data.getPKey().isNull() && cfbam31ParamRepository.existsById((CFLibDbKeyHash256)data.getPKey())) {
+				return( (CFBamJpaParam)(cfbam31ParamRepository.findById((CFLibDbKeyHash256)(data.getPKey())).get()));
+			}
 			if (data.getRequiredId() == null || data.getRequiredId().isNull()) {
 				data.setRequiredId(new CFLibDbKeyHash256(0));
 				generatedRequiredId = true;
@@ -115,9 +118,6 @@ public class CFBamJpaParamService {
 			LocalDateTime now = LocalDateTime.now();
 			data.setCreatedAt(now);
 			data.setUpdatedAt(now);
-			if(data.getPKey() != null && cfbam31ParamRepository.existsById((CFLibDbKeyHash256)data.getPKey())) {
-				return( (CFBamJpaParam)(cfbam31ParamRepository.findById((CFLibDbKeyHash256)(data.getPKey())).get()));
-			}
 			return cfbam31ParamRepository.save(data);
 		}
 		catch(Exception ex) {

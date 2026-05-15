@@ -130,6 +130,9 @@ public class CFBamJpaStringColService {
 				"data.requiredTableId");
 		}
 		try {
+			if(data.getPKey() != null && !data.getPKey().isNull() && cfbam31StringColRepository.existsById((CFLibDbKeyHash256)data.getPKey())) {
+				return( (CFBamJpaStringCol)(cfbam31StringColRepository.findById((CFLibDbKeyHash256)(data.getPKey())).get()));
+			}
 			if (data.getRequiredId() == null || data.getRequiredId().isNull()) {
 				data.setRequiredId(new CFLibDbKeyHash256(0));
 				generatedRequiredId = true;
@@ -137,9 +140,6 @@ public class CFBamJpaStringColService {
 			LocalDateTime now = LocalDateTime.now();
 			data.setCreatedAt(now);
 			data.setUpdatedAt(now);
-			if(data.getPKey() != null && cfbam31StringColRepository.existsById((CFLibDbKeyHash256)data.getPKey())) {
-				return( (CFBamJpaStringCol)(cfbam31StringColRepository.findById((CFLibDbKeyHash256)(data.getPKey())).get()));
-			}
 			return cfbam31StringColRepository.save(data);
 		}
 		catch(Exception ex) {

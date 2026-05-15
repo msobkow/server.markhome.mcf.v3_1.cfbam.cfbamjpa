@@ -156,6 +156,9 @@ public class CFBamJpaEnumDefService {
 				ICFBamInt16Def.MAXVALUE_MAX_VALUE );
 		}
 		try {
+			if(data.getPKey() != null && !data.getPKey().isNull() && cfbam31EnumDefRepository.existsById((CFLibDbKeyHash256)data.getPKey())) {
+				return( (CFBamJpaEnumDef)(cfbam31EnumDefRepository.findById((CFLibDbKeyHash256)(data.getPKey())).get()));
+			}
 			if (data.getRequiredId() == null || data.getRequiredId().isNull()) {
 				data.setRequiredId(new CFLibDbKeyHash256(0));
 				generatedRequiredId = true;
@@ -163,9 +166,6 @@ public class CFBamJpaEnumDefService {
 			LocalDateTime now = LocalDateTime.now();
 			data.setCreatedAt(now);
 			data.setUpdatedAt(now);
-			if(data.getPKey() != null && cfbam31EnumDefRepository.existsById((CFLibDbKeyHash256)data.getPKey())) {
-				return( (CFBamJpaEnumDef)(cfbam31EnumDefRepository.findById((CFLibDbKeyHash256)(data.getPKey())).get()));
-			}
 			return cfbam31EnumDefRepository.save(data);
 		}
 		catch(Exception ex) {

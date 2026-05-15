@@ -120,6 +120,9 @@ public class CFBamJpaClearTopDepService {
 				"data.requiredName");
 		}
 		try {
+			if(data.getPKey() != null && !data.getPKey().isNull() && cfbam31ClearTopDepRepository.existsById((CFLibDbKeyHash256)data.getPKey())) {
+				return( (CFBamJpaClearTopDep)(cfbam31ClearTopDepRepository.findById((CFLibDbKeyHash256)(data.getPKey())).get()));
+			}
 			if (data.getRequiredId() == null || data.getRequiredId().isNull()) {
 				data.setRequiredId(new CFLibDbKeyHash256(0));
 				generatedRequiredId = true;
@@ -127,9 +130,6 @@ public class CFBamJpaClearTopDepService {
 			LocalDateTime now = LocalDateTime.now();
 			data.setCreatedAt(now);
 			data.setUpdatedAt(now);
-			if(data.getPKey() != null && cfbam31ClearTopDepRepository.existsById((CFLibDbKeyHash256)data.getPKey())) {
-				return( (CFBamJpaClearTopDep)(cfbam31ClearTopDepRepository.findById((CFLibDbKeyHash256)(data.getPKey())).get()));
-			}
 			return cfbam31ClearTopDepRepository.save(data);
 		}
 		catch(Exception ex) {

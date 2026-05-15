@@ -108,6 +108,9 @@ public class CFBamJpaClearDepService {
 				"data.requiredRelationId");
 		}
 		try {
+			if(data.getPKey() != null && !data.getPKey().isNull() && cfbam31ClearDepRepository.existsById((CFLibDbKeyHash256)data.getPKey())) {
+				return( (CFBamJpaClearDep)(cfbam31ClearDepRepository.findById((CFLibDbKeyHash256)(data.getPKey())).get()));
+			}
 			if (data.getRequiredId() == null || data.getRequiredId().isNull()) {
 				data.setRequiredId(new CFLibDbKeyHash256(0));
 				generatedRequiredId = true;
@@ -115,9 +118,6 @@ public class CFBamJpaClearDepService {
 			LocalDateTime now = LocalDateTime.now();
 			data.setCreatedAt(now);
 			data.setUpdatedAt(now);
-			if(data.getPKey() != null && cfbam31ClearDepRepository.existsById((CFLibDbKeyHash256)data.getPKey())) {
-				return( (CFBamJpaClearDep)(cfbam31ClearDepRepository.findById((CFLibDbKeyHash256)(data.getPKey())).get()));
-			}
 			return cfbam31ClearDepRepository.save(data);
 		}
 		catch(Exception ex) {

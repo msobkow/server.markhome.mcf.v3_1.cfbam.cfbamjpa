@@ -102,6 +102,9 @@ public class CFBamJpaScopeService {
 				"data.requiredTenantId");
 		}
 		try {
+			if(data.getPKey() != null && !data.getPKey().isNull() && cfbam31ScopeRepository.existsById((CFLibDbKeyHash256)data.getPKey())) {
+				return( (CFBamJpaScope)(cfbam31ScopeRepository.findById((CFLibDbKeyHash256)(data.getPKey())).get()));
+			}
 			if (data.getRequiredId() == null || data.getRequiredId().isNull()) {
 				data.setRequiredId(new CFLibDbKeyHash256(0));
 				generatedRequiredId = true;
@@ -109,9 +112,6 @@ public class CFBamJpaScopeService {
 			LocalDateTime now = LocalDateTime.now();
 			data.setCreatedAt(now);
 			data.setUpdatedAt(now);
-			if(data.getPKey() != null && cfbam31ScopeRepository.existsById((CFLibDbKeyHash256)data.getPKey())) {
-				return( (CFBamJpaScope)(cfbam31ScopeRepository.findById((CFLibDbKeyHash256)(data.getPKey())).get()));
-			}
 			return cfbam31ScopeRepository.save(data);
 		}
 		catch(Exception ex) {

@@ -108,6 +108,9 @@ public class CFBamJpaDelDepService {
 				"data.requiredRelationId");
 		}
 		try {
+			if(data.getPKey() != null && !data.getPKey().isNull() && cfbam31DelDepRepository.existsById((CFLibDbKeyHash256)data.getPKey())) {
+				return( (CFBamJpaDelDep)(cfbam31DelDepRepository.findById((CFLibDbKeyHash256)(data.getPKey())).get()));
+			}
 			if (data.getRequiredId() == null || data.getRequiredId().isNull()) {
 				data.setRequiredId(new CFLibDbKeyHash256(0));
 				generatedRequiredId = true;
@@ -115,9 +118,6 @@ public class CFBamJpaDelDepService {
 			LocalDateTime now = LocalDateTime.now();
 			data.setCreatedAt(now);
 			data.setUpdatedAt(now);
-			if(data.getPKey() != null && cfbam31DelDepRepository.existsById((CFLibDbKeyHash256)data.getPKey())) {
-				return( (CFBamJpaDelDep)(cfbam31DelDepRepository.findById((CFLibDbKeyHash256)(data.getPKey())).get()));
-			}
 			return cfbam31DelDepRepository.save(data);
 		}
 		catch(Exception ex) {
