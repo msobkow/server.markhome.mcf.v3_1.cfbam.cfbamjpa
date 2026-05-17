@@ -182,19 +182,17 @@ public class CFBamJpaSchema
 	protected ICFBamSchemaTweakTable tableSchemaTweak;
 	protected ICFBamScopeTable tableScope;
 	protected ICFSecSecClusGrpTable tableSecClusGrp;
-	protected ICFSecSecClusGrpIncTable tableSecClusGrpInc;
 	protected ICFSecSecClusGrpMembTable tableSecClusGrpMemb;
 	protected ICFSecSecClusRoleTable tableSecClusRole;
 	protected ICFSecSecClusRoleMembTable tableSecClusRoleMemb;
-	protected ICFSecSecRoleTable tableSecRole;
-	protected ICFSecSecRoleEnablesTable tableSecRoleEnables;
-	protected ICFSecSecRoleMembTable tableSecRoleMemb;
 	protected ICFSecSecSessionTable tableSecSession;
 	protected ICFSecSecSysGrpTable tableSecSysGrp;
 	protected ICFSecSecSysGrpIncTable tableSecSysGrpInc;
 	protected ICFSecSecSysGrpMembTable tableSecSysGrpMemb;
+	protected ICFSecSecSysRoleTable tableSecSysRole;
+	protected ICFSecSecSysRoleEnablesTable tableSecSysRoleEnables;
+	protected ICFSecSecSysRoleMembTable tableSecSysRoleMemb;
 	protected ICFSecSecTentGrpTable tableSecTentGrp;
-	protected ICFSecSecTentGrpIncTable tableSecTentGrpInc;
 	protected ICFSecSecTentGrpMembTable tableSecTentGrpMemb;
 	protected ICFSecSecTentRoleTable tableSecTentRole;
 	protected ICFSecSecTentRoleMembTable tableSecTentRoleMemb;
@@ -365,19 +363,17 @@ public class CFBamJpaSchema
 	protected ICFBamSchemaTweakFactory factorySchemaTweak;
 	protected ICFBamScopeFactory factoryScope;
 	protected ICFSecSecClusGrpFactory factorySecClusGrp;
-	protected ICFSecSecClusGrpIncFactory factorySecClusGrpInc;
 	protected ICFSecSecClusGrpMembFactory factorySecClusGrpMemb;
 	protected ICFSecSecClusRoleFactory factorySecClusRole;
 	protected ICFSecSecClusRoleMembFactory factorySecClusRoleMemb;
-	protected ICFSecSecRoleFactory factorySecRole;
-	protected ICFSecSecRoleEnablesFactory factorySecRoleEnables;
-	protected ICFSecSecRoleMembFactory factorySecRoleMemb;
 	protected ICFSecSecSessionFactory factorySecSession;
 	protected ICFSecSecSysGrpFactory factorySecSysGrp;
 	protected ICFSecSecSysGrpIncFactory factorySecSysGrpInc;
 	protected ICFSecSecSysGrpMembFactory factorySecSysGrpMemb;
+	protected ICFSecSecSysRoleFactory factorySecSysRole;
+	protected ICFSecSecSysRoleEnablesFactory factorySecSysRoleEnables;
+	protected ICFSecSecSysRoleMembFactory factorySecSysRoleMemb;
 	protected ICFSecSecTentGrpFactory factorySecTentGrp;
-	protected ICFSecSecTentGrpIncFactory factorySecTentGrpInc;
 	protected ICFSecSecTentGrpMembFactory factorySecTentGrpMemb;
 	protected ICFSecSecTentRoleFactory factorySecTentRole;
 	protected ICFSecSecTentRoleMembFactory factorySecTentRoleMemb;
@@ -3024,19 +3020,17 @@ public class CFBamJpaSchema
 		tableSchemaTweak = null;
 		tableScope = null;
 		tableSecClusGrp = null;
-		tableSecClusGrpInc = null;
 		tableSecClusGrpMemb = null;
 		tableSecClusRole = null;
 		tableSecClusRoleMemb = null;
-		tableSecRole = null;
-		tableSecRoleEnables = null;
-		tableSecRoleMemb = null;
 		tableSecSession = null;
 		tableSecSysGrp = null;
 		tableSecSysGrpInc = null;
 		tableSecSysGrpMemb = null;
+		tableSecSysRole = null;
+		tableSecSysRoleEnables = null;
+		tableSecSysRoleMemb = null;
 		tableSecTentGrp = null;
-		tableSecTentGrpInc = null;
 		tableSecTentGrpMemb = null;
 		tableSecTentRole = null;
 		tableSecTentRoleMemb = null;
@@ -3207,19 +3201,17 @@ public class CFBamJpaSchema
 		factorySchemaTweak = new CFBamJpaSchemaTweakDefaultFactory();
 		factoryScope = new CFBamJpaScopeDefaultFactory();
 		factorySecClusGrp = new CFSecJpaSecClusGrpDefaultFactory();
-		factorySecClusGrpInc = new CFSecJpaSecClusGrpIncDefaultFactory();
 		factorySecClusGrpMemb = new CFSecJpaSecClusGrpMembDefaultFactory();
 		factorySecClusRole = new CFSecJpaSecClusRoleDefaultFactory();
 		factorySecClusRoleMemb = new CFSecJpaSecClusRoleMembDefaultFactory();
-		factorySecRole = new CFSecJpaSecRoleDefaultFactory();
-		factorySecRoleEnables = new CFSecJpaSecRoleEnablesDefaultFactory();
-		factorySecRoleMemb = new CFSecJpaSecRoleMembDefaultFactory();
 		factorySecSession = new CFSecJpaSecSessionDefaultFactory();
 		factorySecSysGrp = new CFSecJpaSecSysGrpDefaultFactory();
 		factorySecSysGrpInc = new CFSecJpaSecSysGrpIncDefaultFactory();
 		factorySecSysGrpMemb = new CFSecJpaSecSysGrpMembDefaultFactory();
+		factorySecSysRole = new CFSecJpaSecSysRoleDefaultFactory();
+		factorySecSysRoleEnables = new CFSecJpaSecSysRoleEnablesDefaultFactory();
+		factorySecSysRoleMemb = new CFSecJpaSecSysRoleMembDefaultFactory();
 		factorySecTentGrp = new CFSecJpaSecTentGrpDefaultFactory();
-		factorySecTentGrpInc = new CFSecJpaSecTentGrpIncDefaultFactory();
 		factorySecTentGrpMemb = new CFSecJpaSecTentGrpMembDefaultFactory();
 		factorySecTentRole = new CFSecJpaSecTentRoleDefaultFactory();
 		factorySecTentRoleMemb = new CFSecJpaSecTentRoleMembDefaultFactory();
@@ -5135,22 +5127,6 @@ public class CFBamJpaSchema
 		factorySecClusGrp = value;
 	}
 
-	public ICFSecSecClusGrpIncTable getTableSecClusGrpInc() {
-		return( tableSecClusGrpInc );
-	}
-
-	public void setTableSecClusGrpInc( ICFSecSecClusGrpIncTable value ) {
-		tableSecClusGrpInc = value;
-	}
-
-	public ICFSecSecClusGrpIncFactory getFactorySecClusGrpInc() {
-		return( factorySecClusGrpInc );
-	}
-
-	public void setFactorySecClusGrpInc( ICFSecSecClusGrpIncFactory value ) {
-		factorySecClusGrpInc = value;
-	}
-
 	public ICFSecSecClusGrpMembTable getTableSecClusGrpMemb() {
 		return( tableSecClusGrpMemb );
 	}
@@ -5197,54 +5173,6 @@ public class CFBamJpaSchema
 
 	public void setFactorySecClusRoleMemb( ICFSecSecClusRoleMembFactory value ) {
 		factorySecClusRoleMemb = value;
-	}
-
-	public ICFSecSecRoleTable getTableSecRole() {
-		return( tableSecRole );
-	}
-
-	public void setTableSecRole( ICFSecSecRoleTable value ) {
-		tableSecRole = value;
-	}
-
-	public ICFSecSecRoleFactory getFactorySecRole() {
-		return( factorySecRole );
-	}
-
-	public void setFactorySecRole( ICFSecSecRoleFactory value ) {
-		factorySecRole = value;
-	}
-
-	public ICFSecSecRoleEnablesTable getTableSecRoleEnables() {
-		return( tableSecRoleEnables );
-	}
-
-	public void setTableSecRoleEnables( ICFSecSecRoleEnablesTable value ) {
-		tableSecRoleEnables = value;
-	}
-
-	public ICFSecSecRoleEnablesFactory getFactorySecRoleEnables() {
-		return( factorySecRoleEnables );
-	}
-
-	public void setFactorySecRoleEnables( ICFSecSecRoleEnablesFactory value ) {
-		factorySecRoleEnables = value;
-	}
-
-	public ICFSecSecRoleMembTable getTableSecRoleMemb() {
-		return( tableSecRoleMemb );
-	}
-
-	public void setTableSecRoleMemb( ICFSecSecRoleMembTable value ) {
-		tableSecRoleMemb = value;
-	}
-
-	public ICFSecSecRoleMembFactory getFactorySecRoleMemb() {
-		return( factorySecRoleMemb );
-	}
-
-	public void setFactorySecRoleMemb( ICFSecSecRoleMembFactory value ) {
-		factorySecRoleMemb = value;
 	}
 
 	public ICFSecSecSessionTable getTableSecSession() {
@@ -5311,6 +5239,54 @@ public class CFBamJpaSchema
 		factorySecSysGrpMemb = value;
 	}
 
+	public ICFSecSecSysRoleTable getTableSecSysRole() {
+		return( tableSecSysRole );
+	}
+
+	public void setTableSecSysRole( ICFSecSecSysRoleTable value ) {
+		tableSecSysRole = value;
+	}
+
+	public ICFSecSecSysRoleFactory getFactorySecSysRole() {
+		return( factorySecSysRole );
+	}
+
+	public void setFactorySecSysRole( ICFSecSecSysRoleFactory value ) {
+		factorySecSysRole = value;
+	}
+
+	public ICFSecSecSysRoleEnablesTable getTableSecSysRoleEnables() {
+		return( tableSecSysRoleEnables );
+	}
+
+	public void setTableSecSysRoleEnables( ICFSecSecSysRoleEnablesTable value ) {
+		tableSecSysRoleEnables = value;
+	}
+
+	public ICFSecSecSysRoleEnablesFactory getFactorySecSysRoleEnables() {
+		return( factorySecSysRoleEnables );
+	}
+
+	public void setFactorySecSysRoleEnables( ICFSecSecSysRoleEnablesFactory value ) {
+		factorySecSysRoleEnables = value;
+	}
+
+	public ICFSecSecSysRoleMembTable getTableSecSysRoleMemb() {
+		return( tableSecSysRoleMemb );
+	}
+
+	public void setTableSecSysRoleMemb( ICFSecSecSysRoleMembTable value ) {
+		tableSecSysRoleMemb = value;
+	}
+
+	public ICFSecSecSysRoleMembFactory getFactorySecSysRoleMemb() {
+		return( factorySecSysRoleMemb );
+	}
+
+	public void setFactorySecSysRoleMemb( ICFSecSecSysRoleMembFactory value ) {
+		factorySecSysRoleMemb = value;
+	}
+
 	public ICFSecSecTentGrpTable getTableSecTentGrp() {
 		return( tableSecTentGrp );
 	}
@@ -5325,22 +5301,6 @@ public class CFBamJpaSchema
 
 	public void setFactorySecTentGrp( ICFSecSecTentGrpFactory value ) {
 		factorySecTentGrp = value;
-	}
-
-	public ICFSecSecTentGrpIncTable getTableSecTentGrpInc() {
-		return( tableSecTentGrpInc );
-	}
-
-	public void setTableSecTentGrpInc( ICFSecSecTentGrpIncTable value ) {
-		tableSecTentGrpInc = value;
-	}
-
-	public ICFSecSecTentGrpIncFactory getFactorySecTentGrpInc() {
-		return( factorySecTentGrpInc );
-	}
-
-	public void setFactorySecTentGrpInc( ICFSecSecTentGrpIncFactory value ) {
-		factorySecTentGrpInc = value;
 	}
 
 	public ICFSecSecTentGrpMembTable getTableSecTentGrpMemb() {
