@@ -197,6 +197,50 @@ public interface CFBamJpaSchemaRoleRepository extends JpaRepository<CFBamJpaSche
 		return( findBySchemaIdx(key.getRequiredSchemaDefId()));
 	}
 
+	/**
+	 *	Read zero or more entities into a List using the columns of the CFBamSchemaRoleByRoleScopeIdxKey as arguments.
+	 *
+	 *		@param requiredRoleScope
+	 *
+	 *		@return List&lt;CFBamJpaSchemaRole&gt; of the found entities, typically from the JPA cache, or an empty list if no such entities exist.
+	 */
+	@Query("select r from CFBamJpaSchemaRole r where r.requiredRoleScope = :roleScope")
+	List<CFBamJpaSchemaRole> findByRoleScopeIdx(@Param("roleScope") ICFBamSchema.RoleScopeEnum requiredRoleScope);
+
+	/**
+	 *	CFBamSchemaRoleByRoleScopeIdxKey entity list reader convenience method for object-based access.
+	 *
+	 *		@param key The CFBamSchemaRoleByRoleScopeIdxKey instance to use for the query arguments.
+	 *
+	 *		@return The found entity list, which may be empty, typically populated from the JPA cache.
+	 */
+	default List<CFBamJpaSchemaRole> findByRoleScopeIdx(ICFBamSchemaRoleByRoleScopeIdxKey key) {
+		return( findByRoleScopeIdx(key.getRequiredRoleScope()));
+	}
+
+	/**
+	 *	Read zero or more entities into a List using the columns of the CFBamSchemaRoleBySchRoleScpIdxKey as arguments.
+	 *
+	 *		@param requiredSchemaDefId
+	 *		@param requiredRoleScope
+	 *
+	 *		@return List&lt;CFBamJpaSchemaRole&gt; of the found entities, typically from the JPA cache, or an empty list if no such entities exist.
+	 */
+	@Query("select r from CFBamJpaSchemaRole r where r.requiredContainerSchemaDef.requiredId = :schemaDefId and r.requiredRoleScope = :roleScope")
+	List<CFBamJpaSchemaRole> findBySchRoleScpIdx(@Param("schemaDefId") CFLibDbKeyHash256 requiredSchemaDefId,
+		@Param("roleScope") ICFBamSchema.RoleScopeEnum requiredRoleScope);
+
+	/**
+	 *	CFBamSchemaRoleBySchRoleScpIdxKey entity list reader convenience method for object-based access.
+	 *
+	 *		@param key The CFBamSchemaRoleBySchRoleScpIdxKey instance to use for the query arguments.
+	 *
+	 *		@return The found entity list, which may be empty, typically populated from the JPA cache.
+	 */
+	default List<CFBamJpaSchemaRole> findBySchRoleScpIdx(ICFBamSchemaRoleBySchRoleScpIdxKey key) {
+		return( findBySchRoleScpIdx(key.getRequiredSchemaDefId(), key.getRequiredRoleScope()));
+	}
+
 	// CFBamJpaRoleDef specified delete-by-index methods
 
 	/**
@@ -334,6 +378,54 @@ public interface CFBamJpaSchemaRoleRepository extends JpaRepository<CFBamJpaSche
 		return( lockBySchemaIdx(key.getRequiredSchemaDefId()));
 	}
 
+	/**
+	 *	Argument-based lock database instance for compatibility with the current MSS code factory code base, uses @Transactional to acquire a JPA entity locks, which may or may not imply an actual database lock during the transaction.
+	 *
+	 *		@param requiredRoleScope
+	 *
+	 *		@return A list of locked entities, refreshed from the data store, or an empty list if no such entities exist.
+	 */
+	@Transactional
+	@Lock(LockModeType.WRITE)
+	@Query("select r from CFBamJpaSchemaRole r where r.requiredRoleScope = :roleScope")
+	List<CFBamJpaSchemaRole> lockByRoleScopeIdx(@Param("roleScope") ICFBamSchema.RoleScopeEnum requiredRoleScope);
+
+	/**
+	 *	CFBamSchemaRoleByRoleScopeIdxKey based lock method for object-based access.
+	 *
+	 *		@param key The key of the entity to be locked.
+	 *
+	 *		@return A list of locked entities, refreshed from the data store, or an empty list if no such entities exist.
+	 */
+	default List<CFBamJpaSchemaRole> lockByRoleScopeIdx(ICFBamSchemaRoleByRoleScopeIdxKey key) {
+		return( lockByRoleScopeIdx(key.getRequiredRoleScope()));
+	}
+
+	/**
+	 *	Argument-based lock database instance for compatibility with the current MSS code factory code base, uses @Transactional to acquire a JPA entity locks, which may or may not imply an actual database lock during the transaction.
+	 *
+	 *		@param requiredSchemaDefId
+	 *		@param requiredRoleScope
+	 *
+	 *		@return A list of locked entities, refreshed from the data store, or an empty list if no such entities exist.
+	 */
+	@Transactional
+	@Lock(LockModeType.WRITE)
+	@Query("select r from CFBamJpaSchemaRole r where r.requiredContainerSchemaDef.requiredId = :schemaDefId and r.requiredRoleScope = :roleScope")
+	List<CFBamJpaSchemaRole> lockBySchRoleScpIdx(@Param("schemaDefId") CFLibDbKeyHash256 requiredSchemaDefId,
+		@Param("roleScope") ICFBamSchema.RoleScopeEnum requiredRoleScope);
+
+	/**
+	 *	CFBamSchemaRoleBySchRoleScpIdxKey based lock method for object-based access.
+	 *
+	 *		@param key The key of the entity to be locked.
+	 *
+	 *		@return A list of locked entities, refreshed from the data store, or an empty list if no such entities exist.
+	 */
+	default List<CFBamJpaSchemaRole> lockBySchRoleScpIdx(ICFBamSchemaRoleBySchRoleScpIdxKey key) {
+		return( lockBySchRoleScpIdx(key.getRequiredSchemaDefId(), key.getRequiredRoleScope()));
+	}
+
 	// CFBamJpaRoleDef specified delete-by-index methods
 
 	/**
@@ -447,6 +539,46 @@ public interface CFBamJpaSchemaRoleRepository extends JpaRepository<CFBamJpaSche
 	 */
 	default void deleteBySchemaIdx(ICFBamSchemaRoleBySchemaIdxKey key) {
 		deleteBySchemaIdx(key.getRequiredSchemaDefId());
+	}
+
+	/**
+	 *	Argument-based delete entity for compatibility with the current MSS code factory code base, uses @Transactional to acquire a JPA entity lock, which may or may not imply an actual database lock during the transaction.
+	 *
+	 *		@param requiredRoleScope
+	 */
+	@Transactional
+	@Modifying
+	@Query("delete from CFBamJpaSchemaRole r where r.requiredRoleScope = :roleScope")
+	void deleteByRoleScopeIdx(@Param("roleScope") ICFBamSchema.RoleScopeEnum requiredRoleScope);
+
+	/**
+	 *	CFBamSchemaRoleByRoleScopeIdxKey based lock method for object-based access.
+	 *
+	 *		@param key The CFBamSchemaRoleByRoleScopeIdxKey of the entity to be locked.
+	 */
+	default void deleteByRoleScopeIdx(ICFBamSchemaRoleByRoleScopeIdxKey key) {
+		deleteByRoleScopeIdx(key.getRequiredRoleScope());
+	}
+
+	/**
+	 *	Argument-based delete entity for compatibility with the current MSS code factory code base, uses @Transactional to acquire a JPA entity lock, which may or may not imply an actual database lock during the transaction.
+	 *
+	 *		@param requiredSchemaDefId
+	 *		@param requiredRoleScope
+	 */
+	@Transactional
+	@Modifying
+	@Query("delete from CFBamJpaSchemaRole r where r.requiredContainerSchemaDef.requiredId = :schemaDefId and r.requiredRoleScope = :roleScope")
+	void deleteBySchRoleScpIdx(@Param("schemaDefId") CFLibDbKeyHash256 requiredSchemaDefId,
+		@Param("roleScope") ICFBamSchema.RoleScopeEnum requiredRoleScope);
+
+	/**
+	 *	CFBamSchemaRoleBySchRoleScpIdxKey based lock method for object-based access.
+	 *
+	 *		@param key The CFBamSchemaRoleBySchRoleScpIdxKey of the entity to be locked.
+	 */
+	default void deleteBySchRoleScpIdx(ICFBamSchemaRoleBySchRoleScpIdxKey key) {
+		deleteBySchRoleScpIdx(key.getRequiredSchemaDefId(), key.getRequiredRoleScope());
 	}
 
 }

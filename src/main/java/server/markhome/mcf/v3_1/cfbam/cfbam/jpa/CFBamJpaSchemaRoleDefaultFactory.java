@@ -93,6 +93,49 @@ public class CFBamJpaSchemaRoleDefaultFactory
 	}
 
     @Override
+    public ICFBamSchemaRoleByRoleScopeIdxKey newByRoleScopeIdxKey() {
+	ICFBamSchemaRoleByRoleScopeIdxKey key =
+            new CFBamJpaSchemaRoleByRoleScopeIdxKey();
+	return( key );
+    }
+
+	public CFBamJpaSchemaRoleByRoleScopeIdxKey ensureByRoleScopeIdxKey(ICFBamSchemaRoleByRoleScopeIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamJpaSchemaRoleByRoleScopeIdxKey) {
+			return( (CFBamJpaSchemaRoleByRoleScopeIdxKey)key );
+		}
+		else {
+			CFBamJpaSchemaRoleByRoleScopeIdxKey mapped = new CFBamJpaSchemaRoleByRoleScopeIdxKey();
+			mapped.setRequiredRoleScope( key.getRequiredRoleScope() );
+			return( mapped );
+		}
+	}
+
+    @Override
+    public ICFBamSchemaRoleBySchRoleScpIdxKey newBySchRoleScpIdxKey() {
+	ICFBamSchemaRoleBySchRoleScpIdxKey key =
+            new CFBamJpaSchemaRoleBySchRoleScpIdxKey();
+	return( key );
+    }
+
+	public CFBamJpaSchemaRoleBySchRoleScpIdxKey ensureBySchRoleScpIdxKey(ICFBamSchemaRoleBySchRoleScpIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamJpaSchemaRoleBySchRoleScpIdxKey) {
+			return( (CFBamJpaSchemaRoleBySchRoleScpIdxKey)key );
+		}
+		else {
+			CFBamJpaSchemaRoleBySchRoleScpIdxKey mapped = new CFBamJpaSchemaRoleBySchRoleScpIdxKey();
+			mapped.setRequiredSchemaDefId( key.getRequiredSchemaDefId() );
+			mapped.setRequiredRoleScope( key.getRequiredRoleScope() );
+			return( mapped );
+		}
+	}
+
+    @Override
     public ICFBamSchemaRole newRec() {
         ICFBamSchemaRole rec =
             new CFBamJpaSchemaRole();

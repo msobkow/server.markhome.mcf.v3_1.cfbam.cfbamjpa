@@ -67,7 +67,9 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 	name = "schrole", schema = "CFBam31",
 	indexes = {
 		@Index(name = "SchemaRoleIdIdx", columnList = "Id", unique = true),
-		@Index(name = "SchemaRoleSchemaIdx", columnList = "SchemaDefId", unique = false)
+		@Index(name = "SchemaRoleSchemaIdx", columnList = "SchemaDefId", unique = false),
+		@Index(name = "SchemaRoleRoleScpIdx", columnList = "RoleScopeId", unique = false),
+		@Index(name = "SchemaRoleSchScpIdx", columnList = "SchemaDefId, RoleScopeId", unique = false)
 	}
 )
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -81,9 +83,12 @@ public class CFBamJpaSchemaRole extends CFBamJpaRoleDef
 	@JoinColumn( name="SchemaDefId", referencedColumnName="Id" )
 	protected CFBamJpaSchemaDef requiredContainerSchemaDef;
 
+	@Column( name="RoleScopeId", nullable=false )
+	protected ICFBamSchema.RoleScopeEnum requiredRoleScope;
 
 	public CFBamJpaSchemaRole() {
 		super();
+		requiredRoleScope = ICFBamSchemaRole.ROLESCOPE_INIT_VALUE;
 	}
 
 	@Override
@@ -134,6 +139,22 @@ public class CFBamJpaSchemaRole extends CFBamJpaRoleDef
 	}
 
 	@Override
+	public ICFBamSchema.RoleScopeEnum getRequiredRoleScope() {
+		return( requiredRoleScope );
+	}
+
+	@Override
+	public void setRequiredRoleScope( ICFBamSchema.RoleScopeEnum value ) {
+		if( value == null ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredRoleScope",
+				1,
+				"value" );
+		}
+		requiredRoleScope = value;
+	}
+
+	@Override
 	public boolean equals( Object obj ) {
 		if (obj == null) {
 			return( false );
@@ -158,6 +179,21 @@ public class CFBamJpaSchemaRole extends CFBamJpaRoleDef
 					return( false );
 				}
 			}
+			if( getRequiredRoleScope() != null ) {
+				if( rhs.getRequiredRoleScope() != null ) {
+					if( ! getRequiredRoleScope().equals( rhs.getRequiredRoleScope() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredRoleScope() != null ) {
+					return( false );
+				}
+			}
 			return( true );
 		}
 		else if (obj instanceof ICFBamSchemaRoleH) {
@@ -177,6 +213,21 @@ public class CFBamJpaSchemaRole extends CFBamJpaRoleDef
 			}
 			else {
 				if( rhs.getRequiredSchemaDefId() != null ) {
+					return( false );
+				}
+			}
+			if( getRequiredRoleScope() != null ) {
+				if( rhs.getRequiredRoleScope() != null ) {
+					if( ! getRequiredRoleScope().equals( rhs.getRequiredRoleScope() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredRoleScope() != null ) {
 					return( false );
 				}
 			}
@@ -204,6 +255,59 @@ public class CFBamJpaSchemaRole extends CFBamJpaRoleDef
 			}
 			return( true );
 		}
+		else if (obj instanceof ICFBamSchemaRoleByRoleScopeIdxKey) {
+			ICFBamSchemaRoleByRoleScopeIdxKey rhs = (ICFBamSchemaRoleByRoleScopeIdxKey)obj;
+			if( getRequiredRoleScope() != null ) {
+				if( rhs.getRequiredRoleScope() != null ) {
+					if( ! getRequiredRoleScope().equals( rhs.getRequiredRoleScope() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredRoleScope() != null ) {
+					return( false );
+				}
+			}
+			return( true );
+		}
+		else if (obj instanceof ICFBamSchemaRoleBySchRoleScpIdxKey) {
+			ICFBamSchemaRoleBySchRoleScpIdxKey rhs = (ICFBamSchemaRoleBySchRoleScpIdxKey)obj;
+			if( getRequiredSchemaDefId() != null ) {
+				if( rhs.getRequiredSchemaDefId() != null ) {
+					if( ! getRequiredSchemaDefId().equals( rhs.getRequiredSchemaDefId() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredSchemaDefId() != null ) {
+					return( false );
+				}
+			}
+			if( getRequiredRoleScope() != null ) {
+				if( rhs.getRequiredRoleScope() != null ) {
+					if( ! getRequiredRoleScope().equals( rhs.getRequiredRoleScope() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredRoleScope() != null ) {
+					return( false );
+				}
+			}
+			return( true );
+		}
 		else {
 			return( super.equals(obj) );
 		}
@@ -213,6 +317,7 @@ public class CFBamJpaSchemaRole extends CFBamJpaRoleDef
 	public int hashCode() {
 		int hashCode = super.hashCode();
 		hashCode = hashCode + getRequiredSchemaDefId().hashCode();
+		hashCode = ( hashCode * 0x10000 ) + getRequiredRoleScope().ordinal();
 		return( hashCode & 0x7fffffff );
 	}
 
@@ -242,6 +347,20 @@ public class CFBamJpaSchemaRole extends CFBamJpaRoleDef
 			else if (rhs.getRequiredSchemaDefId() != null) {
 				return( -1 );
 			}
+			if (getRequiredRoleScope() != null) {
+				if (rhs.getRequiredRoleScope() != null) {
+					cmp = getRequiredRoleScope().compareTo( rhs.getRequiredRoleScope() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredRoleScope() != null) {
+				return( -1 );
+			}
 			return( 0 );
 		}
 		else if( obj instanceof ICFBamSchemaRoleH ) {
@@ -264,6 +383,20 @@ public class CFBamJpaSchemaRole extends CFBamJpaRoleDef
 			else if (rhs.getRequiredSchemaDefId() != null) {
 				return( -1 );
 			}
+			if (getRequiredRoleScope() != null) {
+				if (rhs.getRequiredRoleScope() != null) {
+					cmp = getRequiredRoleScope().compareTo( rhs.getRequiredRoleScope() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredRoleScope() != null) {
+				return( -1 );
+			}
 			return( 0 );
 		}
 		else if (obj instanceof ICFBamSchemaRoleBySchemaIdxKey) {
@@ -280,6 +413,56 @@ public class CFBamJpaSchemaRole extends CFBamJpaRoleDef
 				}
 			}
 			else if (rhs.getRequiredSchemaDefId() != null) {
+				return( -1 );
+			}
+			return( 0 );
+		}
+		else if (obj instanceof ICFBamSchemaRoleByRoleScopeIdxKey) {
+			ICFBamSchemaRoleByRoleScopeIdxKey rhs = (ICFBamSchemaRoleByRoleScopeIdxKey)obj;
+			if (getRequiredRoleScope() != null) {
+				if (rhs.getRequiredRoleScope() != null) {
+					cmp = getRequiredRoleScope().compareTo( rhs.getRequiredRoleScope() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredRoleScope() != null) {
+				return( -1 );
+			}
+			return( 0 );
+		}
+		else if (obj instanceof ICFBamSchemaRoleBySchRoleScpIdxKey) {
+			ICFBamSchemaRoleBySchRoleScpIdxKey rhs = (ICFBamSchemaRoleBySchRoleScpIdxKey)obj;
+			if (getRequiredSchemaDefId() != null) {
+				if (rhs.getRequiredSchemaDefId() != null) {
+					cmp = getRequiredSchemaDefId().compareTo( rhs.getRequiredSchemaDefId() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredSchemaDefId() != null) {
+				return( -1 );
+			}
+			if (getRequiredRoleScope() != null) {
+				if (rhs.getRequiredRoleScope() != null) {
+					cmp = getRequiredRoleScope().compareTo( rhs.getRequiredRoleScope() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredRoleScope() != null) {
 				return( -1 );
 			}
 			return( 0 );
@@ -308,6 +491,7 @@ public class CFBamJpaSchemaRole extends CFBamJpaRoleDef
 	public void setSchemaRole( ICFBamSchemaRole src ) {
 		super.setRoleDef( src );
 		setRequiredContainerSchemaDef(src.getRequiredContainerSchemaDef());
+		setRequiredRoleScope(src.getRequiredRoleScope());
 	}
 
 	@Override
@@ -328,13 +512,15 @@ public class CFBamJpaSchemaRole extends CFBamJpaRoleDef
 	public void setSchemaRole( ICFBamSchemaRoleH src ) {
 		super.setRoleDef( src );
 		setRequiredContainerSchemaDef(src.getRequiredSchemaDefId());
+		setRequiredRoleScope(src.getRequiredRoleScope());
 	}
 
 	@Override
 	public String getXmlAttrFragment() {
 		String ret = super.getXmlAttrFragment() 
 			+ " RequiredId=" + "\"" + getRequiredId().toString() + "\""
-			+ " RequiredSchemaDefId=" + "\"" + getRequiredSchemaDefId().toString() + "\"";
+			+ " RequiredSchemaDefId=" + "\"" + getRequiredSchemaDefId().toString() + "\""
+			+ " RequiredRoleScope=" + "\"" + getRequiredRoleScope().toString() + "\"";
 		return( ret );
 	}
 

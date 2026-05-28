@@ -341,6 +341,93 @@ public class CFBamJpaSchemaRoleTable implements ICFBamSchemaRoleTable
 	}
 
 	/**
+	 *	Delete the SchemaRole instances identified by the key RoleScopeIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	RoleScope	The SchemaRole key attribute of the instance generating the id.
+	 */
+	@Override
+	public void deleteSchemaRoleByRoleScopeIdx( ICFSecAuthorization Authorization,
+		ICFBamSchema.RoleScopeEnum argRoleScope )
+	{
+		final String S_ProcName = "deleteSchemaRoleByRoleScopeIdx";
+		boolean permissionGranted = canDeleteSchemaRole(S_ProcName, Authorization);
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamSchemaRoleTable.TABLE_NAME, "deleteschemarole", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+
+		schema.getJpaHooksSchema().getSchemaRoleService().deleteByRoleScopeIdx(argRoleScope);
+	}
+
+
+	/**
+	 *	Delete the SchemaRole instances identified by the key RoleScopeIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	argKey	The key identifying the instances to be deleted.
+	 */
+	@Override
+	public void deleteSchemaRoleByRoleScopeIdx( ICFSecAuthorization Authorization,
+		ICFBamSchemaRoleByRoleScopeIdxKey argKey )
+	{
+		final String S_ProcName = "deleteSchemaRoleByRoleScopeIdx";
+		boolean permissionGranted = canDeleteSchemaRole(S_ProcName, Authorization);
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamSchemaRoleTable.TABLE_NAME, "deleteschemarole", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+
+		schema.getJpaHooksSchema().getSchemaRoleService().deleteByRoleScopeIdx(argKey.getRequiredRoleScope());
+	}
+
+	/**
+	 *	Delete the SchemaRole instances identified by the key SchRoleScpIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	SchemaDefId	The SchemaRole key attribute of the instance generating the id.
+	 *
+	 *	@param	RoleScope	The SchemaRole key attribute of the instance generating the id.
+	 */
+	@Override
+	public void deleteSchemaRoleBySchRoleScpIdx( ICFSecAuthorization Authorization,
+		CFLibDbKeyHash256 argSchemaDefId,
+		ICFBamSchema.RoleScopeEnum argRoleScope )
+	{
+		final String S_ProcName = "deleteSchemaRoleBySchRoleScpIdx";
+		boolean permissionGranted = canDeleteSchemaRole(S_ProcName, Authorization);
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamSchemaRoleTable.TABLE_NAME, "deleteschemarole", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+
+		schema.getJpaHooksSchema().getSchemaRoleService().deleteBySchRoleScpIdx(argSchemaDefId,
+		argRoleScope);
+	}
+
+
+	/**
+	 *	Delete the SchemaRole instances identified by the key SchRoleScpIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	argKey	The key identifying the instances to be deleted.
+	 */
+	@Override
+	public void deleteSchemaRoleBySchRoleScpIdx( ICFSecAuthorization Authorization,
+		ICFBamSchemaRoleBySchRoleScpIdxKey argKey )
+	{
+		final String S_ProcName = "deleteSchemaRoleBySchRoleScpIdx";
+		boolean permissionGranted = canDeleteSchemaRole(S_ProcName, Authorization);
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamSchemaRoleTable.TABLE_NAME, "deleteschemarole", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+
+		schema.getJpaHooksSchema().getSchemaRoleService().deleteBySchRoleScpIdx(argKey.getRequiredSchemaDefId(),
+			argKey.getRequiredRoleScope());
+	}
+
+	/**
 	 *	Delete the SchemaRole instance identified by the primary key.
 	 *
 	 *	@param	Authorization	The session authorization information.
@@ -885,6 +972,96 @@ public class CFBamJpaSchemaRoleTable implements ICFBamSchemaRoleTable
 	}
 
 	/**
+	 *	Read an array of the derived SchemaRole record instances identified by the duplicate key RoleScopeIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	RoleScope	The SchemaRole key attribute of the instance generating the id.
+	 *
+	 *	@return An array of derived instances for the specified key, potentially with 0 elements in the set.
+	 */
+	@Override
+	public ICFBamSchemaRole[] readDerivedByRoleScopeIdx( ICFSecAuthorization Authorization,
+		ICFBamSchema.RoleScopeEnum argRoleScope )
+	{
+		final String S_ProcName = "readDerivedByRoleScopeIdx";
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadSchemaRole(S_ProcName, Authorization);
+		}
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamSchemaRoleTable.TABLE_NAME, "readschemarole", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+		List<CFBamJpaSchemaRole> retlist = schema.getJpaHooksSchema().getSchemaRoleService().findByRoleScopeIdx(argRoleScope);
+		if(retlist != null) {
+			ArrayList<CFBamJpaSchemaRole> finallist = new ArrayList<>();
+			for (var retval: retlist) {
+				if(retval != null) {
+					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
+					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readschemarole")) {
+						finallist.add(retval);
+					}
+				}
+			}
+			retlist = finallist;
+		}
+		ICFBamSchemaRole[] retset = new ICFBamSchemaRole[retlist.size()];
+		int idx = 0;
+		for (CFBamJpaSchemaRole cur: retlist) {
+			retset[idx++] = cur;
+		}
+		return( retset );
+	}
+
+	/**
+	 *	Read an array of the derived SchemaRole record instances identified by the duplicate key SchRoleScpIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	SchemaDefId	The SchemaRole key attribute of the instance generating the id.
+	 *
+	 *	@param	RoleScope	The SchemaRole key attribute of the instance generating the id.
+	 *
+	 *	@return An array of derived instances for the specified key, potentially with 0 elements in the set.
+	 */
+	@Override
+	public ICFBamSchemaRole[] readDerivedBySchRoleScpIdx( ICFSecAuthorization Authorization,
+		CFLibDbKeyHash256 argSchemaDefId,
+		ICFBamSchema.RoleScopeEnum argRoleScope )
+	{
+		final String S_ProcName = "readDerivedBySchRoleScpIdx";
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadSchemaRole(S_ProcName, Authorization);
+		}
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamSchemaRoleTable.TABLE_NAME, "readschemarole", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+		List<CFBamJpaSchemaRole> retlist = schema.getJpaHooksSchema().getSchemaRoleService().findBySchRoleScpIdx(argSchemaDefId,
+		argRoleScope);
+		if(retlist != null) {
+			ArrayList<CFBamJpaSchemaRole> finallist = new ArrayList<>();
+			for (var retval: retlist) {
+				if(retval != null) {
+					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
+					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readschemarole")) {
+						finallist.add(retval);
+					}
+				}
+			}
+			retlist = finallist;
+		}
+		ICFBamSchemaRole[] retset = new ICFBamSchemaRole[retlist.size()];
+		int idx = 0;
+		for (CFBamJpaSchemaRole cur: retlist) {
+			retset[idx++] = cur;
+		}
+		return( retset );
+	}
+
+	/**
 	 *	Read the specific SchemaRole record instance identified by the primary key.
 	 *
 	 *	@param	Authorization	The session authorization information.
@@ -1119,5 +1296,60 @@ public class CFBamJpaSchemaRoleTable implements ICFBamSchemaRoleTable
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamSchemaRoleTable.TABLE_NAME, "readschemarole", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecBySchemaIdx");
+	}
+
+	/**
+	 *	Read an array of the specific SchemaRole record instances identified by the duplicate key RoleScopeIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	RoleScope	The SchemaRole key attribute of the instance generating the id.
+	 *
+	 *	@return An array of derived record instances for the specified key, potentially with 0 elements in the set.
+	 *
+	 *	@throws	CFLibNotSupportedException thrown by client-side implementations.
+	 */
+	@Override
+	public ICFBamSchemaRole[] readRecByRoleScopeIdx( ICFSecAuthorization Authorization,
+		ICFBamSchema.RoleScopeEnum argRoleScope )
+	{
+		final String S_ProcName = "readRecByRoleScopeIdx";
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadSchemaRole(S_ProcName, Authorization);
+		}
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamSchemaRoleTable.TABLE_NAME, "readschemarole", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+		throw new CFLibNotImplementedYetException(getClass(), "readRecByRoleScopeIdx");
+	}
+
+	/**
+	 *	Read an array of the specific SchemaRole record instances identified by the duplicate key SchRoleScpIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	SchemaDefId	The SchemaRole key attribute of the instance generating the id.
+	 *
+	 *	@param	RoleScope	The SchemaRole key attribute of the instance generating the id.
+	 *
+	 *	@return An array of derived record instances for the specified key, potentially with 0 elements in the set.
+	 *
+	 *	@throws	CFLibNotSupportedException thrown by client-side implementations.
+	 */
+	@Override
+	public ICFBamSchemaRole[] readRecBySchRoleScpIdx( ICFSecAuthorization Authorization,
+		CFLibDbKeyHash256 argSchemaDefId,
+		ICFBamSchema.RoleScopeEnum argRoleScope )
+	{
+		final String S_ProcName = "readRecBySchRoleScpIdx";
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadSchemaRole(S_ProcName, Authorization);
+		}
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamSchemaRoleTable.TABLE_NAME, "readschemarole", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+		throw new CFLibNotImplementedYetException(getClass(), "readRecBySchRoleScpIdx");
 	}
 }

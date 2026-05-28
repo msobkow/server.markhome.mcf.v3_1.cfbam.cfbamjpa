@@ -1,4 +1,4 @@
-// Description: Java 25 JPA implementation of SchemaRole history objects
+// Description: Java 25 JPA implementation of a SchemaRole by SchRoleScpIdx index key object.
 
 /*
  *	server.markhome.mcf.CFBam
@@ -62,43 +62,15 @@ import server.markhome.mcf.v3_1.cfbam.cfbam.*;
 import server.markhome.mcf.v3_1.cfsec.cfsec.jpa.*;
 import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 
-/**
- *  CFBamJpaSchemaRoleH provides history objects matching the CFBamSchemaRole change history.
- */
-@Entity
-@Table(
-    name = "schrole_h", schema = "CFBam31",
-    indexes = {
-        @Index(name = "SchemaRoleIdIdx_h", columnList = "auditClusterId, auditStamp, auditAction, requiredRevision, auditSessionId, Id", unique = true),
-        @Index(name = "SchemaRoleSchemaIdx_h", columnList = "SchemaDefId", unique = false),
-        @Index(name = "SchemaRoleRoleScpIdx_h", columnList = "RoleScopeId", unique = false),
-        @Index(name = "SchemaRoleSchScpIdx_h", columnList = "SchemaDefId, RoleScopeId", unique = false)
-    }
-)
-@Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorValue("43151")
-@Transactional(Transactional.TxType.SUPPORTS)
-@PersistenceContext(unitName = "CFBamPU")
-public class CFBamJpaSchemaRoleH extends CFBamJpaRoleDefH
-    implements ICFBamSchemaRoleH
+public class CFBamJpaSchemaRoleBySchRoleScpIdxKey
+	implements ICFBamSchemaRoleBySchRoleScpIdxKey, Comparable<Object>, Serializable
 {
-	@AttributeOverrides({
-		@AttributeOverride(name="bytes", column = @Column( name="SchemaDefId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
-	})
 	protected CFLibDbKeyHash256 requiredSchemaDefId;
-	@Column( name="RoleScopeId", nullable=false )
 	protected ICFBamSchema.RoleScopeEnum requiredRoleScope;
-
-    public CFBamJpaSchemaRoleH() {
-            super();
+	public CFBamJpaSchemaRoleBySchRoleScpIdxKey() {
 		requiredSchemaDefId = CFLibDbKeyHash256.fromHex( ICFBamSchemaRole.SCHEMADEFID_INIT_VALUE.toString() );
 		requiredRoleScope = ICFBamSchemaRole.ROLESCOPE_INIT_VALUE;
-    }
-
-    @Override
-    public int getClassCode() {
-            return( ICFBamSchemaRole.CLASS_CODE );
-    }
+	}
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredSchemaDefId() {
@@ -132,16 +104,13 @@ public class CFBamJpaSchemaRoleH extends CFBamJpaRoleDefH
 		requiredRoleScope = value;
 	}
 
-    @Override
-    public boolean equals( Object obj ) {
-        if (obj == null) {
-            return( false );
-        }
-        else if (obj instanceof ICFBamSchemaRole) {
-            ICFBamSchemaRole rhs = (ICFBamSchemaRole)obj;
-        if (!super.equals(obj)) {
-            return( false );
-        }
+	@Override
+	public boolean equals( Object obj ) {
+		if (obj == null) {
+			return( false );
+		}
+		else if (obj instanceof ICFBamSchemaRoleBySchRoleScpIdxKey) {
+			ICFBamSchemaRoleBySchRoleScpIdxKey rhs = (ICFBamSchemaRoleBySchRoleScpIdxKey)obj;
 			if( getRequiredSchemaDefId() != null ) {
 				if( rhs.getRequiredSchemaDefId() != null ) {
 					if( ! getRequiredSchemaDefId().equals( rhs.getRequiredSchemaDefId() ) ) {
@@ -172,16 +141,10 @@ public class CFBamJpaSchemaRoleH extends CFBamJpaRoleDefH
 					return( false );
 				}
 			}
-            return( true );
-        }
-        else if (obj instanceof ICFBamSchemaRoleH) {
-			if (!super.equals(obj)) {
-				return( false );
-			}
-            ICFBamSchemaRoleH rhs = (ICFBamSchemaRoleH)obj;
-        if (!super.equals(obj)) {
-            return( false );
-        }
+			return( true );
+		}
+		else if (obj instanceof ICFBamSchemaRole) {
+			ICFBamSchemaRole rhs = (ICFBamSchemaRole)obj;
 			if( getRequiredSchemaDefId() != null ) {
 				if( rhs.getRequiredSchemaDefId() != null ) {
 					if( ! getRequiredSchemaDefId().equals( rhs.getRequiredSchemaDefId() ) ) {
@@ -212,51 +175,10 @@ public class CFBamJpaSchemaRoleH extends CFBamJpaRoleDefH
 					return( false );
 				}
 			}
-            return( true );
-        }
-        else if (obj instanceof ICFBamRoleDefHPKey) {
-			return( super.equals(obj) );
-        }
-        else if (obj instanceof ICFBamSchemaRoleBySchemaIdxKey) {
-            ICFBamSchemaRoleBySchemaIdxKey rhs = (ICFBamSchemaRoleBySchemaIdxKey)obj;
-			if( getRequiredSchemaDefId() != null ) {
-				if( rhs.getRequiredSchemaDefId() != null ) {
-					if( ! getRequiredSchemaDefId().equals( rhs.getRequiredSchemaDefId() ) ) {
-						return( false );
-					}
-				}
-				else {
-					return( false );
-				}
-			}
-			else {
-				if( rhs.getRequiredSchemaDefId() != null ) {
-					return( false );
-				}
-			}
-            return( true );
-        }
-        else if (obj instanceof ICFBamSchemaRoleByRoleScopeIdxKey) {
-            ICFBamSchemaRoleByRoleScopeIdxKey rhs = (ICFBamSchemaRoleByRoleScopeIdxKey)obj;
-			if( getRequiredRoleScope() != null ) {
-				if( rhs.getRequiredRoleScope() != null ) {
-					if( ! getRequiredRoleScope().equals( rhs.getRequiredRoleScope() ) ) {
-						return( false );
-					}
-				}
-				else {
-					return( false );
-				}
-			}
-			else {
-				if( rhs.getRequiredRoleScope() != null ) {
-					return( false );
-				}
-			}
-            return( true );
-        }
-        else if (obj instanceof ICFBamSchemaRoleBySchRoleScpIdxKey) {
-            ICFBamSchemaRoleBySchRoleScpIdxKey rhs = (ICFBamSchemaRoleBySchRoleScpIdxKey)obj;
+			return( true );
+		}
+		else if (obj instanceof ICFBamSchemaRoleH) {
+			ICFBamSchemaRoleH rhs = (ICFBamSchemaRoleH)obj;
 			if( getRequiredSchemaDefId() != null ) {
 				if( rhs.getRequiredSchemaDefId() != null ) {
 					if( ! getRequiredSchemaDefId().equals( rhs.getRequiredSchemaDefId() ) ) {
@@ -287,225 +209,142 @@ public class CFBamJpaSchemaRoleH extends CFBamJpaRoleDefH
 					return( false );
 				}
 			}
-            return( true );
-        }
-        else {
-			return( super.equals(obj) );
-        }
-    }
-    
-    @Override
-    public int hashCode() {
-        int hashCode = super.hashCode();
+			return( true );
+		}
+		else {
+			return( false );
+		}
+	}
+
+	@Override
+	public int hashCode() {
+		int hashCode = 0;
 		hashCode = hashCode + getRequiredSchemaDefId().hashCode();
 		hashCode = ( hashCode * 0x10000 ) + getRequiredRoleScope().ordinal();
-        return( hashCode & 0x7fffffff );
-    }
+		return( hashCode & 0x7fffffff );
+	}
 
-    @Override
-    public int compareTo( Object obj ) {
-        int cmp;
-        if (obj == null) {
-            return( 1 );
-        }
-        else if (obj instanceof ICFBamSchemaRole) {
-        cmp = super.compareTo(obj);
-        if (cmp != 0) {
-            return( cmp );
-        }
-        ICFBamSchemaRole rhs = (ICFBamSchemaRole)obj;
-			if (getRequiredSchemaDefId() != null) {
-				if (rhs.getRequiredSchemaDefId() != null) {
-					cmp = getRequiredSchemaDefId().compareTo( rhs.getRequiredSchemaDefId() );
-					if( cmp != 0 ) {
-						return( cmp );
-					}
-				}
-				else {
-					return( 1 );
-				}
-			}
-			else if (rhs.getRequiredSchemaDefId() != null) {
-				return( -1 );
-			}
-			if (getRequiredRoleScope() != null) {
-				if (rhs.getRequiredRoleScope() != null) {
-					cmp = getRequiredRoleScope().compareTo( rhs.getRequiredRoleScope() );
-					if( cmp != 0 ) {
-						return( cmp );
-					}
-				}
-				else {
-					return( 1 );
-				}
-			}
-			else if (rhs.getRequiredRoleScope() != null) {
-				return( -1 );
-			}
-            return( 0 );
-        }
-        else if (obj instanceof ICFBamRoleDefHPKey) {
-        return( super.compareTo(obj) );
-        }
-        else if (obj instanceof ICFBamSchemaRoleH) {
-        cmp = super.compareTo(obj);
-        if (cmp != 0) {
-            return( cmp );
-        }
-        ICFBamSchemaRoleH rhs = (ICFBamSchemaRoleH)obj;
-			if (getRequiredSchemaDefId() != null) {
-				if (rhs.getRequiredSchemaDefId() != null) {
-					cmp = getRequiredSchemaDefId().compareTo( rhs.getRequiredSchemaDefId() );
-					if( cmp != 0 ) {
-						return( cmp );
-					}
-				}
-				else {
-					return( 1 );
-				}
-			}
-			else if (rhs.getRequiredSchemaDefId() != null) {
-				return( -1 );
-			}
-			if (getRequiredRoleScope() != null) {
-				if (rhs.getRequiredRoleScope() != null) {
-					cmp = getRequiredRoleScope().compareTo( rhs.getRequiredRoleScope() );
-					if( cmp != 0 ) {
-						return( cmp );
-					}
-				}
-				else {
-					return( 1 );
-				}
-			}
-			else if (rhs.getRequiredRoleScope() != null) {
-				return( -1 );
-			}
-            return( 0 );
-        }
-        else if (obj instanceof ICFBamSchemaRoleBySchemaIdxKey ) {
-            ICFBamSchemaRoleBySchemaIdxKey rhs = (ICFBamSchemaRoleBySchemaIdxKey)obj;
-			if (getRequiredSchemaDefId() != null) {
-				if (rhs.getRequiredSchemaDefId() != null) {
-					cmp = getRequiredSchemaDefId().compareTo( rhs.getRequiredSchemaDefId() );
-					if( cmp != 0 ) {
-						return( cmp );
-					}
-				}
-				else {
-					return( 1 );
-				}
-			}
-			else if (rhs.getRequiredSchemaDefId() != null) {
-				return( -1 );
-			}
-            return( 0 );
-        }
-        else if (obj instanceof ICFBamSchemaRoleByRoleScopeIdxKey ) {
-            ICFBamSchemaRoleByRoleScopeIdxKey rhs = (ICFBamSchemaRoleByRoleScopeIdxKey)obj;
-			if (getRequiredRoleScope() != null) {
-				if (rhs.getRequiredRoleScope() != null) {
-					cmp = getRequiredRoleScope().compareTo( rhs.getRequiredRoleScope() );
-					if( cmp != 0 ) {
-						return( cmp );
-					}
-				}
-				else {
-					return( 1 );
-				}
-			}
-			else if (rhs.getRequiredRoleScope() != null) {
-				return( -1 );
-			}
-            return( 0 );
-        }
-        else if (obj instanceof ICFBamSchemaRoleBySchRoleScpIdxKey ) {
-            ICFBamSchemaRoleBySchRoleScpIdxKey rhs = (ICFBamSchemaRoleBySchRoleScpIdxKey)obj;
-			if (getRequiredSchemaDefId() != null) {
-				if (rhs.getRequiredSchemaDefId() != null) {
-					cmp = getRequiredSchemaDefId().compareTo( rhs.getRequiredSchemaDefId() );
-					if( cmp != 0 ) {
-						return( cmp );
-					}
-				}
-				else {
-					return( 1 );
-				}
-			}
-			else if (rhs.getRequiredSchemaDefId() != null) {
-				return( -1 );
-			}
-			if (getRequiredRoleScope() != null) {
-				if (rhs.getRequiredRoleScope() != null) {
-					cmp = getRequiredRoleScope().compareTo( rhs.getRequiredRoleScope() );
-					if( cmp != 0 ) {
-						return( cmp );
-					}
-				}
-				else {
-					return( 1 );
-				}
-			}
-			else if (rhs.getRequiredRoleScope() != null) {
-				return( -1 );
-			}
-            return( 0 );
-        }
-        else {
-        return( super.compareTo(obj) );
-        }
-    }
 	@Override
-    public void set( ICFBamRoleDef src ) {
-		if( src instanceof ICFBamSchemaRole ) {
-			setSchemaRole( (ICFBamSchemaRole)src );
+	public int compareTo( Object obj ) {
+		int cmp;
+		if (obj == null) {
+			return( 1 );
+		}
+		else if (obj instanceof ICFBamSchemaRoleBySchRoleScpIdxKey) {
+			ICFBamSchemaRoleBySchRoleScpIdxKey rhs = (ICFBamSchemaRoleBySchRoleScpIdxKey)obj;
+			if (getRequiredSchemaDefId() != null) {
+				if (rhs.getRequiredSchemaDefId() != null) {
+					cmp = getRequiredSchemaDefId().compareTo( rhs.getRequiredSchemaDefId() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredSchemaDefId() != null) {
+				return( -1 );
+			}
+			if (getRequiredRoleScope() != null) {
+				if (rhs.getRequiredRoleScope() != null) {
+					cmp = getRequiredRoleScope().compareTo( rhs.getRequiredRoleScope() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredRoleScope() != null) {
+				return( -1 );
+			}
+			return( 0 );
+		}
+		else if (obj instanceof ICFBamSchemaRole) {
+			ICFBamSchemaRole rhs = (ICFBamSchemaRole)obj;
+			if (getRequiredSchemaDefId() != null) {
+				if (rhs.getRequiredSchemaDefId() != null) {
+					cmp = getRequiredSchemaDefId().compareTo( rhs.getRequiredSchemaDefId() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredSchemaDefId() != null) {
+				return( -1 );
+			}
+			if (getRequiredRoleScope() != null) {
+				if (rhs.getRequiredRoleScope() != null) {
+					cmp = getRequiredRoleScope().compareTo( rhs.getRequiredRoleScope() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredRoleScope() != null) {
+				return( -1 );
+			}
+			return( 0 );
+		}
+		else if (obj instanceof ICFBamSchemaRoleH) {
+			ICFBamSchemaRoleH rhs = (ICFBamSchemaRoleH)obj;
+			if (getRequiredSchemaDefId() != null) {
+				if (rhs.getRequiredSchemaDefId() != null) {
+					cmp = getRequiredSchemaDefId().compareTo( rhs.getRequiredSchemaDefId() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredSchemaDefId() != null) {
+				return( -1 );
+			}
+			if (getRequiredRoleScope() != null) {
+				if (rhs.getRequiredRoleScope() != null) {
+					cmp = getRequiredRoleScope().compareTo( rhs.getRequiredRoleScope() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredRoleScope() != null) {
+				return( -1 );
+			}
+			return( 0 );
 		}
 		else {
-			throw new CFLibUnsupportedClassException( getClass(),
+			throw new CFLibUnsupportedClassException(getClass(),
 				"compareTo",
-				"src",
-				src,
-				"CFBamJpaSchemaRole" );
+				"obj",
+				obj,
+				"ICFBamSchemaRoleBySchRoleScpIdxKey, ICFBamSchemaRole, ICFBamSchemaRoleH");
 		}
-    }
+	}
 
-	@Override
-    public void setSchemaRole( ICFBamSchemaRole src ) {
-        super.setRoleDef( src );
-		setRequiredSchemaDefId( src.getRequiredSchemaDefId() );
-		setRequiredRoleScope( src.getRequiredRoleScope() );
-    }
-
-	@Override
-    public void set( ICFBamRoleDefH src ) {
-		if( src instanceof ICFBamSchemaRoleH ) {
-			setSchemaRole( (ICFBamSchemaRoleH)src );
-		}
-		else {
-			throw new CFLibUnsupportedClassException( getClass(),
-					"set",
-					"src",
-					src,
-					"ICFBamSchemaRoleH" );
-		}
-    }
-
-	@Override
-    public void setSchemaRole( ICFBamSchemaRoleH src ) {
-        super.setRoleDef( src );
-		setRequiredSchemaDefId( src.getRequiredSchemaDefId() );
-		setRequiredRoleScope( src.getRequiredRoleScope() );
-    }
-
-    public String getXmlAttrFragment() {
-        String ret = super.getXmlAttrFragment() 
+	public String getXmlAttrFragment() {
+		String ret = "" 
 			+ " RequiredSchemaDefId=" + "\"" + getRequiredSchemaDefId().toString() + "\""
 			+ " RequiredRoleScope=" + "\"" + getRequiredRoleScope().toString() + "\"";
-        return( ret );
-    }
+		return( ret );
+	}
 
-    public String toString() {
-        String ret = "<CFBamJpaSchemaRoleH" + getXmlAttrFragment() + "/>";
-        return( ret );
-    }
+	@Override
+	public String toString() {
+		String ret = "<CFBamSchemaRoleBySchRoleScpIdxKey" + getXmlAttrFragment() + "/>";
+		return( ret );
+	}
 }

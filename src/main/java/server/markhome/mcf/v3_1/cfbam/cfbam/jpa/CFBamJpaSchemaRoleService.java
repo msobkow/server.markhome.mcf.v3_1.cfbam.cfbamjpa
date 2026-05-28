@@ -119,6 +119,12 @@ public class CFBamJpaSchemaRoleService {
 				0,
 				"data.requiredSchemaDefId");
 		}
+		if(data.getRequiredRoleScope() == null) {
+			throw new CFLibNullArgumentException(getClass(),
+				S_ProcName,
+				0,
+				"data.requiredRoleScope");
+		}
 		try {
 			if(data.getPKey() != null && !data.getPKey().isNull() && cfbam31SchemaRoleRepository.existsById((CFLibDbKeyHash256)data.getPKey())) {
 				return( (CFBamJpaSchemaRole)(cfbam31SchemaRoleRepository.findById((CFLibDbKeyHash256)(data.getPKey())).get()));
@@ -185,6 +191,12 @@ public class CFBamJpaSchemaRoleService {
 				0,
 				"data.requiredSchemaDefId");
 		}
+		if(data.getRequiredRoleScope() == null) {
+			throw new CFLibNullArgumentException(getClass(),
+				S_ProcName,
+				0,
+				"data.requiredRoleScope");
+		}
 		// Ensure the entity exists and that the revision matches
 		CFBamJpaSchemaRole existing = cfbam31SchemaRoleRepository.findById((CFLibDbKeyHash256)(data.getPKey()))
 			.orElseThrow(() -> new CFLibCollisionDetectedException(getClass(), S_ProcName, data.getPKey()));
@@ -200,6 +212,7 @@ public class CFBamJpaSchemaRoleService {
 		// Apply superior data relationships of CFBamSchemaRole to existing object
 		existing.setRequiredContainerSchemaDef(data.getRequiredContainerSchemaDef());
 		// Apply data columns of CFBamSchemaRole to existing object
+		existing.setRequiredRoleScope(data.getRequiredRoleScope());
 		// Update the audit columns
 		data.setUpdatedAt(LocalDateTime.now());
 		// Save the changes we've made
@@ -361,6 +374,57 @@ public class CFBamJpaSchemaRoleService {
 		return( cfbam31SchemaRoleRepository.findBySchemaIdx(key.getRequiredSchemaDefId()));
 	}
 
+	/**
+	 *	Find zero or more entities into a List using the columns of the ICFBamSchemaRoleByRoleScopeIdxKey as arguments.
+	 *
+	 *		@param requiredRoleScope
+	 *
+	 *		@return List&lt;CFBamJpaSchemaRole&gt; of the found entities, or an empty list if no such entities exist.
+	 */
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
+	public List<CFBamJpaSchemaRole> findByRoleScopeIdx(@Param("roleScope") ICFBamSchema.RoleScopeEnum requiredRoleScope) {
+		return( cfbam31SchemaRoleRepository.findByRoleScopeIdx(requiredRoleScope));
+	}
+
+	/**
+	 *	ICFBamSchemaRoleByRoleScopeIdxKey entity list finder convenience method for object-based access.
+	 *
+	 *		@param key The ICFBamSchemaRoleByRoleScopeIdxKey instance to use for the query arguments.
+	 *
+	 *		@return The found entity list, which may be empty.
+	 */
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
+	public List<CFBamJpaSchemaRole> findByRoleScopeIdx(ICFBamSchemaRoleByRoleScopeIdxKey key) {
+		return( cfbam31SchemaRoleRepository.findByRoleScopeIdx(key.getRequiredRoleScope()));
+	}
+
+	/**
+	 *	Find zero or more entities into a List using the columns of the ICFBamSchemaRoleBySchRoleScpIdxKey as arguments.
+	 *
+	 *		@param requiredSchemaDefId
+	 *		@param requiredRoleScope
+	 *
+	 *		@return List&lt;CFBamJpaSchemaRole&gt; of the found entities, or an empty list if no such entities exist.
+	 */
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
+	public List<CFBamJpaSchemaRole> findBySchRoleScpIdx(@Param("schemaDefId") CFLibDbKeyHash256 requiredSchemaDefId,
+		@Param("roleScope") ICFBamSchema.RoleScopeEnum requiredRoleScope) {
+		return( cfbam31SchemaRoleRepository.findBySchRoleScpIdx(requiredSchemaDefId,
+			requiredRoleScope));
+	}
+
+	/**
+	 *	ICFBamSchemaRoleBySchRoleScpIdxKey entity list finder convenience method for object-based access.
+	 *
+	 *		@param key The ICFBamSchemaRoleBySchRoleScpIdxKey instance to use for the query arguments.
+	 *
+	 *		@return The found entity list, which may be empty.
+	 */
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
+	public List<CFBamJpaSchemaRole> findBySchRoleScpIdx(ICFBamSchemaRoleBySchRoleScpIdxKey key) {
+		return( cfbam31SchemaRoleRepository.findBySchRoleScpIdx(key.getRequiredSchemaDefId(), key.getRequiredRoleScope()));
+	}
+
 	// CFBamRoleDef specified lock-by-index methods
 
 	/**
@@ -506,6 +570,57 @@ public class CFBamJpaSchemaRoleService {
 		return( cfbam31SchemaRoleRepository.lockBySchemaIdx(key.getRequiredSchemaDefId()));
 	}
 
+	/**
+	 *	Argument-based lock database instance for compatibility with the current MSS code factory code base, uses @Transactional to acquire a JPA entity locks, which may or may not imply an actual database lock during the transaction.
+	 *
+	 *		@param requiredRoleScope
+	 *
+	 *		@return A list of locked entities, refreshed from the data store, or an empty list if no such entities exist.
+	 */
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
+	public List<CFBamJpaSchemaRole> lockByRoleScopeIdx(@Param("roleScope") ICFBamSchema.RoleScopeEnum requiredRoleScope) {
+		return( cfbam31SchemaRoleRepository.lockByRoleScopeIdx(requiredRoleScope));
+	}
+
+	/**
+	 *	ICFBamSchemaRoleByRoleScopeIdxKey based lock method for object-based access.
+	 *
+	 *		@param key The key of the entity to be locked.
+	 *
+	 *		@return A list of locked entities, refreshed from the data store, or an empty list if no such entities exist.
+	 */
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
+	public List<CFBamJpaSchemaRole> lockByRoleScopeIdx(ICFBamSchemaRoleByRoleScopeIdxKey key) {
+		return( cfbam31SchemaRoleRepository.lockByRoleScopeIdx(key.getRequiredRoleScope()));
+	}
+
+	/**
+	 *	Argument-based lock database instance for compatibility with the current MSS code factory code base, uses @Transactional to acquire a JPA entity locks, which may or may not imply an actual database lock during the transaction.
+	 *
+	 *		@param requiredSchemaDefId
+	 *		@param requiredRoleScope
+	 *
+	 *		@return A list of locked entities, refreshed from the data store, or an empty list if no such entities exist.
+	 */
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
+	public List<CFBamJpaSchemaRole> lockBySchRoleScpIdx(@Param("schemaDefId") CFLibDbKeyHash256 requiredSchemaDefId,
+		@Param("roleScope") ICFBamSchema.RoleScopeEnum requiredRoleScope) {
+		return( cfbam31SchemaRoleRepository.lockBySchRoleScpIdx(requiredSchemaDefId,
+			requiredRoleScope));
+	}
+
+	/**
+	 *	ICFBamSchemaRoleBySchRoleScpIdxKey based lock method for object-based access.
+	 *
+	 *		@param key The key of the entity to be locked.
+	 *
+	 *		@return A list of locked entities, refreshed from the data store, or an empty list if no such entities exist.
+	 */
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
+	public List<CFBamJpaSchemaRole> lockBySchRoleScpIdx(ICFBamSchemaRoleBySchRoleScpIdxKey key) {
+		return( cfbam31SchemaRoleRepository.lockBySchRoleScpIdx(key.getRequiredSchemaDefId(), key.getRequiredRoleScope()));
+	}
+
 	// CFBamRoleDef specified delete-by-index methods
 
 	/**
@@ -627,6 +742,49 @@ public class CFBamJpaSchemaRoleService {
 	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public void deleteBySchemaIdx(ICFBamSchemaRoleBySchemaIdxKey key) {
 		cfbam31SchemaRoleRepository.deleteBySchemaIdx(key.getRequiredSchemaDefId());
+	}
+
+	/**
+	 *	Argument-based delete entity for compatibility with the current MSS code factory code base, uses @Transactional to acquire a JPA entity lock, which may or may not imply an actual database lock during the transaction.
+	 *
+	 *		@param requiredRoleScope
+	 */
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
+	public void deleteByRoleScopeIdx(@Param("roleScope") ICFBamSchema.RoleScopeEnum requiredRoleScope) {
+		cfbam31SchemaRoleRepository.deleteByRoleScopeIdx(requiredRoleScope);
+	}
+
+	/**
+	 *	ICFBamSchemaRoleByRoleScopeIdxKey based lock method for object-based access.
+	 *
+	 *		@param key The ICFBamSchemaRoleByRoleScopeIdxKey of the entity to be locked.
+	 */
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
+	public void deleteByRoleScopeIdx(ICFBamSchemaRoleByRoleScopeIdxKey key) {
+		cfbam31SchemaRoleRepository.deleteByRoleScopeIdx(key.getRequiredRoleScope());
+	}
+
+	/**
+	 *	Argument-based delete entity for compatibility with the current MSS code factory code base, uses @Transactional to acquire a JPA entity lock, which may or may not imply an actual database lock during the transaction.
+	 *
+	 *		@param requiredSchemaDefId
+	 *		@param requiredRoleScope
+	 */
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
+	public void deleteBySchRoleScpIdx(@Param("schemaDefId") CFLibDbKeyHash256 requiredSchemaDefId,
+		@Param("roleScope") ICFBamSchema.RoleScopeEnum requiredRoleScope) {
+		cfbam31SchemaRoleRepository.deleteBySchRoleScpIdx(requiredSchemaDefId,
+			requiredRoleScope);
+	}
+
+	/**
+	 *	ICFBamSchemaRoleBySchRoleScpIdxKey based lock method for object-based access.
+	 *
+	 *		@param key The ICFBamSchemaRoleBySchRoleScpIdxKey of the entity to be locked.
+	 */
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
+	public void deleteBySchRoleScpIdx(ICFBamSchemaRoleBySchRoleScpIdxKey key) {
+		cfbam31SchemaRoleRepository.deleteBySchRoleScpIdx(key.getRequiredSchemaDefId(), key.getRequiredRoleScope());
 	}
 
 }
