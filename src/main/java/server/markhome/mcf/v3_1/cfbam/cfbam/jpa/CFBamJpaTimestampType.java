@@ -67,7 +67,8 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 	name = "tstyp", schema = "CFBam31",
 	indexes = {
 		@Index(name = "TimestampTypeIdIdx", columnList = "Id", unique = true),
-		@Index(name = "TimestampTypeSchemaDefIdx", columnList = "SchemaDefId", unique = false)
+		@Index(name = "TimestampTypeSchemaDefIdx", columnList = "SchemaDefId", unique = false),
+		@Index(name = "TimestampTypeSchemaDefIdxSchemaDef", columnList = "SchemaDefIdSchemaDef", unique = false)
 	}
 )
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -78,7 +79,7 @@ public class CFBamJpaTimestampType extends CFBamJpaTimestampDef
 	implements ICFBamTimestampType
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="SchemaDefId", referencedColumnName="Id" )
+	@JoinColumn( name="SchemaDefIdSchemaDef", referencedColumnName="Id" )
 	protected CFBamJpaSchemaDef requiredContainerSchemaDef;
 
 
@@ -93,7 +94,7 @@ public class CFBamJpaTimestampType extends CFBamJpaTimestampDef
 
 	@Override
 	public ICFBamSchemaDef getRequiredContainerSchemaDef() {
-		return( requiredContainerSchemaDef );
+		return(requiredContainerSchemaDef);
 	}
 	@Override
 	public void setRequiredContainerSchemaDef(ICFBamSchemaDef argObj) {

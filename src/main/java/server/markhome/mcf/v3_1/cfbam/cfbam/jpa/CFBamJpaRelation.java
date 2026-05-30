@@ -73,7 +73,13 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 		@Index(name = "RelationFromKeyIdx", columnList = "FromIndexId", unique = false),
 		@Index(name = "RelationToTblIdx", columnList = "ToTableId", unique = false),
 		@Index(name = "RelationToKeyIdx", columnList = "ToIndexId", unique = false),
-		@Index(name = "RelationNarrowedIdx", columnList = "NarrowedId", unique = false)
+		@Index(name = "RelationNarrowedIdx", columnList = "NarrowedId", unique = false),
+		@Index(name = "RelationDefSchemaDefIdxDefSchema", columnList = "defschidDefSchema", unique = false),
+		@Index(name = "RelationTableIdxFromTable", columnList = "TableIdFromTable", unique = false),
+		@Index(name = "RelationFromKeyIdxFromIndex", columnList = "FromIndexIdFromIndex", unique = false),
+		@Index(name = "RelationToTblIdxToTable", columnList = "ToTableIdToTable", unique = false),
+		@Index(name = "RelationToKeyIdxToIndex", columnList = "ToIndexIdToIndex", unique = false),
+		@Index(name = "RelationNarrowedIdxNarrowed", columnList = "NarrowedIdNarrowed", unique = false)
 	}
 )
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -84,22 +90,22 @@ public class CFBamJpaRelation extends CFBamJpaScope
 	implements ICFBamRelation
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="defschid", referencedColumnName="Id" )
+	@JoinColumn( name="defschidDefSchema", referencedColumnName="Id" )
 	protected CFBamJpaSchemaDef optionalLookupDefSchema;
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="TableId", referencedColumnName="Id" )
+	@JoinColumn( name="TableIdFromTable", referencedColumnName="Id" )
 	protected CFBamJpaTable requiredContainerFromTable;
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="FromIndexId", referencedColumnName="Id" )
+	@JoinColumn( name="FromIndexIdFromIndex", referencedColumnName="Id" )
 	protected CFBamJpaIndex requiredLookupFromIndex;
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="ToTableId", referencedColumnName="Id" )
+	@JoinColumn( name="ToTableIdToTable", referencedColumnName="Id" )
 	protected CFBamJpaTable requiredLookupToTable;
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="ToIndexId", referencedColumnName="Id" )
+	@JoinColumn( name="ToIndexIdToIndex", referencedColumnName="Id" )
 	protected CFBamJpaIndex requiredLookupToIndex;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="NarrowedId", referencedColumnName="Id" )
+	@JoinColumn( name="NarrowedIdNarrowed", referencedColumnName="Id" )
 	protected CFBamJpaRelation optionalLookupNarrowed;
 
 	@Column( name="safe_name", nullable=false, length=192 )
@@ -150,7 +156,7 @@ public class CFBamJpaRelation extends CFBamJpaScope
 
 	@Override
 	public ICFBamSchemaDef getOptionalLookupDefSchema() {
-		return( optionalLookupDefSchema );
+		return(optionalLookupDefSchema);
 	}
 	@Override
 	public void setOptionalLookupDefSchema(ICFBamSchemaDef argObj) {
@@ -181,7 +187,7 @@ public class CFBamJpaRelation extends CFBamJpaScope
 
 	@Override
 	public ICFBamTable getRequiredContainerFromTable() {
-		return( requiredContainerFromTable );
+		return(requiredContainerFromTable);
 	}
 	@Override
 	public void setRequiredContainerFromTable(ICFBamTable argObj) {
@@ -212,7 +218,7 @@ public class CFBamJpaRelation extends CFBamJpaScope
 
 	@Override
 	public ICFBamIndex getRequiredLookupFromIndex() {
-		return( requiredLookupFromIndex );
+		return(requiredLookupFromIndex);
 	}
 	@Override
 	public void setRequiredLookupFromIndex(ICFBamIndex argObj) {
@@ -243,7 +249,7 @@ public class CFBamJpaRelation extends CFBamJpaScope
 
 	@Override
 	public ICFBamTable getRequiredLookupToTable() {
-		return( requiredLookupToTable );
+		return(requiredLookupToTable);
 	}
 	@Override
 	public void setRequiredLookupToTable(ICFBamTable argObj) {
@@ -274,7 +280,7 @@ public class CFBamJpaRelation extends CFBamJpaScope
 
 	@Override
 	public ICFBamIndex getRequiredLookupToIndex() {
-		return( requiredLookupToIndex );
+		return(requiredLookupToIndex);
 	}
 	@Override
 	public void setRequiredLookupToIndex(ICFBamIndex argObj) {
@@ -305,7 +311,7 @@ public class CFBamJpaRelation extends CFBamJpaScope
 
 	@Override
 	public ICFBamRelation getOptionalLookupNarrowed() {
-		return( optionalLookupNarrowed );
+		return(optionalLookupNarrowed);
 	}
 	@Override
 	public void setOptionalLookupNarrowed(ICFBamRelation argObj) {

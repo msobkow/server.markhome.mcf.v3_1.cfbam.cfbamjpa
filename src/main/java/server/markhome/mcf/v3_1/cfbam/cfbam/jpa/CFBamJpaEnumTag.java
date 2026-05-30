@@ -71,7 +71,11 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 		@Index(name = "EnumTagDefSchemaDefIdx", columnList = "defschid", unique = false),
 		@Index(name = "EnumTagEnumNameIdx", columnList = "EnumId, safe_name", unique = true),
 		@Index(name = "EnumTagPrevIdx", columnList = "PrevId", unique = false),
-		@Index(name = "EnumTagNextIdx", columnList = "NextId", unique = false)
+		@Index(name = "EnumTagNextIdx", columnList = "NextId", unique = false),
+		@Index(name = "EnumTagEnumIdxEnumDef", columnList = "EnumIdEnumDef", unique = false),
+		@Index(name = "EnumTagDefSchemaDefIdxDefSchema", columnList = "defschidDefSchema", unique = false),
+		@Index(name = "EnumTagPrevIdxPrev", columnList = "PrevIdPrev", unique = false),
+		@Index(name = "EnumTagNextIdxNext", columnList = "NextIdNext", unique = false)
 	}
 )
 @Transactional(Transactional.TxType.SUPPORTS)
@@ -89,16 +93,16 @@ public class CFBamJpaEnumTag
 	protected int requiredRevision;
 
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="EnumId", referencedColumnName="Id" )
+	@JoinColumn( name="EnumIdEnumDef", referencedColumnName="Id" )
 	protected CFBamJpaEnumDef requiredContainerEnumDef;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="defschid", referencedColumnName="Id" )
+	@JoinColumn( name="defschidDefSchema", referencedColumnName="Id" )
 	protected CFBamJpaSchemaDef optionalLookupDefSchema;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="PrevId", referencedColumnName="Id" )
+	@JoinColumn( name="PrevIdPrev", referencedColumnName="Id" )
 	protected CFBamJpaEnumTag optionalLookupPrev;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="NextId", referencedColumnName="Id" )
+	@JoinColumn( name="NextIdNext", referencedColumnName="Id" )
 	protected CFBamJpaEnumTag optionalLookupNext;
 
 	@AttributeOverrides({
@@ -134,7 +138,7 @@ public class CFBamJpaEnumTag
 
 	@Override
 	public ICFBamEnumDef getRequiredContainerEnumDef() {
-		return( requiredContainerEnumDef );
+		return(requiredContainerEnumDef);
 	}
 	@Override
 	public void setRequiredContainerEnumDef(ICFBamEnumDef argObj) {
@@ -165,7 +169,7 @@ public class CFBamJpaEnumTag
 
 	@Override
 	public ICFBamSchemaDef getOptionalLookupDefSchema() {
-		return( optionalLookupDefSchema );
+		return(optionalLookupDefSchema);
 	}
 	@Override
 	public void setOptionalLookupDefSchema(ICFBamSchemaDef argObj) {
@@ -196,7 +200,7 @@ public class CFBamJpaEnumTag
 
 	@Override
 	public ICFBamEnumTag getOptionalLookupPrev() {
-		return( optionalLookupPrev );
+		return(optionalLookupPrev);
 	}
 	@Override
 	public void setOptionalLookupPrev(ICFBamEnumTag argObj) {
@@ -227,7 +231,7 @@ public class CFBamJpaEnumTag
 
 	@Override
 	public ICFBamEnumTag getOptionalLookupNext() {
-		return( optionalLookupNext );
+		return(optionalLookupNext);
 	}
 	@Override
 	public void setOptionalLookupNext(ICFBamEnumTag argObj) {

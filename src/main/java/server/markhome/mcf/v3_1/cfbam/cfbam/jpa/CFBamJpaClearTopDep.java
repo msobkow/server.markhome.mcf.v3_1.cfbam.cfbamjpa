@@ -70,7 +70,10 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 		@Index(name = "ClearTopDepTableIdx", columnList = "TableId", unique = false),
 		@Index(name = "ClearTopDepUNameIdx", columnList = "TableId, safe_name", unique = true),
 		@Index(name = "ClearTopDepPrevIdx", columnList = "PrevId", unique = false),
-		@Index(name = "ClearTopDepNextIdx", columnList = "NextId", unique = false)
+		@Index(name = "ClearTopDepNextIdx", columnList = "NextId", unique = false),
+		@Index(name = "ClearTopDepTableIdxTable", columnList = "TableIdTable", unique = false),
+		@Index(name = "ClearTopDepPrevIdxPrev", columnList = "PrevIdPrev", unique = false),
+		@Index(name = "ClearTopDepNextIdxNext", columnList = "NextIdNext", unique = false)
 	}
 )
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -81,13 +84,13 @@ public class CFBamJpaClearTopDep extends CFBamJpaClearDep
 	implements ICFBamClearTopDep
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="TableId", referencedColumnName="Id" )
+	@JoinColumn( name="TableIdTable", referencedColumnName="Id" )
 	protected CFBamJpaTable requiredContainerTable;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="PrevId", referencedColumnName="Id" )
+	@JoinColumn( name="PrevIdPrev", referencedColumnName="Id" )
 	protected CFBamJpaClearTopDep optionalLookupPrev;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="NextId", referencedColumnName="Id" )
+	@JoinColumn( name="NextIdNext", referencedColumnName="Id" )
 	protected CFBamJpaClearTopDep optionalLookupNext;
 
 	@Column( name="safe_name", nullable=false, length=192 )
@@ -105,7 +108,7 @@ public class CFBamJpaClearTopDep extends CFBamJpaClearDep
 
 	@Override
 	public ICFBamTable getRequiredContainerTable() {
-		return( requiredContainerTable );
+		return(requiredContainerTable);
 	}
 	@Override
 	public void setRequiredContainerTable(ICFBamTable argObj) {
@@ -136,7 +139,7 @@ public class CFBamJpaClearTopDep extends CFBamJpaClearDep
 
 	@Override
 	public ICFBamClearTopDep getOptionalLookupPrev() {
-		return( optionalLookupPrev );
+		return(optionalLookupPrev);
 	}
 	@Override
 	public void setOptionalLookupPrev(ICFBamClearTopDep argObj) {
@@ -167,7 +170,7 @@ public class CFBamJpaClearTopDep extends CFBamJpaClearDep
 
 	@Override
 	public ICFBamClearTopDep getOptionalLookupNext() {
-		return( optionalLookupNext );
+		return(optionalLookupNext);
 	}
 	@Override
 	public void setOptionalLookupNext(ICFBamClearTopDep argObj) {

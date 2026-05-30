@@ -67,7 +67,8 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 	name = "numcol", schema = "CFBam31",
 	indexes = {
 		@Index(name = "NumberColIdIdx", columnList = "Id", unique = true),
-		@Index(name = "NumberColTableIdx", columnList = "TableId", unique = false)
+		@Index(name = "NumberColTableIdx", columnList = "TableId", unique = false),
+		@Index(name = "NumberColTableIdxTable", columnList = "TableIdTable", unique = false)
 	}
 )
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -78,7 +79,7 @@ public class CFBamJpaNumberCol extends CFBamJpaNumberDef
 	implements ICFBamNumberCol
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="TableId", referencedColumnName="Id" )
+	@JoinColumn( name="TableIdTable", referencedColumnName="Id" )
 	protected CFBamJpaTable requiredContainerTable;
 
 
@@ -93,7 +94,7 @@ public class CFBamJpaNumberCol extends CFBamJpaNumberDef
 
 	@Override
 	public ICFBamTable getRequiredContainerTable() {
-		return( requiredContainerTable );
+		return(requiredContainerTable);
 	}
 	@Override
 	public void setRequiredContainerTable(ICFBamTable argObj) {

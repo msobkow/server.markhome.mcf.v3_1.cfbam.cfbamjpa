@@ -74,7 +74,13 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 		@Index(name = "TablePrimaryIndexIdx", columnList = "PrimIdxId", unique = false),
 		@Index(name = "TableLookupIndexIdx", columnList = "LookIdxId", unique = false),
 		@Index(name = "TableAltIndexIdx", columnList = "AltIdxId", unique = false),
-		@Index(name = "TableQualifyingTableIdx", columnList = "QualTblId", unique = false)
+		@Index(name = "TableQualifyingTableIdx", columnList = "QualTblId", unique = false),
+		@Index(name = "TableSchemaDefIdxSchemaDef", columnList = "SchemaDefIdSchemaDef", unique = false),
+		@Index(name = "TableDefSchemaDefIdxDefSchema", columnList = "defschidDefSchema", unique = false),
+		@Index(name = "TableLookupIndexIdxLookupIndex", columnList = "LookIdxIdLookupIndex", unique = false),
+		@Index(name = "TableAltIndexIdxAltIndex", columnList = "AltIdxIdAltIndex", unique = false),
+		@Index(name = "TableQualifyingTableIdxQualTable", columnList = "QualTblIdQualTable", unique = false),
+		@Index(name = "TablePrimaryIndexIdxPrimaryIndex", columnList = "PrimIdxIdPrimaryIndex", unique = false)
 	}
 )
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -85,22 +91,22 @@ public class CFBamJpaTable extends CFBamJpaScope
 	implements ICFBamTable
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="SchemaDefId", referencedColumnName="Id" )
+	@JoinColumn( name="SchemaDefIdSchemaDef", referencedColumnName="Id" )
 	protected CFBamJpaSchemaDef requiredContainerSchemaDef;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="defschid", referencedColumnName="Id" )
+	@JoinColumn( name="defschidDefSchema", referencedColumnName="Id" )
 	protected CFBamJpaSchemaDef optionalLookupDefSchema;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="LookIdxId", referencedColumnName="Id" )
+	@JoinColumn( name="LookIdxIdLookupIndex", referencedColumnName="Id" )
 	protected CFBamJpaIndex optionalLookupLookupIndex;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="AltIdxId", referencedColumnName="Id" )
+	@JoinColumn( name="AltIdxIdAltIndex", referencedColumnName="Id" )
 	protected CFBamJpaIndex optionalLookupAltIndex;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="QualTblId", referencedColumnName="Id" )
+	@JoinColumn( name="QualTblIdQualTable", referencedColumnName="Id" )
 	protected CFBamJpaTable optionalLookupQualTable;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="PrimIdxId", referencedColumnName="Id" )
+	@JoinColumn( name="PrimIdxIdPrimaryIndex", referencedColumnName="Id" )
 	protected CFBamJpaIndex optionalLookupPrimaryIndex;
 
 	@Column( name="safe_name", nullable=false, length=192 )
@@ -160,7 +166,7 @@ public class CFBamJpaTable extends CFBamJpaScope
 
 	@Override
 	public ICFBamSchemaDef getRequiredContainerSchemaDef() {
-		return( requiredContainerSchemaDef );
+		return(requiredContainerSchemaDef);
 	}
 	@Override
 	public void setRequiredContainerSchemaDef(ICFBamSchemaDef argObj) {
@@ -191,7 +197,7 @@ public class CFBamJpaTable extends CFBamJpaScope
 
 	@Override
 	public ICFBamSchemaDef getOptionalLookupDefSchema() {
-		return( optionalLookupDefSchema );
+		return(optionalLookupDefSchema);
 	}
 	@Override
 	public void setOptionalLookupDefSchema(ICFBamSchemaDef argObj) {
@@ -222,7 +228,7 @@ public class CFBamJpaTable extends CFBamJpaScope
 
 	@Override
 	public ICFBamIndex getOptionalLookupLookupIndex() {
-		return( optionalLookupLookupIndex );
+		return(optionalLookupLookupIndex);
 	}
 	@Override
 	public void setOptionalLookupLookupIndex(ICFBamIndex argObj) {
@@ -253,7 +259,7 @@ public class CFBamJpaTable extends CFBamJpaScope
 
 	@Override
 	public ICFBamIndex getOptionalLookupAltIndex() {
-		return( optionalLookupAltIndex );
+		return(optionalLookupAltIndex);
 	}
 	@Override
 	public void setOptionalLookupAltIndex(ICFBamIndex argObj) {
@@ -284,7 +290,7 @@ public class CFBamJpaTable extends CFBamJpaScope
 
 	@Override
 	public ICFBamTable getOptionalLookupQualTable() {
-		return( optionalLookupQualTable );
+		return(optionalLookupQualTable);
 	}
 	@Override
 	public void setOptionalLookupQualTable(ICFBamTable argObj) {
@@ -315,7 +321,7 @@ public class CFBamJpaTable extends CFBamJpaScope
 
 	@Override
 	public ICFBamIndex getOptionalLookupPrimaryIndex() {
-		return( optionalLookupPrimaryIndex );
+		return(optionalLookupPrimaryIndex);
 	}
 	@Override
 	public void setOptionalLookupPrimaryIndex(ICFBamIndex argObj) {

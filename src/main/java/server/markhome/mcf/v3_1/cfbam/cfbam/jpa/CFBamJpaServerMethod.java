@@ -69,7 +69,9 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 		@Index(name = "ServerMethodIdIdx", columnList = "Id", unique = true),
 		@Index(name = "ServerMethodUNameIdx", columnList = "TableId, safe_name", unique = true),
 		@Index(name = "ServerMethodTableIdx", columnList = "TableId", unique = false),
-		@Index(name = "ServerMethodDefSchemaDefIdx", columnList = "defschid", unique = false)
+		@Index(name = "ServerMethodDefSchemaDefIdx", columnList = "defschid", unique = false),
+		@Index(name = "ServerMethodDefSchemaDefIdxDefSchema", columnList = "defschidDefSchema", unique = false),
+		@Index(name = "ServerMethodTableIdxForTable", columnList = "TableIdForTable", unique = false)
 	}
 )
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -80,10 +82,10 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 	implements ICFBamServerMethod
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="defschid", referencedColumnName="Id" )
+	@JoinColumn( name="defschidDefSchema", referencedColumnName="Id" )
 	protected CFBamJpaSchemaDef optionalLookupDefSchema;
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="TableId", referencedColumnName="Id" )
+	@JoinColumn( name="TableIdForTable", referencedColumnName="Id" )
 	protected CFBamJpaTable requiredContainerForTable;
 
 	@Column( name="safe_name", nullable=false, length=192 )
@@ -131,7 +133,7 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 
 	@Override
 	public ICFBamSchemaDef getOptionalLookupDefSchema() {
-		return( optionalLookupDefSchema );
+		return(optionalLookupDefSchema);
 	}
 	@Override
 	public void setOptionalLookupDefSchema(ICFBamSchemaDef argObj) {
@@ -162,7 +164,7 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 
 	@Override
 	public ICFBamTable getRequiredContainerForTable() {
-		return( requiredContainerForTable );
+		return(requiredContainerForTable);
 	}
 	@Override
 	public void setRequiredContainerForTable(ICFBamTable argObj) {

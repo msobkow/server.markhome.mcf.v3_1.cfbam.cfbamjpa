@@ -67,7 +67,8 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 	name = "dbk128typ", schema = "CFBam31",
 	indexes = {
 		@Index(name = "DbKeyHash128TypeIdIdx", columnList = "Id", unique = true),
-		@Index(name = "DbKeyHash128TypeSchemaDefIdx", columnList = "SchemaDefId", unique = false)
+		@Index(name = "DbKeyHash128TypeSchemaDefIdx", columnList = "SchemaDefId", unique = false),
+		@Index(name = "DbKeyHash128TypeSchemaDefIdxSchemaDef", columnList = "SchemaDefIdSchemaDef", unique = false)
 	}
 )
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -78,7 +79,7 @@ public class CFBamJpaDbKeyHash128Type extends CFBamJpaDbKeyHash128Def
 	implements ICFBamDbKeyHash128Type
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="SchemaDefId", referencedColumnName="Id" )
+	@JoinColumn( name="SchemaDefIdSchemaDef", referencedColumnName="Id" )
 	protected CFBamJpaSchemaDef requiredContainerSchemaDef;
 
 
@@ -93,7 +94,7 @@ public class CFBamJpaDbKeyHash128Type extends CFBamJpaDbKeyHash128Def
 
 	@Override
 	public ICFBamSchemaDef getRequiredContainerSchemaDef() {
-		return( requiredContainerSchemaDef );
+		return(requiredContainerSchemaDef);
 	}
 	@Override
 	public void setRequiredContainerSchemaDef(ICFBamSchemaDef argObj) {

@@ -73,7 +73,11 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 		@Index(name = "ValuePrevIdx", columnList = "PrevId", unique = false),
 		@Index(name = "ValueNextIdx", columnList = "NextId", unique = false),
 		@Index(name = "ValueContPrevIdx", columnList = "ScopeId, PrevId", unique = false),
-		@Index(name = "ValueContNextIdx", columnList = "ScopeId, NextId", unique = false)
+		@Index(name = "ValueContNextIdx", columnList = "ScopeId, NextId", unique = false),
+		@Index(name = "ValueScopeIdxScope", columnList = "ScopeIdScope", unique = false),
+		@Index(name = "ValueDefSchemaDefIdxDefSchema", columnList = "defschidDefSchema", unique = false),
+		@Index(name = "ValuePrevIdxPrev", columnList = "PrevIdPrev", unique = false),
+		@Index(name = "ValueNextIdxNext", columnList = "NextIdNext", unique = false)
 	}
 )
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -98,16 +102,16 @@ public class CFBamJpaValue
 	protected int requiredRevision;
 
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="ScopeId", referencedColumnName="Id" )
+	@JoinColumn( name="ScopeIdScope", referencedColumnName="Id" )
 	protected CFBamJpaScope requiredContainerScope;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="defschid", referencedColumnName="Id" )
+	@JoinColumn( name="defschidDefSchema", referencedColumnName="Id" )
 	protected CFBamJpaSchemaDef optionalLookupDefSchema;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="PrevId", referencedColumnName="Id" )
+	@JoinColumn( name="PrevIdPrev", referencedColumnName="Id" )
 	protected CFBamJpaValue optionalLookupPrev;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="NextId", referencedColumnName="Id" )
+	@JoinColumn( name="NextIdNext", referencedColumnName="Id" )
 	protected CFBamJpaValue optionalLookupNext;
 
 	@AttributeOverrides({
@@ -164,23 +168,17 @@ public class CFBamJpaValue
 
 	@Override
 	public List<ICFBamTableCol> getOptionalChildrenRefTableCol() {
-		List<ICFBamTableCol> retlist = new ArrayList<>(optionalChildrenRefTableCol.size());
-		for (CFBamJpaTableCol cur: optionalChildrenRefTableCol) {
-			retlist.add(cur);
-		}
+		List<ICFBamTableCol> retlist = (optionalChildrenRefTableCol != null) ? new ArrayList<>(optionalChildrenRefTableCol) : new ArrayList<>();
 		return( retlist );
 	}
 	@Override
 	public List<ICFBamIndexCol> getOptionalChildrenRefIndexCol() {
-		List<ICFBamIndexCol> retlist = new ArrayList<>(optionalChildrenRefIndexCol.size());
-		for (CFBamJpaIndexCol cur: optionalChildrenRefIndexCol) {
-			retlist.add(cur);
-		}
+		List<ICFBamIndexCol> retlist = (optionalChildrenRefIndexCol != null) ? new ArrayList<>(optionalChildrenRefIndexCol) : new ArrayList<>();
 		return( retlist );
 	}
 	@Override
 	public ICFBamScope getRequiredContainerScope() {
-		return( requiredContainerScope );
+		return(requiredContainerScope);
 	}
 	@Override
 	public void setRequiredContainerScope(ICFBamScope argObj) {
@@ -211,7 +209,7 @@ public class CFBamJpaValue
 
 	@Override
 	public ICFBamSchemaDef getOptionalLookupDefSchema() {
-		return( optionalLookupDefSchema );
+		return(optionalLookupDefSchema);
 	}
 	@Override
 	public void setOptionalLookupDefSchema(ICFBamSchemaDef argObj) {
@@ -242,7 +240,7 @@ public class CFBamJpaValue
 
 	@Override
 	public ICFBamValue getOptionalLookupPrev() {
-		return( optionalLookupPrev );
+		return(optionalLookupPrev);
 	}
 	@Override
 	public void setOptionalLookupPrev(ICFBamValue argObj) {
@@ -273,7 +271,7 @@ public class CFBamJpaValue
 
 	@Override
 	public ICFBamValue getOptionalLookupNext() {
-		return( optionalLookupNext );
+		return(optionalLookupNext);
 	}
 	@Override
 	public void setOptionalLookupNext(ICFBamValue argObj) {

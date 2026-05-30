@@ -71,7 +71,11 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 		@Index(name = "SchemaRefUNameIdx", columnList = "SchemaId, safe_name", unique = true),
 		@Index(name = "SchemaRefRefSchemaIdx", columnList = "RefSchId", unique = false),
 		@Index(name = "SchemaRefPrevIdx", columnList = "PrevId", unique = false),
-		@Index(name = "SchemaRefNextIdx", columnList = "NextId", unique = false)
+		@Index(name = "SchemaRefNextIdx", columnList = "NextId", unique = false),
+		@Index(name = "SchemaRefSchemaIdxSchema", columnList = "SchemaIdSchema", unique = false),
+		@Index(name = "SchemaRefRefSchemaIdxRefSchema", columnList = "RefSchIdRefSchema", unique = false),
+		@Index(name = "SchemaRefPrevIdxPrev", columnList = "PrevIdPrev", unique = false),
+		@Index(name = "SchemaRefNextIdxNext", columnList = "NextIdNext", unique = false)
 	}
 )
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -82,16 +86,16 @@ public class CFBamJpaSchemaRef extends CFBamJpaScope
 	implements ICFBamSchemaRef
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="SchemaId", referencedColumnName="Id" )
+	@JoinColumn( name="SchemaIdSchema", referencedColumnName="Id" )
 	protected CFBamJpaSchemaDef requiredContainerSchema;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="RefSchId", referencedColumnName="Id" )
+	@JoinColumn( name="RefSchIdRefSchema", referencedColumnName="Id" )
 	protected CFBamJpaSchemaDef optionalLookupRefSchema;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="PrevId", referencedColumnName="Id" )
+	@JoinColumn( name="PrevIdPrev", referencedColumnName="Id" )
 	protected CFBamJpaSchemaRef optionalLookupPrev;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="NextId", referencedColumnName="Id" )
+	@JoinColumn( name="NextIdNext", referencedColumnName="Id" )
 	protected CFBamJpaSchemaRef optionalLookupNext;
 
 	@Column( name="safe_name", nullable=false, length=192 )
@@ -115,7 +119,7 @@ public class CFBamJpaSchemaRef extends CFBamJpaScope
 
 	@Override
 	public ICFBamSchemaDef getRequiredContainerSchema() {
-		return( requiredContainerSchema );
+		return(requiredContainerSchema);
 	}
 	@Override
 	public void setRequiredContainerSchema(ICFBamSchemaDef argObj) {
@@ -146,7 +150,7 @@ public class CFBamJpaSchemaRef extends CFBamJpaScope
 
 	@Override
 	public ICFBamSchemaDef getOptionalLookupRefSchema() {
-		return( optionalLookupRefSchema );
+		return(optionalLookupRefSchema);
 	}
 	@Override
 	public void setOptionalLookupRefSchema(ICFBamSchemaDef argObj) {
@@ -177,7 +181,7 @@ public class CFBamJpaSchemaRef extends CFBamJpaScope
 
 	@Override
 	public ICFBamSchemaRef getOptionalLookupPrev() {
-		return( optionalLookupPrev );
+		return(optionalLookupPrev);
 	}
 	@Override
 	public void setOptionalLookupPrev(ICFBamSchemaRef argObj) {
@@ -208,7 +212,7 @@ public class CFBamJpaSchemaRef extends CFBamJpaScope
 
 	@Override
 	public ICFBamSchemaRef getOptionalLookupNext() {
-		return( optionalLookupNext );
+		return(optionalLookupNext);
 	}
 	@Override
 	public void setOptionalLookupNext(ICFBamSchemaRef argObj) {

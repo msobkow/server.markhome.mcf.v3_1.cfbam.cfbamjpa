@@ -67,7 +67,8 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 	name = "nmtkncol", schema = "CFBam31",
 	indexes = {
 		@Index(name = "NmTokenColIdIdx", columnList = "Id", unique = true),
-		@Index(name = "NmTokenColTableIdx", columnList = "TableId", unique = false)
+		@Index(name = "NmTokenColTableIdx", columnList = "TableId", unique = false),
+		@Index(name = "NmTokenColTableIdxTable", columnList = "TableIdTable", unique = false)
 	}
 )
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -78,7 +79,7 @@ public class CFBamJpaNmTokenCol extends CFBamJpaNmTokenDef
 	implements ICFBamNmTokenCol
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="TableId", referencedColumnName="Id" )
+	@JoinColumn( name="TableIdTable", referencedColumnName="Id" )
 	protected CFBamJpaTable requiredContainerTable;
 
 
@@ -93,7 +94,7 @@ public class CFBamJpaNmTokenCol extends CFBamJpaNmTokenDef
 
 	@Override
 	public ICFBamTable getRequiredContainerTable() {
-		return( requiredContainerTable );
+		return(requiredContainerTable);
 	}
 	@Override
 	public void setRequiredContainerTable(ICFBamTable argObj) {

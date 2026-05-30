@@ -67,7 +67,8 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 	name = "dbk256col", schema = "CFBam31",
 	indexes = {
 		@Index(name = "DbKeyHash256ColIdIdx", columnList = "Id", unique = true),
-		@Index(name = "DbKeyHash256ColTableIdx", columnList = "TableId", unique = false)
+		@Index(name = "DbKeyHash256ColTableIdx", columnList = "TableId", unique = false),
+		@Index(name = "DbKeyHash256ColTableIdxTable", columnList = "TableIdTable", unique = false)
 	}
 )
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -78,7 +79,7 @@ public class CFBamJpaDbKeyHash256Col extends CFBamJpaDbKeyHash256Def
 	implements ICFBamDbKeyHash256Col
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="TableId", referencedColumnName="Id" )
+	@JoinColumn( name="TableIdTable", referencedColumnName="Id" )
 	protected CFBamJpaTable requiredContainerTable;
 
 
@@ -93,7 +94,7 @@ public class CFBamJpaDbKeyHash256Col extends CFBamJpaDbKeyHash256Def
 
 	@Override
 	public ICFBamTable getRequiredContainerTable() {
-		return( requiredContainerTable );
+		return(requiredContainerTable);
 	}
 	@Override
 	public void setRequiredContainerTable(ICFBamTable argObj) {

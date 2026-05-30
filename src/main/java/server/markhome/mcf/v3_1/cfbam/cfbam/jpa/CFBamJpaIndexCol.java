@@ -74,7 +74,12 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 		@Index(name = "IndexColPrevIdx", columnList = "PrevId", unique = false),
 		@Index(name = "IndexColNextIdx", columnList = "NextId", unique = false),
 		@Index(name = "IndexColIndexPrevIdx", columnList = "IndexId, PrevId", unique = false),
-		@Index(name = "IndexColIndexNextIdx", columnList = "IndexId, NextId", unique = false)
+		@Index(name = "IndexColIndexNextIdx", columnList = "IndexId, NextId", unique = false),
+		@Index(name = "IndexColIndexIdxIndex", columnList = "IndexIdIndex", unique = false),
+		@Index(name = "IndexColDefSchemaDefIdxDefSchema", columnList = "defschidDefSchema", unique = false),
+		@Index(name = "IndexColPrevIdxPrev", columnList = "PrevIdPrev", unique = false),
+		@Index(name = "IndexColNextIdxNext", columnList = "NextIdNext", unique = false),
+		@Index(name = "IndexColColumnIdxColumn", columnList = "ColumnIdColumn", unique = false)
 	}
 )
 @Transactional(Transactional.TxType.SUPPORTS)
@@ -96,19 +101,19 @@ public class CFBamJpaIndexCol
 	protected int requiredRevision;
 
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="IndexId", referencedColumnName="Id" )
+	@JoinColumn( name="IndexIdIndex", referencedColumnName="Id" )
 	protected CFBamJpaIndex requiredContainerIndex;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="defschid", referencedColumnName="Id" )
+	@JoinColumn( name="defschidDefSchema", referencedColumnName="Id" )
 	protected CFBamJpaSchemaDef optionalLookupDefSchema;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="PrevId", referencedColumnName="Id" )
+	@JoinColumn( name="PrevIdPrev", referencedColumnName="Id" )
 	protected CFBamJpaIndexCol optionalLookupPrev;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="NextId", referencedColumnName="Id" )
+	@JoinColumn( name="NextIdNext", referencedColumnName="Id" )
 	protected CFBamJpaIndexCol optionalLookupNext;
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="ColumnId", referencedColumnName="Id" )
+	@JoinColumn( name="ColumnIdColumn", referencedColumnName="Id" )
 	protected CFBamJpaValue requiredLookupColumn;
 
 	@AttributeOverrides({
@@ -156,23 +161,17 @@ public class CFBamJpaIndexCol
 
 	@Override
 	public List<ICFBamRelationCol> getOptionalChildrenRefRelFromCol() {
-		List<ICFBamRelationCol> retlist = new ArrayList<>(optionalChildrenRefRelFromCol.size());
-		for (CFBamJpaRelationCol cur: optionalChildrenRefRelFromCol) {
-			retlist.add(cur);
-		}
+		List<ICFBamRelationCol> retlist = (optionalChildrenRefRelFromCol != null) ? new ArrayList<>(optionalChildrenRefRelFromCol) : new ArrayList<>();
 		return( retlist );
 	}
 	@Override
 	public List<ICFBamRelationCol> getOptionalChildrenRefRelToCol() {
-		List<ICFBamRelationCol> retlist = new ArrayList<>(optionalChildrenRefRelToCol.size());
-		for (CFBamJpaRelationCol cur: optionalChildrenRefRelToCol) {
-			retlist.add(cur);
-		}
+		List<ICFBamRelationCol> retlist = (optionalChildrenRefRelToCol != null) ? new ArrayList<>(optionalChildrenRefRelToCol) : new ArrayList<>();
 		return( retlist );
 	}
 	@Override
 	public ICFBamIndex getRequiredContainerIndex() {
-		return( requiredContainerIndex );
+		return(requiredContainerIndex);
 	}
 	@Override
 	public void setRequiredContainerIndex(ICFBamIndex argObj) {
@@ -203,7 +202,7 @@ public class CFBamJpaIndexCol
 
 	@Override
 	public ICFBamSchemaDef getOptionalLookupDefSchema() {
-		return( optionalLookupDefSchema );
+		return(optionalLookupDefSchema);
 	}
 	@Override
 	public void setOptionalLookupDefSchema(ICFBamSchemaDef argObj) {
@@ -234,7 +233,7 @@ public class CFBamJpaIndexCol
 
 	@Override
 	public ICFBamIndexCol getOptionalLookupPrev() {
-		return( optionalLookupPrev );
+		return(optionalLookupPrev);
 	}
 	@Override
 	public void setOptionalLookupPrev(ICFBamIndexCol argObj) {
@@ -265,7 +264,7 @@ public class CFBamJpaIndexCol
 
 	@Override
 	public ICFBamIndexCol getOptionalLookupNext() {
-		return( optionalLookupNext );
+		return(optionalLookupNext);
 	}
 	@Override
 	public void setOptionalLookupNext(ICFBamIndexCol argObj) {
@@ -296,7 +295,7 @@ public class CFBamJpaIndexCol
 
 	@Override
 	public ICFBamValue getRequiredLookupColumn() {
-		return( requiredLookupColumn );
+		return(requiredLookupColumn);
 	}
 	@Override
 	public void setRequiredLookupColumn(ICFBamValue argObj) {

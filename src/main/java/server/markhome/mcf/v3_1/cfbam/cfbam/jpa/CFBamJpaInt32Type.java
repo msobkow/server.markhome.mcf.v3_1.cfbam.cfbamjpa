@@ -67,7 +67,8 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 	name = "int32typ", schema = "CFBam31",
 	indexes = {
 		@Index(name = "Int32TypeIdIdx", columnList = "Id", unique = true),
-		@Index(name = "Int32TypeSchemaDefIdx", columnList = "SchemaDefId", unique = false)
+		@Index(name = "Int32TypeSchemaDefIdx", columnList = "SchemaDefId", unique = false),
+		@Index(name = "Int32TypeSchemaDefIdxSchemaDef", columnList = "SchemaDefIdSchemaDef", unique = false)
 	}
 )
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -78,7 +79,7 @@ public class CFBamJpaInt32Type extends CFBamJpaInt32Def
 	implements ICFBamInt32Type
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="SchemaDefId", referencedColumnName="Id" )
+	@JoinColumn( name="SchemaDefIdSchemaDef", referencedColumnName="Id" )
 	protected CFBamJpaSchemaDef requiredContainerSchemaDef;
 
 
@@ -93,7 +94,7 @@ public class CFBamJpaInt32Type extends CFBamJpaInt32Def
 
 	@Override
 	public ICFBamSchemaDef getRequiredContainerSchemaDef() {
-		return( requiredContainerSchemaDef );
+		return(requiredContainerSchemaDef);
 	}
 	@Override
 	public void setRequiredContainerSchemaDef(ICFBamSchemaDef argObj) {

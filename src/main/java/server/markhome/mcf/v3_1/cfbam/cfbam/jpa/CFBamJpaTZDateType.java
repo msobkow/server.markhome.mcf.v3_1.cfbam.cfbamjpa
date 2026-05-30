@@ -67,7 +67,8 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 	name = "dztyp", schema = "CFBam31",
 	indexes = {
 		@Index(name = "TZDateTypeIdIdx", columnList = "Id", unique = true),
-		@Index(name = "TZDateTypeSchemaDefIdx", columnList = "SchemaDefId", unique = false)
+		@Index(name = "TZDateTypeSchemaDefIdx", columnList = "SchemaDefId", unique = false),
+		@Index(name = "TZDateTypeSchemaDefIdxSchemaDef", columnList = "SchemaDefIdSchemaDef", unique = false)
 	}
 )
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -78,7 +79,7 @@ public class CFBamJpaTZDateType extends CFBamJpaTZDateDef
 	implements ICFBamTZDateType
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="SchemaDefId", referencedColumnName="Id" )
+	@JoinColumn( name="SchemaDefIdSchemaDef", referencedColumnName="Id" )
 	protected CFBamJpaSchemaDef requiredContainerSchemaDef;
 
 
@@ -93,7 +94,7 @@ public class CFBamJpaTZDateType extends CFBamJpaTZDateDef
 
 	@Override
 	public ICFBamSchemaDef getRequiredContainerSchemaDef() {
-		return( requiredContainerSchemaDef );
+		return(requiredContainerSchemaDef);
 	}
 	@Override
 	public void setRequiredContainerSchemaDef(ICFBamSchemaDef argObj) {

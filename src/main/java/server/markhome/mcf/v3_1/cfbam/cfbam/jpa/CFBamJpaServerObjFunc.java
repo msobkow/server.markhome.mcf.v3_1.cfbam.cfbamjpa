@@ -67,7 +67,8 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 	name = "srvofunc", schema = "CFBam31",
 	indexes = {
 		@Index(name = "ServerObjFuncIdIdx", columnList = "Id", unique = true),
-		@Index(name = "ServerObjFuncRetTableIdx", columnList = "rettblid", unique = false)
+		@Index(name = "ServerObjFuncRetTableIdx", columnList = "rettblid", unique = false),
+		@Index(name = "ServerObjFuncRetTableIdxRetTable", columnList = "rettblidRetTable", unique = false)
 	}
 )
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -78,7 +79,7 @@ public class CFBamJpaServerObjFunc extends CFBamJpaServerMethod
 	implements ICFBamServerObjFunc
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="rettblid", referencedColumnName="Id" )
+	@JoinColumn( name="rettblidRetTable", referencedColumnName="Id" )
 	protected CFBamJpaTable optionalLookupRetTable;
 
 
@@ -93,7 +94,7 @@ public class CFBamJpaServerObjFunc extends CFBamJpaServerMethod
 
 	@Override
 	public ICFBamTable getOptionalLookupRetTable() {
-		return( optionalLookupRetTable );
+		return(optionalLookupRetTable);
 	}
 	@Override
 	public void setOptionalLookupRetTable(ICFBamTable argObj) {

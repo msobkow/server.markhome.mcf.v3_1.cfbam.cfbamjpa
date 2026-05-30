@@ -67,7 +67,8 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 	name = "idxtwk", schema = "CFBam31",
 	indexes = {
 		@Index(name = "IndexTweakIdIdx", columnList = "Id", unique = true),
-		@Index(name = "IndexTweakIndexIdx", columnList = "IndexId", unique = false)
+		@Index(name = "IndexTweakIndexIdx", columnList = "IndexId", unique = false),
+		@Index(name = "IndexTweakIndexIdxIndexDef", columnList = "IndexIdIndexDef", unique = false)
 	}
 )
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -78,7 +79,7 @@ public class CFBamJpaIndexTweak extends CFBamJpaTweak
 	implements ICFBamIndexTweak
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="IndexId", referencedColumnName="Id" )
+	@JoinColumn( name="IndexIdIndexDef", referencedColumnName="Id" )
 	protected CFBamJpaIndex requiredContainerIndexDef;
 
 
@@ -93,7 +94,7 @@ public class CFBamJpaIndexTweak extends CFBamJpaTweak
 
 	@Override
 	public ICFBamIndex getRequiredContainerIndexDef() {
-		return( requiredContainerIndexDef );
+		return(requiredContainerIndexDef);
 	}
 	@Override
 	public void setRequiredContainerIndexDef(ICFBamIndex argObj) {

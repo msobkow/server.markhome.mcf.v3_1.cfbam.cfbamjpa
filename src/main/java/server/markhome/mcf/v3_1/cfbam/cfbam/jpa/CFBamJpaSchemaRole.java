@@ -69,7 +69,8 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 		@Index(name = "SchemaRoleIdIdx", columnList = "Id", unique = true),
 		@Index(name = "SchemaRoleSchemaIdx", columnList = "SchemaDefId", unique = false),
 		@Index(name = "SchemaRoleRoleScpIdx", columnList = "RoleScopeId", unique = false),
-		@Index(name = "SchemaRoleSchScpIdx", columnList = "SchemaDefId, RoleScopeId", unique = false)
+		@Index(name = "SchemaRoleSchScpIdx", columnList = "SchemaDefId, RoleScopeId", unique = false),
+		@Index(name = "SchemaRoleSchemaIdxSchemaDef", columnList = "SchemaDefIdSchemaDef", unique = false)
 	}
 )
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -80,7 +81,7 @@ public class CFBamJpaSchemaRole extends CFBamJpaRoleDef
 	implements ICFBamSchemaRole
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="SchemaDefId", referencedColumnName="Id" )
+	@JoinColumn( name="SchemaDefIdSchemaDef", referencedColumnName="Id" )
 	protected CFBamJpaSchemaDef requiredContainerSchemaDef;
 
 	@Column( name="RoleScopeId", nullable=false )
@@ -98,7 +99,7 @@ public class CFBamJpaSchemaRole extends CFBamJpaRoleDef
 
 	@Override
 	public ICFBamSchemaDef getRequiredContainerSchemaDef() {
-		return( requiredContainerSchemaDef );
+		return(requiredContainerSchemaDef);
 	}
 	@Override
 	public void setRequiredContainerSchemaDef(ICFBamSchemaDef argObj) {

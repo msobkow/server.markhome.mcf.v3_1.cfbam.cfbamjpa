@@ -71,7 +71,11 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 		@Index(name = "ChainDefSchemaDefIdx", columnList = "defschid", unique = false),
 		@Index(name = "ChainUNameIdx", columnList = "TableId, safe_name", unique = true),
 		@Index(name = "ChainPrevRelIdx", columnList = "PrevRelationId", unique = false),
-		@Index(name = "ChainNextRelIdx", columnList = "NextRelationId", unique = false)
+		@Index(name = "ChainNextRelIdx", columnList = "NextRelationId", unique = false),
+		@Index(name = "ChainTableIdxTable", columnList = "TableIdTable", unique = false),
+		@Index(name = "ChainDefSchemaDefIdxDefSchema", columnList = "defschidDefSchema", unique = false),
+		@Index(name = "ChainPrevRelIdxPrevRel", columnList = "PrevRelationIdPrevRel", unique = false),
+		@Index(name = "ChainNextRelIdxNextRel", columnList = "NextRelationIdNextRel", unique = false)
 	}
 )
 @Transactional(Transactional.TxType.SUPPORTS)
@@ -89,16 +93,16 @@ public class CFBamJpaChain
 	protected int requiredRevision;
 
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="TableId", referencedColumnName="Id" )
+	@JoinColumn( name="TableIdTable", referencedColumnName="Id" )
 	protected CFBamJpaTable requiredContainerTable;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="defschid", referencedColumnName="Id" )
+	@JoinColumn( name="defschidDefSchema", referencedColumnName="Id" )
 	protected CFBamJpaSchemaDef optionalLookupDefSchema;
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="PrevRelationId", referencedColumnName="Id" )
+	@JoinColumn( name="PrevRelationIdPrevRel", referencedColumnName="Id" )
 	protected CFBamJpaRelation requiredLookupPrevRel;
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="NextRelationId", referencedColumnName="Id" )
+	@JoinColumn( name="NextRelationIdNextRel", referencedColumnName="Id" )
 	protected CFBamJpaRelation requiredLookupNextRel;
 
 	@AttributeOverrides({
@@ -146,7 +150,7 @@ public class CFBamJpaChain
 
 	@Override
 	public ICFBamTable getRequiredContainerTable() {
-		return( requiredContainerTable );
+		return(requiredContainerTable);
 	}
 	@Override
 	public void setRequiredContainerTable(ICFBamTable argObj) {
@@ -177,7 +181,7 @@ public class CFBamJpaChain
 
 	@Override
 	public ICFBamSchemaDef getOptionalLookupDefSchema() {
-		return( optionalLookupDefSchema );
+		return(optionalLookupDefSchema);
 	}
 	@Override
 	public void setOptionalLookupDefSchema(ICFBamSchemaDef argObj) {
@@ -208,7 +212,7 @@ public class CFBamJpaChain
 
 	@Override
 	public ICFBamRelation getRequiredLookupPrevRel() {
-		return( requiredLookupPrevRel );
+		return(requiredLookupPrevRel);
 	}
 	@Override
 	public void setRequiredLookupPrevRel(ICFBamRelation argObj) {
@@ -239,7 +243,7 @@ public class CFBamJpaChain
 
 	@Override
 	public ICFBamRelation getRequiredLookupNextRel() {
-		return( requiredLookupNextRel );
+		return(requiredLookupNextRel);
 	}
 	@Override
 	public void setRequiredLookupNextRel(ICFBamRelation argObj) {

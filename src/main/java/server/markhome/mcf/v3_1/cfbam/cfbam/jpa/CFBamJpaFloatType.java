@@ -67,7 +67,8 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 	name = "flttyp", schema = "CFBam31",
 	indexes = {
 		@Index(name = "FloatTypeIdIdx", columnList = "Id", unique = true),
-		@Index(name = "FloatTypeSchemaDefIdx", columnList = "SchemaDefId", unique = false)
+		@Index(name = "FloatTypeSchemaDefIdx", columnList = "SchemaDefId", unique = false),
+		@Index(name = "FloatTypeSchemaDefIdxSchemaDef", columnList = "SchemaDefIdSchemaDef", unique = false)
 	}
 )
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -78,7 +79,7 @@ public class CFBamJpaFloatType extends CFBamJpaFloatDef
 	implements ICFBamFloatType
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="SchemaDefId", referencedColumnName="Id" )
+	@JoinColumn( name="SchemaDefIdSchemaDef", referencedColumnName="Id" )
 	protected CFBamJpaSchemaDef requiredContainerSchemaDef;
 
 
@@ -93,7 +94,7 @@ public class CFBamJpaFloatType extends CFBamJpaFloatDef
 
 	@Override
 	public ICFBamSchemaDef getRequiredContainerSchemaDef() {
-		return( requiredContainerSchemaDef );
+		return(requiredContainerSchemaDef);
 	}
 	@Override
 	public void setRequiredContainerSchemaDef(ICFBamSchemaDef argObj) {

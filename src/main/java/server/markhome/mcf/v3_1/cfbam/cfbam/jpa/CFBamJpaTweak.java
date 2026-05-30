@@ -71,7 +71,9 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 		@Index(name = "TweakTenantIdx", columnList = "TenantId", unique = false),
 		@Index(name = "TweakScopeIdx", columnList = "ScopeId", unique = false),
 		@Index(name = "TweakDefSchemaDefIdx", columnList = "defschid", unique = false),
-		@Index(name = "TweakUDefIdx", columnList = "TenantId, ScopeId, defschtentid, defschid, safe_name", unique = true)
+		@Index(name = "TweakUDefIdx", columnList = "TenantId, ScopeId, defschtentid, defschid, safe_name", unique = true),
+		@Index(name = "TweakScopeIdxScopeDef", columnList = "ScopeIdScopeDef", unique = false),
+		@Index(name = "TweakDefSchemaDefIdxDefSchema", columnList = "defschidDefSchema", unique = false)
 	}
 )
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -92,10 +94,10 @@ public class CFBamJpaTweak
 	protected int requiredRevision;
 
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="ScopeId", referencedColumnName="Id" )
+	@JoinColumn( name="ScopeIdScopeDef", referencedColumnName="Id" )
 	protected CFBamJpaScope requiredContainerScopeDef;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="defschid", referencedColumnName="Id" )
+	@JoinColumn( name="defschidDefSchema", referencedColumnName="Id" )
 	protected CFBamJpaSchemaDef optionalLookupDefSchema;
 
 	@AttributeOverrides({
@@ -144,7 +146,7 @@ public class CFBamJpaTweak
 
 	@Override
 	public ICFBamScope getRequiredContainerScopeDef() {
-		return( requiredContainerScopeDef );
+		return(requiredContainerScopeDef);
 	}
 	@Override
 	public void setRequiredContainerScopeDef(ICFBamScope argObj) {
@@ -175,7 +177,7 @@ public class CFBamJpaTweak
 
 	@Override
 	public ICFBamSchemaDef getOptionalLookupDefSchema() {
-		return( optionalLookupDefSchema );
+		return(optionalLookupDefSchema);
 	}
 	@Override
 	public void setOptionalLookupDefSchema(ICFBamSchemaDef argObj) {

@@ -67,7 +67,8 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 	name = "uint32col", schema = "CFBam31",
 	indexes = {
 		@Index(name = "UInt32ColIdIdx", columnList = "Id", unique = true),
-		@Index(name = "UInt32ColTableIdx", columnList = "TableId", unique = false)
+		@Index(name = "UInt32ColTableIdx", columnList = "TableId", unique = false),
+		@Index(name = "UInt32ColTableIdxTable", columnList = "TableIdTable", unique = false)
 	}
 )
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -78,7 +79,7 @@ public class CFBamJpaUInt32Col extends CFBamJpaUInt32Def
 	implements ICFBamUInt32Col
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="TableId", referencedColumnName="Id" )
+	@JoinColumn( name="TableIdTable", referencedColumnName="Id" )
 	protected CFBamJpaTable requiredContainerTable;
 
 
@@ -93,7 +94,7 @@ public class CFBamJpaUInt32Col extends CFBamJpaUInt32Def
 
 	@Override
 	public ICFBamTable getRequiredContainerTable() {
-		return( requiredContainerTable );
+		return(requiredContainerTable);
 	}
 	@Override
 	public void setRequiredContainerTable(ICFBamTable argObj) {

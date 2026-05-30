@@ -75,7 +75,13 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 		@Index(name = "RelationColPrevIdx", columnList = "PrevId", unique = false),
 		@Index(name = "RelationColNextIdx", columnList = "NextId", unique = false),
 		@Index(name = "RelationColRelationPrevIdx", columnList = "RelationId, PrevId", unique = false),
-		@Index(name = "RelationColRelationNextIdx", columnList = "RelationId, NextId", unique = false)
+		@Index(name = "RelationColRelationNextIdx", columnList = "RelationId, NextId", unique = false),
+		@Index(name = "RelationColRelationIdxRelation", columnList = "RelationIdRelation", unique = false),
+		@Index(name = "RelationColDefSchemaDefIdxDefSchema", columnList = "defschidDefSchema", unique = false),
+		@Index(name = "RelationColPrevIdxPrev", columnList = "PrevIdPrev", unique = false),
+		@Index(name = "RelationColNextIdxNext", columnList = "NextIdNext", unique = false),
+		@Index(name = "RelationColFromColIdxFromCol", columnList = "FromColIdFromCol", unique = false),
+		@Index(name = "RelationColToColIdxToCol", columnList = "ToColIdToCol", unique = false)
 	}
 )
 @Transactional(Transactional.TxType.SUPPORTS)
@@ -93,22 +99,22 @@ public class CFBamJpaRelationCol
 	protected int requiredRevision;
 
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="RelationId", referencedColumnName="Id" )
+	@JoinColumn( name="RelationIdRelation", referencedColumnName="Id" )
 	protected CFBamJpaRelation requiredContainerRelation;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="defschid", referencedColumnName="Id" )
+	@JoinColumn( name="defschidDefSchema", referencedColumnName="Id" )
 	protected CFBamJpaSchemaDef optionalLookupDefSchema;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="PrevId", referencedColumnName="Id" )
+	@JoinColumn( name="PrevIdPrev", referencedColumnName="Id" )
 	protected CFBamJpaRelationCol optionalLookupPrev;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="NextId", referencedColumnName="Id" )
+	@JoinColumn( name="NextIdNext", referencedColumnName="Id" )
 	protected CFBamJpaRelationCol optionalLookupNext;
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="FromColId", referencedColumnName="Id" )
+	@JoinColumn( name="FromColIdFromCol", referencedColumnName="Id" )
 	protected CFBamJpaIndexCol requiredLookupFromCol;
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="ToColId", referencedColumnName="Id" )
+	@JoinColumn( name="ToColIdToCol", referencedColumnName="Id" )
 	protected CFBamJpaIndexCol requiredLookupToCol;
 
 	@AttributeOverrides({
@@ -153,7 +159,7 @@ public class CFBamJpaRelationCol
 
 	@Override
 	public ICFBamRelation getRequiredContainerRelation() {
-		return( requiredContainerRelation );
+		return(requiredContainerRelation);
 	}
 	@Override
 	public void setRequiredContainerRelation(ICFBamRelation argObj) {
@@ -184,7 +190,7 @@ public class CFBamJpaRelationCol
 
 	@Override
 	public ICFBamSchemaDef getOptionalLookupDefSchema() {
-		return( optionalLookupDefSchema );
+		return(optionalLookupDefSchema);
 	}
 	@Override
 	public void setOptionalLookupDefSchema(ICFBamSchemaDef argObj) {
@@ -215,7 +221,7 @@ public class CFBamJpaRelationCol
 
 	@Override
 	public ICFBamRelationCol getOptionalLookupPrev() {
-		return( optionalLookupPrev );
+		return(optionalLookupPrev);
 	}
 	@Override
 	public void setOptionalLookupPrev(ICFBamRelationCol argObj) {
@@ -246,7 +252,7 @@ public class CFBamJpaRelationCol
 
 	@Override
 	public ICFBamRelationCol getOptionalLookupNext() {
-		return( optionalLookupNext );
+		return(optionalLookupNext);
 	}
 	@Override
 	public void setOptionalLookupNext(ICFBamRelationCol argObj) {
@@ -277,7 +283,7 @@ public class CFBamJpaRelationCol
 
 	@Override
 	public ICFBamIndexCol getRequiredLookupFromCol() {
-		return( requiredLookupFromCol );
+		return(requiredLookupFromCol);
 	}
 	@Override
 	public void setRequiredLookupFromCol(ICFBamIndexCol argObj) {
@@ -308,7 +314,7 @@ public class CFBamJpaRelationCol
 
 	@Override
 	public ICFBamIndexCol getRequiredLookupToCol() {
-		return( requiredLookupToCol );
+		return(requiredLookupToCol);
 	}
 	@Override
 	public void setRequiredLookupToCol(ICFBamIndexCol argObj) {

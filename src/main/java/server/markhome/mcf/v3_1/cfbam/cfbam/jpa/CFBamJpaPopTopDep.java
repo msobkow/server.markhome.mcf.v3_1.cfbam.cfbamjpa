@@ -68,7 +68,8 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 	indexes = {
 		@Index(name = "PopTopDepIdIdx", columnList = "Id", unique = true),
 		@Index(name = "PopTopDepContRelationIdx", columnList = "ContRelationId", unique = false),
-		@Index(name = "PopTopDepUNameIdx", columnList = "ContRelationId, safe_name", unique = true)
+		@Index(name = "PopTopDepUNameIdx", columnList = "ContRelationId, safe_name", unique = true),
+		@Index(name = "PopTopDepContRelationIdxContRelation", columnList = "ContRelationIdContRelation", unique = false)
 	}
 )
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -79,7 +80,7 @@ public class CFBamJpaPopTopDep extends CFBamJpaPopDep
 	implements ICFBamPopTopDep
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="ContRelationId", referencedColumnName="Id" )
+	@JoinColumn( name="ContRelationIdContRelation", referencedColumnName="Id" )
 	protected CFBamJpaRelation requiredContainerContRelation;
 
 	@Column( name="safe_name", nullable=false, length=192 )
@@ -97,7 +98,7 @@ public class CFBamJpaPopTopDep extends CFBamJpaPopDep
 
 	@Override
 	public ICFBamRelation getRequiredContainerContRelation() {
-		return( requiredContainerContRelation );
+		return(requiredContainerContRelation);
 	}
 	@Override
 	public void setRequiredContainerContRelation(ICFBamRelation argObj) {

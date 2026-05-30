@@ -68,7 +68,9 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 	indexes = {
 		@Index(name = "TableColIdIdx", columnList = "Id", unique = true),
 		@Index(name = "TableColTableIdx", columnList = "TableId", unique = false),
-		@Index(name = "TableColDataIdx", columnList = "DataId", unique = false)
+		@Index(name = "TableColDataIdx", columnList = "DataId", unique = false),
+		@Index(name = "TableColTableIdxTable", columnList = "TableIdTable", unique = false),
+		@Index(name = "TableColDataIdxDataType", columnList = "DataIdDataType", unique = false)
 	}
 )
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -79,10 +81,10 @@ public class CFBamJpaTableCol extends CFBamJpaValue
 	implements ICFBamTableCol
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="TableId", referencedColumnName="Id" )
+	@JoinColumn( name="TableIdTable", referencedColumnName="Id" )
 	protected CFBamJpaTable requiredContainerTable;
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="DataId", referencedColumnName="Id" )
+	@JoinColumn( name="DataIdDataType", referencedColumnName="Id" )
 	protected CFBamJpaValue requiredParentDataType;
 
 	@Column( name="DbName", nullable=true, length=32 )
@@ -103,7 +105,7 @@ public class CFBamJpaTableCol extends CFBamJpaValue
 
 	@Override
 	public ICFBamTable getRequiredContainerTable() {
-		return( requiredContainerTable );
+		return(requiredContainerTable);
 	}
 	@Override
 	public void setRequiredContainerTable(ICFBamTable argObj) {
@@ -134,7 +136,7 @@ public class CFBamJpaTableCol extends CFBamJpaValue
 
 	@Override
 	public ICFBamValue getRequiredParentDataType() {
-		return( requiredParentDataType );
+		return(requiredParentDataType);
 	}
 	@Override
 	public void setRequiredParentDataType(ICFBamValue argObj) {

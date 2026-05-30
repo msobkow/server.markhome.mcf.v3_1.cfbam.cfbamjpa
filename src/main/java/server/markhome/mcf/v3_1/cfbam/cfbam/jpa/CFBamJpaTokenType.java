@@ -67,7 +67,8 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 	name = "tkntyp", schema = "CFBam31",
 	indexes = {
 		@Index(name = "TokenTypeIdIdx", columnList = "Id", unique = true),
-		@Index(name = "TokenTypeSchemaDefIdx", columnList = "SchemaDefId", unique = false)
+		@Index(name = "TokenTypeSchemaDefIdx", columnList = "SchemaDefId", unique = false),
+		@Index(name = "TokenTypeSchemaDefIdxSchemaDef", columnList = "SchemaDefIdSchemaDef", unique = false)
 	}
 )
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -78,7 +79,7 @@ public class CFBamJpaTokenType extends CFBamJpaTokenDef
 	implements ICFBamTokenType
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="SchemaDefId", referencedColumnName="Id" )
+	@JoinColumn( name="SchemaDefIdSchemaDef", referencedColumnName="Id" )
 	protected CFBamJpaSchemaDef requiredContainerSchemaDef;
 
 
@@ -93,7 +94,7 @@ public class CFBamJpaTokenType extends CFBamJpaTokenDef
 
 	@Override
 	public ICFBamSchemaDef getRequiredContainerSchemaDef() {
-		return( requiredContainerSchemaDef );
+		return(requiredContainerSchemaDef);
 	}
 	@Override
 	public void setRequiredContainerSchemaDef(ICFBamSchemaDef argObj) {

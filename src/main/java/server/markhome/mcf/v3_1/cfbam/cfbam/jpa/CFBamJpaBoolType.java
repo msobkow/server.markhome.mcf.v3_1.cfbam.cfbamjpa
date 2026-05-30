@@ -67,7 +67,8 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 	name = "booltyp", schema = "CFBam31",
 	indexes = {
 		@Index(name = "BoolTypeIdIdx", columnList = "Id", unique = true),
-		@Index(name = "BoolTypeSchemaDefIdx", columnList = "SchemaDefId", unique = false)
+		@Index(name = "BoolTypeSchemaDefIdx", columnList = "SchemaDefId", unique = false),
+		@Index(name = "BoolTypeSchemaDefIdxSchemaDef", columnList = "SchemaDefIdSchemaDef", unique = false)
 	}
 )
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -78,7 +79,7 @@ public class CFBamJpaBoolType extends CFBamJpaBoolDef
 	implements ICFBamBoolType
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="SchemaDefId", referencedColumnName="Id" )
+	@JoinColumn( name="SchemaDefIdSchemaDef", referencedColumnName="Id" )
 	protected CFBamJpaSchemaDef requiredContainerSchemaDef;
 
 
@@ -93,7 +94,7 @@ public class CFBamJpaBoolType extends CFBamJpaBoolDef
 
 	@Override
 	public ICFBamSchemaDef getRequiredContainerSchemaDef() {
-		return( requiredContainerSchemaDef );
+		return(requiredContainerSchemaDef);
 	}
 	@Override
 	public void setRequiredContainerSchemaDef(ICFBamSchemaDef argObj) {

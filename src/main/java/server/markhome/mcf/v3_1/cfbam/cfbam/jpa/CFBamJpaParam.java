@@ -74,7 +74,12 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 		@Index(name = "ParamPrevIdx", columnList = "PrevId", unique = false),
 		@Index(name = "ParamNextIdx", columnList = "NextId", unique = false),
 		@Index(name = "ParamContPrevIdx", columnList = "srvmeth_id, PrevId", unique = false),
-		@Index(name = "ParamContNextIdx", columnList = "srvmeth_id, NextId", unique = false)
+		@Index(name = "ParamContNextIdx", columnList = "srvmeth_id, NextId", unique = false),
+		@Index(name = "ParamServerMethodIdxServerMeth", columnList = "srvmeth_idServerMeth", unique = false),
+		@Index(name = "ParamDefSchemaDefIdxDefSchema", columnList = "defschidDefSchema", unique = false),
+		@Index(name = "ParamPrevIdxPrev", columnList = "PrevIdPrev", unique = false),
+		@Index(name = "ParamNextIdxNext", columnList = "NextIdNext", unique = false),
+		@Index(name = "ParamTypeIdxType", columnList = "TpIdType", unique = false)
 	}
 )
 @Transactional(Transactional.TxType.SUPPORTS)
@@ -92,19 +97,19 @@ public class CFBamJpaParam
 	protected int requiredRevision;
 
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="srvmeth_id", referencedColumnName="Id" )
+	@JoinColumn( name="srvmeth_idServerMeth", referencedColumnName="Id" )
 	protected CFBamJpaServerMethod requiredContainerServerMeth;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="defschid", referencedColumnName="Id" )
+	@JoinColumn( name="defschidDefSchema", referencedColumnName="Id" )
 	protected CFBamJpaSchemaDef optionalLookupDefSchema;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="PrevId", referencedColumnName="Id" )
+	@JoinColumn( name="PrevIdPrev", referencedColumnName="Id" )
 	protected CFBamJpaParam optionalLookupPrev;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="NextId", referencedColumnName="Id" )
+	@JoinColumn( name="NextIdNext", referencedColumnName="Id" )
 	protected CFBamJpaParam optionalLookupNext;
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="TpId", referencedColumnName="Id" )
+	@JoinColumn( name="TpIdType", referencedColumnName="Id" )
 	protected CFBamJpaValue requiredLookupType;
 
 	@AttributeOverrides({
@@ -146,7 +151,7 @@ public class CFBamJpaParam
 
 	@Override
 	public ICFBamServerMethod getRequiredContainerServerMeth() {
-		return( requiredContainerServerMeth );
+		return(requiredContainerServerMeth);
 	}
 	@Override
 	public void setRequiredContainerServerMeth(ICFBamServerMethod argObj) {
@@ -177,7 +182,7 @@ public class CFBamJpaParam
 
 	@Override
 	public ICFBamSchemaDef getOptionalLookupDefSchema() {
-		return( optionalLookupDefSchema );
+		return(optionalLookupDefSchema);
 	}
 	@Override
 	public void setOptionalLookupDefSchema(ICFBamSchemaDef argObj) {
@@ -208,7 +213,7 @@ public class CFBamJpaParam
 
 	@Override
 	public ICFBamParam getOptionalLookupPrev() {
-		return( optionalLookupPrev );
+		return(optionalLookupPrev);
 	}
 	@Override
 	public void setOptionalLookupPrev(ICFBamParam argObj) {
@@ -239,7 +244,7 @@ public class CFBamJpaParam
 
 	@Override
 	public ICFBamParam getOptionalLookupNext() {
-		return( optionalLookupNext );
+		return(optionalLookupNext);
 	}
 	@Override
 	public void setOptionalLookupNext(ICFBamParam argObj) {
@@ -270,7 +275,7 @@ public class CFBamJpaParam
 
 	@Override
 	public ICFBamValue getRequiredLookupType() {
-		return( requiredLookupType );
+		return(requiredLookupType);
 	}
 	@Override
 	public void setRequiredLookupType(ICFBamValue argObj) {

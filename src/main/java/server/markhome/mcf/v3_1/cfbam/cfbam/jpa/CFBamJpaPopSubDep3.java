@@ -68,7 +68,8 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 	indexes = {
 		@Index(name = "PopSubDep3IdIdx", columnList = "Id", unique = true),
 		@Index(name = "PopSubDep3PopSubDep2Idx", columnList = "contpopdep2id", unique = false),
-		@Index(name = "PopSubDep3UNameIdx", columnList = "contpopdep2id, safe_name", unique = true)
+		@Index(name = "PopSubDep3UNameIdx", columnList = "contpopdep2id, safe_name", unique = true),
+		@Index(name = "PopSubDep3PopSubDep2IdxPopSubDep2", columnList = "contpopdep2idPopSubDep2", unique = false)
 	}
 )
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -79,7 +80,7 @@ public class CFBamJpaPopSubDep3 extends CFBamJpaPopDep
 	implements ICFBamPopSubDep3
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="contpopdep2id", referencedColumnName="Id" )
+	@JoinColumn( name="contpopdep2idPopSubDep2", referencedColumnName="Id" )
 	protected CFBamJpaPopSubDep2 requiredContainerPopSubDep2;
 
 	@Column( name="safe_name", nullable=false, length=192 )
@@ -97,7 +98,7 @@ public class CFBamJpaPopSubDep3 extends CFBamJpaPopDep
 
 	@Override
 	public ICFBamPopSubDep2 getRequiredContainerPopSubDep2() {
-		return( requiredContainerPopSubDep2 );
+		return(requiredContainerPopSubDep2);
 	}
 	@Override
 	public void setRequiredContainerPopSubDep2(ICFBamPopSubDep2 argObj) {

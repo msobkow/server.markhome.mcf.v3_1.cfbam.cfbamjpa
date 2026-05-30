@@ -70,7 +70,10 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 		@Index(name = "DelTopDepTableIdx", columnList = "TableId", unique = false),
 		@Index(name = "DelTopDepUNameIdx", columnList = "TableId, safe_name", unique = true),
 		@Index(name = "DelTopDepPrevIdx", columnList = "PrevId", unique = false),
-		@Index(name = "DelTopDepNextIdx", columnList = "NextId", unique = false)
+		@Index(name = "DelTopDepNextIdx", columnList = "NextId", unique = false),
+		@Index(name = "DelTopDepTableIdxTable", columnList = "TableIdTable", unique = false),
+		@Index(name = "DelTopDepPrevIdxPrev", columnList = "PrevIdPrev", unique = false),
+		@Index(name = "DelTopDepNextIdxNext", columnList = "NextIdNext", unique = false)
 	}
 )
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -81,13 +84,13 @@ public class CFBamJpaDelTopDep extends CFBamJpaDelDep
 	implements ICFBamDelTopDep
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="TableId", referencedColumnName="Id" )
+	@JoinColumn( name="TableIdTable", referencedColumnName="Id" )
 	protected CFBamJpaTable requiredContainerTable;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="PrevId", referencedColumnName="Id" )
+	@JoinColumn( name="PrevIdPrev", referencedColumnName="Id" )
 	protected CFBamJpaDelTopDep optionalLookupPrev;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="NextId", referencedColumnName="Id" )
+	@JoinColumn( name="NextIdNext", referencedColumnName="Id" )
 	protected CFBamJpaDelTopDep optionalLookupNext;
 
 	@Column( name="safe_name", nullable=false, length=192 )
@@ -105,7 +108,7 @@ public class CFBamJpaDelTopDep extends CFBamJpaDelDep
 
 	@Override
 	public ICFBamTable getRequiredContainerTable() {
-		return( requiredContainerTable );
+		return(requiredContainerTable);
 	}
 	@Override
 	public void setRequiredContainerTable(ICFBamTable argObj) {
@@ -136,7 +139,7 @@ public class CFBamJpaDelTopDep extends CFBamJpaDelDep
 
 	@Override
 	public ICFBamDelTopDep getOptionalLookupPrev() {
-		return( optionalLookupPrev );
+		return(optionalLookupPrev);
 	}
 	@Override
 	public void setOptionalLookupPrev(ICFBamDelTopDep argObj) {
@@ -167,7 +170,7 @@ public class CFBamJpaDelTopDep extends CFBamJpaDelDep
 
 	@Override
 	public ICFBamDelTopDep getOptionalLookupNext() {
-		return( optionalLookupNext );
+		return(optionalLookupNext);
 	}
 	@Override
 	public void setOptionalLookupNext(ICFBamDelTopDep argObj) {

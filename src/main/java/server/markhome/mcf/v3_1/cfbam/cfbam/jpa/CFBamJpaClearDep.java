@@ -68,7 +68,9 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 	indexes = {
 		@Index(name = "ClearDepIdIdx", columnList = "Id", unique = true),
 		@Index(name = "ClearDepRelationIdx", columnList = "RelationId", unique = false),
-		@Index(name = "ClearDepDefSchemaDefIdx", columnList = "defschid", unique = false)
+		@Index(name = "ClearDepDefSchemaDefIdx", columnList = "defschid", unique = false),
+		@Index(name = "ClearDepRelationIdxRelation", columnList = "RelationIdRelation", unique = false),
+		@Index(name = "ClearDepDefSchemaDefIdxDefSchema", columnList = "defschidDefSchema", unique = false)
 	}
 )
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -79,10 +81,10 @@ public class CFBamJpaClearDep extends CFBamJpaScope
 	implements ICFBamClearDep
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="RelationId", referencedColumnName="Id" )
+	@JoinColumn( name="RelationIdRelation", referencedColumnName="Id" )
 	protected CFBamJpaRelation requiredLookupRelation;
 	@ManyToOne(fetch=FetchType.LAZY, optional=true)
-	@JoinColumn( name="defschid", referencedColumnName="Id" )
+	@JoinColumn( name="defschidDefSchema", referencedColumnName="Id" )
 	protected CFBamJpaSchemaDef optionalLookupDefSchema;
 
 
@@ -97,7 +99,7 @@ public class CFBamJpaClearDep extends CFBamJpaScope
 
 	@Override
 	public ICFBamRelation getRequiredLookupRelation() {
-		return( requiredLookupRelation );
+		return(requiredLookupRelation);
 	}
 	@Override
 	public void setRequiredLookupRelation(ICFBamRelation argObj) {
@@ -128,7 +130,7 @@ public class CFBamJpaClearDep extends CFBamJpaScope
 
 	@Override
 	public ICFBamSchemaDef getOptionalLookupDefSchema() {
-		return( optionalLookupDefSchema );
+		return(optionalLookupDefSchema);
 	}
 	@Override
 	public void setOptionalLookupDefSchema(ICFBamSchemaDef argObj) {

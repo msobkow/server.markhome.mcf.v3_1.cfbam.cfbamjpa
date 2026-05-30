@@ -68,7 +68,8 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 	indexes = {
 		@Index(name = "DelSubDep2IdIdx", columnList = "Id", unique = true),
 		@Index(name = "DelSubDep2DelSubDep1Idx", columnList = "contdeldep1id", unique = false),
-		@Index(name = "DelSubDep2UNameIdx", columnList = "contdeldep1id, safe_name", unique = true)
+		@Index(name = "DelSubDep2UNameIdx", columnList = "contdeldep1id, safe_name", unique = true),
+		@Index(name = "DelSubDep2DelSubDep1IdxDelSubDep1", columnList = "contdeldep1idDelSubDep1", unique = false)
 	}
 )
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -79,7 +80,7 @@ public class CFBamJpaDelSubDep2 extends CFBamJpaDelDep
 	implements ICFBamDelSubDep2
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="contdeldep1id", referencedColumnName="Id" )
+	@JoinColumn( name="contdeldep1idDelSubDep1", referencedColumnName="Id" )
 	protected CFBamJpaDelSubDep1 requiredContainerDelSubDep1;
 
 	@Column( name="safe_name", nullable=false, length=192 )
@@ -97,7 +98,7 @@ public class CFBamJpaDelSubDep2 extends CFBamJpaDelDep
 
 	@Override
 	public ICFBamDelSubDep1 getRequiredContainerDelSubDep1() {
-		return( requiredContainerDelSubDep1 );
+		return(requiredContainerDelSubDep1);
 	}
 	@Override
 	public void setRequiredContainerDelSubDep1(ICFBamDelSubDep1 argObj) {

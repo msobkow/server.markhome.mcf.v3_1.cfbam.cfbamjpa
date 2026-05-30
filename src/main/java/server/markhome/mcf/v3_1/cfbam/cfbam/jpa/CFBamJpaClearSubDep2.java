@@ -68,7 +68,8 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 	indexes = {
 		@Index(name = "ClearSubDep2IdIdx", columnList = "Id", unique = true),
 		@Index(name = "ClearSubDep2ClearSubDep1Idx", columnList = "contclrdep1id", unique = false),
-		@Index(name = "ClearSubDep2UNameIdx", columnList = "contclrdep1id, safe_name", unique = true)
+		@Index(name = "ClearSubDep2UNameIdx", columnList = "contclrdep1id, safe_name", unique = true),
+		@Index(name = "ClearSubDep2ClearSubDep1IdxClearSubDep1", columnList = "contclrdep1idClearSubDep1", unique = false)
 	}
 )
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -79,7 +80,7 @@ public class CFBamJpaClearSubDep2 extends CFBamJpaClearDep
 	implements ICFBamClearSubDep2
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
-	@JoinColumn( name="contclrdep1id", referencedColumnName="Id" )
+	@JoinColumn( name="contclrdep1idClearSubDep1", referencedColumnName="Id" )
 	protected CFBamJpaClearSubDep1 requiredContainerClearSubDep1;
 
 	@Column( name="safe_name", nullable=false, length=192 )
@@ -97,7 +98,7 @@ public class CFBamJpaClearSubDep2 extends CFBamJpaClearDep
 
 	@Override
 	public ICFBamClearSubDep1 getRequiredContainerClearSubDep1() {
-		return( requiredContainerClearSubDep1 );
+		return(requiredContainerClearSubDep1);
 	}
 	@Override
 	public void setRequiredContainerClearSubDep1(ICFBamClearSubDep1 argObj) {
