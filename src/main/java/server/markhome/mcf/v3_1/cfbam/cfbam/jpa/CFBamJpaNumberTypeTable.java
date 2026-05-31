@@ -205,7 +205,7 @@ public class CFBamJpaNumberTypeTable implements ICFBamNumberTypeTable
 		final String S_ProcName = "createNumberType";
 		boolean permissionGranted = canCreateNumberType(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, "createnumbertype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "createnumbertype", ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		if (rec == null) {
@@ -215,9 +215,10 @@ public class CFBamJpaNumberTypeTable implements ICFBamNumberTypeTable
 			CFBamJpaNumberType jparec = (CFBamJpaNumberType)rec;
 			CFBamJpaNumberType retval = schema.getJpaHooksSchema().getNumberTypeService().create(jparec);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readnumbertype'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readnumbertype")) {
 				retval = null;
 			}
@@ -244,7 +245,7 @@ public class CFBamJpaNumberTypeTable implements ICFBamNumberTypeTable
 		final String S_ProcName = "updateNumberType";
 		boolean permissionGranted = canUpdateNumberType(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, "updatenumbertype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "updatenumbertype", ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		if (rec == null) {
@@ -254,9 +255,10 @@ public class CFBamJpaNumberTypeTable implements ICFBamNumberTypeTable
 			CFBamJpaNumberType jparec = (CFBamJpaNumberType)rec;
 			CFBamJpaNumberType retval = schema.getJpaHooksSchema().getNumberTypeService().update(jparec);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readnumbertype'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readnumbertype")) {
 				retval = null;
 			}
@@ -282,7 +284,7 @@ public class CFBamJpaNumberTypeTable implements ICFBamNumberTypeTable
 		final String S_ProcName = "deleteNumberType";
 		boolean permissionGranted = canDeleteNumberType(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, "deletenumbertype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletenumbertype", ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		if (rec == null) {
@@ -313,7 +315,7 @@ public class CFBamJpaNumberTypeTable implements ICFBamNumberTypeTable
 		final String S_ProcName = "deleteNumberTypeBySchemaIdx";
 		boolean permissionGranted = canDeleteNumberType(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, "deletenumbertype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletenumbertype", ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getNumberTypeService().deleteBySchemaIdx(argSchemaDefId);
@@ -334,7 +336,7 @@ public class CFBamJpaNumberTypeTable implements ICFBamNumberTypeTable
 		final String S_ProcName = "deleteNumberTypeBySchemaIdx";
 		boolean permissionGranted = canDeleteNumberType(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, "deletenumbertype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletenumbertype", ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getNumberTypeService().deleteBySchemaIdx(argKey.getRequiredSchemaDefId());
@@ -354,7 +356,7 @@ public class CFBamJpaNumberTypeTable implements ICFBamNumberTypeTable
 		final String S_ProcName = "deleteNumberTypeByIdIdx";
 		boolean permissionGranted = canDeleteNumberType(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, "deletenumbertype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletenumbertype", ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getNumberTypeService().deleteByIdIdx(argKey);
@@ -377,7 +379,7 @@ public class CFBamJpaNumberTypeTable implements ICFBamNumberTypeTable
 		final String S_ProcName = "deleteNumberTypeByUNameIdx";
 		boolean permissionGranted = canDeleteNumberType(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, "deletenumbertype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletenumbertype", ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getNumberTypeService().deleteByUNameIdx(argScopeId,
@@ -399,7 +401,7 @@ public class CFBamJpaNumberTypeTable implements ICFBamNumberTypeTable
 		final String S_ProcName = "deleteNumberTypeByUNameIdx";
 		boolean permissionGranted = canDeleteNumberType(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, "deletenumbertype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletenumbertype", ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getNumberTypeService().deleteByUNameIdx(argKey.getRequiredScopeId(),
@@ -420,7 +422,7 @@ public class CFBamJpaNumberTypeTable implements ICFBamNumberTypeTable
 		final String S_ProcName = "deleteNumberTypeByScopeIdx";
 		boolean permissionGranted = canDeleteNumberType(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, "deletenumbertype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletenumbertype", ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getNumberTypeService().deleteByScopeIdx(argScopeId);
@@ -441,7 +443,7 @@ public class CFBamJpaNumberTypeTable implements ICFBamNumberTypeTable
 		final String S_ProcName = "deleteNumberTypeByScopeIdx";
 		boolean permissionGranted = canDeleteNumberType(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, "deletenumbertype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletenumbertype", ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getNumberTypeService().deleteByScopeIdx(argKey.getRequiredScopeId());
@@ -461,7 +463,7 @@ public class CFBamJpaNumberTypeTable implements ICFBamNumberTypeTable
 		final String S_ProcName = "deleteNumberTypeByDefSchemaIdx";
 		boolean permissionGranted = canDeleteNumberType(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, "deletenumbertype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletenumbertype", ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getNumberTypeService().deleteByDefSchemaIdx(argDefSchemaId);
@@ -482,7 +484,7 @@ public class CFBamJpaNumberTypeTable implements ICFBamNumberTypeTable
 		final String S_ProcName = "deleteNumberTypeByDefSchemaIdx";
 		boolean permissionGranted = canDeleteNumberType(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, "deletenumbertype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletenumbertype", ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getNumberTypeService().deleteByDefSchemaIdx(argKey.getOptionalDefSchemaId());
@@ -502,7 +504,7 @@ public class CFBamJpaNumberTypeTable implements ICFBamNumberTypeTable
 		final String S_ProcName = "deleteNumberTypeByPrevIdx";
 		boolean permissionGranted = canDeleteNumberType(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, "deletenumbertype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletenumbertype", ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getNumberTypeService().deleteByPrevIdx(argPrevId);
@@ -523,7 +525,7 @@ public class CFBamJpaNumberTypeTable implements ICFBamNumberTypeTable
 		final String S_ProcName = "deleteNumberTypeByPrevIdx";
 		boolean permissionGranted = canDeleteNumberType(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, "deletenumbertype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletenumbertype", ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getNumberTypeService().deleteByPrevIdx(argKey.getOptionalPrevId());
@@ -543,7 +545,7 @@ public class CFBamJpaNumberTypeTable implements ICFBamNumberTypeTable
 		final String S_ProcName = "deleteNumberTypeByNextIdx";
 		boolean permissionGranted = canDeleteNumberType(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, "deletenumbertype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletenumbertype", ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getNumberTypeService().deleteByNextIdx(argNextId);
@@ -564,7 +566,7 @@ public class CFBamJpaNumberTypeTable implements ICFBamNumberTypeTable
 		final String S_ProcName = "deleteNumberTypeByNextIdx";
 		boolean permissionGranted = canDeleteNumberType(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, "deletenumbertype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletenumbertype", ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getNumberTypeService().deleteByNextIdx(argKey.getOptionalNextId());
@@ -587,7 +589,7 @@ public class CFBamJpaNumberTypeTable implements ICFBamNumberTypeTable
 		final String S_ProcName = "deleteNumberTypeByContPrevIdx";
 		boolean permissionGranted = canDeleteNumberType(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, "deletenumbertype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletenumbertype", ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getNumberTypeService().deleteByContPrevIdx(argScopeId,
@@ -609,7 +611,7 @@ public class CFBamJpaNumberTypeTable implements ICFBamNumberTypeTable
 		final String S_ProcName = "deleteNumberTypeByContPrevIdx";
 		boolean permissionGranted = canDeleteNumberType(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, "deletenumbertype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletenumbertype", ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getNumberTypeService().deleteByContPrevIdx(argKey.getRequiredScopeId(),
@@ -633,7 +635,7 @@ public class CFBamJpaNumberTypeTable implements ICFBamNumberTypeTable
 		final String S_ProcName = "deleteNumberTypeByContNextIdx";
 		boolean permissionGranted = canDeleteNumberType(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, "deletenumbertype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletenumbertype", ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getNumberTypeService().deleteByContNextIdx(argScopeId,
@@ -655,7 +657,7 @@ public class CFBamJpaNumberTypeTable implements ICFBamNumberTypeTable
 		final String S_ProcName = "deleteNumberTypeByContNextIdx";
 		boolean permissionGranted = canDeleteNumberType(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, "deletenumbertype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletenumbertype", ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getNumberTypeService().deleteByContNextIdx(argKey.getRequiredScopeId(),
@@ -680,14 +682,15 @@ public class CFBamJpaNumberTypeTable implements ICFBamNumberTypeTable
 		final String S_ProcName = "readDerived";
 		boolean permissionGranted = canReadNumberType(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, "readnumbertype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readnumbertype", ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		ICFBamNumberType retval = schema.getJpaHooksSchema().getNumberTypeService().find(PKey);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readnumbertype'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readnumbertype")) {
 				retval = null;
 			}
@@ -712,14 +715,15 @@ public class CFBamJpaNumberTypeTable implements ICFBamNumberTypeTable
 		final String S_ProcName = "lockDerived";
 		boolean permissionGranted = canUpdateNumberType(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, "updatenumbertype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "updatenumbertype", ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		ICFBamNumberType retval = schema.getJpaHooksSchema().getNumberTypeService().lockByIdIdx(PKey);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readnumbertype'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readnumbertype")) {
 				retval = null;
 			}
@@ -739,19 +743,19 @@ public class CFBamJpaNumberTypeTable implements ICFBamNumberTypeTable
 		final String S_ProcName = "readAllDerived";
 		boolean permissionGranted = canReadNumberType(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, "readnumbertype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readnumbertype", ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		List<CFBamJpaNumberType> retlist = schema.getJpaHooksSchema().getNumberTypeService().findAll();
 		if(retlist != null) {
 			ArrayList<CFBamJpaNumberType> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readnumbertype")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readnumbertype")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -784,13 +788,14 @@ public class CFBamJpaNumberTypeTable implements ICFBamNumberTypeTable
 			permissionGranted = canReadNumberType(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, "readnumbertype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readnumbertype", ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		ICFBamNumberType retval = schema.getJpaHooksSchema().getNumberTypeService().find(argId);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readnumbertype'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readnumbertype")) {
 				retval = null;
 			}
@@ -821,14 +826,15 @@ public class CFBamJpaNumberTypeTable implements ICFBamNumberTypeTable
 			permissionGranted = canReadNumberType(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, "readnumbertype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readnumbertype", ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		ICFBamNumberType retval = schema.getJpaHooksSchema().getNumberTypeService().findByUNameIdx(argScopeId,
 		argName);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readnumbertype'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readnumbertype")) {
 				retval = null;
 			}
@@ -855,18 +861,18 @@ public class CFBamJpaNumberTypeTable implements ICFBamNumberTypeTable
 			permissionGranted = canReadNumberType(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, "readnumbertype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readnumbertype", ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaNumberType> retlist = schema.getJpaHooksSchema().getNumberTypeService().findByScopeIdx(argScopeId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaNumberType> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readnumbertype")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readnumbertype")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -898,18 +904,18 @@ public class CFBamJpaNumberTypeTable implements ICFBamNumberTypeTable
 			permissionGranted = canReadNumberType(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, "readnumbertype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readnumbertype", ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaNumberType> retlist = schema.getJpaHooksSchema().getNumberTypeService().findByDefSchemaIdx(argDefSchemaId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaNumberType> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readnumbertype")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readnumbertype")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -941,18 +947,18 @@ public class CFBamJpaNumberTypeTable implements ICFBamNumberTypeTable
 			permissionGranted = canReadNumberType(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, "readnumbertype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readnumbertype", ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaNumberType> retlist = schema.getJpaHooksSchema().getNumberTypeService().findByPrevIdx(argPrevId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaNumberType> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readnumbertype")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readnumbertype")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -984,18 +990,18 @@ public class CFBamJpaNumberTypeTable implements ICFBamNumberTypeTable
 			permissionGranted = canReadNumberType(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, "readnumbertype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readnumbertype", ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaNumberType> retlist = schema.getJpaHooksSchema().getNumberTypeService().findByNextIdx(argNextId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaNumberType> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readnumbertype")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readnumbertype")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -1030,19 +1036,19 @@ public class CFBamJpaNumberTypeTable implements ICFBamNumberTypeTable
 			permissionGranted = canReadNumberType(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, "readnumbertype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readnumbertype", ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaNumberType> retlist = schema.getJpaHooksSchema().getNumberTypeService().findByContPrevIdx(argScopeId,
 		argPrevId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaNumberType> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readnumbertype")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readnumbertype")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -1077,19 +1083,19 @@ public class CFBamJpaNumberTypeTable implements ICFBamNumberTypeTable
 			permissionGranted = canReadNumberType(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, "readnumbertype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readnumbertype", ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaNumberType> retlist = schema.getJpaHooksSchema().getNumberTypeService().findByContNextIdx(argScopeId,
 		argNextId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaNumberType> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readnumbertype")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readnumbertype")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -1121,18 +1127,18 @@ public class CFBamJpaNumberTypeTable implements ICFBamNumberTypeTable
 			permissionGranted = canReadNumberType(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, "readnumbertype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readnumbertype", ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaNumberType> retlist = schema.getJpaHooksSchema().getNumberTypeService().findBySchemaIdx(argSchemaDefId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaNumberType> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readnumbertype")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readnumbertype")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -1164,7 +1170,7 @@ public class CFBamJpaNumberTypeTable implements ICFBamNumberTypeTable
 		final String S_ProcName = "readRec";
 		boolean permissionGranted = canReadNumberType(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, "readnumbertype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readnumbertype", ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		throw new CFLibNotImplementedYetException(getClass(), "readRec");
@@ -1189,7 +1195,7 @@ public class CFBamJpaNumberTypeTable implements ICFBamNumberTypeTable
 		final String S_ProcName = "lockRec";
 		boolean permissionGranted = canUpdateNumberType(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, "updatenumbertype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "updatenumbertype", ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		throw new CFLibNotImplementedYetException(getClass(), "lockRec");
@@ -1207,7 +1213,7 @@ public class CFBamJpaNumberTypeTable implements ICFBamNumberTypeTable
 		final String S_ProcName = "readAllRec";
 		boolean permissionGranted = canReadNumberType(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, "readnumbertype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readnumbertype", ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		throw new CFLibNotImplementedYetException(getClass(), "readAllRec");
@@ -1236,7 +1242,7 @@ public class CFBamJpaNumberTypeTable implements ICFBamNumberTypeTable
 			permissionGranted = canReadNumberType(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, "readnumbertype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readnumbertype", ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByIdIdx");
 	}
@@ -1266,7 +1272,7 @@ public class CFBamJpaNumberTypeTable implements ICFBamNumberTypeTable
 			permissionGranted = canReadNumberType(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, "readnumbertype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readnumbertype", ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByUNameIdx");
 	}
@@ -1292,7 +1298,7 @@ public class CFBamJpaNumberTypeTable implements ICFBamNumberTypeTable
 			permissionGranted = canReadNumberType(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, "readnumbertype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readnumbertype", ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByScopeIdx");
 	}
@@ -1318,7 +1324,7 @@ public class CFBamJpaNumberTypeTable implements ICFBamNumberTypeTable
 			permissionGranted = canReadNumberType(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, "readnumbertype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readnumbertype", ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByDefSchemaIdx");
 	}
@@ -1344,7 +1350,7 @@ public class CFBamJpaNumberTypeTable implements ICFBamNumberTypeTable
 			permissionGranted = canReadNumberType(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, "readnumbertype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readnumbertype", ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByPrevIdx");
 	}
@@ -1370,7 +1376,7 @@ public class CFBamJpaNumberTypeTable implements ICFBamNumberTypeTable
 			permissionGranted = canReadNumberType(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, "readnumbertype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readnumbertype", ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByNextIdx");
 	}
@@ -1399,7 +1405,7 @@ public class CFBamJpaNumberTypeTable implements ICFBamNumberTypeTable
 			permissionGranted = canReadNumberType(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, "readnumbertype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readnumbertype", ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByContPrevIdx");
 	}
@@ -1428,7 +1434,7 @@ public class CFBamJpaNumberTypeTable implements ICFBamNumberTypeTable
 			permissionGranted = canReadNumberType(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, "readnumbertype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readnumbertype", ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByContNextIdx");
 	}
@@ -1454,7 +1460,7 @@ public class CFBamJpaNumberTypeTable implements ICFBamNumberTypeTable
 			permissionGranted = canReadNumberType(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, "readnumbertype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readnumbertype", ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecBySchemaIdx");
 	}
@@ -1472,7 +1478,7 @@ public class CFBamJpaNumberTypeTable implements ICFBamNumberTypeTable
 		final String S_ProcName = "moveRecUp";
 		boolean permissionGranted = canUpdateNumberType(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, "updatenumbertype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "updatenumbertype", ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		throw new CFLibNotImplementedYetException(getClass(), "moveRecUp");
@@ -1491,7 +1497,7 @@ public class CFBamJpaNumberTypeTable implements ICFBamNumberTypeTable
 		final String S_ProcName = "moveRecDown";
 		boolean permissionGranted = canUpdateNumberType(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, "updatenumbertype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "updatenumbertype", ICFBamSchema.SCHEMA_NAME, ICFBamNumberTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		throw new CFLibNotImplementedYetException(getClass(), "moveRecDown");

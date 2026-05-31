@@ -82,9 +82,14 @@ public class CFBamJpaNumberCol extends CFBamJpaNumberDef
 	@JoinColumn( name="TableIdTable", referencedColumnName="Id" )
 	protected CFBamJpaTable requiredContainerTable;
 
+	@AttributeOverrides({
+		@AttributeOverride(name="bytes", column = @Column( name="TableId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
+	})
+	protected CFLibDbKeyHash256 requiredTableId;
 
 	public CFBamJpaNumberCol() {
 		super();
+		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamNumberCol.TABLEID_INIT_VALUE.toString() );
 	}
 
 	@Override
@@ -103,6 +108,11 @@ public class CFBamJpaNumberCol extends CFBamJpaNumberDef
 		}
 		else if (argObj instanceof CFBamJpaTable) {
 			requiredContainerTable = (CFBamJpaTable)argObj;
+			if (requiredContainerTable != null) {
+				requiredTableId = requiredContainerTable.getRequiredId();
+			}
+			else {
+			}
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "setContainerTable", "argObj", argObj, "CFBamJpaTable");
@@ -125,13 +135,7 @@ public class CFBamJpaNumberCol extends CFBamJpaNumberDef
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredTableId() {
-		ICFBamTable result = getRequiredContainerTable();
-		if (result != null) {
-			return result.getRequiredId();
-		}
-		else {
-			return( ICFBamTable.ID_INIT_VALUE );
-		}
+		return( requiredTableId );
 	}
 
 	@Override

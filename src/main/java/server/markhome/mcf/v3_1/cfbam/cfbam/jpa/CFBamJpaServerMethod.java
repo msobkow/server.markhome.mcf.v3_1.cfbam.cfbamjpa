@@ -88,6 +88,14 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 	@JoinColumn( name="TableIdForTable", referencedColumnName="Id" )
 	protected CFBamJpaTable requiredContainerForTable;
 
+	@AttributeOverrides({
+		@AttributeOverride(name="bytes", column = @Column( name="TableId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
+	})
+	protected CFLibDbKeyHash256 requiredTableId;
+	@AttributeOverrides({
+		@AttributeOverride(name="bytes", column = @Column( name="defschid", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
+	})
+	protected CFLibDbKeyHash256 optionalDefSchemaId;
 	@Column( name="safe_name", nullable=false, length=192 )
 	protected String requiredName;
 	@Column( name="short_name", nullable=true, length=16 )
@@ -113,6 +121,8 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 
 	public CFBamJpaServerMethod() {
 		super();
+		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamServerMethod.TABLEID_INIT_VALUE.toString() );
+		optionalDefSchemaId = CFLibDbKeyHash256.nullGet();
 		requiredName = ICFBamServerMethod.NAME_INIT_VALUE;
 		optionalShortName = null;
 		optionalLabel = null;
@@ -142,6 +152,12 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 		}
 		else if (argObj instanceof CFBamJpaSchemaDef) {
 			optionalLookupDefSchema = (CFBamJpaSchemaDef)argObj;
+			if (optionalLookupDefSchema != null) {
+				optionalDefSchemaId = optionalLookupDefSchema.getRequiredId();
+			}
+			else {
+				optionalDefSchemaId = null;
+			}
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "setLookupDefSchema", "argObj", argObj, "CFBamJpaSchemaDef");
@@ -173,6 +189,11 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 		}
 		else if (argObj instanceof CFBamJpaTable) {
 			requiredContainerForTable = (CFBamJpaTable)argObj;
+			if (requiredContainerForTable != null) {
+				requiredTableId = requiredContainerForTable.getRequiredId();
+			}
+			else {
+			}
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "setContainerForTable", "argObj", argObj, "CFBamJpaTable");
@@ -195,24 +216,12 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredTableId() {
-		ICFBamTable result = getRequiredContainerForTable();
-		if (result != null) {
-			return result.getRequiredId();
-		}
-		else {
-			return( ICFBamTable.ID_INIT_VALUE );
-		}
+		return( requiredTableId );
 	}
 
 	@Override
 	public CFLibDbKeyHash256 getOptionalDefSchemaId() {
-		ICFBamSchemaDef result = getOptionalLookupDefSchema();
-		if (result != null) {
-			return result.getRequiredId();
-		}
-		else {
-			return null;
-		}
+		return( optionalDefSchemaId );
 	}
 
 	@Override

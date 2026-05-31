@@ -205,7 +205,7 @@ public class CFBamJpaDbKeyHash128TypeTable implements ICFBamDbKeyHash128TypeTabl
 		final String S_ProcName = "createDbKeyHash128Type";
 		boolean permissionGranted = canCreateDbKeyHash128Type(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, "createdbkeyhash128type", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "createdbkeyhash128type", ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		if (rec == null) {
@@ -215,9 +215,10 @@ public class CFBamJpaDbKeyHash128TypeTable implements ICFBamDbKeyHash128TypeTabl
 			CFBamJpaDbKeyHash128Type jparec = (CFBamJpaDbKeyHash128Type)rec;
 			CFBamJpaDbKeyHash128Type retval = schema.getJpaHooksSchema().getDbKeyHash128TypeService().create(jparec);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readdbkeyhash128type'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdbkeyhash128type")) {
 				retval = null;
 			}
@@ -244,7 +245,7 @@ public class CFBamJpaDbKeyHash128TypeTable implements ICFBamDbKeyHash128TypeTabl
 		final String S_ProcName = "updateDbKeyHash128Type";
 		boolean permissionGranted = canUpdateDbKeyHash128Type(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, "updatedbkeyhash128type", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "updatedbkeyhash128type", ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		if (rec == null) {
@@ -254,9 +255,10 @@ public class CFBamJpaDbKeyHash128TypeTable implements ICFBamDbKeyHash128TypeTabl
 			CFBamJpaDbKeyHash128Type jparec = (CFBamJpaDbKeyHash128Type)rec;
 			CFBamJpaDbKeyHash128Type retval = schema.getJpaHooksSchema().getDbKeyHash128TypeService().update(jparec);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readdbkeyhash128type'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdbkeyhash128type")) {
 				retval = null;
 			}
@@ -282,7 +284,7 @@ public class CFBamJpaDbKeyHash128TypeTable implements ICFBamDbKeyHash128TypeTabl
 		final String S_ProcName = "deleteDbKeyHash128Type";
 		boolean permissionGranted = canDeleteDbKeyHash128Type(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, "deletedbkeyhash128type", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletedbkeyhash128type", ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		if (rec == null) {
@@ -313,7 +315,7 @@ public class CFBamJpaDbKeyHash128TypeTable implements ICFBamDbKeyHash128TypeTabl
 		final String S_ProcName = "deleteDbKeyHash128TypeBySchemaIdx";
 		boolean permissionGranted = canDeleteDbKeyHash128Type(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, "deletedbkeyhash128type", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletedbkeyhash128type", ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getDbKeyHash128TypeService().deleteBySchemaIdx(argSchemaDefId);
@@ -334,7 +336,7 @@ public class CFBamJpaDbKeyHash128TypeTable implements ICFBamDbKeyHash128TypeTabl
 		final String S_ProcName = "deleteDbKeyHash128TypeBySchemaIdx";
 		boolean permissionGranted = canDeleteDbKeyHash128Type(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, "deletedbkeyhash128type", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletedbkeyhash128type", ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getDbKeyHash128TypeService().deleteBySchemaIdx(argKey.getRequiredSchemaDefId());
@@ -354,7 +356,7 @@ public class CFBamJpaDbKeyHash128TypeTable implements ICFBamDbKeyHash128TypeTabl
 		final String S_ProcName = "deleteDbKeyHash128TypeByIdIdx";
 		boolean permissionGranted = canDeleteDbKeyHash128Type(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, "deletedbkeyhash128type", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletedbkeyhash128type", ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getDbKeyHash128TypeService().deleteByIdIdx(argKey);
@@ -377,7 +379,7 @@ public class CFBamJpaDbKeyHash128TypeTable implements ICFBamDbKeyHash128TypeTabl
 		final String S_ProcName = "deleteDbKeyHash128TypeByUNameIdx";
 		boolean permissionGranted = canDeleteDbKeyHash128Type(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, "deletedbkeyhash128type", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletedbkeyhash128type", ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getDbKeyHash128TypeService().deleteByUNameIdx(argScopeId,
@@ -399,7 +401,7 @@ public class CFBamJpaDbKeyHash128TypeTable implements ICFBamDbKeyHash128TypeTabl
 		final String S_ProcName = "deleteDbKeyHash128TypeByUNameIdx";
 		boolean permissionGranted = canDeleteDbKeyHash128Type(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, "deletedbkeyhash128type", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletedbkeyhash128type", ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getDbKeyHash128TypeService().deleteByUNameIdx(argKey.getRequiredScopeId(),
@@ -420,7 +422,7 @@ public class CFBamJpaDbKeyHash128TypeTable implements ICFBamDbKeyHash128TypeTabl
 		final String S_ProcName = "deleteDbKeyHash128TypeByScopeIdx";
 		boolean permissionGranted = canDeleteDbKeyHash128Type(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, "deletedbkeyhash128type", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletedbkeyhash128type", ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getDbKeyHash128TypeService().deleteByScopeIdx(argScopeId);
@@ -441,7 +443,7 @@ public class CFBamJpaDbKeyHash128TypeTable implements ICFBamDbKeyHash128TypeTabl
 		final String S_ProcName = "deleteDbKeyHash128TypeByScopeIdx";
 		boolean permissionGranted = canDeleteDbKeyHash128Type(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, "deletedbkeyhash128type", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletedbkeyhash128type", ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getDbKeyHash128TypeService().deleteByScopeIdx(argKey.getRequiredScopeId());
@@ -461,7 +463,7 @@ public class CFBamJpaDbKeyHash128TypeTable implements ICFBamDbKeyHash128TypeTabl
 		final String S_ProcName = "deleteDbKeyHash128TypeByDefSchemaIdx";
 		boolean permissionGranted = canDeleteDbKeyHash128Type(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, "deletedbkeyhash128type", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletedbkeyhash128type", ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getDbKeyHash128TypeService().deleteByDefSchemaIdx(argDefSchemaId);
@@ -482,7 +484,7 @@ public class CFBamJpaDbKeyHash128TypeTable implements ICFBamDbKeyHash128TypeTabl
 		final String S_ProcName = "deleteDbKeyHash128TypeByDefSchemaIdx";
 		boolean permissionGranted = canDeleteDbKeyHash128Type(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, "deletedbkeyhash128type", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletedbkeyhash128type", ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getDbKeyHash128TypeService().deleteByDefSchemaIdx(argKey.getOptionalDefSchemaId());
@@ -502,7 +504,7 @@ public class CFBamJpaDbKeyHash128TypeTable implements ICFBamDbKeyHash128TypeTabl
 		final String S_ProcName = "deleteDbKeyHash128TypeByPrevIdx";
 		boolean permissionGranted = canDeleteDbKeyHash128Type(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, "deletedbkeyhash128type", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletedbkeyhash128type", ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getDbKeyHash128TypeService().deleteByPrevIdx(argPrevId);
@@ -523,7 +525,7 @@ public class CFBamJpaDbKeyHash128TypeTable implements ICFBamDbKeyHash128TypeTabl
 		final String S_ProcName = "deleteDbKeyHash128TypeByPrevIdx";
 		boolean permissionGranted = canDeleteDbKeyHash128Type(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, "deletedbkeyhash128type", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletedbkeyhash128type", ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getDbKeyHash128TypeService().deleteByPrevIdx(argKey.getOptionalPrevId());
@@ -543,7 +545,7 @@ public class CFBamJpaDbKeyHash128TypeTable implements ICFBamDbKeyHash128TypeTabl
 		final String S_ProcName = "deleteDbKeyHash128TypeByNextIdx";
 		boolean permissionGranted = canDeleteDbKeyHash128Type(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, "deletedbkeyhash128type", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletedbkeyhash128type", ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getDbKeyHash128TypeService().deleteByNextIdx(argNextId);
@@ -564,7 +566,7 @@ public class CFBamJpaDbKeyHash128TypeTable implements ICFBamDbKeyHash128TypeTabl
 		final String S_ProcName = "deleteDbKeyHash128TypeByNextIdx";
 		boolean permissionGranted = canDeleteDbKeyHash128Type(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, "deletedbkeyhash128type", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletedbkeyhash128type", ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getDbKeyHash128TypeService().deleteByNextIdx(argKey.getOptionalNextId());
@@ -587,7 +589,7 @@ public class CFBamJpaDbKeyHash128TypeTable implements ICFBamDbKeyHash128TypeTabl
 		final String S_ProcName = "deleteDbKeyHash128TypeByContPrevIdx";
 		boolean permissionGranted = canDeleteDbKeyHash128Type(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, "deletedbkeyhash128type", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletedbkeyhash128type", ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getDbKeyHash128TypeService().deleteByContPrevIdx(argScopeId,
@@ -609,7 +611,7 @@ public class CFBamJpaDbKeyHash128TypeTable implements ICFBamDbKeyHash128TypeTabl
 		final String S_ProcName = "deleteDbKeyHash128TypeByContPrevIdx";
 		boolean permissionGranted = canDeleteDbKeyHash128Type(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, "deletedbkeyhash128type", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletedbkeyhash128type", ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getDbKeyHash128TypeService().deleteByContPrevIdx(argKey.getRequiredScopeId(),
@@ -633,7 +635,7 @@ public class CFBamJpaDbKeyHash128TypeTable implements ICFBamDbKeyHash128TypeTabl
 		final String S_ProcName = "deleteDbKeyHash128TypeByContNextIdx";
 		boolean permissionGranted = canDeleteDbKeyHash128Type(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, "deletedbkeyhash128type", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletedbkeyhash128type", ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getDbKeyHash128TypeService().deleteByContNextIdx(argScopeId,
@@ -655,7 +657,7 @@ public class CFBamJpaDbKeyHash128TypeTable implements ICFBamDbKeyHash128TypeTabl
 		final String S_ProcName = "deleteDbKeyHash128TypeByContNextIdx";
 		boolean permissionGranted = canDeleteDbKeyHash128Type(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, "deletedbkeyhash128type", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletedbkeyhash128type", ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getDbKeyHash128TypeService().deleteByContNextIdx(argKey.getRequiredScopeId(),
@@ -680,14 +682,15 @@ public class CFBamJpaDbKeyHash128TypeTable implements ICFBamDbKeyHash128TypeTabl
 		final String S_ProcName = "readDerived";
 		boolean permissionGranted = canReadDbKeyHash128Type(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, "readdbkeyhash128type", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readdbkeyhash128type", ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		ICFBamDbKeyHash128Type retval = schema.getJpaHooksSchema().getDbKeyHash128TypeService().find(PKey);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readdbkeyhash128type'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdbkeyhash128type")) {
 				retval = null;
 			}
@@ -712,14 +715,15 @@ public class CFBamJpaDbKeyHash128TypeTable implements ICFBamDbKeyHash128TypeTabl
 		final String S_ProcName = "lockDerived";
 		boolean permissionGranted = canUpdateDbKeyHash128Type(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, "updatedbkeyhash128type", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "updatedbkeyhash128type", ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		ICFBamDbKeyHash128Type retval = schema.getJpaHooksSchema().getDbKeyHash128TypeService().lockByIdIdx(PKey);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readdbkeyhash128type'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdbkeyhash128type")) {
 				retval = null;
 			}
@@ -739,19 +743,19 @@ public class CFBamJpaDbKeyHash128TypeTable implements ICFBamDbKeyHash128TypeTabl
 		final String S_ProcName = "readAllDerived";
 		boolean permissionGranted = canReadDbKeyHash128Type(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, "readdbkeyhash128type", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readdbkeyhash128type", ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		List<CFBamJpaDbKeyHash128Type> retlist = schema.getJpaHooksSchema().getDbKeyHash128TypeService().findAll();
 		if(retlist != null) {
 			ArrayList<CFBamJpaDbKeyHash128Type> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdbkeyhash128type")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdbkeyhash128type")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -784,13 +788,14 @@ public class CFBamJpaDbKeyHash128TypeTable implements ICFBamDbKeyHash128TypeTabl
 			permissionGranted = canReadDbKeyHash128Type(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, "readdbkeyhash128type", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readdbkeyhash128type", ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		ICFBamDbKeyHash128Type retval = schema.getJpaHooksSchema().getDbKeyHash128TypeService().find(argId);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readdbkeyhash128type'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdbkeyhash128type")) {
 				retval = null;
 			}
@@ -821,14 +826,15 @@ public class CFBamJpaDbKeyHash128TypeTable implements ICFBamDbKeyHash128TypeTabl
 			permissionGranted = canReadDbKeyHash128Type(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, "readdbkeyhash128type", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readdbkeyhash128type", ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		ICFBamDbKeyHash128Type retval = schema.getJpaHooksSchema().getDbKeyHash128TypeService().findByUNameIdx(argScopeId,
 		argName);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readdbkeyhash128type'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdbkeyhash128type")) {
 				retval = null;
 			}
@@ -855,18 +861,18 @@ public class CFBamJpaDbKeyHash128TypeTable implements ICFBamDbKeyHash128TypeTabl
 			permissionGranted = canReadDbKeyHash128Type(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, "readdbkeyhash128type", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readdbkeyhash128type", ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaDbKeyHash128Type> retlist = schema.getJpaHooksSchema().getDbKeyHash128TypeService().findByScopeIdx(argScopeId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaDbKeyHash128Type> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdbkeyhash128type")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdbkeyhash128type")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -898,18 +904,18 @@ public class CFBamJpaDbKeyHash128TypeTable implements ICFBamDbKeyHash128TypeTabl
 			permissionGranted = canReadDbKeyHash128Type(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, "readdbkeyhash128type", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readdbkeyhash128type", ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaDbKeyHash128Type> retlist = schema.getJpaHooksSchema().getDbKeyHash128TypeService().findByDefSchemaIdx(argDefSchemaId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaDbKeyHash128Type> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdbkeyhash128type")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdbkeyhash128type")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -941,18 +947,18 @@ public class CFBamJpaDbKeyHash128TypeTable implements ICFBamDbKeyHash128TypeTabl
 			permissionGranted = canReadDbKeyHash128Type(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, "readdbkeyhash128type", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readdbkeyhash128type", ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaDbKeyHash128Type> retlist = schema.getJpaHooksSchema().getDbKeyHash128TypeService().findByPrevIdx(argPrevId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaDbKeyHash128Type> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdbkeyhash128type")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdbkeyhash128type")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -984,18 +990,18 @@ public class CFBamJpaDbKeyHash128TypeTable implements ICFBamDbKeyHash128TypeTabl
 			permissionGranted = canReadDbKeyHash128Type(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, "readdbkeyhash128type", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readdbkeyhash128type", ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaDbKeyHash128Type> retlist = schema.getJpaHooksSchema().getDbKeyHash128TypeService().findByNextIdx(argNextId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaDbKeyHash128Type> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdbkeyhash128type")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdbkeyhash128type")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -1030,19 +1036,19 @@ public class CFBamJpaDbKeyHash128TypeTable implements ICFBamDbKeyHash128TypeTabl
 			permissionGranted = canReadDbKeyHash128Type(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, "readdbkeyhash128type", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readdbkeyhash128type", ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaDbKeyHash128Type> retlist = schema.getJpaHooksSchema().getDbKeyHash128TypeService().findByContPrevIdx(argScopeId,
 		argPrevId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaDbKeyHash128Type> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdbkeyhash128type")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdbkeyhash128type")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -1077,19 +1083,19 @@ public class CFBamJpaDbKeyHash128TypeTable implements ICFBamDbKeyHash128TypeTabl
 			permissionGranted = canReadDbKeyHash128Type(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, "readdbkeyhash128type", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readdbkeyhash128type", ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaDbKeyHash128Type> retlist = schema.getJpaHooksSchema().getDbKeyHash128TypeService().findByContNextIdx(argScopeId,
 		argNextId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaDbKeyHash128Type> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdbkeyhash128type")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdbkeyhash128type")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -1121,18 +1127,18 @@ public class CFBamJpaDbKeyHash128TypeTable implements ICFBamDbKeyHash128TypeTabl
 			permissionGranted = canReadDbKeyHash128Type(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, "readdbkeyhash128type", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readdbkeyhash128type", ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaDbKeyHash128Type> retlist = schema.getJpaHooksSchema().getDbKeyHash128TypeService().findBySchemaIdx(argSchemaDefId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaDbKeyHash128Type> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdbkeyhash128type")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdbkeyhash128type")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -1164,7 +1170,7 @@ public class CFBamJpaDbKeyHash128TypeTable implements ICFBamDbKeyHash128TypeTabl
 		final String S_ProcName = "readRec";
 		boolean permissionGranted = canReadDbKeyHash128Type(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, "readdbkeyhash128type", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readdbkeyhash128type", ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		throw new CFLibNotImplementedYetException(getClass(), "readRec");
@@ -1189,7 +1195,7 @@ public class CFBamJpaDbKeyHash128TypeTable implements ICFBamDbKeyHash128TypeTabl
 		final String S_ProcName = "lockRec";
 		boolean permissionGranted = canUpdateDbKeyHash128Type(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, "updatedbkeyhash128type", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "updatedbkeyhash128type", ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		throw new CFLibNotImplementedYetException(getClass(), "lockRec");
@@ -1207,7 +1213,7 @@ public class CFBamJpaDbKeyHash128TypeTable implements ICFBamDbKeyHash128TypeTabl
 		final String S_ProcName = "readAllRec";
 		boolean permissionGranted = canReadDbKeyHash128Type(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, "readdbkeyhash128type", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readdbkeyhash128type", ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		throw new CFLibNotImplementedYetException(getClass(), "readAllRec");
@@ -1236,7 +1242,7 @@ public class CFBamJpaDbKeyHash128TypeTable implements ICFBamDbKeyHash128TypeTabl
 			permissionGranted = canReadDbKeyHash128Type(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, "readdbkeyhash128type", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readdbkeyhash128type", ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByIdIdx");
 	}
@@ -1266,7 +1272,7 @@ public class CFBamJpaDbKeyHash128TypeTable implements ICFBamDbKeyHash128TypeTabl
 			permissionGranted = canReadDbKeyHash128Type(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, "readdbkeyhash128type", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readdbkeyhash128type", ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByUNameIdx");
 	}
@@ -1292,7 +1298,7 @@ public class CFBamJpaDbKeyHash128TypeTable implements ICFBamDbKeyHash128TypeTabl
 			permissionGranted = canReadDbKeyHash128Type(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, "readdbkeyhash128type", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readdbkeyhash128type", ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByScopeIdx");
 	}
@@ -1318,7 +1324,7 @@ public class CFBamJpaDbKeyHash128TypeTable implements ICFBamDbKeyHash128TypeTabl
 			permissionGranted = canReadDbKeyHash128Type(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, "readdbkeyhash128type", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readdbkeyhash128type", ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByDefSchemaIdx");
 	}
@@ -1344,7 +1350,7 @@ public class CFBamJpaDbKeyHash128TypeTable implements ICFBamDbKeyHash128TypeTabl
 			permissionGranted = canReadDbKeyHash128Type(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, "readdbkeyhash128type", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readdbkeyhash128type", ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByPrevIdx");
 	}
@@ -1370,7 +1376,7 @@ public class CFBamJpaDbKeyHash128TypeTable implements ICFBamDbKeyHash128TypeTabl
 			permissionGranted = canReadDbKeyHash128Type(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, "readdbkeyhash128type", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readdbkeyhash128type", ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByNextIdx");
 	}
@@ -1399,7 +1405,7 @@ public class CFBamJpaDbKeyHash128TypeTable implements ICFBamDbKeyHash128TypeTabl
 			permissionGranted = canReadDbKeyHash128Type(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, "readdbkeyhash128type", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readdbkeyhash128type", ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByContPrevIdx");
 	}
@@ -1428,7 +1434,7 @@ public class CFBamJpaDbKeyHash128TypeTable implements ICFBamDbKeyHash128TypeTabl
 			permissionGranted = canReadDbKeyHash128Type(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, "readdbkeyhash128type", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readdbkeyhash128type", ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByContNextIdx");
 	}
@@ -1454,7 +1460,7 @@ public class CFBamJpaDbKeyHash128TypeTable implements ICFBamDbKeyHash128TypeTabl
 			permissionGranted = canReadDbKeyHash128Type(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, "readdbkeyhash128type", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readdbkeyhash128type", ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecBySchemaIdx");
 	}
@@ -1472,7 +1478,7 @@ public class CFBamJpaDbKeyHash128TypeTable implements ICFBamDbKeyHash128TypeTabl
 		final String S_ProcName = "moveRecUp";
 		boolean permissionGranted = canUpdateDbKeyHash128Type(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, "updatedbkeyhash128type", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "updatedbkeyhash128type", ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		throw new CFLibNotImplementedYetException(getClass(), "moveRecUp");
@@ -1491,7 +1497,7 @@ public class CFBamJpaDbKeyHash128TypeTable implements ICFBamDbKeyHash128TypeTabl
 		final String S_ProcName = "moveRecDown";
 		boolean permissionGranted = canUpdateDbKeyHash128Type(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, "updatedbkeyhash128type", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "updatedbkeyhash128type", ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash128TypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		throw new CFLibNotImplementedYetException(getClass(), "moveRecDown");

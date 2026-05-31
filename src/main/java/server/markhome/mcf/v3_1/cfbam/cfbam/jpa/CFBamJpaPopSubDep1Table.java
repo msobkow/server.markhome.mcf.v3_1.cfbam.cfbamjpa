@@ -205,7 +205,7 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 		final String S_ProcName = "createPopSubDep1";
 		boolean permissionGranted = canCreatePopSubDep1(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, "createpopsubdep1", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "createpopsubdep1", ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		if (rec == null) {
@@ -215,9 +215,10 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 			CFBamJpaPopSubDep1 jparec = (CFBamJpaPopSubDep1)rec;
 			CFBamJpaPopSubDep1 retval = schema.getJpaHooksSchema().getPopSubDep1Service().create(jparec);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readpopsubdep1'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readpopsubdep1")) {
 				retval = null;
 			}
@@ -244,7 +245,7 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 		final String S_ProcName = "updatePopSubDep1";
 		boolean permissionGranted = canUpdatePopSubDep1(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, "updatepopsubdep1", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "updatepopsubdep1", ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		if (rec == null) {
@@ -254,9 +255,10 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 			CFBamJpaPopSubDep1 jparec = (CFBamJpaPopSubDep1)rec;
 			CFBamJpaPopSubDep1 retval = schema.getJpaHooksSchema().getPopSubDep1Service().update(jparec);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readpopsubdep1'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readpopsubdep1")) {
 				retval = null;
 			}
@@ -282,7 +284,7 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 		final String S_ProcName = "deletePopSubDep1";
 		boolean permissionGranted = canDeletePopSubDep1(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, "deletepopsubdep1", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletepopsubdep1", ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		if (rec == null) {
@@ -313,7 +315,7 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 		final String S_ProcName = "deletePopSubDep1ByPopTopDepIdx";
 		boolean permissionGranted = canDeletePopSubDep1(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, "deletepopsubdep1", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletepopsubdep1", ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getPopSubDep1Service().deleteByPopTopDepIdx(argPopTopDepId);
@@ -334,7 +336,7 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 		final String S_ProcName = "deletePopSubDep1ByPopTopDepIdx";
 		boolean permissionGranted = canDeletePopSubDep1(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, "deletepopsubdep1", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletepopsubdep1", ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getPopSubDep1Service().deleteByPopTopDepIdx(argKey.getRequiredPopTopDepId());
@@ -357,7 +359,7 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 		final String S_ProcName = "deletePopSubDep1ByUNameIdx";
 		boolean permissionGranted = canDeletePopSubDep1(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, "deletepopsubdep1", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletepopsubdep1", ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getPopSubDep1Service().deleteByUNameIdx(argPopTopDepId,
@@ -379,7 +381,7 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 		final String S_ProcName = "deletePopSubDep1ByUNameIdx";
 		boolean permissionGranted = canDeletePopSubDep1(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, "deletepopsubdep1", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletepopsubdep1", ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getPopSubDep1Service().deleteByUNameIdx(argKey.getRequiredPopTopDepId(),
@@ -400,7 +402,7 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 		final String S_ProcName = "deletePopSubDep1ByRelationIdx";
 		boolean permissionGranted = canDeletePopSubDep1(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, "deletepopsubdep1", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletepopsubdep1", ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getPopSubDep1Service().deleteByRelationIdx(argRelationId);
@@ -421,7 +423,7 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 		final String S_ProcName = "deletePopSubDep1ByRelationIdx";
 		boolean permissionGranted = canDeletePopSubDep1(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, "deletepopsubdep1", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletepopsubdep1", ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getPopSubDep1Service().deleteByRelationIdx(argKey.getRequiredRelationId());
@@ -441,7 +443,7 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 		final String S_ProcName = "deletePopSubDep1ByDefSchemaIdx";
 		boolean permissionGranted = canDeletePopSubDep1(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, "deletepopsubdep1", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletepopsubdep1", ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getPopSubDep1Service().deleteByDefSchemaIdx(argDefSchemaId);
@@ -462,7 +464,7 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 		final String S_ProcName = "deletePopSubDep1ByDefSchemaIdx";
 		boolean permissionGranted = canDeletePopSubDep1(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, "deletepopsubdep1", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletepopsubdep1", ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getPopSubDep1Service().deleteByDefSchemaIdx(argKey.getOptionalDefSchemaId());
@@ -482,7 +484,7 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 		final String S_ProcName = "deletePopSubDep1ByIdIdx";
 		boolean permissionGranted = canDeletePopSubDep1(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, "deletepopsubdep1", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletepopsubdep1", ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getPopSubDep1Service().deleteByIdIdx(argKey);
@@ -502,7 +504,7 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 		final String S_ProcName = "deletePopSubDep1ByTenantIdx";
 		boolean permissionGranted = canDeletePopSubDep1(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, "deletepopsubdep1", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletepopsubdep1", ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getPopSubDep1Service().deleteByTenantIdx(argTenantId);
@@ -523,7 +525,7 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 		final String S_ProcName = "deletePopSubDep1ByTenantIdx";
 		boolean permissionGranted = canDeletePopSubDep1(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, "deletepopsubdep1", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletepopsubdep1", ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getPopSubDep1Service().deleteByTenantIdx(argKey.getRequiredTenantId());
@@ -547,14 +549,15 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 		final String S_ProcName = "readDerived";
 		boolean permissionGranted = canReadPopSubDep1(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, "readpopsubdep1", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readpopsubdep1", ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		ICFBamPopSubDep1 retval = schema.getJpaHooksSchema().getPopSubDep1Service().find(PKey);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readpopsubdep1'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readpopsubdep1")) {
 				retval = null;
 			}
@@ -579,14 +582,15 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 		final String S_ProcName = "lockDerived";
 		boolean permissionGranted = canUpdatePopSubDep1(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, "updatepopsubdep1", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "updatepopsubdep1", ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		ICFBamPopSubDep1 retval = schema.getJpaHooksSchema().getPopSubDep1Service().lockByIdIdx(PKey);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readpopsubdep1'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readpopsubdep1")) {
 				retval = null;
 			}
@@ -606,19 +610,19 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 		final String S_ProcName = "readAllDerived";
 		boolean permissionGranted = canReadPopSubDep1(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, "readpopsubdep1", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readpopsubdep1", ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		List<CFBamJpaPopSubDep1> retlist = schema.getJpaHooksSchema().getPopSubDep1Service().findAll();
 		if(retlist != null) {
 			ArrayList<CFBamJpaPopSubDep1> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readpopsubdep1")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readpopsubdep1")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -651,13 +655,14 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 			permissionGranted = canReadPopSubDep1(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, "readpopsubdep1", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readpopsubdep1", ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		ICFBamPopSubDep1 retval = schema.getJpaHooksSchema().getPopSubDep1Service().find(argId);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readpopsubdep1'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readpopsubdep1")) {
 				retval = null;
 			}
@@ -684,18 +689,18 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 			permissionGranted = canReadPopSubDep1(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, "readpopsubdep1", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readpopsubdep1", ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaPopSubDep1> retlist = schema.getJpaHooksSchema().getPopSubDep1Service().findByTenantIdx(argTenantId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaPopSubDep1> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readpopsubdep1")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readpopsubdep1")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -727,18 +732,18 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 			permissionGranted = canReadPopSubDep1(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, "readpopsubdep1", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readpopsubdep1", ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaPopSubDep1> retlist = schema.getJpaHooksSchema().getPopSubDep1Service().findByRelationIdx(argRelationId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaPopSubDep1> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readpopsubdep1")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readpopsubdep1")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -770,18 +775,18 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 			permissionGranted = canReadPopSubDep1(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, "readpopsubdep1", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readpopsubdep1", ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaPopSubDep1> retlist = schema.getJpaHooksSchema().getPopSubDep1Service().findByDefSchemaIdx(argDefSchemaId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaPopSubDep1> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readpopsubdep1")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readpopsubdep1")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -813,18 +818,18 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 			permissionGranted = canReadPopSubDep1(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, "readpopsubdep1", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readpopsubdep1", ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaPopSubDep1> retlist = schema.getJpaHooksSchema().getPopSubDep1Service().findByPopTopDepIdx(argPopTopDepId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaPopSubDep1> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readpopsubdep1")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readpopsubdep1")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -860,14 +865,15 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 			permissionGranted = canReadPopSubDep1(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, "readpopsubdep1", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readpopsubdep1", ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		ICFBamPopSubDep1 retval = schema.getJpaHooksSchema().getPopSubDep1Service().findByUNameIdx(argPopTopDepId,
 		argName);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readpopsubdep1'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readpopsubdep1")) {
 				retval = null;
 			}
@@ -894,7 +900,7 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 		final String S_ProcName = "readRec";
 		boolean permissionGranted = canReadPopSubDep1(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, "readpopsubdep1", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readpopsubdep1", ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		throw new CFLibNotImplementedYetException(getClass(), "readRec");
@@ -919,7 +925,7 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 		final String S_ProcName = "lockRec";
 		boolean permissionGranted = canUpdatePopSubDep1(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, "updatepopsubdep1", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "updatepopsubdep1", ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		throw new CFLibNotImplementedYetException(getClass(), "lockRec");
@@ -937,7 +943,7 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 		final String S_ProcName = "readAllRec";
 		boolean permissionGranted = canReadPopSubDep1(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, "readpopsubdep1", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readpopsubdep1", ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		throw new CFLibNotImplementedYetException(getClass(), "readAllRec");
@@ -966,7 +972,7 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 			permissionGranted = canReadPopSubDep1(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, "readpopsubdep1", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readpopsubdep1", ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByIdIdx");
 	}
@@ -992,7 +998,7 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 			permissionGranted = canReadPopSubDep1(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, "readpopsubdep1", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readpopsubdep1", ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByTenantIdx");
 	}
@@ -1018,7 +1024,7 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 			permissionGranted = canReadPopSubDep1(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, "readpopsubdep1", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readpopsubdep1", ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByRelationIdx");
 	}
@@ -1044,7 +1050,7 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 			permissionGranted = canReadPopSubDep1(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, "readpopsubdep1", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readpopsubdep1", ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByDefSchemaIdx");
 	}
@@ -1070,7 +1076,7 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 			permissionGranted = canReadPopSubDep1(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, "readpopsubdep1", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readpopsubdep1", ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByPopTopDepIdx");
 	}
@@ -1100,7 +1106,7 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 			permissionGranted = canReadPopSubDep1(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, "readpopsubdep1", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readpopsubdep1", ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByUNameIdx");
 	}

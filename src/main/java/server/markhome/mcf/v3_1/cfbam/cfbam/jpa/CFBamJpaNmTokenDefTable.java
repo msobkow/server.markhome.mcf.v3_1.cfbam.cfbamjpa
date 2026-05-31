@@ -205,7 +205,7 @@ public class CFBamJpaNmTokenDefTable implements ICFBamNmTokenDefTable
 		final String S_ProcName = "createNmTokenDef";
 		boolean permissionGranted = canCreateNmTokenDef(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, "createnmtokendef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "createnmtokendef", ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		if (rec == null) {
@@ -215,9 +215,10 @@ public class CFBamJpaNmTokenDefTable implements ICFBamNmTokenDefTable
 			CFBamJpaNmTokenDef jparec = (CFBamJpaNmTokenDef)rec;
 			CFBamJpaNmTokenDef retval = schema.getJpaHooksSchema().getNmTokenDefService().create(jparec);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readnmtokendef'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredContainerScope().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readnmtokendef")) {
 				retval = null;
 			}
@@ -244,7 +245,7 @@ public class CFBamJpaNmTokenDefTable implements ICFBamNmTokenDefTable
 		final String S_ProcName = "updateNmTokenDef";
 		boolean permissionGranted = canUpdateNmTokenDef(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, "updatenmtokendef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "updatenmtokendef", ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		if (rec == null) {
@@ -254,9 +255,10 @@ public class CFBamJpaNmTokenDefTable implements ICFBamNmTokenDefTable
 			CFBamJpaNmTokenDef jparec = (CFBamJpaNmTokenDef)rec;
 			CFBamJpaNmTokenDef retval = schema.getJpaHooksSchema().getNmTokenDefService().update(jparec);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readnmtokendef'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredContainerScope().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readnmtokendef")) {
 				retval = null;
 			}
@@ -282,7 +284,7 @@ public class CFBamJpaNmTokenDefTable implements ICFBamNmTokenDefTable
 		final String S_ProcName = "deleteNmTokenDef";
 		boolean permissionGranted = canDeleteNmTokenDef(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, "deletenmtokendef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletenmtokendef", ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		if (rec == null) {
@@ -313,7 +315,7 @@ public class CFBamJpaNmTokenDefTable implements ICFBamNmTokenDefTable
 		final String S_ProcName = "deleteNmTokenDefByIdIdx";
 		boolean permissionGranted = canDeleteNmTokenDef(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, "deletenmtokendef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletenmtokendef", ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getNmTokenDefService().deleteByIdIdx(argKey);
@@ -336,7 +338,7 @@ public class CFBamJpaNmTokenDefTable implements ICFBamNmTokenDefTable
 		final String S_ProcName = "deleteNmTokenDefByUNameIdx";
 		boolean permissionGranted = canDeleteNmTokenDef(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, "deletenmtokendef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletenmtokendef", ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getNmTokenDefService().deleteByUNameIdx(argScopeId,
@@ -358,7 +360,7 @@ public class CFBamJpaNmTokenDefTable implements ICFBamNmTokenDefTable
 		final String S_ProcName = "deleteNmTokenDefByUNameIdx";
 		boolean permissionGranted = canDeleteNmTokenDef(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, "deletenmtokendef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletenmtokendef", ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getNmTokenDefService().deleteByUNameIdx(argKey.getRequiredScopeId(),
@@ -379,7 +381,7 @@ public class CFBamJpaNmTokenDefTable implements ICFBamNmTokenDefTable
 		final String S_ProcName = "deleteNmTokenDefByScopeIdx";
 		boolean permissionGranted = canDeleteNmTokenDef(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, "deletenmtokendef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletenmtokendef", ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getNmTokenDefService().deleteByScopeIdx(argScopeId);
@@ -400,7 +402,7 @@ public class CFBamJpaNmTokenDefTable implements ICFBamNmTokenDefTable
 		final String S_ProcName = "deleteNmTokenDefByScopeIdx";
 		boolean permissionGranted = canDeleteNmTokenDef(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, "deletenmtokendef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletenmtokendef", ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getNmTokenDefService().deleteByScopeIdx(argKey.getRequiredScopeId());
@@ -420,7 +422,7 @@ public class CFBamJpaNmTokenDefTable implements ICFBamNmTokenDefTable
 		final String S_ProcName = "deleteNmTokenDefByDefSchemaIdx";
 		boolean permissionGranted = canDeleteNmTokenDef(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, "deletenmtokendef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletenmtokendef", ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getNmTokenDefService().deleteByDefSchemaIdx(argDefSchemaId);
@@ -441,7 +443,7 @@ public class CFBamJpaNmTokenDefTable implements ICFBamNmTokenDefTable
 		final String S_ProcName = "deleteNmTokenDefByDefSchemaIdx";
 		boolean permissionGranted = canDeleteNmTokenDef(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, "deletenmtokendef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletenmtokendef", ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getNmTokenDefService().deleteByDefSchemaIdx(argKey.getOptionalDefSchemaId());
@@ -461,7 +463,7 @@ public class CFBamJpaNmTokenDefTable implements ICFBamNmTokenDefTable
 		final String S_ProcName = "deleteNmTokenDefByPrevIdx";
 		boolean permissionGranted = canDeleteNmTokenDef(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, "deletenmtokendef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletenmtokendef", ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getNmTokenDefService().deleteByPrevIdx(argPrevId);
@@ -482,7 +484,7 @@ public class CFBamJpaNmTokenDefTable implements ICFBamNmTokenDefTable
 		final String S_ProcName = "deleteNmTokenDefByPrevIdx";
 		boolean permissionGranted = canDeleteNmTokenDef(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, "deletenmtokendef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletenmtokendef", ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getNmTokenDefService().deleteByPrevIdx(argKey.getOptionalPrevId());
@@ -502,7 +504,7 @@ public class CFBamJpaNmTokenDefTable implements ICFBamNmTokenDefTable
 		final String S_ProcName = "deleteNmTokenDefByNextIdx";
 		boolean permissionGranted = canDeleteNmTokenDef(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, "deletenmtokendef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletenmtokendef", ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getNmTokenDefService().deleteByNextIdx(argNextId);
@@ -523,7 +525,7 @@ public class CFBamJpaNmTokenDefTable implements ICFBamNmTokenDefTable
 		final String S_ProcName = "deleteNmTokenDefByNextIdx";
 		boolean permissionGranted = canDeleteNmTokenDef(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, "deletenmtokendef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletenmtokendef", ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getNmTokenDefService().deleteByNextIdx(argKey.getOptionalNextId());
@@ -546,7 +548,7 @@ public class CFBamJpaNmTokenDefTable implements ICFBamNmTokenDefTable
 		final String S_ProcName = "deleteNmTokenDefByContPrevIdx";
 		boolean permissionGranted = canDeleteNmTokenDef(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, "deletenmtokendef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletenmtokendef", ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getNmTokenDefService().deleteByContPrevIdx(argScopeId,
@@ -568,7 +570,7 @@ public class CFBamJpaNmTokenDefTable implements ICFBamNmTokenDefTable
 		final String S_ProcName = "deleteNmTokenDefByContPrevIdx";
 		boolean permissionGranted = canDeleteNmTokenDef(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, "deletenmtokendef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletenmtokendef", ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getNmTokenDefService().deleteByContPrevIdx(argKey.getRequiredScopeId(),
@@ -592,7 +594,7 @@ public class CFBamJpaNmTokenDefTable implements ICFBamNmTokenDefTable
 		final String S_ProcName = "deleteNmTokenDefByContNextIdx";
 		boolean permissionGranted = canDeleteNmTokenDef(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, "deletenmtokendef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletenmtokendef", ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getNmTokenDefService().deleteByContNextIdx(argScopeId,
@@ -614,7 +616,7 @@ public class CFBamJpaNmTokenDefTable implements ICFBamNmTokenDefTable
 		final String S_ProcName = "deleteNmTokenDefByContNextIdx";
 		boolean permissionGranted = canDeleteNmTokenDef(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, "deletenmtokendef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletenmtokendef", ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getNmTokenDefService().deleteByContNextIdx(argKey.getRequiredScopeId(),
@@ -639,14 +641,15 @@ public class CFBamJpaNmTokenDefTable implements ICFBamNmTokenDefTable
 		final String S_ProcName = "readDerived";
 		boolean permissionGranted = canReadNmTokenDef(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, "readnmtokendef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readnmtokendef", ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		ICFBamNmTokenDef retval = schema.getJpaHooksSchema().getNmTokenDefService().find(PKey);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readnmtokendef'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredContainerScope().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readnmtokendef")) {
 				retval = null;
 			}
@@ -671,14 +674,15 @@ public class CFBamJpaNmTokenDefTable implements ICFBamNmTokenDefTable
 		final String S_ProcName = "lockDerived";
 		boolean permissionGranted = canUpdateNmTokenDef(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, "updatenmtokendef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "updatenmtokendef", ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		ICFBamNmTokenDef retval = schema.getJpaHooksSchema().getNmTokenDefService().lockByIdIdx(PKey);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readnmtokendef'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredContainerScope().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readnmtokendef")) {
 				retval = null;
 			}
@@ -698,19 +702,19 @@ public class CFBamJpaNmTokenDefTable implements ICFBamNmTokenDefTable
 		final String S_ProcName = "readAllDerived";
 		boolean permissionGranted = canReadNmTokenDef(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, "readnmtokendef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readnmtokendef", ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		List<CFBamJpaNmTokenDef> retlist = schema.getJpaHooksSchema().getNmTokenDefService().findAll();
 		if(retlist != null) {
 			ArrayList<CFBamJpaNmTokenDef> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readnmtokendef")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerScope().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readnmtokendef")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -743,13 +747,14 @@ public class CFBamJpaNmTokenDefTable implements ICFBamNmTokenDefTable
 			permissionGranted = canReadNmTokenDef(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, "readnmtokendef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readnmtokendef", ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		ICFBamNmTokenDef retval = schema.getJpaHooksSchema().getNmTokenDefService().find(argId);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readnmtokendef'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredContainerScope().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readnmtokendef")) {
 				retval = null;
 			}
@@ -780,14 +785,15 @@ public class CFBamJpaNmTokenDefTable implements ICFBamNmTokenDefTable
 			permissionGranted = canReadNmTokenDef(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, "readnmtokendef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readnmtokendef", ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		ICFBamNmTokenDef retval = schema.getJpaHooksSchema().getNmTokenDefService().findByUNameIdx(argScopeId,
 		argName);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readnmtokendef'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredContainerScope().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readnmtokendef")) {
 				retval = null;
 			}
@@ -814,18 +820,18 @@ public class CFBamJpaNmTokenDefTable implements ICFBamNmTokenDefTable
 			permissionGranted = canReadNmTokenDef(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, "readnmtokendef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readnmtokendef", ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaNmTokenDef> retlist = schema.getJpaHooksSchema().getNmTokenDefService().findByScopeIdx(argScopeId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaNmTokenDef> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readnmtokendef")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerScope().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readnmtokendef")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -857,18 +863,18 @@ public class CFBamJpaNmTokenDefTable implements ICFBamNmTokenDefTable
 			permissionGranted = canReadNmTokenDef(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, "readnmtokendef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readnmtokendef", ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaNmTokenDef> retlist = schema.getJpaHooksSchema().getNmTokenDefService().findByDefSchemaIdx(argDefSchemaId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaNmTokenDef> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readnmtokendef")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerScope().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readnmtokendef")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -900,18 +906,18 @@ public class CFBamJpaNmTokenDefTable implements ICFBamNmTokenDefTable
 			permissionGranted = canReadNmTokenDef(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, "readnmtokendef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readnmtokendef", ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaNmTokenDef> retlist = schema.getJpaHooksSchema().getNmTokenDefService().findByPrevIdx(argPrevId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaNmTokenDef> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readnmtokendef")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerScope().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readnmtokendef")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -943,18 +949,18 @@ public class CFBamJpaNmTokenDefTable implements ICFBamNmTokenDefTable
 			permissionGranted = canReadNmTokenDef(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, "readnmtokendef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readnmtokendef", ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaNmTokenDef> retlist = schema.getJpaHooksSchema().getNmTokenDefService().findByNextIdx(argNextId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaNmTokenDef> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readnmtokendef")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerScope().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readnmtokendef")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -989,19 +995,19 @@ public class CFBamJpaNmTokenDefTable implements ICFBamNmTokenDefTable
 			permissionGranted = canReadNmTokenDef(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, "readnmtokendef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readnmtokendef", ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaNmTokenDef> retlist = schema.getJpaHooksSchema().getNmTokenDefService().findByContPrevIdx(argScopeId,
 		argPrevId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaNmTokenDef> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readnmtokendef")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerScope().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readnmtokendef")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -1036,19 +1042,19 @@ public class CFBamJpaNmTokenDefTable implements ICFBamNmTokenDefTable
 			permissionGranted = canReadNmTokenDef(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, "readnmtokendef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readnmtokendef", ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaNmTokenDef> retlist = schema.getJpaHooksSchema().getNmTokenDefService().findByContNextIdx(argScopeId,
 		argNextId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaNmTokenDef> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readnmtokendef")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerScope().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readnmtokendef")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -1080,7 +1086,7 @@ public class CFBamJpaNmTokenDefTable implements ICFBamNmTokenDefTable
 		final String S_ProcName = "readRec";
 		boolean permissionGranted = canReadNmTokenDef(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, "readnmtokendef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readnmtokendef", ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		throw new CFLibNotImplementedYetException(getClass(), "readRec");
@@ -1105,7 +1111,7 @@ public class CFBamJpaNmTokenDefTable implements ICFBamNmTokenDefTable
 		final String S_ProcName = "lockRec";
 		boolean permissionGranted = canUpdateNmTokenDef(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, "updatenmtokendef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "updatenmtokendef", ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		throw new CFLibNotImplementedYetException(getClass(), "lockRec");
@@ -1123,7 +1129,7 @@ public class CFBamJpaNmTokenDefTable implements ICFBamNmTokenDefTable
 		final String S_ProcName = "readAllRec";
 		boolean permissionGranted = canReadNmTokenDef(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, "readnmtokendef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readnmtokendef", ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		throw new CFLibNotImplementedYetException(getClass(), "readAllRec");
@@ -1152,7 +1158,7 @@ public class CFBamJpaNmTokenDefTable implements ICFBamNmTokenDefTable
 			permissionGranted = canReadNmTokenDef(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, "readnmtokendef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readnmtokendef", ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByIdIdx");
 	}
@@ -1182,7 +1188,7 @@ public class CFBamJpaNmTokenDefTable implements ICFBamNmTokenDefTable
 			permissionGranted = canReadNmTokenDef(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, "readnmtokendef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readnmtokendef", ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByUNameIdx");
 	}
@@ -1208,7 +1214,7 @@ public class CFBamJpaNmTokenDefTable implements ICFBamNmTokenDefTable
 			permissionGranted = canReadNmTokenDef(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, "readnmtokendef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readnmtokendef", ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByScopeIdx");
 	}
@@ -1234,7 +1240,7 @@ public class CFBamJpaNmTokenDefTable implements ICFBamNmTokenDefTable
 			permissionGranted = canReadNmTokenDef(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, "readnmtokendef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readnmtokendef", ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByDefSchemaIdx");
 	}
@@ -1260,7 +1266,7 @@ public class CFBamJpaNmTokenDefTable implements ICFBamNmTokenDefTable
 			permissionGranted = canReadNmTokenDef(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, "readnmtokendef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readnmtokendef", ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByPrevIdx");
 	}
@@ -1286,7 +1292,7 @@ public class CFBamJpaNmTokenDefTable implements ICFBamNmTokenDefTable
 			permissionGranted = canReadNmTokenDef(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, "readnmtokendef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readnmtokendef", ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByNextIdx");
 	}
@@ -1315,7 +1321,7 @@ public class CFBamJpaNmTokenDefTable implements ICFBamNmTokenDefTable
 			permissionGranted = canReadNmTokenDef(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, "readnmtokendef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readnmtokendef", ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByContPrevIdx");
 	}
@@ -1344,7 +1350,7 @@ public class CFBamJpaNmTokenDefTable implements ICFBamNmTokenDefTable
 			permissionGranted = canReadNmTokenDef(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, "readnmtokendef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readnmtokendef", ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByContNextIdx");
 	}
@@ -1362,7 +1368,7 @@ public class CFBamJpaNmTokenDefTable implements ICFBamNmTokenDefTable
 		final String S_ProcName = "moveRecUp";
 		boolean permissionGranted = canUpdateNmTokenDef(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, "updatenmtokendef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "updatenmtokendef", ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		throw new CFLibNotImplementedYetException(getClass(), "moveRecUp");
@@ -1381,7 +1387,7 @@ public class CFBamJpaNmTokenDefTable implements ICFBamNmTokenDefTable
 		final String S_ProcName = "moveRecDown";
 		boolean permissionGranted = canUpdateNmTokenDef(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, "updatenmtokendef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "updatenmtokendef", ICFBamSchema.SCHEMA_NAME, ICFBamNmTokenDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		throw new CFLibNotImplementedYetException(getClass(), "moveRecDown");

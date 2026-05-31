@@ -205,7 +205,7 @@ public class CFBamJpaUInt32DefTable implements ICFBamUInt32DefTable
 		final String S_ProcName = "createUInt32Def";
 		boolean permissionGranted = canCreateUInt32Def(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, "createuint32def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "createuint32def", ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		if (rec == null) {
@@ -215,9 +215,10 @@ public class CFBamJpaUInt32DefTable implements ICFBamUInt32DefTable
 			CFBamJpaUInt32Def jparec = (CFBamJpaUInt32Def)rec;
 			CFBamJpaUInt32Def retval = schema.getJpaHooksSchema().getUInt32DefService().create(jparec);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readuint32def'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredContainerScope().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readuint32def")) {
 				retval = null;
 			}
@@ -244,7 +245,7 @@ public class CFBamJpaUInt32DefTable implements ICFBamUInt32DefTable
 		final String S_ProcName = "updateUInt32Def";
 		boolean permissionGranted = canUpdateUInt32Def(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, "updateuint32def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "updateuint32def", ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		if (rec == null) {
@@ -254,9 +255,10 @@ public class CFBamJpaUInt32DefTable implements ICFBamUInt32DefTable
 			CFBamJpaUInt32Def jparec = (CFBamJpaUInt32Def)rec;
 			CFBamJpaUInt32Def retval = schema.getJpaHooksSchema().getUInt32DefService().update(jparec);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readuint32def'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredContainerScope().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readuint32def")) {
 				retval = null;
 			}
@@ -282,7 +284,7 @@ public class CFBamJpaUInt32DefTable implements ICFBamUInt32DefTable
 		final String S_ProcName = "deleteUInt32Def";
 		boolean permissionGranted = canDeleteUInt32Def(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, "deleteuint32def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteuint32def", ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		if (rec == null) {
@@ -313,7 +315,7 @@ public class CFBamJpaUInt32DefTable implements ICFBamUInt32DefTable
 		final String S_ProcName = "deleteUInt32DefByIdIdx";
 		boolean permissionGranted = canDeleteUInt32Def(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, "deleteuint32def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteuint32def", ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getUInt32DefService().deleteByIdIdx(argKey);
@@ -336,7 +338,7 @@ public class CFBamJpaUInt32DefTable implements ICFBamUInt32DefTable
 		final String S_ProcName = "deleteUInt32DefByUNameIdx";
 		boolean permissionGranted = canDeleteUInt32Def(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, "deleteuint32def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteuint32def", ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getUInt32DefService().deleteByUNameIdx(argScopeId,
@@ -358,7 +360,7 @@ public class CFBamJpaUInt32DefTable implements ICFBamUInt32DefTable
 		final String S_ProcName = "deleteUInt32DefByUNameIdx";
 		boolean permissionGranted = canDeleteUInt32Def(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, "deleteuint32def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteuint32def", ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getUInt32DefService().deleteByUNameIdx(argKey.getRequiredScopeId(),
@@ -379,7 +381,7 @@ public class CFBamJpaUInt32DefTable implements ICFBamUInt32DefTable
 		final String S_ProcName = "deleteUInt32DefByScopeIdx";
 		boolean permissionGranted = canDeleteUInt32Def(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, "deleteuint32def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteuint32def", ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getUInt32DefService().deleteByScopeIdx(argScopeId);
@@ -400,7 +402,7 @@ public class CFBamJpaUInt32DefTable implements ICFBamUInt32DefTable
 		final String S_ProcName = "deleteUInt32DefByScopeIdx";
 		boolean permissionGranted = canDeleteUInt32Def(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, "deleteuint32def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteuint32def", ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getUInt32DefService().deleteByScopeIdx(argKey.getRequiredScopeId());
@@ -420,7 +422,7 @@ public class CFBamJpaUInt32DefTable implements ICFBamUInt32DefTable
 		final String S_ProcName = "deleteUInt32DefByDefSchemaIdx";
 		boolean permissionGranted = canDeleteUInt32Def(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, "deleteuint32def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteuint32def", ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getUInt32DefService().deleteByDefSchemaIdx(argDefSchemaId);
@@ -441,7 +443,7 @@ public class CFBamJpaUInt32DefTable implements ICFBamUInt32DefTable
 		final String S_ProcName = "deleteUInt32DefByDefSchemaIdx";
 		boolean permissionGranted = canDeleteUInt32Def(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, "deleteuint32def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteuint32def", ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getUInt32DefService().deleteByDefSchemaIdx(argKey.getOptionalDefSchemaId());
@@ -461,7 +463,7 @@ public class CFBamJpaUInt32DefTable implements ICFBamUInt32DefTable
 		final String S_ProcName = "deleteUInt32DefByPrevIdx";
 		boolean permissionGranted = canDeleteUInt32Def(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, "deleteuint32def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteuint32def", ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getUInt32DefService().deleteByPrevIdx(argPrevId);
@@ -482,7 +484,7 @@ public class CFBamJpaUInt32DefTable implements ICFBamUInt32DefTable
 		final String S_ProcName = "deleteUInt32DefByPrevIdx";
 		boolean permissionGranted = canDeleteUInt32Def(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, "deleteuint32def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteuint32def", ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getUInt32DefService().deleteByPrevIdx(argKey.getOptionalPrevId());
@@ -502,7 +504,7 @@ public class CFBamJpaUInt32DefTable implements ICFBamUInt32DefTable
 		final String S_ProcName = "deleteUInt32DefByNextIdx";
 		boolean permissionGranted = canDeleteUInt32Def(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, "deleteuint32def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteuint32def", ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getUInt32DefService().deleteByNextIdx(argNextId);
@@ -523,7 +525,7 @@ public class CFBamJpaUInt32DefTable implements ICFBamUInt32DefTable
 		final String S_ProcName = "deleteUInt32DefByNextIdx";
 		boolean permissionGranted = canDeleteUInt32Def(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, "deleteuint32def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteuint32def", ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getUInt32DefService().deleteByNextIdx(argKey.getOptionalNextId());
@@ -546,7 +548,7 @@ public class CFBamJpaUInt32DefTable implements ICFBamUInt32DefTable
 		final String S_ProcName = "deleteUInt32DefByContPrevIdx";
 		boolean permissionGranted = canDeleteUInt32Def(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, "deleteuint32def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteuint32def", ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getUInt32DefService().deleteByContPrevIdx(argScopeId,
@@ -568,7 +570,7 @@ public class CFBamJpaUInt32DefTable implements ICFBamUInt32DefTable
 		final String S_ProcName = "deleteUInt32DefByContPrevIdx";
 		boolean permissionGranted = canDeleteUInt32Def(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, "deleteuint32def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteuint32def", ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getUInt32DefService().deleteByContPrevIdx(argKey.getRequiredScopeId(),
@@ -592,7 +594,7 @@ public class CFBamJpaUInt32DefTable implements ICFBamUInt32DefTable
 		final String S_ProcName = "deleteUInt32DefByContNextIdx";
 		boolean permissionGranted = canDeleteUInt32Def(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, "deleteuint32def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteuint32def", ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getUInt32DefService().deleteByContNextIdx(argScopeId,
@@ -614,7 +616,7 @@ public class CFBamJpaUInt32DefTable implements ICFBamUInt32DefTable
 		final String S_ProcName = "deleteUInt32DefByContNextIdx";
 		boolean permissionGranted = canDeleteUInt32Def(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, "deleteuint32def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteuint32def", ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getUInt32DefService().deleteByContNextIdx(argKey.getRequiredScopeId(),
@@ -639,14 +641,15 @@ public class CFBamJpaUInt32DefTable implements ICFBamUInt32DefTable
 		final String S_ProcName = "readDerived";
 		boolean permissionGranted = canReadUInt32Def(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, "readuint32def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readuint32def", ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		ICFBamUInt32Def retval = schema.getJpaHooksSchema().getUInt32DefService().find(PKey);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readuint32def'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredContainerScope().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readuint32def")) {
 				retval = null;
 			}
@@ -671,14 +674,15 @@ public class CFBamJpaUInt32DefTable implements ICFBamUInt32DefTable
 		final String S_ProcName = "lockDerived";
 		boolean permissionGranted = canUpdateUInt32Def(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, "updateuint32def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "updateuint32def", ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		ICFBamUInt32Def retval = schema.getJpaHooksSchema().getUInt32DefService().lockByIdIdx(PKey);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readuint32def'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredContainerScope().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readuint32def")) {
 				retval = null;
 			}
@@ -698,19 +702,19 @@ public class CFBamJpaUInt32DefTable implements ICFBamUInt32DefTable
 		final String S_ProcName = "readAllDerived";
 		boolean permissionGranted = canReadUInt32Def(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, "readuint32def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readuint32def", ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		List<CFBamJpaUInt32Def> retlist = schema.getJpaHooksSchema().getUInt32DefService().findAll();
 		if(retlist != null) {
 			ArrayList<CFBamJpaUInt32Def> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readuint32def")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerScope().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readuint32def")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -743,13 +747,14 @@ public class CFBamJpaUInt32DefTable implements ICFBamUInt32DefTable
 			permissionGranted = canReadUInt32Def(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, "readuint32def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readuint32def", ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		ICFBamUInt32Def retval = schema.getJpaHooksSchema().getUInt32DefService().find(argId);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readuint32def'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredContainerScope().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readuint32def")) {
 				retval = null;
 			}
@@ -780,14 +785,15 @@ public class CFBamJpaUInt32DefTable implements ICFBamUInt32DefTable
 			permissionGranted = canReadUInt32Def(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, "readuint32def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readuint32def", ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		ICFBamUInt32Def retval = schema.getJpaHooksSchema().getUInt32DefService().findByUNameIdx(argScopeId,
 		argName);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readuint32def'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredContainerScope().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readuint32def")) {
 				retval = null;
 			}
@@ -814,18 +820,18 @@ public class CFBamJpaUInt32DefTable implements ICFBamUInt32DefTable
 			permissionGranted = canReadUInt32Def(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, "readuint32def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readuint32def", ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaUInt32Def> retlist = schema.getJpaHooksSchema().getUInt32DefService().findByScopeIdx(argScopeId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaUInt32Def> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readuint32def")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerScope().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readuint32def")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -857,18 +863,18 @@ public class CFBamJpaUInt32DefTable implements ICFBamUInt32DefTable
 			permissionGranted = canReadUInt32Def(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, "readuint32def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readuint32def", ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaUInt32Def> retlist = schema.getJpaHooksSchema().getUInt32DefService().findByDefSchemaIdx(argDefSchemaId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaUInt32Def> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readuint32def")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerScope().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readuint32def")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -900,18 +906,18 @@ public class CFBamJpaUInt32DefTable implements ICFBamUInt32DefTable
 			permissionGranted = canReadUInt32Def(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, "readuint32def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readuint32def", ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaUInt32Def> retlist = schema.getJpaHooksSchema().getUInt32DefService().findByPrevIdx(argPrevId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaUInt32Def> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readuint32def")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerScope().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readuint32def")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -943,18 +949,18 @@ public class CFBamJpaUInt32DefTable implements ICFBamUInt32DefTable
 			permissionGranted = canReadUInt32Def(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, "readuint32def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readuint32def", ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaUInt32Def> retlist = schema.getJpaHooksSchema().getUInt32DefService().findByNextIdx(argNextId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaUInt32Def> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readuint32def")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerScope().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readuint32def")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -989,19 +995,19 @@ public class CFBamJpaUInt32DefTable implements ICFBamUInt32DefTable
 			permissionGranted = canReadUInt32Def(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, "readuint32def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readuint32def", ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaUInt32Def> retlist = schema.getJpaHooksSchema().getUInt32DefService().findByContPrevIdx(argScopeId,
 		argPrevId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaUInt32Def> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readuint32def")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerScope().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readuint32def")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -1036,19 +1042,19 @@ public class CFBamJpaUInt32DefTable implements ICFBamUInt32DefTable
 			permissionGranted = canReadUInt32Def(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, "readuint32def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readuint32def", ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaUInt32Def> retlist = schema.getJpaHooksSchema().getUInt32DefService().findByContNextIdx(argScopeId,
 		argNextId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaUInt32Def> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readuint32def")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerScope().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readuint32def")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -1080,7 +1086,7 @@ public class CFBamJpaUInt32DefTable implements ICFBamUInt32DefTable
 		final String S_ProcName = "readRec";
 		boolean permissionGranted = canReadUInt32Def(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, "readuint32def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readuint32def", ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		throw new CFLibNotImplementedYetException(getClass(), "readRec");
@@ -1105,7 +1111,7 @@ public class CFBamJpaUInt32DefTable implements ICFBamUInt32DefTable
 		final String S_ProcName = "lockRec";
 		boolean permissionGranted = canUpdateUInt32Def(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, "updateuint32def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "updateuint32def", ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		throw new CFLibNotImplementedYetException(getClass(), "lockRec");
@@ -1123,7 +1129,7 @@ public class CFBamJpaUInt32DefTable implements ICFBamUInt32DefTable
 		final String S_ProcName = "readAllRec";
 		boolean permissionGranted = canReadUInt32Def(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, "readuint32def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readuint32def", ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		throw new CFLibNotImplementedYetException(getClass(), "readAllRec");
@@ -1152,7 +1158,7 @@ public class CFBamJpaUInt32DefTable implements ICFBamUInt32DefTable
 			permissionGranted = canReadUInt32Def(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, "readuint32def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readuint32def", ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByIdIdx");
 	}
@@ -1182,7 +1188,7 @@ public class CFBamJpaUInt32DefTable implements ICFBamUInt32DefTable
 			permissionGranted = canReadUInt32Def(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, "readuint32def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readuint32def", ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByUNameIdx");
 	}
@@ -1208,7 +1214,7 @@ public class CFBamJpaUInt32DefTable implements ICFBamUInt32DefTable
 			permissionGranted = canReadUInt32Def(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, "readuint32def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readuint32def", ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByScopeIdx");
 	}
@@ -1234,7 +1240,7 @@ public class CFBamJpaUInt32DefTable implements ICFBamUInt32DefTable
 			permissionGranted = canReadUInt32Def(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, "readuint32def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readuint32def", ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByDefSchemaIdx");
 	}
@@ -1260,7 +1266,7 @@ public class CFBamJpaUInt32DefTable implements ICFBamUInt32DefTable
 			permissionGranted = canReadUInt32Def(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, "readuint32def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readuint32def", ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByPrevIdx");
 	}
@@ -1286,7 +1292,7 @@ public class CFBamJpaUInt32DefTable implements ICFBamUInt32DefTable
 			permissionGranted = canReadUInt32Def(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, "readuint32def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readuint32def", ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByNextIdx");
 	}
@@ -1315,7 +1321,7 @@ public class CFBamJpaUInt32DefTable implements ICFBamUInt32DefTable
 			permissionGranted = canReadUInt32Def(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, "readuint32def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readuint32def", ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByContPrevIdx");
 	}
@@ -1344,7 +1350,7 @@ public class CFBamJpaUInt32DefTable implements ICFBamUInt32DefTable
 			permissionGranted = canReadUInt32Def(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, "readuint32def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readuint32def", ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByContNextIdx");
 	}
@@ -1362,7 +1368,7 @@ public class CFBamJpaUInt32DefTable implements ICFBamUInt32DefTable
 		final String S_ProcName = "moveRecUp";
 		boolean permissionGranted = canUpdateUInt32Def(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, "updateuint32def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "updateuint32def", ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		throw new CFLibNotImplementedYetException(getClass(), "moveRecUp");
@@ -1381,7 +1387,7 @@ public class CFBamJpaUInt32DefTable implements ICFBamUInt32DefTable
 		final String S_ProcName = "moveRecDown";
 		boolean permissionGranted = canUpdateUInt32Def(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, "updateuint32def", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "updateuint32def", ICFBamSchema.SCHEMA_NAME, ICFBamUInt32DefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		throw new CFLibNotImplementedYetException(getClass(), "moveRecDown");

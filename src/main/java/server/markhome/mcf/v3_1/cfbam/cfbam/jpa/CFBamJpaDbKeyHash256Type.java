@@ -82,9 +82,14 @@ public class CFBamJpaDbKeyHash256Type extends CFBamJpaDbKeyHash256Def
 	@JoinColumn( name="SchemaDefIdSchemaDef", referencedColumnName="Id" )
 	protected CFBamJpaSchemaDef requiredContainerSchemaDef;
 
+	@AttributeOverrides({
+		@AttributeOverride(name="bytes", column = @Column( name="SchemaDefId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
+	})
+	protected CFLibDbKeyHash256 requiredSchemaDefId;
 
 	public CFBamJpaDbKeyHash256Type() {
 		super();
+		requiredSchemaDefId = CFLibDbKeyHash256.fromHex( ICFBamDbKeyHash256Type.SCHEMADEFID_INIT_VALUE.toString() );
 	}
 
 	@Override
@@ -103,6 +108,11 @@ public class CFBamJpaDbKeyHash256Type extends CFBamJpaDbKeyHash256Def
 		}
 		else if (argObj instanceof CFBamJpaSchemaDef) {
 			requiredContainerSchemaDef = (CFBamJpaSchemaDef)argObj;
+			if (requiredContainerSchemaDef != null) {
+				requiredSchemaDefId = requiredContainerSchemaDef.getRequiredId();
+			}
+			else {
+			}
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "setContainerSchemaDef", "argObj", argObj, "CFBamJpaSchemaDef");
@@ -125,13 +135,7 @@ public class CFBamJpaDbKeyHash256Type extends CFBamJpaDbKeyHash256Def
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredSchemaDefId() {
-		ICFBamSchemaDef result = getRequiredContainerSchemaDef();
-		if (result != null) {
-			return result.getRequiredId();
-		}
-		else {
-			return( ICFBamSchemaDef.ID_INIT_VALUE );
-		}
+		return( requiredSchemaDefId );
 	}
 
 	@Override

@@ -205,7 +205,7 @@ public class CFBamJpaTimeTypeTable implements ICFBamTimeTypeTable
 		final String S_ProcName = "createTimeType";
 		boolean permissionGranted = canCreateTimeType(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, "createtimetype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "createtimetype", ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		if (rec == null) {
@@ -215,9 +215,10 @@ public class CFBamJpaTimeTypeTable implements ICFBamTimeTypeTable
 			CFBamJpaTimeType jparec = (CFBamJpaTimeType)rec;
 			CFBamJpaTimeType retval = schema.getJpaHooksSchema().getTimeTypeService().create(jparec);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readtimetype'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readtimetype")) {
 				retval = null;
 			}
@@ -244,7 +245,7 @@ public class CFBamJpaTimeTypeTable implements ICFBamTimeTypeTable
 		final String S_ProcName = "updateTimeType";
 		boolean permissionGranted = canUpdateTimeType(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, "updatetimetype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "updatetimetype", ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		if (rec == null) {
@@ -254,9 +255,10 @@ public class CFBamJpaTimeTypeTable implements ICFBamTimeTypeTable
 			CFBamJpaTimeType jparec = (CFBamJpaTimeType)rec;
 			CFBamJpaTimeType retval = schema.getJpaHooksSchema().getTimeTypeService().update(jparec);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readtimetype'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readtimetype")) {
 				retval = null;
 			}
@@ -282,7 +284,7 @@ public class CFBamJpaTimeTypeTable implements ICFBamTimeTypeTable
 		final String S_ProcName = "deleteTimeType";
 		boolean permissionGranted = canDeleteTimeType(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, "deletetimetype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletetimetype", ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		if (rec == null) {
@@ -313,7 +315,7 @@ public class CFBamJpaTimeTypeTable implements ICFBamTimeTypeTable
 		final String S_ProcName = "deleteTimeTypeBySchemaIdx";
 		boolean permissionGranted = canDeleteTimeType(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, "deletetimetype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletetimetype", ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getTimeTypeService().deleteBySchemaIdx(argSchemaDefId);
@@ -334,7 +336,7 @@ public class CFBamJpaTimeTypeTable implements ICFBamTimeTypeTable
 		final String S_ProcName = "deleteTimeTypeBySchemaIdx";
 		boolean permissionGranted = canDeleteTimeType(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, "deletetimetype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletetimetype", ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getTimeTypeService().deleteBySchemaIdx(argKey.getRequiredSchemaDefId());
@@ -354,7 +356,7 @@ public class CFBamJpaTimeTypeTable implements ICFBamTimeTypeTable
 		final String S_ProcName = "deleteTimeTypeByIdIdx";
 		boolean permissionGranted = canDeleteTimeType(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, "deletetimetype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletetimetype", ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getTimeTypeService().deleteByIdIdx(argKey);
@@ -377,7 +379,7 @@ public class CFBamJpaTimeTypeTable implements ICFBamTimeTypeTable
 		final String S_ProcName = "deleteTimeTypeByUNameIdx";
 		boolean permissionGranted = canDeleteTimeType(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, "deletetimetype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletetimetype", ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getTimeTypeService().deleteByUNameIdx(argScopeId,
@@ -399,7 +401,7 @@ public class CFBamJpaTimeTypeTable implements ICFBamTimeTypeTable
 		final String S_ProcName = "deleteTimeTypeByUNameIdx";
 		boolean permissionGranted = canDeleteTimeType(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, "deletetimetype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletetimetype", ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getTimeTypeService().deleteByUNameIdx(argKey.getRequiredScopeId(),
@@ -420,7 +422,7 @@ public class CFBamJpaTimeTypeTable implements ICFBamTimeTypeTable
 		final String S_ProcName = "deleteTimeTypeByScopeIdx";
 		boolean permissionGranted = canDeleteTimeType(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, "deletetimetype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletetimetype", ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getTimeTypeService().deleteByScopeIdx(argScopeId);
@@ -441,7 +443,7 @@ public class CFBamJpaTimeTypeTable implements ICFBamTimeTypeTable
 		final String S_ProcName = "deleteTimeTypeByScopeIdx";
 		boolean permissionGranted = canDeleteTimeType(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, "deletetimetype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletetimetype", ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getTimeTypeService().deleteByScopeIdx(argKey.getRequiredScopeId());
@@ -461,7 +463,7 @@ public class CFBamJpaTimeTypeTable implements ICFBamTimeTypeTable
 		final String S_ProcName = "deleteTimeTypeByDefSchemaIdx";
 		boolean permissionGranted = canDeleteTimeType(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, "deletetimetype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletetimetype", ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getTimeTypeService().deleteByDefSchemaIdx(argDefSchemaId);
@@ -482,7 +484,7 @@ public class CFBamJpaTimeTypeTable implements ICFBamTimeTypeTable
 		final String S_ProcName = "deleteTimeTypeByDefSchemaIdx";
 		boolean permissionGranted = canDeleteTimeType(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, "deletetimetype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletetimetype", ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getTimeTypeService().deleteByDefSchemaIdx(argKey.getOptionalDefSchemaId());
@@ -502,7 +504,7 @@ public class CFBamJpaTimeTypeTable implements ICFBamTimeTypeTable
 		final String S_ProcName = "deleteTimeTypeByPrevIdx";
 		boolean permissionGranted = canDeleteTimeType(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, "deletetimetype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletetimetype", ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getTimeTypeService().deleteByPrevIdx(argPrevId);
@@ -523,7 +525,7 @@ public class CFBamJpaTimeTypeTable implements ICFBamTimeTypeTable
 		final String S_ProcName = "deleteTimeTypeByPrevIdx";
 		boolean permissionGranted = canDeleteTimeType(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, "deletetimetype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletetimetype", ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getTimeTypeService().deleteByPrevIdx(argKey.getOptionalPrevId());
@@ -543,7 +545,7 @@ public class CFBamJpaTimeTypeTable implements ICFBamTimeTypeTable
 		final String S_ProcName = "deleteTimeTypeByNextIdx";
 		boolean permissionGranted = canDeleteTimeType(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, "deletetimetype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletetimetype", ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getTimeTypeService().deleteByNextIdx(argNextId);
@@ -564,7 +566,7 @@ public class CFBamJpaTimeTypeTable implements ICFBamTimeTypeTable
 		final String S_ProcName = "deleteTimeTypeByNextIdx";
 		boolean permissionGranted = canDeleteTimeType(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, "deletetimetype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletetimetype", ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getTimeTypeService().deleteByNextIdx(argKey.getOptionalNextId());
@@ -587,7 +589,7 @@ public class CFBamJpaTimeTypeTable implements ICFBamTimeTypeTable
 		final String S_ProcName = "deleteTimeTypeByContPrevIdx";
 		boolean permissionGranted = canDeleteTimeType(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, "deletetimetype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletetimetype", ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getTimeTypeService().deleteByContPrevIdx(argScopeId,
@@ -609,7 +611,7 @@ public class CFBamJpaTimeTypeTable implements ICFBamTimeTypeTable
 		final String S_ProcName = "deleteTimeTypeByContPrevIdx";
 		boolean permissionGranted = canDeleteTimeType(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, "deletetimetype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletetimetype", ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getTimeTypeService().deleteByContPrevIdx(argKey.getRequiredScopeId(),
@@ -633,7 +635,7 @@ public class CFBamJpaTimeTypeTable implements ICFBamTimeTypeTable
 		final String S_ProcName = "deleteTimeTypeByContNextIdx";
 		boolean permissionGranted = canDeleteTimeType(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, "deletetimetype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletetimetype", ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getTimeTypeService().deleteByContNextIdx(argScopeId,
@@ -655,7 +657,7 @@ public class CFBamJpaTimeTypeTable implements ICFBamTimeTypeTable
 		final String S_ProcName = "deleteTimeTypeByContNextIdx";
 		boolean permissionGranted = canDeleteTimeType(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, "deletetimetype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletetimetype", ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getTimeTypeService().deleteByContNextIdx(argKey.getRequiredScopeId(),
@@ -680,14 +682,15 @@ public class CFBamJpaTimeTypeTable implements ICFBamTimeTypeTable
 		final String S_ProcName = "readDerived";
 		boolean permissionGranted = canReadTimeType(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, "readtimetype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readtimetype", ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		ICFBamTimeType retval = schema.getJpaHooksSchema().getTimeTypeService().find(PKey);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readtimetype'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readtimetype")) {
 				retval = null;
 			}
@@ -712,14 +715,15 @@ public class CFBamJpaTimeTypeTable implements ICFBamTimeTypeTable
 		final String S_ProcName = "lockDerived";
 		boolean permissionGranted = canUpdateTimeType(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, "updatetimetype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "updatetimetype", ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		ICFBamTimeType retval = schema.getJpaHooksSchema().getTimeTypeService().lockByIdIdx(PKey);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readtimetype'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readtimetype")) {
 				retval = null;
 			}
@@ -739,19 +743,19 @@ public class CFBamJpaTimeTypeTable implements ICFBamTimeTypeTable
 		final String S_ProcName = "readAllDerived";
 		boolean permissionGranted = canReadTimeType(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, "readtimetype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readtimetype", ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		List<CFBamJpaTimeType> retlist = schema.getJpaHooksSchema().getTimeTypeService().findAll();
 		if(retlist != null) {
 			ArrayList<CFBamJpaTimeType> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readtimetype")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readtimetype")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -784,13 +788,14 @@ public class CFBamJpaTimeTypeTable implements ICFBamTimeTypeTable
 			permissionGranted = canReadTimeType(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, "readtimetype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readtimetype", ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		ICFBamTimeType retval = schema.getJpaHooksSchema().getTimeTypeService().find(argId);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readtimetype'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readtimetype")) {
 				retval = null;
 			}
@@ -821,14 +826,15 @@ public class CFBamJpaTimeTypeTable implements ICFBamTimeTypeTable
 			permissionGranted = canReadTimeType(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, "readtimetype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readtimetype", ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		ICFBamTimeType retval = schema.getJpaHooksSchema().getTimeTypeService().findByUNameIdx(argScopeId,
 		argName);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readtimetype'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readtimetype")) {
 				retval = null;
 			}
@@ -855,18 +861,18 @@ public class CFBamJpaTimeTypeTable implements ICFBamTimeTypeTable
 			permissionGranted = canReadTimeType(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, "readtimetype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readtimetype", ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaTimeType> retlist = schema.getJpaHooksSchema().getTimeTypeService().findByScopeIdx(argScopeId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaTimeType> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readtimetype")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readtimetype")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -898,18 +904,18 @@ public class CFBamJpaTimeTypeTable implements ICFBamTimeTypeTable
 			permissionGranted = canReadTimeType(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, "readtimetype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readtimetype", ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaTimeType> retlist = schema.getJpaHooksSchema().getTimeTypeService().findByDefSchemaIdx(argDefSchemaId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaTimeType> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readtimetype")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readtimetype")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -941,18 +947,18 @@ public class CFBamJpaTimeTypeTable implements ICFBamTimeTypeTable
 			permissionGranted = canReadTimeType(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, "readtimetype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readtimetype", ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaTimeType> retlist = schema.getJpaHooksSchema().getTimeTypeService().findByPrevIdx(argPrevId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaTimeType> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readtimetype")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readtimetype")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -984,18 +990,18 @@ public class CFBamJpaTimeTypeTable implements ICFBamTimeTypeTable
 			permissionGranted = canReadTimeType(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, "readtimetype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readtimetype", ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaTimeType> retlist = schema.getJpaHooksSchema().getTimeTypeService().findByNextIdx(argNextId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaTimeType> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readtimetype")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readtimetype")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -1030,19 +1036,19 @@ public class CFBamJpaTimeTypeTable implements ICFBamTimeTypeTable
 			permissionGranted = canReadTimeType(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, "readtimetype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readtimetype", ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaTimeType> retlist = schema.getJpaHooksSchema().getTimeTypeService().findByContPrevIdx(argScopeId,
 		argPrevId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaTimeType> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readtimetype")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readtimetype")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -1077,19 +1083,19 @@ public class CFBamJpaTimeTypeTable implements ICFBamTimeTypeTable
 			permissionGranted = canReadTimeType(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, "readtimetype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readtimetype", ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaTimeType> retlist = schema.getJpaHooksSchema().getTimeTypeService().findByContNextIdx(argScopeId,
 		argNextId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaTimeType> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readtimetype")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readtimetype")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -1121,18 +1127,18 @@ public class CFBamJpaTimeTypeTable implements ICFBamTimeTypeTable
 			permissionGranted = canReadTimeType(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, "readtimetype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readtimetype", ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaTimeType> retlist = schema.getJpaHooksSchema().getTimeTypeService().findBySchemaIdx(argSchemaDefId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaTimeType> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readtimetype")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readtimetype")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -1164,7 +1170,7 @@ public class CFBamJpaTimeTypeTable implements ICFBamTimeTypeTable
 		final String S_ProcName = "readRec";
 		boolean permissionGranted = canReadTimeType(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, "readtimetype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readtimetype", ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		throw new CFLibNotImplementedYetException(getClass(), "readRec");
@@ -1189,7 +1195,7 @@ public class CFBamJpaTimeTypeTable implements ICFBamTimeTypeTable
 		final String S_ProcName = "lockRec";
 		boolean permissionGranted = canUpdateTimeType(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, "updatetimetype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "updatetimetype", ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		throw new CFLibNotImplementedYetException(getClass(), "lockRec");
@@ -1207,7 +1213,7 @@ public class CFBamJpaTimeTypeTable implements ICFBamTimeTypeTable
 		final String S_ProcName = "readAllRec";
 		boolean permissionGranted = canReadTimeType(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, "readtimetype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readtimetype", ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		throw new CFLibNotImplementedYetException(getClass(), "readAllRec");
@@ -1236,7 +1242,7 @@ public class CFBamJpaTimeTypeTable implements ICFBamTimeTypeTable
 			permissionGranted = canReadTimeType(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, "readtimetype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readtimetype", ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByIdIdx");
 	}
@@ -1266,7 +1272,7 @@ public class CFBamJpaTimeTypeTable implements ICFBamTimeTypeTable
 			permissionGranted = canReadTimeType(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, "readtimetype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readtimetype", ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByUNameIdx");
 	}
@@ -1292,7 +1298,7 @@ public class CFBamJpaTimeTypeTable implements ICFBamTimeTypeTable
 			permissionGranted = canReadTimeType(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, "readtimetype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readtimetype", ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByScopeIdx");
 	}
@@ -1318,7 +1324,7 @@ public class CFBamJpaTimeTypeTable implements ICFBamTimeTypeTable
 			permissionGranted = canReadTimeType(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, "readtimetype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readtimetype", ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByDefSchemaIdx");
 	}
@@ -1344,7 +1350,7 @@ public class CFBamJpaTimeTypeTable implements ICFBamTimeTypeTable
 			permissionGranted = canReadTimeType(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, "readtimetype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readtimetype", ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByPrevIdx");
 	}
@@ -1370,7 +1376,7 @@ public class CFBamJpaTimeTypeTable implements ICFBamTimeTypeTable
 			permissionGranted = canReadTimeType(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, "readtimetype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readtimetype", ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByNextIdx");
 	}
@@ -1399,7 +1405,7 @@ public class CFBamJpaTimeTypeTable implements ICFBamTimeTypeTable
 			permissionGranted = canReadTimeType(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, "readtimetype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readtimetype", ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByContPrevIdx");
 	}
@@ -1428,7 +1434,7 @@ public class CFBamJpaTimeTypeTable implements ICFBamTimeTypeTable
 			permissionGranted = canReadTimeType(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, "readtimetype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readtimetype", ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByContNextIdx");
 	}
@@ -1454,7 +1460,7 @@ public class CFBamJpaTimeTypeTable implements ICFBamTimeTypeTable
 			permissionGranted = canReadTimeType(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, "readtimetype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readtimetype", ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecBySchemaIdx");
 	}
@@ -1472,7 +1478,7 @@ public class CFBamJpaTimeTypeTable implements ICFBamTimeTypeTable
 		final String S_ProcName = "moveRecUp";
 		boolean permissionGranted = canUpdateTimeType(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, "updatetimetype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "updatetimetype", ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		throw new CFLibNotImplementedYetException(getClass(), "moveRecUp");
@@ -1491,7 +1497,7 @@ public class CFBamJpaTimeTypeTable implements ICFBamTimeTypeTable
 		final String S_ProcName = "moveRecDown";
 		boolean permissionGranted = canUpdateTimeType(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, "updatetimetype", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "updatetimetype", ICFBamSchema.SCHEMA_NAME, ICFBamTimeTypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		throw new CFLibNotImplementedYetException(getClass(), "moveRecDown");

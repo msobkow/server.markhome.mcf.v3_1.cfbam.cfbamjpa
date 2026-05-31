@@ -83,11 +83,16 @@ public class CFBamJpaDelSubDep1 extends CFBamJpaDelDep
 	@JoinColumn( name="contdeldepidDelTopDep", referencedColumnName="Id" )
 	protected CFBamJpaDelTopDep requiredContainerDelTopDep;
 
+	@AttributeOverrides({
+		@AttributeOverride(name="bytes", column = @Column( name="contdeldepid", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
+	})
+	protected CFLibDbKeyHash256 requiredDelTopDepId;
 	@Column( name="safe_name", nullable=false, length=192 )
 	protected String requiredName;
 
 	public CFBamJpaDelSubDep1() {
 		super();
+		requiredDelTopDepId = CFLibDbKeyHash256.fromHex( ICFBamDelSubDep1.DELTOPDEPID_INIT_VALUE.toString() );
 		requiredName = ICFBamDelSubDep1.NAME_INIT_VALUE;
 	}
 
@@ -107,6 +112,11 @@ public class CFBamJpaDelSubDep1 extends CFBamJpaDelDep
 		}
 		else if (argObj instanceof CFBamJpaDelTopDep) {
 			requiredContainerDelTopDep = (CFBamJpaDelTopDep)argObj;
+			if (requiredContainerDelTopDep != null) {
+				requiredDelTopDepId = requiredContainerDelTopDep.getRequiredId();
+			}
+			else {
+			}
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "setContainerDelTopDep", "argObj", argObj, "CFBamJpaDelTopDep");
@@ -129,13 +139,7 @@ public class CFBamJpaDelSubDep1 extends CFBamJpaDelDep
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredDelTopDepId() {
-		ICFBamDelTopDep result = getRequiredContainerDelTopDep();
-		if (result != null) {
-			return result.getRequiredId();
-		}
-		else {
-			return( ICFBamDelTopDep.ID_INIT_VALUE );
-		}
+		return( requiredDelTopDepId );
 	}
 
 	@Override

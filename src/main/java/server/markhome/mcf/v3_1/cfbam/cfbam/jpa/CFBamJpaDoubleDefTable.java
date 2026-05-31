@@ -205,7 +205,7 @@ public class CFBamJpaDoubleDefTable implements ICFBamDoubleDefTable
 		final String S_ProcName = "createDoubleDef";
 		boolean permissionGranted = canCreateDoubleDef(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, "createdoubledef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "createdoubledef", ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		if (rec == null) {
@@ -215,9 +215,10 @@ public class CFBamJpaDoubleDefTable implements ICFBamDoubleDefTable
 			CFBamJpaDoubleDef jparec = (CFBamJpaDoubleDef)rec;
 			CFBamJpaDoubleDef retval = schema.getJpaHooksSchema().getDoubleDefService().create(jparec);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readdoubledef'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredContainerScope().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdoubledef")) {
 				retval = null;
 			}
@@ -244,7 +245,7 @@ public class CFBamJpaDoubleDefTable implements ICFBamDoubleDefTable
 		final String S_ProcName = "updateDoubleDef";
 		boolean permissionGranted = canUpdateDoubleDef(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, "updatedoubledef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "updatedoubledef", ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		if (rec == null) {
@@ -254,9 +255,10 @@ public class CFBamJpaDoubleDefTable implements ICFBamDoubleDefTable
 			CFBamJpaDoubleDef jparec = (CFBamJpaDoubleDef)rec;
 			CFBamJpaDoubleDef retval = schema.getJpaHooksSchema().getDoubleDefService().update(jparec);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readdoubledef'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredContainerScope().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdoubledef")) {
 				retval = null;
 			}
@@ -282,7 +284,7 @@ public class CFBamJpaDoubleDefTable implements ICFBamDoubleDefTable
 		final String S_ProcName = "deleteDoubleDef";
 		boolean permissionGranted = canDeleteDoubleDef(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, "deletedoubledef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletedoubledef", ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		if (rec == null) {
@@ -313,7 +315,7 @@ public class CFBamJpaDoubleDefTable implements ICFBamDoubleDefTable
 		final String S_ProcName = "deleteDoubleDefByIdIdx";
 		boolean permissionGranted = canDeleteDoubleDef(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, "deletedoubledef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletedoubledef", ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getDoubleDefService().deleteByIdIdx(argKey);
@@ -336,7 +338,7 @@ public class CFBamJpaDoubleDefTable implements ICFBamDoubleDefTable
 		final String S_ProcName = "deleteDoubleDefByUNameIdx";
 		boolean permissionGranted = canDeleteDoubleDef(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, "deletedoubledef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletedoubledef", ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getDoubleDefService().deleteByUNameIdx(argScopeId,
@@ -358,7 +360,7 @@ public class CFBamJpaDoubleDefTable implements ICFBamDoubleDefTable
 		final String S_ProcName = "deleteDoubleDefByUNameIdx";
 		boolean permissionGranted = canDeleteDoubleDef(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, "deletedoubledef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletedoubledef", ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getDoubleDefService().deleteByUNameIdx(argKey.getRequiredScopeId(),
@@ -379,7 +381,7 @@ public class CFBamJpaDoubleDefTable implements ICFBamDoubleDefTable
 		final String S_ProcName = "deleteDoubleDefByScopeIdx";
 		boolean permissionGranted = canDeleteDoubleDef(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, "deletedoubledef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletedoubledef", ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getDoubleDefService().deleteByScopeIdx(argScopeId);
@@ -400,7 +402,7 @@ public class CFBamJpaDoubleDefTable implements ICFBamDoubleDefTable
 		final String S_ProcName = "deleteDoubleDefByScopeIdx";
 		boolean permissionGranted = canDeleteDoubleDef(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, "deletedoubledef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletedoubledef", ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getDoubleDefService().deleteByScopeIdx(argKey.getRequiredScopeId());
@@ -420,7 +422,7 @@ public class CFBamJpaDoubleDefTable implements ICFBamDoubleDefTable
 		final String S_ProcName = "deleteDoubleDefByDefSchemaIdx";
 		boolean permissionGranted = canDeleteDoubleDef(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, "deletedoubledef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletedoubledef", ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getDoubleDefService().deleteByDefSchemaIdx(argDefSchemaId);
@@ -441,7 +443,7 @@ public class CFBamJpaDoubleDefTable implements ICFBamDoubleDefTable
 		final String S_ProcName = "deleteDoubleDefByDefSchemaIdx";
 		boolean permissionGranted = canDeleteDoubleDef(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, "deletedoubledef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletedoubledef", ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getDoubleDefService().deleteByDefSchemaIdx(argKey.getOptionalDefSchemaId());
@@ -461,7 +463,7 @@ public class CFBamJpaDoubleDefTable implements ICFBamDoubleDefTable
 		final String S_ProcName = "deleteDoubleDefByPrevIdx";
 		boolean permissionGranted = canDeleteDoubleDef(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, "deletedoubledef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletedoubledef", ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getDoubleDefService().deleteByPrevIdx(argPrevId);
@@ -482,7 +484,7 @@ public class CFBamJpaDoubleDefTable implements ICFBamDoubleDefTable
 		final String S_ProcName = "deleteDoubleDefByPrevIdx";
 		boolean permissionGranted = canDeleteDoubleDef(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, "deletedoubledef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletedoubledef", ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getDoubleDefService().deleteByPrevIdx(argKey.getOptionalPrevId());
@@ -502,7 +504,7 @@ public class CFBamJpaDoubleDefTable implements ICFBamDoubleDefTable
 		final String S_ProcName = "deleteDoubleDefByNextIdx";
 		boolean permissionGranted = canDeleteDoubleDef(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, "deletedoubledef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletedoubledef", ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getDoubleDefService().deleteByNextIdx(argNextId);
@@ -523,7 +525,7 @@ public class CFBamJpaDoubleDefTable implements ICFBamDoubleDefTable
 		final String S_ProcName = "deleteDoubleDefByNextIdx";
 		boolean permissionGranted = canDeleteDoubleDef(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, "deletedoubledef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletedoubledef", ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getDoubleDefService().deleteByNextIdx(argKey.getOptionalNextId());
@@ -546,7 +548,7 @@ public class CFBamJpaDoubleDefTable implements ICFBamDoubleDefTable
 		final String S_ProcName = "deleteDoubleDefByContPrevIdx";
 		boolean permissionGranted = canDeleteDoubleDef(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, "deletedoubledef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletedoubledef", ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getDoubleDefService().deleteByContPrevIdx(argScopeId,
@@ -568,7 +570,7 @@ public class CFBamJpaDoubleDefTable implements ICFBamDoubleDefTable
 		final String S_ProcName = "deleteDoubleDefByContPrevIdx";
 		boolean permissionGranted = canDeleteDoubleDef(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, "deletedoubledef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletedoubledef", ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getDoubleDefService().deleteByContPrevIdx(argKey.getRequiredScopeId(),
@@ -592,7 +594,7 @@ public class CFBamJpaDoubleDefTable implements ICFBamDoubleDefTable
 		final String S_ProcName = "deleteDoubleDefByContNextIdx";
 		boolean permissionGranted = canDeleteDoubleDef(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, "deletedoubledef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletedoubledef", ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getDoubleDefService().deleteByContNextIdx(argScopeId,
@@ -614,7 +616,7 @@ public class CFBamJpaDoubleDefTable implements ICFBamDoubleDefTable
 		final String S_ProcName = "deleteDoubleDefByContNextIdx";
 		boolean permissionGranted = canDeleteDoubleDef(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, "deletedoubledef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletedoubledef", ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getDoubleDefService().deleteByContNextIdx(argKey.getRequiredScopeId(),
@@ -639,14 +641,15 @@ public class CFBamJpaDoubleDefTable implements ICFBamDoubleDefTable
 		final String S_ProcName = "readDerived";
 		boolean permissionGranted = canReadDoubleDef(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, "readdoubledef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readdoubledef", ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		ICFBamDoubleDef retval = schema.getJpaHooksSchema().getDoubleDefService().find(PKey);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readdoubledef'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredContainerScope().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdoubledef")) {
 				retval = null;
 			}
@@ -671,14 +674,15 @@ public class CFBamJpaDoubleDefTable implements ICFBamDoubleDefTable
 		final String S_ProcName = "lockDerived";
 		boolean permissionGranted = canUpdateDoubleDef(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, "updatedoubledef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "updatedoubledef", ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		ICFBamDoubleDef retval = schema.getJpaHooksSchema().getDoubleDefService().lockByIdIdx(PKey);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readdoubledef'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredContainerScope().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdoubledef")) {
 				retval = null;
 			}
@@ -698,19 +702,19 @@ public class CFBamJpaDoubleDefTable implements ICFBamDoubleDefTable
 		final String S_ProcName = "readAllDerived";
 		boolean permissionGranted = canReadDoubleDef(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, "readdoubledef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readdoubledef", ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		List<CFBamJpaDoubleDef> retlist = schema.getJpaHooksSchema().getDoubleDefService().findAll();
 		if(retlist != null) {
 			ArrayList<CFBamJpaDoubleDef> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdoubledef")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerScope().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdoubledef")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -743,13 +747,14 @@ public class CFBamJpaDoubleDefTable implements ICFBamDoubleDefTable
 			permissionGranted = canReadDoubleDef(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, "readdoubledef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readdoubledef", ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		ICFBamDoubleDef retval = schema.getJpaHooksSchema().getDoubleDefService().find(argId);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readdoubledef'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredContainerScope().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdoubledef")) {
 				retval = null;
 			}
@@ -780,14 +785,15 @@ public class CFBamJpaDoubleDefTable implements ICFBamDoubleDefTable
 			permissionGranted = canReadDoubleDef(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, "readdoubledef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readdoubledef", ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		ICFBamDoubleDef retval = schema.getJpaHooksSchema().getDoubleDefService().findByUNameIdx(argScopeId,
 		argName);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readdoubledef'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredContainerScope().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdoubledef")) {
 				retval = null;
 			}
@@ -814,18 +820,18 @@ public class CFBamJpaDoubleDefTable implements ICFBamDoubleDefTable
 			permissionGranted = canReadDoubleDef(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, "readdoubledef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readdoubledef", ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaDoubleDef> retlist = schema.getJpaHooksSchema().getDoubleDefService().findByScopeIdx(argScopeId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaDoubleDef> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdoubledef")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerScope().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdoubledef")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -857,18 +863,18 @@ public class CFBamJpaDoubleDefTable implements ICFBamDoubleDefTable
 			permissionGranted = canReadDoubleDef(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, "readdoubledef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readdoubledef", ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaDoubleDef> retlist = schema.getJpaHooksSchema().getDoubleDefService().findByDefSchemaIdx(argDefSchemaId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaDoubleDef> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdoubledef")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerScope().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdoubledef")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -900,18 +906,18 @@ public class CFBamJpaDoubleDefTable implements ICFBamDoubleDefTable
 			permissionGranted = canReadDoubleDef(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, "readdoubledef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readdoubledef", ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaDoubleDef> retlist = schema.getJpaHooksSchema().getDoubleDefService().findByPrevIdx(argPrevId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaDoubleDef> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdoubledef")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerScope().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdoubledef")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -943,18 +949,18 @@ public class CFBamJpaDoubleDefTable implements ICFBamDoubleDefTable
 			permissionGranted = canReadDoubleDef(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, "readdoubledef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readdoubledef", ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaDoubleDef> retlist = schema.getJpaHooksSchema().getDoubleDefService().findByNextIdx(argNextId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaDoubleDef> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdoubledef")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerScope().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdoubledef")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -989,19 +995,19 @@ public class CFBamJpaDoubleDefTable implements ICFBamDoubleDefTable
 			permissionGranted = canReadDoubleDef(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, "readdoubledef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readdoubledef", ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaDoubleDef> retlist = schema.getJpaHooksSchema().getDoubleDefService().findByContPrevIdx(argScopeId,
 		argPrevId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaDoubleDef> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdoubledef")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerScope().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdoubledef")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -1036,19 +1042,19 @@ public class CFBamJpaDoubleDefTable implements ICFBamDoubleDefTable
 			permissionGranted = canReadDoubleDef(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, "readdoubledef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readdoubledef", ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaDoubleDef> retlist = schema.getJpaHooksSchema().getDoubleDefService().findByContNextIdx(argScopeId,
 		argNextId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaDoubleDef> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdoubledef")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerScope().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdoubledef")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -1080,7 +1086,7 @@ public class CFBamJpaDoubleDefTable implements ICFBamDoubleDefTable
 		final String S_ProcName = "readRec";
 		boolean permissionGranted = canReadDoubleDef(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, "readdoubledef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readdoubledef", ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		throw new CFLibNotImplementedYetException(getClass(), "readRec");
@@ -1105,7 +1111,7 @@ public class CFBamJpaDoubleDefTable implements ICFBamDoubleDefTable
 		final String S_ProcName = "lockRec";
 		boolean permissionGranted = canUpdateDoubleDef(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, "updatedoubledef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "updatedoubledef", ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		throw new CFLibNotImplementedYetException(getClass(), "lockRec");
@@ -1123,7 +1129,7 @@ public class CFBamJpaDoubleDefTable implements ICFBamDoubleDefTable
 		final String S_ProcName = "readAllRec";
 		boolean permissionGranted = canReadDoubleDef(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, "readdoubledef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readdoubledef", ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		throw new CFLibNotImplementedYetException(getClass(), "readAllRec");
@@ -1152,7 +1158,7 @@ public class CFBamJpaDoubleDefTable implements ICFBamDoubleDefTable
 			permissionGranted = canReadDoubleDef(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, "readdoubledef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readdoubledef", ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByIdIdx");
 	}
@@ -1182,7 +1188,7 @@ public class CFBamJpaDoubleDefTable implements ICFBamDoubleDefTable
 			permissionGranted = canReadDoubleDef(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, "readdoubledef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readdoubledef", ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByUNameIdx");
 	}
@@ -1208,7 +1214,7 @@ public class CFBamJpaDoubleDefTable implements ICFBamDoubleDefTable
 			permissionGranted = canReadDoubleDef(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, "readdoubledef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readdoubledef", ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByScopeIdx");
 	}
@@ -1234,7 +1240,7 @@ public class CFBamJpaDoubleDefTable implements ICFBamDoubleDefTable
 			permissionGranted = canReadDoubleDef(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, "readdoubledef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readdoubledef", ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByDefSchemaIdx");
 	}
@@ -1260,7 +1266,7 @@ public class CFBamJpaDoubleDefTable implements ICFBamDoubleDefTable
 			permissionGranted = canReadDoubleDef(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, "readdoubledef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readdoubledef", ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByPrevIdx");
 	}
@@ -1286,7 +1292,7 @@ public class CFBamJpaDoubleDefTable implements ICFBamDoubleDefTable
 			permissionGranted = canReadDoubleDef(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, "readdoubledef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readdoubledef", ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByNextIdx");
 	}
@@ -1315,7 +1321,7 @@ public class CFBamJpaDoubleDefTable implements ICFBamDoubleDefTable
 			permissionGranted = canReadDoubleDef(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, "readdoubledef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readdoubledef", ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByContPrevIdx");
 	}
@@ -1344,7 +1350,7 @@ public class CFBamJpaDoubleDefTable implements ICFBamDoubleDefTable
 			permissionGranted = canReadDoubleDef(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, "readdoubledef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readdoubledef", ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByContNextIdx");
 	}
@@ -1362,7 +1368,7 @@ public class CFBamJpaDoubleDefTable implements ICFBamDoubleDefTable
 		final String S_ProcName = "moveRecUp";
 		boolean permissionGranted = canUpdateDoubleDef(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, "updatedoubledef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "updatedoubledef", ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		throw new CFLibNotImplementedYetException(getClass(), "moveRecUp");
@@ -1381,7 +1387,7 @@ public class CFBamJpaDoubleDefTable implements ICFBamDoubleDefTable
 		final String S_ProcName = "moveRecDown";
 		boolean permissionGranted = canUpdateDoubleDef(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, "updatedoubledef", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "updatedoubledef", ICFBamSchema.SCHEMA_NAME, ICFBamDoubleDefTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		throw new CFLibNotImplementedYetException(getClass(), "moveRecDown");

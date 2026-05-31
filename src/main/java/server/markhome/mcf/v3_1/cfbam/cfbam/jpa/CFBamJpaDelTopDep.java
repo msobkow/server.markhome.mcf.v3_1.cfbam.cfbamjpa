@@ -95,10 +95,25 @@ public class CFBamJpaDelTopDep extends CFBamJpaDelDep
 
 	@Column( name="safe_name", nullable=false, length=192 )
 	protected String requiredName;
+	@AttributeOverrides({
+		@AttributeOverride(name="bytes", column = @Column( name="TableId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
+	})
+	protected CFLibDbKeyHash256 requiredTableId;
+	@AttributeOverrides({
+		@AttributeOverride(name="bytes", column = @Column( name="PrevId", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
+	})
+	protected CFLibDbKeyHash256 optionalPrevId;
+	@AttributeOverrides({
+		@AttributeOverride(name="bytes", column = @Column( name="NextId", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
+	})
+	protected CFLibDbKeyHash256 optionalNextId;
 
 	public CFBamJpaDelTopDep() {
 		super();
 		requiredName = ICFBamDelTopDep.NAME_INIT_VALUE;
+		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamDelTopDep.TABLEID_INIT_VALUE.toString() );
+		optionalPrevId = CFLibDbKeyHash256.nullGet();
+		optionalNextId = CFLibDbKeyHash256.nullGet();
 	}
 
 	@Override
@@ -117,6 +132,11 @@ public class CFBamJpaDelTopDep extends CFBamJpaDelDep
 		}
 		else if (argObj instanceof CFBamJpaTable) {
 			requiredContainerTable = (CFBamJpaTable)argObj;
+			if (requiredContainerTable != null) {
+				requiredTableId = requiredContainerTable.getRequiredId();
+			}
+			else {
+			}
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "setContainerTable", "argObj", argObj, "CFBamJpaTable");
@@ -148,6 +168,12 @@ public class CFBamJpaDelTopDep extends CFBamJpaDelDep
 		}
 		else if (argObj instanceof CFBamJpaDelTopDep) {
 			optionalLookupPrev = (CFBamJpaDelTopDep)argObj;
+			if (optionalLookupPrev != null) {
+				optionalPrevId = optionalLookupPrev.getRequiredId();
+			}
+			else {
+				optionalPrevId = null;
+			}
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "setLookupPrev", "argObj", argObj, "CFBamJpaDelTopDep");
@@ -179,6 +205,12 @@ public class CFBamJpaDelTopDep extends CFBamJpaDelDep
 		}
 		else if (argObj instanceof CFBamJpaDelTopDep) {
 			optionalLookupNext = (CFBamJpaDelTopDep)argObj;
+			if (optionalLookupNext != null) {
+				optionalNextId = optionalLookupNext.getRequiredId();
+			}
+			else {
+				optionalNextId = null;
+			}
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "setLookupNext", "argObj", argObj, "CFBamJpaDelTopDep");
@@ -225,35 +257,17 @@ public class CFBamJpaDelTopDep extends CFBamJpaDelDep
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredTableId() {
-		ICFBamTable result = getRequiredContainerTable();
-		if (result != null) {
-			return result.getRequiredId();
-		}
-		else {
-			return( ICFBamTable.ID_INIT_VALUE );
-		}
+		return( requiredTableId );
 	}
 
 	@Override
 	public CFLibDbKeyHash256 getOptionalPrevId() {
-		ICFBamDelTopDep result = getOptionalLookupPrev();
-		if (result != null) {
-			return result.getRequiredId();
-		}
-		else {
-			return null;
-		}
+		return( optionalPrevId );
 	}
 
 	@Override
 	public CFLibDbKeyHash256 getOptionalNextId() {
-		ICFBamDelTopDep result = getOptionalLookupNext();
-		if (result != null) {
-			return result.getRequiredId();
-		}
-		else {
-			return null;
-		}
+		return( optionalNextId );
 	}
 
 	@Override

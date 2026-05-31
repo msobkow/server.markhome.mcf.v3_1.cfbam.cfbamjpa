@@ -82,9 +82,14 @@ public class CFBamJpaTableTweak extends CFBamJpaTweak
 	@JoinColumn( name="TableIdTableDef", referencedColumnName="Id" )
 	protected CFBamJpaTable requiredContainerTableDef;
 
+	@AttributeOverrides({
+		@AttributeOverride(name="bytes", column = @Column( name="TableId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
+	})
+	protected CFLibDbKeyHash256 requiredTableId;
 
 	public CFBamJpaTableTweak() {
 		super();
+		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamTableTweak.TABLEID_INIT_VALUE.toString() );
 	}
 
 	@Override
@@ -103,6 +108,11 @@ public class CFBamJpaTableTweak extends CFBamJpaTweak
 		}
 		else if (argObj instanceof CFBamJpaTable) {
 			requiredContainerTableDef = (CFBamJpaTable)argObj;
+			if (requiredContainerTableDef != null) {
+				requiredTableId = requiredContainerTableDef.getRequiredId();
+			}
+			else {
+			}
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "setContainerTableDef", "argObj", argObj, "CFBamJpaTable");
@@ -125,13 +135,7 @@ public class CFBamJpaTableTweak extends CFBamJpaTweak
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredTableId() {
-		ICFBamTable result = getRequiredContainerTableDef();
-		if (result != null) {
-			return result.getRequiredId();
-		}
-		else {
-			return( ICFBamTable.ID_INIT_VALUE );
-		}
+		return( requiredTableId );
 	}
 
 	@Override

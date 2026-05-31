@@ -82,9 +82,14 @@ public class CFBamJpaServerListFunc extends CFBamJpaServerMethod
 	@JoinColumn( name="rettblidRetTable", referencedColumnName="Id" )
 	protected CFBamJpaTable optionalLookupRetTable;
 
+	@AttributeOverrides({
+		@AttributeOverride(name="bytes", column = @Column( name="rettblid", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
+	})
+	protected CFLibDbKeyHash256 optionalRetTableId;
 
 	public CFBamJpaServerListFunc() {
 		super();
+		optionalRetTableId = CFLibDbKeyHash256.nullGet();
 	}
 
 	@Override
@@ -103,6 +108,12 @@ public class CFBamJpaServerListFunc extends CFBamJpaServerMethod
 		}
 		else if (argObj instanceof CFBamJpaTable) {
 			optionalLookupRetTable = (CFBamJpaTable)argObj;
+			if (optionalLookupRetTable != null) {
+				optionalRetTableId = optionalLookupRetTable.getRequiredId();
+			}
+			else {
+				optionalRetTableId = null;
+			}
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "setLookupRetTable", "argObj", argObj, "CFBamJpaTable");
@@ -125,13 +136,7 @@ public class CFBamJpaServerListFunc extends CFBamJpaServerMethod
 
 	@Override
 	public CFLibDbKeyHash256 getOptionalRetTableId() {
-		ICFBamTable result = getOptionalLookupRetTable();
-		if (result != null) {
-			return result.getRequiredId();
-		}
-		else {
-			return null;
-		}
+		return( optionalRetTableId );
 	}
 
 	@Override

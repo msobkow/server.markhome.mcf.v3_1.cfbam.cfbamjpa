@@ -108,6 +108,14 @@ public class CFBamJpaRelation extends CFBamJpaScope
 	@JoinColumn( name="NarrowedIdNarrowed", referencedColumnName="Id" )
 	protected CFBamJpaRelation optionalLookupNarrowed;
 
+	@AttributeOverrides({
+		@AttributeOverride(name="bytes", column = @Column( name="TableId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
+	})
+	protected CFLibDbKeyHash256 requiredTableId;
+	@AttributeOverrides({
+		@AttributeOverride(name="bytes", column = @Column( name="defschid", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
+	})
+	protected CFLibDbKeyHash256 optionalDefSchemaId;
 	@Column( name="safe_name", nullable=false, length=192 )
 	protected String requiredName;
 	@Column( name="short_name", nullable=true, length=16 )
@@ -124,6 +132,18 @@ public class CFBamJpaRelation extends CFBamJpaScope
 	protected String optionalDbName;
 	@Column( name="Suffix", nullable=true, length=16 )
 	protected String optionalSuffix;
+	@AttributeOverrides({
+		@AttributeOverride(name="bytes", column = @Column( name="FromIndexId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
+	})
+	protected CFLibDbKeyHash256 requiredFromIndexId;
+	@AttributeOverrides({
+		@AttributeOverride(name="bytes", column = @Column( name="ToTableId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
+	})
+	protected CFLibDbKeyHash256 requiredToTableId;
+	@AttributeOverrides({
+		@AttributeOverride(name="bytes", column = @Column( name="ToIndexId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
+	})
+	protected CFLibDbKeyHash256 requiredToIndexId;
 	@Column( name="IsRequired", nullable=false )
 	protected boolean requiredIsRequired;
 	@Column( name="IsXsdContainer", nullable=false )
@@ -132,9 +152,15 @@ public class CFBamJpaRelation extends CFBamJpaScope
 	protected boolean requiredIsLateResolver;
 	@Column( name="AllowAddendum", nullable=false )
 	protected boolean requiredAllowAddendum;
+	@AttributeOverrides({
+		@AttributeOverride(name="bytes", column = @Column( name="NarrowedId", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
+	})
+	protected CFLibDbKeyHash256 optionalNarrowedId;
 
 	public CFBamJpaRelation() {
 		super();
+		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamRelation.TABLEID_INIT_VALUE.toString() );
+		optionalDefSchemaId = CFLibDbKeyHash256.nullGet();
 		requiredName = ICFBamRelation.NAME_INIT_VALUE;
 		optionalShortName = null;
 		optionalLabel = null;
@@ -143,10 +169,14 @@ public class CFBamJpaRelation extends CFBamJpaScope
 		requiredRelationType = ICFBamRelation.RELATIONTYPE_INIT_VALUE;
 		optionalDbName = null;
 		optionalSuffix = null;
+		requiredFromIndexId = CFLibDbKeyHash256.fromHex( ICFBamRelation.FROMINDEXID_INIT_VALUE.toString() );
+		requiredToTableId = CFLibDbKeyHash256.fromHex( ICFBamRelation.TOTABLEID_INIT_VALUE.toString() );
+		requiredToIndexId = CFLibDbKeyHash256.fromHex( ICFBamRelation.TOINDEXID_INIT_VALUE.toString() );
 		requiredIsRequired = ICFBamRelation.ISREQUIRED_INIT_VALUE;
 		requiredIsXsdContainer = ICFBamRelation.ISXSDCONTAINER_INIT_VALUE;
 		requiredIsLateResolver = ICFBamRelation.ISLATERESOLVER_INIT_VALUE;
 		requiredAllowAddendum = ICFBamRelation.ALLOWADDENDUM_INIT_VALUE;
+		optionalNarrowedId = CFLibDbKeyHash256.nullGet();
 	}
 
 	@Override
@@ -165,6 +195,12 @@ public class CFBamJpaRelation extends CFBamJpaScope
 		}
 		else if (argObj instanceof CFBamJpaSchemaDef) {
 			optionalLookupDefSchema = (CFBamJpaSchemaDef)argObj;
+			if (optionalLookupDefSchema != null) {
+				optionalDefSchemaId = optionalLookupDefSchema.getRequiredId();
+			}
+			else {
+				optionalDefSchemaId = null;
+			}
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "setLookupDefSchema", "argObj", argObj, "CFBamJpaSchemaDef");
@@ -196,6 +232,11 @@ public class CFBamJpaRelation extends CFBamJpaScope
 		}
 		else if (argObj instanceof CFBamJpaTable) {
 			requiredContainerFromTable = (CFBamJpaTable)argObj;
+			if (requiredContainerFromTable != null) {
+				requiredTableId = requiredContainerFromTable.getRequiredId();
+			}
+			else {
+			}
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "setContainerFromTable", "argObj", argObj, "CFBamJpaTable");
@@ -227,6 +268,11 @@ public class CFBamJpaRelation extends CFBamJpaScope
 		}
 		else if (argObj instanceof CFBamJpaIndex) {
 			requiredLookupFromIndex = (CFBamJpaIndex)argObj;
+			if (requiredLookupFromIndex != null) {
+				requiredFromIndexId = requiredLookupFromIndex.getRequiredId();
+			}
+			else {
+			}
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "setLookupFromIndex", "argObj", argObj, "CFBamJpaIndex");
@@ -258,6 +304,11 @@ public class CFBamJpaRelation extends CFBamJpaScope
 		}
 		else if (argObj instanceof CFBamJpaTable) {
 			requiredLookupToTable = (CFBamJpaTable)argObj;
+			if (requiredLookupToTable != null) {
+				requiredToTableId = requiredLookupToTable.getRequiredId();
+			}
+			else {
+			}
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "setLookupToTable", "argObj", argObj, "CFBamJpaTable");
@@ -289,6 +340,11 @@ public class CFBamJpaRelation extends CFBamJpaScope
 		}
 		else if (argObj instanceof CFBamJpaIndex) {
 			requiredLookupToIndex = (CFBamJpaIndex)argObj;
+			if (requiredLookupToIndex != null) {
+				requiredToIndexId = requiredLookupToIndex.getRequiredId();
+			}
+			else {
+			}
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "setLookupToIndex", "argObj", argObj, "CFBamJpaIndex");
@@ -320,6 +376,12 @@ public class CFBamJpaRelation extends CFBamJpaScope
 		}
 		else if (argObj instanceof CFBamJpaRelation) {
 			optionalLookupNarrowed = (CFBamJpaRelation)argObj;
+			if (optionalLookupNarrowed != null) {
+				optionalNarrowedId = optionalLookupNarrowed.getRequiredId();
+			}
+			else {
+				optionalNarrowedId = null;
+			}
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "setLookupNarrowed", "argObj", argObj, "CFBamJpaRelation");
@@ -342,24 +404,12 @@ public class CFBamJpaRelation extends CFBamJpaScope
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredTableId() {
-		ICFBamTable result = getRequiredContainerFromTable();
-		if (result != null) {
-			return result.getRequiredId();
-		}
-		else {
-			return( ICFBamTable.ID_INIT_VALUE );
-		}
+		return( requiredTableId );
 	}
 
 	@Override
 	public CFLibDbKeyHash256 getOptionalDefSchemaId() {
-		ICFBamSchemaDef result = getOptionalLookupDefSchema();
-		if (result != null) {
-			return result.getRequiredId();
-		}
-		else {
-			return null;
-		}
+		return( optionalDefSchemaId );
 	}
 
 	@Override
@@ -512,35 +562,17 @@ public class CFBamJpaRelation extends CFBamJpaScope
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredFromIndexId() {
-		ICFBamIndex result = getRequiredLookupFromIndex();
-		if (result != null) {
-			return result.getRequiredId();
-		}
-		else {
-			return( ICFBamIndex.ID_INIT_VALUE );
-		}
+		return( requiredFromIndexId );
 	}
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredToTableId() {
-		ICFBamTable result = getRequiredLookupToTable();
-		if (result != null) {
-			return result.getRequiredId();
-		}
-		else {
-			return( ICFBamTable.ID_INIT_VALUE );
-		}
+		return( requiredToTableId );
 	}
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredToIndexId() {
-		ICFBamIndex result = getRequiredLookupToIndex();
-		if (result != null) {
-			return result.getRequiredId();
-		}
-		else {
-			return( ICFBamIndex.ID_INIT_VALUE );
-		}
+		return( requiredToIndexId );
 	}
 
 	@Override
@@ -585,13 +617,7 @@ public class CFBamJpaRelation extends CFBamJpaScope
 
 	@Override
 	public CFLibDbKeyHash256 getOptionalNarrowedId() {
-		ICFBamRelation result = getOptionalLookupNarrowed();
-		if (result != null) {
-			return result.getRequiredId();
-		}
-		else {
-			return null;
-		}
+		return( optionalNarrowedId );
 	}
 
 	@Override

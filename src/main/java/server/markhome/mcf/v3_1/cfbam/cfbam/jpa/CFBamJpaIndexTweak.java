@@ -82,9 +82,14 @@ public class CFBamJpaIndexTweak extends CFBamJpaTweak
 	@JoinColumn( name="IndexIdIndexDef", referencedColumnName="Id" )
 	protected CFBamJpaIndex requiredContainerIndexDef;
 
+	@AttributeOverrides({
+		@AttributeOverride(name="bytes", column = @Column( name="IndexId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
+	})
+	protected CFLibDbKeyHash256 requiredIndexId;
 
 	public CFBamJpaIndexTweak() {
 		super();
+		requiredIndexId = CFLibDbKeyHash256.fromHex( ICFBamIndexTweak.INDEXID_INIT_VALUE.toString() );
 	}
 
 	@Override
@@ -103,6 +108,11 @@ public class CFBamJpaIndexTweak extends CFBamJpaTweak
 		}
 		else if (argObj instanceof CFBamJpaIndex) {
 			requiredContainerIndexDef = (CFBamJpaIndex)argObj;
+			if (requiredContainerIndexDef != null) {
+				requiredIndexId = requiredContainerIndexDef.getRequiredId();
+			}
+			else {
+			}
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "setContainerIndexDef", "argObj", argObj, "CFBamJpaIndex");
@@ -125,13 +135,7 @@ public class CFBamJpaIndexTweak extends CFBamJpaTweak
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredIndexId() {
-		ICFBamIndex result = getRequiredContainerIndexDef();
-		if (result != null) {
-			return result.getRequiredId();
-		}
-		else {
-			return( ICFBamIndex.ID_INIT_VALUE );
-		}
+		return( requiredIndexId );
 	}
 
 	@Override

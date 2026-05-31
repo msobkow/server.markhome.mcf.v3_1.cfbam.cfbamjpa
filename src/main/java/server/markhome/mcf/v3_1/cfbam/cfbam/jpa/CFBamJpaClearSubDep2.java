@@ -83,11 +83,16 @@ public class CFBamJpaClearSubDep2 extends CFBamJpaClearDep
 	@JoinColumn( name="contclrdep1idClearSubDep1", referencedColumnName="Id" )
 	protected CFBamJpaClearSubDep1 requiredContainerClearSubDep1;
 
+	@AttributeOverrides({
+		@AttributeOverride(name="bytes", column = @Column( name="contclrdep1id", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
+	})
+	protected CFLibDbKeyHash256 requiredClearSubDep1Id;
 	@Column( name="safe_name", nullable=false, length=192 )
 	protected String requiredName;
 
 	public CFBamJpaClearSubDep2() {
 		super();
+		requiredClearSubDep1Id = CFLibDbKeyHash256.fromHex( ICFBamClearSubDep2.CLEARSUBDEP1ID_INIT_VALUE.toString() );
 		requiredName = ICFBamClearSubDep2.NAME_INIT_VALUE;
 	}
 
@@ -107,6 +112,11 @@ public class CFBamJpaClearSubDep2 extends CFBamJpaClearDep
 		}
 		else if (argObj instanceof CFBamJpaClearSubDep1) {
 			requiredContainerClearSubDep1 = (CFBamJpaClearSubDep1)argObj;
+			if (requiredContainerClearSubDep1 != null) {
+				requiredClearSubDep1Id = requiredContainerClearSubDep1.getRequiredId();
+			}
+			else {
+			}
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "setContainerClearSubDep1", "argObj", argObj, "CFBamJpaClearSubDep1");
@@ -129,13 +139,7 @@ public class CFBamJpaClearSubDep2 extends CFBamJpaClearDep
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredClearSubDep1Id() {
-		ICFBamClearSubDep1 result = getRequiredContainerClearSubDep1();
-		if (result != null) {
-			return result.getRequiredId();
-		}
-		else {
-			return( ICFBamClearSubDep1.ID_INIT_VALUE );
-		}
+		return( requiredClearSubDep1Id );
 	}
 
 	@Override

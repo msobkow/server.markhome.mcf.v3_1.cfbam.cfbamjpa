@@ -84,11 +84,16 @@ public class CFBamJpaSchemaRole extends CFBamJpaRoleDef
 	@JoinColumn( name="SchemaDefIdSchemaDef", referencedColumnName="Id" )
 	protected CFBamJpaSchemaDef requiredContainerSchemaDef;
 
+	@AttributeOverrides({
+		@AttributeOverride(name="bytes", column = @Column( name="SchemaDefId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
+	})
+	protected CFLibDbKeyHash256 requiredSchemaDefId;
 	@Column( name="RoleScopeId", nullable=false )
 	protected ICFBamSchema.RoleScopeEnum requiredRoleScope;
 
 	public CFBamJpaSchemaRole() {
 		super();
+		requiredSchemaDefId = CFLibDbKeyHash256.fromHex( ICFBamSchemaRole.SCHEMADEFID_INIT_VALUE.toString() );
 		requiredRoleScope = ICFBamSchemaRole.ROLESCOPE_INIT_VALUE;
 	}
 
@@ -108,6 +113,11 @@ public class CFBamJpaSchemaRole extends CFBamJpaRoleDef
 		}
 		else if (argObj instanceof CFBamJpaSchemaDef) {
 			requiredContainerSchemaDef = (CFBamJpaSchemaDef)argObj;
+			if (requiredContainerSchemaDef != null) {
+				requiredSchemaDefId = requiredContainerSchemaDef.getRequiredId();
+			}
+			else {
+			}
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "setContainerSchemaDef", "argObj", argObj, "CFBamJpaSchemaDef");
@@ -130,13 +140,7 @@ public class CFBamJpaSchemaRole extends CFBamJpaRoleDef
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredSchemaDefId() {
-		ICFBamSchemaDef result = getRequiredContainerSchemaDef();
-		if (result != null) {
-			return result.getRequiredId();
-		}
-		else {
-			return( ICFBamSchemaDef.ID_INIT_VALUE );
-		}
+		return( requiredSchemaDefId );
 	}
 
 	@Override

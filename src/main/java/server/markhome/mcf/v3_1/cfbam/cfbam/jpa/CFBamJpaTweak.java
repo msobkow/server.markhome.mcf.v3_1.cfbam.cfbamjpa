@@ -120,9 +120,17 @@ public class CFBamJpaTweak
 	})
 	protected CFLibDbKeyHash256 requiredTenantId;
 	@AttributeOverrides({
+		@AttributeOverride(name="bytes", column = @Column( name="ScopeId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
+	})
+	protected CFLibDbKeyHash256 requiredScopeId;
+	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="defschtentid", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
 	protected CFLibDbKeyHash256 optionalDefSchemaTenantId;
+	@AttributeOverrides({
+		@AttributeOverride(name="bytes", column = @Column( name="defschid", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
+	})
+	protected CFLibDbKeyHash256 optionalDefSchemaId;
 	@Column( name="safe_name", nullable=false, length=192 )
 	protected String requiredName;
 	@Column( name="repl_inh", nullable=false )
@@ -133,7 +141,9 @@ public class CFBamJpaTweak
 	public CFBamJpaTweak() {
 		requiredId = CFLibDbKeyHash256.fromHex( ICFBamTweak.ID_INIT_VALUE.toString() );
 		requiredTenantId = CFLibDbKeyHash256.fromHex( ICFBamTweak.TENANTID_INIT_VALUE.toString() );
+		requiredScopeId = CFLibDbKeyHash256.fromHex( ICFBamTweak.SCOPEID_INIT_VALUE.toString() );
 		optionalDefSchemaTenantId = CFLibDbKeyHash256.nullGet();
+		optionalDefSchemaId = CFLibDbKeyHash256.nullGet();
 		requiredName = ICFBamTweak.NAME_INIT_VALUE;
 		requiredReplacesInherited = ICFBamTweak.REPLACESINHERITED_INIT_VALUE;
 		requiredTweakGelText = ICFBamTweak.TWEAKGELTEXT_INIT_VALUE;
@@ -155,6 +165,11 @@ public class CFBamJpaTweak
 		}
 		else if (argObj instanceof CFBamJpaScope) {
 			requiredContainerScopeDef = (CFBamJpaScope)argObj;
+			if (requiredContainerScopeDef != null) {
+				requiredScopeId = requiredContainerScopeDef.getRequiredId();
+			}
+			else {
+			}
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "setContainerScopeDef", "argObj", argObj, "CFBamJpaScope");
@@ -186,6 +201,12 @@ public class CFBamJpaTweak
 		}
 		else if (argObj instanceof CFBamJpaSchemaDef) {
 			optionalLookupDefSchema = (CFBamJpaSchemaDef)argObj;
+			if (optionalLookupDefSchema != null) {
+				optionalDefSchemaId = optionalLookupDefSchema.getRequiredId();
+			}
+			else {
+				optionalDefSchemaId = null;
+			}
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "setLookupDefSchema", "argObj", argObj, "CFBamJpaSchemaDef");
@@ -313,13 +334,7 @@ public class CFBamJpaTweak
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredScopeId() {
-		ICFBamScope result = getRequiredContainerScopeDef();
-		if (result != null) {
-			return result.getRequiredId();
-		}
-		else {
-			return( ICFBamScope.ID_INIT_VALUE );
-		}
+		return( requiredScopeId );
 	}
 
 	@Override
@@ -334,13 +349,7 @@ public class CFBamJpaTweak
 
 	@Override
 	public CFLibDbKeyHash256 getOptionalDefSchemaId() {
-		ICFBamSchemaDef result = getOptionalLookupDefSchema();
-		if (result != null) {
-			return result.getRequiredId();
-		}
-		else {
-			return null;
-		}
+		return( optionalDefSchemaId );
 	}
 
 	@Override

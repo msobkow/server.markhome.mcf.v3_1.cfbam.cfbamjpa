@@ -205,7 +205,7 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 		final String S_ProcName = "createIndexTweak";
 		boolean permissionGranted = canCreateIndexTweak(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "createindextweak", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "createindextweak", ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		if (rec == null) {
@@ -215,9 +215,10 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			CFBamJpaIndexTweak jparec = (CFBamJpaIndexTweak)rec;
 			CFBamJpaIndexTweak retval = schema.getJpaHooksSchema().getIndexTweakService().create(jparec);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readindextweak'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredContainerIndexDef().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readindextweak")) {
 				retval = null;
 			}
@@ -244,7 +245,7 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 		final String S_ProcName = "updateIndexTweak";
 		boolean permissionGranted = canUpdateIndexTweak(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "updateindextweak", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "updateindextweak", ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		if (rec == null) {
@@ -254,9 +255,10 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			CFBamJpaIndexTweak jparec = (CFBamJpaIndexTweak)rec;
 			CFBamJpaIndexTweak retval = schema.getJpaHooksSchema().getIndexTweakService().update(jparec);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readindextweak'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredContainerIndexDef().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readindextweak")) {
 				retval = null;
 			}
@@ -282,7 +284,7 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 		final String S_ProcName = "deleteIndexTweak";
 		boolean permissionGranted = canDeleteIndexTweak(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "deleteindextweak", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteindextweak", ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		if (rec == null) {
@@ -313,7 +315,7 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 		final String S_ProcName = "deleteIndexTweakByIndexIdx";
 		boolean permissionGranted = canDeleteIndexTweak(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "deleteindextweak", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteindextweak", ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getIndexTweakService().deleteByIndexIdx(argIndexId);
@@ -334,7 +336,7 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 		final String S_ProcName = "deleteIndexTweakByIndexIdx";
 		boolean permissionGranted = canDeleteIndexTweak(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "deleteindextweak", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteindextweak", ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getIndexTweakService().deleteByIndexIdx(argKey.getRequiredIndexId());
@@ -354,7 +356,7 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 		final String S_ProcName = "deleteIndexTweakByIdIdx";
 		boolean permissionGranted = canDeleteIndexTweak(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "deleteindextweak", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteindextweak", ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getIndexTweakService().deleteByIdIdx(argKey);
@@ -377,7 +379,7 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 		final String S_ProcName = "deleteIndexTweakByUNameIdx";
 		boolean permissionGranted = canDeleteIndexTweak(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "deleteindextweak", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteindextweak", ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getIndexTweakService().deleteByUNameIdx(argScopeId,
@@ -399,7 +401,7 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 		final String S_ProcName = "deleteIndexTweakByUNameIdx";
 		boolean permissionGranted = canDeleteIndexTweak(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "deleteindextweak", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteindextweak", ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getIndexTweakService().deleteByUNameIdx(argKey.getRequiredScopeId(),
@@ -420,7 +422,7 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 		final String S_ProcName = "deleteIndexTweakByValTentIdx";
 		boolean permissionGranted = canDeleteIndexTweak(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "deleteindextweak", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteindextweak", ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getIndexTweakService().deleteByValTentIdx(argTenantId);
@@ -441,7 +443,7 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 		final String S_ProcName = "deleteIndexTweakByValTentIdx";
 		boolean permissionGranted = canDeleteIndexTweak(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "deleteindextweak", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteindextweak", ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getIndexTweakService().deleteByValTentIdx(argKey.getRequiredTenantId());
@@ -461,7 +463,7 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 		final String S_ProcName = "deleteIndexTweakByScopeIdx";
 		boolean permissionGranted = canDeleteIndexTweak(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "deleteindextweak", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteindextweak", ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getIndexTweakService().deleteByScopeIdx(argScopeId);
@@ -482,7 +484,7 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 		final String S_ProcName = "deleteIndexTweakByScopeIdx";
 		boolean permissionGranted = canDeleteIndexTweak(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "deleteindextweak", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteindextweak", ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getIndexTweakService().deleteByScopeIdx(argKey.getRequiredScopeId());
@@ -502,7 +504,7 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 		final String S_ProcName = "deleteIndexTweakByDefSchemaIdx";
 		boolean permissionGranted = canDeleteIndexTweak(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "deleteindextweak", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteindextweak", ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getIndexTweakService().deleteByDefSchemaIdx(argDefSchemaId);
@@ -523,7 +525,7 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 		final String S_ProcName = "deleteIndexTweakByDefSchemaIdx";
 		boolean permissionGranted = canDeleteIndexTweak(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "deleteindextweak", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteindextweak", ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getIndexTweakService().deleteByDefSchemaIdx(argKey.getOptionalDefSchemaId());
@@ -555,7 +557,7 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 		final String S_ProcName = "deleteIndexTweakByUDefIdx";
 		boolean permissionGranted = canDeleteIndexTweak(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "deleteindextweak", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteindextweak", ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getIndexTweakService().deleteByUDefIdx(argTenantId,
@@ -580,7 +582,7 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 		final String S_ProcName = "deleteIndexTweakByUDefIdx";
 		boolean permissionGranted = canDeleteIndexTweak(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "deleteindextweak", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteindextweak", ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getIndexTweakService().deleteByUDefIdx(argKey.getRequiredTenantId(),
@@ -608,14 +610,15 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 		final String S_ProcName = "readDerived";
 		boolean permissionGranted = canReadIndexTweak(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "readindextweak", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readindextweak", ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		ICFBamIndexTweak retval = schema.getJpaHooksSchema().getIndexTweakService().find(PKey);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readindextweak'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredContainerIndexDef().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readindextweak")) {
 				retval = null;
 			}
@@ -640,14 +643,15 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 		final String S_ProcName = "lockDerived";
 		boolean permissionGranted = canUpdateIndexTweak(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "updateindextweak", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "updateindextweak", ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		ICFBamIndexTweak retval = schema.getJpaHooksSchema().getIndexTweakService().lockByIdIdx(PKey);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readindextweak'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredContainerIndexDef().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readindextweak")) {
 				retval = null;
 			}
@@ -667,19 +671,19 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 		final String S_ProcName = "readAllDerived";
 		boolean permissionGranted = canReadIndexTweak(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "readindextweak", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readindextweak", ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		List<CFBamJpaIndexTweak> retlist = schema.getJpaHooksSchema().getIndexTweakService().findAll();
 		if(retlist != null) {
 			ArrayList<CFBamJpaIndexTweak> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readindextweak")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerIndexDef().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readindextweak")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -712,13 +716,14 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			permissionGranted = canReadIndexTweak(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "readindextweak", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readindextweak", ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		ICFBamIndexTweak retval = schema.getJpaHooksSchema().getIndexTweakService().find(argId);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readindextweak'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredContainerIndexDef().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readindextweak")) {
 				retval = null;
 			}
@@ -749,14 +754,15 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			permissionGranted = canReadIndexTweak(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "readindextweak", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readindextweak", ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		ICFBamIndexTweak retval = schema.getJpaHooksSchema().getIndexTweakService().findByUNameIdx(argScopeId,
 		argName);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readindextweak'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredContainerIndexDef().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readindextweak")) {
 				retval = null;
 			}
@@ -783,18 +789,18 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			permissionGranted = canReadIndexTweak(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "readindextweak", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readindextweak", ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaIndexTweak> retlist = schema.getJpaHooksSchema().getIndexTweakService().findByValTentIdx(argTenantId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaIndexTweak> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readindextweak")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerIndexDef().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readindextweak")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -826,18 +832,18 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			permissionGranted = canReadIndexTweak(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "readindextweak", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readindextweak", ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaIndexTweak> retlist = schema.getJpaHooksSchema().getIndexTweakService().findByScopeIdx(argScopeId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaIndexTweak> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readindextweak")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerIndexDef().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readindextweak")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -869,18 +875,18 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			permissionGranted = canReadIndexTweak(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "readindextweak", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readindextweak", ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaIndexTweak> retlist = schema.getJpaHooksSchema().getIndexTweakService().findByDefSchemaIdx(argDefSchemaId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaIndexTweak> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readindextweak")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerIndexDef().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readindextweak")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -925,7 +931,7 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			permissionGranted = canReadIndexTweak(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "readindextweak", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readindextweak", ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		ICFBamIndexTweak retval = schema.getJpaHooksSchema().getIndexTweakService().findByUDefIdx(argTenantId,
 		argScopeId,
@@ -933,9 +939,10 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 		argDefSchemaId,
 		argName);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readindextweak'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredContainerIndexDef().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readindextweak")) {
 				retval = null;
 			}
@@ -962,18 +969,18 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			permissionGranted = canReadIndexTweak(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "readindextweak", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readindextweak", ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaIndexTweak> retlist = schema.getJpaHooksSchema().getIndexTweakService().findByIndexIdx(argIndexId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaIndexTweak> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readindextweak")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerIndexDef().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readindextweak")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -1005,7 +1012,7 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 		final String S_ProcName = "readRec";
 		boolean permissionGranted = canReadIndexTweak(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "readindextweak", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readindextweak", ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		throw new CFLibNotImplementedYetException(getClass(), "readRec");
@@ -1030,7 +1037,7 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 		final String S_ProcName = "lockRec";
 		boolean permissionGranted = canUpdateIndexTweak(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "updateindextweak", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "updateindextweak", ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		throw new CFLibNotImplementedYetException(getClass(), "lockRec");
@@ -1048,7 +1055,7 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 		final String S_ProcName = "readAllRec";
 		boolean permissionGranted = canReadIndexTweak(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "readindextweak", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readindextweak", ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		throw new CFLibNotImplementedYetException(getClass(), "readAllRec");
@@ -1077,7 +1084,7 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			permissionGranted = canReadIndexTweak(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "readindextweak", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readindextweak", ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByIdIdx");
 	}
@@ -1107,7 +1114,7 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			permissionGranted = canReadIndexTweak(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "readindextweak", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readindextweak", ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByUNameIdx");
 	}
@@ -1133,7 +1140,7 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			permissionGranted = canReadIndexTweak(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "readindextweak", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readindextweak", ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByValTentIdx");
 	}
@@ -1159,7 +1166,7 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			permissionGranted = canReadIndexTweak(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "readindextweak", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readindextweak", ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByScopeIdx");
 	}
@@ -1185,7 +1192,7 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			permissionGranted = canReadIndexTweak(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "readindextweak", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readindextweak", ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByDefSchemaIdx");
 	}
@@ -1224,7 +1231,7 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			permissionGranted = canReadIndexTweak(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "readindextweak", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readindextweak", ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByUDefIdx");
 	}
@@ -1250,7 +1257,7 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			permissionGranted = canReadIndexTweak(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, "readindextweak", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readindextweak", ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByIndexIdx");
 	}

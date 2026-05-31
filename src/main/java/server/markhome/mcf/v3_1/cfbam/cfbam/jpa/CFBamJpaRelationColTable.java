@@ -205,7 +205,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 		final String S_ProcName = "createRelationCol";
 		boolean permissionGranted = canCreateRelationCol(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, "createrelationcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "createrelationcol", ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		if (rec == null) {
@@ -215,9 +215,10 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 			CFBamJpaRelationCol jparec = (CFBamJpaRelationCol)rec;
 			CFBamJpaRelationCol retval = schema.getJpaHooksSchema().getRelationColService().create(jparec);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readrelationcol'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredContainerRelation().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readrelationcol")) {
 				retval = null;
 			}
@@ -244,7 +245,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 		final String S_ProcName = "updateRelationCol";
 		boolean permissionGranted = canUpdateRelationCol(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, "updaterelationcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "updaterelationcol", ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		if (rec == null) {
@@ -254,9 +255,10 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 			CFBamJpaRelationCol jparec = (CFBamJpaRelationCol)rec;
 			CFBamJpaRelationCol retval = schema.getJpaHooksSchema().getRelationColService().update(jparec);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readrelationcol'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredContainerRelation().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readrelationcol")) {
 				retval = null;
 			}
@@ -282,7 +284,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 		final String S_ProcName = "deleteRelationCol";
 		boolean permissionGranted = canDeleteRelationCol(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, "deleterelationcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleterelationcol", ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		if (rec == null) {
@@ -313,7 +315,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 		final String S_ProcName = "deleteRelationColByIdIdx";
 		boolean permissionGranted = canDeleteRelationCol(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, "deleterelationcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleterelationcol", ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getRelationColService().deleteByIdIdx(argKey);
@@ -336,7 +338,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 		final String S_ProcName = "deleteRelationColByUNameIdx";
 		boolean permissionGranted = canDeleteRelationCol(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, "deleterelationcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleterelationcol", ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getRelationColService().deleteByUNameIdx(argRelationId,
@@ -358,7 +360,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 		final String S_ProcName = "deleteRelationColByUNameIdx";
 		boolean permissionGranted = canDeleteRelationCol(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, "deleterelationcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleterelationcol", ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getRelationColService().deleteByUNameIdx(argKey.getRequiredRelationId(),
@@ -379,7 +381,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 		final String S_ProcName = "deleteRelationColByRelationIdx";
 		boolean permissionGranted = canDeleteRelationCol(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, "deleterelationcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleterelationcol", ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getRelationColService().deleteByRelationIdx(argRelationId);
@@ -400,7 +402,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 		final String S_ProcName = "deleteRelationColByRelationIdx";
 		boolean permissionGranted = canDeleteRelationCol(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, "deleterelationcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleterelationcol", ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getRelationColService().deleteByRelationIdx(argKey.getRequiredRelationId());
@@ -420,7 +422,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 		final String S_ProcName = "deleteRelationColByDefSchemaIdx";
 		boolean permissionGranted = canDeleteRelationCol(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, "deleterelationcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleterelationcol", ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getRelationColService().deleteByDefSchemaIdx(argDefSchemaId);
@@ -441,7 +443,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 		final String S_ProcName = "deleteRelationColByDefSchemaIdx";
 		boolean permissionGranted = canDeleteRelationCol(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, "deleterelationcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleterelationcol", ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getRelationColService().deleteByDefSchemaIdx(argKey.getOptionalDefSchemaId());
@@ -461,7 +463,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 		final String S_ProcName = "deleteRelationColByFromColIdx";
 		boolean permissionGranted = canDeleteRelationCol(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, "deleterelationcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleterelationcol", ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getRelationColService().deleteByFromColIdx(argFromColId);
@@ -482,7 +484,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 		final String S_ProcName = "deleteRelationColByFromColIdx";
 		boolean permissionGranted = canDeleteRelationCol(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, "deleterelationcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleterelationcol", ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getRelationColService().deleteByFromColIdx(argKey.getRequiredFromColId());
@@ -502,7 +504,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 		final String S_ProcName = "deleteRelationColByToColIdx";
 		boolean permissionGranted = canDeleteRelationCol(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, "deleterelationcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleterelationcol", ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getRelationColService().deleteByToColIdx(argToColId);
@@ -523,7 +525,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 		final String S_ProcName = "deleteRelationColByToColIdx";
 		boolean permissionGranted = canDeleteRelationCol(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, "deleterelationcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleterelationcol", ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getRelationColService().deleteByToColIdx(argKey.getRequiredToColId());
@@ -543,7 +545,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 		final String S_ProcName = "deleteRelationColByPrevIdx";
 		boolean permissionGranted = canDeleteRelationCol(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, "deleterelationcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleterelationcol", ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getRelationColService().deleteByPrevIdx(argPrevId);
@@ -564,7 +566,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 		final String S_ProcName = "deleteRelationColByPrevIdx";
 		boolean permissionGranted = canDeleteRelationCol(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, "deleterelationcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleterelationcol", ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getRelationColService().deleteByPrevIdx(argKey.getOptionalPrevId());
@@ -584,7 +586,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 		final String S_ProcName = "deleteRelationColByNextIdx";
 		boolean permissionGranted = canDeleteRelationCol(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, "deleterelationcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleterelationcol", ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getRelationColService().deleteByNextIdx(argNextId);
@@ -605,7 +607,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 		final String S_ProcName = "deleteRelationColByNextIdx";
 		boolean permissionGranted = canDeleteRelationCol(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, "deleterelationcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleterelationcol", ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getRelationColService().deleteByNextIdx(argKey.getOptionalNextId());
@@ -628,7 +630,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 		final String S_ProcName = "deleteRelationColByRelPrevIdx";
 		boolean permissionGranted = canDeleteRelationCol(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, "deleterelationcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleterelationcol", ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getRelationColService().deleteByRelPrevIdx(argRelationId,
@@ -650,7 +652,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 		final String S_ProcName = "deleteRelationColByRelPrevIdx";
 		boolean permissionGranted = canDeleteRelationCol(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, "deleterelationcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleterelationcol", ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getRelationColService().deleteByRelPrevIdx(argKey.getRequiredRelationId(),
@@ -674,7 +676,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 		final String S_ProcName = "deleteRelationColByRelNextIdx";
 		boolean permissionGranted = canDeleteRelationCol(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, "deleterelationcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleterelationcol", ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getRelationColService().deleteByRelNextIdx(argRelationId,
@@ -696,7 +698,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 		final String S_ProcName = "deleteRelationColByRelNextIdx";
 		boolean permissionGranted = canDeleteRelationCol(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, "deleterelationcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleterelationcol", ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getRelationColService().deleteByRelNextIdx(argKey.getRequiredRelationId(),
@@ -721,14 +723,15 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 		final String S_ProcName = "readDerived";
 		boolean permissionGranted = canReadRelationCol(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, "readrelationcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readrelationcol", ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		ICFBamRelationCol retval = schema.getJpaHooksSchema().getRelationColService().find(PKey);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readrelationcol'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredContainerRelation().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readrelationcol")) {
 				retval = null;
 			}
@@ -753,14 +756,15 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 		final String S_ProcName = "lockDerived";
 		boolean permissionGranted = canUpdateRelationCol(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, "updaterelationcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "updaterelationcol", ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		ICFBamRelationCol retval = schema.getJpaHooksSchema().getRelationColService().lockByIdIdx(PKey);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readrelationcol'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredContainerRelation().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readrelationcol")) {
 				retval = null;
 			}
@@ -780,19 +784,19 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 		final String S_ProcName = "readAllDerived";
 		boolean permissionGranted = canReadRelationCol(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, "readrelationcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readrelationcol", ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		List<CFBamJpaRelationCol> retlist = schema.getJpaHooksSchema().getRelationColService().findAll();
 		if(retlist != null) {
 			ArrayList<CFBamJpaRelationCol> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readrelationcol")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerRelation().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readrelationcol")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -825,13 +829,14 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 			permissionGranted = canReadRelationCol(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, "readrelationcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readrelationcol", ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		ICFBamRelationCol retval = schema.getJpaHooksSchema().getRelationColService().find(argId);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readrelationcol'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredContainerRelation().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readrelationcol")) {
 				retval = null;
 			}
@@ -862,14 +867,15 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 			permissionGranted = canReadRelationCol(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, "readrelationcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readrelationcol", ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		ICFBamRelationCol retval = schema.getJpaHooksSchema().getRelationColService().findByUNameIdx(argRelationId,
 		argName);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readrelationcol'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredContainerRelation().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readrelationcol")) {
 				retval = null;
 			}
@@ -896,18 +902,18 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 			permissionGranted = canReadRelationCol(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, "readrelationcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readrelationcol", ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaRelationCol> retlist = schema.getJpaHooksSchema().getRelationColService().findByRelationIdx(argRelationId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaRelationCol> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readrelationcol")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerRelation().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readrelationcol")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -939,18 +945,18 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 			permissionGranted = canReadRelationCol(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, "readrelationcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readrelationcol", ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaRelationCol> retlist = schema.getJpaHooksSchema().getRelationColService().findByDefSchemaIdx(argDefSchemaId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaRelationCol> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readrelationcol")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerRelation().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readrelationcol")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -982,18 +988,18 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 			permissionGranted = canReadRelationCol(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, "readrelationcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readrelationcol", ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaRelationCol> retlist = schema.getJpaHooksSchema().getRelationColService().findByFromColIdx(argFromColId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaRelationCol> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readrelationcol")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerRelation().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readrelationcol")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -1025,18 +1031,18 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 			permissionGranted = canReadRelationCol(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, "readrelationcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readrelationcol", ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaRelationCol> retlist = schema.getJpaHooksSchema().getRelationColService().findByToColIdx(argToColId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaRelationCol> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readrelationcol")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerRelation().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readrelationcol")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -1068,18 +1074,18 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 			permissionGranted = canReadRelationCol(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, "readrelationcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readrelationcol", ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaRelationCol> retlist = schema.getJpaHooksSchema().getRelationColService().findByPrevIdx(argPrevId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaRelationCol> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readrelationcol")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerRelation().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readrelationcol")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -1111,18 +1117,18 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 			permissionGranted = canReadRelationCol(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, "readrelationcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readrelationcol", ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaRelationCol> retlist = schema.getJpaHooksSchema().getRelationColService().findByNextIdx(argNextId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaRelationCol> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readrelationcol")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerRelation().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readrelationcol")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -1157,19 +1163,19 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 			permissionGranted = canReadRelationCol(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, "readrelationcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readrelationcol", ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaRelationCol> retlist = schema.getJpaHooksSchema().getRelationColService().findByRelPrevIdx(argRelationId,
 		argPrevId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaRelationCol> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readrelationcol")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerRelation().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readrelationcol")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -1204,19 +1210,19 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 			permissionGranted = canReadRelationCol(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, "readrelationcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readrelationcol", ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaRelationCol> retlist = schema.getJpaHooksSchema().getRelationColService().findByRelNextIdx(argRelationId,
 		argNextId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaRelationCol> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readrelationcol")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredContainerRelation().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readrelationcol")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -1248,7 +1254,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 		final String S_ProcName = "readRec";
 		boolean permissionGranted = canReadRelationCol(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, "readrelationcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readrelationcol", ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		throw new CFLibNotImplementedYetException(getClass(), "readRec");
@@ -1273,7 +1279,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 		final String S_ProcName = "lockRec";
 		boolean permissionGranted = canUpdateRelationCol(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, "updaterelationcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "updaterelationcol", ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		throw new CFLibNotImplementedYetException(getClass(), "lockRec");
@@ -1291,7 +1297,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 		final String S_ProcName = "readAllRec";
 		boolean permissionGranted = canReadRelationCol(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, "readrelationcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readrelationcol", ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		throw new CFLibNotImplementedYetException(getClass(), "readAllRec");
@@ -1320,7 +1326,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 			permissionGranted = canReadRelationCol(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, "readrelationcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readrelationcol", ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByIdIdx");
 	}
@@ -1350,7 +1356,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 			permissionGranted = canReadRelationCol(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, "readrelationcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readrelationcol", ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByUNameIdx");
 	}
@@ -1376,7 +1382,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 			permissionGranted = canReadRelationCol(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, "readrelationcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readrelationcol", ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByRelationIdx");
 	}
@@ -1402,7 +1408,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 			permissionGranted = canReadRelationCol(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, "readrelationcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readrelationcol", ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByDefSchemaIdx");
 	}
@@ -1428,7 +1434,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 			permissionGranted = canReadRelationCol(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, "readrelationcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readrelationcol", ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByFromColIdx");
 	}
@@ -1454,7 +1460,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 			permissionGranted = canReadRelationCol(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, "readrelationcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readrelationcol", ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByToColIdx");
 	}
@@ -1480,7 +1486,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 			permissionGranted = canReadRelationCol(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, "readrelationcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readrelationcol", ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByPrevIdx");
 	}
@@ -1506,7 +1512,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 			permissionGranted = canReadRelationCol(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, "readrelationcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readrelationcol", ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByNextIdx");
 	}
@@ -1535,7 +1541,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 			permissionGranted = canReadRelationCol(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, "readrelationcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readrelationcol", ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByRelPrevIdx");
 	}
@@ -1564,7 +1570,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 			permissionGranted = canReadRelationCol(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, "readrelationcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readrelationcol", ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByRelNextIdx");
 	}
@@ -1582,7 +1588,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 		final String S_ProcName = "moveRecUp";
 		boolean permissionGranted = canUpdateRelationCol(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, "updaterelationcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "updaterelationcol", ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		throw new CFLibNotImplementedYetException(getClass(), "moveRecUp");
@@ -1601,7 +1607,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 		final String S_ProcName = "moveRecDown";
 		boolean permissionGranted = canUpdateRelationCol(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, "updaterelationcol", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "updaterelationcol", ICFBamSchema.SCHEMA_NAME, ICFBamRelationColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		throw new CFLibNotImplementedYetException(getClass(), "moveRecDown");

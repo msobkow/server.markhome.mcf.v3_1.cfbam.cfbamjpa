@@ -87,14 +87,24 @@ public class CFBamJpaTableCol extends CFBamJpaValue
 	@JoinColumn( name="DataIdDataType", referencedColumnName="Id" )
 	protected CFBamJpaValue requiredParentDataType;
 
+	@AttributeOverrides({
+		@AttributeOverride(name="bytes", column = @Column( name="TableId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
+	})
+	protected CFLibDbKeyHash256 requiredTableId;
 	@Column( name="DbName", nullable=true, length=32 )
 	protected String optionalDbName;
+	@AttributeOverrides({
+		@AttributeOverride(name="bytes", column = @Column( name="DataId", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
+	})
+	protected CFLibDbKeyHash256 optionalDataId;
 	@Column( name="xml_elt_name", nullable=true, length=192 )
 	protected String optionalXmlElementName;
 
 	public CFBamJpaTableCol() {
 		super();
+		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamTableCol.TABLEID_INIT_VALUE.toString() );
 		optionalDbName = null;
+		optionalDataId = CFLibDbKeyHash256.nullGet();
 		optionalXmlElementName = null;
 	}
 
@@ -114,6 +124,11 @@ public class CFBamJpaTableCol extends CFBamJpaValue
 		}
 		else if (argObj instanceof CFBamJpaTable) {
 			requiredContainerTable = (CFBamJpaTable)argObj;
+			if (requiredContainerTable != null) {
+				requiredTableId = requiredContainerTable.getRequiredId();
+			}
+			else {
+			}
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "setContainerTable", "argObj", argObj, "CFBamJpaTable");
@@ -145,6 +160,12 @@ public class CFBamJpaTableCol extends CFBamJpaValue
 		}
 		else if (argObj instanceof CFBamJpaValue) {
 			requiredParentDataType = (CFBamJpaValue)argObj;
+			if (requiredParentDataType != null) {
+				optionalDataId = requiredParentDataType.getRequiredId();
+			}
+			else {
+				optionalDataId = null;
+			}
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "setParentDataType", "argObj", argObj, "CFBamJpaValue");
@@ -167,13 +188,7 @@ public class CFBamJpaTableCol extends CFBamJpaValue
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredTableId() {
-		ICFBamTable result = getRequiredContainerTable();
-		if (result != null) {
-			return result.getRequiredId();
-		}
-		else {
-			return( ICFBamTable.ID_INIT_VALUE );
-		}
+		return( requiredTableId );
 	}
 
 	@Override
@@ -196,13 +211,7 @@ public class CFBamJpaTableCol extends CFBamJpaValue
 
 	@Override
 	public CFLibDbKeyHash256 getOptionalDataId() {
-		ICFBamValue result = getRequiredParentDataType();
-		if (result != null) {
-			return result.getRequiredId();
-		}
-		else {
-			return null;
-		}
+		return( optionalDataId );
 	}
 
 	@Override

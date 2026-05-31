@@ -98,18 +98,38 @@ public class CFBamJpaSchemaRef extends CFBamJpaScope
 	@JoinColumn( name="NextIdNext", referencedColumnName="Id" )
 	protected CFBamJpaSchemaRef optionalLookupNext;
 
+	@AttributeOverrides({
+		@AttributeOverride(name="bytes", column = @Column( name="SchemaId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
+	})
+	protected CFLibDbKeyHash256 requiredSchemaId;
 	@Column( name="safe_name", nullable=false, length=192 )
 	protected String requiredName;
 	@Column( name="RefModelName", nullable=false, length=1024 )
 	protected String requiredRefModelName;
 	@Column( name="IncludeRoot", nullable=false, length=1024 )
 	protected String requiredIncludeRoot;
+	@AttributeOverrides({
+		@AttributeOverride(name="bytes", column = @Column( name="RefSchId", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
+	})
+	protected CFLibDbKeyHash256 optionalRefSchemaId;
+	@AttributeOverrides({
+		@AttributeOverride(name="bytes", column = @Column( name="PrevId", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
+	})
+	protected CFLibDbKeyHash256 optionalPrevId;
+	@AttributeOverrides({
+		@AttributeOverride(name="bytes", column = @Column( name="NextId", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
+	})
+	protected CFLibDbKeyHash256 optionalNextId;
 
 	public CFBamJpaSchemaRef() {
 		super();
+		requiredSchemaId = CFLibDbKeyHash256.fromHex( ICFBamSchemaRef.SCHEMAID_INIT_VALUE.toString() );
 		requiredName = ICFBamSchemaRef.NAME_INIT_VALUE;
 		requiredRefModelName = ICFBamSchemaRef.REFMODELNAME_INIT_VALUE;
 		requiredIncludeRoot = ICFBamSchemaRef.INCLUDEROOT_INIT_VALUE;
+		optionalRefSchemaId = CFLibDbKeyHash256.nullGet();
+		optionalPrevId = CFLibDbKeyHash256.nullGet();
+		optionalNextId = CFLibDbKeyHash256.nullGet();
 	}
 
 	@Override
@@ -128,6 +148,11 @@ public class CFBamJpaSchemaRef extends CFBamJpaScope
 		}
 		else if (argObj instanceof CFBamJpaSchemaDef) {
 			requiredContainerSchema = (CFBamJpaSchemaDef)argObj;
+			if (requiredContainerSchema != null) {
+				requiredSchemaId = requiredContainerSchema.getRequiredId();
+			}
+			else {
+			}
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "setContainerSchema", "argObj", argObj, "CFBamJpaSchemaDef");
@@ -159,6 +184,12 @@ public class CFBamJpaSchemaRef extends CFBamJpaScope
 		}
 		else if (argObj instanceof CFBamJpaSchemaDef) {
 			optionalLookupRefSchema = (CFBamJpaSchemaDef)argObj;
+			if (optionalLookupRefSchema != null) {
+				optionalRefSchemaId = optionalLookupRefSchema.getRequiredId();
+			}
+			else {
+				optionalRefSchemaId = null;
+			}
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "setLookupRefSchema", "argObj", argObj, "CFBamJpaSchemaDef");
@@ -190,6 +221,12 @@ public class CFBamJpaSchemaRef extends CFBamJpaScope
 		}
 		else if (argObj instanceof CFBamJpaSchemaRef) {
 			optionalLookupPrev = (CFBamJpaSchemaRef)argObj;
+			if (optionalLookupPrev != null) {
+				optionalPrevId = optionalLookupPrev.getRequiredId();
+			}
+			else {
+				optionalPrevId = null;
+			}
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "setLookupPrev", "argObj", argObj, "CFBamJpaSchemaRef");
@@ -221,6 +258,12 @@ public class CFBamJpaSchemaRef extends CFBamJpaScope
 		}
 		else if (argObj instanceof CFBamJpaSchemaRef) {
 			optionalLookupNext = (CFBamJpaSchemaRef)argObj;
+			if (optionalLookupNext != null) {
+				optionalNextId = optionalLookupNext.getRequiredId();
+			}
+			else {
+				optionalNextId = null;
+			}
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "setLookupNext", "argObj", argObj, "CFBamJpaSchemaRef");
@@ -243,13 +286,7 @@ public class CFBamJpaSchemaRef extends CFBamJpaScope
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredSchemaId() {
-		ICFBamSchemaDef result = getRequiredContainerSchema();
-		if (result != null) {
-			return result.getRequiredId();
-		}
-		else {
-			return( ICFBamSchemaDef.ID_INIT_VALUE );
-		}
+		return( requiredSchemaId );
 	}
 
 	@Override
@@ -326,35 +363,17 @@ public class CFBamJpaSchemaRef extends CFBamJpaScope
 
 	@Override
 	public CFLibDbKeyHash256 getOptionalRefSchemaId() {
-		ICFBamSchemaDef result = getOptionalLookupRefSchema();
-		if (result != null) {
-			return result.getRequiredId();
-		}
-		else {
-			return null;
-		}
+		return( optionalRefSchemaId );
 	}
 
 	@Override
 	public CFLibDbKeyHash256 getOptionalPrevId() {
-		ICFBamSchemaRef result = getOptionalLookupPrev();
-		if (result != null) {
-			return result.getRequiredId();
-		}
-		else {
-			return null;
-		}
+		return( optionalPrevId );
 	}
 
 	@Override
 	public CFLibDbKeyHash256 getOptionalNextId() {
-		ICFBamSchemaRef result = getOptionalLookupNext();
-		if (result != null) {
-			return result.getRequiredId();
-		}
-		else {
-			return null;
-		}
+		return( optionalNextId );
 	}
 
 	@Override

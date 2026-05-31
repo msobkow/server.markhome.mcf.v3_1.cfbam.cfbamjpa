@@ -83,11 +83,16 @@ public class CFBamJpaPopSubDep2 extends CFBamJpaPopDep
 	@JoinColumn( name="contpopdep1idPopSubDep1", referencedColumnName="Id" )
 	protected CFBamJpaPopSubDep1 requiredContainerPopSubDep1;
 
+	@AttributeOverrides({
+		@AttributeOverride(name="bytes", column = @Column( name="contpopdep1id", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
+	})
+	protected CFLibDbKeyHash256 requiredPopSubDep1Id;
 	@Column( name="safe_name", nullable=false, length=192 )
 	protected String requiredName;
 
 	public CFBamJpaPopSubDep2() {
 		super();
+		requiredPopSubDep1Id = CFLibDbKeyHash256.fromHex( ICFBamPopSubDep2.POPSUBDEP1ID_INIT_VALUE.toString() );
 		requiredName = ICFBamPopSubDep2.NAME_INIT_VALUE;
 	}
 
@@ -107,6 +112,11 @@ public class CFBamJpaPopSubDep2 extends CFBamJpaPopDep
 		}
 		else if (argObj instanceof CFBamJpaPopSubDep1) {
 			requiredContainerPopSubDep1 = (CFBamJpaPopSubDep1)argObj;
+			if (requiredContainerPopSubDep1 != null) {
+				requiredPopSubDep1Id = requiredContainerPopSubDep1.getRequiredId();
+			}
+			else {
+			}
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "setContainerPopSubDep1", "argObj", argObj, "CFBamJpaPopSubDep1");
@@ -129,13 +139,7 @@ public class CFBamJpaPopSubDep2 extends CFBamJpaPopDep
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredPopSubDep1Id() {
-		ICFBamPopSubDep1 result = getRequiredContainerPopSubDep1();
-		if (result != null) {
-			return result.getRequiredId();
-		}
-		else {
-			return( ICFBamPopSubDep1.ID_INIT_VALUE );
-		}
+		return( requiredPopSubDep1Id );
 	}
 
 	@Override

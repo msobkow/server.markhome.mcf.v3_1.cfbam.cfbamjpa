@@ -120,15 +120,35 @@ public class CFBamJpaEnumTag
 
 	@Column(name="UpdatedAt", nullable=false)
 	protected LocalDateTime updatedAt = LocalDateTime.now();
+	@AttributeOverrides({
+		@AttributeOverride(name="bytes", column = @Column( name="defschid", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
+	})
+	protected CFLibDbKeyHash256 optionalDefSchemaId;
+	@AttributeOverrides({
+		@AttributeOverride(name="bytes", column = @Column( name="EnumId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
+	})
+	protected CFLibDbKeyHash256 requiredEnumId;
 	@Column( name="EnumCode", nullable=true )
 	protected Short optionalEnumCode;
 	@Column( name="safe_name", nullable=false, length=64 )
 	protected String requiredName;
+	@AttributeOverrides({
+		@AttributeOverride(name="bytes", column = @Column( name="PrevId", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
+	})
+	protected CFLibDbKeyHash256 optionalPrevId;
+	@AttributeOverrides({
+		@AttributeOverride(name="bytes", column = @Column( name="NextId", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
+	})
+	protected CFLibDbKeyHash256 optionalNextId;
 
 	public CFBamJpaEnumTag() {
 		requiredId = CFLibDbKeyHash256.fromHex( ICFBamEnumTag.ID_INIT_VALUE.toString() );
+		optionalDefSchemaId = CFLibDbKeyHash256.nullGet();
+		requiredEnumId = CFLibDbKeyHash256.fromHex( ICFBamEnumTag.ENUMID_INIT_VALUE.toString() );
 		optionalEnumCode = null;
 		requiredName = ICFBamEnumTag.NAME_INIT_VALUE;
+		optionalPrevId = CFLibDbKeyHash256.nullGet();
+		optionalNextId = CFLibDbKeyHash256.nullGet();
 	}
 
 	@Override
@@ -147,6 +167,11 @@ public class CFBamJpaEnumTag
 		}
 		else if (argObj instanceof CFBamJpaEnumDef) {
 			requiredContainerEnumDef = (CFBamJpaEnumDef)argObj;
+			if (requiredContainerEnumDef != null) {
+				requiredEnumId = requiredContainerEnumDef.getRequiredId();
+			}
+			else {
+			}
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "setContainerEnumDef", "argObj", argObj, "CFBamJpaEnumDef");
@@ -178,6 +203,12 @@ public class CFBamJpaEnumTag
 		}
 		else if (argObj instanceof CFBamJpaSchemaDef) {
 			optionalLookupDefSchema = (CFBamJpaSchemaDef)argObj;
+			if (optionalLookupDefSchema != null) {
+				optionalDefSchemaId = optionalLookupDefSchema.getRequiredId();
+			}
+			else {
+				optionalDefSchemaId = null;
+			}
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "setLookupDefSchema", "argObj", argObj, "CFBamJpaSchemaDef");
@@ -209,6 +240,12 @@ public class CFBamJpaEnumTag
 		}
 		else if (argObj instanceof CFBamJpaEnumTag) {
 			optionalLookupPrev = (CFBamJpaEnumTag)argObj;
+			if (optionalLookupPrev != null) {
+				optionalPrevId = optionalLookupPrev.getRequiredId();
+			}
+			else {
+				optionalPrevId = null;
+			}
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "setLookupPrev", "argObj", argObj, "CFBamJpaEnumTag");
@@ -240,6 +277,12 @@ public class CFBamJpaEnumTag
 		}
 		else if (argObj instanceof CFBamJpaEnumTag) {
 			optionalLookupNext = (CFBamJpaEnumTag)argObj;
+			if (optionalLookupNext != null) {
+				optionalNextId = optionalLookupNext.getRequiredId();
+			}
+			else {
+				optionalNextId = null;
+			}
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "setLookupNext", "argObj", argObj, "CFBamJpaEnumTag");
@@ -351,24 +394,12 @@ public class CFBamJpaEnumTag
 
 	@Override
 	public CFLibDbKeyHash256 getOptionalDefSchemaId() {
-		ICFBamSchemaDef result = getOptionalLookupDefSchema();
-		if (result != null) {
-			return result.getRequiredId();
-		}
-		else {
-			return null;
-		}
+		return( optionalDefSchemaId );
 	}
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredEnumId() {
-		ICFBamEnumDef result = getRequiredContainerEnumDef();
-		if (result != null) {
-			return result.getRequiredId();
-		}
-		else {
-			return( ICFBamEnumDef.ID_INIT_VALUE );
-		}
+		return( requiredEnumId );
 	}
 
 	@Override
@@ -423,24 +454,12 @@ public class CFBamJpaEnumTag
 
 	@Override
 	public CFLibDbKeyHash256 getOptionalPrevId() {
-		ICFBamEnumTag result = getOptionalLookupPrev();
-		if (result != null) {
-			return result.getRequiredId();
-		}
-		else {
-			return null;
-		}
+		return( optionalPrevId );
 	}
 
 	@Override
 	public CFLibDbKeyHash256 getOptionalNextId() {
-		ICFBamEnumTag result = getOptionalLookupNext();
-		if (result != null) {
-			return result.getRequiredId();
-		}
-		else {
-			return null;
-		}
+		return( optionalNextId );
 	}
 
 	@Override

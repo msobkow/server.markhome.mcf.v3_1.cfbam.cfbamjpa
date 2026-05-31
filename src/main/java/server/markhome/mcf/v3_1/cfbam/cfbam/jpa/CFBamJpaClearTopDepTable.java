@@ -205,7 +205,7 @@ public class CFBamJpaClearTopDepTable implements ICFBamClearTopDepTable
 		final String S_ProcName = "createClearTopDep";
 		boolean permissionGranted = canCreateClearTopDep(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, "createcleartopdep", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "createcleartopdep", ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		if (rec == null) {
@@ -215,9 +215,10 @@ public class CFBamJpaClearTopDepTable implements ICFBamClearTopDepTable
 			CFBamJpaClearTopDep jparec = (CFBamJpaClearTopDep)rec;
 			CFBamJpaClearTopDep retval = schema.getJpaHooksSchema().getClearTopDepService().create(jparec);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readcleartopdep'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readcleartopdep")) {
 				retval = null;
 			}
@@ -244,7 +245,7 @@ public class CFBamJpaClearTopDepTable implements ICFBamClearTopDepTable
 		final String S_ProcName = "updateClearTopDep";
 		boolean permissionGranted = canUpdateClearTopDep(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, "updatecleartopdep", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "updatecleartopdep", ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		if (rec == null) {
@@ -254,9 +255,10 @@ public class CFBamJpaClearTopDepTable implements ICFBamClearTopDepTable
 			CFBamJpaClearTopDep jparec = (CFBamJpaClearTopDep)rec;
 			CFBamJpaClearTopDep retval = schema.getJpaHooksSchema().getClearTopDepService().update(jparec);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readcleartopdep'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readcleartopdep")) {
 				retval = null;
 			}
@@ -282,7 +284,7 @@ public class CFBamJpaClearTopDepTable implements ICFBamClearTopDepTable
 		final String S_ProcName = "deleteClearTopDep";
 		boolean permissionGranted = canDeleteClearTopDep(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, "deletecleartopdep", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletecleartopdep", ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		if (rec == null) {
@@ -313,7 +315,7 @@ public class CFBamJpaClearTopDepTable implements ICFBamClearTopDepTable
 		final String S_ProcName = "deleteClearTopDepByClrTopDepTblIdx";
 		boolean permissionGranted = canDeleteClearTopDep(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, "deletecleartopdep", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletecleartopdep", ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getClearTopDepService().deleteByClrTopDepTblIdx(argTableId);
@@ -334,7 +336,7 @@ public class CFBamJpaClearTopDepTable implements ICFBamClearTopDepTable
 		final String S_ProcName = "deleteClearTopDepByClrTopDepTblIdx";
 		boolean permissionGranted = canDeleteClearTopDep(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, "deletecleartopdep", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletecleartopdep", ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getClearTopDepService().deleteByClrTopDepTblIdx(argKey.getRequiredTableId());
@@ -357,7 +359,7 @@ public class CFBamJpaClearTopDepTable implements ICFBamClearTopDepTable
 		final String S_ProcName = "deleteClearTopDepByUNameIdx";
 		boolean permissionGranted = canDeleteClearTopDep(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, "deletecleartopdep", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletecleartopdep", ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getClearTopDepService().deleteByUNameIdx(argTableId,
@@ -379,7 +381,7 @@ public class CFBamJpaClearTopDepTable implements ICFBamClearTopDepTable
 		final String S_ProcName = "deleteClearTopDepByUNameIdx";
 		boolean permissionGranted = canDeleteClearTopDep(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, "deletecleartopdep", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletecleartopdep", ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getClearTopDepService().deleteByUNameIdx(argKey.getRequiredTableId(),
@@ -400,7 +402,7 @@ public class CFBamJpaClearTopDepTable implements ICFBamClearTopDepTable
 		final String S_ProcName = "deleteClearTopDepByPrevIdx";
 		boolean permissionGranted = canDeleteClearTopDep(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, "deletecleartopdep", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletecleartopdep", ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getClearTopDepService().deleteByPrevIdx(argPrevId);
@@ -421,7 +423,7 @@ public class CFBamJpaClearTopDepTable implements ICFBamClearTopDepTable
 		final String S_ProcName = "deleteClearTopDepByPrevIdx";
 		boolean permissionGranted = canDeleteClearTopDep(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, "deletecleartopdep", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletecleartopdep", ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getClearTopDepService().deleteByPrevIdx(argKey.getOptionalPrevId());
@@ -441,7 +443,7 @@ public class CFBamJpaClearTopDepTable implements ICFBamClearTopDepTable
 		final String S_ProcName = "deleteClearTopDepByNextIdx";
 		boolean permissionGranted = canDeleteClearTopDep(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, "deletecleartopdep", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletecleartopdep", ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getClearTopDepService().deleteByNextIdx(argNextId);
@@ -462,7 +464,7 @@ public class CFBamJpaClearTopDepTable implements ICFBamClearTopDepTable
 		final String S_ProcName = "deleteClearTopDepByNextIdx";
 		boolean permissionGranted = canDeleteClearTopDep(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, "deletecleartopdep", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletecleartopdep", ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getClearTopDepService().deleteByNextIdx(argKey.getOptionalNextId());
@@ -482,7 +484,7 @@ public class CFBamJpaClearTopDepTable implements ICFBamClearTopDepTable
 		final String S_ProcName = "deleteClearTopDepByClearDepIdx";
 		boolean permissionGranted = canDeleteClearTopDep(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, "deletecleartopdep", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletecleartopdep", ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getClearTopDepService().deleteByClearDepIdx(argRelationId);
@@ -503,7 +505,7 @@ public class CFBamJpaClearTopDepTable implements ICFBamClearTopDepTable
 		final String S_ProcName = "deleteClearTopDepByClearDepIdx";
 		boolean permissionGranted = canDeleteClearTopDep(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, "deletecleartopdep", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletecleartopdep", ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getClearTopDepService().deleteByClearDepIdx(argKey.getRequiredRelationId());
@@ -523,7 +525,7 @@ public class CFBamJpaClearTopDepTable implements ICFBamClearTopDepTable
 		final String S_ProcName = "deleteClearTopDepByDefSchemaIdx";
 		boolean permissionGranted = canDeleteClearTopDep(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, "deletecleartopdep", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletecleartopdep", ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getClearTopDepService().deleteByDefSchemaIdx(argDefSchemaId);
@@ -544,7 +546,7 @@ public class CFBamJpaClearTopDepTable implements ICFBamClearTopDepTable
 		final String S_ProcName = "deleteClearTopDepByDefSchemaIdx";
 		boolean permissionGranted = canDeleteClearTopDep(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, "deletecleartopdep", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletecleartopdep", ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getClearTopDepService().deleteByDefSchemaIdx(argKey.getOptionalDefSchemaId());
@@ -564,7 +566,7 @@ public class CFBamJpaClearTopDepTable implements ICFBamClearTopDepTable
 		final String S_ProcName = "deleteClearTopDepByIdIdx";
 		boolean permissionGranted = canDeleteClearTopDep(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, "deletecleartopdep", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletecleartopdep", ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getClearTopDepService().deleteByIdIdx(argKey);
@@ -584,7 +586,7 @@ public class CFBamJpaClearTopDepTable implements ICFBamClearTopDepTable
 		final String S_ProcName = "deleteClearTopDepByTenantIdx";
 		boolean permissionGranted = canDeleteClearTopDep(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, "deletecleartopdep", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletecleartopdep", ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getClearTopDepService().deleteByTenantIdx(argTenantId);
@@ -605,7 +607,7 @@ public class CFBamJpaClearTopDepTable implements ICFBamClearTopDepTable
 		final String S_ProcName = "deleteClearTopDepByTenantIdx";
 		boolean permissionGranted = canDeleteClearTopDep(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, "deletecleartopdep", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletecleartopdep", ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		schema.getJpaHooksSchema().getClearTopDepService().deleteByTenantIdx(argKey.getRequiredTenantId());
@@ -629,14 +631,15 @@ public class CFBamJpaClearTopDepTable implements ICFBamClearTopDepTable
 		final String S_ProcName = "readDerived";
 		boolean permissionGranted = canReadClearTopDep(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, "readcleartopdep", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readcleartopdep", ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		ICFBamClearTopDep retval = schema.getJpaHooksSchema().getClearTopDepService().find(PKey);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readcleartopdep'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readcleartopdep")) {
 				retval = null;
 			}
@@ -661,14 +664,15 @@ public class CFBamJpaClearTopDepTable implements ICFBamClearTopDepTable
 		final String S_ProcName = "lockDerived";
 		boolean permissionGranted = canUpdateClearTopDep(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, "updatecleartopdep", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "updatecleartopdep", ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		ICFBamClearTopDep retval = schema.getJpaHooksSchema().getClearTopDepService().lockByIdIdx(PKey);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readcleartopdep'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readcleartopdep")) {
 				retval = null;
 			}
@@ -688,19 +692,19 @@ public class CFBamJpaClearTopDepTable implements ICFBamClearTopDepTable
 		final String S_ProcName = "readAllDerived";
 		boolean permissionGranted = canReadClearTopDep(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, "readcleartopdep", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readcleartopdep", ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		List<CFBamJpaClearTopDep> retlist = schema.getJpaHooksSchema().getClearTopDepService().findAll();
 		if(retlist != null) {
 			ArrayList<CFBamJpaClearTopDep> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readcleartopdep")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readcleartopdep")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -733,13 +737,14 @@ public class CFBamJpaClearTopDepTable implements ICFBamClearTopDepTable
 			permissionGranted = canReadClearTopDep(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, "readcleartopdep", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readcleartopdep", ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		ICFBamClearTopDep retval = schema.getJpaHooksSchema().getClearTopDepService().find(argId);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readcleartopdep'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readcleartopdep")) {
 				retval = null;
 			}
@@ -766,18 +771,18 @@ public class CFBamJpaClearTopDepTable implements ICFBamClearTopDepTable
 			permissionGranted = canReadClearTopDep(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, "readcleartopdep", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readcleartopdep", ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaClearTopDep> retlist = schema.getJpaHooksSchema().getClearTopDepService().findByTenantIdx(argTenantId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaClearTopDep> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readcleartopdep")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readcleartopdep")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -809,18 +814,18 @@ public class CFBamJpaClearTopDepTable implements ICFBamClearTopDepTable
 			permissionGranted = canReadClearTopDep(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, "readcleartopdep", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readcleartopdep", ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaClearTopDep> retlist = schema.getJpaHooksSchema().getClearTopDepService().findByClearDepIdx(argRelationId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaClearTopDep> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readcleartopdep")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readcleartopdep")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -852,18 +857,18 @@ public class CFBamJpaClearTopDepTable implements ICFBamClearTopDepTable
 			permissionGranted = canReadClearTopDep(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, "readcleartopdep", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readcleartopdep", ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaClearTopDep> retlist = schema.getJpaHooksSchema().getClearTopDepService().findByDefSchemaIdx(argDefSchemaId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaClearTopDep> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readcleartopdep")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readcleartopdep")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -895,18 +900,18 @@ public class CFBamJpaClearTopDepTable implements ICFBamClearTopDepTable
 			permissionGranted = canReadClearTopDep(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, "readcleartopdep", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readcleartopdep", ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaClearTopDep> retlist = schema.getJpaHooksSchema().getClearTopDepService().findByClrTopDepTblIdx(argTableId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaClearTopDep> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readcleartopdep")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readcleartopdep")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -942,14 +947,15 @@ public class CFBamJpaClearTopDepTable implements ICFBamClearTopDepTable
 			permissionGranted = canReadClearTopDep(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, "readcleartopdep", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readcleartopdep", ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		ICFBamClearTopDep retval = schema.getJpaHooksSchema().getClearTopDepService().findByUNameIdx(argTableId,
 		argName);
 		if(retval != null) {
-			// Retrieve the TenantId from retval and check ICFSec.backingSchema().isMemberOfTenantGroup(auth,ClusterId,TenantId,'readcleartopdep'), clear retval to null if not a member
-			CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-			CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
+				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
 			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readcleartopdep")) {
 				retval = null;
 			}
@@ -976,18 +982,18 @@ public class CFBamJpaClearTopDepTable implements ICFBamClearTopDepTable
 			permissionGranted = canReadClearTopDep(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, "readcleartopdep", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readcleartopdep", ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaClearTopDep> retlist = schema.getJpaHooksSchema().getClearTopDepService().findByPrevIdx(argPrevId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaClearTopDep> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readcleartopdep")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readcleartopdep")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -1019,18 +1025,18 @@ public class CFBamJpaClearTopDepTable implements ICFBamClearTopDepTable
 			permissionGranted = canReadClearTopDep(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, "readcleartopdep", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readcleartopdep", ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaClearTopDep> retlist = schema.getJpaHooksSchema().getClearTopDepService().findByNextIdx(argNextId);
 		if(retlist != null) {
 			ArrayList<CFBamJpaClearTopDep> finallist = new ArrayList<>();
 			for (var retval: retlist) {
-				if(retval != null) {
-					CFLibDbKeyHash256 effClusterId = CFLibDbKeyHash256.nullGet();
-					CFLibDbKeyHash256 effTenantId = CFLibDbKeyHash256.nullGet();
-					if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readcleartopdep")) {
-						finallist.add(retval);
-					}
+				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readcleartopdep")) {
+					finallist.add(retval);
 				}
 			}
 			retlist = finallist;
@@ -1062,7 +1068,7 @@ public class CFBamJpaClearTopDepTable implements ICFBamClearTopDepTable
 		final String S_ProcName = "readRec";
 		boolean permissionGranted = canReadClearTopDep(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, "readcleartopdep", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readcleartopdep", ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		throw new CFLibNotImplementedYetException(getClass(), "readRec");
@@ -1087,7 +1093,7 @@ public class CFBamJpaClearTopDepTable implements ICFBamClearTopDepTable
 		final String S_ProcName = "lockRec";
 		boolean permissionGranted = canUpdateClearTopDep(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, "updatecleartopdep", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "updatecleartopdep", ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		throw new CFLibNotImplementedYetException(getClass(), "lockRec");
@@ -1105,7 +1111,7 @@ public class CFBamJpaClearTopDepTable implements ICFBamClearTopDepTable
 		final String S_ProcName = "readAllRec";
 		boolean permissionGranted = canReadClearTopDep(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, "readcleartopdep", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readcleartopdep", ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		throw new CFLibNotImplementedYetException(getClass(), "readAllRec");
@@ -1134,7 +1140,7 @@ public class CFBamJpaClearTopDepTable implements ICFBamClearTopDepTable
 			permissionGranted = canReadClearTopDep(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, "readcleartopdep", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readcleartopdep", ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByIdIdx");
 	}
@@ -1160,7 +1166,7 @@ public class CFBamJpaClearTopDepTable implements ICFBamClearTopDepTable
 			permissionGranted = canReadClearTopDep(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, "readcleartopdep", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readcleartopdep", ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByTenantIdx");
 	}
@@ -1186,7 +1192,7 @@ public class CFBamJpaClearTopDepTable implements ICFBamClearTopDepTable
 			permissionGranted = canReadClearTopDep(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, "readcleartopdep", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readcleartopdep", ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByClearDepIdx");
 	}
@@ -1212,7 +1218,7 @@ public class CFBamJpaClearTopDepTable implements ICFBamClearTopDepTable
 			permissionGranted = canReadClearTopDep(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, "readcleartopdep", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readcleartopdep", ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByDefSchemaIdx");
 	}
@@ -1238,7 +1244,7 @@ public class CFBamJpaClearTopDepTable implements ICFBamClearTopDepTable
 			permissionGranted = canReadClearTopDep(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, "readcleartopdep", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readcleartopdep", ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByClrTopDepTblIdx");
 	}
@@ -1268,7 +1274,7 @@ public class CFBamJpaClearTopDepTable implements ICFBamClearTopDepTable
 			permissionGranted = canReadClearTopDep(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, "readcleartopdep", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readcleartopdep", ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByUNameIdx");
 	}
@@ -1294,7 +1300,7 @@ public class CFBamJpaClearTopDepTable implements ICFBamClearTopDepTable
 			permissionGranted = canReadClearTopDep(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, "readcleartopdep", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readcleartopdep", ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByPrevIdx");
 	}
@@ -1320,7 +1326,7 @@ public class CFBamJpaClearTopDepTable implements ICFBamClearTopDepTable
 			permissionGranted = canReadClearTopDep(S_ProcName, Authorization);
 		}
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, "readcleartopdep", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readcleartopdep", ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByNextIdx");
 	}
@@ -1338,7 +1344,7 @@ public class CFBamJpaClearTopDepTable implements ICFBamClearTopDepTable
 		final String S_ProcName = "moveRecUp";
 		boolean permissionGranted = canUpdateClearTopDep(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, "updatecleartopdep", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "updatecleartopdep", ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		throw new CFLibNotImplementedYetException(getClass(), "moveRecUp");
@@ -1357,7 +1363,7 @@ public class CFBamJpaClearTopDepTable implements ICFBamClearTopDepTable
 		final String S_ProcName = "moveRecDown";
 		boolean permissionGranted = canUpdateClearTopDep(S_ProcName, Authorization);
 		if (!permissionGranted) {
-			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, "updatecleartopdep", Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "updatecleartopdep", ICFBamSchema.SCHEMA_NAME, ICFBamClearTopDepTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 
 		throw new CFLibNotImplementedYetException(getClass(), "moveRecDown");

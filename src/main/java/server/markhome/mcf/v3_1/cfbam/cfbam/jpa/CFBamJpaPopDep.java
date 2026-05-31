@@ -87,9 +87,19 @@ public class CFBamJpaPopDep extends CFBamJpaScope
 	@JoinColumn( name="defschidDefSchema", referencedColumnName="Id" )
 	protected CFBamJpaSchemaDef optionalLookupDefSchema;
 
+	@AttributeOverrides({
+		@AttributeOverride(name="bytes", column = @Column( name="defschid", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
+	})
+	protected CFLibDbKeyHash256 optionalDefSchemaId;
+	@AttributeOverrides({
+		@AttributeOverride(name="bytes", column = @Column( name="RelationId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
+	})
+	protected CFLibDbKeyHash256 requiredRelationId;
 
 	public CFBamJpaPopDep() {
 		super();
+		optionalDefSchemaId = CFLibDbKeyHash256.nullGet();
+		requiredRelationId = CFLibDbKeyHash256.fromHex( ICFBamPopDep.RELATIONID_INIT_VALUE.toString() );
 	}
 
 	@Override
@@ -108,6 +118,11 @@ public class CFBamJpaPopDep extends CFBamJpaScope
 		}
 		else if (argObj instanceof CFBamJpaRelation) {
 			requiredLookupRelation = (CFBamJpaRelation)argObj;
+			if (requiredLookupRelation != null) {
+				requiredRelationId = requiredLookupRelation.getRequiredId();
+			}
+			else {
+			}
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "setLookupRelation", "argObj", argObj, "CFBamJpaRelation");
@@ -139,6 +154,12 @@ public class CFBamJpaPopDep extends CFBamJpaScope
 		}
 		else if (argObj instanceof CFBamJpaSchemaDef) {
 			optionalLookupDefSchema = (CFBamJpaSchemaDef)argObj;
+			if (optionalLookupDefSchema != null) {
+				optionalDefSchemaId = optionalLookupDefSchema.getRequiredId();
+			}
+			else {
+				optionalDefSchemaId = null;
+			}
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "setLookupDefSchema", "argObj", argObj, "CFBamJpaSchemaDef");
@@ -161,24 +182,12 @@ public class CFBamJpaPopDep extends CFBamJpaScope
 
 	@Override
 	public CFLibDbKeyHash256 getOptionalDefSchemaId() {
-		ICFBamSchemaDef result = getOptionalLookupDefSchema();
-		if (result != null) {
-			return result.getRequiredId();
-		}
-		else {
-			return null;
-		}
+		return( optionalDefSchemaId );
 	}
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredRelationId() {
-		ICFBamRelation result = getRequiredLookupRelation();
-		if (result != null) {
-			return result.getRequiredId();
-		}
-		else {
-			return( ICFBamRelation.ID_INIT_VALUE );
-		}
+		return( requiredRelationId );
 	}
 
 	@Override
