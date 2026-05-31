@@ -95,6 +95,18 @@ public class CFBamJpaParamService {
 		}
 		CFLibDbKeyHash256 originalRequiredId = data.getRequiredId();
 		boolean generatedRequiredId = false;
+			if (data.getRequiredContainerServerMeth() == null) {
+				throw new CFLibNullArgumentException(getClass(),
+					S_ProcName,
+					0,
+					"data.getRequiredContainerServerMeth()");
+			}
+			if (data.getRequiredLookupType() == null) {
+				throw new CFLibNullArgumentException(getClass(),
+					S_ProcName,
+					0,
+					"data.getRequiredLookupType()");
+			}
 		if(data.getRequiredServerMethodId() == null || data.getRequiredServerMethodId().isNull()) {
 			throw new CFLibNullArgumentException(getClass(),
 				S_ProcName,
@@ -149,6 +161,18 @@ public class CFBamJpaParamService {
 				0,
 				"data.getPKey()");
 		}
+			if (data.getRequiredContainerServerMeth() == null) {
+				throw new CFLibNullArgumentException(getClass(),
+					S_ProcName,
+					0,
+					"data.getRequiredContainerServerMeth()");
+			}
+			if (data.getRequiredLookupType() == null) {
+				throw new CFLibNullArgumentException(getClass(),
+					S_ProcName,
+					0,
+					"data.getRequiredLookupType()");
+			}
 		if(data.getRequiredServerMethodId() == null || data.getRequiredServerMethodId().isNull()) {
 			throw new CFLibNullArgumentException(getClass(),
 				S_ProcName,

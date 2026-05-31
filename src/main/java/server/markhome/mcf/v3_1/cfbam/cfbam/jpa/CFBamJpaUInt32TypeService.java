@@ -95,6 +95,12 @@ public class CFBamJpaUInt32TypeService {
 		}
 		CFLibDbKeyHash256 originalRequiredId = data.getRequiredId();
 		boolean generatedRequiredId = false;
+			if (data.getRequiredContainerScope() == null) {
+				throw new CFLibNullArgumentException(getClass(),
+					S_ProcName,
+					0,
+					"data.getRequiredContainerScope()");
+			}
 		if(data.getRequiredScopeId() == null || data.getRequiredScopeId().isNull()) {
 			throw new CFLibNullArgumentException(getClass(),
 				S_ProcName,
@@ -131,6 +137,12 @@ public class CFBamJpaUInt32TypeService {
 				data.getOptionalMaxValue(),
 				ICFBamUInt32Def.MAXVALUE_MIN_VALUE );
 		}
+			if (data.getRequiredContainerSchemaDef() == null) {
+				throw new CFLibNullArgumentException(getClass(),
+					S_ProcName,
+					0,
+					"data.getRequiredContainerSchemaDef()");
+			}
 		if(data.getRequiredSchemaDefId() == null || data.getRequiredSchemaDefId().isNull()) {
 			throw new CFLibNullArgumentException(getClass(),
 				S_ProcName,
@@ -179,6 +191,12 @@ public class CFBamJpaUInt32TypeService {
 				0,
 				"data.getPKey()");
 		}
+			if (data.getRequiredContainerScope() == null) {
+				throw new CFLibNullArgumentException(getClass(),
+					S_ProcName,
+					0,
+					"data.getRequiredContainerScope()");
+			}
 		if(data.getRequiredScopeId() == null || data.getRequiredScopeId().isNull()) {
 			throw new CFLibNullArgumentException(getClass(),
 				S_ProcName,
@@ -215,6 +233,12 @@ public class CFBamJpaUInt32TypeService {
 				data.getOptionalMaxValue(),
 				ICFBamUInt32Def.MAXVALUE_MIN_VALUE );
 		}
+			if (data.getRequiredContainerSchemaDef() == null) {
+				throw new CFLibNullArgumentException(getClass(),
+					S_ProcName,
+					0,
+					"data.getRequiredContainerSchemaDef()");
+			}
 		if(data.getRequiredSchemaDefId() == null || data.getRequiredSchemaDefId().isNull()) {
 			throw new CFLibNullArgumentException(getClass(),
 				S_ProcName,

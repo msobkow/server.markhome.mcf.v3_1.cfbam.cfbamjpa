@@ -95,6 +95,18 @@ public class CFBamJpaIndexColService {
 		}
 		CFLibDbKeyHash256 originalRequiredId = data.getRequiredId();
 		boolean generatedRequiredId = false;
+			if (data.getRequiredContainerIndex() == null) {
+				throw new CFLibNullArgumentException(getClass(),
+					S_ProcName,
+					0,
+					"data.getRequiredContainerIndex()");
+			}
+			if (data.getRequiredLookupColumn() == null) {
+				throw new CFLibNullArgumentException(getClass(),
+					S_ProcName,
+					0,
+					"data.getRequiredLookupColumn()");
+			}
 		if(data.getRequiredIndexId() == null || data.getRequiredIndexId().isNull()) {
 			throw new CFLibNullArgumentException(getClass(),
 				S_ProcName,
@@ -155,6 +167,18 @@ public class CFBamJpaIndexColService {
 				0,
 				"data.getPKey()");
 		}
+			if (data.getRequiredContainerIndex() == null) {
+				throw new CFLibNullArgumentException(getClass(),
+					S_ProcName,
+					0,
+					"data.getRequiredContainerIndex()");
+			}
+			if (data.getRequiredLookupColumn() == null) {
+				throw new CFLibNullArgumentException(getClass(),
+					S_ProcName,
+					0,
+					"data.getRequiredLookupColumn()");
+			}
 		if(data.getRequiredIndexId() == null || data.getRequiredIndexId().isNull()) {
 			throw new CFLibNullArgumentException(getClass(),
 				S_ProcName,

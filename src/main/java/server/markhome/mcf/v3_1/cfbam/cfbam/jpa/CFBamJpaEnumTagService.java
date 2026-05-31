@@ -95,6 +95,12 @@ public class CFBamJpaEnumTagService {
 		}
 		CFLibDbKeyHash256 originalRequiredId = data.getRequiredId();
 		boolean generatedRequiredId = false;
+			if (data.getRequiredContainerEnumDef() == null) {
+				throw new CFLibNullArgumentException(getClass(),
+					S_ProcName,
+					0,
+					"data.getRequiredContainerEnumDef()");
+			}
 		if(data.getRequiredEnumId() == null || data.getRequiredEnumId().isNull()) {
 			throw new CFLibNullArgumentException(getClass(),
 				S_ProcName,
@@ -165,6 +171,12 @@ public class CFBamJpaEnumTagService {
 				0,
 				"data.getPKey()");
 		}
+			if (data.getRequiredContainerEnumDef() == null) {
+				throw new CFLibNullArgumentException(getClass(),
+					S_ProcName,
+					0,
+					"data.getRequiredContainerEnumDef()");
+			}
 		if(data.getRequiredEnumId() == null || data.getRequiredEnumId().isNull()) {
 			throw new CFLibNullArgumentException(getClass(),
 				S_ProcName,

@@ -95,6 +95,12 @@ public class CFBamJpaNumberColService {
 		}
 		CFLibDbKeyHash256 originalRequiredId = data.getRequiredId();
 		boolean generatedRequiredId = false;
+			if (data.getRequiredContainerScope() == null) {
+				throw new CFLibNullArgumentException(getClass(),
+					S_ProcName,
+					0,
+					"data.getRequiredContainerScope()");
+			}
 		if(data.getRequiredScopeId() == null || data.getRequiredScopeId().isNull()) {
 			throw new CFLibNullArgumentException(getClass(),
 				S_ProcName,
@@ -139,6 +145,12 @@ public class CFBamJpaNumberColService {
 				data.getRequiredPrecis(),
 				ICFBamNumberDef.PRECIS_MAX_VALUE );
 		}
+			if (data.getRequiredContainerTable() == null) {
+				throw new CFLibNullArgumentException(getClass(),
+					S_ProcName,
+					0,
+					"data.getRequiredContainerTable()");
+			}
 		if(data.getRequiredTableId() == null || data.getRequiredTableId().isNull()) {
 			throw new CFLibNullArgumentException(getClass(),
 				S_ProcName,
@@ -187,6 +199,12 @@ public class CFBamJpaNumberColService {
 				0,
 				"data.getPKey()");
 		}
+			if (data.getRequiredContainerScope() == null) {
+				throw new CFLibNullArgumentException(getClass(),
+					S_ProcName,
+					0,
+					"data.getRequiredContainerScope()");
+			}
 		if(data.getRequiredScopeId() == null || data.getRequiredScopeId().isNull()) {
 			throw new CFLibNullArgumentException(getClass(),
 				S_ProcName,
@@ -231,6 +249,12 @@ public class CFBamJpaNumberColService {
 				data.getRequiredPrecis(),
 				ICFBamNumberDef.PRECIS_MAX_VALUE );
 		}
+			if (data.getRequiredContainerTable() == null) {
+				throw new CFLibNullArgumentException(getClass(),
+					S_ProcName,
+					0,
+					"data.getRequiredContainerTable()");
+			}
 		if(data.getRequiredTableId() == null || data.getRequiredTableId().isNull()) {
 			throw new CFLibNullArgumentException(getClass(),
 				S_ProcName,

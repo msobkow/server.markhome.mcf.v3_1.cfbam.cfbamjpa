@@ -95,12 +95,30 @@ public class CFBamJpaSchemaDefService {
 		}
 		CFLibDbKeyHash256 originalRequiredId = data.getRequiredId();
 		boolean generatedRequiredId = false;
+			if (data.getRequiredOwnerTenant() == null) {
+				throw new CFLibNullArgumentException(getClass(),
+					S_ProcName,
+					0,
+					"data.getRequiredOwnerTenant()");
+			}
 		if(data.getRequiredTenantId() == null || data.getRequiredTenantId().isNull()) {
 			throw new CFLibNullArgumentException(getClass(),
 				S_ProcName,
 				0,
 				"data.requiredTenantId");
 		}
+			if (data.getRequiredContainerMinorVersion() == null) {
+				throw new CFLibNullArgumentException(getClass(),
+					S_ProcName,
+					0,
+					"data.getRequiredContainerMinorVersion()");
+			}
+			if (data.getRequiredOwnerCTenant() == null) {
+				throw new CFLibNullArgumentException(getClass(),
+					S_ProcName,
+					0,
+					"data.getRequiredOwnerCTenant()");
+			}
 		if(data.getRequiredCTenantId() == null || data.getRequiredCTenantId().isNull()) {
 			throw new CFLibNullArgumentException(getClass(),
 				S_ProcName,
@@ -191,12 +209,30 @@ public class CFBamJpaSchemaDefService {
 				0,
 				"data.getPKey()");
 		}
+			if (data.getRequiredOwnerTenant() == null) {
+				throw new CFLibNullArgumentException(getClass(),
+					S_ProcName,
+					0,
+					"data.getRequiredOwnerTenant()");
+			}
 		if(data.getRequiredTenantId() == null || data.getRequiredTenantId().isNull()) {
 			throw new CFLibNullArgumentException(getClass(),
 				S_ProcName,
 				0,
 				"data.requiredTenantId");
 		}
+			if (data.getRequiredContainerMinorVersion() == null) {
+				throw new CFLibNullArgumentException(getClass(),
+					S_ProcName,
+					0,
+					"data.getRequiredContainerMinorVersion()");
+			}
+			if (data.getRequiredOwnerCTenant() == null) {
+				throw new CFLibNullArgumentException(getClass(),
+					S_ProcName,
+					0,
+					"data.getRequiredOwnerCTenant()");
+			}
 		if(data.getRequiredCTenantId() == null || data.getRequiredCTenantId().isNull()) {
 			throw new CFLibNullArgumentException(getClass(),
 				S_ProcName,
