@@ -95,24 +95,39 @@ public class CFBamJpaRelationColService {
 		}
 		CFLibDbKeyHash256 originalRequiredId = data.getRequiredId();
 		boolean generatedRequiredId = false;
-			if (data.getRequiredContainerRelation() == null) {
-				throw new CFLibNullArgumentException(getClass(),
-					S_ProcName,
-					0,
-					"data.getRequiredContainerRelation()");
-			}
-			if (data.getRequiredLookupFromCol() == null) {
-				throw new CFLibNullArgumentException(getClass(),
-					S_ProcName,
-					0,
-					"data.getRequiredLookupFromCol()");
-			}
-			if (data.getRequiredLookupToCol() == null) {
-				throw new CFLibNullArgumentException(getClass(),
-					S_ProcName,
-					0,
-					"data.getRequiredLookupToCol()");
-			}
+		if (data.getRequiredContainerRelation() == null) {
+			throw new CFLibUnresolvedRelationException(getClass(),
+				S_ProcName,
+				"Container",
+				"Container",
+				"data.requiredContainerRelation",
+				"data.requiredContainerRelation",
+				"Relation",
+				"Relation",
+				null);
+		}
+		if (data.getRequiredLookupFromCol() == null) {
+			throw new CFLibUnresolvedRelationException(getClass(),
+				S_ProcName,
+				"Lookup",
+				"Lookup",
+				"data.requiredLookupFromCol",
+				"data.requiredLookupFromCol",
+				"IndexCol",
+				"IndexCol",
+				null);
+		}
+		if (data.getRequiredLookupToCol() == null) {
+			throw new CFLibUnresolvedRelationException(getClass(),
+				S_ProcName,
+				"Lookup",
+				"Lookup",
+				"data.requiredLookupToCol",
+				"data.requiredLookupToCol",
+				"IndexCol",
+				"IndexCol",
+				null);
+		}
 		if(data.getRequiredRelationId() == null || data.getRequiredRelationId().isNull()) {
 			throw new CFLibNullArgumentException(getClass(),
 				S_ProcName,
@@ -140,6 +155,9 @@ public class CFBamJpaRelationColService {
 		try {
 			if(data.getPKey() != null && !data.getPKey().isNull() && cfbam31RelationColRepository.existsById((CFLibDbKeyHash256)data.getPKey())) {
 				return( (CFBamJpaRelationCol)(cfbam31RelationColRepository.findById((CFLibDbKeyHash256)(data.getPKey())).get()));
+			}
+			if (data.getRequiredRevision() <= 0) {
+				data.setRequiredRevision(1);
 			}
 			if (data.getRequiredId() == null || data.getRequiredId().isNull()) {
 				data.setRequiredId(new CFLibDbKeyHash256(0));
@@ -179,24 +197,39 @@ public class CFBamJpaRelationColService {
 				0,
 				"data.getPKey()");
 		}
-			if (data.getRequiredContainerRelation() == null) {
-				throw new CFLibNullArgumentException(getClass(),
-					S_ProcName,
-					0,
-					"data.getRequiredContainerRelation()");
-			}
-			if (data.getRequiredLookupFromCol() == null) {
-				throw new CFLibNullArgumentException(getClass(),
-					S_ProcName,
-					0,
-					"data.getRequiredLookupFromCol()");
-			}
-			if (data.getRequiredLookupToCol() == null) {
-				throw new CFLibNullArgumentException(getClass(),
-					S_ProcName,
-					0,
-					"data.getRequiredLookupToCol()");
-			}
+		if (data.getRequiredContainerRelation() == null) {
+			throw new CFLibUnresolvedRelationException(getClass(),
+				S_ProcName,
+				"Container",
+				"Container",
+				"data.requiredContainerRelation",
+				"data.requiredContainerRelation",
+				"Relation",
+				"Relation",
+				null);
+		}
+		if (data.getRequiredLookupFromCol() == null) {
+			throw new CFLibUnresolvedRelationException(getClass(),
+				S_ProcName,
+				"Lookup",
+				"Lookup",
+				"data.requiredLookupFromCol",
+				"data.requiredLookupFromCol",
+				"IndexCol",
+				"IndexCol",
+				null);
+		}
+		if (data.getRequiredLookupToCol() == null) {
+			throw new CFLibUnresolvedRelationException(getClass(),
+				S_ProcName,
+				"Lookup",
+				"Lookup",
+				"data.requiredLookupToCol",
+				"data.requiredLookupToCol",
+				"IndexCol",
+				"IndexCol",
+				null);
+		}
 		if(data.getRequiredRelationId() == null || data.getRequiredRelationId().isNull()) {
 			throw new CFLibNullArgumentException(getClass(),
 				S_ProcName,

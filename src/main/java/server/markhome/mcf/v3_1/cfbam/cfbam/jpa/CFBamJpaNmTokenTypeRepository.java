@@ -72,6 +72,10 @@ import server.markhome.mcf.v3_1.cfbam.cfbam.*;
 @Transactional(readOnly = true)
 public interface CFBamJpaNmTokenTypeRepository extends JpaRepository<CFBamJpaNmTokenType, CFLibDbKeyHash256> {
 
+	@Transactional
+	@Modifying
+	CFBamJpaNmTokenType save(CFBamJpaNmTokenType obj);
+
 	/**
 	 *	Argument-based get database instance for compatibility with the current MSS code factory code base.
 	 *

@@ -213,6 +213,10 @@ public class CFBamJpaNumberColTable implements ICFBamNumberColTable
 		}
 		else if (rec instanceof CFBamJpaNumberCol) {
 			CFBamJpaNumberCol jparec = (CFBamJpaNumberCol)rec;
+			jparec.setCreatedAt(LocalDateTime.now());
+			jparec.setUpdatedAt(jparec.getCreatedAt());
+			jparec.setCreatedByUserId(Authorization.getSecUserId());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaNumberCol retval = schema.getJpaHooksSchema().getNumberColService().create(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerTable().getRequiredOwnerTenant();
@@ -223,7 +227,7 @@ public class CFBamJpaNumberColTable implements ICFBamNumberColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "createNumberCol", "rec", rec, "CFBamJpaNumberCol");
@@ -253,6 +257,8 @@ public class CFBamJpaNumberColTable implements ICFBamNumberColTable
 		}
 		else if (rec instanceof CFBamJpaNumberCol) {
 			CFBamJpaNumberCol jparec = (CFBamJpaNumberCol)rec;
+			jparec.setUpdatedAt(LocalDateTime.now());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaNumberCol retval = schema.getJpaHooksSchema().getNumberColService().update(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerTable().getRequiredOwnerTenant();
@@ -263,7 +269,7 @@ public class CFBamJpaNumberColTable implements ICFBamNumberColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "updateNumberCol", "rec", rec, "CFBamJpaNumberCol");
@@ -695,7 +701,7 @@ public class CFBamJpaNumberColTable implements ICFBamNumberColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -728,7 +734,7 @@ public class CFBamJpaNumberColTable implements ICFBamNumberColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -800,7 +806,7 @@ public class CFBamJpaNumberColTable implements ICFBamNumberColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -839,7 +845,7 @@ public class CFBamJpaNumberColTable implements ICFBamNumberColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**

@@ -213,6 +213,10 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 		}
 		else if (rec instanceof CFBamJpaPopSubDep1) {
 			CFBamJpaPopSubDep1 jparec = (CFBamJpaPopSubDep1)rec;
+			jparec.setCreatedAt(LocalDateTime.now());
+			jparec.setUpdatedAt(jparec.getCreatedAt());
+			jparec.setCreatedByUserId(Authorization.getSecUserId());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaPopSubDep1 retval = schema.getJpaHooksSchema().getPopSubDep1Service().create(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
@@ -223,7 +227,7 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "createPopSubDep1", "rec", rec, "CFBamJpaPopSubDep1");
@@ -253,6 +257,8 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 		}
 		else if (rec instanceof CFBamJpaPopSubDep1) {
 			CFBamJpaPopSubDep1 jparec = (CFBamJpaPopSubDep1)rec;
+			jparec.setUpdatedAt(LocalDateTime.now());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaPopSubDep1 retval = schema.getJpaHooksSchema().getPopSubDep1Service().update(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
@@ -263,7 +269,7 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "updatePopSubDep1", "rec", rec, "CFBamJpaPopSubDep1");
@@ -562,7 +568,7 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -595,7 +601,7 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -667,7 +673,7 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -878,7 +884,7 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**

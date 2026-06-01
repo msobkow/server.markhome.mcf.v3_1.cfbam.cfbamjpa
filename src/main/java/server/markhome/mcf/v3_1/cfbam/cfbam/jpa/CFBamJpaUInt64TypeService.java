@@ -95,12 +95,17 @@ public class CFBamJpaUInt64TypeService {
 		}
 		CFLibDbKeyHash256 originalRequiredId = data.getRequiredId();
 		boolean generatedRequiredId = false;
-			if (data.getRequiredContainerScope() == null) {
-				throw new CFLibNullArgumentException(getClass(),
-					S_ProcName,
-					0,
-					"data.getRequiredContainerScope()");
-			}
+		if (data.getRequiredContainerScope() == null) {
+			throw new CFLibUnresolvedRelationException(getClass(),
+				S_ProcName,
+				"Container",
+				"Container",
+				"data.requiredContainerScope",
+				"data.requiredContainerScope",
+				"Scope",
+				"Scope",
+				null);
+		}
 		if(data.getRequiredScopeId() == null || data.getRequiredScopeId().isNull()) {
 			throw new CFLibNullArgumentException(getClass(),
 				S_ProcName,
@@ -137,12 +142,17 @@ public class CFBamJpaUInt64TypeService {
 				data.getOptionalMaxValue().toString(),
 				ICFBamUInt64Def.MAXVALUE_MIN_VALUE.toString() );
 		}
-			if (data.getRequiredContainerSchemaDef() == null) {
-				throw new CFLibNullArgumentException(getClass(),
-					S_ProcName,
-					0,
-					"data.getRequiredContainerSchemaDef()");
-			}
+		if (data.getRequiredContainerSchemaDef() == null) {
+			throw new CFLibUnresolvedRelationException(getClass(),
+				S_ProcName,
+				"Container",
+				"Container",
+				"data.requiredContainerSchemaDef",
+				"data.requiredContainerSchemaDef",
+				"SchemaDef",
+				"SchemaDef",
+				null);
+		}
 		if(data.getRequiredSchemaDefId() == null || data.getRequiredSchemaDefId().isNull()) {
 			throw new CFLibNullArgumentException(getClass(),
 				S_ProcName,
@@ -152,6 +162,9 @@ public class CFBamJpaUInt64TypeService {
 		try {
 			if(data.getPKey() != null && !data.getPKey().isNull() && cfbam31UInt64TypeRepository.existsById((CFLibDbKeyHash256)data.getPKey())) {
 				return( (CFBamJpaUInt64Type)(cfbam31UInt64TypeRepository.findById((CFLibDbKeyHash256)(data.getPKey())).get()));
+			}
+			if (data.getRequiredRevision() <= 0) {
+				data.setRequiredRevision(1);
 			}
 			if (data.getRequiredId() == null || data.getRequiredId().isNull()) {
 				data.setRequiredId(new CFLibDbKeyHash256(0));
@@ -191,12 +204,17 @@ public class CFBamJpaUInt64TypeService {
 				0,
 				"data.getPKey()");
 		}
-			if (data.getRequiredContainerScope() == null) {
-				throw new CFLibNullArgumentException(getClass(),
-					S_ProcName,
-					0,
-					"data.getRequiredContainerScope()");
-			}
+		if (data.getRequiredContainerScope() == null) {
+			throw new CFLibUnresolvedRelationException(getClass(),
+				S_ProcName,
+				"Container",
+				"Container",
+				"data.requiredContainerScope",
+				"data.requiredContainerScope",
+				"Scope",
+				"Scope",
+				null);
+		}
 		if(data.getRequiredScopeId() == null || data.getRequiredScopeId().isNull()) {
 			throw new CFLibNullArgumentException(getClass(),
 				S_ProcName,
@@ -233,12 +251,17 @@ public class CFBamJpaUInt64TypeService {
 				data.getOptionalMaxValue().toString(),
 				ICFBamUInt64Def.MAXVALUE_MIN_VALUE.toString() );
 		}
-			if (data.getRequiredContainerSchemaDef() == null) {
-				throw new CFLibNullArgumentException(getClass(),
-					S_ProcName,
-					0,
-					"data.getRequiredContainerSchemaDef()");
-			}
+		if (data.getRequiredContainerSchemaDef() == null) {
+			throw new CFLibUnresolvedRelationException(getClass(),
+				S_ProcName,
+				"Container",
+				"Container",
+				"data.requiredContainerSchemaDef",
+				"data.requiredContainerSchemaDef",
+				"SchemaDef",
+				"SchemaDef",
+				null);
+		}
 		if(data.getRequiredSchemaDefId() == null || data.getRequiredSchemaDefId().isNull()) {
 			throw new CFLibNullArgumentException(getClass(),
 				S_ProcName,

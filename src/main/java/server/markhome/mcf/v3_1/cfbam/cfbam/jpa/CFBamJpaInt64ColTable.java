@@ -213,6 +213,10 @@ public class CFBamJpaInt64ColTable implements ICFBamInt64ColTable
 		}
 		else if (rec instanceof CFBamJpaInt64Col) {
 			CFBamJpaInt64Col jparec = (CFBamJpaInt64Col)rec;
+			jparec.setCreatedAt(LocalDateTime.now());
+			jparec.setUpdatedAt(jparec.getCreatedAt());
+			jparec.setCreatedByUserId(Authorization.getSecUserId());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaInt64Col retval = schema.getJpaHooksSchema().getInt64ColService().create(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerTable().getRequiredOwnerTenant();
@@ -223,7 +227,7 @@ public class CFBamJpaInt64ColTable implements ICFBamInt64ColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "createInt64Col", "rec", rec, "CFBamJpaInt64Col");
@@ -253,6 +257,8 @@ public class CFBamJpaInt64ColTable implements ICFBamInt64ColTable
 		}
 		else if (rec instanceof CFBamJpaInt64Col) {
 			CFBamJpaInt64Col jparec = (CFBamJpaInt64Col)rec;
+			jparec.setUpdatedAt(LocalDateTime.now());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaInt64Col retval = schema.getJpaHooksSchema().getInt64ColService().update(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerTable().getRequiredOwnerTenant();
@@ -263,7 +269,7 @@ public class CFBamJpaInt64ColTable implements ICFBamInt64ColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "updateInt64Col", "rec", rec, "CFBamJpaInt64Col");
@@ -695,7 +701,7 @@ public class CFBamJpaInt64ColTable implements ICFBamInt64ColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -728,7 +734,7 @@ public class CFBamJpaInt64ColTable implements ICFBamInt64ColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -800,7 +806,7 @@ public class CFBamJpaInt64ColTable implements ICFBamInt64ColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -839,7 +845,7 @@ public class CFBamJpaInt64ColTable implements ICFBamInt64ColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**

@@ -213,6 +213,10 @@ public class CFBamJpaTextColTable implements ICFBamTextColTable
 		}
 		else if (rec instanceof CFBamJpaTextCol) {
 			CFBamJpaTextCol jparec = (CFBamJpaTextCol)rec;
+			jparec.setCreatedAt(LocalDateTime.now());
+			jparec.setUpdatedAt(jparec.getCreatedAt());
+			jparec.setCreatedByUserId(Authorization.getSecUserId());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaTextCol retval = schema.getJpaHooksSchema().getTextColService().create(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerTable().getRequiredOwnerTenant();
@@ -223,7 +227,7 @@ public class CFBamJpaTextColTable implements ICFBamTextColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "createTextCol", "rec", rec, "CFBamJpaTextCol");
@@ -253,6 +257,8 @@ public class CFBamJpaTextColTable implements ICFBamTextColTable
 		}
 		else if (rec instanceof CFBamJpaTextCol) {
 			CFBamJpaTextCol jparec = (CFBamJpaTextCol)rec;
+			jparec.setUpdatedAt(LocalDateTime.now());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaTextCol retval = schema.getJpaHooksSchema().getTextColService().update(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerTable().getRequiredOwnerTenant();
@@ -263,7 +269,7 @@ public class CFBamJpaTextColTable implements ICFBamTextColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "updateTextCol", "rec", rec, "CFBamJpaTextCol");
@@ -695,7 +701,7 @@ public class CFBamJpaTextColTable implements ICFBamTextColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -728,7 +734,7 @@ public class CFBamJpaTextColTable implements ICFBamTextColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -800,7 +806,7 @@ public class CFBamJpaTextColTable implements ICFBamTextColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -839,7 +845,7 @@ public class CFBamJpaTextColTable implements ICFBamTextColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**

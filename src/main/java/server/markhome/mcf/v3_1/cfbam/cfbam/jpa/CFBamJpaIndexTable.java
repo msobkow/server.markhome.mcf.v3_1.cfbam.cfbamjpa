@@ -213,6 +213,10 @@ public class CFBamJpaIndexTable implements ICFBamIndexTable
 		}
 		else if (rec instanceof CFBamJpaIndex) {
 			CFBamJpaIndex jparec = (CFBamJpaIndex)rec;
+			jparec.setCreatedAt(LocalDateTime.now());
+			jparec.setUpdatedAt(jparec.getCreatedAt());
+			jparec.setCreatedByUserId(Authorization.getSecUserId());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaIndex retval = schema.getJpaHooksSchema().getIndexService().create(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
@@ -223,7 +227,7 @@ public class CFBamJpaIndexTable implements ICFBamIndexTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "createIndex", "rec", rec, "CFBamJpaIndex");
@@ -253,6 +257,8 @@ public class CFBamJpaIndexTable implements ICFBamIndexTable
 		}
 		else if (rec instanceof CFBamJpaIndex) {
 			CFBamJpaIndex jparec = (CFBamJpaIndex)rec;
+			jparec.setUpdatedAt(LocalDateTime.now());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaIndex retval = schema.getJpaHooksSchema().getIndexService().update(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
@@ -263,7 +269,7 @@ public class CFBamJpaIndexTable implements ICFBamIndexTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "updateIndex", "rec", rec, "CFBamJpaIndex");
@@ -521,7 +527,7 @@ public class CFBamJpaIndexTable implements ICFBamIndexTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -554,7 +560,7 @@ public class CFBamJpaIndexTable implements ICFBamIndexTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -626,7 +632,7 @@ public class CFBamJpaIndexTable implements ICFBamIndexTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -708,7 +714,7 @@ public class CFBamJpaIndexTable implements ICFBamIndexTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**

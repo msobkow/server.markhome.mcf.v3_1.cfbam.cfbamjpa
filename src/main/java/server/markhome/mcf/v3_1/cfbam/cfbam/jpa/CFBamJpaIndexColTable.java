@@ -213,6 +213,10 @@ public class CFBamJpaIndexColTable implements ICFBamIndexColTable
 		}
 		else if (rec instanceof CFBamJpaIndexCol) {
 			CFBamJpaIndexCol jparec = (CFBamJpaIndexCol)rec;
+			jparec.setCreatedAt(LocalDateTime.now());
+			jparec.setUpdatedAt(jparec.getCreatedAt());
+			jparec.setCreatedByUserId(Authorization.getSecUserId());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaIndexCol retval = schema.getJpaHooksSchema().getIndexColService().create(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerIndex().getRequiredOwnerTenant();
@@ -223,7 +227,7 @@ public class CFBamJpaIndexColTable implements ICFBamIndexColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "createIndexCol", "rec", rec, "CFBamJpaIndexCol");
@@ -253,6 +257,8 @@ public class CFBamJpaIndexColTable implements ICFBamIndexColTable
 		}
 		else if (rec instanceof CFBamJpaIndexCol) {
 			CFBamJpaIndexCol jparec = (CFBamJpaIndexCol)rec;
+			jparec.setUpdatedAt(LocalDateTime.now());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaIndexCol retval = schema.getJpaHooksSchema().getIndexColService().update(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerIndex().getRequiredOwnerTenant();
@@ -263,7 +269,7 @@ public class CFBamJpaIndexColTable implements ICFBamIndexColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "updateIndexCol", "rec", rec, "CFBamJpaIndexCol");
@@ -695,7 +701,7 @@ public class CFBamJpaIndexColTable implements ICFBamIndexColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -728,7 +734,7 @@ public class CFBamJpaIndexColTable implements ICFBamIndexColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -800,7 +806,7 @@ public class CFBamJpaIndexColTable implements ICFBamIndexColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -839,7 +845,7 @@ public class CFBamJpaIndexColTable implements ICFBamIndexColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**

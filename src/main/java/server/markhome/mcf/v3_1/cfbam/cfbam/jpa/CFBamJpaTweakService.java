@@ -95,12 +95,17 @@ public class CFBamJpaTweakService {
 		}
 		CFLibDbKeyHash256 originalRequiredId = data.getRequiredId();
 		boolean generatedRequiredId = false;
-			if (data.getRequiredContainerScopeDef() == null) {
-				throw new CFLibNullArgumentException(getClass(),
-					S_ProcName,
-					0,
-					"data.getRequiredContainerScopeDef()");
-			}
+		if (data.getRequiredContainerScopeDef() == null) {
+			throw new CFLibUnresolvedRelationException(getClass(),
+				S_ProcName,
+				"Container",
+				"Container",
+				"data.requiredContainerScopeDef",
+				"data.requiredContainerScopeDef",
+				"Scope",
+				"Scope",
+				null);
+		}
 		if(data.getRequiredTenantId() == null || data.getRequiredTenantId().isNull()) {
 			throw new CFLibNullArgumentException(getClass(),
 				S_ProcName,
@@ -128,6 +133,9 @@ public class CFBamJpaTweakService {
 		try {
 			if(data.getPKey() != null && !data.getPKey().isNull() && cfbam31TweakRepository.existsById((CFLibDbKeyHash256)data.getPKey())) {
 				return( (CFBamJpaTweak)(cfbam31TweakRepository.findById((CFLibDbKeyHash256)(data.getPKey())).get()));
+			}
+			if (data.getRequiredRevision() <= 0) {
+				data.setRequiredRevision(1);
 			}
 			if (data.getRequiredId() == null || data.getRequiredId().isNull()) {
 				data.setRequiredId(new CFLibDbKeyHash256(0));
@@ -167,12 +175,17 @@ public class CFBamJpaTweakService {
 				0,
 				"data.getPKey()");
 		}
-			if (data.getRequiredContainerScopeDef() == null) {
-				throw new CFLibNullArgumentException(getClass(),
-					S_ProcName,
-					0,
-					"data.getRequiredContainerScopeDef()");
-			}
+		if (data.getRequiredContainerScopeDef() == null) {
+			throw new CFLibUnresolvedRelationException(getClass(),
+				S_ProcName,
+				"Container",
+				"Container",
+				"data.requiredContainerScopeDef",
+				"data.requiredContainerScopeDef",
+				"Scope",
+				"Scope",
+				null);
+		}
 		if(data.getRequiredTenantId() == null || data.getRequiredTenantId().isNull()) {
 			throw new CFLibNullArgumentException(getClass(),
 				S_ProcName,

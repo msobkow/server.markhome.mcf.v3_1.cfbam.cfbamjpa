@@ -213,6 +213,10 @@ public class CFBamJpaTimeTypeTable implements ICFBamTimeTypeTable
 		}
 		else if (rec instanceof CFBamJpaTimeType) {
 			CFBamJpaTimeType jparec = (CFBamJpaTimeType)rec;
+			jparec.setCreatedAt(LocalDateTime.now());
+			jparec.setUpdatedAt(jparec.getCreatedAt());
+			jparec.setCreatedByUserId(Authorization.getSecUserId());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaTimeType retval = schema.getJpaHooksSchema().getTimeTypeService().create(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
@@ -223,7 +227,7 @@ public class CFBamJpaTimeTypeTable implements ICFBamTimeTypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "createTimeType", "rec", rec, "CFBamJpaTimeType");
@@ -253,6 +257,8 @@ public class CFBamJpaTimeTypeTable implements ICFBamTimeTypeTable
 		}
 		else if (rec instanceof CFBamJpaTimeType) {
 			CFBamJpaTimeType jparec = (CFBamJpaTimeType)rec;
+			jparec.setUpdatedAt(LocalDateTime.now());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaTimeType retval = schema.getJpaHooksSchema().getTimeTypeService().update(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
@@ -263,7 +269,7 @@ public class CFBamJpaTimeTypeTable implements ICFBamTimeTypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "updateTimeType", "rec", rec, "CFBamJpaTimeType");
@@ -695,7 +701,7 @@ public class CFBamJpaTimeTypeTable implements ICFBamTimeTypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -728,7 +734,7 @@ public class CFBamJpaTimeTypeTable implements ICFBamTimeTypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -800,7 +806,7 @@ public class CFBamJpaTimeTypeTable implements ICFBamTimeTypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -839,7 +845,7 @@ public class CFBamJpaTimeTypeTable implements ICFBamTimeTypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**

@@ -213,6 +213,10 @@ public class CFBamJpaTimestampTypeTable implements ICFBamTimestampTypeTable
 		}
 		else if (rec instanceof CFBamJpaTimestampType) {
 			CFBamJpaTimestampType jparec = (CFBamJpaTimestampType)rec;
+			jparec.setCreatedAt(LocalDateTime.now());
+			jparec.setUpdatedAt(jparec.getCreatedAt());
+			jparec.setCreatedByUserId(Authorization.getSecUserId());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaTimestampType retval = schema.getJpaHooksSchema().getTimestampTypeService().create(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
@@ -223,7 +227,7 @@ public class CFBamJpaTimestampTypeTable implements ICFBamTimestampTypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "createTimestampType", "rec", rec, "CFBamJpaTimestampType");
@@ -253,6 +257,8 @@ public class CFBamJpaTimestampTypeTable implements ICFBamTimestampTypeTable
 		}
 		else if (rec instanceof CFBamJpaTimestampType) {
 			CFBamJpaTimestampType jparec = (CFBamJpaTimestampType)rec;
+			jparec.setUpdatedAt(LocalDateTime.now());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaTimestampType retval = schema.getJpaHooksSchema().getTimestampTypeService().update(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
@@ -263,7 +269,7 @@ public class CFBamJpaTimestampTypeTable implements ICFBamTimestampTypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "updateTimestampType", "rec", rec, "CFBamJpaTimestampType");
@@ -695,7 +701,7 @@ public class CFBamJpaTimestampTypeTable implements ICFBamTimestampTypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -728,7 +734,7 @@ public class CFBamJpaTimestampTypeTable implements ICFBamTimestampTypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -800,7 +806,7 @@ public class CFBamJpaTimestampTypeTable implements ICFBamTimestampTypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -839,7 +845,7 @@ public class CFBamJpaTimestampTypeTable implements ICFBamTimestampTypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**

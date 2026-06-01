@@ -213,6 +213,10 @@ public class CFBamJpaSchemaRoleTable implements ICFBamSchemaRoleTable
 		}
 		else if (rec instanceof CFBamJpaSchemaRole) {
 			CFBamJpaSchemaRole jparec = (CFBamJpaSchemaRole)rec;
+			jparec.setCreatedAt(LocalDateTime.now());
+			jparec.setUpdatedAt(jparec.getCreatedAt());
+			jparec.setCreatedByUserId(Authorization.getSecUserId());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaSchemaRole retval = schema.getJpaHooksSchema().getSchemaRoleService().create(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
@@ -223,7 +227,7 @@ public class CFBamJpaSchemaRoleTable implements ICFBamSchemaRoleTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "createSchemaRole", "rec", rec, "CFBamJpaSchemaRole");
@@ -253,6 +257,8 @@ public class CFBamJpaSchemaRoleTable implements ICFBamSchemaRoleTable
 		}
 		else if (rec instanceof CFBamJpaSchemaRole) {
 			CFBamJpaSchemaRole jparec = (CFBamJpaSchemaRole)rec;
+			jparec.setUpdatedAt(LocalDateTime.now());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaSchemaRole retval = schema.getJpaHooksSchema().getSchemaRoleService().update(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
@@ -263,7 +269,7 @@ public class CFBamJpaSchemaRoleTable implements ICFBamSchemaRoleTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "updateSchemaRole", "rec", rec, "CFBamJpaSchemaRole");
@@ -659,7 +665,7 @@ public class CFBamJpaSchemaRoleTable implements ICFBamSchemaRoleTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -692,7 +698,7 @@ public class CFBamJpaSchemaRoleTable implements ICFBamSchemaRoleTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -764,7 +770,7 @@ public class CFBamJpaSchemaRoleTable implements ICFBamSchemaRoleTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -803,7 +809,7 @@ public class CFBamJpaSchemaRoleTable implements ICFBamSchemaRoleTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -932,7 +938,7 @@ public class CFBamJpaSchemaRoleTable implements ICFBamSchemaRoleTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**

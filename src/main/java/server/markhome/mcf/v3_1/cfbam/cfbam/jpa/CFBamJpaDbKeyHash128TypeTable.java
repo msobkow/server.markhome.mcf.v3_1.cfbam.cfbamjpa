@@ -213,6 +213,10 @@ public class CFBamJpaDbKeyHash128TypeTable implements ICFBamDbKeyHash128TypeTabl
 		}
 		else if (rec instanceof CFBamJpaDbKeyHash128Type) {
 			CFBamJpaDbKeyHash128Type jparec = (CFBamJpaDbKeyHash128Type)rec;
+			jparec.setCreatedAt(LocalDateTime.now());
+			jparec.setUpdatedAt(jparec.getCreatedAt());
+			jparec.setCreatedByUserId(Authorization.getSecUserId());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaDbKeyHash128Type retval = schema.getJpaHooksSchema().getDbKeyHash128TypeService().create(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
@@ -223,7 +227,7 @@ public class CFBamJpaDbKeyHash128TypeTable implements ICFBamDbKeyHash128TypeTabl
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "createDbKeyHash128Type", "rec", rec, "CFBamJpaDbKeyHash128Type");
@@ -253,6 +257,8 @@ public class CFBamJpaDbKeyHash128TypeTable implements ICFBamDbKeyHash128TypeTabl
 		}
 		else if (rec instanceof CFBamJpaDbKeyHash128Type) {
 			CFBamJpaDbKeyHash128Type jparec = (CFBamJpaDbKeyHash128Type)rec;
+			jparec.setUpdatedAt(LocalDateTime.now());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaDbKeyHash128Type retval = schema.getJpaHooksSchema().getDbKeyHash128TypeService().update(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
@@ -263,7 +269,7 @@ public class CFBamJpaDbKeyHash128TypeTable implements ICFBamDbKeyHash128TypeTabl
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "updateDbKeyHash128Type", "rec", rec, "CFBamJpaDbKeyHash128Type");
@@ -695,7 +701,7 @@ public class CFBamJpaDbKeyHash128TypeTable implements ICFBamDbKeyHash128TypeTabl
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -728,7 +734,7 @@ public class CFBamJpaDbKeyHash128TypeTable implements ICFBamDbKeyHash128TypeTabl
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -800,7 +806,7 @@ public class CFBamJpaDbKeyHash128TypeTable implements ICFBamDbKeyHash128TypeTabl
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -839,7 +845,7 @@ public class CFBamJpaDbKeyHash128TypeTable implements ICFBamDbKeyHash128TypeTabl
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**

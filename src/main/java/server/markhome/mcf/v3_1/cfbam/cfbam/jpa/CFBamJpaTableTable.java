@@ -213,6 +213,10 @@ public class CFBamJpaTableTable implements ICFBamTableTable
 		}
 		else if (rec instanceof CFBamJpaTable) {
 			CFBamJpaTable jparec = (CFBamJpaTable)rec;
+			jparec.setCreatedAt(LocalDateTime.now());
+			jparec.setUpdatedAt(jparec.getCreatedAt());
+			jparec.setCreatedByUserId(Authorization.getSecUserId());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaTable retval = schema.getJpaHooksSchema().getTableService().create(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
@@ -223,7 +227,7 @@ public class CFBamJpaTableTable implements ICFBamTableTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "createTable", "rec", rec, "CFBamJpaTable");
@@ -253,6 +257,8 @@ public class CFBamJpaTableTable implements ICFBamTableTable
 		}
 		else if (rec instanceof CFBamJpaTable) {
 			CFBamJpaTable jparec = (CFBamJpaTable)rec;
+			jparec.setUpdatedAt(LocalDateTime.now());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaTable retval = schema.getJpaHooksSchema().getTableService().update(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
@@ -263,7 +269,7 @@ public class CFBamJpaTableTable implements ICFBamTableTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "updateTable", "rec", rec, "CFBamJpaTable");
@@ -731,7 +737,7 @@ public class CFBamJpaTableTable implements ICFBamTableTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -764,7 +770,7 @@ public class CFBamJpaTableTable implements ICFBamTableTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -836,7 +842,7 @@ public class CFBamJpaTableTable implements ICFBamTableTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -1004,7 +1010,7 @@ public class CFBamJpaTableTable implements ICFBamTableTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -1043,7 +1049,7 @@ public class CFBamJpaTableTable implements ICFBamTableTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**

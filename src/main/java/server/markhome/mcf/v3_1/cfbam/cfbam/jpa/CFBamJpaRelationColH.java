@@ -64,13 +64,14 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 
 /**
  *  CFBamJpaRelationColH provides history objects matching the CFBamRelationCol change history.
+ *	Note that because all indexes are historical with multiple instances of history records, the only key that can be unique is the primary key of a history table.
  */
 @Entity
 @Table(
     name = "relcol_h", schema = "CFBam31",
     indexes = {
         @Index(name = "RelationColIdIdx_h", columnList = "auditClusterId, auditStamp, auditAction, requiredRevision, auditSessionId, Id", unique = true),
-        @Index(name = "RelationColUNameIdx_h", columnList = "RelationId, safe_name", unique = true),
+        @Index(name = "RelationColUNameIdx_h", columnList = "RelationId, safe_name", unique = false),
         @Index(name = "RelationColRelationIdx_h", columnList = "RelationId", unique = false),
         @Index(name = "RelationColDefSchemaDefIdx_h", columnList = "defschid", unique = false),
         @Index(name = "RelationColFromColIdx_h", columnList = "FromColId", unique = false),

@@ -64,13 +64,14 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 
 /**
  *  CFBamJpaParamH provides history objects matching the CFBamParam change history.
+ *	Note that because all indexes are historical with multiple instances of history records, the only key that can be unique is the primary key of a history table.
  */
 @Entity
 @Table(
     name = "srvprm_h", schema = "CFBam31",
     indexes = {
         @Index(name = "ParamIdIdx_h", columnList = "auditClusterId, auditStamp, auditAction, requiredRevision, auditSessionId, Id", unique = true),
-        @Index(name = "ParamUNameIdx_h", columnList = "srvmeth_id, safe_name", unique = true),
+        @Index(name = "ParamUNameIdx_h", columnList = "srvmeth_id, safe_name", unique = false),
         @Index(name = "ParamServerMethodIdx_h", columnList = "srvmeth_id", unique = false),
         @Index(name = "ParamDefSchemaDefIdx_h", columnList = "defschid", unique = false),
         @Index(name = "ParamTypeIdx_h", columnList = "TpId", unique = false),

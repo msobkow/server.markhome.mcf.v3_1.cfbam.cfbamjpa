@@ -213,6 +213,10 @@ public class CFBamJpaDelDepTable implements ICFBamDelDepTable
 		}
 		else if (rec instanceof CFBamJpaDelDep) {
 			CFBamJpaDelDep jparec = (CFBamJpaDelDep)rec;
+			jparec.setCreatedAt(LocalDateTime.now());
+			jparec.setUpdatedAt(jparec.getCreatedAt());
+			jparec.setCreatedByUserId(Authorization.getSecUserId());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaDelDep retval = schema.getJpaHooksSchema().getDelDepService().create(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
@@ -223,7 +227,7 @@ public class CFBamJpaDelDepTable implements ICFBamDelDepTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "createDelDep", "rec", rec, "CFBamJpaDelDep");
@@ -253,6 +257,8 @@ public class CFBamJpaDelDepTable implements ICFBamDelDepTable
 		}
 		else if (rec instanceof CFBamJpaDelDep) {
 			CFBamJpaDelDep jparec = (CFBamJpaDelDep)rec;
+			jparec.setUpdatedAt(LocalDateTime.now());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaDelDep retval = schema.getJpaHooksSchema().getDelDepService().update(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
@@ -263,7 +269,7 @@ public class CFBamJpaDelDepTable implements ICFBamDelDepTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "updateDelDep", "rec", rec, "CFBamJpaDelDep");
@@ -475,7 +481,7 @@ public class CFBamJpaDelDepTable implements ICFBamDelDepTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -508,7 +514,7 @@ public class CFBamJpaDelDepTable implements ICFBamDelDepTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -580,7 +586,7 @@ public class CFBamJpaDelDepTable implements ICFBamDelDepTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**

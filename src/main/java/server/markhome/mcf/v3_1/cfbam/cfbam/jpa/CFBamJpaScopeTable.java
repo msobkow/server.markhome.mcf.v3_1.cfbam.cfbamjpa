@@ -213,6 +213,10 @@ public class CFBamJpaScopeTable implements ICFBamScopeTable
 		}
 		else if (rec instanceof CFBamJpaScope) {
 			CFBamJpaScope jparec = (CFBamJpaScope)rec;
+			jparec.setCreatedAt(LocalDateTime.now());
+			jparec.setUpdatedAt(jparec.getCreatedAt());
+			jparec.setCreatedByUserId(Authorization.getSecUserId());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaScope retval = schema.getJpaHooksSchema().getScopeService().create(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
@@ -223,7 +227,7 @@ public class CFBamJpaScopeTable implements ICFBamScopeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "createScope", "rec", rec, "CFBamJpaScope");
@@ -253,6 +257,8 @@ public class CFBamJpaScopeTable implements ICFBamScopeTable
 		}
 		else if (rec instanceof CFBamJpaScope) {
 			CFBamJpaScope jparec = (CFBamJpaScope)rec;
+			jparec.setUpdatedAt(LocalDateTime.now());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaScope retval = schema.getJpaHooksSchema().getScopeService().update(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
@@ -263,7 +269,7 @@ public class CFBamJpaScopeTable implements ICFBamScopeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "updateScope", "rec", rec, "CFBamJpaScope");
@@ -393,7 +399,7 @@ public class CFBamJpaScopeTable implements ICFBamScopeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -426,7 +432,7 @@ public class CFBamJpaScopeTable implements ICFBamScopeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -498,7 +504,7 @@ public class CFBamJpaScopeTable implements ICFBamScopeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**

@@ -213,6 +213,10 @@ public class CFBamJpaTimestampColTable implements ICFBamTimestampColTable
 		}
 		else if (rec instanceof CFBamJpaTimestampCol) {
 			CFBamJpaTimestampCol jparec = (CFBamJpaTimestampCol)rec;
+			jparec.setCreatedAt(LocalDateTime.now());
+			jparec.setUpdatedAt(jparec.getCreatedAt());
+			jparec.setCreatedByUserId(Authorization.getSecUserId());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaTimestampCol retval = schema.getJpaHooksSchema().getTimestampColService().create(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerTable().getRequiredOwnerTenant();
@@ -223,7 +227,7 @@ public class CFBamJpaTimestampColTable implements ICFBamTimestampColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "createTimestampCol", "rec", rec, "CFBamJpaTimestampCol");
@@ -253,6 +257,8 @@ public class CFBamJpaTimestampColTable implements ICFBamTimestampColTable
 		}
 		else if (rec instanceof CFBamJpaTimestampCol) {
 			CFBamJpaTimestampCol jparec = (CFBamJpaTimestampCol)rec;
+			jparec.setUpdatedAt(LocalDateTime.now());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaTimestampCol retval = schema.getJpaHooksSchema().getTimestampColService().update(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerTable().getRequiredOwnerTenant();
@@ -263,7 +269,7 @@ public class CFBamJpaTimestampColTable implements ICFBamTimestampColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "updateTimestampCol", "rec", rec, "CFBamJpaTimestampCol");
@@ -695,7 +701,7 @@ public class CFBamJpaTimestampColTable implements ICFBamTimestampColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -728,7 +734,7 @@ public class CFBamJpaTimestampColTable implements ICFBamTimestampColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -800,7 +806,7 @@ public class CFBamJpaTimestampColTable implements ICFBamTimestampColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -839,7 +845,7 @@ public class CFBamJpaTimestampColTable implements ICFBamTimestampColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**

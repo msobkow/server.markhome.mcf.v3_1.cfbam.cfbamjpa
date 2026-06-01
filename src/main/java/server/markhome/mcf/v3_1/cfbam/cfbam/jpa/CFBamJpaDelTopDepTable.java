@@ -213,6 +213,10 @@ public class CFBamJpaDelTopDepTable implements ICFBamDelTopDepTable
 		}
 		else if (rec instanceof CFBamJpaDelTopDep) {
 			CFBamJpaDelTopDep jparec = (CFBamJpaDelTopDep)rec;
+			jparec.setCreatedAt(LocalDateTime.now());
+			jparec.setUpdatedAt(jparec.getCreatedAt());
+			jparec.setCreatedByUserId(Authorization.getSecUserId());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaDelTopDep retval = schema.getJpaHooksSchema().getDelTopDepService().create(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
@@ -223,7 +227,7 @@ public class CFBamJpaDelTopDepTable implements ICFBamDelTopDepTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "createDelTopDep", "rec", rec, "CFBamJpaDelTopDep");
@@ -253,6 +257,8 @@ public class CFBamJpaDelTopDepTable implements ICFBamDelTopDepTable
 		}
 		else if (rec instanceof CFBamJpaDelTopDep) {
 			CFBamJpaDelTopDep jparec = (CFBamJpaDelTopDep)rec;
+			jparec.setUpdatedAt(LocalDateTime.now());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaDelTopDep retval = schema.getJpaHooksSchema().getDelTopDepService().update(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
@@ -263,7 +269,7 @@ public class CFBamJpaDelTopDepTable implements ICFBamDelTopDepTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "updateDelTopDep", "rec", rec, "CFBamJpaDelTopDep");
@@ -644,7 +650,7 @@ public class CFBamJpaDelTopDepTable implements ICFBamDelTopDepTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -677,7 +683,7 @@ public class CFBamJpaDelTopDepTable implements ICFBamDelTopDepTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -749,7 +755,7 @@ public class CFBamJpaDelTopDepTable implements ICFBamDelTopDepTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -960,7 +966,7 @@ public class CFBamJpaDelTopDepTable implements ICFBamDelTopDepTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**

@@ -64,6 +64,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 
 /**
  *  CFBamJpaSchemaDefH provides history objects matching the CFBamSchemaDef change history.
+ *	Note that because all indexes are historical with multiple instances of history records, the only key that can be unique is the primary key of a history table.
  */
 @Entity
 @Table(
@@ -72,10 +73,10 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
         @Index(name = "SchemaDefIdIdx_h", columnList = "auditClusterId, auditStamp, auditAction, requiredRevision, auditSessionId, Id", unique = true),
         @Index(name = "SchemaDefCTenantIdx_h", columnList = "CTenantId", unique = false),
         @Index(name = "SchemaDefMinorVersionIdx_h", columnList = "MinorVersionId", unique = false),
-        @Index(name = "SchemaDefUNameIdx_h", columnList = "MinorVersionId, safe_name", unique = true),
+        @Index(name = "SchemaDefUNameIdx_h", columnList = "MinorVersionId, safe_name", unique = false),
         @Index(name = "SchemaAuthorEMailIdx_h", columnList = "CTenantId, AuthEMail", unique = false),
         @Index(name = "SchemaProjectURLIdx_h", columnList = "CTenantId, ProjURL", unique = false),
-        @Index(name = "SchemaPublishURIIdx_h", columnList = "CTenantId, PubURI", unique = true)
+        @Index(name = "SchemaPublishURIIdx_h", columnList = "CTenantId, PubURI", unique = false)
     }
 )
 @Inheritance(strategy = InheritanceType.JOINED)

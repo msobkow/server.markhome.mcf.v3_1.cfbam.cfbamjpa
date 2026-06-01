@@ -213,6 +213,10 @@ public class CFBamJpaRoleDefTable implements ICFBamRoleDefTable
 		}
 		else if (rec instanceof CFBamJpaRoleDef) {
 			CFBamJpaRoleDef jparec = (CFBamJpaRoleDef)rec;
+			jparec.setCreatedAt(LocalDateTime.now());
+			jparec.setUpdatedAt(jparec.getCreatedAt());
+			jparec.setCreatedByUserId(Authorization.getSecUserId());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaRoleDef retval = schema.getJpaHooksSchema().getRoleDefService().create(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerScopeDef().getRequiredOwnerTenant();
@@ -223,7 +227,7 @@ public class CFBamJpaRoleDefTable implements ICFBamRoleDefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "createRoleDef", "rec", rec, "CFBamJpaRoleDef");
@@ -253,6 +257,8 @@ public class CFBamJpaRoleDefTable implements ICFBamRoleDefTable
 		}
 		else if (rec instanceof CFBamJpaRoleDef) {
 			CFBamJpaRoleDef jparec = (CFBamJpaRoleDef)rec;
+			jparec.setUpdatedAt(LocalDateTime.now());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaRoleDef retval = schema.getJpaHooksSchema().getRoleDefService().update(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerScopeDef().getRequiredOwnerTenant();
@@ -263,7 +269,7 @@ public class CFBamJpaRoleDefTable implements ICFBamRoleDefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "updateRoleDef", "rec", rec, "CFBamJpaRoleDef");
@@ -531,7 +537,7 @@ public class CFBamJpaRoleDefTable implements ICFBamRoleDefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -564,7 +570,7 @@ public class CFBamJpaRoleDefTable implements ICFBamRoleDefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -636,7 +642,7 @@ public class CFBamJpaRoleDefTable implements ICFBamRoleDefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -675,7 +681,7 @@ public class CFBamJpaRoleDefTable implements ICFBamRoleDefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -804,7 +810,7 @@ public class CFBamJpaRoleDefTable implements ICFBamRoleDefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**

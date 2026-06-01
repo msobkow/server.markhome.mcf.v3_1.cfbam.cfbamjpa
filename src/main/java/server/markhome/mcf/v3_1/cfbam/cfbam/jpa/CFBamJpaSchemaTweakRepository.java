@@ -72,6 +72,10 @@ import server.markhome.mcf.v3_1.cfbam.cfbam.*;
 @Transactional(readOnly = true)
 public interface CFBamJpaSchemaTweakRepository extends JpaRepository<CFBamJpaSchemaTweak, CFLibDbKeyHash256> {
 
+	@Transactional
+	@Modifying
+	CFBamJpaSchemaTweak save(CFBamJpaSchemaTweak obj);
+
 	/**
 	 *	Argument-based get database instance for compatibility with the current MSS code factory code base.
 	 *

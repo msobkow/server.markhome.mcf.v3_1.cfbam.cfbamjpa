@@ -213,6 +213,10 @@ public class CFBamJpaSchemaRefTable implements ICFBamSchemaRefTable
 		}
 		else if (rec instanceof CFBamJpaSchemaRef) {
 			CFBamJpaSchemaRef jparec = (CFBamJpaSchemaRef)rec;
+			jparec.setCreatedAt(LocalDateTime.now());
+			jparec.setUpdatedAt(jparec.getCreatedAt());
+			jparec.setCreatedByUserId(Authorization.getSecUserId());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaSchemaRef retval = schema.getJpaHooksSchema().getSchemaRefService().create(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
@@ -223,7 +227,7 @@ public class CFBamJpaSchemaRefTable implements ICFBamSchemaRefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "createSchemaRef", "rec", rec, "CFBamJpaSchemaRef");
@@ -253,6 +257,8 @@ public class CFBamJpaSchemaRefTable implements ICFBamSchemaRefTable
 		}
 		else if (rec instanceof CFBamJpaSchemaRef) {
 			CFBamJpaSchemaRef jparec = (CFBamJpaSchemaRef)rec;
+			jparec.setUpdatedAt(LocalDateTime.now());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaSchemaRef retval = schema.getJpaHooksSchema().getSchemaRefService().update(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
@@ -263,7 +269,7 @@ public class CFBamJpaSchemaRefTable implements ICFBamSchemaRefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "updateSchemaRef", "rec", rec, "CFBamJpaSchemaRef");
@@ -603,7 +609,7 @@ public class CFBamJpaSchemaRefTable implements ICFBamSchemaRefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -636,7 +642,7 @@ public class CFBamJpaSchemaRefTable implements ICFBamSchemaRefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -708,7 +714,7 @@ public class CFBamJpaSchemaRefTable implements ICFBamSchemaRefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -833,7 +839,7 @@ public class CFBamJpaSchemaRefTable implements ICFBamSchemaRefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**

@@ -213,6 +213,10 @@ public class CFBamJpaStringColTable implements ICFBamStringColTable
 		}
 		else if (rec instanceof CFBamJpaStringCol) {
 			CFBamJpaStringCol jparec = (CFBamJpaStringCol)rec;
+			jparec.setCreatedAt(LocalDateTime.now());
+			jparec.setUpdatedAt(jparec.getCreatedAt());
+			jparec.setCreatedByUserId(Authorization.getSecUserId());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaStringCol retval = schema.getJpaHooksSchema().getStringColService().create(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerTable().getRequiredOwnerTenant();
@@ -223,7 +227,7 @@ public class CFBamJpaStringColTable implements ICFBamStringColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "createStringCol", "rec", rec, "CFBamJpaStringCol");
@@ -253,6 +257,8 @@ public class CFBamJpaStringColTable implements ICFBamStringColTable
 		}
 		else if (rec instanceof CFBamJpaStringCol) {
 			CFBamJpaStringCol jparec = (CFBamJpaStringCol)rec;
+			jparec.setUpdatedAt(LocalDateTime.now());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaStringCol retval = schema.getJpaHooksSchema().getStringColService().update(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerTable().getRequiredOwnerTenant();
@@ -263,7 +269,7 @@ public class CFBamJpaStringColTable implements ICFBamStringColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "updateStringCol", "rec", rec, "CFBamJpaStringCol");
@@ -695,7 +701,7 @@ public class CFBamJpaStringColTable implements ICFBamStringColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -728,7 +734,7 @@ public class CFBamJpaStringColTable implements ICFBamStringColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -800,7 +806,7 @@ public class CFBamJpaStringColTable implements ICFBamStringColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -839,7 +845,7 @@ public class CFBamJpaStringColTable implements ICFBamStringColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**

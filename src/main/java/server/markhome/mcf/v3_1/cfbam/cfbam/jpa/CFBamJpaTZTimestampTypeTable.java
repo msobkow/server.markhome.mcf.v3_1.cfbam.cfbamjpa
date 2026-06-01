@@ -213,6 +213,10 @@ public class CFBamJpaTZTimestampTypeTable implements ICFBamTZTimestampTypeTable
 		}
 		else if (rec instanceof CFBamJpaTZTimestampType) {
 			CFBamJpaTZTimestampType jparec = (CFBamJpaTZTimestampType)rec;
+			jparec.setCreatedAt(LocalDateTime.now());
+			jparec.setUpdatedAt(jparec.getCreatedAt());
+			jparec.setCreatedByUserId(Authorization.getSecUserId());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaTZTimestampType retval = schema.getJpaHooksSchema().getTZTimestampTypeService().create(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
@@ -223,7 +227,7 @@ public class CFBamJpaTZTimestampTypeTable implements ICFBamTZTimestampTypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "createTZTimestampType", "rec", rec, "CFBamJpaTZTimestampType");
@@ -253,6 +257,8 @@ public class CFBamJpaTZTimestampTypeTable implements ICFBamTZTimestampTypeTable
 		}
 		else if (rec instanceof CFBamJpaTZTimestampType) {
 			CFBamJpaTZTimestampType jparec = (CFBamJpaTZTimestampType)rec;
+			jparec.setUpdatedAt(LocalDateTime.now());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaTZTimestampType retval = schema.getJpaHooksSchema().getTZTimestampTypeService().update(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
@@ -263,7 +269,7 @@ public class CFBamJpaTZTimestampTypeTable implements ICFBamTZTimestampTypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "updateTZTimestampType", "rec", rec, "CFBamJpaTZTimestampType");
@@ -695,7 +701,7 @@ public class CFBamJpaTZTimestampTypeTable implements ICFBamTZTimestampTypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -728,7 +734,7 @@ public class CFBamJpaTZTimestampTypeTable implements ICFBamTZTimestampTypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -800,7 +806,7 @@ public class CFBamJpaTZTimestampTypeTable implements ICFBamTZTimestampTypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -839,7 +845,7 @@ public class CFBamJpaTZTimestampTypeTable implements ICFBamTZTimestampTypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**

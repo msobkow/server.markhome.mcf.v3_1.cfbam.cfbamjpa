@@ -95,42 +95,67 @@ public class CFBamJpaRelationService {
 		}
 		CFLibDbKeyHash256 originalRequiredId = data.getRequiredId();
 		boolean generatedRequiredId = false;
-			if (data.getRequiredOwnerTenant() == null) {
-				throw new CFLibNullArgumentException(getClass(),
-					S_ProcName,
-					0,
-					"data.getRequiredOwnerTenant()");
-			}
+		if (data.getRequiredOwnerTenant() == null) {
+			throw new CFLibUnresolvedRelationException(getClass(),
+				S_ProcName,
+				"Owner",
+				"Owner",
+				"data.requiredOwnerTenant",
+				"data.requiredOwnerTenant",
+				"Tenant",
+				"Tenant",
+				null);
+		}
 		if(data.getRequiredTenantId() == null || data.getRequiredTenantId().isNull()) {
 			throw new CFLibNullArgumentException(getClass(),
 				S_ProcName,
 				0,
 				"data.requiredTenantId");
 		}
-			if (data.getRequiredContainerFromTable() == null) {
-				throw new CFLibNullArgumentException(getClass(),
-					S_ProcName,
-					0,
-					"data.getRequiredContainerFromTable()");
-			}
-			if (data.getRequiredLookupFromIndex() == null) {
-				throw new CFLibNullArgumentException(getClass(),
-					S_ProcName,
-					0,
-					"data.getRequiredLookupFromIndex()");
-			}
-			if (data.getRequiredLookupToTable() == null) {
-				throw new CFLibNullArgumentException(getClass(),
-					S_ProcName,
-					0,
-					"data.getRequiredLookupToTable()");
-			}
-			if (data.getRequiredLookupToIndex() == null) {
-				throw new CFLibNullArgumentException(getClass(),
-					S_ProcName,
-					0,
-					"data.getRequiredLookupToIndex()");
-			}
+		if (data.getRequiredContainerFromTable() == null) {
+			throw new CFLibUnresolvedRelationException(getClass(),
+				S_ProcName,
+				"Container",
+				"Container",
+				"data.requiredContainerFromTable",
+				"data.requiredContainerFromTable",
+				"Table",
+				"Table",
+				null);
+		}
+		if (data.getRequiredLookupFromIndex() == null) {
+			throw new CFLibUnresolvedRelationException(getClass(),
+				S_ProcName,
+				"Lookup",
+				"Lookup",
+				"data.requiredLookupFromIndex",
+				"data.requiredLookupFromIndex",
+				"Index",
+				"Index",
+				null);
+		}
+		if (data.getRequiredLookupToTable() == null) {
+			throw new CFLibUnresolvedRelationException(getClass(),
+				S_ProcName,
+				"Lookup",
+				"Lookup",
+				"data.requiredLookupToTable",
+				"data.requiredLookupToTable",
+				"Table",
+				"Table",
+				null);
+		}
+		if (data.getRequiredLookupToIndex() == null) {
+			throw new CFLibUnresolvedRelationException(getClass(),
+				S_ProcName,
+				"Lookup",
+				"Lookup",
+				"data.requiredLookupToIndex",
+				"data.requiredLookupToIndex",
+				"Index",
+				"Index",
+				null);
+		}
 		if(data.getRequiredTableId() == null || data.getRequiredTableId().isNull()) {
 			throw new CFLibNullArgumentException(getClass(),
 				S_ProcName,
@@ -171,6 +196,9 @@ public class CFBamJpaRelationService {
 			if(data.getPKey() != null && !data.getPKey().isNull() && cfbam31RelationRepository.existsById((CFLibDbKeyHash256)data.getPKey())) {
 				return( (CFBamJpaRelation)(cfbam31RelationRepository.findById((CFLibDbKeyHash256)(data.getPKey())).get()));
 			}
+			if (data.getRequiredRevision() <= 0) {
+				data.setRequiredRevision(1);
+			}
 			if (data.getRequiredId() == null || data.getRequiredId().isNull()) {
 				data.setRequiredId(new CFLibDbKeyHash256(0));
 				generatedRequiredId = true;
@@ -209,42 +237,67 @@ public class CFBamJpaRelationService {
 				0,
 				"data.getPKey()");
 		}
-			if (data.getRequiredOwnerTenant() == null) {
-				throw new CFLibNullArgumentException(getClass(),
-					S_ProcName,
-					0,
-					"data.getRequiredOwnerTenant()");
-			}
+		if (data.getRequiredOwnerTenant() == null) {
+			throw new CFLibUnresolvedRelationException(getClass(),
+				S_ProcName,
+				"Owner",
+				"Owner",
+				"data.requiredOwnerTenant",
+				"data.requiredOwnerTenant",
+				"Tenant",
+				"Tenant",
+				null);
+		}
 		if(data.getRequiredTenantId() == null || data.getRequiredTenantId().isNull()) {
 			throw new CFLibNullArgumentException(getClass(),
 				S_ProcName,
 				0,
 				"data.requiredTenantId");
 		}
-			if (data.getRequiredContainerFromTable() == null) {
-				throw new CFLibNullArgumentException(getClass(),
-					S_ProcName,
-					0,
-					"data.getRequiredContainerFromTable()");
-			}
-			if (data.getRequiredLookupFromIndex() == null) {
-				throw new CFLibNullArgumentException(getClass(),
-					S_ProcName,
-					0,
-					"data.getRequiredLookupFromIndex()");
-			}
-			if (data.getRequiredLookupToTable() == null) {
-				throw new CFLibNullArgumentException(getClass(),
-					S_ProcName,
-					0,
-					"data.getRequiredLookupToTable()");
-			}
-			if (data.getRequiredLookupToIndex() == null) {
-				throw new CFLibNullArgumentException(getClass(),
-					S_ProcName,
-					0,
-					"data.getRequiredLookupToIndex()");
-			}
+		if (data.getRequiredContainerFromTable() == null) {
+			throw new CFLibUnresolvedRelationException(getClass(),
+				S_ProcName,
+				"Container",
+				"Container",
+				"data.requiredContainerFromTable",
+				"data.requiredContainerFromTable",
+				"Table",
+				"Table",
+				null);
+		}
+		if (data.getRequiredLookupFromIndex() == null) {
+			throw new CFLibUnresolvedRelationException(getClass(),
+				S_ProcName,
+				"Lookup",
+				"Lookup",
+				"data.requiredLookupFromIndex",
+				"data.requiredLookupFromIndex",
+				"Index",
+				"Index",
+				null);
+		}
+		if (data.getRequiredLookupToTable() == null) {
+			throw new CFLibUnresolvedRelationException(getClass(),
+				S_ProcName,
+				"Lookup",
+				"Lookup",
+				"data.requiredLookupToTable",
+				"data.requiredLookupToTable",
+				"Table",
+				"Table",
+				null);
+		}
+		if (data.getRequiredLookupToIndex() == null) {
+			throw new CFLibUnresolvedRelationException(getClass(),
+				S_ProcName,
+				"Lookup",
+				"Lookup",
+				"data.requiredLookupToIndex",
+				"data.requiredLookupToIndex",
+				"Index",
+				"Index",
+				null);
+		}
 		if(data.getRequiredTableId() == null || data.getRequiredTableId().isNull()) {
 			throw new CFLibNullArgumentException(getClass(),
 				S_ProcName,

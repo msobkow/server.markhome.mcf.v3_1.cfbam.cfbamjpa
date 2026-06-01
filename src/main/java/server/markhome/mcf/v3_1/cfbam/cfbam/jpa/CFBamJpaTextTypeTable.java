@@ -213,6 +213,10 @@ public class CFBamJpaTextTypeTable implements ICFBamTextTypeTable
 		}
 		else if (rec instanceof CFBamJpaTextType) {
 			CFBamJpaTextType jparec = (CFBamJpaTextType)rec;
+			jparec.setCreatedAt(LocalDateTime.now());
+			jparec.setUpdatedAt(jparec.getCreatedAt());
+			jparec.setCreatedByUserId(Authorization.getSecUserId());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaTextType retval = schema.getJpaHooksSchema().getTextTypeService().create(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
@@ -223,7 +227,7 @@ public class CFBamJpaTextTypeTable implements ICFBamTextTypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "createTextType", "rec", rec, "CFBamJpaTextType");
@@ -253,6 +257,8 @@ public class CFBamJpaTextTypeTable implements ICFBamTextTypeTable
 		}
 		else if (rec instanceof CFBamJpaTextType) {
 			CFBamJpaTextType jparec = (CFBamJpaTextType)rec;
+			jparec.setUpdatedAt(LocalDateTime.now());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaTextType retval = schema.getJpaHooksSchema().getTextTypeService().update(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
@@ -263,7 +269,7 @@ public class CFBamJpaTextTypeTable implements ICFBamTextTypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "updateTextType", "rec", rec, "CFBamJpaTextType");
@@ -695,7 +701,7 @@ public class CFBamJpaTextTypeTable implements ICFBamTextTypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -728,7 +734,7 @@ public class CFBamJpaTextTypeTable implements ICFBamTextTypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -800,7 +806,7 @@ public class CFBamJpaTextTypeTable implements ICFBamTextTypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -839,7 +845,7 @@ public class CFBamJpaTextTypeTable implements ICFBamTextTypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**

@@ -213,6 +213,10 @@ public class CFBamJpaFloatTypeTable implements ICFBamFloatTypeTable
 		}
 		else if (rec instanceof CFBamJpaFloatType) {
 			CFBamJpaFloatType jparec = (CFBamJpaFloatType)rec;
+			jparec.setCreatedAt(LocalDateTime.now());
+			jparec.setUpdatedAt(jparec.getCreatedAt());
+			jparec.setCreatedByUserId(Authorization.getSecUserId());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaFloatType retval = schema.getJpaHooksSchema().getFloatTypeService().create(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
@@ -223,7 +227,7 @@ public class CFBamJpaFloatTypeTable implements ICFBamFloatTypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "createFloatType", "rec", rec, "CFBamJpaFloatType");
@@ -253,6 +257,8 @@ public class CFBamJpaFloatTypeTable implements ICFBamFloatTypeTable
 		}
 		else if (rec instanceof CFBamJpaFloatType) {
 			CFBamJpaFloatType jparec = (CFBamJpaFloatType)rec;
+			jparec.setUpdatedAt(LocalDateTime.now());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaFloatType retval = schema.getJpaHooksSchema().getFloatTypeService().update(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
@@ -263,7 +269,7 @@ public class CFBamJpaFloatTypeTable implements ICFBamFloatTypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "updateFloatType", "rec", rec, "CFBamJpaFloatType");
@@ -695,7 +701,7 @@ public class CFBamJpaFloatTypeTable implements ICFBamFloatTypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -728,7 +734,7 @@ public class CFBamJpaFloatTypeTable implements ICFBamFloatTypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -800,7 +806,7 @@ public class CFBamJpaFloatTypeTable implements ICFBamFloatTypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -839,7 +845,7 @@ public class CFBamJpaFloatTypeTable implements ICFBamFloatTypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**

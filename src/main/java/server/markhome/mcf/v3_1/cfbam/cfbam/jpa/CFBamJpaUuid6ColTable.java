@@ -213,6 +213,10 @@ public class CFBamJpaUuid6ColTable implements ICFBamUuid6ColTable
 		}
 		else if (rec instanceof CFBamJpaUuid6Col) {
 			CFBamJpaUuid6Col jparec = (CFBamJpaUuid6Col)rec;
+			jparec.setCreatedAt(LocalDateTime.now());
+			jparec.setUpdatedAt(jparec.getCreatedAt());
+			jparec.setCreatedByUserId(Authorization.getSecUserId());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaUuid6Col retval = schema.getJpaHooksSchema().getUuid6ColService().create(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerTable().getRequiredOwnerTenant();
@@ -223,7 +227,7 @@ public class CFBamJpaUuid6ColTable implements ICFBamUuid6ColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "createUuid6Col", "rec", rec, "CFBamJpaUuid6Col");
@@ -253,6 +257,8 @@ public class CFBamJpaUuid6ColTable implements ICFBamUuid6ColTable
 		}
 		else if (rec instanceof CFBamJpaUuid6Col) {
 			CFBamJpaUuid6Col jparec = (CFBamJpaUuid6Col)rec;
+			jparec.setUpdatedAt(LocalDateTime.now());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaUuid6Col retval = schema.getJpaHooksSchema().getUuid6ColService().update(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerTable().getRequiredOwnerTenant();
@@ -263,7 +269,7 @@ public class CFBamJpaUuid6ColTable implements ICFBamUuid6ColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "updateUuid6Col", "rec", rec, "CFBamJpaUuid6Col");
@@ -695,7 +701,7 @@ public class CFBamJpaUuid6ColTable implements ICFBamUuid6ColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -728,7 +734,7 @@ public class CFBamJpaUuid6ColTable implements ICFBamUuid6ColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -800,7 +806,7 @@ public class CFBamJpaUuid6ColTable implements ICFBamUuid6ColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -839,7 +845,7 @@ public class CFBamJpaUuid6ColTable implements ICFBamUuid6ColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**

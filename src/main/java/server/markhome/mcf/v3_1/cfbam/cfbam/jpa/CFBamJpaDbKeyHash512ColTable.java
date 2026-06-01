@@ -213,6 +213,10 @@ public class CFBamJpaDbKeyHash512ColTable implements ICFBamDbKeyHash512ColTable
 		}
 		else if (rec instanceof CFBamJpaDbKeyHash512Col) {
 			CFBamJpaDbKeyHash512Col jparec = (CFBamJpaDbKeyHash512Col)rec;
+			jparec.setCreatedAt(LocalDateTime.now());
+			jparec.setUpdatedAt(jparec.getCreatedAt());
+			jparec.setCreatedByUserId(Authorization.getSecUserId());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaDbKeyHash512Col retval = schema.getJpaHooksSchema().getDbKeyHash512ColService().create(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerTable().getRequiredOwnerTenant();
@@ -223,7 +227,7 @@ public class CFBamJpaDbKeyHash512ColTable implements ICFBamDbKeyHash512ColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "createDbKeyHash512Col", "rec", rec, "CFBamJpaDbKeyHash512Col");
@@ -253,6 +257,8 @@ public class CFBamJpaDbKeyHash512ColTable implements ICFBamDbKeyHash512ColTable
 		}
 		else if (rec instanceof CFBamJpaDbKeyHash512Col) {
 			CFBamJpaDbKeyHash512Col jparec = (CFBamJpaDbKeyHash512Col)rec;
+			jparec.setUpdatedAt(LocalDateTime.now());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaDbKeyHash512Col retval = schema.getJpaHooksSchema().getDbKeyHash512ColService().update(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerTable().getRequiredOwnerTenant();
@@ -263,7 +269,7 @@ public class CFBamJpaDbKeyHash512ColTable implements ICFBamDbKeyHash512ColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "updateDbKeyHash512Col", "rec", rec, "CFBamJpaDbKeyHash512Col");
@@ -695,7 +701,7 @@ public class CFBamJpaDbKeyHash512ColTable implements ICFBamDbKeyHash512ColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -728,7 +734,7 @@ public class CFBamJpaDbKeyHash512ColTable implements ICFBamDbKeyHash512ColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -800,7 +806,7 @@ public class CFBamJpaDbKeyHash512ColTable implements ICFBamDbKeyHash512ColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -839,7 +845,7 @@ public class CFBamJpaDbKeyHash512ColTable implements ICFBamDbKeyHash512ColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**

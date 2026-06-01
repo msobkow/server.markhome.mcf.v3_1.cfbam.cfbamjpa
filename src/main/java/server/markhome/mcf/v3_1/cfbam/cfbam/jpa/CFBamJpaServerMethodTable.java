@@ -213,6 +213,10 @@ public class CFBamJpaServerMethodTable implements ICFBamServerMethodTable
 		}
 		else if (rec instanceof CFBamJpaServerMethod) {
 			CFBamJpaServerMethod jparec = (CFBamJpaServerMethod)rec;
+			jparec.setCreatedAt(LocalDateTime.now());
+			jparec.setUpdatedAt(jparec.getCreatedAt());
+			jparec.setCreatedByUserId(Authorization.getSecUserId());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaServerMethod retval = schema.getJpaHooksSchema().getServerMethodService().create(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
@@ -223,7 +227,7 @@ public class CFBamJpaServerMethodTable implements ICFBamServerMethodTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "createServerMethod", "rec", rec, "CFBamJpaServerMethod");
@@ -253,6 +257,8 @@ public class CFBamJpaServerMethodTable implements ICFBamServerMethodTable
 		}
 		else if (rec instanceof CFBamJpaServerMethod) {
 			CFBamJpaServerMethod jparec = (CFBamJpaServerMethod)rec;
+			jparec.setUpdatedAt(LocalDateTime.now());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaServerMethod retval = schema.getJpaHooksSchema().getServerMethodService().update(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
@@ -263,7 +269,7 @@ public class CFBamJpaServerMethodTable implements ICFBamServerMethodTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "updateServerMethod", "rec", rec, "CFBamJpaServerMethod");
@@ -521,7 +527,7 @@ public class CFBamJpaServerMethodTable implements ICFBamServerMethodTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -554,7 +560,7 @@ public class CFBamJpaServerMethodTable implements ICFBamServerMethodTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -626,7 +632,7 @@ public class CFBamJpaServerMethodTable implements ICFBamServerMethodTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -708,7 +714,7 @@ public class CFBamJpaServerMethodTable implements ICFBamServerMethodTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**

@@ -213,6 +213,10 @@ public class CFBamJpaBlobTypeTable implements ICFBamBlobTypeTable
 		}
 		else if (rec instanceof CFBamJpaBlobType) {
 			CFBamJpaBlobType jparec = (CFBamJpaBlobType)rec;
+			jparec.setCreatedAt(LocalDateTime.now());
+			jparec.setUpdatedAt(jparec.getCreatedAt());
+			jparec.setCreatedByUserId(Authorization.getSecUserId());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaBlobType retval = schema.getJpaHooksSchema().getBlobTypeService().create(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
@@ -223,7 +227,7 @@ public class CFBamJpaBlobTypeTable implements ICFBamBlobTypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "createBlobType", "rec", rec, "CFBamJpaBlobType");
@@ -253,6 +257,8 @@ public class CFBamJpaBlobTypeTable implements ICFBamBlobTypeTable
 		}
 		else if (rec instanceof CFBamJpaBlobType) {
 			CFBamJpaBlobType jparec = (CFBamJpaBlobType)rec;
+			jparec.setUpdatedAt(LocalDateTime.now());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaBlobType retval = schema.getJpaHooksSchema().getBlobTypeService().update(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
@@ -263,7 +269,7 @@ public class CFBamJpaBlobTypeTable implements ICFBamBlobTypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "updateBlobType", "rec", rec, "CFBamJpaBlobType");
@@ -695,7 +701,7 @@ public class CFBamJpaBlobTypeTable implements ICFBamBlobTypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -728,7 +734,7 @@ public class CFBamJpaBlobTypeTable implements ICFBamBlobTypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -800,7 +806,7 @@ public class CFBamJpaBlobTypeTable implements ICFBamBlobTypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -839,7 +845,7 @@ public class CFBamJpaBlobTypeTable implements ICFBamBlobTypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**

@@ -213,6 +213,10 @@ public class CFBamJpaClearDepTable implements ICFBamClearDepTable
 		}
 		else if (rec instanceof CFBamJpaClearDep) {
 			CFBamJpaClearDep jparec = (CFBamJpaClearDep)rec;
+			jparec.setCreatedAt(LocalDateTime.now());
+			jparec.setUpdatedAt(jparec.getCreatedAt());
+			jparec.setCreatedByUserId(Authorization.getSecUserId());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaClearDep retval = schema.getJpaHooksSchema().getClearDepService().create(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
@@ -223,7 +227,7 @@ public class CFBamJpaClearDepTable implements ICFBamClearDepTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "createClearDep", "rec", rec, "CFBamJpaClearDep");
@@ -253,6 +257,8 @@ public class CFBamJpaClearDepTable implements ICFBamClearDepTable
 		}
 		else if (rec instanceof CFBamJpaClearDep) {
 			CFBamJpaClearDep jparec = (CFBamJpaClearDep)rec;
+			jparec.setUpdatedAt(LocalDateTime.now());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaClearDep retval = schema.getJpaHooksSchema().getClearDepService().update(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
@@ -263,7 +269,7 @@ public class CFBamJpaClearDepTable implements ICFBamClearDepTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "updateClearDep", "rec", rec, "CFBamJpaClearDep");
@@ -475,7 +481,7 @@ public class CFBamJpaClearDepTable implements ICFBamClearDepTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -508,7 +514,7 @@ public class CFBamJpaClearDepTable implements ICFBamClearDepTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -580,7 +586,7 @@ public class CFBamJpaClearDepTable implements ICFBamClearDepTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**

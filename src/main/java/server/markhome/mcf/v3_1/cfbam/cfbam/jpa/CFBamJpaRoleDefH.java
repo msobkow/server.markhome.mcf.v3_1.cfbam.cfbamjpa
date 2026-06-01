@@ -64,16 +64,17 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 
 /**
  *  CFBamJpaRoleDefH provides history objects matching the CFBamRoleDef change history.
+ *	Note that because all indexes are historical with multiple instances of history records, the only key that can be unique is the primary key of a history table.
  */
 @Entity
 @Table(
     name = "roledef_h", schema = "CFBam31",
     indexes = {
         @Index(name = "RoleDefIdIdx_h", columnList = "auditClusterId, auditStamp, auditAction, requiredRevision, auditSessionId, Id", unique = true),
-        @Index(name = "RoleDefUNameIdx_h", columnList = "ScopeId, safe_name", unique = true),
+        @Index(name = "RoleDefUNameIdx_h", columnList = "ScopeId, safe_name", unique = false),
         @Index(name = "RoleDefScopeIdx_h", columnList = "ScopeId", unique = false),
         @Index(name = "RoleDefDefSchemaDefIdx_h", columnList = "defschid", unique = false),
-        @Index(name = "RoleDefUDefIdx_h", columnList = "ScopeId, defschid, safe_name", unique = true)
+        @Index(name = "RoleDefUDefIdx_h", columnList = "ScopeId, defschid, safe_name", unique = false)
     }
 )
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -119,8 +120,10 @@ public class CFBamJpaRoleDefH
 	protected CFLibDbKeyHash256 optionalDefSchemaId;
 	@Column( name="safe_name", nullable=false, length=192 )
 	protected String requiredName;
-	@Column( name="member_str", nullable=false, length=2000000 )
-	protected String requiredMembershipString;
+	@Column( name="enables_str", nullable=false, length=2000000 )
+	protected String requiredEnables;
+	@Column( name="includes_str", nullable=false, length=2000000 )
+	protected String requiredIncludes;
 
     public CFBamJpaRoleDefH() {
             // The primary key member attributes are initialized on construction
@@ -128,7 +131,8 @@ public class CFBamJpaRoleDefH
 		requiredScopeId = CFLibDbKeyHash256.fromHex( ICFBamRoleDef.SCOPEID_INIT_VALUE.toString() );
 		optionalDefSchemaId = CFLibDbKeyHash256.nullGet();
 		requiredName = ICFBamRoleDef.NAME_INIT_VALUE;
-		requiredMembershipString = ICFBamRoleDef.MEMBERSHIPSTRING_INIT_VALUE;
+		requiredEnables = ICFBamRoleDef.ENABLES_INIT_VALUE;
+		requiredIncludes = ICFBamRoleDef.INCLUDES_INIT_VALUE;
     }
 
     @Override
@@ -316,27 +320,51 @@ public class CFBamJpaRoleDefH
 	}
 
 	@Override
-	public String getRequiredMembershipString() {
-		return( requiredMembershipString );
+	public String getRequiredEnables() {
+		return( requiredEnables );
 	}
 
 	@Override
-	public void setRequiredMembershipString( String value ) {
+	public void setRequiredEnables( String value ) {
 		if( value == null ) {
 			throw new CFLibNullArgumentException( getClass(),
-				"setRequiredMembershipString",
+				"setRequiredEnables",
 				1,
 				"value" );
 		}
 		else if( value.length() > 2000000 ) {
 			throw new CFLibArgumentOverflowException( getClass(),
-				"setRequiredMembershipString",
+				"setRequiredEnables",
 				1,
 				"value.length()",
 				value.length(),
 				2000000 );
 		}
-		requiredMembershipString = value;
+		requiredEnables = value;
+	}
+
+	@Override
+	public String getRequiredIncludes() {
+		return( requiredIncludes );
+	}
+
+	@Override
+	public void setRequiredIncludes( String value ) {
+		if( value == null ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredIncludes",
+				1,
+				"value" );
+		}
+		else if( value.length() > 2000000 ) {
+			throw new CFLibArgumentOverflowException( getClass(),
+				"setRequiredIncludes",
+				1,
+				"value.length()",
+				value.length(),
+				2000000 );
+		}
+		requiredIncludes = value;
 	}
 
     @Override
@@ -405,9 +433,9 @@ public class CFBamJpaRoleDefH
 					return( false );
 				}
 			}
-			if( getRequiredMembershipString() != null ) {
-				if( rhs.getRequiredMembershipString() != null ) {
-					if( ! getRequiredMembershipString().equals( rhs.getRequiredMembershipString() ) ) {
+			if( getRequiredEnables() != null ) {
+				if( rhs.getRequiredEnables() != null ) {
+					if( ! getRequiredEnables().equals( rhs.getRequiredEnables() ) ) {
 						return( false );
 					}
 				}
@@ -416,7 +444,22 @@ public class CFBamJpaRoleDefH
 				}
 			}
 			else {
-				if( rhs.getRequiredMembershipString() != null ) {
+				if( rhs.getRequiredEnables() != null ) {
+					return( false );
+				}
+			}
+			if( getRequiredIncludes() != null ) {
+				if( rhs.getRequiredIncludes() != null ) {
+					if( ! getRequiredIncludes().equals( rhs.getRequiredIncludes() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredIncludes() != null ) {
 					return( false );
 				}
 			}
@@ -483,9 +526,9 @@ public class CFBamJpaRoleDefH
 					return( false );
 				}
 			}
-			if( getRequiredMembershipString() != null ) {
-				if( rhs.getRequiredMembershipString() != null ) {
-					if( ! getRequiredMembershipString().equals( rhs.getRequiredMembershipString() ) ) {
+			if( getRequiredEnables() != null ) {
+				if( rhs.getRequiredEnables() != null ) {
+					if( ! getRequiredEnables().equals( rhs.getRequiredEnables() ) ) {
 						return( false );
 					}
 				}
@@ -494,7 +537,22 @@ public class CFBamJpaRoleDefH
 				}
 			}
 			else {
-				if( rhs.getRequiredMembershipString() != null ) {
+				if( rhs.getRequiredEnables() != null ) {
+					return( false );
+				}
+			}
+			if( getRequiredIncludes() != null ) {
+				if( rhs.getRequiredIncludes() != null ) {
+					if( ! getRequiredIncludes().equals( rhs.getRequiredIncludes() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredIncludes() != null ) {
 					return( false );
 				}
 			}
@@ -655,8 +713,11 @@ public class CFBamJpaRoleDefH
 		if( getRequiredName() != null ) {
 			hashCode = hashCode + getRequiredName().hashCode();
 		}
-		if( getRequiredMembershipString() != null ) {
-			hashCode = hashCode + getRequiredMembershipString().hashCode();
+		if( getRequiredEnables() != null ) {
+			hashCode = hashCode + getRequiredEnables().hashCode();
+		}
+		if( getRequiredIncludes() != null ) {
+			hashCode = hashCode + getRequiredIncludes().hashCode();
 		}
         return( hashCode & 0x7fffffff );
     }
@@ -729,9 +790,9 @@ public class CFBamJpaRoleDefH
 			else if (rhs.getRequiredName() != null) {
 				return( -1 );
 			}
-			if (getRequiredMembershipString() != null) {
-				if (rhs.getRequiredMembershipString() != null) {
-					cmp = getRequiredMembershipString().compareTo( rhs.getRequiredMembershipString() );
+			if (getRequiredEnables() != null) {
+				if (rhs.getRequiredEnables() != null) {
+					cmp = getRequiredEnables().compareTo( rhs.getRequiredEnables() );
 					if( cmp != 0 ) {
 						return( cmp );
 					}
@@ -740,7 +801,21 @@ public class CFBamJpaRoleDefH
 					return( 1 );
 				}
 			}
-			else if (rhs.getRequiredMembershipString() != null) {
+			else if (rhs.getRequiredEnables() != null) {
+				return( -1 );
+			}
+			if (getRequiredIncludes() != null) {
+				if (rhs.getRequiredIncludes() != null) {
+					cmp = getRequiredIncludes().compareTo( rhs.getRequiredIncludes() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredIncludes() != null) {
 				return( -1 );
 			}
             return( 0 );
@@ -815,9 +890,9 @@ public class CFBamJpaRoleDefH
 			else if (rhs.getRequiredName() != null) {
 				return( -1 );
 			}
-			if (getRequiredMembershipString() != null) {
-				if (rhs.getRequiredMembershipString() != null) {
-					cmp = getRequiredMembershipString().compareTo( rhs.getRequiredMembershipString() );
+			if (getRequiredEnables() != null) {
+				if (rhs.getRequiredEnables() != null) {
+					cmp = getRequiredEnables().compareTo( rhs.getRequiredEnables() );
 					if( cmp != 0 ) {
 						return( cmp );
 					}
@@ -826,7 +901,21 @@ public class CFBamJpaRoleDefH
 					return( 1 );
 				}
 			}
-			else if (rhs.getRequiredMembershipString() != null) {
+			else if (rhs.getRequiredEnables() != null) {
+				return( -1 );
+			}
+			if (getRequiredIncludes() != null) {
+				if (rhs.getRequiredIncludes() != null) {
+					cmp = getRequiredIncludes().compareTo( rhs.getRequiredIncludes() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredIncludes() != null) {
 				return( -1 );
 			}
             return( 0 );
@@ -968,7 +1057,8 @@ public class CFBamJpaRoleDefH
 		setRequiredScopeId( src.getRequiredScopeId() );
 		setOptionalDefSchemaId( src.getOptionalDefSchemaId() );
 		setRequiredName( src.getRequiredName() );
-		setRequiredMembershipString( src.getRequiredMembershipString() );
+		setRequiredEnables( src.getRequiredEnables() );
+		setRequiredIncludes( src.getRequiredIncludes() );
 		setRequiredRevision( src.getRequiredRevision() );
     }
 
@@ -983,7 +1073,8 @@ public class CFBamJpaRoleDefH
 		setRequiredScopeId( src.getRequiredScopeId() );
 		setOptionalDefSchemaId( src.getOptionalDefSchemaId() );
 		setRequiredName( src.getRequiredName() );
-		setRequiredMembershipString( src.getRequiredMembershipString() );
+		setRequiredEnables( src.getRequiredEnables() );
+		setRequiredIncludes( src.getRequiredIncludes() );
 		setRequiredRevision( src.getRequiredRevision() );
     }
 
@@ -994,7 +1085,8 @@ public class CFBamJpaRoleDefH
 			+ " RequiredScopeId=" + "\"" + getRequiredScopeId().toString() + "\""
 			+ " OptionalDefSchemaId=" + ( ( getOptionalDefSchemaId() == null ) ? "null" : "\"" + getOptionalDefSchemaId().toString() + "\"" )
 			+ " RequiredName=" + "\"" + StringEscapeUtils.escapeXml11( getRequiredName() ) + "\""
-			+ " RequiredMembershipString=" + "\"" + StringEscapeUtils.escapeXml11( getRequiredMembershipString() ) + "\"";
+			+ " RequiredEnables=" + "\"" + StringEscapeUtils.escapeXml11( getRequiredEnables() ) + "\""
+			+ " RequiredIncludes=" + "\"" + StringEscapeUtils.escapeXml11( getRequiredIncludes() ) + "\"";
         return( ret );
     }
 

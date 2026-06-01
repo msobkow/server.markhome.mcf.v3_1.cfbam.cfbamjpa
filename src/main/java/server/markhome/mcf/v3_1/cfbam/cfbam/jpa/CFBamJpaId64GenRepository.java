@@ -72,6 +72,10 @@ import server.markhome.mcf.v3_1.cfbam.cfbam.*;
 @Transactional(readOnly = true)
 public interface CFBamJpaId64GenRepository extends JpaRepository<CFBamJpaId64Gen, CFLibDbKeyHash256> {
 
+	@Transactional
+	@Modifying
+	CFBamJpaId64Gen save(CFBamJpaId64Gen obj);
+
 	/**
 	 *	Argument-based get database instance for compatibility with the current MSS code factory code base.
 	 *

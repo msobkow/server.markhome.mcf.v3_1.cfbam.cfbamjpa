@@ -213,6 +213,10 @@ public class CFBamJpaServerListFuncTable implements ICFBamServerListFuncTable
 		}
 		else if (rec instanceof CFBamJpaServerListFunc) {
 			CFBamJpaServerListFunc jparec = (CFBamJpaServerListFunc)rec;
+			jparec.setCreatedAt(LocalDateTime.now());
+			jparec.setUpdatedAt(jparec.getCreatedAt());
+			jparec.setCreatedByUserId(Authorization.getSecUserId());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaServerListFunc retval = schema.getJpaHooksSchema().getServerListFuncService().create(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
@@ -223,7 +227,7 @@ public class CFBamJpaServerListFuncTable implements ICFBamServerListFuncTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "createServerListFunc", "rec", rec, "CFBamJpaServerListFunc");
@@ -253,6 +257,8 @@ public class CFBamJpaServerListFuncTable implements ICFBamServerListFuncTable
 		}
 		else if (rec instanceof CFBamJpaServerListFunc) {
 			CFBamJpaServerListFunc jparec = (CFBamJpaServerListFunc)rec;
+			jparec.setUpdatedAt(LocalDateTime.now());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaServerListFunc retval = schema.getJpaHooksSchema().getServerListFuncService().update(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
@@ -263,7 +269,7 @@ public class CFBamJpaServerListFuncTable implements ICFBamServerListFuncTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "updateServerListFunc", "rec", rec, "CFBamJpaServerListFunc");
@@ -562,7 +568,7 @@ public class CFBamJpaServerListFuncTable implements ICFBamServerListFuncTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -595,7 +601,7 @@ public class CFBamJpaServerListFuncTable implements ICFBamServerListFuncTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -667,7 +673,7 @@ public class CFBamJpaServerListFuncTable implements ICFBamServerListFuncTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -749,7 +755,7 @@ public class CFBamJpaServerListFuncTable implements ICFBamServerListFuncTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**

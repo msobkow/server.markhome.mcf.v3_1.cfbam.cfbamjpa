@@ -213,6 +213,10 @@ public class CFBamJpaClearSubDep3Table implements ICFBamClearSubDep3Table
 		}
 		else if (rec instanceof CFBamJpaClearSubDep3) {
 			CFBamJpaClearSubDep3 jparec = (CFBamJpaClearSubDep3)rec;
+			jparec.setCreatedAt(LocalDateTime.now());
+			jparec.setUpdatedAt(jparec.getCreatedAt());
+			jparec.setCreatedByUserId(Authorization.getSecUserId());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaClearSubDep3 retval = schema.getJpaHooksSchema().getClearSubDep3Service().create(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
@@ -223,7 +227,7 @@ public class CFBamJpaClearSubDep3Table implements ICFBamClearSubDep3Table
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "createClearSubDep3", "rec", rec, "CFBamJpaClearSubDep3");
@@ -253,6 +257,8 @@ public class CFBamJpaClearSubDep3Table implements ICFBamClearSubDep3Table
 		}
 		else if (rec instanceof CFBamJpaClearSubDep3) {
 			CFBamJpaClearSubDep3 jparec = (CFBamJpaClearSubDep3)rec;
+			jparec.setUpdatedAt(LocalDateTime.now());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaClearSubDep3 retval = schema.getJpaHooksSchema().getClearSubDep3Service().update(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
@@ -263,7 +269,7 @@ public class CFBamJpaClearSubDep3Table implements ICFBamClearSubDep3Table
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "updateClearSubDep3", "rec", rec, "CFBamJpaClearSubDep3");
@@ -562,7 +568,7 @@ public class CFBamJpaClearSubDep3Table implements ICFBamClearSubDep3Table
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -595,7 +601,7 @@ public class CFBamJpaClearSubDep3Table implements ICFBamClearSubDep3Table
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -667,7 +673,7 @@ public class CFBamJpaClearSubDep3Table implements ICFBamClearSubDep3Table
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -878,7 +884,7 @@ public class CFBamJpaClearSubDep3Table implements ICFBamClearSubDep3Table
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**

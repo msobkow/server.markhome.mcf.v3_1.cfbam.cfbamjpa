@@ -72,6 +72,10 @@ import server.markhome.mcf.v3_1.cfbam.cfbam.*;
 @Transactional(readOnly = true)
 public interface CFBamJpaTimestampColRepository extends JpaRepository<CFBamJpaTimestampCol, CFLibDbKeyHash256> {
 
+	@Transactional
+	@Modifying
+	CFBamJpaTimestampCol save(CFBamJpaTimestampCol obj);
+
 	/**
 	 *	Argument-based get database instance for compatibility with the current MSS code factory code base.
 	 *

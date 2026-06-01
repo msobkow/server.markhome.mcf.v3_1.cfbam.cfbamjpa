@@ -213,6 +213,10 @@ public class CFBamJpaFloatDefTable implements ICFBamFloatDefTable
 		}
 		else if (rec instanceof CFBamJpaFloatDef) {
 			CFBamJpaFloatDef jparec = (CFBamJpaFloatDef)rec;
+			jparec.setCreatedAt(LocalDateTime.now());
+			jparec.setUpdatedAt(jparec.getCreatedAt());
+			jparec.setCreatedByUserId(Authorization.getSecUserId());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaFloatDef retval = schema.getJpaHooksSchema().getFloatDefService().create(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerScope().getRequiredOwnerTenant();
@@ -223,7 +227,7 @@ public class CFBamJpaFloatDefTable implements ICFBamFloatDefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "createFloatDef", "rec", rec, "CFBamJpaFloatDef");
@@ -253,6 +257,8 @@ public class CFBamJpaFloatDefTable implements ICFBamFloatDefTable
 		}
 		else if (rec instanceof CFBamJpaFloatDef) {
 			CFBamJpaFloatDef jparec = (CFBamJpaFloatDef)rec;
+			jparec.setUpdatedAt(LocalDateTime.now());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaFloatDef retval = schema.getJpaHooksSchema().getFloatDefService().update(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerScope().getRequiredOwnerTenant();
@@ -263,7 +269,7 @@ public class CFBamJpaFloatDefTable implements ICFBamFloatDefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "updateFloatDef", "rec", rec, "CFBamJpaFloatDef");
@@ -654,7 +660,7 @@ public class CFBamJpaFloatDefTable implements ICFBamFloatDefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -687,7 +693,7 @@ public class CFBamJpaFloatDefTable implements ICFBamFloatDefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -759,7 +765,7 @@ public class CFBamJpaFloatDefTable implements ICFBamFloatDefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -798,7 +804,7 @@ public class CFBamJpaFloatDefTable implements ICFBamFloatDefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**

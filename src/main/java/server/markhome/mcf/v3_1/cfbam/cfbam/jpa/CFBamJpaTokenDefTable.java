@@ -213,6 +213,10 @@ public class CFBamJpaTokenDefTable implements ICFBamTokenDefTable
 		}
 		else if (rec instanceof CFBamJpaTokenDef) {
 			CFBamJpaTokenDef jparec = (CFBamJpaTokenDef)rec;
+			jparec.setCreatedAt(LocalDateTime.now());
+			jparec.setUpdatedAt(jparec.getCreatedAt());
+			jparec.setCreatedByUserId(Authorization.getSecUserId());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaTokenDef retval = schema.getJpaHooksSchema().getTokenDefService().create(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerScope().getRequiredOwnerTenant();
@@ -223,7 +227,7 @@ public class CFBamJpaTokenDefTable implements ICFBamTokenDefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "createTokenDef", "rec", rec, "CFBamJpaTokenDef");
@@ -253,6 +257,8 @@ public class CFBamJpaTokenDefTable implements ICFBamTokenDefTable
 		}
 		else if (rec instanceof CFBamJpaTokenDef) {
 			CFBamJpaTokenDef jparec = (CFBamJpaTokenDef)rec;
+			jparec.setUpdatedAt(LocalDateTime.now());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaTokenDef retval = schema.getJpaHooksSchema().getTokenDefService().update(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerScope().getRequiredOwnerTenant();
@@ -263,7 +269,7 @@ public class CFBamJpaTokenDefTable implements ICFBamTokenDefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "updateTokenDef", "rec", rec, "CFBamJpaTokenDef");
@@ -654,7 +660,7 @@ public class CFBamJpaTokenDefTable implements ICFBamTokenDefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -687,7 +693,7 @@ public class CFBamJpaTokenDefTable implements ICFBamTokenDefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -759,7 +765,7 @@ public class CFBamJpaTokenDefTable implements ICFBamTokenDefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -798,7 +804,7 @@ public class CFBamJpaTokenDefTable implements ICFBamTokenDefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**

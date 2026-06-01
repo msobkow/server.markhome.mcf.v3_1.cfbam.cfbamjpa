@@ -213,6 +213,10 @@ public class CFBamJpaBlobColTable implements ICFBamBlobColTable
 		}
 		else if (rec instanceof CFBamJpaBlobCol) {
 			CFBamJpaBlobCol jparec = (CFBamJpaBlobCol)rec;
+			jparec.setCreatedAt(LocalDateTime.now());
+			jparec.setUpdatedAt(jparec.getCreatedAt());
+			jparec.setCreatedByUserId(Authorization.getSecUserId());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaBlobCol retval = schema.getJpaHooksSchema().getBlobColService().create(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerTable().getRequiredOwnerTenant();
@@ -223,7 +227,7 @@ public class CFBamJpaBlobColTable implements ICFBamBlobColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "createBlobCol", "rec", rec, "CFBamJpaBlobCol");
@@ -253,6 +257,8 @@ public class CFBamJpaBlobColTable implements ICFBamBlobColTable
 		}
 		else if (rec instanceof CFBamJpaBlobCol) {
 			CFBamJpaBlobCol jparec = (CFBamJpaBlobCol)rec;
+			jparec.setUpdatedAt(LocalDateTime.now());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaBlobCol retval = schema.getJpaHooksSchema().getBlobColService().update(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerTable().getRequiredOwnerTenant();
@@ -263,7 +269,7 @@ public class CFBamJpaBlobColTable implements ICFBamBlobColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "updateBlobCol", "rec", rec, "CFBamJpaBlobCol");
@@ -695,7 +701,7 @@ public class CFBamJpaBlobColTable implements ICFBamBlobColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -728,7 +734,7 @@ public class CFBamJpaBlobColTable implements ICFBamBlobColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -800,7 +806,7 @@ public class CFBamJpaBlobColTable implements ICFBamBlobColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -839,7 +845,7 @@ public class CFBamJpaBlobColTable implements ICFBamBlobColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**

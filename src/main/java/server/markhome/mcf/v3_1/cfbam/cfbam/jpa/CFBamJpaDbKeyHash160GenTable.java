@@ -213,6 +213,10 @@ public class CFBamJpaDbKeyHash160GenTable implements ICFBamDbKeyHash160GenTable
 		}
 		else if (rec instanceof CFBamJpaDbKeyHash160Gen) {
 			CFBamJpaDbKeyHash160Gen jparec = (CFBamJpaDbKeyHash160Gen)rec;
+			jparec.setCreatedAt(LocalDateTime.now());
+			jparec.setUpdatedAt(jparec.getCreatedAt());
+			jparec.setCreatedByUserId(Authorization.getSecUserId());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaDbKeyHash160Gen retval = schema.getJpaHooksSchema().getDbKeyHash160GenService().create(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
@@ -223,7 +227,7 @@ public class CFBamJpaDbKeyHash160GenTable implements ICFBamDbKeyHash160GenTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "createDbKeyHash160Gen", "rec", rec, "CFBamJpaDbKeyHash160Gen");
@@ -253,6 +257,8 @@ public class CFBamJpaDbKeyHash160GenTable implements ICFBamDbKeyHash160GenTable
 		}
 		else if (rec instanceof CFBamJpaDbKeyHash160Gen) {
 			CFBamJpaDbKeyHash160Gen jparec = (CFBamJpaDbKeyHash160Gen)rec;
+			jparec.setUpdatedAt(LocalDateTime.now());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaDbKeyHash160Gen retval = schema.getJpaHooksSchema().getDbKeyHash160GenService().update(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
@@ -263,7 +269,7 @@ public class CFBamJpaDbKeyHash160GenTable implements ICFBamDbKeyHash160GenTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "updateDbKeyHash160Gen", "rec", rec, "CFBamJpaDbKeyHash160Gen");
@@ -695,7 +701,7 @@ public class CFBamJpaDbKeyHash160GenTable implements ICFBamDbKeyHash160GenTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -728,7 +734,7 @@ public class CFBamJpaDbKeyHash160GenTable implements ICFBamDbKeyHash160GenTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -800,7 +806,7 @@ public class CFBamJpaDbKeyHash160GenTable implements ICFBamDbKeyHash160GenTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -839,7 +845,7 @@ public class CFBamJpaDbKeyHash160GenTable implements ICFBamDbKeyHash160GenTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**

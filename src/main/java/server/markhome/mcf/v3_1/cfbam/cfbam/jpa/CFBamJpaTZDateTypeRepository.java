@@ -72,6 +72,10 @@ import server.markhome.mcf.v3_1.cfbam.cfbam.*;
 @Transactional(readOnly = true)
 public interface CFBamJpaTZDateTypeRepository extends JpaRepository<CFBamJpaTZDateType, CFLibDbKeyHash256> {
 
+	@Transactional
+	@Modifying
+	CFBamJpaTZDateType save(CFBamJpaTZDateType obj);
+
 	/**
 	 *	Argument-based get database instance for compatibility with the current MSS code factory code base.
 	 *

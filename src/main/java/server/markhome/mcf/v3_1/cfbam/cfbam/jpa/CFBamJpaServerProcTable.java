@@ -213,6 +213,10 @@ public class CFBamJpaServerProcTable implements ICFBamServerProcTable
 		}
 		else if (rec instanceof CFBamJpaServerProc) {
 			CFBamJpaServerProc jparec = (CFBamJpaServerProc)rec;
+			jparec.setCreatedAt(LocalDateTime.now());
+			jparec.setUpdatedAt(jparec.getCreatedAt());
+			jparec.setCreatedByUserId(Authorization.getSecUserId());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaServerProc retval = schema.getJpaHooksSchema().getServerProcService().create(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
@@ -223,7 +227,7 @@ public class CFBamJpaServerProcTable implements ICFBamServerProcTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "createServerProc", "rec", rec, "CFBamJpaServerProc");
@@ -253,6 +257,8 @@ public class CFBamJpaServerProcTable implements ICFBamServerProcTable
 		}
 		else if (rec instanceof CFBamJpaServerProc) {
 			CFBamJpaServerProc jparec = (CFBamJpaServerProc)rec;
+			jparec.setUpdatedAt(LocalDateTime.now());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaServerProc retval = schema.getJpaHooksSchema().getServerProcService().update(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
@@ -263,7 +269,7 @@ public class CFBamJpaServerProcTable implements ICFBamServerProcTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "updateServerProc", "rec", rec, "CFBamJpaServerProc");
@@ -521,7 +527,7 @@ public class CFBamJpaServerProcTable implements ICFBamServerProcTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -554,7 +560,7 @@ public class CFBamJpaServerProcTable implements ICFBamServerProcTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -626,7 +632,7 @@ public class CFBamJpaServerProcTable implements ICFBamServerProcTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -708,7 +714,7 @@ public class CFBamJpaServerProcTable implements ICFBamServerProcTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**

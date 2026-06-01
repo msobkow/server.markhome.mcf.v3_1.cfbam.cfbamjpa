@@ -213,6 +213,10 @@ public class CFBamJpaEnumTagTable implements ICFBamEnumTagTable
 		}
 		else if (rec instanceof CFBamJpaEnumTag) {
 			CFBamJpaEnumTag jparec = (CFBamJpaEnumTag)rec;
+			jparec.setCreatedAt(LocalDateTime.now());
+			jparec.setUpdatedAt(jparec.getCreatedAt());
+			jparec.setCreatedByUserId(Authorization.getSecUserId());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaEnumTag retval = schema.getJpaHooksSchema().getEnumTagService().create(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerEnumDef().getRequiredContainerScope().getRequiredOwnerTenant();
@@ -223,7 +227,7 @@ public class CFBamJpaEnumTagTable implements ICFBamEnumTagTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "createEnumTag", "rec", rec, "CFBamJpaEnumTag");
@@ -253,6 +257,8 @@ public class CFBamJpaEnumTagTable implements ICFBamEnumTagTable
 		}
 		else if (rec instanceof CFBamJpaEnumTag) {
 			CFBamJpaEnumTag jparec = (CFBamJpaEnumTag)rec;
+			jparec.setUpdatedAt(LocalDateTime.now());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaEnumTag retval = schema.getJpaHooksSchema().getEnumTagService().update(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerEnumDef().getRequiredContainerScope().getRequiredOwnerTenant();
@@ -263,7 +269,7 @@ public class CFBamJpaEnumTagTable implements ICFBamEnumTagTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "updateEnumTag", "rec", rec, "CFBamJpaEnumTag");
@@ -562,7 +568,7 @@ public class CFBamJpaEnumTagTable implements ICFBamEnumTagTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -595,7 +601,7 @@ public class CFBamJpaEnumTagTable implements ICFBamEnumTagTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -667,7 +673,7 @@ public class CFBamJpaEnumTagTable implements ICFBamEnumTagTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -792,7 +798,7 @@ public class CFBamJpaEnumTagTable implements ICFBamEnumTagTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**

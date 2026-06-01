@@ -213,6 +213,10 @@ public class CFBamJpaAtomTable implements ICFBamAtomTable
 		}
 		else if (rec instanceof CFBamJpaAtom) {
 			CFBamJpaAtom jparec = (CFBamJpaAtom)rec;
+			jparec.setCreatedAt(LocalDateTime.now());
+			jparec.setUpdatedAt(jparec.getCreatedAt());
+			jparec.setCreatedByUserId(Authorization.getSecUserId());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaAtom retval = schema.getJpaHooksSchema().getAtomService().create(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerScope().getRequiredOwnerTenant();
@@ -223,7 +227,7 @@ public class CFBamJpaAtomTable implements ICFBamAtomTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "createAtom", "rec", rec, "CFBamJpaAtom");
@@ -253,6 +257,8 @@ public class CFBamJpaAtomTable implements ICFBamAtomTable
 		}
 		else if (rec instanceof CFBamJpaAtom) {
 			CFBamJpaAtom jparec = (CFBamJpaAtom)rec;
+			jparec.setUpdatedAt(LocalDateTime.now());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaAtom retval = schema.getJpaHooksSchema().getAtomService().update(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerScope().getRequiredOwnerTenant();
@@ -263,7 +269,7 @@ public class CFBamJpaAtomTable implements ICFBamAtomTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "updateAtom", "rec", rec, "CFBamJpaAtom");
@@ -654,7 +660,7 @@ public class CFBamJpaAtomTable implements ICFBamAtomTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -687,7 +693,7 @@ public class CFBamJpaAtomTable implements ICFBamAtomTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -759,7 +765,7 @@ public class CFBamJpaAtomTable implements ICFBamAtomTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -798,7 +804,7 @@ public class CFBamJpaAtomTable implements ICFBamAtomTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**

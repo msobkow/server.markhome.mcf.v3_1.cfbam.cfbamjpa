@@ -64,6 +64,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 
 /**
  *  CFBamJpaEnumTagH provides history objects matching the CFBamEnumTag change history.
+ *	Note that because all indexes are historical with multiple instances of history records, the only key that can be unique is the primary key of a history table.
  */
 @Entity
 @Table(
@@ -72,7 +73,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
         @Index(name = "EnumTagIdIdx_h", columnList = "auditClusterId, auditStamp, auditAction, requiredRevision, auditSessionId, Id", unique = true),
         @Index(name = "EnumTagEnumIdx_h", columnList = "EnumId", unique = false),
         @Index(name = "EnumTagDefSchemaDefIdx_h", columnList = "defschid", unique = false),
-        @Index(name = "EnumTagEnumNameIdx_h", columnList = "EnumId, safe_name", unique = true),
+        @Index(name = "EnumTagEnumNameIdx_h", columnList = "EnumId, safe_name", unique = false),
         @Index(name = "EnumTagPrevIdx_h", columnList = "PrevId", unique = false),
         @Index(name = "EnumTagNextIdx_h", columnList = "NextId", unique = false)
     }

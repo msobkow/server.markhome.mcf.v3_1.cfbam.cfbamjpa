@@ -213,6 +213,10 @@ public class CFBamJpaNmTokenTypeTable implements ICFBamNmTokenTypeTable
 		}
 		else if (rec instanceof CFBamJpaNmTokenType) {
 			CFBamJpaNmTokenType jparec = (CFBamJpaNmTokenType)rec;
+			jparec.setCreatedAt(LocalDateTime.now());
+			jparec.setUpdatedAt(jparec.getCreatedAt());
+			jparec.setCreatedByUserId(Authorization.getSecUserId());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaNmTokenType retval = schema.getJpaHooksSchema().getNmTokenTypeService().create(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
@@ -223,7 +227,7 @@ public class CFBamJpaNmTokenTypeTable implements ICFBamNmTokenTypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "createNmTokenType", "rec", rec, "CFBamJpaNmTokenType");
@@ -253,6 +257,8 @@ public class CFBamJpaNmTokenTypeTable implements ICFBamNmTokenTypeTable
 		}
 		else if (rec instanceof CFBamJpaNmTokenType) {
 			CFBamJpaNmTokenType jparec = (CFBamJpaNmTokenType)rec;
+			jparec.setUpdatedAt(LocalDateTime.now());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaNmTokenType retval = schema.getJpaHooksSchema().getNmTokenTypeService().update(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
@@ -263,7 +269,7 @@ public class CFBamJpaNmTokenTypeTable implements ICFBamNmTokenTypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "updateNmTokenType", "rec", rec, "CFBamJpaNmTokenType");
@@ -695,7 +701,7 @@ public class CFBamJpaNmTokenTypeTable implements ICFBamNmTokenTypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -728,7 +734,7 @@ public class CFBamJpaNmTokenTypeTable implements ICFBamNmTokenTypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -800,7 +806,7 @@ public class CFBamJpaNmTokenTypeTable implements ICFBamNmTokenTypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -839,7 +845,7 @@ public class CFBamJpaNmTokenTypeTable implements ICFBamNmTokenTypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**

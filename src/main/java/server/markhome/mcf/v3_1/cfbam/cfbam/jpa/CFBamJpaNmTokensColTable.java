@@ -213,6 +213,10 @@ public class CFBamJpaNmTokensColTable implements ICFBamNmTokensColTable
 		}
 		else if (rec instanceof CFBamJpaNmTokensCol) {
 			CFBamJpaNmTokensCol jparec = (CFBamJpaNmTokensCol)rec;
+			jparec.setCreatedAt(LocalDateTime.now());
+			jparec.setUpdatedAt(jparec.getCreatedAt());
+			jparec.setCreatedByUserId(Authorization.getSecUserId());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaNmTokensCol retval = schema.getJpaHooksSchema().getNmTokensColService().create(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerTable().getRequiredOwnerTenant();
@@ -223,7 +227,7 @@ public class CFBamJpaNmTokensColTable implements ICFBamNmTokensColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "createNmTokensCol", "rec", rec, "CFBamJpaNmTokensCol");
@@ -253,6 +257,8 @@ public class CFBamJpaNmTokensColTable implements ICFBamNmTokensColTable
 		}
 		else if (rec instanceof CFBamJpaNmTokensCol) {
 			CFBamJpaNmTokensCol jparec = (CFBamJpaNmTokensCol)rec;
+			jparec.setUpdatedAt(LocalDateTime.now());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaNmTokensCol retval = schema.getJpaHooksSchema().getNmTokensColService().update(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerTable().getRequiredOwnerTenant();
@@ -263,7 +269,7 @@ public class CFBamJpaNmTokensColTable implements ICFBamNmTokensColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "updateNmTokensCol", "rec", rec, "CFBamJpaNmTokensCol");
@@ -695,7 +701,7 @@ public class CFBamJpaNmTokensColTable implements ICFBamNmTokensColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -728,7 +734,7 @@ public class CFBamJpaNmTokensColTable implements ICFBamNmTokensColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -800,7 +806,7 @@ public class CFBamJpaNmTokensColTable implements ICFBamNmTokensColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -839,7 +845,7 @@ public class CFBamJpaNmTokensColTable implements ICFBamNmTokensColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**

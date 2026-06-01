@@ -213,6 +213,10 @@ public class CFBamJpaDbKeyHash224GenTable implements ICFBamDbKeyHash224GenTable
 		}
 		else if (rec instanceof CFBamJpaDbKeyHash224Gen) {
 			CFBamJpaDbKeyHash224Gen jparec = (CFBamJpaDbKeyHash224Gen)rec;
+			jparec.setCreatedAt(LocalDateTime.now());
+			jparec.setUpdatedAt(jparec.getCreatedAt());
+			jparec.setCreatedByUserId(Authorization.getSecUserId());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaDbKeyHash224Gen retval = schema.getJpaHooksSchema().getDbKeyHash224GenService().create(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
@@ -223,7 +227,7 @@ public class CFBamJpaDbKeyHash224GenTable implements ICFBamDbKeyHash224GenTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "createDbKeyHash224Gen", "rec", rec, "CFBamJpaDbKeyHash224Gen");
@@ -253,6 +257,8 @@ public class CFBamJpaDbKeyHash224GenTable implements ICFBamDbKeyHash224GenTable
 		}
 		else if (rec instanceof CFBamJpaDbKeyHash224Gen) {
 			CFBamJpaDbKeyHash224Gen jparec = (CFBamJpaDbKeyHash224Gen)rec;
+			jparec.setUpdatedAt(LocalDateTime.now());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaDbKeyHash224Gen retval = schema.getJpaHooksSchema().getDbKeyHash224GenService().update(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
@@ -263,7 +269,7 @@ public class CFBamJpaDbKeyHash224GenTable implements ICFBamDbKeyHash224GenTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "updateDbKeyHash224Gen", "rec", rec, "CFBamJpaDbKeyHash224Gen");
@@ -695,7 +701,7 @@ public class CFBamJpaDbKeyHash224GenTable implements ICFBamDbKeyHash224GenTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -728,7 +734,7 @@ public class CFBamJpaDbKeyHash224GenTable implements ICFBamDbKeyHash224GenTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -800,7 +806,7 @@ public class CFBamJpaDbKeyHash224GenTable implements ICFBamDbKeyHash224GenTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -839,7 +845,7 @@ public class CFBamJpaDbKeyHash224GenTable implements ICFBamDbKeyHash224GenTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**

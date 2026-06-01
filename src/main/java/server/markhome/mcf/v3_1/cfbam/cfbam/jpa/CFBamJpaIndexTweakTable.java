@@ -213,6 +213,10 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 		}
 		else if (rec instanceof CFBamJpaIndexTweak) {
 			CFBamJpaIndexTweak jparec = (CFBamJpaIndexTweak)rec;
+			jparec.setCreatedAt(LocalDateTime.now());
+			jparec.setUpdatedAt(jparec.getCreatedAt());
+			jparec.setCreatedByUserId(Authorization.getSecUserId());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaIndexTweak retval = schema.getJpaHooksSchema().getIndexTweakService().create(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerIndexDef().getRequiredOwnerTenant();
@@ -223,7 +227,7 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "createIndexTweak", "rec", rec, "CFBamJpaIndexTweak");
@@ -253,6 +257,8 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 		}
 		else if (rec instanceof CFBamJpaIndexTweak) {
 			CFBamJpaIndexTweak jparec = (CFBamJpaIndexTweak)rec;
+			jparec.setUpdatedAt(LocalDateTime.now());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaIndexTweak retval = schema.getJpaHooksSchema().getIndexTweakService().update(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerIndexDef().getRequiredOwnerTenant();
@@ -263,7 +269,7 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "updateIndexTweak", "rec", rec, "CFBamJpaIndexTweak");
@@ -623,7 +629,7 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -656,7 +662,7 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -728,7 +734,7 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -767,7 +773,7 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -947,7 +953,7 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**

@@ -213,6 +213,10 @@ public class CFBamJpaDateDefTable implements ICFBamDateDefTable
 		}
 		else if (rec instanceof CFBamJpaDateDef) {
 			CFBamJpaDateDef jparec = (CFBamJpaDateDef)rec;
+			jparec.setCreatedAt(LocalDateTime.now());
+			jparec.setUpdatedAt(jparec.getCreatedAt());
+			jparec.setCreatedByUserId(Authorization.getSecUserId());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaDateDef retval = schema.getJpaHooksSchema().getDateDefService().create(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerScope().getRequiredOwnerTenant();
@@ -223,7 +227,7 @@ public class CFBamJpaDateDefTable implements ICFBamDateDefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "createDateDef", "rec", rec, "CFBamJpaDateDef");
@@ -253,6 +257,8 @@ public class CFBamJpaDateDefTable implements ICFBamDateDefTable
 		}
 		else if (rec instanceof CFBamJpaDateDef) {
 			CFBamJpaDateDef jparec = (CFBamJpaDateDef)rec;
+			jparec.setUpdatedAt(LocalDateTime.now());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaDateDef retval = schema.getJpaHooksSchema().getDateDefService().update(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerScope().getRequiredOwnerTenant();
@@ -263,7 +269,7 @@ public class CFBamJpaDateDefTable implements ICFBamDateDefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "updateDateDef", "rec", rec, "CFBamJpaDateDef");
@@ -654,7 +660,7 @@ public class CFBamJpaDateDefTable implements ICFBamDateDefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -687,7 +693,7 @@ public class CFBamJpaDateDefTable implements ICFBamDateDefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -759,7 +765,7 @@ public class CFBamJpaDateDefTable implements ICFBamDateDefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -798,7 +804,7 @@ public class CFBamJpaDateDefTable implements ICFBamDateDefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**

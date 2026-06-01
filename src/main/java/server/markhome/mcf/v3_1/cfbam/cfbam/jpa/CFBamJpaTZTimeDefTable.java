@@ -213,6 +213,10 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 		}
 		else if (rec instanceof CFBamJpaTZTimeDef) {
 			CFBamJpaTZTimeDef jparec = (CFBamJpaTZTimeDef)rec;
+			jparec.setCreatedAt(LocalDateTime.now());
+			jparec.setUpdatedAt(jparec.getCreatedAt());
+			jparec.setCreatedByUserId(Authorization.getSecUserId());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaTZTimeDef retval = schema.getJpaHooksSchema().getTZTimeDefService().create(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerScope().getRequiredOwnerTenant();
@@ -223,7 +227,7 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "createTZTimeDef", "rec", rec, "CFBamJpaTZTimeDef");
@@ -253,6 +257,8 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 		}
 		else if (rec instanceof CFBamJpaTZTimeDef) {
 			CFBamJpaTZTimeDef jparec = (CFBamJpaTZTimeDef)rec;
+			jparec.setUpdatedAt(LocalDateTime.now());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaTZTimeDef retval = schema.getJpaHooksSchema().getTZTimeDefService().update(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerScope().getRequiredOwnerTenant();
@@ -263,7 +269,7 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "updateTZTimeDef", "rec", rec, "CFBamJpaTZTimeDef");
@@ -654,7 +660,7 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -687,7 +693,7 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -759,7 +765,7 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -798,7 +804,7 @@ public class CFBamJpaTZTimeDefTable implements ICFBamTZTimeDefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**

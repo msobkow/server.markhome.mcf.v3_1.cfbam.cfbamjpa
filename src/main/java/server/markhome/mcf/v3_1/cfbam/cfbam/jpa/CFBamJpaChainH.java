@@ -64,6 +64,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 
 /**
  *  CFBamJpaChainH provides history objects matching the CFBamChain change history.
+ *	Note that because all indexes are historical with multiple instances of history records, the only key that can be unique is the primary key of a history table.
  */
 @Entity
 @Table(
@@ -72,7 +73,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
         @Index(name = "ChainIdIdx_h", columnList = "auditClusterId, auditStamp, auditAction, requiredRevision, auditSessionId, Id", unique = true),
         @Index(name = "ChainTableIdx_h", columnList = "TableId", unique = false),
         @Index(name = "ChainDefSchemaDefIdx_h", columnList = "defschid", unique = false),
-        @Index(name = "ChainUNameIdx_h", columnList = "TableId, safe_name", unique = true),
+        @Index(name = "ChainUNameIdx_h", columnList = "TableId, safe_name", unique = false),
         @Index(name = "ChainPrevRelIdx_h", columnList = "PrevRelationId", unique = false),
         @Index(name = "ChainNextRelIdx_h", columnList = "NextRelationId", unique = false)
     }

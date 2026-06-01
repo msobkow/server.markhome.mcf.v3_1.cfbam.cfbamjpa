@@ -64,13 +64,14 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 
 /**
  *  CFBamJpaIndexColH provides history objects matching the CFBamIndexCol change history.
+ *	Note that because all indexes are historical with multiple instances of history records, the only key that can be unique is the primary key of a history table.
  */
 @Entity
 @Table(
     name = "idxcol_h", schema = "CFBam31",
     indexes = {
         @Index(name = "IndexColIdIdx_h", columnList = "auditClusterId, auditStamp, auditAction, requiredRevision, auditSessionId, Id", unique = true),
-        @Index(name = "IndexColUNameIdx_h", columnList = "IndexId, safe_name", unique = true),
+        @Index(name = "IndexColUNameIdx_h", columnList = "IndexId, safe_name", unique = false),
         @Index(name = "IndexColIndexIdx_h", columnList = "IndexId", unique = false),
         @Index(name = "IndexColDefSchemaDefIdx_h", columnList = "defschid", unique = false),
         @Index(name = "IndexColColumnIdx_h", columnList = "ColumnId", unique = false),

@@ -213,6 +213,10 @@ public class CFBamJpaBoolDefTable implements ICFBamBoolDefTable
 		}
 		else if (rec instanceof CFBamJpaBoolDef) {
 			CFBamJpaBoolDef jparec = (CFBamJpaBoolDef)rec;
+			jparec.setCreatedAt(LocalDateTime.now());
+			jparec.setUpdatedAt(jparec.getCreatedAt());
+			jparec.setCreatedByUserId(Authorization.getSecUserId());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaBoolDef retval = schema.getJpaHooksSchema().getBoolDefService().create(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerScope().getRequiredOwnerTenant();
@@ -223,7 +227,7 @@ public class CFBamJpaBoolDefTable implements ICFBamBoolDefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "createBoolDef", "rec", rec, "CFBamJpaBoolDef");
@@ -253,6 +257,8 @@ public class CFBamJpaBoolDefTable implements ICFBamBoolDefTable
 		}
 		else if (rec instanceof CFBamJpaBoolDef) {
 			CFBamJpaBoolDef jparec = (CFBamJpaBoolDef)rec;
+			jparec.setUpdatedAt(LocalDateTime.now());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaBoolDef retval = schema.getJpaHooksSchema().getBoolDefService().update(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerScope().getRequiredOwnerTenant();
@@ -263,7 +269,7 @@ public class CFBamJpaBoolDefTable implements ICFBamBoolDefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "updateBoolDef", "rec", rec, "CFBamJpaBoolDef");
@@ -654,7 +660,7 @@ public class CFBamJpaBoolDefTable implements ICFBamBoolDefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -687,7 +693,7 @@ public class CFBamJpaBoolDefTable implements ICFBamBoolDefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -759,7 +765,7 @@ public class CFBamJpaBoolDefTable implements ICFBamBoolDefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -798,7 +804,7 @@ public class CFBamJpaBoolDefTable implements ICFBamBoolDefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**

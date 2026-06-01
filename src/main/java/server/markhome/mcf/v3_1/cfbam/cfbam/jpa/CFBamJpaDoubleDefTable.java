@@ -213,6 +213,10 @@ public class CFBamJpaDoubleDefTable implements ICFBamDoubleDefTable
 		}
 		else if (rec instanceof CFBamJpaDoubleDef) {
 			CFBamJpaDoubleDef jparec = (CFBamJpaDoubleDef)rec;
+			jparec.setCreatedAt(LocalDateTime.now());
+			jparec.setUpdatedAt(jparec.getCreatedAt());
+			jparec.setCreatedByUserId(Authorization.getSecUserId());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaDoubleDef retval = schema.getJpaHooksSchema().getDoubleDefService().create(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerScope().getRequiredOwnerTenant();
@@ -223,7 +227,7 @@ public class CFBamJpaDoubleDefTable implements ICFBamDoubleDefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "createDoubleDef", "rec", rec, "CFBamJpaDoubleDef");
@@ -253,6 +257,8 @@ public class CFBamJpaDoubleDefTable implements ICFBamDoubleDefTable
 		}
 		else if (rec instanceof CFBamJpaDoubleDef) {
 			CFBamJpaDoubleDef jparec = (CFBamJpaDoubleDef)rec;
+			jparec.setUpdatedAt(LocalDateTime.now());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaDoubleDef retval = schema.getJpaHooksSchema().getDoubleDefService().update(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerScope().getRequiredOwnerTenant();
@@ -263,7 +269,7 @@ public class CFBamJpaDoubleDefTable implements ICFBamDoubleDefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "updateDoubleDef", "rec", rec, "CFBamJpaDoubleDef");
@@ -654,7 +660,7 @@ public class CFBamJpaDoubleDefTable implements ICFBamDoubleDefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -687,7 +693,7 @@ public class CFBamJpaDoubleDefTable implements ICFBamDoubleDefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -759,7 +765,7 @@ public class CFBamJpaDoubleDefTable implements ICFBamDoubleDefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -798,7 +804,7 @@ public class CFBamJpaDoubleDefTable implements ICFBamDoubleDefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**

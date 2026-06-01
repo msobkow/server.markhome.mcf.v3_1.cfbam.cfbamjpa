@@ -64,6 +64,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 
 /**
  *  CFBamJpaTableH provides history objects matching the CFBamTable change history.
+ *	Note that because all indexes are historical with multiple instances of history records, the only key that can be unique is the primary key of a history table.
  */
 @Entity
 @Table(
@@ -72,8 +73,8 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
         @Index(name = "TableIdIdx_h", columnList = "auditClusterId, auditStamp, auditAction, requiredRevision, auditSessionId, Id", unique = true),
         @Index(name = "TableSchemaDefIdx_h", columnList = "SchemaDefId", unique = false),
         @Index(name = "TableDefSchemaDefIdx_h", columnList = "defschid", unique = false),
-        @Index(name = "TableUNameIdx_h", columnList = "SchemaDefId, safe_name", unique = true),
-        @Index(name = "TableSchemaCodeIdx_h", columnList = "SchemaDefId, TblClsCd", unique = true),
+        @Index(name = "TableUNameIdx_h", columnList = "SchemaDefId, safe_name", unique = false),
+        @Index(name = "TableSchemaCodeIdx_h", columnList = "SchemaDefId, TblClsCd", unique = false),
         @Index(name = "TablePrimaryIndexIdx_h", columnList = "PrimIdxId", unique = false),
         @Index(name = "TableLookupIndexIdx_h", columnList = "LookIdxId", unique = false),
         @Index(name = "TableAltIndexIdx_h", columnList = "AltIdxId", unique = false),

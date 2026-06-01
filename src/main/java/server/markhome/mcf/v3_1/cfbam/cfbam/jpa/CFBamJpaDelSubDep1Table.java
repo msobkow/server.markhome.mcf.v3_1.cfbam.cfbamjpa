@@ -213,6 +213,10 @@ public class CFBamJpaDelSubDep1Table implements ICFBamDelSubDep1Table
 		}
 		else if (rec instanceof CFBamJpaDelSubDep1) {
 			CFBamJpaDelSubDep1 jparec = (CFBamJpaDelSubDep1)rec;
+			jparec.setCreatedAt(LocalDateTime.now());
+			jparec.setUpdatedAt(jparec.getCreatedAt());
+			jparec.setCreatedByUserId(Authorization.getSecUserId());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaDelSubDep1 retval = schema.getJpaHooksSchema().getDelSubDep1Service().create(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
@@ -223,7 +227,7 @@ public class CFBamJpaDelSubDep1Table implements ICFBamDelSubDep1Table
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "createDelSubDep1", "rec", rec, "CFBamJpaDelSubDep1");
@@ -253,6 +257,8 @@ public class CFBamJpaDelSubDep1Table implements ICFBamDelSubDep1Table
 		}
 		else if (rec instanceof CFBamJpaDelSubDep1) {
 			CFBamJpaDelSubDep1 jparec = (CFBamJpaDelSubDep1)rec;
+			jparec.setUpdatedAt(LocalDateTime.now());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaDelSubDep1 retval = schema.getJpaHooksSchema().getDelSubDep1Service().update(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
@@ -263,7 +269,7 @@ public class CFBamJpaDelSubDep1Table implements ICFBamDelSubDep1Table
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "updateDelSubDep1", "rec", rec, "CFBamJpaDelSubDep1");
@@ -562,7 +568,7 @@ public class CFBamJpaDelSubDep1Table implements ICFBamDelSubDep1Table
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -595,7 +601,7 @@ public class CFBamJpaDelSubDep1Table implements ICFBamDelSubDep1Table
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -667,7 +673,7 @@ public class CFBamJpaDelSubDep1Table implements ICFBamDelSubDep1Table
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -878,7 +884,7 @@ public class CFBamJpaDelSubDep1Table implements ICFBamDelSubDep1Table
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**

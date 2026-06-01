@@ -213,6 +213,10 @@ public class CFBamJpaInt16TypeTable implements ICFBamInt16TypeTable
 		}
 		else if (rec instanceof CFBamJpaInt16Type) {
 			CFBamJpaInt16Type jparec = (CFBamJpaInt16Type)rec;
+			jparec.setCreatedAt(LocalDateTime.now());
+			jparec.setUpdatedAt(jparec.getCreatedAt());
+			jparec.setCreatedByUserId(Authorization.getSecUserId());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaInt16Type retval = schema.getJpaHooksSchema().getInt16TypeService().create(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
@@ -223,7 +227,7 @@ public class CFBamJpaInt16TypeTable implements ICFBamInt16TypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "createInt16Type", "rec", rec, "CFBamJpaInt16Type");
@@ -253,6 +257,8 @@ public class CFBamJpaInt16TypeTable implements ICFBamInt16TypeTable
 		}
 		else if (rec instanceof CFBamJpaInt16Type) {
 			CFBamJpaInt16Type jparec = (CFBamJpaInt16Type)rec;
+			jparec.setUpdatedAt(LocalDateTime.now());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaInt16Type retval = schema.getJpaHooksSchema().getInt16TypeService().update(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
@@ -263,7 +269,7 @@ public class CFBamJpaInt16TypeTable implements ICFBamInt16TypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "updateInt16Type", "rec", rec, "CFBamJpaInt16Type");
@@ -695,7 +701,7 @@ public class CFBamJpaInt16TypeTable implements ICFBamInt16TypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -728,7 +734,7 @@ public class CFBamJpaInt16TypeTable implements ICFBamInt16TypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -800,7 +806,7 @@ public class CFBamJpaInt16TypeTable implements ICFBamInt16TypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -839,7 +845,7 @@ public class CFBamJpaInt16TypeTable implements ICFBamInt16TypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**

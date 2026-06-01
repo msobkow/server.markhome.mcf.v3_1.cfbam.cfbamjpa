@@ -213,6 +213,10 @@ public class CFBamJpaEnumTypeTable implements ICFBamEnumTypeTable
 		}
 		else if (rec instanceof CFBamJpaEnumType) {
 			CFBamJpaEnumType jparec = (CFBamJpaEnumType)rec;
+			jparec.setCreatedAt(LocalDateTime.now());
+			jparec.setUpdatedAt(jparec.getCreatedAt());
+			jparec.setCreatedByUserId(Authorization.getSecUserId());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaEnumType retval = schema.getJpaHooksSchema().getEnumTypeService().create(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
@@ -223,7 +227,7 @@ public class CFBamJpaEnumTypeTable implements ICFBamEnumTypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "createEnumType", "rec", rec, "CFBamJpaEnumType");
@@ -253,6 +257,8 @@ public class CFBamJpaEnumTypeTable implements ICFBamEnumTypeTable
 		}
 		else if (rec instanceof CFBamJpaEnumType) {
 			CFBamJpaEnumType jparec = (CFBamJpaEnumType)rec;
+			jparec.setUpdatedAt(LocalDateTime.now());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaEnumType retval = schema.getJpaHooksSchema().getEnumTypeService().update(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
@@ -263,7 +269,7 @@ public class CFBamJpaEnumTypeTable implements ICFBamEnumTypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "updateEnumType", "rec", rec, "CFBamJpaEnumType");
@@ -695,7 +701,7 @@ public class CFBamJpaEnumTypeTable implements ICFBamEnumTypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -728,7 +734,7 @@ public class CFBamJpaEnumTypeTable implements ICFBamEnumTypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -800,7 +806,7 @@ public class CFBamJpaEnumTypeTable implements ICFBamEnumTypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -839,7 +845,7 @@ public class CFBamJpaEnumTypeTable implements ICFBamEnumTypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**

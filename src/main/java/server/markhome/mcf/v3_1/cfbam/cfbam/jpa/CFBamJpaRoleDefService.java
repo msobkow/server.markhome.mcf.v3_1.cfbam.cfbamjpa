@@ -95,12 +95,17 @@ public class CFBamJpaRoleDefService {
 		}
 		CFLibDbKeyHash256 originalRequiredId = data.getRequiredId();
 		boolean generatedRequiredId = false;
-			if (data.getRequiredContainerScopeDef() == null) {
-				throw new CFLibNullArgumentException(getClass(),
-					S_ProcName,
-					0,
-					"data.getRequiredContainerScopeDef()");
-			}
+		if (data.getRequiredContainerScopeDef() == null) {
+			throw new CFLibUnresolvedRelationException(getClass(),
+				S_ProcName,
+				"Container",
+				"Container",
+				"data.requiredContainerScopeDef",
+				"data.requiredContainerScopeDef",
+				"Scope",
+				"Scope",
+				null);
+		}
 		if(data.getRequiredScopeId() == null || data.getRequiredScopeId().isNull()) {
 			throw new CFLibNullArgumentException(getClass(),
 				S_ProcName,
@@ -113,15 +118,24 @@ public class CFBamJpaRoleDefService {
 				0,
 				"data.requiredName");
 		}
-		if(data.getRequiredMembershipString() == null) {
+		if(data.getRequiredEnables() == null) {
 			throw new CFLibNullArgumentException(getClass(),
 				S_ProcName,
 				0,
-				"data.requiredMembershipString");
+				"data.requiredEnables");
+		}
+		if(data.getRequiredIncludes() == null) {
+			throw new CFLibNullArgumentException(getClass(),
+				S_ProcName,
+				0,
+				"data.requiredIncludes");
 		}
 		try {
 			if(data.getPKey() != null && !data.getPKey().isNull() && cfbam31RoleDefRepository.existsById((CFLibDbKeyHash256)data.getPKey())) {
 				return( (CFBamJpaRoleDef)(cfbam31RoleDefRepository.findById((CFLibDbKeyHash256)(data.getPKey())).get()));
+			}
+			if (data.getRequiredRevision() <= 0) {
+				data.setRequiredRevision(1);
 			}
 			if (data.getRequiredId() == null || data.getRequiredId().isNull()) {
 				data.setRequiredId(new CFLibDbKeyHash256(0));
@@ -161,12 +175,17 @@ public class CFBamJpaRoleDefService {
 				0,
 				"data.getPKey()");
 		}
-			if (data.getRequiredContainerScopeDef() == null) {
-				throw new CFLibNullArgumentException(getClass(),
-					S_ProcName,
-					0,
-					"data.getRequiredContainerScopeDef()");
-			}
+		if (data.getRequiredContainerScopeDef() == null) {
+			throw new CFLibUnresolvedRelationException(getClass(),
+				S_ProcName,
+				"Container",
+				"Container",
+				"data.requiredContainerScopeDef",
+				"data.requiredContainerScopeDef",
+				"Scope",
+				"Scope",
+				null);
+		}
 		if(data.getRequiredScopeId() == null || data.getRequiredScopeId().isNull()) {
 			throw new CFLibNullArgumentException(getClass(),
 				S_ProcName,
@@ -179,11 +198,17 @@ public class CFBamJpaRoleDefService {
 				0,
 				"data.requiredName");
 		}
-		if(data.getRequiredMembershipString() == null) {
+		if(data.getRequiredEnables() == null) {
 			throw new CFLibNullArgumentException(getClass(),
 				S_ProcName,
 				0,
-				"data.requiredMembershipString");
+				"data.requiredEnables");
+		}
+		if(data.getRequiredIncludes() == null) {
+			throw new CFLibNullArgumentException(getClass(),
+				S_ProcName,
+				0,
+				"data.requiredIncludes");
 		}
 		// Ensure the entity exists and that the revision matches
 		CFBamJpaRoleDef existing = cfbam31RoleDefRepository.findById((CFLibDbKeyHash256)(data.getPKey()))
@@ -196,7 +221,8 @@ public class CFBamJpaRoleDefService {
 		existing.setOptionalLookupDefSchema(data.getOptionalLookupDefSchema());
 		// Apply data columns of CFBamRoleDef to existing object
 		existing.setRequiredName(data.getRequiredName());
-		existing.setRequiredMembershipString(data.getRequiredMembershipString());
+		existing.setRequiredEnables(data.getRequiredEnables());
+		existing.setRequiredIncludes(data.getRequiredIncludes());
 		// Update the audit columns
 		data.setUpdatedAt(LocalDateTime.now());
 		// Save the changes we've made

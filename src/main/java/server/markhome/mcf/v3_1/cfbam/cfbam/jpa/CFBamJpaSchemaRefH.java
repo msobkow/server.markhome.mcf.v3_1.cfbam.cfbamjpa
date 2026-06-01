@@ -64,6 +64,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 
 /**
  *  CFBamJpaSchemaRefH provides history objects matching the CFBamSchemaRef change history.
+ *	Note that because all indexes are historical with multiple instances of history records, the only key that can be unique is the primary key of a history table.
  */
 @Entity
 @Table(
@@ -71,7 +72,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
     indexes = {
         @Index(name = "SchemaRefIdIdx_h", columnList = "auditClusterId, auditStamp, auditAction, requiredRevision, auditSessionId, Id", unique = true),
         @Index(name = "SchemaRefSchemaIdx_h", columnList = "SchemaId", unique = false),
-        @Index(name = "SchemaRefUNameIdx_h", columnList = "SchemaId, safe_name", unique = true),
+        @Index(name = "SchemaRefUNameIdx_h", columnList = "SchemaId, safe_name", unique = false),
         @Index(name = "SchemaRefRefSchemaIdx_h", columnList = "RefSchId", unique = false),
         @Index(name = "SchemaRefPrevIdx_h", columnList = "PrevId", unique = false),
         @Index(name = "SchemaRefNextIdx_h", columnList = "NextId", unique = false)

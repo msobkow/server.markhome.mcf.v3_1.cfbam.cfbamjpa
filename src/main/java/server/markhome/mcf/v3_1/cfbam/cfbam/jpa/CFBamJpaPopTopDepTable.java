@@ -213,6 +213,10 @@ public class CFBamJpaPopTopDepTable implements ICFBamPopTopDepTable
 		}
 		else if (rec instanceof CFBamJpaPopTopDep) {
 			CFBamJpaPopTopDep jparec = (CFBamJpaPopTopDep)rec;
+			jparec.setCreatedAt(LocalDateTime.now());
+			jparec.setUpdatedAt(jparec.getCreatedAt());
+			jparec.setCreatedByUserId(Authorization.getSecUserId());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaPopTopDep retval = schema.getJpaHooksSchema().getPopTopDepService().create(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
@@ -223,7 +227,7 @@ public class CFBamJpaPopTopDepTable implements ICFBamPopTopDepTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "createPopTopDep", "rec", rec, "CFBamJpaPopTopDep");
@@ -253,6 +257,8 @@ public class CFBamJpaPopTopDepTable implements ICFBamPopTopDepTable
 		}
 		else if (rec instanceof CFBamJpaPopTopDep) {
 			CFBamJpaPopTopDep jparec = (CFBamJpaPopTopDep)rec;
+			jparec.setUpdatedAt(LocalDateTime.now());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaPopTopDep retval = schema.getJpaHooksSchema().getPopTopDepService().update(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
@@ -263,7 +269,7 @@ public class CFBamJpaPopTopDepTable implements ICFBamPopTopDepTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "updatePopTopDep", "rec", rec, "CFBamJpaPopTopDep");
@@ -562,7 +568,7 @@ public class CFBamJpaPopTopDepTable implements ICFBamPopTopDepTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -595,7 +601,7 @@ public class CFBamJpaPopTopDepTable implements ICFBamPopTopDepTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -667,7 +673,7 @@ public class CFBamJpaPopTopDepTable implements ICFBamPopTopDepTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -878,7 +884,7 @@ public class CFBamJpaPopTopDepTable implements ICFBamPopTopDepTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**

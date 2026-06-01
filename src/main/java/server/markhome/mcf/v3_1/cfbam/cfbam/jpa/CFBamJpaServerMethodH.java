@@ -64,13 +64,14 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 
 /**
  *  CFBamJpaServerMethodH provides history objects matching the CFBamServerMethod change history.
+ *	Note that because all indexes are historical with multiple instances of history records, the only key that can be unique is the primary key of a history table.
  */
 @Entity
 @Table(
     name = "srvmeth_h", schema = "CFBam31",
     indexes = {
         @Index(name = "ServerMethodIdIdx_h", columnList = "auditClusterId, auditStamp, auditAction, requiredRevision, auditSessionId, Id", unique = true),
-        @Index(name = "ServerMethodUNameIdx_h", columnList = "TableId, safe_name", unique = true),
+        @Index(name = "ServerMethodUNameIdx_h", columnList = "TableId, safe_name", unique = false),
         @Index(name = "ServerMethodTableIdx_h", columnList = "TableId", unique = false),
         @Index(name = "ServerMethodDefSchemaDefIdx_h", columnList = "defschid", unique = false)
     }

@@ -95,12 +95,17 @@ public class CFBamJpaIndexTweakService {
 		}
 		CFLibDbKeyHash256 originalRequiredId = data.getRequiredId();
 		boolean generatedRequiredId = false;
-			if (data.getRequiredContainerScopeDef() == null) {
-				throw new CFLibNullArgumentException(getClass(),
-					S_ProcName,
-					0,
-					"data.getRequiredContainerScopeDef()");
-			}
+		if (data.getRequiredContainerScopeDef() == null) {
+			throw new CFLibUnresolvedRelationException(getClass(),
+				S_ProcName,
+				"Container",
+				"Container",
+				"data.requiredContainerScopeDef",
+				"data.requiredContainerScopeDef",
+				"Scope",
+				"Scope",
+				null);
+		}
 		if(data.getRequiredTenantId() == null || data.getRequiredTenantId().isNull()) {
 			throw new CFLibNullArgumentException(getClass(),
 				S_ProcName,
@@ -125,12 +130,17 @@ public class CFBamJpaIndexTweakService {
 				0,
 				"data.requiredTweakGelText");
 		}
-			if (data.getRequiredContainerIndexDef() == null) {
-				throw new CFLibNullArgumentException(getClass(),
-					S_ProcName,
-					0,
-					"data.getRequiredContainerIndexDef()");
-			}
+		if (data.getRequiredContainerIndexDef() == null) {
+			throw new CFLibUnresolvedRelationException(getClass(),
+				S_ProcName,
+				"Container",
+				"Container",
+				"data.requiredContainerIndexDef",
+				"data.requiredContainerIndexDef",
+				"Index",
+				"Index",
+				null);
+		}
 		if(data.getRequiredIndexId() == null || data.getRequiredIndexId().isNull()) {
 			throw new CFLibNullArgumentException(getClass(),
 				S_ProcName,
@@ -140,6 +150,9 @@ public class CFBamJpaIndexTweakService {
 		try {
 			if(data.getPKey() != null && !data.getPKey().isNull() && cfbam31IndexTweakRepository.existsById((CFLibDbKeyHash256)data.getPKey())) {
 				return( (CFBamJpaIndexTweak)(cfbam31IndexTweakRepository.findById((CFLibDbKeyHash256)(data.getPKey())).get()));
+			}
+			if (data.getRequiredRevision() <= 0) {
+				data.setRequiredRevision(1);
 			}
 			if (data.getRequiredId() == null || data.getRequiredId().isNull()) {
 				data.setRequiredId(new CFLibDbKeyHash256(0));
@@ -179,12 +192,17 @@ public class CFBamJpaIndexTweakService {
 				0,
 				"data.getPKey()");
 		}
-			if (data.getRequiredContainerScopeDef() == null) {
-				throw new CFLibNullArgumentException(getClass(),
-					S_ProcName,
-					0,
-					"data.getRequiredContainerScopeDef()");
-			}
+		if (data.getRequiredContainerScopeDef() == null) {
+			throw new CFLibUnresolvedRelationException(getClass(),
+				S_ProcName,
+				"Container",
+				"Container",
+				"data.requiredContainerScopeDef",
+				"data.requiredContainerScopeDef",
+				"Scope",
+				"Scope",
+				null);
+		}
 		if(data.getRequiredTenantId() == null || data.getRequiredTenantId().isNull()) {
 			throw new CFLibNullArgumentException(getClass(),
 				S_ProcName,
@@ -209,12 +227,17 @@ public class CFBamJpaIndexTweakService {
 				0,
 				"data.requiredTweakGelText");
 		}
-			if (data.getRequiredContainerIndexDef() == null) {
-				throw new CFLibNullArgumentException(getClass(),
-					S_ProcName,
-					0,
-					"data.getRequiredContainerIndexDef()");
-			}
+		if (data.getRequiredContainerIndexDef() == null) {
+			throw new CFLibUnresolvedRelationException(getClass(),
+				S_ProcName,
+				"Container",
+				"Container",
+				"data.requiredContainerIndexDef",
+				"data.requiredContainerIndexDef",
+				"Index",
+				"Index",
+				null);
+		}
 		if(data.getRequiredIndexId() == null || data.getRequiredIndexId().isNull()) {
 			throw new CFLibNullArgumentException(getClass(),
 				S_ProcName,

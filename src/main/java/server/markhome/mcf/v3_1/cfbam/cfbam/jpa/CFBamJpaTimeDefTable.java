@@ -213,6 +213,10 @@ public class CFBamJpaTimeDefTable implements ICFBamTimeDefTable
 		}
 		else if (rec instanceof CFBamJpaTimeDef) {
 			CFBamJpaTimeDef jparec = (CFBamJpaTimeDef)rec;
+			jparec.setCreatedAt(LocalDateTime.now());
+			jparec.setUpdatedAt(jparec.getCreatedAt());
+			jparec.setCreatedByUserId(Authorization.getSecUserId());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaTimeDef retval = schema.getJpaHooksSchema().getTimeDefService().create(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerScope().getRequiredOwnerTenant();
@@ -223,7 +227,7 @@ public class CFBamJpaTimeDefTable implements ICFBamTimeDefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "createTimeDef", "rec", rec, "CFBamJpaTimeDef");
@@ -253,6 +257,8 @@ public class CFBamJpaTimeDefTable implements ICFBamTimeDefTable
 		}
 		else if (rec instanceof CFBamJpaTimeDef) {
 			CFBamJpaTimeDef jparec = (CFBamJpaTimeDef)rec;
+			jparec.setUpdatedAt(LocalDateTime.now());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaTimeDef retval = schema.getJpaHooksSchema().getTimeDefService().update(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerScope().getRequiredOwnerTenant();
@@ -263,7 +269,7 @@ public class CFBamJpaTimeDefTable implements ICFBamTimeDefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "updateTimeDef", "rec", rec, "CFBamJpaTimeDef");
@@ -654,7 +660,7 @@ public class CFBamJpaTimeDefTable implements ICFBamTimeDefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -687,7 +693,7 @@ public class CFBamJpaTimeDefTable implements ICFBamTimeDefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -759,7 +765,7 @@ public class CFBamJpaTimeDefTable implements ICFBamTimeDefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -798,7 +804,7 @@ public class CFBamJpaTimeDefTable implements ICFBamTimeDefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**

@@ -213,6 +213,10 @@ public class CFBamJpaInt32TypeTable implements ICFBamInt32TypeTable
 		}
 		else if (rec instanceof CFBamJpaInt32Type) {
 			CFBamJpaInt32Type jparec = (CFBamJpaInt32Type)rec;
+			jparec.setCreatedAt(LocalDateTime.now());
+			jparec.setUpdatedAt(jparec.getCreatedAt());
+			jparec.setCreatedByUserId(Authorization.getSecUserId());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaInt32Type retval = schema.getJpaHooksSchema().getInt32TypeService().create(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
@@ -223,7 +227,7 @@ public class CFBamJpaInt32TypeTable implements ICFBamInt32TypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "createInt32Type", "rec", rec, "CFBamJpaInt32Type");
@@ -253,6 +257,8 @@ public class CFBamJpaInt32TypeTable implements ICFBamInt32TypeTable
 		}
 		else if (rec instanceof CFBamJpaInt32Type) {
 			CFBamJpaInt32Type jparec = (CFBamJpaInt32Type)rec;
+			jparec.setUpdatedAt(LocalDateTime.now());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaInt32Type retval = schema.getJpaHooksSchema().getInt32TypeService().update(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
@@ -263,7 +269,7 @@ public class CFBamJpaInt32TypeTable implements ICFBamInt32TypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "updateInt32Type", "rec", rec, "CFBamJpaInt32Type");
@@ -695,7 +701,7 @@ public class CFBamJpaInt32TypeTable implements ICFBamInt32TypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -728,7 +734,7 @@ public class CFBamJpaInt32TypeTable implements ICFBamInt32TypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -800,7 +806,7 @@ public class CFBamJpaInt32TypeTable implements ICFBamInt32TypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -839,7 +845,7 @@ public class CFBamJpaInt32TypeTable implements ICFBamInt32TypeTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**

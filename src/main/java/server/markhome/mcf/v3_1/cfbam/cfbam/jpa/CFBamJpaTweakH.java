@@ -64,17 +64,18 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 
 /**
  *  CFBamJpaTweakH provides history objects matching the CFBamTweak change history.
+ *	Note that because all indexes are historical with multiple instances of history records, the only key that can be unique is the primary key of a history table.
  */
 @Entity
 @Table(
     name = "tweakdef_h", schema = "CFBam31",
     indexes = {
         @Index(name = "TweakIdIdx_h", columnList = "auditClusterId, auditStamp, auditAction, requiredRevision, auditSessionId, Id", unique = true),
-        @Index(name = "TweakUNameIdx_h", columnList = "ScopeId, safe_name", unique = true),
+        @Index(name = "TweakUNameIdx_h", columnList = "ScopeId, safe_name", unique = false),
         @Index(name = "TweakTenantIdx_h", columnList = "TenantId", unique = false),
         @Index(name = "TweakScopeIdx_h", columnList = "ScopeId", unique = false),
         @Index(name = "TweakDefSchemaDefIdx_h", columnList = "defschid", unique = false),
-        @Index(name = "TweakUDefIdx_h", columnList = "TenantId, ScopeId, defschtentid, defschid, safe_name", unique = true)
+        @Index(name = "TweakUDefIdx_h", columnList = "TenantId, ScopeId, defschtentid, defschid, safe_name", unique = false)
     }
 )
 @Inheritance(strategy = InheritanceType.JOINED)

@@ -213,6 +213,10 @@ public class CFBamJpaDbKeyHash512TypeTable implements ICFBamDbKeyHash512TypeTabl
 		}
 		else if (rec instanceof CFBamJpaDbKeyHash512Type) {
 			CFBamJpaDbKeyHash512Type jparec = (CFBamJpaDbKeyHash512Type)rec;
+			jparec.setCreatedAt(LocalDateTime.now());
+			jparec.setUpdatedAt(jparec.getCreatedAt());
+			jparec.setCreatedByUserId(Authorization.getSecUserId());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaDbKeyHash512Type retval = schema.getJpaHooksSchema().getDbKeyHash512TypeService().create(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
@@ -223,7 +227,7 @@ public class CFBamJpaDbKeyHash512TypeTable implements ICFBamDbKeyHash512TypeTabl
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "createDbKeyHash512Type", "rec", rec, "CFBamJpaDbKeyHash512Type");
@@ -253,6 +257,8 @@ public class CFBamJpaDbKeyHash512TypeTable implements ICFBamDbKeyHash512TypeTabl
 		}
 		else if (rec instanceof CFBamJpaDbKeyHash512Type) {
 			CFBamJpaDbKeyHash512Type jparec = (CFBamJpaDbKeyHash512Type)rec;
+			jparec.setUpdatedAt(LocalDateTime.now());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaDbKeyHash512Type retval = schema.getJpaHooksSchema().getDbKeyHash512TypeService().update(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
@@ -263,7 +269,7 @@ public class CFBamJpaDbKeyHash512TypeTable implements ICFBamDbKeyHash512TypeTabl
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "updateDbKeyHash512Type", "rec", rec, "CFBamJpaDbKeyHash512Type");
@@ -695,7 +701,7 @@ public class CFBamJpaDbKeyHash512TypeTable implements ICFBamDbKeyHash512TypeTabl
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -728,7 +734,7 @@ public class CFBamJpaDbKeyHash512TypeTable implements ICFBamDbKeyHash512TypeTabl
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -800,7 +806,7 @@ public class CFBamJpaDbKeyHash512TypeTable implements ICFBamDbKeyHash512TypeTabl
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -839,7 +845,7 @@ public class CFBamJpaDbKeyHash512TypeTable implements ICFBamDbKeyHash512TypeTabl
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**

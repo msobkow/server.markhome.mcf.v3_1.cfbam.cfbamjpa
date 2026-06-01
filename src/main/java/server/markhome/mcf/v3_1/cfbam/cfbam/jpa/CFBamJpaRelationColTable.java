@@ -213,6 +213,10 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 		}
 		else if (rec instanceof CFBamJpaRelationCol) {
 			CFBamJpaRelationCol jparec = (CFBamJpaRelationCol)rec;
+			jparec.setCreatedAt(LocalDateTime.now());
+			jparec.setUpdatedAt(jparec.getCreatedAt());
+			jparec.setCreatedByUserId(Authorization.getSecUserId());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaRelationCol retval = schema.getJpaHooksSchema().getRelationColService().create(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerRelation().getRequiredOwnerTenant();
@@ -223,7 +227,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "createRelationCol", "rec", rec, "CFBamJpaRelationCol");
@@ -253,6 +257,8 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 		}
 		else if (rec instanceof CFBamJpaRelationCol) {
 			CFBamJpaRelationCol jparec = (CFBamJpaRelationCol)rec;
+			jparec.setUpdatedAt(LocalDateTime.now());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaRelationCol retval = schema.getJpaHooksSchema().getRelationColService().update(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerRelation().getRequiredOwnerTenant();
@@ -263,7 +269,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "updateRelationCol", "rec", rec, "CFBamJpaRelationCol");
@@ -736,7 +742,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -769,7 +775,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -841,7 +847,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -880,7 +886,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**

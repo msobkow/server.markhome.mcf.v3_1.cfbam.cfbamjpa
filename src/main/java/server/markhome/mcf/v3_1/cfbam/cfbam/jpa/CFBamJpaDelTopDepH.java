@@ -64,6 +64,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 
 /**
  *  CFBamJpaDelTopDepH provides history objects matching the CFBamDelTopDep change history.
+ *	Note that because all indexes are historical with multiple instances of history records, the only key that can be unique is the primary key of a history table.
  */
 @Entity
 @Table(
@@ -71,7 +72,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
     indexes = {
         @Index(name = "DelTopDepIdIdx_h", columnList = "auditClusterId, auditStamp, auditAction, requiredRevision, auditSessionId, Id", unique = true),
         @Index(name = "DelTopDepTableIdx_h", columnList = "TableId", unique = false),
-        @Index(name = "DelTopDepUNameIdx_h", columnList = "TableId, safe_name", unique = true),
+        @Index(name = "DelTopDepUNameIdx_h", columnList = "TableId, safe_name", unique = false),
         @Index(name = "DelTopDepPrevIdx_h", columnList = "PrevId", unique = false),
         @Index(name = "DelTopDepNextIdx_h", columnList = "NextId", unique = false)
     }

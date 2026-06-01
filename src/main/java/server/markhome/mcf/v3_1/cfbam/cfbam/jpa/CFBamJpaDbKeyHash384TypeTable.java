@@ -213,6 +213,10 @@ public class CFBamJpaDbKeyHash384TypeTable implements ICFBamDbKeyHash384TypeTabl
 		}
 		else if (rec instanceof CFBamJpaDbKeyHash384Type) {
 			CFBamJpaDbKeyHash384Type jparec = (CFBamJpaDbKeyHash384Type)rec;
+			jparec.setCreatedAt(LocalDateTime.now());
+			jparec.setUpdatedAt(jparec.getCreatedAt());
+			jparec.setCreatedByUserId(Authorization.getSecUserId());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaDbKeyHash384Type retval = schema.getJpaHooksSchema().getDbKeyHash384TypeService().create(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
@@ -223,7 +227,7 @@ public class CFBamJpaDbKeyHash384TypeTable implements ICFBamDbKeyHash384TypeTabl
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "createDbKeyHash384Type", "rec", rec, "CFBamJpaDbKeyHash384Type");
@@ -253,6 +257,8 @@ public class CFBamJpaDbKeyHash384TypeTable implements ICFBamDbKeyHash384TypeTabl
 		}
 		else if (rec instanceof CFBamJpaDbKeyHash384Type) {
 			CFBamJpaDbKeyHash384Type jparec = (CFBamJpaDbKeyHash384Type)rec;
+			jparec.setUpdatedAt(LocalDateTime.now());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaDbKeyHash384Type retval = schema.getJpaHooksSchema().getDbKeyHash384TypeService().update(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
@@ -263,7 +269,7 @@ public class CFBamJpaDbKeyHash384TypeTable implements ICFBamDbKeyHash384TypeTabl
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "updateDbKeyHash384Type", "rec", rec, "CFBamJpaDbKeyHash384Type");
@@ -695,7 +701,7 @@ public class CFBamJpaDbKeyHash384TypeTable implements ICFBamDbKeyHash384TypeTabl
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -728,7 +734,7 @@ public class CFBamJpaDbKeyHash384TypeTable implements ICFBamDbKeyHash384TypeTabl
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -800,7 +806,7 @@ public class CFBamJpaDbKeyHash384TypeTable implements ICFBamDbKeyHash384TypeTabl
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -839,7 +845,7 @@ public class CFBamJpaDbKeyHash384TypeTable implements ICFBamDbKeyHash384TypeTabl
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**

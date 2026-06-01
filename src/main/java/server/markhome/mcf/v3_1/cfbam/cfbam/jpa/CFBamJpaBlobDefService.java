@@ -95,12 +95,17 @@ public class CFBamJpaBlobDefService {
 		}
 		CFLibDbKeyHash256 originalRequiredId = data.getRequiredId();
 		boolean generatedRequiredId = false;
-			if (data.getRequiredContainerScope() == null) {
-				throw new CFLibNullArgumentException(getClass(),
-					S_ProcName,
-					0,
-					"data.getRequiredContainerScope()");
-			}
+		if (data.getRequiredContainerScope() == null) {
+			throw new CFLibUnresolvedRelationException(getClass(),
+				S_ProcName,
+				"Container",
+				"Container",
+				"data.requiredContainerScope",
+				"data.requiredContainerScope",
+				"Scope",
+				"Scope",
+				null);
+		}
 		if(data.getRequiredScopeId() == null || data.getRequiredScopeId().isNull()) {
 			throw new CFLibNullArgumentException(getClass(),
 				S_ProcName,
@@ -132,6 +137,9 @@ public class CFBamJpaBlobDefService {
 		try {
 			if(data.getPKey() != null && !data.getPKey().isNull() && cfbam31BlobDefRepository.existsById((CFLibDbKeyHash256)data.getPKey())) {
 				return( (CFBamJpaBlobDef)(cfbam31BlobDefRepository.findById((CFLibDbKeyHash256)(data.getPKey())).get()));
+			}
+			if (data.getRequiredRevision() <= 0) {
+				data.setRequiredRevision(1);
 			}
 			if (data.getRequiredId() == null || data.getRequiredId().isNull()) {
 				data.setRequiredId(new CFLibDbKeyHash256(0));
@@ -171,12 +179,17 @@ public class CFBamJpaBlobDefService {
 				0,
 				"data.getPKey()");
 		}
-			if (data.getRequiredContainerScope() == null) {
-				throw new CFLibNullArgumentException(getClass(),
-					S_ProcName,
-					0,
-					"data.getRequiredContainerScope()");
-			}
+		if (data.getRequiredContainerScope() == null) {
+			throw new CFLibUnresolvedRelationException(getClass(),
+				S_ProcName,
+				"Container",
+				"Container",
+				"data.requiredContainerScope",
+				"data.requiredContainerScope",
+				"Scope",
+				"Scope",
+				null);
+		}
 		if(data.getRequiredScopeId() == null || data.getRequiredScopeId().isNull()) {
 			throw new CFLibNullArgumentException(getClass(),
 				S_ProcName,

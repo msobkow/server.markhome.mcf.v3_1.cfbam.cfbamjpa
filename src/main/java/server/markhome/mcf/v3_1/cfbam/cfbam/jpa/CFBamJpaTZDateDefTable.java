@@ -213,6 +213,10 @@ public class CFBamJpaTZDateDefTable implements ICFBamTZDateDefTable
 		}
 		else if (rec instanceof CFBamJpaTZDateDef) {
 			CFBamJpaTZDateDef jparec = (CFBamJpaTZDateDef)rec;
+			jparec.setCreatedAt(LocalDateTime.now());
+			jparec.setUpdatedAt(jparec.getCreatedAt());
+			jparec.setCreatedByUserId(Authorization.getSecUserId());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaTZDateDef retval = schema.getJpaHooksSchema().getTZDateDefService().create(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerScope().getRequiredOwnerTenant();
@@ -223,7 +227,7 @@ public class CFBamJpaTZDateDefTable implements ICFBamTZDateDefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "createTZDateDef", "rec", rec, "CFBamJpaTZDateDef");
@@ -253,6 +257,8 @@ public class CFBamJpaTZDateDefTable implements ICFBamTZDateDefTable
 		}
 		else if (rec instanceof CFBamJpaTZDateDef) {
 			CFBamJpaTZDateDef jparec = (CFBamJpaTZDateDef)rec;
+			jparec.setUpdatedAt(LocalDateTime.now());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaTZDateDef retval = schema.getJpaHooksSchema().getTZDateDefService().update(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerScope().getRequiredOwnerTenant();
@@ -263,7 +269,7 @@ public class CFBamJpaTZDateDefTable implements ICFBamTZDateDefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "updateTZDateDef", "rec", rec, "CFBamJpaTZDateDef");
@@ -654,7 +660,7 @@ public class CFBamJpaTZDateDefTable implements ICFBamTZDateDefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -687,7 +693,7 @@ public class CFBamJpaTZDateDefTable implements ICFBamTZDateDefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -759,7 +765,7 @@ public class CFBamJpaTZDateDefTable implements ICFBamTZDateDefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -798,7 +804,7 @@ public class CFBamJpaTZDateDefTable implements ICFBamTZDateDefTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**

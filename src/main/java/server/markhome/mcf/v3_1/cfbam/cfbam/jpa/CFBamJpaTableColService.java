@@ -95,12 +95,17 @@ public class CFBamJpaTableColService {
 		}
 		CFLibDbKeyHash256 originalRequiredId = data.getRequiredId();
 		boolean generatedRequiredId = false;
-			if (data.getRequiredContainerScope() == null) {
-				throw new CFLibNullArgumentException(getClass(),
-					S_ProcName,
-					0,
-					"data.getRequiredContainerScope()");
-			}
+		if (data.getRequiredContainerScope() == null) {
+			throw new CFLibUnresolvedRelationException(getClass(),
+				S_ProcName,
+				"Container",
+				"Container",
+				"data.requiredContainerScope",
+				"data.requiredContainerScope",
+				"Scope",
+				"Scope",
+				null);
+		}
 		if(data.getRequiredScopeId() == null || data.getRequiredScopeId().isNull()) {
 			throw new CFLibNullArgumentException(getClass(),
 				S_ProcName,
@@ -113,18 +118,28 @@ public class CFBamJpaTableColService {
 				0,
 				"data.requiredName");
 		}
-			if (data.getRequiredContainerTable() == null) {
-				throw new CFLibNullArgumentException(getClass(),
-					S_ProcName,
-					0,
-					"data.getRequiredContainerTable()");
-			}
-			if (data.getRequiredParentDataType() == null) {
-				throw new CFLibNullArgumentException(getClass(),
-					S_ProcName,
-					0,
-					"data.getRequiredParentDataType()");
-			}
+		if (data.getRequiredContainerTable() == null) {
+			throw new CFLibUnresolvedRelationException(getClass(),
+				S_ProcName,
+				"Container",
+				"Container",
+				"data.requiredContainerTable",
+				"data.requiredContainerTable",
+				"Table",
+				"Table",
+				null);
+		}
+		if (data.getRequiredParentDataType() == null) {
+			throw new CFLibUnresolvedRelationException(getClass(),
+				S_ProcName,
+				"Parent",
+				"Parent",
+				"data.requiredParentDataType",
+				"data.requiredParentDataType",
+				"Value",
+				"Value",
+				null);
+		}
 		if(data.getRequiredTableId() == null || data.getRequiredTableId().isNull()) {
 			throw new CFLibNullArgumentException(getClass(),
 				S_ProcName,
@@ -134,6 +149,9 @@ public class CFBamJpaTableColService {
 		try {
 			if(data.getPKey() != null && !data.getPKey().isNull() && cfbam31TableColRepository.existsById((CFLibDbKeyHash256)data.getPKey())) {
 				return( (CFBamJpaTableCol)(cfbam31TableColRepository.findById((CFLibDbKeyHash256)(data.getPKey())).get()));
+			}
+			if (data.getRequiredRevision() <= 0) {
+				data.setRequiredRevision(1);
 			}
 			if (data.getRequiredId() == null || data.getRequiredId().isNull()) {
 				data.setRequiredId(new CFLibDbKeyHash256(0));
@@ -173,12 +191,17 @@ public class CFBamJpaTableColService {
 				0,
 				"data.getPKey()");
 		}
-			if (data.getRequiredContainerScope() == null) {
-				throw new CFLibNullArgumentException(getClass(),
-					S_ProcName,
-					0,
-					"data.getRequiredContainerScope()");
-			}
+		if (data.getRequiredContainerScope() == null) {
+			throw new CFLibUnresolvedRelationException(getClass(),
+				S_ProcName,
+				"Container",
+				"Container",
+				"data.requiredContainerScope",
+				"data.requiredContainerScope",
+				"Scope",
+				"Scope",
+				null);
+		}
 		if(data.getRequiredScopeId() == null || data.getRequiredScopeId().isNull()) {
 			throw new CFLibNullArgumentException(getClass(),
 				S_ProcName,
@@ -191,18 +214,28 @@ public class CFBamJpaTableColService {
 				0,
 				"data.requiredName");
 		}
-			if (data.getRequiredContainerTable() == null) {
-				throw new CFLibNullArgumentException(getClass(),
-					S_ProcName,
-					0,
-					"data.getRequiredContainerTable()");
-			}
-			if (data.getRequiredParentDataType() == null) {
-				throw new CFLibNullArgumentException(getClass(),
-					S_ProcName,
-					0,
-					"data.getRequiredParentDataType()");
-			}
+		if (data.getRequiredContainerTable() == null) {
+			throw new CFLibUnresolvedRelationException(getClass(),
+				S_ProcName,
+				"Container",
+				"Container",
+				"data.requiredContainerTable",
+				"data.requiredContainerTable",
+				"Table",
+				"Table",
+				null);
+		}
+		if (data.getRequiredParentDataType() == null) {
+			throw new CFLibUnresolvedRelationException(getClass(),
+				S_ProcName,
+				"Parent",
+				"Parent",
+				"data.requiredParentDataType",
+				"data.requiredParentDataType",
+				"Value",
+				"Value",
+				null);
+		}
 		if(data.getRequiredTableId() == null || data.getRequiredTableId().isNull()) {
 			throw new CFLibNullArgumentException(getClass(),
 				S_ProcName,

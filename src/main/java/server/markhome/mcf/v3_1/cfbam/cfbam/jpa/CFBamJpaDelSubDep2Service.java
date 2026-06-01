@@ -95,36 +95,51 @@ public class CFBamJpaDelSubDep2Service {
 		}
 		CFLibDbKeyHash256 originalRequiredId = data.getRequiredId();
 		boolean generatedRequiredId = false;
-			if (data.getRequiredOwnerTenant() == null) {
-				throw new CFLibNullArgumentException(getClass(),
-					S_ProcName,
-					0,
-					"data.getRequiredOwnerTenant()");
-			}
+		if (data.getRequiredOwnerTenant() == null) {
+			throw new CFLibUnresolvedRelationException(getClass(),
+				S_ProcName,
+				"Owner",
+				"Owner",
+				"data.requiredOwnerTenant",
+				"data.requiredOwnerTenant",
+				"Tenant",
+				"Tenant",
+				null);
+		}
 		if(data.getRequiredTenantId() == null || data.getRequiredTenantId().isNull()) {
 			throw new CFLibNullArgumentException(getClass(),
 				S_ProcName,
 				0,
 				"data.requiredTenantId");
 		}
-			if (data.getRequiredLookupRelation() == null) {
-				throw new CFLibNullArgumentException(getClass(),
-					S_ProcName,
-					0,
-					"data.getRequiredLookupRelation()");
-			}
+		if (data.getRequiredLookupRelation() == null) {
+			throw new CFLibUnresolvedRelationException(getClass(),
+				S_ProcName,
+				"Lookup",
+				"Lookup",
+				"data.requiredLookupRelation",
+				"data.requiredLookupRelation",
+				"Relation",
+				"Relation",
+				null);
+		}
 		if(data.getRequiredRelationId() == null || data.getRequiredRelationId().isNull()) {
 			throw new CFLibNullArgumentException(getClass(),
 				S_ProcName,
 				0,
 				"data.requiredRelationId");
 		}
-			if (data.getRequiredContainerDelSubDep1() == null) {
-				throw new CFLibNullArgumentException(getClass(),
-					S_ProcName,
-					0,
-					"data.getRequiredContainerDelSubDep1()");
-			}
+		if (data.getRequiredContainerDelSubDep1() == null) {
+			throw new CFLibUnresolvedRelationException(getClass(),
+				S_ProcName,
+				"Container",
+				"Container",
+				"data.requiredContainerDelSubDep1",
+				"data.requiredContainerDelSubDep1",
+				"DelSubDep1",
+				"DelSubDep1",
+				null);
+		}
 		if(data.getRequiredDelSubDep1Id() == null || data.getRequiredDelSubDep1Id().isNull()) {
 			throw new CFLibNullArgumentException(getClass(),
 				S_ProcName,
@@ -140,6 +155,9 @@ public class CFBamJpaDelSubDep2Service {
 		try {
 			if(data.getPKey() != null && !data.getPKey().isNull() && cfbam31DelSubDep2Repository.existsById((CFLibDbKeyHash256)data.getPKey())) {
 				return( (CFBamJpaDelSubDep2)(cfbam31DelSubDep2Repository.findById((CFLibDbKeyHash256)(data.getPKey())).get()));
+			}
+			if (data.getRequiredRevision() <= 0) {
+				data.setRequiredRevision(1);
 			}
 			if (data.getRequiredId() == null || data.getRequiredId().isNull()) {
 				data.setRequiredId(new CFLibDbKeyHash256(0));
@@ -179,36 +197,51 @@ public class CFBamJpaDelSubDep2Service {
 				0,
 				"data.getPKey()");
 		}
-			if (data.getRequiredOwnerTenant() == null) {
-				throw new CFLibNullArgumentException(getClass(),
-					S_ProcName,
-					0,
-					"data.getRequiredOwnerTenant()");
-			}
+		if (data.getRequiredOwnerTenant() == null) {
+			throw new CFLibUnresolvedRelationException(getClass(),
+				S_ProcName,
+				"Owner",
+				"Owner",
+				"data.requiredOwnerTenant",
+				"data.requiredOwnerTenant",
+				"Tenant",
+				"Tenant",
+				null);
+		}
 		if(data.getRequiredTenantId() == null || data.getRequiredTenantId().isNull()) {
 			throw new CFLibNullArgumentException(getClass(),
 				S_ProcName,
 				0,
 				"data.requiredTenantId");
 		}
-			if (data.getRequiredLookupRelation() == null) {
-				throw new CFLibNullArgumentException(getClass(),
-					S_ProcName,
-					0,
-					"data.getRequiredLookupRelation()");
-			}
+		if (data.getRequiredLookupRelation() == null) {
+			throw new CFLibUnresolvedRelationException(getClass(),
+				S_ProcName,
+				"Lookup",
+				"Lookup",
+				"data.requiredLookupRelation",
+				"data.requiredLookupRelation",
+				"Relation",
+				"Relation",
+				null);
+		}
 		if(data.getRequiredRelationId() == null || data.getRequiredRelationId().isNull()) {
 			throw new CFLibNullArgumentException(getClass(),
 				S_ProcName,
 				0,
 				"data.requiredRelationId");
 		}
-			if (data.getRequiredContainerDelSubDep1() == null) {
-				throw new CFLibNullArgumentException(getClass(),
-					S_ProcName,
-					0,
-					"data.getRequiredContainerDelSubDep1()");
-			}
+		if (data.getRequiredContainerDelSubDep1() == null) {
+			throw new CFLibUnresolvedRelationException(getClass(),
+				S_ProcName,
+				"Container",
+				"Container",
+				"data.requiredContainerDelSubDep1",
+				"data.requiredContainerDelSubDep1",
+				"DelSubDep1",
+				"DelSubDep1",
+				null);
+		}
 		if(data.getRequiredDelSubDep1Id() == null || data.getRequiredDelSubDep1Id().isNull()) {
 			throw new CFLibNullArgumentException(getClass(),
 				S_ProcName,

@@ -64,6 +64,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 
 /**
  *  CFBamJpaDelSubDep2H provides history objects matching the CFBamDelSubDep2 change history.
+ *	Note that because all indexes are historical with multiple instances of history records, the only key that can be unique is the primary key of a history table.
  */
 @Entity
 @Table(
@@ -71,7 +72,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
     indexes = {
         @Index(name = "DelSubDep2IdIdx_h", columnList = "auditClusterId, auditStamp, auditAction, requiredRevision, auditSessionId, Id", unique = true),
         @Index(name = "DelSubDep2DelSubDep1Idx_h", columnList = "contdeldep1id", unique = false),
-        @Index(name = "DelSubDep2UNameIdx_h", columnList = "contdeldep1id, safe_name", unique = true)
+        @Index(name = "DelSubDep2UNameIdx_h", columnList = "contdeldep1id, safe_name", unique = false)
     }
 )
 @Inheritance(strategy = InheritanceType.JOINED)

@@ -213,6 +213,10 @@ public class CFBamJpaUuidGenTable implements ICFBamUuidGenTable
 		}
 		else if (rec instanceof CFBamJpaUuidGen) {
 			CFBamJpaUuidGen jparec = (CFBamJpaUuidGen)rec;
+			jparec.setCreatedAt(LocalDateTime.now());
+			jparec.setUpdatedAt(jparec.getCreatedAt());
+			jparec.setCreatedByUserId(Authorization.getSecUserId());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaUuidGen retval = schema.getJpaHooksSchema().getUuidGenService().create(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
@@ -223,7 +227,7 @@ public class CFBamJpaUuidGenTable implements ICFBamUuidGenTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "createUuidGen", "rec", rec, "CFBamJpaUuidGen");
@@ -253,6 +257,8 @@ public class CFBamJpaUuidGenTable implements ICFBamUuidGenTable
 		}
 		else if (rec instanceof CFBamJpaUuidGen) {
 			CFBamJpaUuidGen jparec = (CFBamJpaUuidGen)rec;
+			jparec.setUpdatedAt(LocalDateTime.now());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaUuidGen retval = schema.getJpaHooksSchema().getUuidGenService().update(jparec);
 		if(retval != null) {
 				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
@@ -263,7 +269,7 @@ public class CFBamJpaUuidGenTable implements ICFBamUuidGenTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 		}
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "updateUuidGen", "rec", rec, "CFBamJpaUuidGen");
@@ -695,7 +701,7 @@ public class CFBamJpaUuidGenTable implements ICFBamUuidGenTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -728,7 +734,7 @@ public class CFBamJpaUuidGenTable implements ICFBamUuidGenTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -800,7 +806,7 @@ public class CFBamJpaUuidGenTable implements ICFBamUuidGenTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
@@ -839,7 +845,7 @@ public class CFBamJpaUuidGenTable implements ICFBamUuidGenTable
 				retval = null;
 			}
 		}
-		return( retval );
+		return(retval);
 	}
 
 	/**
