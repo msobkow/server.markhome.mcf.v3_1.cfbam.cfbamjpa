@@ -218,15 +218,6 @@ public class CFBamJpaFloatColTable implements ICFBamFloatColTable
 			jparec.setCreatedByUserId(Authorization.getSecUserId());
 			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaFloatCol retval = schema.getJpaHooksSchema().getFloatColService().create(jparec);
-		if(retval != null) {
-				ICFSecTenant tenant = retval.getRequiredContainerTable().getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readfloatcol")) {
-				retval = null;
-			}
-		}
 		return(retval);
 		}
 		else {
@@ -260,15 +251,6 @@ public class CFBamJpaFloatColTable implements ICFBamFloatColTable
 			jparec.setUpdatedAt(LocalDateTime.now());
 			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaFloatCol retval = schema.getJpaHooksSchema().getFloatColService().update(jparec);
-		if(retval != null) {
-				ICFSecTenant tenant = retval.getRequiredContainerTable().getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readfloatcol")) {
-				retval = null;
-			}
-		}
 		return(retval);
 		}
 		else {
@@ -692,15 +674,6 @@ public class CFBamJpaFloatColTable implements ICFBamFloatColTable
 		}
 
 		ICFBamFloatCol retval = schema.getJpaHooksSchema().getFloatColService().find(PKey);
-		if(retval != null) {
-				ICFSecTenant tenant = retval.getRequiredContainerTable().getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readfloatcol")) {
-				retval = null;
-			}
-		}
 		return(retval);
 	}
 
@@ -725,15 +698,6 @@ public class CFBamJpaFloatColTable implements ICFBamFloatColTable
 		}
 
 		ICFBamFloatCol retval = schema.getJpaHooksSchema().getFloatColService().lockByIdIdx(PKey);
-		if(retval != null) {
-				ICFSecTenant tenant = retval.getRequiredContainerTable().getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readfloatcol")) {
-				retval = null;
-			}
-		}
 		return(retval);
 	}
 
@@ -753,19 +717,6 @@ public class CFBamJpaFloatColTable implements ICFBamFloatColTable
 		}
 
 		List<CFBamJpaFloatCol> retlist = schema.getJpaHooksSchema().getFloatColService().findAll();
-		if(retlist != null) {
-			ArrayList<CFBamJpaFloatCol> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredContainerTable().getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readfloatcol")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamFloatCol[] retset = new ICFBamFloatCol[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaFloatCol cur: retlist) {
@@ -797,7 +748,7 @@ public class CFBamJpaFloatColTable implements ICFBamFloatColTable
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readfloatcol", ICFBamSchema.SCHEMA_NAME, ICFBamFloatColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		ICFBamFloatCol retval = schema.getJpaHooksSchema().getFloatColService().find(argId);
-		if(retval != null) {
+		if(retval != null && !ICFSecSchema.getSystemId().equals(Authorization.getSecUserId())) {
 				ICFSecTenant tenant = retval.getRequiredContainerTable().getRequiredOwnerTenant();
 				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
 			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
@@ -836,7 +787,7 @@ public class CFBamJpaFloatColTable implements ICFBamFloatColTable
 		}
 		ICFBamFloatCol retval = schema.getJpaHooksSchema().getFloatColService().findByUNameIdx(argScopeId,
 		argName);
-		if(retval != null) {
+		if(retval != null && !ICFSecSchema.getSystemId().equals(Authorization.getSecUserId())) {
 				ICFSecTenant tenant = retval.getRequiredContainerTable().getRequiredOwnerTenant();
 				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
 			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
@@ -870,19 +821,6 @@ public class CFBamJpaFloatColTable implements ICFBamFloatColTable
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readfloatcol", ICFBamSchema.SCHEMA_NAME, ICFBamFloatColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaFloatCol> retlist = schema.getJpaHooksSchema().getFloatColService().findByScopeIdx(argScopeId);
-		if(retlist != null) {
-			ArrayList<CFBamJpaFloatCol> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredContainerTable().getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readfloatcol")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamFloatCol[] retset = new ICFBamFloatCol[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaFloatCol cur: retlist) {
@@ -913,19 +851,6 @@ public class CFBamJpaFloatColTable implements ICFBamFloatColTable
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readfloatcol", ICFBamSchema.SCHEMA_NAME, ICFBamFloatColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaFloatCol> retlist = schema.getJpaHooksSchema().getFloatColService().findByDefSchemaIdx(argDefSchemaId);
-		if(retlist != null) {
-			ArrayList<CFBamJpaFloatCol> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredContainerTable().getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readfloatcol")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamFloatCol[] retset = new ICFBamFloatCol[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaFloatCol cur: retlist) {
@@ -956,19 +881,6 @@ public class CFBamJpaFloatColTable implements ICFBamFloatColTable
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readfloatcol", ICFBamSchema.SCHEMA_NAME, ICFBamFloatColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaFloatCol> retlist = schema.getJpaHooksSchema().getFloatColService().findByPrevIdx(argPrevId);
-		if(retlist != null) {
-			ArrayList<CFBamJpaFloatCol> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredContainerTable().getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readfloatcol")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamFloatCol[] retset = new ICFBamFloatCol[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaFloatCol cur: retlist) {
@@ -999,19 +911,6 @@ public class CFBamJpaFloatColTable implements ICFBamFloatColTable
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readfloatcol", ICFBamSchema.SCHEMA_NAME, ICFBamFloatColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaFloatCol> retlist = schema.getJpaHooksSchema().getFloatColService().findByNextIdx(argNextId);
-		if(retlist != null) {
-			ArrayList<CFBamJpaFloatCol> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredContainerTable().getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readfloatcol")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamFloatCol[] retset = new ICFBamFloatCol[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaFloatCol cur: retlist) {
@@ -1046,19 +945,6 @@ public class CFBamJpaFloatColTable implements ICFBamFloatColTable
 		}
 		List<CFBamJpaFloatCol> retlist = schema.getJpaHooksSchema().getFloatColService().findByContPrevIdx(argScopeId,
 		argPrevId);
-		if(retlist != null) {
-			ArrayList<CFBamJpaFloatCol> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredContainerTable().getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readfloatcol")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamFloatCol[] retset = new ICFBamFloatCol[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaFloatCol cur: retlist) {
@@ -1093,19 +979,6 @@ public class CFBamJpaFloatColTable implements ICFBamFloatColTable
 		}
 		List<CFBamJpaFloatCol> retlist = schema.getJpaHooksSchema().getFloatColService().findByContNextIdx(argScopeId,
 		argNextId);
-		if(retlist != null) {
-			ArrayList<CFBamJpaFloatCol> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredContainerTable().getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readfloatcol")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamFloatCol[] retset = new ICFBamFloatCol[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaFloatCol cur: retlist) {
@@ -1136,19 +1009,6 @@ public class CFBamJpaFloatColTable implements ICFBamFloatColTable
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readfloatcol", ICFBamSchema.SCHEMA_NAME, ICFBamFloatColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaFloatCol> retlist = schema.getJpaHooksSchema().getFloatColService().findByTableIdx(argTableId);
-		if(retlist != null) {
-			ArrayList<CFBamJpaFloatCol> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredContainerTable().getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readfloatcol")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamFloatCol[] retset = new ICFBamFloatCol[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaFloatCol cur: retlist) {

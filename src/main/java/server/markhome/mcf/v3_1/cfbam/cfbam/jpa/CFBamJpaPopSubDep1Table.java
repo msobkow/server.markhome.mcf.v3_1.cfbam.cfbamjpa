@@ -218,15 +218,6 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 			jparec.setCreatedByUserId(Authorization.getSecUserId());
 			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaPopSubDep1 retval = schema.getJpaHooksSchema().getPopSubDep1Service().create(jparec);
-		if(retval != null) {
-				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readpopsubdep1")) {
-				retval = null;
-			}
-		}
 		return(retval);
 		}
 		else {
@@ -260,15 +251,6 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 			jparec.setUpdatedAt(LocalDateTime.now());
 			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaPopSubDep1 retval = schema.getJpaHooksSchema().getPopSubDep1Service().update(jparec);
-		if(retval != null) {
-				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readpopsubdep1")) {
-				retval = null;
-			}
-		}
 		return(retval);
 		}
 		else {
@@ -559,15 +541,6 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 		}
 
 		ICFBamPopSubDep1 retval = schema.getJpaHooksSchema().getPopSubDep1Service().find(PKey);
-		if(retval != null) {
-				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readpopsubdep1")) {
-				retval = null;
-			}
-		}
 		return(retval);
 	}
 
@@ -592,15 +565,6 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 		}
 
 		ICFBamPopSubDep1 retval = schema.getJpaHooksSchema().getPopSubDep1Service().lockByIdIdx(PKey);
-		if(retval != null) {
-				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readpopsubdep1")) {
-				retval = null;
-			}
-		}
 		return(retval);
 	}
 
@@ -620,19 +584,6 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 		}
 
 		List<CFBamJpaPopSubDep1> retlist = schema.getJpaHooksSchema().getPopSubDep1Service().findAll();
-		if(retlist != null) {
-			ArrayList<CFBamJpaPopSubDep1> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readpopsubdep1")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamPopSubDep1[] retset = new ICFBamPopSubDep1[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaPopSubDep1 cur: retlist) {
@@ -664,7 +615,7 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readpopsubdep1", ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		ICFBamPopSubDep1 retval = schema.getJpaHooksSchema().getPopSubDep1Service().find(argId);
-		if(retval != null) {
+		if(retval != null && !ICFSecSchema.getSystemId().equals(Authorization.getSecUserId())) {
 				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
 				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
 			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
@@ -698,19 +649,6 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readpopsubdep1", ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaPopSubDep1> retlist = schema.getJpaHooksSchema().getPopSubDep1Service().findByTenantIdx(argTenantId);
-		if(retlist != null) {
-			ArrayList<CFBamJpaPopSubDep1> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readpopsubdep1")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamPopSubDep1[] retset = new ICFBamPopSubDep1[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaPopSubDep1 cur: retlist) {
@@ -741,19 +679,6 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readpopsubdep1", ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaPopSubDep1> retlist = schema.getJpaHooksSchema().getPopSubDep1Service().findByRelationIdx(argRelationId);
-		if(retlist != null) {
-			ArrayList<CFBamJpaPopSubDep1> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readpopsubdep1")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamPopSubDep1[] retset = new ICFBamPopSubDep1[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaPopSubDep1 cur: retlist) {
@@ -784,19 +709,6 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readpopsubdep1", ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaPopSubDep1> retlist = schema.getJpaHooksSchema().getPopSubDep1Service().findByDefSchemaIdx(argDefSchemaId);
-		if(retlist != null) {
-			ArrayList<CFBamJpaPopSubDep1> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readpopsubdep1")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamPopSubDep1[] retset = new ICFBamPopSubDep1[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaPopSubDep1 cur: retlist) {
@@ -827,19 +739,6 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readpopsubdep1", ICFBamSchema.SCHEMA_NAME, ICFBamPopSubDep1Table.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaPopSubDep1> retlist = schema.getJpaHooksSchema().getPopSubDep1Service().findByPopTopDepIdx(argPopTopDepId);
-		if(retlist != null) {
-			ArrayList<CFBamJpaPopSubDep1> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readpopsubdep1")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamPopSubDep1[] retset = new ICFBamPopSubDep1[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaPopSubDep1 cur: retlist) {
@@ -875,7 +774,7 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 		}
 		ICFBamPopSubDep1 retval = schema.getJpaHooksSchema().getPopSubDep1Service().findByUNameIdx(argPopTopDepId,
 		argName);
-		if(retval != null) {
+		if(retval != null && !ICFSecSchema.getSystemId().equals(Authorization.getSecUserId())) {
 				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
 				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
 			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();

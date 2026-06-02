@@ -218,15 +218,6 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			jparec.setCreatedByUserId(Authorization.getSecUserId());
 			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaIndexTweak retval = schema.getJpaHooksSchema().getIndexTweakService().create(jparec);
-		if(retval != null) {
-				ICFSecTenant tenant = retval.getRequiredContainerIndexDef().getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readindextweak")) {
-				retval = null;
-			}
-		}
 		return(retval);
 		}
 		else {
@@ -260,15 +251,6 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			jparec.setUpdatedAt(LocalDateTime.now());
 			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaIndexTweak retval = schema.getJpaHooksSchema().getIndexTweakService().update(jparec);
-		if(retval != null) {
-				ICFSecTenant tenant = retval.getRequiredContainerIndexDef().getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readindextweak")) {
-				retval = null;
-			}
-		}
 		return(retval);
 		}
 		else {
@@ -620,15 +602,6 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 		}
 
 		ICFBamIndexTweak retval = schema.getJpaHooksSchema().getIndexTweakService().find(PKey);
-		if(retval != null) {
-				ICFSecTenant tenant = retval.getRequiredContainerIndexDef().getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readindextweak")) {
-				retval = null;
-			}
-		}
 		return(retval);
 	}
 
@@ -653,15 +626,6 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 		}
 
 		ICFBamIndexTweak retval = schema.getJpaHooksSchema().getIndexTweakService().lockByIdIdx(PKey);
-		if(retval != null) {
-				ICFSecTenant tenant = retval.getRequiredContainerIndexDef().getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readindextweak")) {
-				retval = null;
-			}
-		}
 		return(retval);
 	}
 
@@ -681,19 +645,6 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 		}
 
 		List<CFBamJpaIndexTweak> retlist = schema.getJpaHooksSchema().getIndexTweakService().findAll();
-		if(retlist != null) {
-			ArrayList<CFBamJpaIndexTweak> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredContainerIndexDef().getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readindextweak")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamIndexTweak[] retset = new ICFBamIndexTweak[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaIndexTweak cur: retlist) {
@@ -725,7 +676,7 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readindextweak", ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		ICFBamIndexTweak retval = schema.getJpaHooksSchema().getIndexTweakService().find(argId);
-		if(retval != null) {
+		if(retval != null && !ICFSecSchema.getSystemId().equals(Authorization.getSecUserId())) {
 				ICFSecTenant tenant = retval.getRequiredContainerIndexDef().getRequiredOwnerTenant();
 				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
 			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
@@ -764,7 +715,7 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 		}
 		ICFBamIndexTweak retval = schema.getJpaHooksSchema().getIndexTweakService().findByUNameIdx(argScopeId,
 		argName);
-		if(retval != null) {
+		if(retval != null && !ICFSecSchema.getSystemId().equals(Authorization.getSecUserId())) {
 				ICFSecTenant tenant = retval.getRequiredContainerIndexDef().getRequiredOwnerTenant();
 				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
 			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
@@ -798,19 +749,6 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readindextweak", ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaIndexTweak> retlist = schema.getJpaHooksSchema().getIndexTweakService().findByValTentIdx(argTenantId);
-		if(retlist != null) {
-			ArrayList<CFBamJpaIndexTweak> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredContainerIndexDef().getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readindextweak")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamIndexTweak[] retset = new ICFBamIndexTweak[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaIndexTweak cur: retlist) {
@@ -841,19 +779,6 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readindextweak", ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaIndexTweak> retlist = schema.getJpaHooksSchema().getIndexTweakService().findByScopeIdx(argScopeId);
-		if(retlist != null) {
-			ArrayList<CFBamJpaIndexTweak> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredContainerIndexDef().getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readindextweak")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamIndexTweak[] retset = new ICFBamIndexTweak[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaIndexTweak cur: retlist) {
@@ -884,19 +809,6 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readindextweak", ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaIndexTweak> retlist = schema.getJpaHooksSchema().getIndexTweakService().findByDefSchemaIdx(argDefSchemaId);
-		if(retlist != null) {
-			ArrayList<CFBamJpaIndexTweak> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredContainerIndexDef().getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readindextweak")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamIndexTweak[] retset = new ICFBamIndexTweak[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaIndexTweak cur: retlist) {
@@ -944,7 +856,7 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 		argDefSchemaTenantId,
 		argDefSchemaId,
 		argName);
-		if(retval != null) {
+		if(retval != null && !ICFSecSchema.getSystemId().equals(Authorization.getSecUserId())) {
 				ICFSecTenant tenant = retval.getRequiredContainerIndexDef().getRequiredOwnerTenant();
 				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
 			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
@@ -978,19 +890,6 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readindextweak", ICFBamSchema.SCHEMA_NAME, ICFBamIndexTweakTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaIndexTweak> retlist = schema.getJpaHooksSchema().getIndexTweakService().findByIndexIdx(argIndexId);
-		if(retlist != null) {
-			ArrayList<CFBamJpaIndexTweak> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredContainerIndexDef().getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readindextweak")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamIndexTweak[] retset = new ICFBamIndexTweak[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaIndexTweak cur: retlist) {

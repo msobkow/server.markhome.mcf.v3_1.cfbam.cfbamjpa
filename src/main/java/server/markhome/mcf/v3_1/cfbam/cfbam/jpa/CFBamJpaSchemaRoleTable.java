@@ -218,15 +218,6 @@ public class CFBamJpaSchemaRoleTable implements ICFBamSchemaRoleTable
 			jparec.setCreatedByUserId(Authorization.getSecUserId());
 			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaSchemaRole retval = schema.getJpaHooksSchema().getSchemaRoleService().create(jparec);
-		if(retval != null) {
-				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readschemarole")) {
-				retval = null;
-			}
-		}
 		return(retval);
 		}
 		else {
@@ -260,15 +251,6 @@ public class CFBamJpaSchemaRoleTable implements ICFBamSchemaRoleTable
 			jparec.setUpdatedAt(LocalDateTime.now());
 			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaSchemaRole retval = schema.getJpaHooksSchema().getSchemaRoleService().update(jparec);
-		if(retval != null) {
-				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readschemarole")) {
-				retval = null;
-			}
-		}
 		return(retval);
 		}
 		else {
@@ -656,15 +638,6 @@ public class CFBamJpaSchemaRoleTable implements ICFBamSchemaRoleTable
 		}
 
 		ICFBamSchemaRole retval = schema.getJpaHooksSchema().getSchemaRoleService().find(PKey);
-		if(retval != null) {
-				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readschemarole")) {
-				retval = null;
-			}
-		}
 		return(retval);
 	}
 
@@ -689,15 +662,6 @@ public class CFBamJpaSchemaRoleTable implements ICFBamSchemaRoleTable
 		}
 
 		ICFBamSchemaRole retval = schema.getJpaHooksSchema().getSchemaRoleService().lockByIdIdx(PKey);
-		if(retval != null) {
-				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readschemarole")) {
-				retval = null;
-			}
-		}
 		return(retval);
 	}
 
@@ -717,19 +681,6 @@ public class CFBamJpaSchemaRoleTable implements ICFBamSchemaRoleTable
 		}
 
 		List<CFBamJpaSchemaRole> retlist = schema.getJpaHooksSchema().getSchemaRoleService().findAll();
-		if(retlist != null) {
-			ArrayList<CFBamJpaSchemaRole> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readschemarole")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamSchemaRole[] retset = new ICFBamSchemaRole[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaSchemaRole cur: retlist) {
@@ -761,7 +712,7 @@ public class CFBamJpaSchemaRoleTable implements ICFBamSchemaRoleTable
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readschemarole", ICFBamSchema.SCHEMA_NAME, ICFBamSchemaRoleTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		ICFBamSchemaRole retval = schema.getJpaHooksSchema().getSchemaRoleService().find(argId);
-		if(retval != null) {
+		if(retval != null && !ICFSecSchema.getSystemId().equals(Authorization.getSecUserId())) {
 				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
 				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
 			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
@@ -800,7 +751,7 @@ public class CFBamJpaSchemaRoleTable implements ICFBamSchemaRoleTable
 		}
 		ICFBamSchemaRole retval = schema.getJpaHooksSchema().getSchemaRoleService().findByUNameIdx(argScopeId,
 		argName);
-		if(retval != null) {
+		if(retval != null && !ICFSecSchema.getSystemId().equals(Authorization.getSecUserId())) {
 				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
 				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
 			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
@@ -834,19 +785,6 @@ public class CFBamJpaSchemaRoleTable implements ICFBamSchemaRoleTable
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readschemarole", ICFBamSchema.SCHEMA_NAME, ICFBamSchemaRoleTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaSchemaRole> retlist = schema.getJpaHooksSchema().getSchemaRoleService().findByScopeIdx(argScopeId);
-		if(retlist != null) {
-			ArrayList<CFBamJpaSchemaRole> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readschemarole")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamSchemaRole[] retset = new ICFBamSchemaRole[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaSchemaRole cur: retlist) {
@@ -877,19 +815,6 @@ public class CFBamJpaSchemaRoleTable implements ICFBamSchemaRoleTable
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readschemarole", ICFBamSchema.SCHEMA_NAME, ICFBamSchemaRoleTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaSchemaRole> retlist = schema.getJpaHooksSchema().getSchemaRoleService().findByDefSchemaIdx(argDefSchemaId);
-		if(retlist != null) {
-			ArrayList<CFBamJpaSchemaRole> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readschemarole")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamSchemaRole[] retset = new ICFBamSchemaRole[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaSchemaRole cur: retlist) {
@@ -929,7 +854,7 @@ public class CFBamJpaSchemaRoleTable implements ICFBamSchemaRoleTable
 		ICFBamSchemaRole retval = schema.getJpaHooksSchema().getSchemaRoleService().findByUDefIdx(argScopeId,
 		argDefSchemaId,
 		argName);
-		if(retval != null) {
+		if(retval != null && !ICFSecSchema.getSystemId().equals(Authorization.getSecUserId())) {
 				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
 				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
 			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
@@ -963,19 +888,6 @@ public class CFBamJpaSchemaRoleTable implements ICFBamSchemaRoleTable
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readschemarole", ICFBamSchema.SCHEMA_NAME, ICFBamSchemaRoleTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaSchemaRole> retlist = schema.getJpaHooksSchema().getSchemaRoleService().findBySchemaIdx(argSchemaDefId);
-		if(retlist != null) {
-			ArrayList<CFBamJpaSchemaRole> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readschemarole")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamSchemaRole[] retset = new ICFBamSchemaRole[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaSchemaRole cur: retlist) {
@@ -1006,19 +918,6 @@ public class CFBamJpaSchemaRoleTable implements ICFBamSchemaRoleTable
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readschemarole", ICFBamSchema.SCHEMA_NAME, ICFBamSchemaRoleTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaSchemaRole> retlist = schema.getJpaHooksSchema().getSchemaRoleService().findByRoleScopeIdx(argRoleScope);
-		if(retlist != null) {
-			ArrayList<CFBamJpaSchemaRole> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readschemarole")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamSchemaRole[] retset = new ICFBamSchemaRole[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaSchemaRole cur: retlist) {
@@ -1053,19 +952,6 @@ public class CFBamJpaSchemaRoleTable implements ICFBamSchemaRoleTable
 		}
 		List<CFBamJpaSchemaRole> retlist = schema.getJpaHooksSchema().getSchemaRoleService().findBySchRoleScpIdx(argSchemaDefId,
 		argRoleScope);
-		if(retlist != null) {
-			ArrayList<CFBamJpaSchemaRole> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readschemarole")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamSchemaRole[] retset = new ICFBamSchemaRole[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaSchemaRole cur: retlist) {

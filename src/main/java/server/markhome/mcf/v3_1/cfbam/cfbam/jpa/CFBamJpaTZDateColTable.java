@@ -218,15 +218,6 @@ public class CFBamJpaTZDateColTable implements ICFBamTZDateColTable
 			jparec.setCreatedByUserId(Authorization.getSecUserId());
 			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaTZDateCol retval = schema.getJpaHooksSchema().getTZDateColService().create(jparec);
-		if(retval != null) {
-				ICFSecTenant tenant = retval.getRequiredContainerTable().getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readtzdatecol")) {
-				retval = null;
-			}
-		}
 		return(retval);
 		}
 		else {
@@ -260,15 +251,6 @@ public class CFBamJpaTZDateColTable implements ICFBamTZDateColTable
 			jparec.setUpdatedAt(LocalDateTime.now());
 			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaTZDateCol retval = schema.getJpaHooksSchema().getTZDateColService().update(jparec);
-		if(retval != null) {
-				ICFSecTenant tenant = retval.getRequiredContainerTable().getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readtzdatecol")) {
-				retval = null;
-			}
-		}
 		return(retval);
 		}
 		else {
@@ -692,15 +674,6 @@ public class CFBamJpaTZDateColTable implements ICFBamTZDateColTable
 		}
 
 		ICFBamTZDateCol retval = schema.getJpaHooksSchema().getTZDateColService().find(PKey);
-		if(retval != null) {
-				ICFSecTenant tenant = retval.getRequiredContainerTable().getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readtzdatecol")) {
-				retval = null;
-			}
-		}
 		return(retval);
 	}
 
@@ -725,15 +698,6 @@ public class CFBamJpaTZDateColTable implements ICFBamTZDateColTable
 		}
 
 		ICFBamTZDateCol retval = schema.getJpaHooksSchema().getTZDateColService().lockByIdIdx(PKey);
-		if(retval != null) {
-				ICFSecTenant tenant = retval.getRequiredContainerTable().getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readtzdatecol")) {
-				retval = null;
-			}
-		}
 		return(retval);
 	}
 
@@ -753,19 +717,6 @@ public class CFBamJpaTZDateColTable implements ICFBamTZDateColTable
 		}
 
 		List<CFBamJpaTZDateCol> retlist = schema.getJpaHooksSchema().getTZDateColService().findAll();
-		if(retlist != null) {
-			ArrayList<CFBamJpaTZDateCol> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredContainerTable().getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readtzdatecol")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamTZDateCol[] retset = new ICFBamTZDateCol[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaTZDateCol cur: retlist) {
@@ -797,7 +748,7 @@ public class CFBamJpaTZDateColTable implements ICFBamTZDateColTable
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readtzdatecol", ICFBamSchema.SCHEMA_NAME, ICFBamTZDateColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		ICFBamTZDateCol retval = schema.getJpaHooksSchema().getTZDateColService().find(argId);
-		if(retval != null) {
+		if(retval != null && !ICFSecSchema.getSystemId().equals(Authorization.getSecUserId())) {
 				ICFSecTenant tenant = retval.getRequiredContainerTable().getRequiredOwnerTenant();
 				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
 			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
@@ -836,7 +787,7 @@ public class CFBamJpaTZDateColTable implements ICFBamTZDateColTable
 		}
 		ICFBamTZDateCol retval = schema.getJpaHooksSchema().getTZDateColService().findByUNameIdx(argScopeId,
 		argName);
-		if(retval != null) {
+		if(retval != null && !ICFSecSchema.getSystemId().equals(Authorization.getSecUserId())) {
 				ICFSecTenant tenant = retval.getRequiredContainerTable().getRequiredOwnerTenant();
 				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
 			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
@@ -870,19 +821,6 @@ public class CFBamJpaTZDateColTable implements ICFBamTZDateColTable
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readtzdatecol", ICFBamSchema.SCHEMA_NAME, ICFBamTZDateColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaTZDateCol> retlist = schema.getJpaHooksSchema().getTZDateColService().findByScopeIdx(argScopeId);
-		if(retlist != null) {
-			ArrayList<CFBamJpaTZDateCol> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredContainerTable().getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readtzdatecol")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamTZDateCol[] retset = new ICFBamTZDateCol[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaTZDateCol cur: retlist) {
@@ -913,19 +851,6 @@ public class CFBamJpaTZDateColTable implements ICFBamTZDateColTable
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readtzdatecol", ICFBamSchema.SCHEMA_NAME, ICFBamTZDateColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaTZDateCol> retlist = schema.getJpaHooksSchema().getTZDateColService().findByDefSchemaIdx(argDefSchemaId);
-		if(retlist != null) {
-			ArrayList<CFBamJpaTZDateCol> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredContainerTable().getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readtzdatecol")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamTZDateCol[] retset = new ICFBamTZDateCol[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaTZDateCol cur: retlist) {
@@ -956,19 +881,6 @@ public class CFBamJpaTZDateColTable implements ICFBamTZDateColTable
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readtzdatecol", ICFBamSchema.SCHEMA_NAME, ICFBamTZDateColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaTZDateCol> retlist = schema.getJpaHooksSchema().getTZDateColService().findByPrevIdx(argPrevId);
-		if(retlist != null) {
-			ArrayList<CFBamJpaTZDateCol> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredContainerTable().getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readtzdatecol")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamTZDateCol[] retset = new ICFBamTZDateCol[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaTZDateCol cur: retlist) {
@@ -999,19 +911,6 @@ public class CFBamJpaTZDateColTable implements ICFBamTZDateColTable
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readtzdatecol", ICFBamSchema.SCHEMA_NAME, ICFBamTZDateColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaTZDateCol> retlist = schema.getJpaHooksSchema().getTZDateColService().findByNextIdx(argNextId);
-		if(retlist != null) {
-			ArrayList<CFBamJpaTZDateCol> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredContainerTable().getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readtzdatecol")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamTZDateCol[] retset = new ICFBamTZDateCol[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaTZDateCol cur: retlist) {
@@ -1046,19 +945,6 @@ public class CFBamJpaTZDateColTable implements ICFBamTZDateColTable
 		}
 		List<CFBamJpaTZDateCol> retlist = schema.getJpaHooksSchema().getTZDateColService().findByContPrevIdx(argScopeId,
 		argPrevId);
-		if(retlist != null) {
-			ArrayList<CFBamJpaTZDateCol> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredContainerTable().getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readtzdatecol")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamTZDateCol[] retset = new ICFBamTZDateCol[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaTZDateCol cur: retlist) {
@@ -1093,19 +979,6 @@ public class CFBamJpaTZDateColTable implements ICFBamTZDateColTable
 		}
 		List<CFBamJpaTZDateCol> retlist = schema.getJpaHooksSchema().getTZDateColService().findByContNextIdx(argScopeId,
 		argNextId);
-		if(retlist != null) {
-			ArrayList<CFBamJpaTZDateCol> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredContainerTable().getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readtzdatecol")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamTZDateCol[] retset = new ICFBamTZDateCol[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaTZDateCol cur: retlist) {
@@ -1136,19 +1009,6 @@ public class CFBamJpaTZDateColTable implements ICFBamTZDateColTable
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readtzdatecol", ICFBamSchema.SCHEMA_NAME, ICFBamTZDateColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaTZDateCol> retlist = schema.getJpaHooksSchema().getTZDateColService().findByTableIdx(argTableId);
-		if(retlist != null) {
-			ArrayList<CFBamJpaTZDateCol> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredContainerTable().getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readtzdatecol")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamTZDateCol[] retset = new ICFBamTZDateCol[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaTZDateCol cur: retlist) {

@@ -218,15 +218,6 @@ public class CFBamJpaScopeTable implements ICFBamScopeTable
 			jparec.setCreatedByUserId(Authorization.getSecUserId());
 			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaScope retval = schema.getJpaHooksSchema().getScopeService().create(jparec);
-		if(retval != null) {
-				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readscope")) {
-				retval = null;
-			}
-		}
 		return(retval);
 		}
 		else {
@@ -260,15 +251,6 @@ public class CFBamJpaScopeTable implements ICFBamScopeTable
 			jparec.setUpdatedAt(LocalDateTime.now());
 			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaScope retval = schema.getJpaHooksSchema().getScopeService().update(jparec);
-		if(retval != null) {
-				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readscope")) {
-				retval = null;
-			}
-		}
 		return(retval);
 		}
 		else {
@@ -390,15 +372,6 @@ public class CFBamJpaScopeTable implements ICFBamScopeTable
 		}
 
 		ICFBamScope retval = schema.getJpaHooksSchema().getScopeService().find(PKey);
-		if(retval != null) {
-				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readscope")) {
-				retval = null;
-			}
-		}
 		return(retval);
 	}
 
@@ -423,15 +396,6 @@ public class CFBamJpaScopeTable implements ICFBamScopeTable
 		}
 
 		ICFBamScope retval = schema.getJpaHooksSchema().getScopeService().lockByIdIdx(PKey);
-		if(retval != null) {
-				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readscope")) {
-				retval = null;
-			}
-		}
 		return(retval);
 	}
 
@@ -451,19 +415,6 @@ public class CFBamJpaScopeTable implements ICFBamScopeTable
 		}
 
 		List<CFBamJpaScope> retlist = schema.getJpaHooksSchema().getScopeService().findAll();
-		if(retlist != null) {
-			ArrayList<CFBamJpaScope> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readscope")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamScope[] retset = new ICFBamScope[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaScope cur: retlist) {
@@ -495,7 +446,7 @@ public class CFBamJpaScopeTable implements ICFBamScopeTable
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readscope", ICFBamSchema.SCHEMA_NAME, ICFBamScopeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		ICFBamScope retval = schema.getJpaHooksSchema().getScopeService().find(argId);
-		if(retval != null) {
+		if(retval != null && !ICFSecSchema.getSystemId().equals(Authorization.getSecUserId())) {
 				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
 				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
 			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
@@ -529,19 +480,6 @@ public class CFBamJpaScopeTable implements ICFBamScopeTable
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readscope", ICFBamSchema.SCHEMA_NAME, ICFBamScopeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaScope> retlist = schema.getJpaHooksSchema().getScopeService().findByTenantIdx(argTenantId);
-		if(retlist != null) {
-			ArrayList<CFBamJpaScope> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readscope")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamScope[] retset = new ICFBamScope[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaScope cur: retlist) {

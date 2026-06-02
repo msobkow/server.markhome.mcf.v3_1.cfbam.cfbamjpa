@@ -218,15 +218,6 @@ public class CFBamJpaIndexTable implements ICFBamIndexTable
 			jparec.setCreatedByUserId(Authorization.getSecUserId());
 			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaIndex retval = schema.getJpaHooksSchema().getIndexService().create(jparec);
-		if(retval != null) {
-				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readindex")) {
-				retval = null;
-			}
-		}
 		return(retval);
 		}
 		else {
@@ -260,15 +251,6 @@ public class CFBamJpaIndexTable implements ICFBamIndexTable
 			jparec.setUpdatedAt(LocalDateTime.now());
 			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaIndex retval = schema.getJpaHooksSchema().getIndexService().update(jparec);
-		if(retval != null) {
-				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readindex")) {
-				retval = null;
-			}
-		}
 		return(retval);
 		}
 		else {
@@ -518,15 +500,6 @@ public class CFBamJpaIndexTable implements ICFBamIndexTable
 		}
 
 		ICFBamIndex retval = schema.getJpaHooksSchema().getIndexService().find(PKey);
-		if(retval != null) {
-				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readindex")) {
-				retval = null;
-			}
-		}
 		return(retval);
 	}
 
@@ -551,15 +524,6 @@ public class CFBamJpaIndexTable implements ICFBamIndexTable
 		}
 
 		ICFBamIndex retval = schema.getJpaHooksSchema().getIndexService().lockByIdIdx(PKey);
-		if(retval != null) {
-				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readindex")) {
-				retval = null;
-			}
-		}
 		return(retval);
 	}
 
@@ -579,19 +543,6 @@ public class CFBamJpaIndexTable implements ICFBamIndexTable
 		}
 
 		List<CFBamJpaIndex> retlist = schema.getJpaHooksSchema().getIndexService().findAll();
-		if(retlist != null) {
-			ArrayList<CFBamJpaIndex> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readindex")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamIndex[] retset = new ICFBamIndex[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaIndex cur: retlist) {
@@ -623,7 +574,7 @@ public class CFBamJpaIndexTable implements ICFBamIndexTable
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readindex", ICFBamSchema.SCHEMA_NAME, ICFBamIndexTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		ICFBamIndex retval = schema.getJpaHooksSchema().getIndexService().find(argId);
-		if(retval != null) {
+		if(retval != null && !ICFSecSchema.getSystemId().equals(Authorization.getSecUserId())) {
 				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
 				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
 			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
@@ -657,19 +608,6 @@ public class CFBamJpaIndexTable implements ICFBamIndexTable
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readindex", ICFBamSchema.SCHEMA_NAME, ICFBamIndexTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaIndex> retlist = schema.getJpaHooksSchema().getIndexService().findByTenantIdx(argTenantId);
-		if(retlist != null) {
-			ArrayList<CFBamJpaIndex> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readindex")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamIndex[] retset = new ICFBamIndex[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaIndex cur: retlist) {
@@ -705,7 +643,7 @@ public class CFBamJpaIndexTable implements ICFBamIndexTable
 		}
 		ICFBamIndex retval = schema.getJpaHooksSchema().getIndexService().findByUNameIdx(argTableId,
 		argName);
-		if(retval != null) {
+		if(retval != null && !ICFSecSchema.getSystemId().equals(Authorization.getSecUserId())) {
 				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
 				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
 			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
@@ -739,19 +677,6 @@ public class CFBamJpaIndexTable implements ICFBamIndexTable
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readindex", ICFBamSchema.SCHEMA_NAME, ICFBamIndexTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaIndex> retlist = schema.getJpaHooksSchema().getIndexService().findByIdxTableIdx(argTableId);
-		if(retlist != null) {
-			ArrayList<CFBamJpaIndex> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readindex")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamIndex[] retset = new ICFBamIndex[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaIndex cur: retlist) {
@@ -782,19 +707,6 @@ public class CFBamJpaIndexTable implements ICFBamIndexTable
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readindex", ICFBamSchema.SCHEMA_NAME, ICFBamIndexTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaIndex> retlist = schema.getJpaHooksSchema().getIndexService().findByDefSchemaIdx(argDefSchemaId);
-		if(retlist != null) {
-			ArrayList<CFBamJpaIndex> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readindex")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamIndex[] retset = new ICFBamIndex[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaIndex cur: retlist) {

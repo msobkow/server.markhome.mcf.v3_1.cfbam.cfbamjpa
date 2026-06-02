@@ -218,15 +218,6 @@ public class CFBamJpaDbKeyHash160TypeTable implements ICFBamDbKeyHash160TypeTabl
 			jparec.setCreatedByUserId(Authorization.getSecUserId());
 			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaDbKeyHash160Type retval = schema.getJpaHooksSchema().getDbKeyHash160TypeService().create(jparec);
-		if(retval != null) {
-				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdbkeyhash160type")) {
-				retval = null;
-			}
-		}
 		return(retval);
 		}
 		else {
@@ -260,15 +251,6 @@ public class CFBamJpaDbKeyHash160TypeTable implements ICFBamDbKeyHash160TypeTabl
 			jparec.setUpdatedAt(LocalDateTime.now());
 			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaDbKeyHash160Type retval = schema.getJpaHooksSchema().getDbKeyHash160TypeService().update(jparec);
-		if(retval != null) {
-				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdbkeyhash160type")) {
-				retval = null;
-			}
-		}
 		return(retval);
 		}
 		else {
@@ -692,15 +674,6 @@ public class CFBamJpaDbKeyHash160TypeTable implements ICFBamDbKeyHash160TypeTabl
 		}
 
 		ICFBamDbKeyHash160Type retval = schema.getJpaHooksSchema().getDbKeyHash160TypeService().find(PKey);
-		if(retval != null) {
-				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdbkeyhash160type")) {
-				retval = null;
-			}
-		}
 		return(retval);
 	}
 
@@ -725,15 +698,6 @@ public class CFBamJpaDbKeyHash160TypeTable implements ICFBamDbKeyHash160TypeTabl
 		}
 
 		ICFBamDbKeyHash160Type retval = schema.getJpaHooksSchema().getDbKeyHash160TypeService().lockByIdIdx(PKey);
-		if(retval != null) {
-				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdbkeyhash160type")) {
-				retval = null;
-			}
-		}
 		return(retval);
 	}
 
@@ -753,19 +717,6 @@ public class CFBamJpaDbKeyHash160TypeTable implements ICFBamDbKeyHash160TypeTabl
 		}
 
 		List<CFBamJpaDbKeyHash160Type> retlist = schema.getJpaHooksSchema().getDbKeyHash160TypeService().findAll();
-		if(retlist != null) {
-			ArrayList<CFBamJpaDbKeyHash160Type> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdbkeyhash160type")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamDbKeyHash160Type[] retset = new ICFBamDbKeyHash160Type[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaDbKeyHash160Type cur: retlist) {
@@ -797,7 +748,7 @@ public class CFBamJpaDbKeyHash160TypeTable implements ICFBamDbKeyHash160TypeTabl
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readdbkeyhash160type", ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash160TypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		ICFBamDbKeyHash160Type retval = schema.getJpaHooksSchema().getDbKeyHash160TypeService().find(argId);
-		if(retval != null) {
+		if(retval != null && !ICFSecSchema.getSystemId().equals(Authorization.getSecUserId())) {
 				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
 				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
 			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
@@ -836,7 +787,7 @@ public class CFBamJpaDbKeyHash160TypeTable implements ICFBamDbKeyHash160TypeTabl
 		}
 		ICFBamDbKeyHash160Type retval = schema.getJpaHooksSchema().getDbKeyHash160TypeService().findByUNameIdx(argScopeId,
 		argName);
-		if(retval != null) {
+		if(retval != null && !ICFSecSchema.getSystemId().equals(Authorization.getSecUserId())) {
 				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
 				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
 			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
@@ -870,19 +821,6 @@ public class CFBamJpaDbKeyHash160TypeTable implements ICFBamDbKeyHash160TypeTabl
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readdbkeyhash160type", ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash160TypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaDbKeyHash160Type> retlist = schema.getJpaHooksSchema().getDbKeyHash160TypeService().findByScopeIdx(argScopeId);
-		if(retlist != null) {
-			ArrayList<CFBamJpaDbKeyHash160Type> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdbkeyhash160type")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamDbKeyHash160Type[] retset = new ICFBamDbKeyHash160Type[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaDbKeyHash160Type cur: retlist) {
@@ -913,19 +851,6 @@ public class CFBamJpaDbKeyHash160TypeTable implements ICFBamDbKeyHash160TypeTabl
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readdbkeyhash160type", ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash160TypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaDbKeyHash160Type> retlist = schema.getJpaHooksSchema().getDbKeyHash160TypeService().findByDefSchemaIdx(argDefSchemaId);
-		if(retlist != null) {
-			ArrayList<CFBamJpaDbKeyHash160Type> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdbkeyhash160type")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamDbKeyHash160Type[] retset = new ICFBamDbKeyHash160Type[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaDbKeyHash160Type cur: retlist) {
@@ -956,19 +881,6 @@ public class CFBamJpaDbKeyHash160TypeTable implements ICFBamDbKeyHash160TypeTabl
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readdbkeyhash160type", ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash160TypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaDbKeyHash160Type> retlist = schema.getJpaHooksSchema().getDbKeyHash160TypeService().findByPrevIdx(argPrevId);
-		if(retlist != null) {
-			ArrayList<CFBamJpaDbKeyHash160Type> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdbkeyhash160type")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamDbKeyHash160Type[] retset = new ICFBamDbKeyHash160Type[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaDbKeyHash160Type cur: retlist) {
@@ -999,19 +911,6 @@ public class CFBamJpaDbKeyHash160TypeTable implements ICFBamDbKeyHash160TypeTabl
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readdbkeyhash160type", ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash160TypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaDbKeyHash160Type> retlist = schema.getJpaHooksSchema().getDbKeyHash160TypeService().findByNextIdx(argNextId);
-		if(retlist != null) {
-			ArrayList<CFBamJpaDbKeyHash160Type> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdbkeyhash160type")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamDbKeyHash160Type[] retset = new ICFBamDbKeyHash160Type[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaDbKeyHash160Type cur: retlist) {
@@ -1046,19 +945,6 @@ public class CFBamJpaDbKeyHash160TypeTable implements ICFBamDbKeyHash160TypeTabl
 		}
 		List<CFBamJpaDbKeyHash160Type> retlist = schema.getJpaHooksSchema().getDbKeyHash160TypeService().findByContPrevIdx(argScopeId,
 		argPrevId);
-		if(retlist != null) {
-			ArrayList<CFBamJpaDbKeyHash160Type> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdbkeyhash160type")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamDbKeyHash160Type[] retset = new ICFBamDbKeyHash160Type[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaDbKeyHash160Type cur: retlist) {
@@ -1093,19 +979,6 @@ public class CFBamJpaDbKeyHash160TypeTable implements ICFBamDbKeyHash160TypeTabl
 		}
 		List<CFBamJpaDbKeyHash160Type> retlist = schema.getJpaHooksSchema().getDbKeyHash160TypeService().findByContNextIdx(argScopeId,
 		argNextId);
-		if(retlist != null) {
-			ArrayList<CFBamJpaDbKeyHash160Type> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdbkeyhash160type")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamDbKeyHash160Type[] retset = new ICFBamDbKeyHash160Type[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaDbKeyHash160Type cur: retlist) {
@@ -1136,19 +1009,6 @@ public class CFBamJpaDbKeyHash160TypeTable implements ICFBamDbKeyHash160TypeTabl
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readdbkeyhash160type", ICFBamSchema.SCHEMA_NAME, ICFBamDbKeyHash160TypeTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaDbKeyHash160Type> retlist = schema.getJpaHooksSchema().getDbKeyHash160TypeService().findBySchemaIdx(argSchemaDefId);
-		if(retlist != null) {
-			ArrayList<CFBamJpaDbKeyHash160Type> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredContainerSchemaDef().getRequiredOwnerCTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdbkeyhash160type")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamDbKeyHash160Type[] retset = new ICFBamDbKeyHash160Type[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaDbKeyHash160Type cur: retlist) {

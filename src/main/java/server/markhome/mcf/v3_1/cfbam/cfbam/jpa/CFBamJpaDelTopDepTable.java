@@ -218,15 +218,6 @@ public class CFBamJpaDelTopDepTable implements ICFBamDelTopDepTable
 			jparec.setCreatedByUserId(Authorization.getSecUserId());
 			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaDelTopDep retval = schema.getJpaHooksSchema().getDelTopDepService().create(jparec);
-		if(retval != null) {
-				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdeltopdep")) {
-				retval = null;
-			}
-		}
 		return(retval);
 		}
 		else {
@@ -260,15 +251,6 @@ public class CFBamJpaDelTopDepTable implements ICFBamDelTopDepTable
 			jparec.setUpdatedAt(LocalDateTime.now());
 			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaDelTopDep retval = schema.getJpaHooksSchema().getDelTopDepService().update(jparec);
-		if(retval != null) {
-				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdeltopdep")) {
-				retval = null;
-			}
-		}
 		return(retval);
 		}
 		else {
@@ -641,15 +623,6 @@ public class CFBamJpaDelTopDepTable implements ICFBamDelTopDepTable
 		}
 
 		ICFBamDelTopDep retval = schema.getJpaHooksSchema().getDelTopDepService().find(PKey);
-		if(retval != null) {
-				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdeltopdep")) {
-				retval = null;
-			}
-		}
 		return(retval);
 	}
 
@@ -674,15 +647,6 @@ public class CFBamJpaDelTopDepTable implements ICFBamDelTopDepTable
 		}
 
 		ICFBamDelTopDep retval = schema.getJpaHooksSchema().getDelTopDepService().lockByIdIdx(PKey);
-		if(retval != null) {
-				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdeltopdep")) {
-				retval = null;
-			}
-		}
 		return(retval);
 	}
 
@@ -702,19 +666,6 @@ public class CFBamJpaDelTopDepTable implements ICFBamDelTopDepTable
 		}
 
 		List<CFBamJpaDelTopDep> retlist = schema.getJpaHooksSchema().getDelTopDepService().findAll();
-		if(retlist != null) {
-			ArrayList<CFBamJpaDelTopDep> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdeltopdep")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamDelTopDep[] retset = new ICFBamDelTopDep[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaDelTopDep cur: retlist) {
@@ -746,7 +697,7 @@ public class CFBamJpaDelTopDepTable implements ICFBamDelTopDepTable
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readdeltopdep", ICFBamSchema.SCHEMA_NAME, ICFBamDelTopDepTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		ICFBamDelTopDep retval = schema.getJpaHooksSchema().getDelTopDepService().find(argId);
-		if(retval != null) {
+		if(retval != null && !ICFSecSchema.getSystemId().equals(Authorization.getSecUserId())) {
 				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
 				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
 			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
@@ -780,19 +731,6 @@ public class CFBamJpaDelTopDepTable implements ICFBamDelTopDepTable
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readdeltopdep", ICFBamSchema.SCHEMA_NAME, ICFBamDelTopDepTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaDelTopDep> retlist = schema.getJpaHooksSchema().getDelTopDepService().findByTenantIdx(argTenantId);
-		if(retlist != null) {
-			ArrayList<CFBamJpaDelTopDep> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdeltopdep")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamDelTopDep[] retset = new ICFBamDelTopDep[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaDelTopDep cur: retlist) {
@@ -823,19 +761,6 @@ public class CFBamJpaDelTopDepTable implements ICFBamDelTopDepTable
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readdeltopdep", ICFBamSchema.SCHEMA_NAME, ICFBamDelTopDepTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaDelTopDep> retlist = schema.getJpaHooksSchema().getDelTopDepService().findByDefSchemaIdx(argDefSchemaId);
-		if(retlist != null) {
-			ArrayList<CFBamJpaDelTopDep> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdeltopdep")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamDelTopDep[] retset = new ICFBamDelTopDep[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaDelTopDep cur: retlist) {
@@ -866,19 +791,6 @@ public class CFBamJpaDelTopDepTable implements ICFBamDelTopDepTable
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readdeltopdep", ICFBamSchema.SCHEMA_NAME, ICFBamDelTopDepTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaDelTopDep> retlist = schema.getJpaHooksSchema().getDelTopDepService().findByDelDepIdx(argRelationId);
-		if(retlist != null) {
-			ArrayList<CFBamJpaDelTopDep> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdeltopdep")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamDelTopDep[] retset = new ICFBamDelTopDep[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaDelTopDep cur: retlist) {
@@ -909,19 +821,6 @@ public class CFBamJpaDelTopDepTable implements ICFBamDelTopDepTable
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readdeltopdep", ICFBamSchema.SCHEMA_NAME, ICFBamDelTopDepTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaDelTopDep> retlist = schema.getJpaHooksSchema().getDelTopDepService().findByDelTopDepTblIdx(argTableId);
-		if(retlist != null) {
-			ArrayList<CFBamJpaDelTopDep> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdeltopdep")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamDelTopDep[] retset = new ICFBamDelTopDep[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaDelTopDep cur: retlist) {
@@ -957,7 +856,7 @@ public class CFBamJpaDelTopDepTable implements ICFBamDelTopDepTable
 		}
 		ICFBamDelTopDep retval = schema.getJpaHooksSchema().getDelTopDepService().findByUNameIdx(argTableId,
 		argName);
-		if(retval != null) {
+		if(retval != null && !ICFSecSchema.getSystemId().equals(Authorization.getSecUserId())) {
 				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
 				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
 			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
@@ -991,19 +890,6 @@ public class CFBamJpaDelTopDepTable implements ICFBamDelTopDepTable
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readdeltopdep", ICFBamSchema.SCHEMA_NAME, ICFBamDelTopDepTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaDelTopDep> retlist = schema.getJpaHooksSchema().getDelTopDepService().findByPrevIdx(argPrevId);
-		if(retlist != null) {
-			ArrayList<CFBamJpaDelTopDep> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdeltopdep")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamDelTopDep[] retset = new ICFBamDelTopDep[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaDelTopDep cur: retlist) {
@@ -1034,19 +920,6 @@ public class CFBamJpaDelTopDepTable implements ICFBamDelTopDepTable
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readdeltopdep", ICFBamSchema.SCHEMA_NAME, ICFBamDelTopDepTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaDelTopDep> retlist = schema.getJpaHooksSchema().getDelTopDepService().findByNextIdx(argNextId);
-		if(retlist != null) {
-			ArrayList<CFBamJpaDelTopDep> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readdeltopdep")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamDelTopDep[] retset = new ICFBamDelTopDep[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaDelTopDep cur: retlist) {

@@ -218,15 +218,6 @@ public class CFBamJpaServerProcTable implements ICFBamServerProcTable
 			jparec.setCreatedByUserId(Authorization.getSecUserId());
 			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaServerProc retval = schema.getJpaHooksSchema().getServerProcService().create(jparec);
-		if(retval != null) {
-				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readserverproc")) {
-				retval = null;
-			}
-		}
 		return(retval);
 		}
 		else {
@@ -260,15 +251,6 @@ public class CFBamJpaServerProcTable implements ICFBamServerProcTable
 			jparec.setUpdatedAt(LocalDateTime.now());
 			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaServerProc retval = schema.getJpaHooksSchema().getServerProcService().update(jparec);
-		if(retval != null) {
-				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readserverproc")) {
-				retval = null;
-			}
-		}
 		return(retval);
 		}
 		else {
@@ -518,15 +500,6 @@ public class CFBamJpaServerProcTable implements ICFBamServerProcTable
 		}
 
 		ICFBamServerProc retval = schema.getJpaHooksSchema().getServerProcService().find(PKey);
-		if(retval != null) {
-				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readserverproc")) {
-				retval = null;
-			}
-		}
 		return(retval);
 	}
 
@@ -551,15 +524,6 @@ public class CFBamJpaServerProcTable implements ICFBamServerProcTable
 		}
 
 		ICFBamServerProc retval = schema.getJpaHooksSchema().getServerProcService().lockByIdIdx(PKey);
-		if(retval != null) {
-				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readserverproc")) {
-				retval = null;
-			}
-		}
 		return(retval);
 	}
 
@@ -579,19 +543,6 @@ public class CFBamJpaServerProcTable implements ICFBamServerProcTable
 		}
 
 		List<CFBamJpaServerProc> retlist = schema.getJpaHooksSchema().getServerProcService().findAll();
-		if(retlist != null) {
-			ArrayList<CFBamJpaServerProc> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readserverproc")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamServerProc[] retset = new ICFBamServerProc[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaServerProc cur: retlist) {
@@ -623,7 +574,7 @@ public class CFBamJpaServerProcTable implements ICFBamServerProcTable
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readserverproc", ICFBamSchema.SCHEMA_NAME, ICFBamServerProcTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		ICFBamServerProc retval = schema.getJpaHooksSchema().getServerProcService().find(argId);
-		if(retval != null) {
+		if(retval != null && !ICFSecSchema.getSystemId().equals(Authorization.getSecUserId())) {
 				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
 				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
 			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
@@ -657,19 +608,6 @@ public class CFBamJpaServerProcTable implements ICFBamServerProcTable
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readserverproc", ICFBamSchema.SCHEMA_NAME, ICFBamServerProcTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaServerProc> retlist = schema.getJpaHooksSchema().getServerProcService().findByTenantIdx(argTenantId);
-		if(retlist != null) {
-			ArrayList<CFBamJpaServerProc> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readserverproc")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamServerProc[] retset = new ICFBamServerProc[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaServerProc cur: retlist) {
@@ -705,7 +643,7 @@ public class CFBamJpaServerProcTable implements ICFBamServerProcTable
 		}
 		ICFBamServerProc retval = schema.getJpaHooksSchema().getServerProcService().findByUNameIdx(argTableId,
 		argName);
-		if(retval != null) {
+		if(retval != null && !ICFSecSchema.getSystemId().equals(Authorization.getSecUserId())) {
 				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
 				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
 			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
@@ -739,19 +677,6 @@ public class CFBamJpaServerProcTable implements ICFBamServerProcTable
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readserverproc", ICFBamSchema.SCHEMA_NAME, ICFBamServerProcTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaServerProc> retlist = schema.getJpaHooksSchema().getServerProcService().findByMethTableIdx(argTableId);
-		if(retlist != null) {
-			ArrayList<CFBamJpaServerProc> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readserverproc")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamServerProc[] retset = new ICFBamServerProc[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaServerProc cur: retlist) {
@@ -782,19 +707,6 @@ public class CFBamJpaServerProcTable implements ICFBamServerProcTable
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readserverproc", ICFBamSchema.SCHEMA_NAME, ICFBamServerProcTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaServerProc> retlist = schema.getJpaHooksSchema().getServerProcService().findByDefSchemaIdx(argDefSchemaId);
-		if(retlist != null) {
-			ArrayList<CFBamJpaServerProc> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readserverproc")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamServerProc[] retset = new ICFBamServerProc[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaServerProc cur: retlist) {

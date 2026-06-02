@@ -218,15 +218,6 @@ public class CFBamJpaEnumTagTable implements ICFBamEnumTagTable
 			jparec.setCreatedByUserId(Authorization.getSecUserId());
 			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaEnumTag retval = schema.getJpaHooksSchema().getEnumTagService().create(jparec);
-		if(retval != null) {
-				ICFSecTenant tenant = retval.getRequiredContainerEnumDef().getRequiredContainerScope().getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readenumtag")) {
-				retval = null;
-			}
-		}
 		return(retval);
 		}
 		else {
@@ -260,15 +251,6 @@ public class CFBamJpaEnumTagTable implements ICFBamEnumTagTable
 			jparec.setUpdatedAt(LocalDateTime.now());
 			jparec.setUpdatedByUserId(Authorization.getSecUserId());
 			CFBamJpaEnumTag retval = schema.getJpaHooksSchema().getEnumTagService().update(jparec);
-		if(retval != null) {
-				ICFSecTenant tenant = retval.getRequiredContainerEnumDef().getRequiredContainerScope().getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readenumtag")) {
-				retval = null;
-			}
-		}
 		return(retval);
 		}
 		else {
@@ -559,15 +541,6 @@ public class CFBamJpaEnumTagTable implements ICFBamEnumTagTable
 		}
 
 		ICFBamEnumTag retval = schema.getJpaHooksSchema().getEnumTagService().find(PKey);
-		if(retval != null) {
-				ICFSecTenant tenant = retval.getRequiredContainerEnumDef().getRequiredContainerScope().getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readenumtag")) {
-				retval = null;
-			}
-		}
 		return(retval);
 	}
 
@@ -592,15 +565,6 @@ public class CFBamJpaEnumTagTable implements ICFBamEnumTagTable
 		}
 
 		ICFBamEnumTag retval = schema.getJpaHooksSchema().getEnumTagService().lockByIdIdx(PKey);
-		if(retval != null) {
-				ICFSecTenant tenant = retval.getRequiredContainerEnumDef().getRequiredContainerScope().getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readenumtag")) {
-				retval = null;
-			}
-		}
 		return(retval);
 	}
 
@@ -620,19 +584,6 @@ public class CFBamJpaEnumTagTable implements ICFBamEnumTagTable
 		}
 
 		List<CFBamJpaEnumTag> retlist = schema.getJpaHooksSchema().getEnumTagService().findAll();
-		if(retlist != null) {
-			ArrayList<CFBamJpaEnumTag> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredContainerEnumDef().getRequiredContainerScope().getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readenumtag")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamEnumTag[] retset = new ICFBamEnumTag[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaEnumTag cur: retlist) {
@@ -664,7 +615,7 @@ public class CFBamJpaEnumTagTable implements ICFBamEnumTagTable
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readenumtag", ICFBamSchema.SCHEMA_NAME, ICFBamEnumTagTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		ICFBamEnumTag retval = schema.getJpaHooksSchema().getEnumTagService().find(argId);
-		if(retval != null) {
+		if(retval != null && !ICFSecSchema.getSystemId().equals(Authorization.getSecUserId())) {
 				ICFSecTenant tenant = retval.getRequiredContainerEnumDef().getRequiredContainerScope().getRequiredOwnerTenant();
 				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
 			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
@@ -698,19 +649,6 @@ public class CFBamJpaEnumTagTable implements ICFBamEnumTagTable
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readenumtag", ICFBamSchema.SCHEMA_NAME, ICFBamEnumTagTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaEnumTag> retlist = schema.getJpaHooksSchema().getEnumTagService().findByEnumIdx(argEnumId);
-		if(retlist != null) {
-			ArrayList<CFBamJpaEnumTag> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredContainerEnumDef().getRequiredContainerScope().getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readenumtag")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamEnumTag[] retset = new ICFBamEnumTag[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaEnumTag cur: retlist) {
@@ -741,19 +679,6 @@ public class CFBamJpaEnumTagTable implements ICFBamEnumTagTable
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readenumtag", ICFBamSchema.SCHEMA_NAME, ICFBamEnumTagTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaEnumTag> retlist = schema.getJpaHooksSchema().getEnumTagService().findByDefSchemaIdx(argDefSchemaId);
-		if(retlist != null) {
-			ArrayList<CFBamJpaEnumTag> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredContainerEnumDef().getRequiredContainerScope().getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readenumtag")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamEnumTag[] retset = new ICFBamEnumTag[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaEnumTag cur: retlist) {
@@ -789,7 +714,7 @@ public class CFBamJpaEnumTagTable implements ICFBamEnumTagTable
 		}
 		ICFBamEnumTag retval = schema.getJpaHooksSchema().getEnumTagService().findByEnumNameIdx(argEnumId,
 		argName);
-		if(retval != null) {
+		if(retval != null && !ICFSecSchema.getSystemId().equals(Authorization.getSecUserId())) {
 				ICFSecTenant tenant = retval.getRequiredContainerEnumDef().getRequiredContainerScope().getRequiredOwnerTenant();
 				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
 			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
@@ -823,19 +748,6 @@ public class CFBamJpaEnumTagTable implements ICFBamEnumTagTable
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readenumtag", ICFBamSchema.SCHEMA_NAME, ICFBamEnumTagTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaEnumTag> retlist = schema.getJpaHooksSchema().getEnumTagService().findByPrevIdx(argPrevId);
-		if(retlist != null) {
-			ArrayList<CFBamJpaEnumTag> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredContainerEnumDef().getRequiredContainerScope().getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readenumtag")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamEnumTag[] retset = new ICFBamEnumTag[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaEnumTag cur: retlist) {
@@ -866,19 +778,6 @@ public class CFBamJpaEnumTagTable implements ICFBamEnumTagTable
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readenumtag", ICFBamSchema.SCHEMA_NAME, ICFBamEnumTagTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		List<CFBamJpaEnumTag> retlist = schema.getJpaHooksSchema().getEnumTagService().findByNextIdx(argNextId);
-		if(retlist != null) {
-			ArrayList<CFBamJpaEnumTag> finallist = new ArrayList<>();
-			for (var retval: retlist) {
-				ICFSecTenant tenant = retval.getRequiredContainerEnumDef().getRequiredContainerScope().getRequiredOwnerTenant();
-				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
-				CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
-				CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
-				if (ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readenumtag")) {
-					finallist.add(retval);
-				}
-			}
-			retlist = finallist;
-		}
 		ICFBamEnumTag[] retset = new ICFBamEnumTag[retlist.size()];
 		int idx = 0;
 		for (CFBamJpaEnumTag cur: retlist) {
