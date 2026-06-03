@@ -95,7 +95,7 @@ public interface CFBamJpaServerMethodRepository extends JpaRepository<CFBamJpaSe
 	 *
 	 *		@return List&lt;CFBamJpaServerMethod&gt; of the found entities, typically from the JPA cache, or an empty list if no such entities exist.
 	 */
-	@Query("select r from CFBamJpaScope r where r.requiredOwnerTenant.requiredId = :tenantId")
+	@Query("select r from CFBamJpaScope r where r.requiredTenantId = :tenantId")
 	List<CFBamJpaServerMethod> findByTenantIdx(@Param("tenantId") CFLibDbKeyHash256 requiredTenantId);
 
 	/**
@@ -199,7 +199,7 @@ public interface CFBamJpaServerMethodRepository extends JpaRepository<CFBamJpaSe
 	 */
 	@Transactional
 	@Lock(LockModeType.WRITE)
-	@Query("select r from CFBamJpaScope r where r.requiredOwnerTenant.requiredId = :tenantId")
+	@Query("select r from CFBamJpaScope r where r.requiredTenantId = :tenantId")
 	List<CFBamJpaServerMethod> lockByTenantIdx(@Param("tenantId") CFLibDbKeyHash256 requiredTenantId);
 
 	/**
@@ -305,7 +305,7 @@ public interface CFBamJpaServerMethodRepository extends JpaRepository<CFBamJpaSe
 	 */
 	@Transactional
 	@Modifying
-	@Query("delete from CFBamJpaScope r where r.requiredOwnerTenant.requiredId = :tenantId")
+	@Query("delete from CFBamJpaScope r where r.requiredTenantId = :tenantId")
 	void deleteByTenantIdx(@Param("tenantId") CFLibDbKeyHash256 requiredTenantId);
 
 	/**

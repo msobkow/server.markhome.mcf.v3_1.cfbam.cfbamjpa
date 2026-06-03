@@ -95,7 +95,7 @@ public interface CFBamJpaPopSubDep2Repository extends JpaRepository<CFBamJpaPopS
 	 *
 	 *		@return List&lt;CFBamJpaPopSubDep2&gt; of the found entities, typically from the JPA cache, or an empty list if no such entities exist.
 	 */
-	@Query("select r from CFBamJpaScope r where r.requiredOwnerTenant.requiredId = :tenantId")
+	@Query("select r from CFBamJpaScope r where r.requiredTenantId = :tenantId")
 	List<CFBamJpaPopSubDep2> findByTenantIdx(@Param("tenantId") CFLibDbKeyHash256 requiredTenantId);
 
 	/**
@@ -222,7 +222,7 @@ public interface CFBamJpaPopSubDep2Repository extends JpaRepository<CFBamJpaPopS
 	 */
 	@Transactional
 	@Lock(LockModeType.WRITE)
-	@Query("select r from CFBamJpaScope r where r.requiredOwnerTenant.requiredId = :tenantId")
+	@Query("select r from CFBamJpaScope r where r.requiredTenantId = :tenantId")
 	List<CFBamJpaPopSubDep2> lockByTenantIdx(@Param("tenantId") CFLibDbKeyHash256 requiredTenantId);
 
 	/**
@@ -353,7 +353,7 @@ public interface CFBamJpaPopSubDep2Repository extends JpaRepository<CFBamJpaPopS
 	 */
 	@Transactional
 	@Modifying
-	@Query("delete from CFBamJpaScope r where r.requiredOwnerTenant.requiredId = :tenantId")
+	@Query("delete from CFBamJpaScope r where r.requiredTenantId = :tenantId")
 	void deleteByTenantIdx(@Param("tenantId") CFLibDbKeyHash256 requiredTenantId);
 
 	/**

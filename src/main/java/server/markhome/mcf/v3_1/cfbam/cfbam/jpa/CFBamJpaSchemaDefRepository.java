@@ -95,7 +95,7 @@ public interface CFBamJpaSchemaDefRepository extends JpaRepository<CFBamJpaSchem
 	 *
 	 *		@return List&lt;CFBamJpaSchemaDef&gt; of the found entities, typically from the JPA cache, or an empty list if no such entities exist.
 	 */
-	@Query("select r from CFBamJpaScope r where r.requiredOwnerTenant.requiredId = :tenantId")
+	@Query("select r from CFBamJpaScope r where r.requiredTenantId = :tenantId")
 	List<CFBamJpaSchemaDef> findByTenantIdx(@Param("tenantId") CFLibDbKeyHash256 requiredTenantId);
 
 	/**
@@ -118,7 +118,7 @@ public interface CFBamJpaSchemaDefRepository extends JpaRepository<CFBamJpaSchem
 	 *
 	 *		@return List&lt;CFBamJpaSchemaDef&gt; of the found entities, typically from the JPA cache, or an empty list if no such entities exist.
 	 */
-	@Query("select r from CFBamJpaSchemaDef r where r.requiredOwnerCTenant.requiredId = :cTenantId")
+	@Query("select r from CFBamJpaSchemaDef r where r.requiredCTenantId = :cTenantId")
 	List<CFBamJpaSchemaDef> findByCTenantIdx(@Param("cTenantId") CFLibDbKeyHash256 requiredCTenantId);
 
 	/**
@@ -139,7 +139,7 @@ public interface CFBamJpaSchemaDefRepository extends JpaRepository<CFBamJpaSchem
 	 *
 	 *		@return List&lt;CFBamJpaSchemaDef&gt; of the found entities, typically from the JPA cache, or an empty list if no such entities exist.
 	 */
-	@Query("select r from CFBamJpaSchemaDef r where r.requiredContainerMinorVersion.requiredId = :minorVersionId")
+	@Query("select r from CFBamJpaSchemaDef r where r.requiredMinorVersionId = :minorVersionId")
 	List<CFBamJpaSchemaDef> findByMinorVersionIdx(@Param("minorVersionId") CFLibDbKeyHash256 requiredMinorVersionId);
 
 	/**
@@ -161,7 +161,7 @@ public interface CFBamJpaSchemaDefRepository extends JpaRepository<CFBamJpaSchem
 	 *
 	 *		@return The found entity, typically from the JPA cache, or null if no such entity exists.
 	 */
-	@Query("select r from CFBamJpaSchemaDef r where r.requiredContainerMinorVersion.requiredId = :minorVersionId and r.requiredName = :name")
+	@Query("select r from CFBamJpaSchemaDef r where r.requiredMinorVersionId = :minorVersionId and r.requiredName = :name")
 	CFBamJpaSchemaDef findByUNameIdx(@Param("minorVersionId") CFLibDbKeyHash256 requiredMinorVersionId,
 		@Param("name") String requiredName);
 
@@ -184,7 +184,7 @@ public interface CFBamJpaSchemaDefRepository extends JpaRepository<CFBamJpaSchem
 	 *
 	 *		@return List&lt;CFBamJpaSchemaDef&gt; of the found entities, typically from the JPA cache, or an empty list if no such entities exist.
 	 */
-	@Query("select r from CFBamJpaSchemaDef r where r.requiredOwnerCTenant.requiredId = :cTenantId and r.requiredAuthorEMail = :authorEMail")
+	@Query("select r from CFBamJpaSchemaDef r where r.requiredCTenantId = :cTenantId and r.requiredAuthorEMail = :authorEMail")
 	List<CFBamJpaSchemaDef> findByAuthEMailIdx(@Param("cTenantId") CFLibDbKeyHash256 requiredCTenantId,
 		@Param("authorEMail") String requiredAuthorEMail);
 
@@ -207,7 +207,7 @@ public interface CFBamJpaSchemaDefRepository extends JpaRepository<CFBamJpaSchem
 	 *
 	 *		@return List&lt;CFBamJpaSchemaDef&gt; of the found entities, typically from the JPA cache, or an empty list if no such entities exist.
 	 */
-	@Query("select r from CFBamJpaSchemaDef r where r.requiredOwnerCTenant.requiredId = :cTenantId and r.requiredProjectURL = :projectURL")
+	@Query("select r from CFBamJpaSchemaDef r where r.requiredCTenantId = :cTenantId and r.requiredProjectURL = :projectURL")
 	List<CFBamJpaSchemaDef> findByProjectURLIdx(@Param("cTenantId") CFLibDbKeyHash256 requiredCTenantId,
 		@Param("projectURL") String requiredProjectURL);
 
@@ -230,7 +230,7 @@ public interface CFBamJpaSchemaDefRepository extends JpaRepository<CFBamJpaSchem
 	 *
 	 *		@return The found entity, typically from the JPA cache, or null if no such entity exists.
 	 */
-	@Query("select r from CFBamJpaSchemaDef r where r.requiredOwnerCTenant.requiredId = :cTenantId and r.requiredPublishURI = :publishURI")
+	@Query("select r from CFBamJpaSchemaDef r where r.requiredCTenantId = :cTenantId and r.requiredPublishURI = :publishURI")
 	CFBamJpaSchemaDef findByPubURIIdx(@Param("cTenantId") CFLibDbKeyHash256 requiredCTenantId,
 		@Param("publishURI") String requiredPublishURI);
 
@@ -268,7 +268,7 @@ public interface CFBamJpaSchemaDefRepository extends JpaRepository<CFBamJpaSchem
 	 */
 	@Transactional
 	@Lock(LockModeType.WRITE)
-	@Query("select r from CFBamJpaScope r where r.requiredOwnerTenant.requiredId = :tenantId")
+	@Query("select r from CFBamJpaScope r where r.requiredTenantId = :tenantId")
 	List<CFBamJpaSchemaDef> lockByTenantIdx(@Param("tenantId") CFLibDbKeyHash256 requiredTenantId);
 
 	/**
@@ -293,7 +293,7 @@ public interface CFBamJpaSchemaDefRepository extends JpaRepository<CFBamJpaSchem
 	 */
 	@Transactional
 	@Lock(LockModeType.WRITE)
-	@Query("select r from CFBamJpaSchemaDef r where r.requiredOwnerCTenant.requiredId = :cTenantId")
+	@Query("select r from CFBamJpaSchemaDef r where r.requiredCTenantId = :cTenantId")
 	List<CFBamJpaSchemaDef> lockByCTenantIdx(@Param("cTenantId") CFLibDbKeyHash256 requiredCTenantId);
 
 	/**
@@ -316,7 +316,7 @@ public interface CFBamJpaSchemaDefRepository extends JpaRepository<CFBamJpaSchem
 	 */
 	@Transactional
 	@Lock(LockModeType.WRITE)
-	@Query("select r from CFBamJpaSchemaDef r where r.requiredContainerMinorVersion.requiredId = :minorVersionId")
+	@Query("select r from CFBamJpaSchemaDef r where r.requiredMinorVersionId = :minorVersionId")
 	List<CFBamJpaSchemaDef> lockByMinorVersionIdx(@Param("minorVersionId") CFLibDbKeyHash256 requiredMinorVersionId);
 
 	/**
@@ -340,7 +340,7 @@ public interface CFBamJpaSchemaDefRepository extends JpaRepository<CFBamJpaSchem
 	 */
 	@Transactional
 	@Lock(LockModeType.WRITE)
-	@Query("select r from CFBamJpaSchemaDef r where r.requiredContainerMinorVersion.requiredId = :minorVersionId and r.requiredName = :name")
+	@Query("select r from CFBamJpaSchemaDef r where r.requiredMinorVersionId = :minorVersionId and r.requiredName = :name")
 	CFBamJpaSchemaDef lockByUNameIdx(@Param("minorVersionId") CFLibDbKeyHash256 requiredMinorVersionId,
 		@Param("name") String requiredName);
 
@@ -365,7 +365,7 @@ public interface CFBamJpaSchemaDefRepository extends JpaRepository<CFBamJpaSchem
 	 */
 	@Transactional
 	@Lock(LockModeType.WRITE)
-	@Query("select r from CFBamJpaSchemaDef r where r.requiredOwnerCTenant.requiredId = :cTenantId and r.requiredAuthorEMail = :authorEMail")
+	@Query("select r from CFBamJpaSchemaDef r where r.requiredCTenantId = :cTenantId and r.requiredAuthorEMail = :authorEMail")
 	List<CFBamJpaSchemaDef> lockByAuthEMailIdx(@Param("cTenantId") CFLibDbKeyHash256 requiredCTenantId,
 		@Param("authorEMail") String requiredAuthorEMail);
 
@@ -390,7 +390,7 @@ public interface CFBamJpaSchemaDefRepository extends JpaRepository<CFBamJpaSchem
 	 */
 	@Transactional
 	@Lock(LockModeType.WRITE)
-	@Query("select r from CFBamJpaSchemaDef r where r.requiredOwnerCTenant.requiredId = :cTenantId and r.requiredProjectURL = :projectURL")
+	@Query("select r from CFBamJpaSchemaDef r where r.requiredCTenantId = :cTenantId and r.requiredProjectURL = :projectURL")
 	List<CFBamJpaSchemaDef> lockByProjectURLIdx(@Param("cTenantId") CFLibDbKeyHash256 requiredCTenantId,
 		@Param("projectURL") String requiredProjectURL);
 
@@ -415,7 +415,7 @@ public interface CFBamJpaSchemaDefRepository extends JpaRepository<CFBamJpaSchem
 	 */
 	@Transactional
 	@Lock(LockModeType.WRITE)
-	@Query("select r from CFBamJpaSchemaDef r where r.requiredOwnerCTenant.requiredId = :cTenantId and r.requiredPublishURI = :publishURI")
+	@Query("select r from CFBamJpaSchemaDef r where r.requiredCTenantId = :cTenantId and r.requiredPublishURI = :publishURI")
 	CFBamJpaSchemaDef lockByPubURIIdx(@Param("cTenantId") CFLibDbKeyHash256 requiredCTenantId,
 		@Param("publishURI") String requiredPublishURI);
 
@@ -449,7 +449,7 @@ public interface CFBamJpaSchemaDefRepository extends JpaRepository<CFBamJpaSchem
 	 */
 	@Transactional
 	@Modifying
-	@Query("delete from CFBamJpaScope r where r.requiredOwnerTenant.requiredId = :tenantId")
+	@Query("delete from CFBamJpaScope r where r.requiredTenantId = :tenantId")
 	void deleteByTenantIdx(@Param("tenantId") CFLibDbKeyHash256 requiredTenantId);
 
 	/**
@@ -470,7 +470,7 @@ public interface CFBamJpaSchemaDefRepository extends JpaRepository<CFBamJpaSchem
 	 */
 	@Transactional
 	@Modifying
-	@Query("delete from CFBamJpaSchemaDef r where r.requiredOwnerCTenant.requiredId = :cTenantId")
+	@Query("delete from CFBamJpaSchemaDef r where r.requiredCTenantId = :cTenantId")
 	void deleteByCTenantIdx(@Param("cTenantId") CFLibDbKeyHash256 requiredCTenantId);
 
 	/**
@@ -489,7 +489,7 @@ public interface CFBamJpaSchemaDefRepository extends JpaRepository<CFBamJpaSchem
 	 */
 	@Transactional
 	@Modifying
-	@Query("delete from CFBamJpaSchemaDef r where r.requiredContainerMinorVersion.requiredId = :minorVersionId")
+	@Query("delete from CFBamJpaSchemaDef r where r.requiredMinorVersionId = :minorVersionId")
 	void deleteByMinorVersionIdx(@Param("minorVersionId") CFLibDbKeyHash256 requiredMinorVersionId);
 
 	/**
@@ -509,7 +509,7 @@ public interface CFBamJpaSchemaDefRepository extends JpaRepository<CFBamJpaSchem
 	 */
 	@Transactional
 	@Modifying
-	@Query("delete from CFBamJpaSchemaDef r where r.requiredContainerMinorVersion.requiredId = :minorVersionId and r.requiredName = :name")
+	@Query("delete from CFBamJpaSchemaDef r where r.requiredMinorVersionId = :minorVersionId and r.requiredName = :name")
 	void deleteByUNameIdx(@Param("minorVersionId") CFLibDbKeyHash256 requiredMinorVersionId,
 		@Param("name") String requiredName);
 
@@ -530,7 +530,7 @@ public interface CFBamJpaSchemaDefRepository extends JpaRepository<CFBamJpaSchem
 	 */
 	@Transactional
 	@Modifying
-	@Query("delete from CFBamJpaSchemaDef r where r.requiredOwnerCTenant.requiredId = :cTenantId and r.requiredAuthorEMail = :authorEMail")
+	@Query("delete from CFBamJpaSchemaDef r where r.requiredCTenantId = :cTenantId and r.requiredAuthorEMail = :authorEMail")
 	void deleteByAuthEMailIdx(@Param("cTenantId") CFLibDbKeyHash256 requiredCTenantId,
 		@Param("authorEMail") String requiredAuthorEMail);
 
@@ -551,7 +551,7 @@ public interface CFBamJpaSchemaDefRepository extends JpaRepository<CFBamJpaSchem
 	 */
 	@Transactional
 	@Modifying
-	@Query("delete from CFBamJpaSchemaDef r where r.requiredOwnerCTenant.requiredId = :cTenantId and r.requiredProjectURL = :projectURL")
+	@Query("delete from CFBamJpaSchemaDef r where r.requiredCTenantId = :cTenantId and r.requiredProjectURL = :projectURL")
 	void deleteByProjectURLIdx(@Param("cTenantId") CFLibDbKeyHash256 requiredCTenantId,
 		@Param("projectURL") String requiredProjectURL);
 
@@ -572,7 +572,7 @@ public interface CFBamJpaSchemaDefRepository extends JpaRepository<CFBamJpaSchem
 	 */
 	@Transactional
 	@Modifying
-	@Query("delete from CFBamJpaSchemaDef r where r.requiredOwnerCTenant.requiredId = :cTenantId and r.requiredPublishURI = :publishURI")
+	@Query("delete from CFBamJpaSchemaDef r where r.requiredCTenantId = :cTenantId and r.requiredPublishURI = :publishURI")
 	void deleteByPubURIIdx(@Param("cTenantId") CFLibDbKeyHash256 requiredCTenantId,
 		@Param("publishURI") String requiredPublishURI);
 
