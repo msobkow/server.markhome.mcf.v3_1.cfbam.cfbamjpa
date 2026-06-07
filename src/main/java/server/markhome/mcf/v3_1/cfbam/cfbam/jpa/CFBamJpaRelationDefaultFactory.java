@@ -115,6 +115,49 @@ public class CFBamJpaRelationDefaultFactory
 	}
 
     @Override
+    public ICFBamRelationByRelCodeVisIdxKey newByRelCodeVisIdxKey() {
+	ICFBamRelationByRelCodeVisIdxKey key =
+            new CFBamJpaRelationByRelCodeVisIdxKey();
+	return( key );
+    }
+
+	public CFBamJpaRelationByRelCodeVisIdxKey ensureByRelCodeVisIdxKey(ICFBamRelationByRelCodeVisIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamJpaRelationByRelCodeVisIdxKey) {
+			return( (CFBamJpaRelationByRelCodeVisIdxKey)key );
+		}
+		else {
+			CFBamJpaRelationByRelCodeVisIdxKey mapped = new CFBamJpaRelationByRelCodeVisIdxKey();
+			mapped.setRequiredCodeVis( key.getRequiredCodeVis() );
+			return( mapped );
+		}
+	}
+
+    @Override
+    public ICFBamRelationByRelTableCodeVisXKey newByRelTableCodeVisXKey() {
+	ICFBamRelationByRelTableCodeVisXKey key =
+            new CFBamJpaRelationByRelTableCodeVisXKey();
+	return( key );
+    }
+
+	public CFBamJpaRelationByRelTableCodeVisXKey ensureByRelTableCodeVisXKey(ICFBamRelationByRelTableCodeVisXKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamJpaRelationByRelTableCodeVisXKey) {
+			return( (CFBamJpaRelationByRelTableCodeVisXKey)key );
+		}
+		else {
+			CFBamJpaRelationByRelTableCodeVisXKey mapped = new CFBamJpaRelationByRelTableCodeVisXKey();
+			mapped.setRequiredTableId( key.getRequiredTableId() );
+			mapped.setRequiredCodeVis( key.getRequiredCodeVis() );
+			return( mapped );
+		}
+	}
+
+    @Override
     public ICFBamRelationByDefSchemaIdxKey newByDefSchemaIdxKey() {
 	ICFBamRelationByDefSchemaIdxKey key =
             new CFBamJpaRelationByDefSchemaIdxKey();

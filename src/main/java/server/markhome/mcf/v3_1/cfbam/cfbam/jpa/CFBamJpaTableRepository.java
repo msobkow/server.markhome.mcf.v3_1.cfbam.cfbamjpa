@@ -133,6 +133,50 @@ public interface CFBamJpaTableRepository extends JpaRepository<CFBamJpaTable, CF
 	}
 
 	/**
+	 *	Read zero or more entities into a List using the columns of the CFBamTableByCodeVisIdxKey as arguments.
+	 *
+	 *		@param requiredCodeVis
+	 *
+	 *		@return List&lt;CFBamJpaTable&gt; of the found entities, typically from the JPA cache, or an empty list if no such entities exist.
+	 */
+	@Query("select r from CFBamJpaTable r where r.requiredCodeVis = :codeVis")
+	List<CFBamJpaTable> findByCodeVisIdx(@Param("codeVis") ICFBamSchema.CodeVisibilityEnum requiredCodeVis);
+
+	/**
+	 *	CFBamTableByCodeVisIdxKey entity list reader convenience method for object-based access.
+	 *
+	 *		@param key The CFBamTableByCodeVisIdxKey instance to use for the query arguments.
+	 *
+	 *		@return The found entity list, which may be empty, typically populated from the JPA cache.
+	 */
+	default List<CFBamJpaTable> findByCodeVisIdx(ICFBamTableByCodeVisIdxKey key) {
+		return( findByCodeVisIdx(key.getRequiredCodeVis()));
+	}
+
+	/**
+	 *	Read zero or more entities into a List using the columns of the CFBamTableBySchemaCodeVisIdxKey as arguments.
+	 *
+	 *		@param requiredSchemaDefId
+	 *		@param requiredCodeVis
+	 *
+	 *		@return List&lt;CFBamJpaTable&gt; of the found entities, typically from the JPA cache, or an empty list if no such entities exist.
+	 */
+	@Query("select r from CFBamJpaTable r where r.requiredContainerSchemaDef.requiredId = :schemaDefId and r.requiredCodeVis = :codeVis")
+	List<CFBamJpaTable> findBySchemaCodeVisIdx(@Param("schemaDefId") CFLibDbKeyHash256 requiredSchemaDefId,
+		@Param("codeVis") ICFBamSchema.CodeVisibilityEnum requiredCodeVis);
+
+	/**
+	 *	CFBamTableBySchemaCodeVisIdxKey entity list reader convenience method for object-based access.
+	 *
+	 *		@param key The CFBamTableBySchemaCodeVisIdxKey instance to use for the query arguments.
+	 *
+	 *		@return The found entity list, which may be empty, typically populated from the JPA cache.
+	 */
+	default List<CFBamJpaTable> findBySchemaCodeVisIdx(ICFBamTableBySchemaCodeVisIdxKey key) {
+		return( findBySchemaCodeVisIdx(key.getRequiredSchemaDefId(), key.getRequiredCodeVis()));
+	}
+
+	/**
 	 *	Read zero or more entities into a List using the columns of the CFBamTableByDefSchemaIdxKey as arguments.
 	 *
 	 *		@param optionalDefSchemaId
@@ -343,6 +387,54 @@ public interface CFBamJpaTableRepository extends JpaRepository<CFBamJpaTable, CF
 	 */
 	default List<CFBamJpaTable> lockBySchemaDefIdx(ICFBamTableBySchemaDefIdxKey key) {
 		return( lockBySchemaDefIdx(key.getRequiredSchemaDefId()));
+	}
+
+	/**
+	 *	Argument-based lock database instance for compatibility with the current MSS code factory code base, uses @Transactional to acquire a JPA entity locks, which may or may not imply an actual database lock during the transaction.
+	 *
+	 *		@param requiredCodeVis
+	 *
+	 *		@return A list of locked entities, refreshed from the data store, or an empty list if no such entities exist.
+	 */
+	@Transactional
+	@Lock(LockModeType.WRITE)
+	@Query("select r from CFBamJpaTable r where r.requiredCodeVis = :codeVis")
+	List<CFBamJpaTable> lockByCodeVisIdx(@Param("codeVis") ICFBamSchema.CodeVisibilityEnum requiredCodeVis);
+
+	/**
+	 *	CFBamTableByCodeVisIdxKey based lock method for object-based access.
+	 *
+	 *		@param key The key of the entity to be locked.
+	 *
+	 *		@return A list of locked entities, refreshed from the data store, or an empty list if no such entities exist.
+	 */
+	default List<CFBamJpaTable> lockByCodeVisIdx(ICFBamTableByCodeVisIdxKey key) {
+		return( lockByCodeVisIdx(key.getRequiredCodeVis()));
+	}
+
+	/**
+	 *	Argument-based lock database instance for compatibility with the current MSS code factory code base, uses @Transactional to acquire a JPA entity locks, which may or may not imply an actual database lock during the transaction.
+	 *
+	 *		@param requiredSchemaDefId
+	 *		@param requiredCodeVis
+	 *
+	 *		@return A list of locked entities, refreshed from the data store, or an empty list if no such entities exist.
+	 */
+	@Transactional
+	@Lock(LockModeType.WRITE)
+	@Query("select r from CFBamJpaTable r where r.requiredContainerSchemaDef.requiredId = :schemaDefId and r.requiredCodeVis = :codeVis")
+	List<CFBamJpaTable> lockBySchemaCodeVisIdx(@Param("schemaDefId") CFLibDbKeyHash256 requiredSchemaDefId,
+		@Param("codeVis") ICFBamSchema.CodeVisibilityEnum requiredCodeVis);
+
+	/**
+	 *	CFBamTableBySchemaCodeVisIdxKey based lock method for object-based access.
+	 *
+	 *		@param key The key of the entity to be locked.
+	 *
+	 *		@return A list of locked entities, refreshed from the data store, or an empty list if no such entities exist.
+	 */
+	default List<CFBamJpaTable> lockBySchemaCodeVisIdx(ICFBamTableBySchemaCodeVisIdxKey key) {
+		return( lockBySchemaCodeVisIdx(key.getRequiredSchemaDefId(), key.getRequiredCodeVis()));
 	}
 
 	/**
@@ -560,6 +652,46 @@ public interface CFBamJpaTableRepository extends JpaRepository<CFBamJpaTable, CF
 	 */
 	default void deleteBySchemaDefIdx(ICFBamTableBySchemaDefIdxKey key) {
 		deleteBySchemaDefIdx(key.getRequiredSchemaDefId());
+	}
+
+	/**
+	 *	Argument-based delete entity for compatibility with the current MSS code factory code base, uses @Transactional to acquire a JPA entity lock, which may or may not imply an actual database lock during the transaction.
+	 *
+	 *		@param requiredCodeVis
+	 */
+	@Transactional
+	@Modifying
+	@Query("delete from CFBamJpaTable r where r.requiredCodeVis = :codeVis")
+	void deleteByCodeVisIdx(@Param("codeVis") ICFBamSchema.CodeVisibilityEnum requiredCodeVis);
+
+	/**
+	 *	CFBamTableByCodeVisIdxKey based lock method for object-based access.
+	 *
+	 *		@param key The CFBamTableByCodeVisIdxKey of the entity to be locked.
+	 */
+	default void deleteByCodeVisIdx(ICFBamTableByCodeVisIdxKey key) {
+		deleteByCodeVisIdx(key.getRequiredCodeVis());
+	}
+
+	/**
+	 *	Argument-based delete entity for compatibility with the current MSS code factory code base, uses @Transactional to acquire a JPA entity lock, which may or may not imply an actual database lock during the transaction.
+	 *
+	 *		@param requiredSchemaDefId
+	 *		@param requiredCodeVis
+	 */
+	@Transactional
+	@Modifying
+	@Query("delete from CFBamJpaTable r where r.requiredContainerSchemaDef.requiredId = :schemaDefId and r.requiredCodeVis = :codeVis")
+	void deleteBySchemaCodeVisIdx(@Param("schemaDefId") CFLibDbKeyHash256 requiredSchemaDefId,
+		@Param("codeVis") ICFBamSchema.CodeVisibilityEnum requiredCodeVis);
+
+	/**
+	 *	CFBamTableBySchemaCodeVisIdxKey based lock method for object-based access.
+	 *
+	 *		@param key The CFBamTableBySchemaCodeVisIdxKey of the entity to be locked.
+	 */
+	default void deleteBySchemaCodeVisIdx(ICFBamTableBySchemaCodeVisIdxKey key) {
+		deleteBySchemaCodeVisIdx(key.getRequiredSchemaDefId(), key.getRequiredCodeVis());
 	}
 
 	/**

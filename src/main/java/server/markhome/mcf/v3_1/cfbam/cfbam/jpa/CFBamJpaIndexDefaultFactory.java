@@ -115,6 +115,49 @@ public class CFBamJpaIndexDefaultFactory
 	}
 
     @Override
+    public ICFBamIndexByIdxCodeVisIdxKey newByIdxCodeVisIdxKey() {
+	ICFBamIndexByIdxCodeVisIdxKey key =
+            new CFBamJpaIndexByIdxCodeVisIdxKey();
+	return( key );
+    }
+
+	public CFBamJpaIndexByIdxCodeVisIdxKey ensureByIdxCodeVisIdxKey(ICFBamIndexByIdxCodeVisIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamJpaIndexByIdxCodeVisIdxKey) {
+			return( (CFBamJpaIndexByIdxCodeVisIdxKey)key );
+		}
+		else {
+			CFBamJpaIndexByIdxCodeVisIdxKey mapped = new CFBamJpaIndexByIdxCodeVisIdxKey();
+			mapped.setRequiredCodeVis( key.getRequiredCodeVis() );
+			return( mapped );
+		}
+	}
+
+    @Override
+    public ICFBamIndexByIdxTblCdVisXKey newByIdxTblCdVisXKey() {
+	ICFBamIndexByIdxTblCdVisXKey key =
+            new CFBamJpaIndexByIdxTblCdVisXKey();
+	return( key );
+    }
+
+	public CFBamJpaIndexByIdxTblCdVisXKey ensureByIdxTblCdVisXKey(ICFBamIndexByIdxTblCdVisXKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamJpaIndexByIdxTblCdVisXKey) {
+			return( (CFBamJpaIndexByIdxTblCdVisXKey)key );
+		}
+		else {
+			CFBamJpaIndexByIdxTblCdVisXKey mapped = new CFBamJpaIndexByIdxTblCdVisXKey();
+			mapped.setRequiredTableId( key.getRequiredTableId() );
+			mapped.setRequiredCodeVis( key.getRequiredCodeVis() );
+			return( mapped );
+		}
+	}
+
+    @Override
     public ICFBamIndexByDefSchemaIdxKey newByDefSchemaIdxKey() {
 	ICFBamIndexByDefSchemaIdxKey key =
             new CFBamJpaIndexByDefSchemaIdxKey();

@@ -135,6 +135,12 @@ public class CFBamJpaServerProcService {
 				0,
 				"data.requiredName");
 		}
+		if(data.getRequiredCodeVis() == null) {
+			throw new CFLibNullArgumentException(getClass(),
+				S_ProcName,
+				0,
+				"data.requiredCodeVis");
+		}
 		if(data.getRequiredJMethodBody() == null) {
 			throw new CFLibNullArgumentException(getClass(),
 				S_ProcName,
@@ -238,6 +244,12 @@ public class CFBamJpaServerProcService {
 				0,
 				"data.requiredName");
 		}
+		if(data.getRequiredCodeVis() == null) {
+			throw new CFLibNullArgumentException(getClass(),
+				S_ProcName,
+				0,
+				"data.requiredCodeVis");
+		}
 		if(data.getRequiredJMethodBody() == null) {
 			throw new CFLibNullArgumentException(getClass(),
 				S_ProcName,
@@ -277,6 +289,7 @@ public class CFBamJpaServerProcService {
 		existing.setOptionalSuffix(data.getOptionalSuffix());
 		existing.setRequiredIsInstanceMethod(data.getRequiredIsInstanceMethod());
 		existing.setRequiredIsServerOnly(data.getRequiredIsServerOnly());
+		existing.setRequiredCodeVis(data.getRequiredCodeVis());
 		existing.setRequiredJMethodBody(data.getRequiredJMethodBody());
 		existing.setRequiredCppMethodBody(data.getRequiredCppMethodBody());
 		existing.setRequiredCsMethodBody(data.getRequiredCsMethodBody());
@@ -388,6 +401,57 @@ public class CFBamJpaServerProcService {
 	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public List<CFBamJpaServerProc> findByMethTableIdx(ICFBamServerMethodByMethTableIdxKey key) {
 		return( cfbam31ServerProcRepository.findByMethTableIdx(key.getRequiredTableId()));
+	}
+
+	/**
+	 *	Find zero or more entities into a List using the columns of the ICFBamServerMethodByMethCodeVisIdxKey as arguments.
+	 *
+	 *		@param requiredCodeVis
+	 *
+	 *		@return List&lt;CFBamJpaServerProc&gt; of the found entities, or an empty list if no such entities exist.
+	 */
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
+	public List<CFBamJpaServerProc> findByMethCodeVisIdx(@Param("codeVis") ICFBamSchema.CodeVisibilityEnum requiredCodeVis) {
+		return( cfbam31ServerProcRepository.findByMethCodeVisIdx(requiredCodeVis));
+	}
+
+	/**
+	 *	ICFBamServerMethodByMethCodeVisIdxKey entity list finder convenience method for object-based access.
+	 *
+	 *		@param key The ICFBamServerMethodByMethCodeVisIdxKey instance to use for the query arguments.
+	 *
+	 *		@return The found entity list, which may be empty.
+	 */
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
+	public List<CFBamJpaServerProc> findByMethCodeVisIdx(ICFBamServerMethodByMethCodeVisIdxKey key) {
+		return( cfbam31ServerProcRepository.findByMethCodeVisIdx(key.getRequiredCodeVis()));
+	}
+
+	/**
+	 *	Find zero or more entities into a List using the columns of the ICFBamServerMethodByMethTableVisIdxKey as arguments.
+	 *
+	 *		@param requiredTableId
+	 *		@param requiredCodeVis
+	 *
+	 *		@return List&lt;CFBamJpaServerProc&gt; of the found entities, or an empty list if no such entities exist.
+	 */
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
+	public List<CFBamJpaServerProc> findByMethTableVisIdx(@Param("tableId") CFLibDbKeyHash256 requiredTableId,
+		@Param("codeVis") ICFBamSchema.CodeVisibilityEnum requiredCodeVis) {
+		return( cfbam31ServerProcRepository.findByMethTableVisIdx(requiredTableId,
+			requiredCodeVis));
+	}
+
+	/**
+	 *	ICFBamServerMethodByMethTableVisIdxKey entity list finder convenience method for object-based access.
+	 *
+	 *		@param key The ICFBamServerMethodByMethTableVisIdxKey instance to use for the query arguments.
+	 *
+	 *		@return The found entity list, which may be empty.
+	 */
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
+	public List<CFBamJpaServerProc> findByMethTableVisIdx(ICFBamServerMethodByMethTableVisIdxKey key) {
+		return( cfbam31ServerProcRepository.findByMethTableVisIdx(key.getRequiredTableId(), key.getRequiredCodeVis()));
 	}
 
 	/**
@@ -510,6 +574,57 @@ public class CFBamJpaServerProcService {
 	/**
 	 *	Argument-based lock database instance for compatibility with the current MSS code factory code base, uses @Transactional to acquire a JPA entity locks, which may or may not imply an actual database lock during the transaction.
 	 *
+	 *		@param requiredCodeVis
+	 *
+	 *		@return A list of locked entities, refreshed from the data store, or an empty list if no such entities exist.
+	 */
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
+	public List<CFBamJpaServerProc> lockByMethCodeVisIdx(@Param("codeVis") ICFBamSchema.CodeVisibilityEnum requiredCodeVis) {
+		return( cfbam31ServerProcRepository.lockByMethCodeVisIdx(requiredCodeVis));
+	}
+
+	/**
+	 *	ICFBamServerMethodByMethCodeVisIdxKey based lock method for object-based access.
+	 *
+	 *		@param key The key of the entity to be locked.
+	 *
+	 *		@return A list of locked entities, refreshed from the data store, or an empty list if no such entities exist.
+	 */
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
+	public List<CFBamJpaServerProc> lockByMethCodeVisIdx(ICFBamServerMethodByMethCodeVisIdxKey key) {
+		return( cfbam31ServerProcRepository.lockByMethCodeVisIdx(key.getRequiredCodeVis()));
+	}
+
+	/**
+	 *	Argument-based lock database instance for compatibility with the current MSS code factory code base, uses @Transactional to acquire a JPA entity locks, which may or may not imply an actual database lock during the transaction.
+	 *
+	 *		@param requiredTableId
+	 *		@param requiredCodeVis
+	 *
+	 *		@return A list of locked entities, refreshed from the data store, or an empty list if no such entities exist.
+	 */
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
+	public List<CFBamJpaServerProc> lockByMethTableVisIdx(@Param("tableId") CFLibDbKeyHash256 requiredTableId,
+		@Param("codeVis") ICFBamSchema.CodeVisibilityEnum requiredCodeVis) {
+		return( cfbam31ServerProcRepository.lockByMethTableVisIdx(requiredTableId,
+			requiredCodeVis));
+	}
+
+	/**
+	 *	ICFBamServerMethodByMethTableVisIdxKey based lock method for object-based access.
+	 *
+	 *		@param key The key of the entity to be locked.
+	 *
+	 *		@return A list of locked entities, refreshed from the data store, or an empty list if no such entities exist.
+	 */
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
+	public List<CFBamJpaServerProc> lockByMethTableVisIdx(ICFBamServerMethodByMethTableVisIdxKey key) {
+		return( cfbam31ServerProcRepository.lockByMethTableVisIdx(key.getRequiredTableId(), key.getRequiredCodeVis()));
+	}
+
+	/**
+	 *	Argument-based lock database instance for compatibility with the current MSS code factory code base, uses @Transactional to acquire a JPA entity locks, which may or may not imply an actual database lock during the transaction.
+	 *
 	 *		@param optionalDefSchemaId
 	 *
 	 *		@return A list of locked entities, refreshed from the data store, or an empty list if no such entities exist.
@@ -608,6 +723,49 @@ public class CFBamJpaServerProcService {
 	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public void deleteByMethTableIdx(ICFBamServerMethodByMethTableIdxKey key) {
 		cfbam31ServerProcRepository.deleteByMethTableIdx(key.getRequiredTableId());
+	}
+
+	/**
+	 *	Argument-based delete entity for compatibility with the current MSS code factory code base, uses @Transactional to acquire a JPA entity lock, which may or may not imply an actual database lock during the transaction.
+	 *
+	 *		@param requiredCodeVis
+	 */
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
+	public void deleteByMethCodeVisIdx(@Param("codeVis") ICFBamSchema.CodeVisibilityEnum requiredCodeVis) {
+		cfbam31ServerProcRepository.deleteByMethCodeVisIdx(requiredCodeVis);
+	}
+
+	/**
+	 *	ICFBamServerMethodByMethCodeVisIdxKey based lock method for object-based access.
+	 *
+	 *		@param key The ICFBamServerMethodByMethCodeVisIdxKey of the entity to be locked.
+	 */
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
+	public void deleteByMethCodeVisIdx(ICFBamServerMethodByMethCodeVisIdxKey key) {
+		cfbam31ServerProcRepository.deleteByMethCodeVisIdx(key.getRequiredCodeVis());
+	}
+
+	/**
+	 *	Argument-based delete entity for compatibility with the current MSS code factory code base, uses @Transactional to acquire a JPA entity lock, which may or may not imply an actual database lock during the transaction.
+	 *
+	 *		@param requiredTableId
+	 *		@param requiredCodeVis
+	 */
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
+	public void deleteByMethTableVisIdx(@Param("tableId") CFLibDbKeyHash256 requiredTableId,
+		@Param("codeVis") ICFBamSchema.CodeVisibilityEnum requiredCodeVis) {
+		cfbam31ServerProcRepository.deleteByMethTableVisIdx(requiredTableId,
+			requiredCodeVis);
+	}
+
+	/**
+	 *	ICFBamServerMethodByMethTableVisIdxKey based lock method for object-based access.
+	 *
+	 *		@param key The ICFBamServerMethodByMethTableVisIdxKey of the entity to be locked.
+	 */
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
+	public void deleteByMethTableVisIdx(ICFBamServerMethodByMethTableVisIdxKey key) {
+		cfbam31ServerProcRepository.deleteByMethTableVisIdx(key.getRequiredTableId(), key.getRequiredCodeVis());
 	}
 
 	/**

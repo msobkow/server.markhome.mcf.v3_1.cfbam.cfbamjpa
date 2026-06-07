@@ -93,6 +93,49 @@ public class CFBamJpaTableDefaultFactory
 	}
 
     @Override
+    public ICFBamTableByCodeVisIdxKey newByCodeVisIdxKey() {
+	ICFBamTableByCodeVisIdxKey key =
+            new CFBamJpaTableByCodeVisIdxKey();
+	return( key );
+    }
+
+	public CFBamJpaTableByCodeVisIdxKey ensureByCodeVisIdxKey(ICFBamTableByCodeVisIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamJpaTableByCodeVisIdxKey) {
+			return( (CFBamJpaTableByCodeVisIdxKey)key );
+		}
+		else {
+			CFBamJpaTableByCodeVisIdxKey mapped = new CFBamJpaTableByCodeVisIdxKey();
+			mapped.setRequiredCodeVis( key.getRequiredCodeVis() );
+			return( mapped );
+		}
+	}
+
+    @Override
+    public ICFBamTableBySchemaCodeVisIdxKey newBySchemaCodeVisIdxKey() {
+	ICFBamTableBySchemaCodeVisIdxKey key =
+            new CFBamJpaTableBySchemaCodeVisIdxKey();
+	return( key );
+    }
+
+	public CFBamJpaTableBySchemaCodeVisIdxKey ensureBySchemaCodeVisIdxKey(ICFBamTableBySchemaCodeVisIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamJpaTableBySchemaCodeVisIdxKey) {
+			return( (CFBamJpaTableBySchemaCodeVisIdxKey)key );
+		}
+		else {
+			CFBamJpaTableBySchemaCodeVisIdxKey mapped = new CFBamJpaTableBySchemaCodeVisIdxKey();
+			mapped.setRequiredSchemaDefId( key.getRequiredSchemaDefId() );
+			mapped.setRequiredCodeVis( key.getRequiredCodeVis() );
+			return( mapped );
+		}
+	}
+
+    @Override
     public ICFBamTableByDefSchemaIdxKey newByDefSchemaIdxKey() {
 	ICFBamTableByDefSchemaIdxKey key =
             new CFBamJpaTableByDefSchemaIdxKey();

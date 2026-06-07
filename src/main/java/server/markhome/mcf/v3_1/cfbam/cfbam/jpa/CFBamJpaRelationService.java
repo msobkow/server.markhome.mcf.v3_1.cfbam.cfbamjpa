@@ -192,6 +192,12 @@ public class CFBamJpaRelationService {
 				0,
 				"data.requiredToIndexId");
 		}
+		if(data.getRequiredCodeVis() == null) {
+			throw new CFLibNullArgumentException(getClass(),
+				S_ProcName,
+				0,
+				"data.requiredCodeVis");
+		}
 		try {
 			if(data.getPKey() != null && !data.getPKey().isNull() && cfbam31RelationRepository.existsById((CFLibDbKeyHash256)data.getPKey())) {
 				return( (CFBamJpaRelation)(cfbam31RelationRepository.findById((CFLibDbKeyHash256)(data.getPKey())).get()));
@@ -334,6 +340,12 @@ public class CFBamJpaRelationService {
 				0,
 				"data.requiredToIndexId");
 		}
+		if(data.getRequiredCodeVis() == null) {
+			throw new CFLibNullArgumentException(getClass(),
+				S_ProcName,
+				0,
+				"data.requiredCodeVis");
+		}
 		// Ensure the entity exists and that the revision matches
 		CFBamJpaRelation existing = cfbam31RelationRepository.findById((CFLibDbKeyHash256)(data.getPKey()))
 			.orElseThrow(() -> new CFLibCollisionDetectedException(getClass(), S_ProcName, data.getPKey()));
@@ -363,6 +375,7 @@ public class CFBamJpaRelationService {
 		existing.setRequiredIsXsdContainer(data.getRequiredIsXsdContainer());
 		existing.setRequiredIsLateResolver(data.getRequiredIsLateResolver());
 		existing.setRequiredAllowAddendum(data.getRequiredAllowAddendum());
+		existing.setRequiredCodeVis(data.getRequiredCodeVis());
 		// Update the audit columns
 		data.setUpdatedAt(LocalDateTime.now());
 		// Save the changes we've made
@@ -468,6 +481,57 @@ public class CFBamJpaRelationService {
 	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public List<CFBamJpaRelation> findByRelTableIdx(ICFBamRelationByRelTableIdxKey key) {
 		return( cfbam31RelationRepository.findByRelTableIdx(key.getRequiredTableId()));
+	}
+
+	/**
+	 *	Find zero or more entities into a List using the columns of the ICFBamRelationByRelCodeVisIdxKey as arguments.
+	 *
+	 *		@param requiredCodeVis
+	 *
+	 *		@return List&lt;CFBamJpaRelation&gt; of the found entities, or an empty list if no such entities exist.
+	 */
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
+	public List<CFBamJpaRelation> findByRelCodeVisIdx(@Param("codeVis") ICFBamSchema.CodeVisibilityEnum requiredCodeVis) {
+		return( cfbam31RelationRepository.findByRelCodeVisIdx(requiredCodeVis));
+	}
+
+	/**
+	 *	ICFBamRelationByRelCodeVisIdxKey entity list finder convenience method for object-based access.
+	 *
+	 *		@param key The ICFBamRelationByRelCodeVisIdxKey instance to use for the query arguments.
+	 *
+	 *		@return The found entity list, which may be empty.
+	 */
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
+	public List<CFBamJpaRelation> findByRelCodeVisIdx(ICFBamRelationByRelCodeVisIdxKey key) {
+		return( cfbam31RelationRepository.findByRelCodeVisIdx(key.getRequiredCodeVis()));
+	}
+
+	/**
+	 *	Find zero or more entities into a List using the columns of the ICFBamRelationByRelTableCodeVisXKey as arguments.
+	 *
+	 *		@param requiredTableId
+	 *		@param requiredCodeVis
+	 *
+	 *		@return List&lt;CFBamJpaRelation&gt; of the found entities, or an empty list if no such entities exist.
+	 */
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
+	public List<CFBamJpaRelation> findByRelTableCodeVisX(@Param("tableId") CFLibDbKeyHash256 requiredTableId,
+		@Param("codeVis") ICFBamSchema.CodeVisibilityEnum requiredCodeVis) {
+		return( cfbam31RelationRepository.findByRelTableCodeVisX(requiredTableId,
+			requiredCodeVis));
+	}
+
+	/**
+	 *	ICFBamRelationByRelTableCodeVisXKey entity list finder convenience method for object-based access.
+	 *
+	 *		@param key The ICFBamRelationByRelTableCodeVisXKey instance to use for the query arguments.
+	 *
+	 *		@return The found entity list, which may be empty.
+	 */
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
+	public List<CFBamJpaRelation> findByRelTableCodeVisX(ICFBamRelationByRelTableCodeVisXKey key) {
+		return( cfbam31RelationRepository.findByRelTableCodeVisX(key.getRequiredTableId(), key.getRequiredCodeVis()));
 	}
 
 	/**
@@ -684,6 +748,57 @@ public class CFBamJpaRelationService {
 	/**
 	 *	Argument-based lock database instance for compatibility with the current MSS code factory code base, uses @Transactional to acquire a JPA entity locks, which may or may not imply an actual database lock during the transaction.
 	 *
+	 *		@param requiredCodeVis
+	 *
+	 *		@return A list of locked entities, refreshed from the data store, or an empty list if no such entities exist.
+	 */
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
+	public List<CFBamJpaRelation> lockByRelCodeVisIdx(@Param("codeVis") ICFBamSchema.CodeVisibilityEnum requiredCodeVis) {
+		return( cfbam31RelationRepository.lockByRelCodeVisIdx(requiredCodeVis));
+	}
+
+	/**
+	 *	ICFBamRelationByRelCodeVisIdxKey based lock method for object-based access.
+	 *
+	 *		@param key The key of the entity to be locked.
+	 *
+	 *		@return A list of locked entities, refreshed from the data store, or an empty list if no such entities exist.
+	 */
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
+	public List<CFBamJpaRelation> lockByRelCodeVisIdx(ICFBamRelationByRelCodeVisIdxKey key) {
+		return( cfbam31RelationRepository.lockByRelCodeVisIdx(key.getRequiredCodeVis()));
+	}
+
+	/**
+	 *	Argument-based lock database instance for compatibility with the current MSS code factory code base, uses @Transactional to acquire a JPA entity locks, which may or may not imply an actual database lock during the transaction.
+	 *
+	 *		@param requiredTableId
+	 *		@param requiredCodeVis
+	 *
+	 *		@return A list of locked entities, refreshed from the data store, or an empty list if no such entities exist.
+	 */
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
+	public List<CFBamJpaRelation> lockByRelTableCodeVisX(@Param("tableId") CFLibDbKeyHash256 requiredTableId,
+		@Param("codeVis") ICFBamSchema.CodeVisibilityEnum requiredCodeVis) {
+		return( cfbam31RelationRepository.lockByRelTableCodeVisX(requiredTableId,
+			requiredCodeVis));
+	}
+
+	/**
+	 *	ICFBamRelationByRelTableCodeVisXKey based lock method for object-based access.
+	 *
+	 *		@param key The key of the entity to be locked.
+	 *
+	 *		@return A list of locked entities, refreshed from the data store, or an empty list if no such entities exist.
+	 */
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
+	public List<CFBamJpaRelation> lockByRelTableCodeVisX(ICFBamRelationByRelTableCodeVisXKey key) {
+		return( cfbam31RelationRepository.lockByRelTableCodeVisX(key.getRequiredTableId(), key.getRequiredCodeVis()));
+	}
+
+	/**
+	 *	Argument-based lock database instance for compatibility with the current MSS code factory code base, uses @Transactional to acquire a JPA entity locks, which may or may not imply an actual database lock during the transaction.
+	 *
 	 *		@param optionalDefSchemaId
 	 *
 	 *		@return A list of locked entities, refreshed from the data store, or an empty list if no such entities exist.
@@ -876,6 +991,49 @@ public class CFBamJpaRelationService {
 	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public void deleteByRelTableIdx(ICFBamRelationByRelTableIdxKey key) {
 		cfbam31RelationRepository.deleteByRelTableIdx(key.getRequiredTableId());
+	}
+
+	/**
+	 *	Argument-based delete entity for compatibility with the current MSS code factory code base, uses @Transactional to acquire a JPA entity lock, which may or may not imply an actual database lock during the transaction.
+	 *
+	 *		@param requiredCodeVis
+	 */
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
+	public void deleteByRelCodeVisIdx(@Param("codeVis") ICFBamSchema.CodeVisibilityEnum requiredCodeVis) {
+		cfbam31RelationRepository.deleteByRelCodeVisIdx(requiredCodeVis);
+	}
+
+	/**
+	 *	ICFBamRelationByRelCodeVisIdxKey based lock method for object-based access.
+	 *
+	 *		@param key The ICFBamRelationByRelCodeVisIdxKey of the entity to be locked.
+	 */
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
+	public void deleteByRelCodeVisIdx(ICFBamRelationByRelCodeVisIdxKey key) {
+		cfbam31RelationRepository.deleteByRelCodeVisIdx(key.getRequiredCodeVis());
+	}
+
+	/**
+	 *	Argument-based delete entity for compatibility with the current MSS code factory code base, uses @Transactional to acquire a JPA entity lock, which may or may not imply an actual database lock during the transaction.
+	 *
+	 *		@param requiredTableId
+	 *		@param requiredCodeVis
+	 */
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
+	public void deleteByRelTableCodeVisX(@Param("tableId") CFLibDbKeyHash256 requiredTableId,
+		@Param("codeVis") ICFBamSchema.CodeVisibilityEnum requiredCodeVis) {
+		cfbam31RelationRepository.deleteByRelTableCodeVisX(requiredTableId,
+			requiredCodeVis);
+	}
+
+	/**
+	 *	ICFBamRelationByRelTableCodeVisXKey based lock method for object-based access.
+	 *
+	 *		@param key The ICFBamRelationByRelTableCodeVisXKey of the entity to be locked.
+	 */
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
+	public void deleteByRelTableCodeVisX(ICFBamRelationByRelTableCodeVisXKey key) {
+		cfbam31RelationRepository.deleteByRelTableCodeVisX(key.getRequiredTableId(), key.getRequiredCodeVis());
 	}
 
 	/**

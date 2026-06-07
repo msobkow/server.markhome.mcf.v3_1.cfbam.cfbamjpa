@@ -156,6 +156,50 @@ public interface CFBamJpaServerMethodRepository extends JpaRepository<CFBamJpaSe
 	}
 
 	/**
+	 *	Read zero or more entities into a List using the columns of the CFBamServerMethodByMethCodeVisIdxKey as arguments.
+	 *
+	 *		@param requiredCodeVis
+	 *
+	 *		@return List&lt;CFBamJpaServerMethod&gt; of the found entities, typically from the JPA cache, or an empty list if no such entities exist.
+	 */
+	@Query("select r from CFBamJpaServerMethod r where r.requiredCodeVis = :codeVis")
+	List<CFBamJpaServerMethod> findByMethCodeVisIdx(@Param("codeVis") ICFBamSchema.CodeVisibilityEnum requiredCodeVis);
+
+	/**
+	 *	CFBamServerMethodByMethCodeVisIdxKey entity list reader convenience method for object-based access.
+	 *
+	 *		@param key The CFBamServerMethodByMethCodeVisIdxKey instance to use for the query arguments.
+	 *
+	 *		@return The found entity list, which may be empty, typically populated from the JPA cache.
+	 */
+	default List<CFBamJpaServerMethod> findByMethCodeVisIdx(ICFBamServerMethodByMethCodeVisIdxKey key) {
+		return( findByMethCodeVisIdx(key.getRequiredCodeVis()));
+	}
+
+	/**
+	 *	Read zero or more entities into a List using the columns of the CFBamServerMethodByMethTableVisIdxKey as arguments.
+	 *
+	 *		@param requiredTableId
+	 *		@param requiredCodeVis
+	 *
+	 *		@return List&lt;CFBamJpaServerMethod&gt; of the found entities, typically from the JPA cache, or an empty list if no such entities exist.
+	 */
+	@Query("select r from CFBamJpaServerMethod r where r.requiredContainerForTable.requiredId = :tableId and r.requiredCodeVis = :codeVis")
+	List<CFBamJpaServerMethod> findByMethTableVisIdx(@Param("tableId") CFLibDbKeyHash256 requiredTableId,
+		@Param("codeVis") ICFBamSchema.CodeVisibilityEnum requiredCodeVis);
+
+	/**
+	 *	CFBamServerMethodByMethTableVisIdxKey entity list reader convenience method for object-based access.
+	 *
+	 *		@param key The CFBamServerMethodByMethTableVisIdxKey instance to use for the query arguments.
+	 *
+	 *		@return The found entity list, which may be empty, typically populated from the JPA cache.
+	 */
+	default List<CFBamJpaServerMethod> findByMethTableVisIdx(ICFBamServerMethodByMethTableVisIdxKey key) {
+		return( findByMethTableVisIdx(key.getRequiredTableId(), key.getRequiredCodeVis()));
+	}
+
+	/**
 	 *	Read zero or more entities into a List using the columns of the CFBamServerMethodByDefSchemaIdxKey as arguments.
 	 *
 	 *		@param optionalDefSchemaId
@@ -266,6 +310,54 @@ public interface CFBamJpaServerMethodRepository extends JpaRepository<CFBamJpaSe
 	/**
 	 *	Argument-based lock database instance for compatibility with the current MSS code factory code base, uses @Transactional to acquire a JPA entity locks, which may or may not imply an actual database lock during the transaction.
 	 *
+	 *		@param requiredCodeVis
+	 *
+	 *		@return A list of locked entities, refreshed from the data store, or an empty list if no such entities exist.
+	 */
+	@Transactional
+	@Lock(LockModeType.WRITE)
+	@Query("select r from CFBamJpaServerMethod r where r.requiredCodeVis = :codeVis")
+	List<CFBamJpaServerMethod> lockByMethCodeVisIdx(@Param("codeVis") ICFBamSchema.CodeVisibilityEnum requiredCodeVis);
+
+	/**
+	 *	CFBamServerMethodByMethCodeVisIdxKey based lock method for object-based access.
+	 *
+	 *		@param key The key of the entity to be locked.
+	 *
+	 *		@return A list of locked entities, refreshed from the data store, or an empty list if no such entities exist.
+	 */
+	default List<CFBamJpaServerMethod> lockByMethCodeVisIdx(ICFBamServerMethodByMethCodeVisIdxKey key) {
+		return( lockByMethCodeVisIdx(key.getRequiredCodeVis()));
+	}
+
+	/**
+	 *	Argument-based lock database instance for compatibility with the current MSS code factory code base, uses @Transactional to acquire a JPA entity locks, which may or may not imply an actual database lock during the transaction.
+	 *
+	 *		@param requiredTableId
+	 *		@param requiredCodeVis
+	 *
+	 *		@return A list of locked entities, refreshed from the data store, or an empty list if no such entities exist.
+	 */
+	@Transactional
+	@Lock(LockModeType.WRITE)
+	@Query("select r from CFBamJpaServerMethod r where r.requiredContainerForTable.requiredId = :tableId and r.requiredCodeVis = :codeVis")
+	List<CFBamJpaServerMethod> lockByMethTableVisIdx(@Param("tableId") CFLibDbKeyHash256 requiredTableId,
+		@Param("codeVis") ICFBamSchema.CodeVisibilityEnum requiredCodeVis);
+
+	/**
+	 *	CFBamServerMethodByMethTableVisIdxKey based lock method for object-based access.
+	 *
+	 *		@param key The key of the entity to be locked.
+	 *
+	 *		@return A list of locked entities, refreshed from the data store, or an empty list if no such entities exist.
+	 */
+	default List<CFBamJpaServerMethod> lockByMethTableVisIdx(ICFBamServerMethodByMethTableVisIdxKey key) {
+		return( lockByMethTableVisIdx(key.getRequiredTableId(), key.getRequiredCodeVis()));
+	}
+
+	/**
+	 *	Argument-based lock database instance for compatibility with the current MSS code factory code base, uses @Transactional to acquire a JPA entity locks, which may or may not imply an actual database lock during the transaction.
+	 *
 	 *		@param optionalDefSchemaId
 	 *
 	 *		@return A list of locked entities, refreshed from the data store, or an empty list if no such entities exist.
@@ -357,6 +449,46 @@ public interface CFBamJpaServerMethodRepository extends JpaRepository<CFBamJpaSe
 	 */
 	default void deleteByMethTableIdx(ICFBamServerMethodByMethTableIdxKey key) {
 		deleteByMethTableIdx(key.getRequiredTableId());
+	}
+
+	/**
+	 *	Argument-based delete entity for compatibility with the current MSS code factory code base, uses @Transactional to acquire a JPA entity lock, which may or may not imply an actual database lock during the transaction.
+	 *
+	 *		@param requiredCodeVis
+	 */
+	@Transactional
+	@Modifying
+	@Query("delete from CFBamJpaServerMethod r where r.requiredCodeVis = :codeVis")
+	void deleteByMethCodeVisIdx(@Param("codeVis") ICFBamSchema.CodeVisibilityEnum requiredCodeVis);
+
+	/**
+	 *	CFBamServerMethodByMethCodeVisIdxKey based lock method for object-based access.
+	 *
+	 *		@param key The CFBamServerMethodByMethCodeVisIdxKey of the entity to be locked.
+	 */
+	default void deleteByMethCodeVisIdx(ICFBamServerMethodByMethCodeVisIdxKey key) {
+		deleteByMethCodeVisIdx(key.getRequiredCodeVis());
+	}
+
+	/**
+	 *	Argument-based delete entity for compatibility with the current MSS code factory code base, uses @Transactional to acquire a JPA entity lock, which may or may not imply an actual database lock during the transaction.
+	 *
+	 *		@param requiredTableId
+	 *		@param requiredCodeVis
+	 */
+	@Transactional
+	@Modifying
+	@Query("delete from CFBamJpaServerMethod r where r.requiredContainerForTable.requiredId = :tableId and r.requiredCodeVis = :codeVis")
+	void deleteByMethTableVisIdx(@Param("tableId") CFLibDbKeyHash256 requiredTableId,
+		@Param("codeVis") ICFBamSchema.CodeVisibilityEnum requiredCodeVis);
+
+	/**
+	 *	CFBamServerMethodByMethTableVisIdxKey based lock method for object-based access.
+	 *
+	 *		@param key The CFBamServerMethodByMethTableVisIdxKey of the entity to be locked.
+	 */
+	default void deleteByMethTableVisIdx(ICFBamServerMethodByMethTableVisIdxKey key) {
+		deleteByMethTableVisIdx(key.getRequiredTableId(), key.getRequiredCodeVis());
 	}
 
 	/**

@@ -69,6 +69,8 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 		@Index(name = "ServerMethodIdIdx", columnList = "Id", unique = true),
 		@Index(name = "ServerMethodUNameIdx", columnList = "TableId, safe_name", unique = true),
 		@Index(name = "ServerMethodTableIdx", columnList = "TableId", unique = false),
+		@Index(name = "ServerMethodCodeVisIdx", columnList = "codevis", unique = false),
+		@Index(name = "ServerMethodTableVisIdx", columnList = "TableId, codevis", unique = false),
 		@Index(name = "ServerMethodDefSchemaDefIdx", columnList = "defschid", unique = false),
 		@Index(name = "ServerMethodDefSchemaDefIdxDefSchema", columnList = "defschidDefSchema", unique = false),
 		@Index(name = "ServerMethodTableIdxForTable", columnList = "TableIdForTable", unique = false)
@@ -112,6 +114,8 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 	protected boolean requiredIsInstanceMethod;
 	@Column( name="srv_only", nullable=false )
 	protected boolean requiredIsServerOnly;
+	@Column( name="codevis", nullable=false )
+	protected ICFBamSchema.CodeVisibilityEnum requiredCodeVis;
 	@Column( name="jmeth_body", nullable=false, length=2000000 )
 	protected String requiredJMethodBody;
 	@Column( name="cppmeth_body", nullable=false, length=2000000 )
@@ -131,6 +135,7 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 		optionalSuffix = null;
 		requiredIsInstanceMethod = ICFBamServerMethod.ISINSTANCEMETHOD_INIT_VALUE;
 		requiredIsServerOnly = ICFBamServerMethod.ISSERVERONLY_INIT_VALUE;
+		requiredCodeVis = ICFBamServerMethod.CODEVIS_INIT_VALUE;
 		requiredJMethodBody = ICFBamServerMethod.JMETHODBODY_INIT_VALUE;
 		requiredCppMethodBody = ICFBamServerMethod.CPPMETHODBODY_INIT_VALUE;
 		requiredCsMethodBody = ICFBamServerMethod.CSMETHODBODY_INIT_VALUE;
@@ -359,6 +364,22 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 	}
 
 	@Override
+	public ICFBamSchema.CodeVisibilityEnum getRequiredCodeVis() {
+		return( requiredCodeVis );
+	}
+
+	@Override
+	public void setRequiredCodeVis( ICFBamSchema.CodeVisibilityEnum value ) {
+		if( value == null ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredCodeVis",
+				1,
+				"value" );
+		}
+		requiredCodeVis = value;
+	}
+
+	@Override
 	public String getRequiredJMethodBody() {
 		return( requiredJMethodBody );
 	}
@@ -566,6 +587,21 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 			if( getRequiredIsServerOnly() != rhs.getRequiredIsServerOnly() ) {
 				return( false );
 			}
+			if( getRequiredCodeVis() != null ) {
+				if( rhs.getRequiredCodeVis() != null ) {
+					if( ! getRequiredCodeVis().equals( rhs.getRequiredCodeVis() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredCodeVis() != null ) {
+					return( false );
+				}
+			}
 			if( getRequiredJMethodBody() != null ) {
 				if( rhs.getRequiredJMethodBody() != null ) {
 					if( ! getRequiredJMethodBody().equals( rhs.getRequiredJMethodBody() ) ) {
@@ -744,6 +780,21 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 			if( getRequiredIsServerOnly() != rhs.getRequiredIsServerOnly() ) {
 				return( false );
 			}
+			if( getRequiredCodeVis() != null ) {
+				if( rhs.getRequiredCodeVis() != null ) {
+					if( ! getRequiredCodeVis().equals( rhs.getRequiredCodeVis() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredCodeVis() != null ) {
+					return( false );
+				}
+			}
 			if( getRequiredJMethodBody() != null ) {
 				if( rhs.getRequiredJMethodBody() != null ) {
 					if( ! getRequiredJMethodBody().equals( rhs.getRequiredJMethodBody() ) ) {
@@ -847,6 +898,59 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 			}
 			return( true );
 		}
+		else if (obj instanceof ICFBamServerMethodByMethCodeVisIdxKey) {
+			ICFBamServerMethodByMethCodeVisIdxKey rhs = (ICFBamServerMethodByMethCodeVisIdxKey)obj;
+			if( getRequiredCodeVis() != null ) {
+				if( rhs.getRequiredCodeVis() != null ) {
+					if( ! getRequiredCodeVis().equals( rhs.getRequiredCodeVis() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredCodeVis() != null ) {
+					return( false );
+				}
+			}
+			return( true );
+		}
+		else if (obj instanceof ICFBamServerMethodByMethTableVisIdxKey) {
+			ICFBamServerMethodByMethTableVisIdxKey rhs = (ICFBamServerMethodByMethTableVisIdxKey)obj;
+			if( getRequiredTableId() != null ) {
+				if( rhs.getRequiredTableId() != null ) {
+					if( ! getRequiredTableId().equals( rhs.getRequiredTableId() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredTableId() != null ) {
+					return( false );
+				}
+			}
+			if( getRequiredCodeVis() != null ) {
+				if( rhs.getRequiredCodeVis() != null ) {
+					if( ! getRequiredCodeVis().equals( rhs.getRequiredCodeVis() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredCodeVis() != null ) {
+					return( false );
+				}
+			}
+			return( true );
+		}
 		else if (obj instanceof ICFBamServerMethodByDefSchemaIdxKey) {
 			ICFBamServerMethodByDefSchemaIdxKey rhs = (ICFBamServerMethodByDefSchemaIdxKey)obj;
 			if( getOptionalDefSchemaId() != null ) {
@@ -908,6 +1012,7 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 		else {
 			hashCode = hashCode * 2;
 		}
+		hashCode = ( hashCode * 0x10000 ) + getRequiredCodeVis().ordinal();
 		if( getRequiredJMethodBody() != null ) {
 			hashCode = hashCode + getRequiredJMethodBody().hashCode();
 		}
@@ -1075,6 +1180,20 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 				if( rhs.getRequiredIsServerOnly() ) {
 					return( -1 );
 				}
+			}
+			if (getRequiredCodeVis() != null) {
+				if (rhs.getRequiredCodeVis() != null) {
+					cmp = getRequiredCodeVis().compareTo( rhs.getRequiredCodeVis() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredCodeVis() != null) {
+				return( -1 );
 			}
 			if (getRequiredJMethodBody() != null) {
 				if (rhs.getRequiredJMethodBody() != null) {
@@ -1270,6 +1389,20 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 					return( -1 );
 				}
 			}
+			if (getRequiredCodeVis() != null) {
+				if (rhs.getRequiredCodeVis() != null) {
+					cmp = getRequiredCodeVis().compareTo( rhs.getRequiredCodeVis() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredCodeVis() != null) {
+				return( -1 );
+			}
 			if (getRequiredJMethodBody() != null) {
 				if (rhs.getRequiredJMethodBody() != null) {
 					cmp = getRequiredJMethodBody().compareTo( rhs.getRequiredJMethodBody() );
@@ -1364,6 +1497,56 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 			}
 			return( 0 );
 		}
+		else if (obj instanceof ICFBamServerMethodByMethCodeVisIdxKey) {
+			ICFBamServerMethodByMethCodeVisIdxKey rhs = (ICFBamServerMethodByMethCodeVisIdxKey)obj;
+			if (getRequiredCodeVis() != null) {
+				if (rhs.getRequiredCodeVis() != null) {
+					cmp = getRequiredCodeVis().compareTo( rhs.getRequiredCodeVis() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredCodeVis() != null) {
+				return( -1 );
+			}
+			return( 0 );
+		}
+		else if (obj instanceof ICFBamServerMethodByMethTableVisIdxKey) {
+			ICFBamServerMethodByMethTableVisIdxKey rhs = (ICFBamServerMethodByMethTableVisIdxKey)obj;
+			if (getRequiredTableId() != null) {
+				if (rhs.getRequiredTableId() != null) {
+					cmp = getRequiredTableId().compareTo( rhs.getRequiredTableId() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredTableId() != null) {
+				return( -1 );
+			}
+			if (getRequiredCodeVis() != null) {
+				if (rhs.getRequiredCodeVis() != null) {
+					cmp = getRequiredCodeVis().compareTo( rhs.getRequiredCodeVis() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredCodeVis() != null) {
+				return( -1 );
+			}
+			return( 0 );
+		}
 		else if (obj instanceof ICFBamServerMethodByDefSchemaIdxKey) {
 			ICFBamServerMethodByDefSchemaIdxKey rhs = (ICFBamServerMethodByDefSchemaIdxKey)obj;
 			if( getOptionalDefSchemaId() != null ) {
@@ -1417,6 +1600,7 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 		setOptionalSuffix(src.getOptionalSuffix());
 		setRequiredIsInstanceMethod(src.getRequiredIsInstanceMethod());
 		setRequiredIsServerOnly(src.getRequiredIsServerOnly());
+		setRequiredCodeVis(src.getRequiredCodeVis());
 		setRequiredJMethodBody(src.getRequiredJMethodBody());
 		setRequiredCppMethodBody(src.getRequiredCppMethodBody());
 		setRequiredCsMethodBody(src.getRequiredCsMethodBody());
@@ -1449,6 +1633,7 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 		setOptionalSuffix(src.getOptionalSuffix());
 		setRequiredIsInstanceMethod(src.getRequiredIsInstanceMethod());
 		setRequiredIsServerOnly(src.getRequiredIsServerOnly());
+		setRequiredCodeVis(src.getRequiredCodeVis());
 		setRequiredJMethodBody(src.getRequiredJMethodBody());
 		setRequiredCppMethodBody(src.getRequiredCppMethodBody());
 		setRequiredCsMethodBody(src.getRequiredCsMethodBody());
@@ -1468,6 +1653,7 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 			+ " OptionalSuffix=" + ( ( getOptionalSuffix() == null ) ? "null" : "\"" + StringEscapeUtils.escapeXml11( getOptionalSuffix() ) + "\"" )
 			+ " RequiredIsInstanceMethod=" + (( getRequiredIsInstanceMethod() ) ? "\"true\"" : "\"false\"" )
 			+ " RequiredIsServerOnly=" + (( getRequiredIsServerOnly() ) ? "\"true\"" : "\"false\"" )
+			+ " RequiredCodeVis=" + "\"" + getRequiredCodeVis().toString() + "\""
 			+ " RequiredJMethodBody=" + "\"" + StringEscapeUtils.escapeXml11( getRequiredJMethodBody() ) + "\""
 			+ " RequiredCppMethodBody=" + "\"" + StringEscapeUtils.escapeXml11( getRequiredCppMethodBody() ) + "\""
 			+ " RequiredCsMethodBody=" + "\"" + StringEscapeUtils.escapeXml11( getRequiredCsMethodBody() ) + "\"";

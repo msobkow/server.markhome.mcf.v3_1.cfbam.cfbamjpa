@@ -331,6 +331,93 @@ public class CFBamJpaTableTable implements ICFBamTableTable
 	}
 
 	/**
+	 *	Delete the Table instances identified by the key CodeVisIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	CodeVis	The Table key attribute of the instance generating the id.
+	 */
+	@Override
+	public void deleteTableByCodeVisIdx( ICFSecAuthorization Authorization,
+		ICFBamSchema.CodeVisibilityEnum argCodeVis )
+	{
+		final String S_ProcName = "deleteTableByCodeVisIdx";
+		boolean permissionGranted = canDeleteTable(S_ProcName, Authorization);
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletetable", ICFBamSchema.SCHEMA_NAME, ICFBamTableTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+
+		schema.getJpaHooksSchema().getTableService().deleteByCodeVisIdx(argCodeVis);
+	}
+
+
+	/**
+	 *	Delete the Table instances identified by the key CodeVisIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	argKey	The key identifying the instances to be deleted.
+	 */
+	@Override
+	public void deleteTableByCodeVisIdx( ICFSecAuthorization Authorization,
+		ICFBamTableByCodeVisIdxKey argKey )
+	{
+		final String S_ProcName = "deleteTableByCodeVisIdx";
+		boolean permissionGranted = canDeleteTable(S_ProcName, Authorization);
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletetable", ICFBamSchema.SCHEMA_NAME, ICFBamTableTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+
+		schema.getJpaHooksSchema().getTableService().deleteByCodeVisIdx(argKey.getRequiredCodeVis());
+	}
+
+	/**
+	 *	Delete the Table instances identified by the key SchemaCodeVisIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	SchemaDefId	The Table key attribute of the instance generating the id.
+	 *
+	 *	@param	CodeVis	The Table key attribute of the instance generating the id.
+	 */
+	@Override
+	public void deleteTableBySchemaCodeVisIdx( ICFSecAuthorization Authorization,
+		CFLibDbKeyHash256 argSchemaDefId,
+		ICFBamSchema.CodeVisibilityEnum argCodeVis )
+	{
+		final String S_ProcName = "deleteTableBySchemaCodeVisIdx";
+		boolean permissionGranted = canDeleteTable(S_ProcName, Authorization);
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletetable", ICFBamSchema.SCHEMA_NAME, ICFBamTableTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+
+		schema.getJpaHooksSchema().getTableService().deleteBySchemaCodeVisIdx(argSchemaDefId,
+		argCodeVis);
+	}
+
+
+	/**
+	 *	Delete the Table instances identified by the key SchemaCodeVisIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	argKey	The key identifying the instances to be deleted.
+	 */
+	@Override
+	public void deleteTableBySchemaCodeVisIdx( ICFSecAuthorization Authorization,
+		ICFBamTableBySchemaCodeVisIdxKey argKey )
+	{
+		final String S_ProcName = "deleteTableBySchemaCodeVisIdx";
+		boolean permissionGranted = canDeleteTable(S_ProcName, Authorization);
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deletetable", ICFBamSchema.SCHEMA_NAME, ICFBamTableTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+
+		schema.getJpaHooksSchema().getTableService().deleteBySchemaCodeVisIdx(argKey.getRequiredSchemaDefId(),
+			argKey.getRequiredCodeVis());
+	}
+
+	/**
 	 *	Delete the Table instances identified by the key DefSchemaIdx.
 	 *
 	 *	@param	Authorization	The session authorization information.
@@ -857,6 +944,70 @@ public class CFBamJpaTableTable implements ICFBamTableTable
 	}
 
 	/**
+	 *	Read an array of the derived Table record instances identified by the duplicate key CodeVisIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	CodeVis	The Table key attribute of the instance generating the id.
+	 *
+	 *	@return An array of derived instances for the specified key, potentially with 0 elements in the set.
+	 */
+	@Override
+	public ICFBamTable[] readDerivedByCodeVisIdx( ICFSecAuthorization Authorization,
+		ICFBamSchema.CodeVisibilityEnum argCodeVis )
+	{
+		final String S_ProcName = "readDerivedByCodeVisIdx";
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadTable(S_ProcName, Authorization);
+		}
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readtable", ICFBamSchema.SCHEMA_NAME, ICFBamTableTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+		List<CFBamJpaTable> retlist = schema.getJpaHooksSchema().getTableService().findByCodeVisIdx(argCodeVis);
+		ICFBamTable[] retset = new ICFBamTable[retlist.size()];
+		int idx = 0;
+		for (CFBamJpaTable cur: retlist) {
+			retset[idx++] = cur;
+		}
+		return( retset );
+	}
+
+	/**
+	 *	Read an array of the derived Table record instances identified by the duplicate key SchemaCodeVisIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	SchemaDefId	The Table key attribute of the instance generating the id.
+	 *
+	 *	@param	CodeVis	The Table key attribute of the instance generating the id.
+	 *
+	 *	@return An array of derived instances for the specified key, potentially with 0 elements in the set.
+	 */
+	@Override
+	public ICFBamTable[] readDerivedBySchemaCodeVisIdx( ICFSecAuthorization Authorization,
+		CFLibDbKeyHash256 argSchemaDefId,
+		ICFBamSchema.CodeVisibilityEnum argCodeVis )
+	{
+		final String S_ProcName = "readDerivedBySchemaCodeVisIdx";
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadTable(S_ProcName, Authorization);
+		}
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readtable", ICFBamSchema.SCHEMA_NAME, ICFBamTableTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+		List<CFBamJpaTable> retlist = schema.getJpaHooksSchema().getTableService().findBySchemaCodeVisIdx(argSchemaDefId,
+		argCodeVis);
+		ICFBamTable[] retset = new ICFBamTable[retlist.size()];
+		int idx = 0;
+		for (CFBamJpaTable cur: retlist) {
+			retset[idx++] = cur;
+		}
+		return( retset );
+	}
+
+	/**
 	 *	Read an array of the derived Table record instances identified by the duplicate key DefSchemaIdx.
 	 *
 	 *	@param	Authorization	The session authorization information.
@@ -1230,6 +1381,61 @@ public class CFBamJpaTableTable implements ICFBamTableTable
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readtable", ICFBamSchema.SCHEMA_NAME, ICFBamTableTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecBySchemaDefIdx");
+	}
+
+	/**
+	 *	Read an array of the specific Table record instances identified by the duplicate key CodeVisIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	CodeVis	The Table key attribute of the instance generating the id.
+	 *
+	 *	@return An array of derived record instances for the specified key, potentially with 0 elements in the set.
+	 *
+	 *	@throws	CFLibNotSupportedException thrown by client-side implementations.
+	 */
+	@Override
+	public ICFBamTable[] readRecByCodeVisIdx( ICFSecAuthorization Authorization,
+		ICFBamSchema.CodeVisibilityEnum argCodeVis )
+	{
+		final String S_ProcName = "readRecByCodeVisIdx";
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadTable(S_ProcName, Authorization);
+		}
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readtable", ICFBamSchema.SCHEMA_NAME, ICFBamTableTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+		throw new CFLibNotImplementedYetException(getClass(), "readRecByCodeVisIdx");
+	}
+
+	/**
+	 *	Read an array of the specific Table record instances identified by the duplicate key SchemaCodeVisIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	SchemaDefId	The Table key attribute of the instance generating the id.
+	 *
+	 *	@param	CodeVis	The Table key attribute of the instance generating the id.
+	 *
+	 *	@return An array of derived record instances for the specified key, potentially with 0 elements in the set.
+	 *
+	 *	@throws	CFLibNotSupportedException thrown by client-side implementations.
+	 */
+	@Override
+	public ICFBamTable[] readRecBySchemaCodeVisIdx( ICFSecAuthorization Authorization,
+		CFLibDbKeyHash256 argSchemaDefId,
+		ICFBamSchema.CodeVisibilityEnum argCodeVis )
+	{
+		final String S_ProcName = "readRecBySchemaCodeVisIdx";
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadTable(S_ProcName, Authorization);
+		}
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readtable", ICFBamSchema.SCHEMA_NAME, ICFBamTableTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+		throw new CFLibNotImplementedYetException(getClass(), "readRecBySchemaCodeVisIdx");
 	}
 
 	/**

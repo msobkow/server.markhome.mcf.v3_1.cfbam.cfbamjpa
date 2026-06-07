@@ -377,6 +377,93 @@ public class CFBamJpaServerMethodTable implements ICFBamServerMethodTable
 	}
 
 	/**
+	 *	Delete the ServerMethod instances identified by the key MethCodeVisIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	CodeVis	The ServerMethod key attribute of the instance generating the id.
+	 */
+	@Override
+	public void deleteServerMethodByMethCodeVisIdx( ICFSecAuthorization Authorization,
+		ICFBamSchema.CodeVisibilityEnum argCodeVis )
+	{
+		final String S_ProcName = "deleteServerMethodByMethCodeVisIdx";
+		boolean permissionGranted = canDeleteServerMethod(S_ProcName, Authorization);
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteservermethod", ICFBamSchema.SCHEMA_NAME, ICFBamServerMethodTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+
+		schema.getJpaHooksSchema().getServerMethodService().deleteByMethCodeVisIdx(argCodeVis);
+	}
+
+
+	/**
+	 *	Delete the ServerMethod instances identified by the key MethCodeVisIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	argKey	The key identifying the instances to be deleted.
+	 */
+	@Override
+	public void deleteServerMethodByMethCodeVisIdx( ICFSecAuthorization Authorization,
+		ICFBamServerMethodByMethCodeVisIdxKey argKey )
+	{
+		final String S_ProcName = "deleteServerMethodByMethCodeVisIdx";
+		boolean permissionGranted = canDeleteServerMethod(S_ProcName, Authorization);
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteservermethod", ICFBamSchema.SCHEMA_NAME, ICFBamServerMethodTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+
+		schema.getJpaHooksSchema().getServerMethodService().deleteByMethCodeVisIdx(argKey.getRequiredCodeVis());
+	}
+
+	/**
+	 *	Delete the ServerMethod instances identified by the key MethTableVisIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	TableId	The ServerMethod key attribute of the instance generating the id.
+	 *
+	 *	@param	CodeVis	The ServerMethod key attribute of the instance generating the id.
+	 */
+	@Override
+	public void deleteServerMethodByMethTableVisIdx( ICFSecAuthorization Authorization,
+		CFLibDbKeyHash256 argTableId,
+		ICFBamSchema.CodeVisibilityEnum argCodeVis )
+	{
+		final String S_ProcName = "deleteServerMethodByMethTableVisIdx";
+		boolean permissionGranted = canDeleteServerMethod(S_ProcName, Authorization);
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteservermethod", ICFBamSchema.SCHEMA_NAME, ICFBamServerMethodTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+
+		schema.getJpaHooksSchema().getServerMethodService().deleteByMethTableVisIdx(argTableId,
+		argCodeVis);
+	}
+
+
+	/**
+	 *	Delete the ServerMethod instances identified by the key MethTableVisIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	argKey	The key identifying the instances to be deleted.
+	 */
+	@Override
+	public void deleteServerMethodByMethTableVisIdx( ICFSecAuthorization Authorization,
+		ICFBamServerMethodByMethTableVisIdxKey argKey )
+	{
+		final String S_ProcName = "deleteServerMethodByMethTableVisIdx";
+		boolean permissionGranted = canDeleteServerMethod(S_ProcName, Authorization);
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteservermethod", ICFBamSchema.SCHEMA_NAME, ICFBamServerMethodTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+
+		schema.getJpaHooksSchema().getServerMethodService().deleteByMethTableVisIdx(argKey.getRequiredTableId(),
+			argKey.getRequiredCodeVis());
+	}
+
+	/**
 	 *	Delete the ServerMethod instances identified by the key DefSchemaIdx.
 	 *
 	 *	@param	Authorization	The session authorization information.
@@ -686,6 +773,70 @@ public class CFBamJpaServerMethodTable implements ICFBamServerMethodTable
 	}
 
 	/**
+	 *	Read an array of the derived ServerMethod record instances identified by the duplicate key MethCodeVisIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	CodeVis	The ServerMethod key attribute of the instance generating the id.
+	 *
+	 *	@return An array of derived instances for the specified key, potentially with 0 elements in the set.
+	 */
+	@Override
+	public ICFBamServerMethod[] readDerivedByMethCodeVisIdx( ICFSecAuthorization Authorization,
+		ICFBamSchema.CodeVisibilityEnum argCodeVis )
+	{
+		final String S_ProcName = "readDerivedByMethCodeVisIdx";
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadServerMethod(S_ProcName, Authorization);
+		}
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readservermethod", ICFBamSchema.SCHEMA_NAME, ICFBamServerMethodTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+		List<CFBamJpaServerMethod> retlist = schema.getJpaHooksSchema().getServerMethodService().findByMethCodeVisIdx(argCodeVis);
+		ICFBamServerMethod[] retset = new ICFBamServerMethod[retlist.size()];
+		int idx = 0;
+		for (CFBamJpaServerMethod cur: retlist) {
+			retset[idx++] = cur;
+		}
+		return( retset );
+	}
+
+	/**
+	 *	Read an array of the derived ServerMethod record instances identified by the duplicate key MethTableVisIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	TableId	The ServerMethod key attribute of the instance generating the id.
+	 *
+	 *	@param	CodeVis	The ServerMethod key attribute of the instance generating the id.
+	 *
+	 *	@return An array of derived instances for the specified key, potentially with 0 elements in the set.
+	 */
+	@Override
+	public ICFBamServerMethod[] readDerivedByMethTableVisIdx( ICFSecAuthorization Authorization,
+		CFLibDbKeyHash256 argTableId,
+		ICFBamSchema.CodeVisibilityEnum argCodeVis )
+	{
+		final String S_ProcName = "readDerivedByMethTableVisIdx";
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadServerMethod(S_ProcName, Authorization);
+		}
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readservermethod", ICFBamSchema.SCHEMA_NAME, ICFBamServerMethodTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+		List<CFBamJpaServerMethod> retlist = schema.getJpaHooksSchema().getServerMethodService().findByMethTableVisIdx(argTableId,
+		argCodeVis);
+		ICFBamServerMethod[] retset = new ICFBamServerMethod[retlist.size()];
+		int idx = 0;
+		for (CFBamJpaServerMethod cur: retlist) {
+			retset[idx++] = cur;
+		}
+		return( retset );
+	}
+
+	/**
 	 *	Read an array of the derived ServerMethod record instances identified by the duplicate key DefSchemaIdx.
 	 *
 	 *	@param	Authorization	The session authorization information.
@@ -891,6 +1042,61 @@ public class CFBamJpaServerMethodTable implements ICFBamServerMethodTable
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readservermethod", ICFBamSchema.SCHEMA_NAME, ICFBamServerMethodTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByMethTableIdx");
+	}
+
+	/**
+	 *	Read an array of the specific ServerMethod record instances identified by the duplicate key MethCodeVisIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	CodeVis	The ServerMethod key attribute of the instance generating the id.
+	 *
+	 *	@return An array of derived record instances for the specified key, potentially with 0 elements in the set.
+	 *
+	 *	@throws	CFLibNotSupportedException thrown by client-side implementations.
+	 */
+	@Override
+	public ICFBamServerMethod[] readRecByMethCodeVisIdx( ICFSecAuthorization Authorization,
+		ICFBamSchema.CodeVisibilityEnum argCodeVis )
+	{
+		final String S_ProcName = "readRecByMethCodeVisIdx";
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadServerMethod(S_ProcName, Authorization);
+		}
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readservermethod", ICFBamSchema.SCHEMA_NAME, ICFBamServerMethodTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+		throw new CFLibNotImplementedYetException(getClass(), "readRecByMethCodeVisIdx");
+	}
+
+	/**
+	 *	Read an array of the specific ServerMethod record instances identified by the duplicate key MethTableVisIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	TableId	The ServerMethod key attribute of the instance generating the id.
+	 *
+	 *	@param	CodeVis	The ServerMethod key attribute of the instance generating the id.
+	 *
+	 *	@return An array of derived record instances for the specified key, potentially with 0 elements in the set.
+	 *
+	 *	@throws	CFLibNotSupportedException thrown by client-side implementations.
+	 */
+	@Override
+	public ICFBamServerMethod[] readRecByMethTableVisIdx( ICFSecAuthorization Authorization,
+		CFLibDbKeyHash256 argTableId,
+		ICFBamSchema.CodeVisibilityEnum argCodeVis )
+	{
+		final String S_ProcName = "readRecByMethTableVisIdx";
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadServerMethod(S_ProcName, Authorization);
+		}
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readservermethod", ICFBamSchema.SCHEMA_NAME, ICFBamServerMethodTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+		throw new CFLibNotImplementedYetException(getClass(), "readRecByMethTableVisIdx");
 	}
 
 	/**

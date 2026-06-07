@@ -418,6 +418,93 @@ public class CFBamJpaServerObjFuncTable implements ICFBamServerObjFuncTable
 	}
 
 	/**
+	 *	Delete the ServerObjFunc instances identified by the key MethCodeVisIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	CodeVis	The ServerObjFunc key attribute of the instance generating the id.
+	 */
+	@Override
+	public void deleteServerObjFuncByMethCodeVisIdx( ICFSecAuthorization Authorization,
+		ICFBamSchema.CodeVisibilityEnum argCodeVis )
+	{
+		final String S_ProcName = "deleteServerObjFuncByMethCodeVisIdx";
+		boolean permissionGranted = canDeleteServerObjFunc(S_ProcName, Authorization);
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteserverobjfunc", ICFBamSchema.SCHEMA_NAME, ICFBamServerObjFuncTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+
+		schema.getJpaHooksSchema().getServerObjFuncService().deleteByMethCodeVisIdx(argCodeVis);
+	}
+
+
+	/**
+	 *	Delete the ServerObjFunc instances identified by the key MethCodeVisIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	argKey	The key identifying the instances to be deleted.
+	 */
+	@Override
+	public void deleteServerObjFuncByMethCodeVisIdx( ICFSecAuthorization Authorization,
+		ICFBamServerMethodByMethCodeVisIdxKey argKey )
+	{
+		final String S_ProcName = "deleteServerObjFuncByMethCodeVisIdx";
+		boolean permissionGranted = canDeleteServerObjFunc(S_ProcName, Authorization);
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteserverobjfunc", ICFBamSchema.SCHEMA_NAME, ICFBamServerObjFuncTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+
+		schema.getJpaHooksSchema().getServerObjFuncService().deleteByMethCodeVisIdx(argKey.getRequiredCodeVis());
+	}
+
+	/**
+	 *	Delete the ServerObjFunc instances identified by the key MethTableVisIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	TableId	The ServerObjFunc key attribute of the instance generating the id.
+	 *
+	 *	@param	CodeVis	The ServerObjFunc key attribute of the instance generating the id.
+	 */
+	@Override
+	public void deleteServerObjFuncByMethTableVisIdx( ICFSecAuthorization Authorization,
+		CFLibDbKeyHash256 argTableId,
+		ICFBamSchema.CodeVisibilityEnum argCodeVis )
+	{
+		final String S_ProcName = "deleteServerObjFuncByMethTableVisIdx";
+		boolean permissionGranted = canDeleteServerObjFunc(S_ProcName, Authorization);
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteserverobjfunc", ICFBamSchema.SCHEMA_NAME, ICFBamServerObjFuncTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+
+		schema.getJpaHooksSchema().getServerObjFuncService().deleteByMethTableVisIdx(argTableId,
+		argCodeVis);
+	}
+
+
+	/**
+	 *	Delete the ServerObjFunc instances identified by the key MethTableVisIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	argKey	The key identifying the instances to be deleted.
+	 */
+	@Override
+	public void deleteServerObjFuncByMethTableVisIdx( ICFSecAuthorization Authorization,
+		ICFBamServerMethodByMethTableVisIdxKey argKey )
+	{
+		final String S_ProcName = "deleteServerObjFuncByMethTableVisIdx";
+		boolean permissionGranted = canDeleteServerObjFunc(S_ProcName, Authorization);
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteserverobjfunc", ICFBamSchema.SCHEMA_NAME, ICFBamServerObjFuncTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+
+		schema.getJpaHooksSchema().getServerObjFuncService().deleteByMethTableVisIdx(argKey.getRequiredTableId(),
+			argKey.getRequiredCodeVis());
+	}
+
+	/**
 	 *	Delete the ServerObjFunc instances identified by the key DefSchemaIdx.
 	 *
 	 *	@param	Authorization	The session authorization information.
@@ -727,6 +814,70 @@ public class CFBamJpaServerObjFuncTable implements ICFBamServerObjFuncTable
 	}
 
 	/**
+	 *	Read an array of the derived ServerObjFunc record instances identified by the duplicate key MethCodeVisIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	CodeVis	The ServerObjFunc key attribute of the instance generating the id.
+	 *
+	 *	@return An array of derived instances for the specified key, potentially with 0 elements in the set.
+	 */
+	@Override
+	public ICFBamServerObjFunc[] readDerivedByMethCodeVisIdx( ICFSecAuthorization Authorization,
+		ICFBamSchema.CodeVisibilityEnum argCodeVis )
+	{
+		final String S_ProcName = "readDerivedByMethCodeVisIdx";
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadServerObjFunc(S_ProcName, Authorization);
+		}
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readserverobjfunc", ICFBamSchema.SCHEMA_NAME, ICFBamServerObjFuncTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+		List<CFBamJpaServerObjFunc> retlist = schema.getJpaHooksSchema().getServerObjFuncService().findByMethCodeVisIdx(argCodeVis);
+		ICFBamServerObjFunc[] retset = new ICFBamServerObjFunc[retlist.size()];
+		int idx = 0;
+		for (CFBamJpaServerObjFunc cur: retlist) {
+			retset[idx++] = cur;
+		}
+		return( retset );
+	}
+
+	/**
+	 *	Read an array of the derived ServerObjFunc record instances identified by the duplicate key MethTableVisIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	TableId	The ServerObjFunc key attribute of the instance generating the id.
+	 *
+	 *	@param	CodeVis	The ServerObjFunc key attribute of the instance generating the id.
+	 *
+	 *	@return An array of derived instances for the specified key, potentially with 0 elements in the set.
+	 */
+	@Override
+	public ICFBamServerObjFunc[] readDerivedByMethTableVisIdx( ICFSecAuthorization Authorization,
+		CFLibDbKeyHash256 argTableId,
+		ICFBamSchema.CodeVisibilityEnum argCodeVis )
+	{
+		final String S_ProcName = "readDerivedByMethTableVisIdx";
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadServerObjFunc(S_ProcName, Authorization);
+		}
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readserverobjfunc", ICFBamSchema.SCHEMA_NAME, ICFBamServerObjFuncTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+		List<CFBamJpaServerObjFunc> retlist = schema.getJpaHooksSchema().getServerObjFuncService().findByMethTableVisIdx(argTableId,
+		argCodeVis);
+		ICFBamServerObjFunc[] retset = new ICFBamServerObjFunc[retlist.size()];
+		int idx = 0;
+		for (CFBamJpaServerObjFunc cur: retlist) {
+			retset[idx++] = cur;
+		}
+		return( retset );
+	}
+
+	/**
 	 *	Read an array of the derived ServerObjFunc record instances identified by the duplicate key DefSchemaIdx.
 	 *
 	 *	@param	Authorization	The session authorization information.
@@ -962,6 +1113,61 @@ public class CFBamJpaServerObjFuncTable implements ICFBamServerObjFuncTable
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readserverobjfunc", ICFBamSchema.SCHEMA_NAME, ICFBamServerObjFuncTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByMethTableIdx");
+	}
+
+	/**
+	 *	Read an array of the specific ServerObjFunc record instances identified by the duplicate key MethCodeVisIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	CodeVis	The ServerObjFunc key attribute of the instance generating the id.
+	 *
+	 *	@return An array of derived record instances for the specified key, potentially with 0 elements in the set.
+	 *
+	 *	@throws	CFLibNotSupportedException thrown by client-side implementations.
+	 */
+	@Override
+	public ICFBamServerObjFunc[] readRecByMethCodeVisIdx( ICFSecAuthorization Authorization,
+		ICFBamSchema.CodeVisibilityEnum argCodeVis )
+	{
+		final String S_ProcName = "readRecByMethCodeVisIdx";
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadServerObjFunc(S_ProcName, Authorization);
+		}
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readserverobjfunc", ICFBamSchema.SCHEMA_NAME, ICFBamServerObjFuncTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+		throw new CFLibNotImplementedYetException(getClass(), "readRecByMethCodeVisIdx");
+	}
+
+	/**
+	 *	Read an array of the specific ServerObjFunc record instances identified by the duplicate key MethTableVisIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	TableId	The ServerObjFunc key attribute of the instance generating the id.
+	 *
+	 *	@param	CodeVis	The ServerObjFunc key attribute of the instance generating the id.
+	 *
+	 *	@return An array of derived record instances for the specified key, potentially with 0 elements in the set.
+	 *
+	 *	@throws	CFLibNotSupportedException thrown by client-side implementations.
+	 */
+	@Override
+	public ICFBamServerObjFunc[] readRecByMethTableVisIdx( ICFSecAuthorization Authorization,
+		CFLibDbKeyHash256 argTableId,
+		ICFBamSchema.CodeVisibilityEnum argCodeVis )
+	{
+		final String S_ProcName = "readRecByMethTableVisIdx";
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadServerObjFunc(S_ProcName, Authorization);
+		}
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readserverobjfunc", ICFBamSchema.SCHEMA_NAME, ICFBamServerObjFuncTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+		throw new CFLibNotImplementedYetException(getClass(), "readRecByMethTableVisIdx");
 	}
 
 	/**

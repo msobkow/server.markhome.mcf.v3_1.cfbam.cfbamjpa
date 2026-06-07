@@ -73,6 +73,8 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
         @Index(name = "IndexIdIdx_h", columnList = "auditClusterId, auditStamp, auditAction, requiredRevision, auditSessionId, Id", unique = true),
         @Index(name = "IndexUNameIdx_h", columnList = "TableId, safe_name", unique = false),
         @Index(name = "IndexTableIdx_h", columnList = "TableId", unique = false),
+        @Index(name = "IndexCodeVisIdx_h", columnList = "codevis", unique = false),
+        @Index(name = "IndexTableCodeVisIdx_h", columnList = "TableId, codevis", unique = false),
         @Index(name = "IndexDefSchemaDefIdx_h", columnList = "defschid", unique = false)
     }
 )
@@ -109,6 +111,8 @@ public class CFBamJpaIndexH extends CFBamJpaScopeH
 	protected boolean requiredIsUnique;
 	@Column( name="IsDbMapped", nullable=false )
 	protected boolean requiredIsDbMapped;
+	@Column( name="codevis", nullable=false )
+	protected ICFBamSchema.CodeVisibilityEnum requiredCodeVis;
 
     public CFBamJpaIndexH() {
             super();
@@ -123,6 +127,7 @@ public class CFBamJpaIndexH extends CFBamJpaScopeH
 		optionalSuffix = null;
 		requiredIsUnique = ICFBamIndex.ISUNIQUE_INIT_VALUE;
 		requiredIsDbMapped = ICFBamIndex.ISDBMAPPED_INIT_VALUE;
+		requiredCodeVis = ICFBamIndex.CODEVIS_INIT_VALUE;
     }
 
     @Override
@@ -308,6 +313,22 @@ public class CFBamJpaIndexH extends CFBamJpaScopeH
 		requiredIsDbMapped = value;
 	}
 
+	@Override
+	public ICFBamSchema.CodeVisibilityEnum getRequiredCodeVis() {
+		return( requiredCodeVis );
+	}
+
+	@Override
+	public void setRequiredCodeVis( ICFBamSchema.CodeVisibilityEnum value ) {
+		if( value == null ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredCodeVis",
+				1,
+				"value" );
+		}
+		requiredCodeVis = value;
+	}
+
     @Override
     public boolean equals( Object obj ) {
         if (obj == null) {
@@ -458,6 +479,21 @@ public class CFBamJpaIndexH extends CFBamJpaScopeH
 			}
 			if( getRequiredIsDbMapped() != rhs.getRequiredIsDbMapped() ) {
 				return( false );
+			}
+			if( getRequiredCodeVis() != null ) {
+				if( rhs.getRequiredCodeVis() != null ) {
+					if( ! getRequiredCodeVis().equals( rhs.getRequiredCodeVis() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredCodeVis() != null ) {
+					return( false );
+				}
 			}
             return( true );
         }
@@ -610,6 +646,21 @@ public class CFBamJpaIndexH extends CFBamJpaScopeH
 			if( getRequiredIsDbMapped() != rhs.getRequiredIsDbMapped() ) {
 				return( false );
 			}
+			if( getRequiredCodeVis() != null ) {
+				if( rhs.getRequiredCodeVis() != null ) {
+					if( ! getRequiredCodeVis().equals( rhs.getRequiredCodeVis() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredCodeVis() != null ) {
+					return( false );
+				}
+			}
             return( true );
         }
         else if (obj instanceof ICFBamScopeHPKey) {
@@ -663,6 +714,59 @@ public class CFBamJpaIndexH extends CFBamJpaScopeH
 			}
 			else {
 				if( rhs.getRequiredTableId() != null ) {
+					return( false );
+				}
+			}
+            return( true );
+        }
+        else if (obj instanceof ICFBamIndexByIdxCodeVisIdxKey) {
+            ICFBamIndexByIdxCodeVisIdxKey rhs = (ICFBamIndexByIdxCodeVisIdxKey)obj;
+			if( getRequiredCodeVis() != null ) {
+				if( rhs.getRequiredCodeVis() != null ) {
+					if( ! getRequiredCodeVis().equals( rhs.getRequiredCodeVis() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredCodeVis() != null ) {
+					return( false );
+				}
+			}
+            return( true );
+        }
+        else if (obj instanceof ICFBamIndexByIdxTblCdVisXKey) {
+            ICFBamIndexByIdxTblCdVisXKey rhs = (ICFBamIndexByIdxTblCdVisXKey)obj;
+			if( getRequiredTableId() != null ) {
+				if( rhs.getRequiredTableId() != null ) {
+					if( ! getRequiredTableId().equals( rhs.getRequiredTableId() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredTableId() != null ) {
+					return( false );
+				}
+			}
+			if( getRequiredCodeVis() != null ) {
+				if( rhs.getRequiredCodeVis() != null ) {
+					if( ! getRequiredCodeVis().equals( rhs.getRequiredCodeVis() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredCodeVis() != null ) {
 					return( false );
 				}
 			}
@@ -732,6 +836,7 @@ public class CFBamJpaIndexH extends CFBamJpaScopeH
 		else {
 			hashCode = hashCode * 2;
 		}
+		hashCode = ( hashCode * 0x10000 ) + getRequiredCodeVis().ordinal();
         return( hashCode & 0x7fffffff );
     }
 
@@ -907,6 +1012,20 @@ public class CFBamJpaIndexH extends CFBamJpaScopeH
 					return( -1 );
 				}
 			}
+			if (getRequiredCodeVis() != null) {
+				if (rhs.getRequiredCodeVis() != null) {
+					cmp = getRequiredCodeVis().compareTo( rhs.getRequiredCodeVis() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredCodeVis() != null) {
+				return( -1 );
+			}
             return( 0 );
         }
         else if (obj instanceof ICFBamScopeHPKey) {
@@ -1078,6 +1197,20 @@ public class CFBamJpaIndexH extends CFBamJpaScopeH
 					return( -1 );
 				}
 			}
+			if (getRequiredCodeVis() != null) {
+				if (rhs.getRequiredCodeVis() != null) {
+					cmp = getRequiredCodeVis().compareTo( rhs.getRequiredCodeVis() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredCodeVis() != null) {
+				return( -1 );
+			}
             return( 0 );
         }
         else if (obj instanceof ICFBamIndexByUNameIdxKey ) {
@@ -1126,6 +1259,56 @@ public class CFBamJpaIndexH extends CFBamJpaScopeH
 				}
 			}
 			else if (rhs.getRequiredTableId() != null) {
+				return( -1 );
+			}
+            return( 0 );
+        }
+        else if (obj instanceof ICFBamIndexByIdxCodeVisIdxKey ) {
+            ICFBamIndexByIdxCodeVisIdxKey rhs = (ICFBamIndexByIdxCodeVisIdxKey)obj;
+			if (getRequiredCodeVis() != null) {
+				if (rhs.getRequiredCodeVis() != null) {
+					cmp = getRequiredCodeVis().compareTo( rhs.getRequiredCodeVis() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredCodeVis() != null) {
+				return( -1 );
+			}
+            return( 0 );
+        }
+        else if (obj instanceof ICFBamIndexByIdxTblCdVisXKey ) {
+            ICFBamIndexByIdxTblCdVisXKey rhs = (ICFBamIndexByIdxTblCdVisXKey)obj;
+			if (getRequiredTableId() != null) {
+				if (rhs.getRequiredTableId() != null) {
+					cmp = getRequiredTableId().compareTo( rhs.getRequiredTableId() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredTableId() != null) {
+				return( -1 );
+			}
+			if (getRequiredCodeVis() != null) {
+				if (rhs.getRequiredCodeVis() != null) {
+					cmp = getRequiredCodeVis().compareTo( rhs.getRequiredCodeVis() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredCodeVis() != null) {
 				return( -1 );
 			}
             return( 0 );
@@ -1182,6 +1365,7 @@ public class CFBamJpaIndexH extends CFBamJpaScopeH
 		setOptionalSuffix( src.getOptionalSuffix() );
 		setRequiredIsUnique( src.getRequiredIsUnique() );
 		setRequiredIsDbMapped( src.getRequiredIsDbMapped() );
+		setRequiredCodeVis( src.getRequiredCodeVis() );
     }
 
 	@Override
@@ -1212,6 +1396,7 @@ public class CFBamJpaIndexH extends CFBamJpaScopeH
 		setOptionalSuffix( src.getOptionalSuffix() );
 		setRequiredIsUnique( src.getRequiredIsUnique() );
 		setRequiredIsDbMapped( src.getRequiredIsDbMapped() );
+		setRequiredCodeVis( src.getRequiredCodeVis() );
     }
 
     public String getXmlAttrFragment() {
@@ -1226,7 +1411,8 @@ public class CFBamJpaIndexH extends CFBamJpaScopeH
 			+ " OptionalDbName=" + ( ( getOptionalDbName() == null ) ? "null" : "\"" + StringEscapeUtils.escapeXml11( getOptionalDbName() ) + "\"" )
 			+ " OptionalSuffix=" + ( ( getOptionalSuffix() == null ) ? "null" : "\"" + StringEscapeUtils.escapeXml11( getOptionalSuffix() ) + "\"" )
 			+ " RequiredIsUnique=" + (( getRequiredIsUnique() ) ? "\"true\"" : "\"false\"" )
-			+ " RequiredIsDbMapped=" + (( getRequiredIsDbMapped() ) ? "\"true\"" : "\"false\"" );
+			+ " RequiredIsDbMapped=" + (( getRequiredIsDbMapped() ) ? "\"true\"" : "\"false\"" )
+			+ " RequiredCodeVis=" + "\"" + getRequiredCodeVis().toString() + "\"";
         return( ret );
     }
 

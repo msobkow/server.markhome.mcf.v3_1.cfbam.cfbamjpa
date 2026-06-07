@@ -115,6 +115,49 @@ public class CFBamJpaServerMethodDefaultFactory
 	}
 
     @Override
+    public ICFBamServerMethodByMethCodeVisIdxKey newByMethCodeVisIdxKey() {
+	ICFBamServerMethodByMethCodeVisIdxKey key =
+            new CFBamJpaServerMethodByMethCodeVisIdxKey();
+	return( key );
+    }
+
+	public CFBamJpaServerMethodByMethCodeVisIdxKey ensureByMethCodeVisIdxKey(ICFBamServerMethodByMethCodeVisIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamJpaServerMethodByMethCodeVisIdxKey) {
+			return( (CFBamJpaServerMethodByMethCodeVisIdxKey)key );
+		}
+		else {
+			CFBamJpaServerMethodByMethCodeVisIdxKey mapped = new CFBamJpaServerMethodByMethCodeVisIdxKey();
+			mapped.setRequiredCodeVis( key.getRequiredCodeVis() );
+			return( mapped );
+		}
+	}
+
+    @Override
+    public ICFBamServerMethodByMethTableVisIdxKey newByMethTableVisIdxKey() {
+	ICFBamServerMethodByMethTableVisIdxKey key =
+            new CFBamJpaServerMethodByMethTableVisIdxKey();
+	return( key );
+    }
+
+	public CFBamJpaServerMethodByMethTableVisIdxKey ensureByMethTableVisIdxKey(ICFBamServerMethodByMethTableVisIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamJpaServerMethodByMethTableVisIdxKey) {
+			return( (CFBamJpaServerMethodByMethTableVisIdxKey)key );
+		}
+		else {
+			CFBamJpaServerMethodByMethTableVisIdxKey mapped = new CFBamJpaServerMethodByMethTableVisIdxKey();
+			mapped.setRequiredTableId( key.getRequiredTableId() );
+			mapped.setRequiredCodeVis( key.getRequiredCodeVis() );
+			return( mapped );
+		}
+	}
+
+    @Override
     public ICFBamServerMethodByDefSchemaIdxKey newByDefSchemaIdxKey() {
 	ICFBamServerMethodByDefSchemaIdxKey key =
             new CFBamJpaServerMethodByDefSchemaIdxKey();

@@ -377,6 +377,93 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 	}
 
 	/**
+	 *	Delete the Relation instances identified by the key RelCodeVisIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	CodeVis	The Relation key attribute of the instance generating the id.
+	 */
+	@Override
+	public void deleteRelationByRelCodeVisIdx( ICFSecAuthorization Authorization,
+		ICFBamSchema.CodeVisibilityEnum argCodeVis )
+	{
+		final String S_ProcName = "deleteRelationByRelCodeVisIdx";
+		boolean permissionGranted = canDeleteRelation(S_ProcName, Authorization);
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleterelation", ICFBamSchema.SCHEMA_NAME, ICFBamRelationTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+
+		schema.getJpaHooksSchema().getRelationService().deleteByRelCodeVisIdx(argCodeVis);
+	}
+
+
+	/**
+	 *	Delete the Relation instances identified by the key RelCodeVisIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	argKey	The key identifying the instances to be deleted.
+	 */
+	@Override
+	public void deleteRelationByRelCodeVisIdx( ICFSecAuthorization Authorization,
+		ICFBamRelationByRelCodeVisIdxKey argKey )
+	{
+		final String S_ProcName = "deleteRelationByRelCodeVisIdx";
+		boolean permissionGranted = canDeleteRelation(S_ProcName, Authorization);
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleterelation", ICFBamSchema.SCHEMA_NAME, ICFBamRelationTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+
+		schema.getJpaHooksSchema().getRelationService().deleteByRelCodeVisIdx(argKey.getRequiredCodeVis());
+	}
+
+	/**
+	 *	Delete the Relation instances identified by the key RelTableCodeVisX.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	TableId	The Relation key attribute of the instance generating the id.
+	 *
+	 *	@param	CodeVis	The Relation key attribute of the instance generating the id.
+	 */
+	@Override
+	public void deleteRelationByRelTableCodeVisX( ICFSecAuthorization Authorization,
+		CFLibDbKeyHash256 argTableId,
+		ICFBamSchema.CodeVisibilityEnum argCodeVis )
+	{
+		final String S_ProcName = "deleteRelationByRelTableCodeVisX";
+		boolean permissionGranted = canDeleteRelation(S_ProcName, Authorization);
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleterelation", ICFBamSchema.SCHEMA_NAME, ICFBamRelationTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+
+		schema.getJpaHooksSchema().getRelationService().deleteByRelTableCodeVisX(argTableId,
+		argCodeVis);
+	}
+
+
+	/**
+	 *	Delete the Relation instances identified by the key RelTableCodeVisX.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	argKey	The key identifying the instances to be deleted.
+	 */
+	@Override
+	public void deleteRelationByRelTableCodeVisX( ICFSecAuthorization Authorization,
+		ICFBamRelationByRelTableCodeVisXKey argKey )
+	{
+		final String S_ProcName = "deleteRelationByRelTableCodeVisX";
+		boolean permissionGranted = canDeleteRelation(S_ProcName, Authorization);
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleterelation", ICFBamSchema.SCHEMA_NAME, ICFBamRelationTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+
+		schema.getJpaHooksSchema().getRelationService().deleteByRelTableCodeVisX(argKey.getRequiredTableId(),
+			argKey.getRequiredCodeVis());
+	}
+
+	/**
 	 *	Delete the Relation instances identified by the key DefSchemaIdx.
 	 *
 	 *	@param	Authorization	The session authorization information.
@@ -850,6 +937,70 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 	}
 
 	/**
+	 *	Read an array of the derived Relation record instances identified by the duplicate key RelCodeVisIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	CodeVis	The Relation key attribute of the instance generating the id.
+	 *
+	 *	@return An array of derived instances for the specified key, potentially with 0 elements in the set.
+	 */
+	@Override
+	public ICFBamRelation[] readDerivedByRelCodeVisIdx( ICFSecAuthorization Authorization,
+		ICFBamSchema.CodeVisibilityEnum argCodeVis )
+	{
+		final String S_ProcName = "readDerivedByRelCodeVisIdx";
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadRelation(S_ProcName, Authorization);
+		}
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readrelation", ICFBamSchema.SCHEMA_NAME, ICFBamRelationTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+		List<CFBamJpaRelation> retlist = schema.getJpaHooksSchema().getRelationService().findByRelCodeVisIdx(argCodeVis);
+		ICFBamRelation[] retset = new ICFBamRelation[retlist.size()];
+		int idx = 0;
+		for (CFBamJpaRelation cur: retlist) {
+			retset[idx++] = cur;
+		}
+		return( retset );
+	}
+
+	/**
+	 *	Read an array of the derived Relation record instances identified by the duplicate key RelTableCodeVisX.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	TableId	The Relation key attribute of the instance generating the id.
+	 *
+	 *	@param	CodeVis	The Relation key attribute of the instance generating the id.
+	 *
+	 *	@return An array of derived instances for the specified key, potentially with 0 elements in the set.
+	 */
+	@Override
+	public ICFBamRelation[] readDerivedByRelTableCodeVisX( ICFSecAuthorization Authorization,
+		CFLibDbKeyHash256 argTableId,
+		ICFBamSchema.CodeVisibilityEnum argCodeVis )
+	{
+		final String S_ProcName = "readDerivedByRelTableCodeVisX";
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadRelation(S_ProcName, Authorization);
+		}
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readrelation", ICFBamSchema.SCHEMA_NAME, ICFBamRelationTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+		List<CFBamJpaRelation> retlist = schema.getJpaHooksSchema().getRelationService().findByRelTableCodeVisX(argTableId,
+		argCodeVis);
+		ICFBamRelation[] retset = new ICFBamRelation[retlist.size()];
+		int idx = 0;
+		for (CFBamJpaRelation cur: retlist) {
+			retset[idx++] = cur;
+		}
+		return( retset );
+	}
+
+	/**
 	 *	Read an array of the derived Relation record instances identified by the duplicate key DefSchemaIdx.
 	 *
 	 *	@param	Authorization	The session authorization information.
@@ -1175,6 +1326,61 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readrelation", ICFBamSchema.SCHEMA_NAME, ICFBamRelationTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByRelTableIdx");
+	}
+
+	/**
+	 *	Read an array of the specific Relation record instances identified by the duplicate key RelCodeVisIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	CodeVis	The Relation key attribute of the instance generating the id.
+	 *
+	 *	@return An array of derived record instances for the specified key, potentially with 0 elements in the set.
+	 *
+	 *	@throws	CFLibNotSupportedException thrown by client-side implementations.
+	 */
+	@Override
+	public ICFBamRelation[] readRecByRelCodeVisIdx( ICFSecAuthorization Authorization,
+		ICFBamSchema.CodeVisibilityEnum argCodeVis )
+	{
+		final String S_ProcName = "readRecByRelCodeVisIdx";
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadRelation(S_ProcName, Authorization);
+		}
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readrelation", ICFBamSchema.SCHEMA_NAME, ICFBamRelationTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+		throw new CFLibNotImplementedYetException(getClass(), "readRecByRelCodeVisIdx");
+	}
+
+	/**
+	 *	Read an array of the specific Relation record instances identified by the duplicate key RelTableCodeVisX.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	TableId	The Relation key attribute of the instance generating the id.
+	 *
+	 *	@param	CodeVis	The Relation key attribute of the instance generating the id.
+	 *
+	 *	@return An array of derived record instances for the specified key, potentially with 0 elements in the set.
+	 *
+	 *	@throws	CFLibNotSupportedException thrown by client-side implementations.
+	 */
+	@Override
+	public ICFBamRelation[] readRecByRelTableCodeVisX( ICFSecAuthorization Authorization,
+		CFLibDbKeyHash256 argTableId,
+		ICFBamSchema.CodeVisibilityEnum argCodeVis )
+	{
+		final String S_ProcName = "readRecByRelTableCodeVisX";
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadRelation(S_ProcName, Authorization);
+		}
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readrelation", ICFBamSchema.SCHEMA_NAME, ICFBamRelationTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+		throw new CFLibNotImplementedYetException(getClass(), "readRecByRelTableCodeVisX");
 	}
 
 	/**

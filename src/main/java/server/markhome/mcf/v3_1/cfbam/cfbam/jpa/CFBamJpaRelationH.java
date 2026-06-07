@@ -73,6 +73,8 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
         @Index(name = "RelationIdIdx_h", columnList = "auditClusterId, auditStamp, auditAction, requiredRevision, auditSessionId, Id", unique = true),
         @Index(name = "RelationUNameIdx_h", columnList = "TableId, safe_name", unique = false),
         @Index(name = "RelationTableIdx_h", columnList = "TableId", unique = false),
+        @Index(name = "RelationCodeVisIdx_h", columnList = "codevis", unique = false),
+        @Index(name = "RelationTableCodeVisIdx_h", columnList = "TableId, codevis", unique = false),
         @Index(name = "RelationDefSchemaDefIdx_h", columnList = "defschid", unique = false),
         @Index(name = "RelationFromKeyIdx_h", columnList = "FromIndexId", unique = false),
         @Index(name = "RelationToTblIdx_h", columnList = "ToTableId", unique = false),
@@ -135,6 +137,8 @@ public class CFBamJpaRelationH extends CFBamJpaScopeH
 		@AttributeOverride(name="bytes", column = @Column( name="NarrowedId", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
 	protected CFLibDbKeyHash256 optionalNarrowedId;
+	@Column( name="codevis", nullable=false )
+	protected ICFBamSchema.CodeVisibilityEnum requiredCodeVis;
 
     public CFBamJpaRelationH() {
             super();
@@ -156,6 +160,7 @@ public class CFBamJpaRelationH extends CFBamJpaScopeH
 		requiredIsLateResolver = ICFBamRelation.ISLATERESOLVER_INIT_VALUE;
 		requiredAllowAddendum = ICFBamRelation.ALLOWADDENDUM_INIT_VALUE;
 		optionalNarrowedId = CFLibDbKeyHash256.nullGet();
+		requiredCodeVis = ICFBamRelation.CODEVIS_INIT_VALUE;
     }
 
     @Override
@@ -435,6 +440,22 @@ public class CFBamJpaRelationH extends CFBamJpaScopeH
 		optionalNarrowedId = value;
 	}
 
+	@Override
+	public ICFBamSchema.CodeVisibilityEnum getRequiredCodeVis() {
+		return( requiredCodeVis );
+	}
+
+	@Override
+	public void setRequiredCodeVis( ICFBamSchema.CodeVisibilityEnum value ) {
+		if( value == null ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredCodeVis",
+				1,
+				"value" );
+		}
+		requiredCodeVis = value;
+	}
+
     @Override
     public boolean equals( Object obj ) {
         if (obj == null) {
@@ -664,6 +685,21 @@ public class CFBamJpaRelationH extends CFBamJpaScopeH
 			}
 			else {
 				if( rhs.getOptionalNarrowedId() != null ) {
+					return( false );
+				}
+			}
+			if( getRequiredCodeVis() != null ) {
+				if( rhs.getRequiredCodeVis() != null ) {
+					if( ! getRequiredCodeVis().equals( rhs.getRequiredCodeVis() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredCodeVis() != null ) {
 					return( false );
 				}
 			}
@@ -899,6 +935,21 @@ public class CFBamJpaRelationH extends CFBamJpaScopeH
 					return( false );
 				}
 			}
+			if( getRequiredCodeVis() != null ) {
+				if( rhs.getRequiredCodeVis() != null ) {
+					if( ! getRequiredCodeVis().equals( rhs.getRequiredCodeVis() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredCodeVis() != null ) {
+					return( false );
+				}
+			}
             return( true );
         }
         else if (obj instanceof ICFBamScopeHPKey) {
@@ -952,6 +1003,59 @@ public class CFBamJpaRelationH extends CFBamJpaScopeH
 			}
 			else {
 				if( rhs.getRequiredTableId() != null ) {
+					return( false );
+				}
+			}
+            return( true );
+        }
+        else if (obj instanceof ICFBamRelationByRelCodeVisIdxKey) {
+            ICFBamRelationByRelCodeVisIdxKey rhs = (ICFBamRelationByRelCodeVisIdxKey)obj;
+			if( getRequiredCodeVis() != null ) {
+				if( rhs.getRequiredCodeVis() != null ) {
+					if( ! getRequiredCodeVis().equals( rhs.getRequiredCodeVis() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredCodeVis() != null ) {
+					return( false );
+				}
+			}
+            return( true );
+        }
+        else if (obj instanceof ICFBamRelationByRelTableCodeVisXKey) {
+            ICFBamRelationByRelTableCodeVisXKey rhs = (ICFBamRelationByRelTableCodeVisXKey)obj;
+			if( getRequiredTableId() != null ) {
+				if( rhs.getRequiredTableId() != null ) {
+					if( ! getRequiredTableId().equals( rhs.getRequiredTableId() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredTableId() != null ) {
+					return( false );
+				}
+			}
+			if( getRequiredCodeVis() != null ) {
+				if( rhs.getRequiredCodeVis() != null ) {
+					if( ! getRequiredCodeVis().equals( rhs.getRequiredCodeVis() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredCodeVis() != null ) {
 					return( false );
 				}
 			}
@@ -1116,6 +1220,7 @@ public class CFBamJpaRelationH extends CFBamJpaScopeH
 		if( getOptionalNarrowedId() != null ) {
 			hashCode = hashCode + getOptionalNarrowedId().hashCode();
 		}
+		hashCode = ( hashCode * 0x10000 ) + getRequiredCodeVis().ordinal();
         return( hashCode & 0x7fffffff );
     }
 
@@ -1383,6 +1488,20 @@ public class CFBamJpaRelationH extends CFBamJpaScopeH
 					return( -1 );
 				}
 			}
+			if (getRequiredCodeVis() != null) {
+				if (rhs.getRequiredCodeVis() != null) {
+					cmp = getRequiredCodeVis().compareTo( rhs.getRequiredCodeVis() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredCodeVis() != null) {
+				return( -1 );
+			}
             return( 0 );
         }
         else if (obj instanceof ICFBamScopeHPKey) {
@@ -1646,6 +1765,20 @@ public class CFBamJpaRelationH extends CFBamJpaScopeH
 					return( -1 );
 				}
 			}
+			if (getRequiredCodeVis() != null) {
+				if (rhs.getRequiredCodeVis() != null) {
+					cmp = getRequiredCodeVis().compareTo( rhs.getRequiredCodeVis() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredCodeVis() != null) {
+				return( -1 );
+			}
             return( 0 );
         }
         else if (obj instanceof ICFBamRelationByUNameIdxKey ) {
@@ -1694,6 +1827,56 @@ public class CFBamJpaRelationH extends CFBamJpaScopeH
 				}
 			}
 			else if (rhs.getRequiredTableId() != null) {
+				return( -1 );
+			}
+            return( 0 );
+        }
+        else if (obj instanceof ICFBamRelationByRelCodeVisIdxKey ) {
+            ICFBamRelationByRelCodeVisIdxKey rhs = (ICFBamRelationByRelCodeVisIdxKey)obj;
+			if (getRequiredCodeVis() != null) {
+				if (rhs.getRequiredCodeVis() != null) {
+					cmp = getRequiredCodeVis().compareTo( rhs.getRequiredCodeVis() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredCodeVis() != null) {
+				return( -1 );
+			}
+            return( 0 );
+        }
+        else if (obj instanceof ICFBamRelationByRelTableCodeVisXKey ) {
+            ICFBamRelationByRelTableCodeVisXKey rhs = (ICFBamRelationByRelTableCodeVisXKey)obj;
+			if (getRequiredTableId() != null) {
+				if (rhs.getRequiredTableId() != null) {
+					cmp = getRequiredTableId().compareTo( rhs.getRequiredTableId() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredTableId() != null) {
+				return( -1 );
+			}
+			if (getRequiredCodeVis() != null) {
+				if (rhs.getRequiredCodeVis() != null) {
+					cmp = getRequiredCodeVis().compareTo( rhs.getRequiredCodeVis() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredCodeVis() != null) {
 				return( -1 );
 			}
             return( 0 );
@@ -1831,6 +2014,7 @@ public class CFBamJpaRelationH extends CFBamJpaScopeH
 		setRequiredIsLateResolver( src.getRequiredIsLateResolver() );
 		setRequiredAllowAddendum( src.getRequiredAllowAddendum() );
 		setOptionalNarrowedId( src.getOptionalNarrowedId() );
+		setRequiredCodeVis( src.getRequiredCodeVis() );
     }
 
 	@Override
@@ -1868,6 +2052,7 @@ public class CFBamJpaRelationH extends CFBamJpaScopeH
 		setRequiredIsLateResolver( src.getRequiredIsLateResolver() );
 		setRequiredAllowAddendum( src.getRequiredAllowAddendum() );
 		setOptionalNarrowedId( src.getOptionalNarrowedId() );
+		setRequiredCodeVis( src.getRequiredCodeVis() );
     }
 
     public String getXmlAttrFragment() {
@@ -1889,7 +2074,8 @@ public class CFBamJpaRelationH extends CFBamJpaScopeH
 			+ " RequiredIsXsdContainer=" + (( getRequiredIsXsdContainer() ) ? "\"true\"" : "\"false\"" )
 			+ " RequiredIsLateResolver=" + (( getRequiredIsLateResolver() ) ? "\"true\"" : "\"false\"" )
 			+ " RequiredAllowAddendum=" + (( getRequiredAllowAddendum() ) ? "\"true\"" : "\"false\"" )
-			+ " OptionalNarrowedId=" + ( ( getOptionalNarrowedId() == null ) ? "null" : "\"" + getOptionalNarrowedId().toString() + "\"" );
+			+ " OptionalNarrowedId=" + ( ( getOptionalNarrowedId() == null ) ? "null" : "\"" + getOptionalNarrowedId().toString() + "\"" )
+			+ " RequiredCodeVis=" + "\"" + getRequiredCodeVis().toString() + "\"";
         return( ret );
     }
 

@@ -156,6 +156,50 @@ public interface CFBamJpaRelationRepository extends JpaRepository<CFBamJpaRelati
 	}
 
 	/**
+	 *	Read zero or more entities into a List using the columns of the CFBamRelationByRelCodeVisIdxKey as arguments.
+	 *
+	 *		@param requiredCodeVis
+	 *
+	 *		@return List&lt;CFBamJpaRelation&gt; of the found entities, typically from the JPA cache, or an empty list if no such entities exist.
+	 */
+	@Query("select r from CFBamJpaRelation r where r.requiredCodeVis = :codeVis")
+	List<CFBamJpaRelation> findByRelCodeVisIdx(@Param("codeVis") ICFBamSchema.CodeVisibilityEnum requiredCodeVis);
+
+	/**
+	 *	CFBamRelationByRelCodeVisIdxKey entity list reader convenience method for object-based access.
+	 *
+	 *		@param key The CFBamRelationByRelCodeVisIdxKey instance to use for the query arguments.
+	 *
+	 *		@return The found entity list, which may be empty, typically populated from the JPA cache.
+	 */
+	default List<CFBamJpaRelation> findByRelCodeVisIdx(ICFBamRelationByRelCodeVisIdxKey key) {
+		return( findByRelCodeVisIdx(key.getRequiredCodeVis()));
+	}
+
+	/**
+	 *	Read zero or more entities into a List using the columns of the CFBamRelationByRelTableCodeVisXKey as arguments.
+	 *
+	 *		@param requiredTableId
+	 *		@param requiredCodeVis
+	 *
+	 *		@return List&lt;CFBamJpaRelation&gt; of the found entities, typically from the JPA cache, or an empty list if no such entities exist.
+	 */
+	@Query("select r from CFBamJpaRelation r where r.requiredContainerFromTable.requiredId = :tableId and r.requiredCodeVis = :codeVis")
+	List<CFBamJpaRelation> findByRelTableCodeVisX(@Param("tableId") CFLibDbKeyHash256 requiredTableId,
+		@Param("codeVis") ICFBamSchema.CodeVisibilityEnum requiredCodeVis);
+
+	/**
+	 *	CFBamRelationByRelTableCodeVisXKey entity list reader convenience method for object-based access.
+	 *
+	 *		@param key The CFBamRelationByRelTableCodeVisXKey instance to use for the query arguments.
+	 *
+	 *		@return The found entity list, which may be empty, typically populated from the JPA cache.
+	 */
+	default List<CFBamJpaRelation> findByRelTableCodeVisX(ICFBamRelationByRelTableCodeVisXKey key) {
+		return( findByRelTableCodeVisX(key.getRequiredTableId(), key.getRequiredCodeVis()));
+	}
+
+	/**
 	 *	Read zero or more entities into a List using the columns of the CFBamRelationByDefSchemaIdxKey as arguments.
 	 *
 	 *		@param optionalDefSchemaId
@@ -350,6 +394,54 @@ public interface CFBamJpaRelationRepository extends JpaRepository<CFBamJpaRelati
 	/**
 	 *	Argument-based lock database instance for compatibility with the current MSS code factory code base, uses @Transactional to acquire a JPA entity locks, which may or may not imply an actual database lock during the transaction.
 	 *
+	 *		@param requiredCodeVis
+	 *
+	 *		@return A list of locked entities, refreshed from the data store, or an empty list if no such entities exist.
+	 */
+	@Transactional
+	@Lock(LockModeType.WRITE)
+	@Query("select r from CFBamJpaRelation r where r.requiredCodeVis = :codeVis")
+	List<CFBamJpaRelation> lockByRelCodeVisIdx(@Param("codeVis") ICFBamSchema.CodeVisibilityEnum requiredCodeVis);
+
+	/**
+	 *	CFBamRelationByRelCodeVisIdxKey based lock method for object-based access.
+	 *
+	 *		@param key The key of the entity to be locked.
+	 *
+	 *		@return A list of locked entities, refreshed from the data store, or an empty list if no such entities exist.
+	 */
+	default List<CFBamJpaRelation> lockByRelCodeVisIdx(ICFBamRelationByRelCodeVisIdxKey key) {
+		return( lockByRelCodeVisIdx(key.getRequiredCodeVis()));
+	}
+
+	/**
+	 *	Argument-based lock database instance for compatibility with the current MSS code factory code base, uses @Transactional to acquire a JPA entity locks, which may or may not imply an actual database lock during the transaction.
+	 *
+	 *		@param requiredTableId
+	 *		@param requiredCodeVis
+	 *
+	 *		@return A list of locked entities, refreshed from the data store, or an empty list if no such entities exist.
+	 */
+	@Transactional
+	@Lock(LockModeType.WRITE)
+	@Query("select r from CFBamJpaRelation r where r.requiredContainerFromTable.requiredId = :tableId and r.requiredCodeVis = :codeVis")
+	List<CFBamJpaRelation> lockByRelTableCodeVisX(@Param("tableId") CFLibDbKeyHash256 requiredTableId,
+		@Param("codeVis") ICFBamSchema.CodeVisibilityEnum requiredCodeVis);
+
+	/**
+	 *	CFBamRelationByRelTableCodeVisXKey based lock method for object-based access.
+	 *
+	 *		@param key The key of the entity to be locked.
+	 *
+	 *		@return A list of locked entities, refreshed from the data store, or an empty list if no such entities exist.
+	 */
+	default List<CFBamJpaRelation> lockByRelTableCodeVisX(ICFBamRelationByRelTableCodeVisXKey key) {
+		return( lockByRelTableCodeVisX(key.getRequiredTableId(), key.getRequiredCodeVis()));
+	}
+
+	/**
+	 *	Argument-based lock database instance for compatibility with the current MSS code factory code base, uses @Transactional to acquire a JPA entity locks, which may or may not imply an actual database lock during the transaction.
+	 *
 	 *		@param optionalDefSchemaId
 	 *
 	 *		@return A list of locked entities, refreshed from the data store, or an empty list if no such entities exist.
@@ -533,6 +625,46 @@ public interface CFBamJpaRelationRepository extends JpaRepository<CFBamJpaRelati
 	 */
 	default void deleteByRelTableIdx(ICFBamRelationByRelTableIdxKey key) {
 		deleteByRelTableIdx(key.getRequiredTableId());
+	}
+
+	/**
+	 *	Argument-based delete entity for compatibility with the current MSS code factory code base, uses @Transactional to acquire a JPA entity lock, which may or may not imply an actual database lock during the transaction.
+	 *
+	 *		@param requiredCodeVis
+	 */
+	@Transactional
+	@Modifying
+	@Query("delete from CFBamJpaRelation r where r.requiredCodeVis = :codeVis")
+	void deleteByRelCodeVisIdx(@Param("codeVis") ICFBamSchema.CodeVisibilityEnum requiredCodeVis);
+
+	/**
+	 *	CFBamRelationByRelCodeVisIdxKey based lock method for object-based access.
+	 *
+	 *		@param key The CFBamRelationByRelCodeVisIdxKey of the entity to be locked.
+	 */
+	default void deleteByRelCodeVisIdx(ICFBamRelationByRelCodeVisIdxKey key) {
+		deleteByRelCodeVisIdx(key.getRequiredCodeVis());
+	}
+
+	/**
+	 *	Argument-based delete entity for compatibility with the current MSS code factory code base, uses @Transactional to acquire a JPA entity lock, which may or may not imply an actual database lock during the transaction.
+	 *
+	 *		@param requiredTableId
+	 *		@param requiredCodeVis
+	 */
+	@Transactional
+	@Modifying
+	@Query("delete from CFBamJpaRelation r where r.requiredContainerFromTable.requiredId = :tableId and r.requiredCodeVis = :codeVis")
+	void deleteByRelTableCodeVisX(@Param("tableId") CFLibDbKeyHash256 requiredTableId,
+		@Param("codeVis") ICFBamSchema.CodeVisibilityEnum requiredCodeVis);
+
+	/**
+	 *	CFBamRelationByRelTableCodeVisXKey based lock method for object-based access.
+	 *
+	 *		@param key The CFBamRelationByRelTableCodeVisXKey of the entity to be locked.
+	 */
+	default void deleteByRelTableCodeVisX(ICFBamRelationByRelTableCodeVisXKey key) {
+		deleteByRelTableCodeVisX(key.getRequiredTableId(), key.getRequiredCodeVis());
 	}
 
 	/**

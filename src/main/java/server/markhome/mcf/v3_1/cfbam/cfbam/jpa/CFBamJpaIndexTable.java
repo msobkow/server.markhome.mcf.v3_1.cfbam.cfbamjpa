@@ -377,6 +377,93 @@ public class CFBamJpaIndexTable implements ICFBamIndexTable
 	}
 
 	/**
+	 *	Delete the Index instances identified by the key IdxCodeVisIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	CodeVis	The Index key attribute of the instance generating the id.
+	 */
+	@Override
+	public void deleteIndexByIdxCodeVisIdx( ICFSecAuthorization Authorization,
+		ICFBamSchema.CodeVisibilityEnum argCodeVis )
+	{
+		final String S_ProcName = "deleteIndexByIdxCodeVisIdx";
+		boolean permissionGranted = canDeleteIndex(S_ProcName, Authorization);
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteindex", ICFBamSchema.SCHEMA_NAME, ICFBamIndexTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+
+		schema.getJpaHooksSchema().getIndexService().deleteByIdxCodeVisIdx(argCodeVis);
+	}
+
+
+	/**
+	 *	Delete the Index instances identified by the key IdxCodeVisIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	argKey	The key identifying the instances to be deleted.
+	 */
+	@Override
+	public void deleteIndexByIdxCodeVisIdx( ICFSecAuthorization Authorization,
+		ICFBamIndexByIdxCodeVisIdxKey argKey )
+	{
+		final String S_ProcName = "deleteIndexByIdxCodeVisIdx";
+		boolean permissionGranted = canDeleteIndex(S_ProcName, Authorization);
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteindex", ICFBamSchema.SCHEMA_NAME, ICFBamIndexTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+
+		schema.getJpaHooksSchema().getIndexService().deleteByIdxCodeVisIdx(argKey.getRequiredCodeVis());
+	}
+
+	/**
+	 *	Delete the Index instances identified by the key IdxTblCdVisX.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	TableId	The Index key attribute of the instance generating the id.
+	 *
+	 *	@param	CodeVis	The Index key attribute of the instance generating the id.
+	 */
+	@Override
+	public void deleteIndexByIdxTblCdVisX( ICFSecAuthorization Authorization,
+		CFLibDbKeyHash256 argTableId,
+		ICFBamSchema.CodeVisibilityEnum argCodeVis )
+	{
+		final String S_ProcName = "deleteIndexByIdxTblCdVisX";
+		boolean permissionGranted = canDeleteIndex(S_ProcName, Authorization);
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteindex", ICFBamSchema.SCHEMA_NAME, ICFBamIndexTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+
+		schema.getJpaHooksSchema().getIndexService().deleteByIdxTblCdVisX(argTableId,
+		argCodeVis);
+	}
+
+
+	/**
+	 *	Delete the Index instances identified by the key IdxTblCdVisX.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	argKey	The key identifying the instances to be deleted.
+	 */
+	@Override
+	public void deleteIndexByIdxTblCdVisX( ICFSecAuthorization Authorization,
+		ICFBamIndexByIdxTblCdVisXKey argKey )
+	{
+		final String S_ProcName = "deleteIndexByIdxTblCdVisX";
+		boolean permissionGranted = canDeleteIndex(S_ProcName, Authorization);
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteindex", ICFBamSchema.SCHEMA_NAME, ICFBamIndexTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+
+		schema.getJpaHooksSchema().getIndexService().deleteByIdxTblCdVisX(argKey.getRequiredTableId(),
+			argKey.getRequiredCodeVis());
+	}
+
+	/**
 	 *	Delete the Index instances identified by the key DefSchemaIdx.
 	 *
 	 *	@param	Authorization	The session authorization information.
@@ -686,6 +773,70 @@ public class CFBamJpaIndexTable implements ICFBamIndexTable
 	}
 
 	/**
+	 *	Read an array of the derived Index record instances identified by the duplicate key IdxCodeVisIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	CodeVis	The Index key attribute of the instance generating the id.
+	 *
+	 *	@return An array of derived instances for the specified key, potentially with 0 elements in the set.
+	 */
+	@Override
+	public ICFBamIndex[] readDerivedByIdxCodeVisIdx( ICFSecAuthorization Authorization,
+		ICFBamSchema.CodeVisibilityEnum argCodeVis )
+	{
+		final String S_ProcName = "readDerivedByIdxCodeVisIdx";
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadIndex(S_ProcName, Authorization);
+		}
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readindex", ICFBamSchema.SCHEMA_NAME, ICFBamIndexTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+		List<CFBamJpaIndex> retlist = schema.getJpaHooksSchema().getIndexService().findByIdxCodeVisIdx(argCodeVis);
+		ICFBamIndex[] retset = new ICFBamIndex[retlist.size()];
+		int idx = 0;
+		for (CFBamJpaIndex cur: retlist) {
+			retset[idx++] = cur;
+		}
+		return( retset );
+	}
+
+	/**
+	 *	Read an array of the derived Index record instances identified by the duplicate key IdxTblCdVisX.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	TableId	The Index key attribute of the instance generating the id.
+	 *
+	 *	@param	CodeVis	The Index key attribute of the instance generating the id.
+	 *
+	 *	@return An array of derived instances for the specified key, potentially with 0 elements in the set.
+	 */
+	@Override
+	public ICFBamIndex[] readDerivedByIdxTblCdVisX( ICFSecAuthorization Authorization,
+		CFLibDbKeyHash256 argTableId,
+		ICFBamSchema.CodeVisibilityEnum argCodeVis )
+	{
+		final String S_ProcName = "readDerivedByIdxTblCdVisX";
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadIndex(S_ProcName, Authorization);
+		}
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readindex", ICFBamSchema.SCHEMA_NAME, ICFBamIndexTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+		List<CFBamJpaIndex> retlist = schema.getJpaHooksSchema().getIndexService().findByIdxTblCdVisX(argTableId,
+		argCodeVis);
+		ICFBamIndex[] retset = new ICFBamIndex[retlist.size()];
+		int idx = 0;
+		for (CFBamJpaIndex cur: retlist) {
+			retset[idx++] = cur;
+		}
+		return( retset );
+	}
+
+	/**
 	 *	Read an array of the derived Index record instances identified by the duplicate key DefSchemaIdx.
 	 *
 	 *	@param	Authorization	The session authorization information.
@@ -891,6 +1042,61 @@ public class CFBamJpaIndexTable implements ICFBamIndexTable
 			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readindex", ICFBamSchema.SCHEMA_NAME, ICFBamIndexTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
 		}
 		throw new CFLibNotImplementedYetException(getClass(), "readRecByIdxTableIdx");
+	}
+
+	/**
+	 *	Read an array of the specific Index record instances identified by the duplicate key IdxCodeVisIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	CodeVis	The Index key attribute of the instance generating the id.
+	 *
+	 *	@return An array of derived record instances for the specified key, potentially with 0 elements in the set.
+	 *
+	 *	@throws	CFLibNotSupportedException thrown by client-side implementations.
+	 */
+	@Override
+	public ICFBamIndex[] readRecByIdxCodeVisIdx( ICFSecAuthorization Authorization,
+		ICFBamSchema.CodeVisibilityEnum argCodeVis )
+	{
+		final String S_ProcName = "readRecByIdxCodeVisIdx";
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadIndex(S_ProcName, Authorization);
+		}
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readindex", ICFBamSchema.SCHEMA_NAME, ICFBamIndexTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+		throw new CFLibNotImplementedYetException(getClass(), "readRecByIdxCodeVisIdx");
+	}
+
+	/**
+	 *	Read an array of the specific Index record instances identified by the duplicate key IdxTblCdVisX.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	TableId	The Index key attribute of the instance generating the id.
+	 *
+	 *	@param	CodeVis	The Index key attribute of the instance generating the id.
+	 *
+	 *	@return An array of derived record instances for the specified key, potentially with 0 elements in the set.
+	 *
+	 *	@throws	CFLibNotSupportedException thrown by client-side implementations.
+	 */
+	@Override
+	public ICFBamIndex[] readRecByIdxTblCdVisX( ICFSecAuthorization Authorization,
+		CFLibDbKeyHash256 argTableId,
+		ICFBamSchema.CodeVisibilityEnum argCodeVis )
+	{
+		final String S_ProcName = "readRecByIdxTblCdVisX";
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadIndex(S_ProcName, Authorization);
+		}
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readindex", ICFBamSchema.SCHEMA_NAME, ICFBamIndexTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+		throw new CFLibNotImplementedYetException(getClass(), "readRecByIdxTblCdVisX");
 	}
 
 	/**
