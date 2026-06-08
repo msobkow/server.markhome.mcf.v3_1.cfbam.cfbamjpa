@@ -221,6 +221,7 @@ public class CFBamJpaSchema
 	protected ICFBamTZTimestampTypeTable tableTZTimestampType;
 	protected ICFBamTableTable tableTable;
 	protected ICFBamTableColTable tableTableCol;
+	protected ICFSecTableInfoTable tableTableInfo;
 	protected ICFBamTableTweakTable tableTableTweak;
 	protected ICFSecTenantTable tableTenant;
 	protected ICFBamTextColTable tableTextCol;
@@ -402,6 +403,7 @@ public class CFBamJpaSchema
 	protected ICFBamTZTimestampTypeFactory factoryTZTimestampType;
 	protected ICFBamTableFactory factoryTable;
 	protected ICFBamTableColFactory factoryTableCol;
+	protected ICFSecTableInfoFactory factoryTableInfo;
 	protected ICFBamTableTweakFactory factoryTableTweak;
 	protected ICFSecTenantFactory factoryTenant;
 	protected ICFBamTextColFactory factoryTextCol;
@@ -3059,6 +3061,7 @@ public class CFBamJpaSchema
 		tableTZTimestampType = null;
 		tableTable = null;
 		tableTableCol = null;
+		tableTableInfo = null;
 		tableTableTweak = null;
 		tableTenant = null;
 		tableTextCol = null;
@@ -3240,6 +3243,7 @@ public class CFBamJpaSchema
 		factoryTZTimestampType = new CFBamJpaTZTimestampTypeDefaultFactory();
 		factoryTable = new CFBamJpaTableDefaultFactory();
 		factoryTableCol = new CFBamJpaTableColDefaultFactory();
+		factoryTableInfo = new CFSecJpaTableInfoDefaultFactory();
 		factoryTableTweak = new CFBamJpaTableTweakDefaultFactory();
 		factoryTenant = new CFSecJpaTenantDefaultFactory();
 		factoryTextCol = new CFBamJpaTextColDefaultFactory();
@@ -3301,6 +3305,11 @@ public class CFBamJpaSchema
 	@Override
 	public short nextISOTZoneIdGen() {
 		throw new CFLibNotImplementedYetException( getClass(), "nextISOTZoneIdGen" );
+	}
+
+	@Override
+	public int nextTableInfoIdGen() {
+		throw new CFLibNotImplementedYetException( getClass(), "nextTableInfoIdGen" );
 	}
 
 	@Override
@@ -5749,6 +5758,22 @@ public class CFBamJpaSchema
 
 	public void setFactoryTableCol( ICFBamTableColFactory value ) {
 		factoryTableCol = value;
+	}
+
+	public ICFSecTableInfoTable getTableTableInfo() {
+		return( tableTableInfo );
+	}
+
+	public void setTableTableInfo( ICFSecTableInfoTable value ) {
+		tableTableInfo = value;
+	}
+
+	public ICFSecTableInfoFactory getFactoryTableInfo() {
+		return( factoryTableInfo );
+	}
+
+	public void setFactoryTableInfo( ICFSecTableInfoFactory value ) {
+		factoryTableInfo = value;
 	}
 
 	public ICFBamTableTweakTable getTableTableTweak() {
