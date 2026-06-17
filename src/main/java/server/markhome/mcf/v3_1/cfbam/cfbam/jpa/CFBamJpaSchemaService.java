@@ -504,16 +504,16 @@ public class CFBamJpaSchemaService {
 	private CFBamJpaSchemaRoleService schemaroleService;
 
 
-	public void bootstrapSchema(CFSecTableInfo tableInfo[]) {
-		ICFSecSchema.getBackingCFSec().bootstrapSchema(tableInfo);
+	public void bootstrapSchema(CFSecTableData tableData[]) {
+		ICFSecSchema.getBackingCFSec().bootstrapSchema(tableData);
 	}
 
-	public void bootstrapAllTablesSecurity(CFSecTableInfo tableInfo[]) {
-		bootstrapAllTablesSecurity(ICFSecSchema.getSysClusterId(), ICFSecSchema.getSysTenantId(), tableInfo);
+	public void bootstrapAllTablesSecurity(CFSecTableData tableData[]) {
+		bootstrapAllTablesSecurity(ICFSecSchema.getSysClusterId(), ICFSecSchema.getSysTenantId(), tableData);
 	}
 
-	public void bootstrapAllTablesSecurity(CFLibDbKeyHash256 clusterId, CFLibDbKeyHash256 tenantId, CFSecTableInfo tableInfo[]) {
-		ICFSecSchema.getBackingCFSec().bootstrapAllTablesSecurity(clusterId, tenantId, tableInfo);
+	public void bootstrapAllTablesSecurity(CFLibDbKeyHash256 clusterId, CFLibDbKeyHash256 tenantId, CFSecTableData tableData[]) {
+		ICFSecSchema.getBackingCFSec().bootstrapAllTablesSecurity(clusterId, tenantId, tableData);
 	}
 
 

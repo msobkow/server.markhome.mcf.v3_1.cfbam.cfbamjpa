@@ -6368,11 +6368,11 @@ public class CFBamJpaSchema
 		factoryValue = value;
 	}
 
-	public void bootstrapSchema(CFSecTableInfo tableInfo[]) {
-		ICFSecSchema.getBackingCFSec().bootstrapSchema(tableInfo);
+	public void bootstrapSchema(CFSecTableData tableData[]) {
+		ICFSecSchema.getBackingCFSec().bootstrapSchema(tableData);
 	}
 
-	public void bootstrapAllTablesSecurity(CFLibDbKeyHash256 clusterId, CFLibDbKeyHash256 tenantId, CFSecTableInfo tableInfo[]) {
-		ICFSecSchema.getBackingCFSec().bootstrapAllTablesSecurity(clusterId, tenantId, tableInfo);
+	public void bootstrapAllTablesSecurity(CFLibDbKeyHash256 clusterId, CFLibDbKeyHash256 tenantId, CFSecTableData tableData[]) {
+		ICFSecSchema.getBackingCFSec().bootstrapAllTablesSecurity(clusterId, tenantId, tableData);
 	}
 }
