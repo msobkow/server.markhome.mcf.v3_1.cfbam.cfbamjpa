@@ -510,7 +510,11 @@ public class CFBamJpaHooksSchema {
 	private CFBamJpaSchemaService schemaService;
 
 	@Autowired
-	@Qualifier("CFBamJpaIdGenService")
+	@Qualifier("cfbam31JpaFactory")
+	private CFBamJpaFactoryService factoryService;
+
+	@Autowired
+	@Qualifier("CFBam31JpaIdGenService")
 	private CFBamJpaIdGenService idGenService;
 
 	@Autowired
@@ -1099,6 +1103,16 @@ public class CFBamJpaHooksSchema {
 				"ERROR - do not know how to dynamically resolve Spring beans from POJO code yet and AspectJ did not resolve it either" );
 		}
 		return( schemaService );
+	}
+
+	public CFBamJpaFactoryService getFactoryService() {
+		if ( factoryService == null ) {
+			// Dynamically resolve the factory by qualifier name
+			throw new CFLibNotImplementedYetException( getClass(), "getFactoryService",
+				"ERROR - do not know how to dynamically resolve Spring beans from POJO code yet and AspectJ did not resolve it either",
+				"ERROR - do not know how to dynamically resolve Spring beans from POJO code yet and AspectJ did not resolve it either" );
+		}
+		return( factoryService );
 	}
 
 	public CFBamJpaIdGenService getIdGenService() {

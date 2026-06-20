@@ -76,7 +76,7 @@ public class CFBamJpaSchema
 		ICFSecSchema,
 		ICFIntSchema
 {
-	private CFBamJpaHooksSchema cfbamJpaHooksSchema = null;
+	private static CFBamJpaHooksSchema cfbamJpaHooksSchema = null;
 
 	protected ICFBamAtomTable tableAtom;
 	protected ICFBamBlobColTable tableBlobCol;
@@ -259,188 +259,6 @@ public class CFBamJpaSchema
 	protected ICFBamUuidGenTable tableUuidGen;
 	protected ICFBamUuidTypeTable tableUuidType;
 	protected ICFBamValueTable tableValue;
-
-	protected ICFBamAtomFactory factoryAtom;
-	protected ICFBamBlobColFactory factoryBlobCol;
-	protected ICFBamBlobDefFactory factoryBlobDef;
-	protected ICFBamBlobTypeFactory factoryBlobType;
-	protected ICFBamBoolColFactory factoryBoolCol;
-	protected ICFBamBoolDefFactory factoryBoolDef;
-	protected ICFBamBoolTypeFactory factoryBoolType;
-	protected ICFBamChainFactory factoryChain;
-	protected ICFBamClearDepFactory factoryClearDep;
-	protected ICFBamClearSubDep1Factory factoryClearSubDep1;
-	protected ICFBamClearSubDep2Factory factoryClearSubDep2;
-	protected ICFBamClearSubDep3Factory factoryClearSubDep3;
-	protected ICFBamClearTopDepFactory factoryClearTopDep;
-	protected ICFSecClusterFactory factoryCluster;
-	protected ICFBamDateColFactory factoryDateCol;
-	protected ICFBamDateDefFactory factoryDateDef;
-	protected ICFBamDateTypeFactory factoryDateType;
-	protected ICFBamDbKeyHash128ColFactory factoryDbKeyHash128Col;
-	protected ICFBamDbKeyHash128DefFactory factoryDbKeyHash128Def;
-	protected ICFBamDbKeyHash128GenFactory factoryDbKeyHash128Gen;
-	protected ICFBamDbKeyHash128TypeFactory factoryDbKeyHash128Type;
-	protected ICFBamDbKeyHash160ColFactory factoryDbKeyHash160Col;
-	protected ICFBamDbKeyHash160DefFactory factoryDbKeyHash160Def;
-	protected ICFBamDbKeyHash160GenFactory factoryDbKeyHash160Gen;
-	protected ICFBamDbKeyHash160TypeFactory factoryDbKeyHash160Type;
-	protected ICFBamDbKeyHash224ColFactory factoryDbKeyHash224Col;
-	protected ICFBamDbKeyHash224DefFactory factoryDbKeyHash224Def;
-	protected ICFBamDbKeyHash224GenFactory factoryDbKeyHash224Gen;
-	protected ICFBamDbKeyHash224TypeFactory factoryDbKeyHash224Type;
-	protected ICFBamDbKeyHash256ColFactory factoryDbKeyHash256Col;
-	protected ICFBamDbKeyHash256DefFactory factoryDbKeyHash256Def;
-	protected ICFBamDbKeyHash256GenFactory factoryDbKeyHash256Gen;
-	protected ICFBamDbKeyHash256TypeFactory factoryDbKeyHash256Type;
-	protected ICFBamDbKeyHash384ColFactory factoryDbKeyHash384Col;
-	protected ICFBamDbKeyHash384DefFactory factoryDbKeyHash384Def;
-	protected ICFBamDbKeyHash384GenFactory factoryDbKeyHash384Gen;
-	protected ICFBamDbKeyHash384TypeFactory factoryDbKeyHash384Type;
-	protected ICFBamDbKeyHash512ColFactory factoryDbKeyHash512Col;
-	protected ICFBamDbKeyHash512DefFactory factoryDbKeyHash512Def;
-	protected ICFBamDbKeyHash512GenFactory factoryDbKeyHash512Gen;
-	protected ICFBamDbKeyHash512TypeFactory factoryDbKeyHash512Type;
-	protected ICFBamDelDepFactory factoryDelDep;
-	protected ICFBamDelSubDep1Factory factoryDelSubDep1;
-	protected ICFBamDelSubDep2Factory factoryDelSubDep2;
-	protected ICFBamDelSubDep3Factory factoryDelSubDep3;
-	protected ICFBamDelTopDepFactory factoryDelTopDep;
-	protected ICFBamDoubleColFactory factoryDoubleCol;
-	protected ICFBamDoubleDefFactory factoryDoubleDef;
-	protected ICFBamDoubleTypeFactory factoryDoubleType;
-	protected ICFBamEnumDefFactory factoryEnumDef;
-	protected ICFBamEnumTagFactory factoryEnumTag;
-	protected ICFBamEnumTypeFactory factoryEnumType;
-	protected ICFBamFloatColFactory factoryFloatCol;
-	protected ICFBamFloatDefFactory factoryFloatDef;
-	protected ICFBamFloatTypeFactory factoryFloatType;
-	protected ICFSecISOCcyFactory factoryISOCcy;
-	protected ICFSecISOCtryFactory factoryISOCtry;
-	protected ICFSecISOCtryCcyFactory factoryISOCtryCcy;
-	protected ICFSecISOCtryLangFactory factoryISOCtryLang;
-	protected ICFSecISOLangFactory factoryISOLang;
-	protected ICFSecISOTZoneFactory factoryISOTZone;
-	protected ICFBamId16GenFactory factoryId16Gen;
-	protected ICFBamId32GenFactory factoryId32Gen;
-	protected ICFBamId64GenFactory factoryId64Gen;
-	protected ICFBamIndexFactory factoryIndex;
-	protected ICFBamIndexColFactory factoryIndexCol;
-	protected ICFBamIndexTweakFactory factoryIndexTweak;
-	protected ICFBamInt16ColFactory factoryInt16Col;
-	protected ICFBamInt16DefFactory factoryInt16Def;
-	protected ICFBamInt16TypeFactory factoryInt16Type;
-	protected ICFBamInt32ColFactory factoryInt32Col;
-	protected ICFBamInt32DefFactory factoryInt32Def;
-	protected ICFBamInt32TypeFactory factoryInt32Type;
-	protected ICFBamInt64ColFactory factoryInt64Col;
-	protected ICFBamInt64DefFactory factoryInt64Def;
-	protected ICFBamInt64TypeFactory factoryInt64Type;
-	protected ICFIntLicenseFactory factoryLicense;
-	protected ICFIntMajorVersionFactory factoryMajorVersion;
-	protected ICFIntMimeTypeFactory factoryMimeType;
-	protected ICFIntMinorVersionFactory factoryMinorVersion;
-	protected ICFBamNmTokenColFactory factoryNmTokenCol;
-	protected ICFBamNmTokenDefFactory factoryNmTokenDef;
-	protected ICFBamNmTokenTypeFactory factoryNmTokenType;
-	protected ICFBamNmTokensColFactory factoryNmTokensCol;
-	protected ICFBamNmTokensDefFactory factoryNmTokensDef;
-	protected ICFBamNmTokensTypeFactory factoryNmTokensType;
-	protected ICFBamNumberColFactory factoryNumberCol;
-	protected ICFBamNumberDefFactory factoryNumberDef;
-	protected ICFBamNumberTypeFactory factoryNumberType;
-	protected ICFBamParamFactory factoryParam;
-	protected ICFBamPopDepFactory factoryPopDep;
-	protected ICFBamPopSubDep1Factory factoryPopSubDep1;
-	protected ICFBamPopSubDep2Factory factoryPopSubDep2;
-	protected ICFBamPopSubDep3Factory factoryPopSubDep3;
-	protected ICFBamPopTopDepFactory factoryPopTopDep;
-	protected ICFBamRelationFactory factoryRelation;
-	protected ICFBamRelationColFactory factoryRelationCol;
-	protected ICFBamRoleDefFactory factoryRoleDef;
-	protected ICFBamSchemaDefFactory factorySchemaDef;
-	protected ICFBamSchemaRefFactory factorySchemaRef;
-	protected ICFBamSchemaRoleFactory factorySchemaRole;
-	protected ICFBamSchemaTweakFactory factorySchemaTweak;
-	protected ICFBamScopeFactory factoryScope;
-	protected ICFSecSecClusGrpFactory factorySecClusGrp;
-	protected ICFSecSecClusGrpMembFactory factorySecClusGrpMemb;
-	protected ICFSecSecClusRoleFactory factorySecClusRole;
-	protected ICFSecSecClusRoleMembFactory factorySecClusRoleMemb;
-	protected ICFSecSecSessionFactory factorySecSession;
-	protected ICFSecSecSysGrpFactory factorySecSysGrp;
-	protected ICFSecSecSysGrpIncFactory factorySecSysGrpInc;
-	protected ICFSecSecSysGrpMembFactory factorySecSysGrpMemb;
-	protected ICFSecSecSysRoleFactory factorySecSysRole;
-	protected ICFSecSecSysRoleEnablesFactory factorySecSysRoleEnables;
-	protected ICFSecSecSysRoleMembFactory factorySecSysRoleMemb;
-	protected ICFSecSecTentGrpFactory factorySecTentGrp;
-	protected ICFSecSecTentGrpMembFactory factorySecTentGrpMemb;
-	protected ICFSecSecTentRoleFactory factorySecTentRole;
-	protected ICFSecSecTentRoleMembFactory factorySecTentRoleMemb;
-	protected ICFSecSecUserFactory factorySecUser;
-	protected ICFSecSecUserEMConfFactory factorySecUserEMConf;
-	protected ICFSecSecUserPWHistoryFactory factorySecUserPWHistory;
-	protected ICFSecSecUserPWResetFactory factorySecUserPWReset;
-	protected ICFSecSecUserPasswordFactory factorySecUserPassword;
-	protected ICFBamServerListFuncFactory factoryServerListFunc;
-	protected ICFBamServerMethodFactory factoryServerMethod;
-	protected ICFBamServerObjFuncFactory factoryServerObjFunc;
-	protected ICFBamServerProcFactory factoryServerProc;
-	protected ICFBamStringColFactory factoryStringCol;
-	protected ICFBamStringDefFactory factoryStringDef;
-	protected ICFBamStringTypeFactory factoryStringType;
-	protected ICFIntSubProjectFactory factorySubProject;
-	protected ICFSecSysClusterFactory factorySysCluster;
-	protected ICFBamTZDateColFactory factoryTZDateCol;
-	protected ICFBamTZDateDefFactory factoryTZDateDef;
-	protected ICFBamTZDateTypeFactory factoryTZDateType;
-	protected ICFBamTZTimeColFactory factoryTZTimeCol;
-	protected ICFBamTZTimeDefFactory factoryTZTimeDef;
-	protected ICFBamTZTimeTypeFactory factoryTZTimeType;
-	protected ICFBamTZTimestampColFactory factoryTZTimestampCol;
-	protected ICFBamTZTimestampDefFactory factoryTZTimestampDef;
-	protected ICFBamTZTimestampTypeFactory factoryTZTimestampType;
-	protected ICFBamTableFactory factoryTable;
-	protected ICFBamTableColFactory factoryTableCol;
-	protected ICFSecTableInfoFactory factoryTableInfo;
-	protected ICFBamTableTweakFactory factoryTableTweak;
-	protected ICFSecTenantFactory factoryTenant;
-	protected ICFBamTextColFactory factoryTextCol;
-	protected ICFBamTextDefFactory factoryTextDef;
-	protected ICFBamTextTypeFactory factoryTextType;
-	protected ICFBamTimeColFactory factoryTimeCol;
-	protected ICFBamTimeDefFactory factoryTimeDef;
-	protected ICFBamTimeTypeFactory factoryTimeType;
-	protected ICFBamTimestampColFactory factoryTimestampCol;
-	protected ICFBamTimestampDefFactory factoryTimestampDef;
-	protected ICFBamTimestampTypeFactory factoryTimestampType;
-	protected ICFIntTldFactory factoryTld;
-	protected ICFBamTokenColFactory factoryTokenCol;
-	protected ICFBamTokenDefFactory factoryTokenDef;
-	protected ICFBamTokenTypeFactory factoryTokenType;
-	protected ICFIntTopDomainFactory factoryTopDomain;
-	protected ICFIntTopProjectFactory factoryTopProject;
-	protected ICFBamTweakFactory factoryTweak;
-	protected ICFBamUInt16ColFactory factoryUInt16Col;
-	protected ICFBamUInt16DefFactory factoryUInt16Def;
-	protected ICFBamUInt16TypeFactory factoryUInt16Type;
-	protected ICFBamUInt32ColFactory factoryUInt32Col;
-	protected ICFBamUInt32DefFactory factoryUInt32Def;
-	protected ICFBamUInt32TypeFactory factoryUInt32Type;
-	protected ICFBamUInt64ColFactory factoryUInt64Col;
-	protected ICFBamUInt64DefFactory factoryUInt64Def;
-	protected ICFBamUInt64TypeFactory factoryUInt64Type;
-	protected ICFIntURLProtocolFactory factoryURLProtocol;
-	protected ICFBamUuid6ColFactory factoryUuid6Col;
-	protected ICFBamUuid6DefFactory factoryUuid6Def;
-	protected ICFBamUuid6GenFactory factoryUuid6Gen;
-	protected ICFBamUuid6TypeFactory factoryUuid6Type;
-	protected ICFBamUuidColFactory factoryUuidCol;
-	protected ICFBamUuidDefFactory factoryUuidDef;
-	protected ICFBamUuidGenFactory factoryUuidGen;
-	protected ICFBamUuidTypeFactory factoryUuidType;
-	protected ICFBamValueFactory factoryValue;
 
 
 	@Override
@@ -2904,16 +2722,21 @@ public class CFBamJpaSchema
 		schema.wireRecConstructors();
 	}
 
-	public CFBamJpaHooksSchema getJpaHooksSchema() {
+	public static CFBamJpaHooksSchema getJpaHooksSchema() {
 		return( cfbamJpaHooksSchema );
 	}
 
-	public void setJpaHooksSchema(CFBamJpaHooksSchema jpaHooksSchema) {
+	public static void setJpaHooksSchema(CFBamJpaHooksSchema jpaHooksSchema) {
 		cfbamJpaHooksSchema = jpaHooksSchema;
 	}
 
+	@Override
+	public ICFBamFactory getCFBamFactory() {
+		return(CFBamJpaSchema.getJpaHooksSchema().getFactoryService());
+	}
+
 	public CFBamJpaSchemaService getSchemaService() {
-		return( getJpaHooksSchema().getSchemaService() );
+		return( CFBamJpaSchema.getJpaHooksSchema().getSchemaService() );
 	}
 
 	public CFBamJpaSchema() {
@@ -3099,188 +2922,7 @@ public class CFBamJpaSchema
 		tableUuidGen = null;
 		tableUuidType = null;
 		tableValue = null;
-
-		factoryAtom = new CFBamJpaAtomDefaultFactory();
-		factoryBlobCol = new CFBamJpaBlobColDefaultFactory();
-		factoryBlobDef = new CFBamJpaBlobDefDefaultFactory();
-		factoryBlobType = new CFBamJpaBlobTypeDefaultFactory();
-		factoryBoolCol = new CFBamJpaBoolColDefaultFactory();
-		factoryBoolDef = new CFBamJpaBoolDefDefaultFactory();
-		factoryBoolType = new CFBamJpaBoolTypeDefaultFactory();
-		factoryChain = new CFBamJpaChainDefaultFactory();
-		factoryClearDep = new CFBamJpaClearDepDefaultFactory();
-		factoryClearSubDep1 = new CFBamJpaClearSubDep1DefaultFactory();
-		factoryClearSubDep2 = new CFBamJpaClearSubDep2DefaultFactory();
-		factoryClearSubDep3 = new CFBamJpaClearSubDep3DefaultFactory();
-		factoryClearTopDep = new CFBamJpaClearTopDepDefaultFactory();
-		factoryCluster = new CFSecJpaClusterDefaultFactory();
-		factoryDateCol = new CFBamJpaDateColDefaultFactory();
-		factoryDateDef = new CFBamJpaDateDefDefaultFactory();
-		factoryDateType = new CFBamJpaDateTypeDefaultFactory();
-		factoryDbKeyHash128Col = new CFBamJpaDbKeyHash128ColDefaultFactory();
-		factoryDbKeyHash128Def = new CFBamJpaDbKeyHash128DefDefaultFactory();
-		factoryDbKeyHash128Gen = new CFBamJpaDbKeyHash128GenDefaultFactory();
-		factoryDbKeyHash128Type = new CFBamJpaDbKeyHash128TypeDefaultFactory();
-		factoryDbKeyHash160Col = new CFBamJpaDbKeyHash160ColDefaultFactory();
-		factoryDbKeyHash160Def = new CFBamJpaDbKeyHash160DefDefaultFactory();
-		factoryDbKeyHash160Gen = new CFBamJpaDbKeyHash160GenDefaultFactory();
-		factoryDbKeyHash160Type = new CFBamJpaDbKeyHash160TypeDefaultFactory();
-		factoryDbKeyHash224Col = new CFBamJpaDbKeyHash224ColDefaultFactory();
-		factoryDbKeyHash224Def = new CFBamJpaDbKeyHash224DefDefaultFactory();
-		factoryDbKeyHash224Gen = new CFBamJpaDbKeyHash224GenDefaultFactory();
-		factoryDbKeyHash224Type = new CFBamJpaDbKeyHash224TypeDefaultFactory();
-		factoryDbKeyHash256Col = new CFBamJpaDbKeyHash256ColDefaultFactory();
-		factoryDbKeyHash256Def = new CFBamJpaDbKeyHash256DefDefaultFactory();
-		factoryDbKeyHash256Gen = new CFBamJpaDbKeyHash256GenDefaultFactory();
-		factoryDbKeyHash256Type = new CFBamJpaDbKeyHash256TypeDefaultFactory();
-		factoryDbKeyHash384Col = new CFBamJpaDbKeyHash384ColDefaultFactory();
-		factoryDbKeyHash384Def = new CFBamJpaDbKeyHash384DefDefaultFactory();
-		factoryDbKeyHash384Gen = new CFBamJpaDbKeyHash384GenDefaultFactory();
-		factoryDbKeyHash384Type = new CFBamJpaDbKeyHash384TypeDefaultFactory();
-		factoryDbKeyHash512Col = new CFBamJpaDbKeyHash512ColDefaultFactory();
-		factoryDbKeyHash512Def = new CFBamJpaDbKeyHash512DefDefaultFactory();
-		factoryDbKeyHash512Gen = new CFBamJpaDbKeyHash512GenDefaultFactory();
-		factoryDbKeyHash512Type = new CFBamJpaDbKeyHash512TypeDefaultFactory();
-		factoryDelDep = new CFBamJpaDelDepDefaultFactory();
-		factoryDelSubDep1 = new CFBamJpaDelSubDep1DefaultFactory();
-		factoryDelSubDep2 = new CFBamJpaDelSubDep2DefaultFactory();
-		factoryDelSubDep3 = new CFBamJpaDelSubDep3DefaultFactory();
-		factoryDelTopDep = new CFBamJpaDelTopDepDefaultFactory();
-		factoryDoubleCol = new CFBamJpaDoubleColDefaultFactory();
-		factoryDoubleDef = new CFBamJpaDoubleDefDefaultFactory();
-		factoryDoubleType = new CFBamJpaDoubleTypeDefaultFactory();
-		factoryEnumDef = new CFBamJpaEnumDefDefaultFactory();
-		factoryEnumTag = new CFBamJpaEnumTagDefaultFactory();
-		factoryEnumType = new CFBamJpaEnumTypeDefaultFactory();
-		factoryFloatCol = new CFBamJpaFloatColDefaultFactory();
-		factoryFloatDef = new CFBamJpaFloatDefDefaultFactory();
-		factoryFloatType = new CFBamJpaFloatTypeDefaultFactory();
-		factoryISOCcy = new CFSecJpaISOCcyDefaultFactory();
-		factoryISOCtry = new CFSecJpaISOCtryDefaultFactory();
-		factoryISOCtryCcy = new CFSecJpaISOCtryCcyDefaultFactory();
-		factoryISOCtryLang = new CFSecJpaISOCtryLangDefaultFactory();
-		factoryISOLang = new CFSecJpaISOLangDefaultFactory();
-		factoryISOTZone = new CFSecJpaISOTZoneDefaultFactory();
-		factoryId16Gen = new CFBamJpaId16GenDefaultFactory();
-		factoryId32Gen = new CFBamJpaId32GenDefaultFactory();
-		factoryId64Gen = new CFBamJpaId64GenDefaultFactory();
-		factoryIndex = new CFBamJpaIndexDefaultFactory();
-		factoryIndexCol = new CFBamJpaIndexColDefaultFactory();
-		factoryIndexTweak = new CFBamJpaIndexTweakDefaultFactory();
-		factoryInt16Col = new CFBamJpaInt16ColDefaultFactory();
-		factoryInt16Def = new CFBamJpaInt16DefDefaultFactory();
-		factoryInt16Type = new CFBamJpaInt16TypeDefaultFactory();
-		factoryInt32Col = new CFBamJpaInt32ColDefaultFactory();
-		factoryInt32Def = new CFBamJpaInt32DefDefaultFactory();
-		factoryInt32Type = new CFBamJpaInt32TypeDefaultFactory();
-		factoryInt64Col = new CFBamJpaInt64ColDefaultFactory();
-		factoryInt64Def = new CFBamJpaInt64DefDefaultFactory();
-		factoryInt64Type = new CFBamJpaInt64TypeDefaultFactory();
-		factoryLicense = new CFIntJpaLicenseDefaultFactory();
-		factoryMajorVersion = new CFIntJpaMajorVersionDefaultFactory();
-		factoryMimeType = new CFIntJpaMimeTypeDefaultFactory();
-		factoryMinorVersion = new CFIntJpaMinorVersionDefaultFactory();
-		factoryNmTokenCol = new CFBamJpaNmTokenColDefaultFactory();
-		factoryNmTokenDef = new CFBamJpaNmTokenDefDefaultFactory();
-		factoryNmTokenType = new CFBamJpaNmTokenTypeDefaultFactory();
-		factoryNmTokensCol = new CFBamJpaNmTokensColDefaultFactory();
-		factoryNmTokensDef = new CFBamJpaNmTokensDefDefaultFactory();
-		factoryNmTokensType = new CFBamJpaNmTokensTypeDefaultFactory();
-		factoryNumberCol = new CFBamJpaNumberColDefaultFactory();
-		factoryNumberDef = new CFBamJpaNumberDefDefaultFactory();
-		factoryNumberType = new CFBamJpaNumberTypeDefaultFactory();
-		factoryParam = new CFBamJpaParamDefaultFactory();
-		factoryPopDep = new CFBamJpaPopDepDefaultFactory();
-		factoryPopSubDep1 = new CFBamJpaPopSubDep1DefaultFactory();
-		factoryPopSubDep2 = new CFBamJpaPopSubDep2DefaultFactory();
-		factoryPopSubDep3 = new CFBamJpaPopSubDep3DefaultFactory();
-		factoryPopTopDep = new CFBamJpaPopTopDepDefaultFactory();
-		factoryRelation = new CFBamJpaRelationDefaultFactory();
-		factoryRelationCol = new CFBamJpaRelationColDefaultFactory();
-		factoryRoleDef = new CFBamJpaRoleDefDefaultFactory();
-		factorySchemaDef = new CFBamJpaSchemaDefDefaultFactory();
-		factorySchemaRef = new CFBamJpaSchemaRefDefaultFactory();
-		factorySchemaRole = new CFBamJpaSchemaRoleDefaultFactory();
-		factorySchemaTweak = new CFBamJpaSchemaTweakDefaultFactory();
-		factoryScope = new CFBamJpaScopeDefaultFactory();
-		factorySecClusGrp = new CFSecJpaSecClusGrpDefaultFactory();
-		factorySecClusGrpMemb = new CFSecJpaSecClusGrpMembDefaultFactory();
-		factorySecClusRole = new CFSecJpaSecClusRoleDefaultFactory();
-		factorySecClusRoleMemb = new CFSecJpaSecClusRoleMembDefaultFactory();
-		factorySecSession = new CFSecJpaSecSessionDefaultFactory();
-		factorySecSysGrp = new CFSecJpaSecSysGrpDefaultFactory();
-		factorySecSysGrpInc = new CFSecJpaSecSysGrpIncDefaultFactory();
-		factorySecSysGrpMemb = new CFSecJpaSecSysGrpMembDefaultFactory();
-		factorySecSysRole = new CFSecJpaSecSysRoleDefaultFactory();
-		factorySecSysRoleEnables = new CFSecJpaSecSysRoleEnablesDefaultFactory();
-		factorySecSysRoleMemb = new CFSecJpaSecSysRoleMembDefaultFactory();
-		factorySecTentGrp = new CFSecJpaSecTentGrpDefaultFactory();
-		factorySecTentGrpMemb = new CFSecJpaSecTentGrpMembDefaultFactory();
-		factorySecTentRole = new CFSecJpaSecTentRoleDefaultFactory();
-		factorySecTentRoleMemb = new CFSecJpaSecTentRoleMembDefaultFactory();
-		factorySecUser = new CFSecJpaSecUserDefaultFactory();
-		factorySecUserEMConf = new CFSecJpaSecUserEMConfDefaultFactory();
-		factorySecUserPWHistory = new CFSecJpaSecUserPWHistoryDefaultFactory();
-		factorySecUserPWReset = new CFSecJpaSecUserPWResetDefaultFactory();
-		factorySecUserPassword = new CFSecJpaSecUserPasswordDefaultFactory();
-		factoryServerListFunc = new CFBamJpaServerListFuncDefaultFactory();
-		factoryServerMethod = new CFBamJpaServerMethodDefaultFactory();
-		factoryServerObjFunc = new CFBamJpaServerObjFuncDefaultFactory();
-		factoryServerProc = new CFBamJpaServerProcDefaultFactory();
-		factoryStringCol = new CFBamJpaStringColDefaultFactory();
-		factoryStringDef = new CFBamJpaStringDefDefaultFactory();
-		factoryStringType = new CFBamJpaStringTypeDefaultFactory();
-		factorySubProject = new CFIntJpaSubProjectDefaultFactory();
-		factorySysCluster = new CFSecJpaSysClusterDefaultFactory();
-		factoryTZDateCol = new CFBamJpaTZDateColDefaultFactory();
-		factoryTZDateDef = new CFBamJpaTZDateDefDefaultFactory();
-		factoryTZDateType = new CFBamJpaTZDateTypeDefaultFactory();
-		factoryTZTimeCol = new CFBamJpaTZTimeColDefaultFactory();
-		factoryTZTimeDef = new CFBamJpaTZTimeDefDefaultFactory();
-		factoryTZTimeType = new CFBamJpaTZTimeTypeDefaultFactory();
-		factoryTZTimestampCol = new CFBamJpaTZTimestampColDefaultFactory();
-		factoryTZTimestampDef = new CFBamJpaTZTimestampDefDefaultFactory();
-		factoryTZTimestampType = new CFBamJpaTZTimestampTypeDefaultFactory();
-		factoryTable = new CFBamJpaTableDefaultFactory();
-		factoryTableCol = new CFBamJpaTableColDefaultFactory();
-		factoryTableInfo = new CFSecJpaTableInfoDefaultFactory();
-		factoryTableTweak = new CFBamJpaTableTweakDefaultFactory();
-		factoryTenant = new CFSecJpaTenantDefaultFactory();
-		factoryTextCol = new CFBamJpaTextColDefaultFactory();
-		factoryTextDef = new CFBamJpaTextDefDefaultFactory();
-		factoryTextType = new CFBamJpaTextTypeDefaultFactory();
-		factoryTimeCol = new CFBamJpaTimeColDefaultFactory();
-		factoryTimeDef = new CFBamJpaTimeDefDefaultFactory();
-		factoryTimeType = new CFBamJpaTimeTypeDefaultFactory();
-		factoryTimestampCol = new CFBamJpaTimestampColDefaultFactory();
-		factoryTimestampDef = new CFBamJpaTimestampDefDefaultFactory();
-		factoryTimestampType = new CFBamJpaTimestampTypeDefaultFactory();
-		factoryTld = new CFIntJpaTldDefaultFactory();
-		factoryTokenCol = new CFBamJpaTokenColDefaultFactory();
-		factoryTokenDef = new CFBamJpaTokenDefDefaultFactory();
-		factoryTokenType = new CFBamJpaTokenTypeDefaultFactory();
-		factoryTopDomain = new CFIntJpaTopDomainDefaultFactory();
-		factoryTopProject = new CFIntJpaTopProjectDefaultFactory();
-		factoryTweak = new CFBamJpaTweakDefaultFactory();
-		factoryUInt16Col = new CFBamJpaUInt16ColDefaultFactory();
-		factoryUInt16Def = new CFBamJpaUInt16DefDefaultFactory();
-		factoryUInt16Type = new CFBamJpaUInt16TypeDefaultFactory();
-		factoryUInt32Col = new CFBamJpaUInt32ColDefaultFactory();
-		factoryUInt32Def = new CFBamJpaUInt32DefDefaultFactory();
-		factoryUInt32Type = new CFBamJpaUInt32TypeDefaultFactory();
-		factoryUInt64Col = new CFBamJpaUInt64ColDefaultFactory();
-		factoryUInt64Def = new CFBamJpaUInt64DefDefaultFactory();
-		factoryUInt64Type = new CFBamJpaUInt64TypeDefaultFactory();
-		factoryURLProtocol = new CFIntJpaURLProtocolDefaultFactory();
-		factoryUuid6Col = new CFBamJpaUuid6ColDefaultFactory();
-		factoryUuid6Def = new CFBamJpaUuid6DefDefaultFactory();
-		factoryUuid6Gen = new CFBamJpaUuid6GenDefaultFactory();
-		factoryUuid6Type = new CFBamJpaUuid6TypeDefaultFactory();
-		factoryUuidCol = new CFBamJpaUuidColDefaultFactory();
-		factoryUuidDef = new CFBamJpaUuidDefDefaultFactory();
-		factoryUuidGen = new CFBamJpaUuidGenDefaultFactory();
-		factoryUuidType = new CFBamJpaUuidTypeDefaultFactory();
-		factoryValue = new CFBamJpaValueDefaultFactory();	}
+	}
 
 	@Override
 	public ICFBamSchema newSchema() {
@@ -3480,28 +3122,12 @@ public class CFBamJpaSchema
 		tableAtom = value;
 	}
 
-	public ICFBamAtomFactory getFactoryAtom() {
-		return( factoryAtom );
-	}
-
-	public void setFactoryAtom( ICFBamAtomFactory value ) {
-		factoryAtom = value;
-	}
-
 	public ICFBamBlobColTable getTableBlobCol() {
 		return( tableBlobCol );
 	}
 
 	public void setTableBlobCol( ICFBamBlobColTable value ) {
 		tableBlobCol = value;
-	}
-
-	public ICFBamBlobColFactory getFactoryBlobCol() {
-		return( factoryBlobCol );
-	}
-
-	public void setFactoryBlobCol( ICFBamBlobColFactory value ) {
-		factoryBlobCol = value;
 	}
 
 	public ICFBamBlobDefTable getTableBlobDef() {
@@ -3512,28 +3138,12 @@ public class CFBamJpaSchema
 		tableBlobDef = value;
 	}
 
-	public ICFBamBlobDefFactory getFactoryBlobDef() {
-		return( factoryBlobDef );
-	}
-
-	public void setFactoryBlobDef( ICFBamBlobDefFactory value ) {
-		factoryBlobDef = value;
-	}
-
 	public ICFBamBlobTypeTable getTableBlobType() {
 		return( tableBlobType );
 	}
 
 	public void setTableBlobType( ICFBamBlobTypeTable value ) {
 		tableBlobType = value;
-	}
-
-	public ICFBamBlobTypeFactory getFactoryBlobType() {
-		return( factoryBlobType );
-	}
-
-	public void setFactoryBlobType( ICFBamBlobTypeFactory value ) {
-		factoryBlobType = value;
 	}
 
 	public ICFBamBoolColTable getTableBoolCol() {
@@ -3544,28 +3154,12 @@ public class CFBamJpaSchema
 		tableBoolCol = value;
 	}
 
-	public ICFBamBoolColFactory getFactoryBoolCol() {
-		return( factoryBoolCol );
-	}
-
-	public void setFactoryBoolCol( ICFBamBoolColFactory value ) {
-		factoryBoolCol = value;
-	}
-
 	public ICFBamBoolDefTable getTableBoolDef() {
 		return( tableBoolDef );
 	}
 
 	public void setTableBoolDef( ICFBamBoolDefTable value ) {
 		tableBoolDef = value;
-	}
-
-	public ICFBamBoolDefFactory getFactoryBoolDef() {
-		return( factoryBoolDef );
-	}
-
-	public void setFactoryBoolDef( ICFBamBoolDefFactory value ) {
-		factoryBoolDef = value;
 	}
 
 	public ICFBamBoolTypeTable getTableBoolType() {
@@ -3576,28 +3170,12 @@ public class CFBamJpaSchema
 		tableBoolType = value;
 	}
 
-	public ICFBamBoolTypeFactory getFactoryBoolType() {
-		return( factoryBoolType );
-	}
-
-	public void setFactoryBoolType( ICFBamBoolTypeFactory value ) {
-		factoryBoolType = value;
-	}
-
 	public ICFBamChainTable getTableChain() {
 		return( tableChain );
 	}
 
 	public void setTableChain( ICFBamChainTable value ) {
 		tableChain = value;
-	}
-
-	public ICFBamChainFactory getFactoryChain() {
-		return( factoryChain );
-	}
-
-	public void setFactoryChain( ICFBamChainFactory value ) {
-		factoryChain = value;
 	}
 
 	public ICFBamClearDepTable getTableClearDep() {
@@ -3608,28 +3186,12 @@ public class CFBamJpaSchema
 		tableClearDep = value;
 	}
 
-	public ICFBamClearDepFactory getFactoryClearDep() {
-		return( factoryClearDep );
-	}
-
-	public void setFactoryClearDep( ICFBamClearDepFactory value ) {
-		factoryClearDep = value;
-	}
-
 	public ICFBamClearSubDep1Table getTableClearSubDep1() {
 		return( tableClearSubDep1 );
 	}
 
 	public void setTableClearSubDep1( ICFBamClearSubDep1Table value ) {
 		tableClearSubDep1 = value;
-	}
-
-	public ICFBamClearSubDep1Factory getFactoryClearSubDep1() {
-		return( factoryClearSubDep1 );
-	}
-
-	public void setFactoryClearSubDep1( ICFBamClearSubDep1Factory value ) {
-		factoryClearSubDep1 = value;
 	}
 
 	public ICFBamClearSubDep2Table getTableClearSubDep2() {
@@ -3640,28 +3202,12 @@ public class CFBamJpaSchema
 		tableClearSubDep2 = value;
 	}
 
-	public ICFBamClearSubDep2Factory getFactoryClearSubDep2() {
-		return( factoryClearSubDep2 );
-	}
-
-	public void setFactoryClearSubDep2( ICFBamClearSubDep2Factory value ) {
-		factoryClearSubDep2 = value;
-	}
-
 	public ICFBamClearSubDep3Table getTableClearSubDep3() {
 		return( tableClearSubDep3 );
 	}
 
 	public void setTableClearSubDep3( ICFBamClearSubDep3Table value ) {
 		tableClearSubDep3 = value;
-	}
-
-	public ICFBamClearSubDep3Factory getFactoryClearSubDep3() {
-		return( factoryClearSubDep3 );
-	}
-
-	public void setFactoryClearSubDep3( ICFBamClearSubDep3Factory value ) {
-		factoryClearSubDep3 = value;
 	}
 
 	public ICFBamClearTopDepTable getTableClearTopDep() {
@@ -3672,28 +3218,12 @@ public class CFBamJpaSchema
 		tableClearTopDep = value;
 	}
 
-	public ICFBamClearTopDepFactory getFactoryClearTopDep() {
-		return( factoryClearTopDep );
-	}
-
-	public void setFactoryClearTopDep( ICFBamClearTopDepFactory value ) {
-		factoryClearTopDep = value;
-	}
-
 	public ICFSecClusterTable getTableCluster() {
 		return( tableCluster );
 	}
 
 	public void setTableCluster( ICFSecClusterTable value ) {
 		tableCluster = value;
-	}
-
-	public ICFSecClusterFactory getFactoryCluster() {
-		return( factoryCluster );
-	}
-
-	public void setFactoryCluster( ICFSecClusterFactory value ) {
-		factoryCluster = value;
 	}
 
 	public ICFBamDateColTable getTableDateCol() {
@@ -3704,28 +3234,12 @@ public class CFBamJpaSchema
 		tableDateCol = value;
 	}
 
-	public ICFBamDateColFactory getFactoryDateCol() {
-		return( factoryDateCol );
-	}
-
-	public void setFactoryDateCol( ICFBamDateColFactory value ) {
-		factoryDateCol = value;
-	}
-
 	public ICFBamDateDefTable getTableDateDef() {
 		return( tableDateDef );
 	}
 
 	public void setTableDateDef( ICFBamDateDefTable value ) {
 		tableDateDef = value;
-	}
-
-	public ICFBamDateDefFactory getFactoryDateDef() {
-		return( factoryDateDef );
-	}
-
-	public void setFactoryDateDef( ICFBamDateDefFactory value ) {
-		factoryDateDef = value;
 	}
 
 	public ICFBamDateTypeTable getTableDateType() {
@@ -3736,28 +3250,12 @@ public class CFBamJpaSchema
 		tableDateType = value;
 	}
 
-	public ICFBamDateTypeFactory getFactoryDateType() {
-		return( factoryDateType );
-	}
-
-	public void setFactoryDateType( ICFBamDateTypeFactory value ) {
-		factoryDateType = value;
-	}
-
 	public ICFBamDbKeyHash128ColTable getTableDbKeyHash128Col() {
 		return( tableDbKeyHash128Col );
 	}
 
 	public void setTableDbKeyHash128Col( ICFBamDbKeyHash128ColTable value ) {
 		tableDbKeyHash128Col = value;
-	}
-
-	public ICFBamDbKeyHash128ColFactory getFactoryDbKeyHash128Col() {
-		return( factoryDbKeyHash128Col );
-	}
-
-	public void setFactoryDbKeyHash128Col( ICFBamDbKeyHash128ColFactory value ) {
-		factoryDbKeyHash128Col = value;
 	}
 
 	public ICFBamDbKeyHash128DefTable getTableDbKeyHash128Def() {
@@ -3768,28 +3266,12 @@ public class CFBamJpaSchema
 		tableDbKeyHash128Def = value;
 	}
 
-	public ICFBamDbKeyHash128DefFactory getFactoryDbKeyHash128Def() {
-		return( factoryDbKeyHash128Def );
-	}
-
-	public void setFactoryDbKeyHash128Def( ICFBamDbKeyHash128DefFactory value ) {
-		factoryDbKeyHash128Def = value;
-	}
-
 	public ICFBamDbKeyHash128GenTable getTableDbKeyHash128Gen() {
 		return( tableDbKeyHash128Gen );
 	}
 
 	public void setTableDbKeyHash128Gen( ICFBamDbKeyHash128GenTable value ) {
 		tableDbKeyHash128Gen = value;
-	}
-
-	public ICFBamDbKeyHash128GenFactory getFactoryDbKeyHash128Gen() {
-		return( factoryDbKeyHash128Gen );
-	}
-
-	public void setFactoryDbKeyHash128Gen( ICFBamDbKeyHash128GenFactory value ) {
-		factoryDbKeyHash128Gen = value;
 	}
 
 	public ICFBamDbKeyHash128TypeTable getTableDbKeyHash128Type() {
@@ -3800,28 +3282,12 @@ public class CFBamJpaSchema
 		tableDbKeyHash128Type = value;
 	}
 
-	public ICFBamDbKeyHash128TypeFactory getFactoryDbKeyHash128Type() {
-		return( factoryDbKeyHash128Type );
-	}
-
-	public void setFactoryDbKeyHash128Type( ICFBamDbKeyHash128TypeFactory value ) {
-		factoryDbKeyHash128Type = value;
-	}
-
 	public ICFBamDbKeyHash160ColTable getTableDbKeyHash160Col() {
 		return( tableDbKeyHash160Col );
 	}
 
 	public void setTableDbKeyHash160Col( ICFBamDbKeyHash160ColTable value ) {
 		tableDbKeyHash160Col = value;
-	}
-
-	public ICFBamDbKeyHash160ColFactory getFactoryDbKeyHash160Col() {
-		return( factoryDbKeyHash160Col );
-	}
-
-	public void setFactoryDbKeyHash160Col( ICFBamDbKeyHash160ColFactory value ) {
-		factoryDbKeyHash160Col = value;
 	}
 
 	public ICFBamDbKeyHash160DefTable getTableDbKeyHash160Def() {
@@ -3832,28 +3298,12 @@ public class CFBamJpaSchema
 		tableDbKeyHash160Def = value;
 	}
 
-	public ICFBamDbKeyHash160DefFactory getFactoryDbKeyHash160Def() {
-		return( factoryDbKeyHash160Def );
-	}
-
-	public void setFactoryDbKeyHash160Def( ICFBamDbKeyHash160DefFactory value ) {
-		factoryDbKeyHash160Def = value;
-	}
-
 	public ICFBamDbKeyHash160GenTable getTableDbKeyHash160Gen() {
 		return( tableDbKeyHash160Gen );
 	}
 
 	public void setTableDbKeyHash160Gen( ICFBamDbKeyHash160GenTable value ) {
 		tableDbKeyHash160Gen = value;
-	}
-
-	public ICFBamDbKeyHash160GenFactory getFactoryDbKeyHash160Gen() {
-		return( factoryDbKeyHash160Gen );
-	}
-
-	public void setFactoryDbKeyHash160Gen( ICFBamDbKeyHash160GenFactory value ) {
-		factoryDbKeyHash160Gen = value;
 	}
 
 	public ICFBamDbKeyHash160TypeTable getTableDbKeyHash160Type() {
@@ -3864,28 +3314,12 @@ public class CFBamJpaSchema
 		tableDbKeyHash160Type = value;
 	}
 
-	public ICFBamDbKeyHash160TypeFactory getFactoryDbKeyHash160Type() {
-		return( factoryDbKeyHash160Type );
-	}
-
-	public void setFactoryDbKeyHash160Type( ICFBamDbKeyHash160TypeFactory value ) {
-		factoryDbKeyHash160Type = value;
-	}
-
 	public ICFBamDbKeyHash224ColTable getTableDbKeyHash224Col() {
 		return( tableDbKeyHash224Col );
 	}
 
 	public void setTableDbKeyHash224Col( ICFBamDbKeyHash224ColTable value ) {
 		tableDbKeyHash224Col = value;
-	}
-
-	public ICFBamDbKeyHash224ColFactory getFactoryDbKeyHash224Col() {
-		return( factoryDbKeyHash224Col );
-	}
-
-	public void setFactoryDbKeyHash224Col( ICFBamDbKeyHash224ColFactory value ) {
-		factoryDbKeyHash224Col = value;
 	}
 
 	public ICFBamDbKeyHash224DefTable getTableDbKeyHash224Def() {
@@ -3896,28 +3330,12 @@ public class CFBamJpaSchema
 		tableDbKeyHash224Def = value;
 	}
 
-	public ICFBamDbKeyHash224DefFactory getFactoryDbKeyHash224Def() {
-		return( factoryDbKeyHash224Def );
-	}
-
-	public void setFactoryDbKeyHash224Def( ICFBamDbKeyHash224DefFactory value ) {
-		factoryDbKeyHash224Def = value;
-	}
-
 	public ICFBamDbKeyHash224GenTable getTableDbKeyHash224Gen() {
 		return( tableDbKeyHash224Gen );
 	}
 
 	public void setTableDbKeyHash224Gen( ICFBamDbKeyHash224GenTable value ) {
 		tableDbKeyHash224Gen = value;
-	}
-
-	public ICFBamDbKeyHash224GenFactory getFactoryDbKeyHash224Gen() {
-		return( factoryDbKeyHash224Gen );
-	}
-
-	public void setFactoryDbKeyHash224Gen( ICFBamDbKeyHash224GenFactory value ) {
-		factoryDbKeyHash224Gen = value;
 	}
 
 	public ICFBamDbKeyHash224TypeTable getTableDbKeyHash224Type() {
@@ -3928,28 +3346,12 @@ public class CFBamJpaSchema
 		tableDbKeyHash224Type = value;
 	}
 
-	public ICFBamDbKeyHash224TypeFactory getFactoryDbKeyHash224Type() {
-		return( factoryDbKeyHash224Type );
-	}
-
-	public void setFactoryDbKeyHash224Type( ICFBamDbKeyHash224TypeFactory value ) {
-		factoryDbKeyHash224Type = value;
-	}
-
 	public ICFBamDbKeyHash256ColTable getTableDbKeyHash256Col() {
 		return( tableDbKeyHash256Col );
 	}
 
 	public void setTableDbKeyHash256Col( ICFBamDbKeyHash256ColTable value ) {
 		tableDbKeyHash256Col = value;
-	}
-
-	public ICFBamDbKeyHash256ColFactory getFactoryDbKeyHash256Col() {
-		return( factoryDbKeyHash256Col );
-	}
-
-	public void setFactoryDbKeyHash256Col( ICFBamDbKeyHash256ColFactory value ) {
-		factoryDbKeyHash256Col = value;
 	}
 
 	public ICFBamDbKeyHash256DefTable getTableDbKeyHash256Def() {
@@ -3960,28 +3362,12 @@ public class CFBamJpaSchema
 		tableDbKeyHash256Def = value;
 	}
 
-	public ICFBamDbKeyHash256DefFactory getFactoryDbKeyHash256Def() {
-		return( factoryDbKeyHash256Def );
-	}
-
-	public void setFactoryDbKeyHash256Def( ICFBamDbKeyHash256DefFactory value ) {
-		factoryDbKeyHash256Def = value;
-	}
-
 	public ICFBamDbKeyHash256GenTable getTableDbKeyHash256Gen() {
 		return( tableDbKeyHash256Gen );
 	}
 
 	public void setTableDbKeyHash256Gen( ICFBamDbKeyHash256GenTable value ) {
 		tableDbKeyHash256Gen = value;
-	}
-
-	public ICFBamDbKeyHash256GenFactory getFactoryDbKeyHash256Gen() {
-		return( factoryDbKeyHash256Gen );
-	}
-
-	public void setFactoryDbKeyHash256Gen( ICFBamDbKeyHash256GenFactory value ) {
-		factoryDbKeyHash256Gen = value;
 	}
 
 	public ICFBamDbKeyHash256TypeTable getTableDbKeyHash256Type() {
@@ -3992,28 +3378,12 @@ public class CFBamJpaSchema
 		tableDbKeyHash256Type = value;
 	}
 
-	public ICFBamDbKeyHash256TypeFactory getFactoryDbKeyHash256Type() {
-		return( factoryDbKeyHash256Type );
-	}
-
-	public void setFactoryDbKeyHash256Type( ICFBamDbKeyHash256TypeFactory value ) {
-		factoryDbKeyHash256Type = value;
-	}
-
 	public ICFBamDbKeyHash384ColTable getTableDbKeyHash384Col() {
 		return( tableDbKeyHash384Col );
 	}
 
 	public void setTableDbKeyHash384Col( ICFBamDbKeyHash384ColTable value ) {
 		tableDbKeyHash384Col = value;
-	}
-
-	public ICFBamDbKeyHash384ColFactory getFactoryDbKeyHash384Col() {
-		return( factoryDbKeyHash384Col );
-	}
-
-	public void setFactoryDbKeyHash384Col( ICFBamDbKeyHash384ColFactory value ) {
-		factoryDbKeyHash384Col = value;
 	}
 
 	public ICFBamDbKeyHash384DefTable getTableDbKeyHash384Def() {
@@ -4024,28 +3394,12 @@ public class CFBamJpaSchema
 		tableDbKeyHash384Def = value;
 	}
 
-	public ICFBamDbKeyHash384DefFactory getFactoryDbKeyHash384Def() {
-		return( factoryDbKeyHash384Def );
-	}
-
-	public void setFactoryDbKeyHash384Def( ICFBamDbKeyHash384DefFactory value ) {
-		factoryDbKeyHash384Def = value;
-	}
-
 	public ICFBamDbKeyHash384GenTable getTableDbKeyHash384Gen() {
 		return( tableDbKeyHash384Gen );
 	}
 
 	public void setTableDbKeyHash384Gen( ICFBamDbKeyHash384GenTable value ) {
 		tableDbKeyHash384Gen = value;
-	}
-
-	public ICFBamDbKeyHash384GenFactory getFactoryDbKeyHash384Gen() {
-		return( factoryDbKeyHash384Gen );
-	}
-
-	public void setFactoryDbKeyHash384Gen( ICFBamDbKeyHash384GenFactory value ) {
-		factoryDbKeyHash384Gen = value;
 	}
 
 	public ICFBamDbKeyHash384TypeTable getTableDbKeyHash384Type() {
@@ -4056,28 +3410,12 @@ public class CFBamJpaSchema
 		tableDbKeyHash384Type = value;
 	}
 
-	public ICFBamDbKeyHash384TypeFactory getFactoryDbKeyHash384Type() {
-		return( factoryDbKeyHash384Type );
-	}
-
-	public void setFactoryDbKeyHash384Type( ICFBamDbKeyHash384TypeFactory value ) {
-		factoryDbKeyHash384Type = value;
-	}
-
 	public ICFBamDbKeyHash512ColTable getTableDbKeyHash512Col() {
 		return( tableDbKeyHash512Col );
 	}
 
 	public void setTableDbKeyHash512Col( ICFBamDbKeyHash512ColTable value ) {
 		tableDbKeyHash512Col = value;
-	}
-
-	public ICFBamDbKeyHash512ColFactory getFactoryDbKeyHash512Col() {
-		return( factoryDbKeyHash512Col );
-	}
-
-	public void setFactoryDbKeyHash512Col( ICFBamDbKeyHash512ColFactory value ) {
-		factoryDbKeyHash512Col = value;
 	}
 
 	public ICFBamDbKeyHash512DefTable getTableDbKeyHash512Def() {
@@ -4088,28 +3426,12 @@ public class CFBamJpaSchema
 		tableDbKeyHash512Def = value;
 	}
 
-	public ICFBamDbKeyHash512DefFactory getFactoryDbKeyHash512Def() {
-		return( factoryDbKeyHash512Def );
-	}
-
-	public void setFactoryDbKeyHash512Def( ICFBamDbKeyHash512DefFactory value ) {
-		factoryDbKeyHash512Def = value;
-	}
-
 	public ICFBamDbKeyHash512GenTable getTableDbKeyHash512Gen() {
 		return( tableDbKeyHash512Gen );
 	}
 
 	public void setTableDbKeyHash512Gen( ICFBamDbKeyHash512GenTable value ) {
 		tableDbKeyHash512Gen = value;
-	}
-
-	public ICFBamDbKeyHash512GenFactory getFactoryDbKeyHash512Gen() {
-		return( factoryDbKeyHash512Gen );
-	}
-
-	public void setFactoryDbKeyHash512Gen( ICFBamDbKeyHash512GenFactory value ) {
-		factoryDbKeyHash512Gen = value;
 	}
 
 	public ICFBamDbKeyHash512TypeTable getTableDbKeyHash512Type() {
@@ -4120,28 +3442,12 @@ public class CFBamJpaSchema
 		tableDbKeyHash512Type = value;
 	}
 
-	public ICFBamDbKeyHash512TypeFactory getFactoryDbKeyHash512Type() {
-		return( factoryDbKeyHash512Type );
-	}
-
-	public void setFactoryDbKeyHash512Type( ICFBamDbKeyHash512TypeFactory value ) {
-		factoryDbKeyHash512Type = value;
-	}
-
 	public ICFBamDelDepTable getTableDelDep() {
 		return( tableDelDep );
 	}
 
 	public void setTableDelDep( ICFBamDelDepTable value ) {
 		tableDelDep = value;
-	}
-
-	public ICFBamDelDepFactory getFactoryDelDep() {
-		return( factoryDelDep );
-	}
-
-	public void setFactoryDelDep( ICFBamDelDepFactory value ) {
-		factoryDelDep = value;
 	}
 
 	public ICFBamDelSubDep1Table getTableDelSubDep1() {
@@ -4152,28 +3458,12 @@ public class CFBamJpaSchema
 		tableDelSubDep1 = value;
 	}
 
-	public ICFBamDelSubDep1Factory getFactoryDelSubDep1() {
-		return( factoryDelSubDep1 );
-	}
-
-	public void setFactoryDelSubDep1( ICFBamDelSubDep1Factory value ) {
-		factoryDelSubDep1 = value;
-	}
-
 	public ICFBamDelSubDep2Table getTableDelSubDep2() {
 		return( tableDelSubDep2 );
 	}
 
 	public void setTableDelSubDep2( ICFBamDelSubDep2Table value ) {
 		tableDelSubDep2 = value;
-	}
-
-	public ICFBamDelSubDep2Factory getFactoryDelSubDep2() {
-		return( factoryDelSubDep2 );
-	}
-
-	public void setFactoryDelSubDep2( ICFBamDelSubDep2Factory value ) {
-		factoryDelSubDep2 = value;
 	}
 
 	public ICFBamDelSubDep3Table getTableDelSubDep3() {
@@ -4184,28 +3474,12 @@ public class CFBamJpaSchema
 		tableDelSubDep3 = value;
 	}
 
-	public ICFBamDelSubDep3Factory getFactoryDelSubDep3() {
-		return( factoryDelSubDep3 );
-	}
-
-	public void setFactoryDelSubDep3( ICFBamDelSubDep3Factory value ) {
-		factoryDelSubDep3 = value;
-	}
-
 	public ICFBamDelTopDepTable getTableDelTopDep() {
 		return( tableDelTopDep );
 	}
 
 	public void setTableDelTopDep( ICFBamDelTopDepTable value ) {
 		tableDelTopDep = value;
-	}
-
-	public ICFBamDelTopDepFactory getFactoryDelTopDep() {
-		return( factoryDelTopDep );
-	}
-
-	public void setFactoryDelTopDep( ICFBamDelTopDepFactory value ) {
-		factoryDelTopDep = value;
 	}
 
 	public ICFBamDoubleColTable getTableDoubleCol() {
@@ -4216,28 +3490,12 @@ public class CFBamJpaSchema
 		tableDoubleCol = value;
 	}
 
-	public ICFBamDoubleColFactory getFactoryDoubleCol() {
-		return( factoryDoubleCol );
-	}
-
-	public void setFactoryDoubleCol( ICFBamDoubleColFactory value ) {
-		factoryDoubleCol = value;
-	}
-
 	public ICFBamDoubleDefTable getTableDoubleDef() {
 		return( tableDoubleDef );
 	}
 
 	public void setTableDoubleDef( ICFBamDoubleDefTable value ) {
 		tableDoubleDef = value;
-	}
-
-	public ICFBamDoubleDefFactory getFactoryDoubleDef() {
-		return( factoryDoubleDef );
-	}
-
-	public void setFactoryDoubleDef( ICFBamDoubleDefFactory value ) {
-		factoryDoubleDef = value;
 	}
 
 	public ICFBamDoubleTypeTable getTableDoubleType() {
@@ -4248,28 +3506,12 @@ public class CFBamJpaSchema
 		tableDoubleType = value;
 	}
 
-	public ICFBamDoubleTypeFactory getFactoryDoubleType() {
-		return( factoryDoubleType );
-	}
-
-	public void setFactoryDoubleType( ICFBamDoubleTypeFactory value ) {
-		factoryDoubleType = value;
-	}
-
 	public ICFBamEnumDefTable getTableEnumDef() {
 		return( tableEnumDef );
 	}
 
 	public void setTableEnumDef( ICFBamEnumDefTable value ) {
 		tableEnumDef = value;
-	}
-
-	public ICFBamEnumDefFactory getFactoryEnumDef() {
-		return( factoryEnumDef );
-	}
-
-	public void setFactoryEnumDef( ICFBamEnumDefFactory value ) {
-		factoryEnumDef = value;
 	}
 
 	public ICFBamEnumTagTable getTableEnumTag() {
@@ -4280,28 +3522,12 @@ public class CFBamJpaSchema
 		tableEnumTag = value;
 	}
 
-	public ICFBamEnumTagFactory getFactoryEnumTag() {
-		return( factoryEnumTag );
-	}
-
-	public void setFactoryEnumTag( ICFBamEnumTagFactory value ) {
-		factoryEnumTag = value;
-	}
-
 	public ICFBamEnumTypeTable getTableEnumType() {
 		return( tableEnumType );
 	}
 
 	public void setTableEnumType( ICFBamEnumTypeTable value ) {
 		tableEnumType = value;
-	}
-
-	public ICFBamEnumTypeFactory getFactoryEnumType() {
-		return( factoryEnumType );
-	}
-
-	public void setFactoryEnumType( ICFBamEnumTypeFactory value ) {
-		factoryEnumType = value;
 	}
 
 	public ICFBamFloatColTable getTableFloatCol() {
@@ -4312,28 +3538,12 @@ public class CFBamJpaSchema
 		tableFloatCol = value;
 	}
 
-	public ICFBamFloatColFactory getFactoryFloatCol() {
-		return( factoryFloatCol );
-	}
-
-	public void setFactoryFloatCol( ICFBamFloatColFactory value ) {
-		factoryFloatCol = value;
-	}
-
 	public ICFBamFloatDefTable getTableFloatDef() {
 		return( tableFloatDef );
 	}
 
 	public void setTableFloatDef( ICFBamFloatDefTable value ) {
 		tableFloatDef = value;
-	}
-
-	public ICFBamFloatDefFactory getFactoryFloatDef() {
-		return( factoryFloatDef );
-	}
-
-	public void setFactoryFloatDef( ICFBamFloatDefFactory value ) {
-		factoryFloatDef = value;
 	}
 
 	public ICFBamFloatTypeTable getTableFloatType() {
@@ -4344,28 +3554,12 @@ public class CFBamJpaSchema
 		tableFloatType = value;
 	}
 
-	public ICFBamFloatTypeFactory getFactoryFloatType() {
-		return( factoryFloatType );
-	}
-
-	public void setFactoryFloatType( ICFBamFloatTypeFactory value ) {
-		factoryFloatType = value;
-	}
-
 	public ICFSecISOCcyTable getTableISOCcy() {
 		return( tableISOCcy );
 	}
 
 	public void setTableISOCcy( ICFSecISOCcyTable value ) {
 		tableISOCcy = value;
-	}
-
-	public ICFSecISOCcyFactory getFactoryISOCcy() {
-		return( factoryISOCcy );
-	}
-
-	public void setFactoryISOCcy( ICFSecISOCcyFactory value ) {
-		factoryISOCcy = value;
 	}
 
 	public ICFSecISOCtryTable getTableISOCtry() {
@@ -4376,28 +3570,12 @@ public class CFBamJpaSchema
 		tableISOCtry = value;
 	}
 
-	public ICFSecISOCtryFactory getFactoryISOCtry() {
-		return( factoryISOCtry );
-	}
-
-	public void setFactoryISOCtry( ICFSecISOCtryFactory value ) {
-		factoryISOCtry = value;
-	}
-
 	public ICFSecISOCtryCcyTable getTableISOCtryCcy() {
 		return( tableISOCtryCcy );
 	}
 
 	public void setTableISOCtryCcy( ICFSecISOCtryCcyTable value ) {
 		tableISOCtryCcy = value;
-	}
-
-	public ICFSecISOCtryCcyFactory getFactoryISOCtryCcy() {
-		return( factoryISOCtryCcy );
-	}
-
-	public void setFactoryISOCtryCcy( ICFSecISOCtryCcyFactory value ) {
-		factoryISOCtryCcy = value;
 	}
 
 	public ICFSecISOCtryLangTable getTableISOCtryLang() {
@@ -4408,28 +3586,12 @@ public class CFBamJpaSchema
 		tableISOCtryLang = value;
 	}
 
-	public ICFSecISOCtryLangFactory getFactoryISOCtryLang() {
-		return( factoryISOCtryLang );
-	}
-
-	public void setFactoryISOCtryLang( ICFSecISOCtryLangFactory value ) {
-		factoryISOCtryLang = value;
-	}
-
 	public ICFSecISOLangTable getTableISOLang() {
 		return( tableISOLang );
 	}
 
 	public void setTableISOLang( ICFSecISOLangTable value ) {
 		tableISOLang = value;
-	}
-
-	public ICFSecISOLangFactory getFactoryISOLang() {
-		return( factoryISOLang );
-	}
-
-	public void setFactoryISOLang( ICFSecISOLangFactory value ) {
-		factoryISOLang = value;
 	}
 
 	public ICFSecISOTZoneTable getTableISOTZone() {
@@ -4440,28 +3602,12 @@ public class CFBamJpaSchema
 		tableISOTZone = value;
 	}
 
-	public ICFSecISOTZoneFactory getFactoryISOTZone() {
-		return( factoryISOTZone );
-	}
-
-	public void setFactoryISOTZone( ICFSecISOTZoneFactory value ) {
-		factoryISOTZone = value;
-	}
-
 	public ICFBamId16GenTable getTableId16Gen() {
 		return( tableId16Gen );
 	}
 
 	public void setTableId16Gen( ICFBamId16GenTable value ) {
 		tableId16Gen = value;
-	}
-
-	public ICFBamId16GenFactory getFactoryId16Gen() {
-		return( factoryId16Gen );
-	}
-
-	public void setFactoryId16Gen( ICFBamId16GenFactory value ) {
-		factoryId16Gen = value;
 	}
 
 	public ICFBamId32GenTable getTableId32Gen() {
@@ -4472,28 +3618,12 @@ public class CFBamJpaSchema
 		tableId32Gen = value;
 	}
 
-	public ICFBamId32GenFactory getFactoryId32Gen() {
-		return( factoryId32Gen );
-	}
-
-	public void setFactoryId32Gen( ICFBamId32GenFactory value ) {
-		factoryId32Gen = value;
-	}
-
 	public ICFBamId64GenTable getTableId64Gen() {
 		return( tableId64Gen );
 	}
 
 	public void setTableId64Gen( ICFBamId64GenTable value ) {
 		tableId64Gen = value;
-	}
-
-	public ICFBamId64GenFactory getFactoryId64Gen() {
-		return( factoryId64Gen );
-	}
-
-	public void setFactoryId64Gen( ICFBamId64GenFactory value ) {
-		factoryId64Gen = value;
 	}
 
 	public ICFBamIndexTable getTableIndex() {
@@ -4504,28 +3634,12 @@ public class CFBamJpaSchema
 		tableIndex = value;
 	}
 
-	public ICFBamIndexFactory getFactoryIndex() {
-		return( factoryIndex );
-	}
-
-	public void setFactoryIndex( ICFBamIndexFactory value ) {
-		factoryIndex = value;
-	}
-
 	public ICFBamIndexColTable getTableIndexCol() {
 		return( tableIndexCol );
 	}
 
 	public void setTableIndexCol( ICFBamIndexColTable value ) {
 		tableIndexCol = value;
-	}
-
-	public ICFBamIndexColFactory getFactoryIndexCol() {
-		return( factoryIndexCol );
-	}
-
-	public void setFactoryIndexCol( ICFBamIndexColFactory value ) {
-		factoryIndexCol = value;
 	}
 
 	public ICFBamIndexTweakTable getTableIndexTweak() {
@@ -4536,28 +3650,12 @@ public class CFBamJpaSchema
 		tableIndexTweak = value;
 	}
 
-	public ICFBamIndexTweakFactory getFactoryIndexTweak() {
-		return( factoryIndexTweak );
-	}
-
-	public void setFactoryIndexTweak( ICFBamIndexTweakFactory value ) {
-		factoryIndexTweak = value;
-	}
-
 	public ICFBamInt16ColTable getTableInt16Col() {
 		return( tableInt16Col );
 	}
 
 	public void setTableInt16Col( ICFBamInt16ColTable value ) {
 		tableInt16Col = value;
-	}
-
-	public ICFBamInt16ColFactory getFactoryInt16Col() {
-		return( factoryInt16Col );
-	}
-
-	public void setFactoryInt16Col( ICFBamInt16ColFactory value ) {
-		factoryInt16Col = value;
 	}
 
 	public ICFBamInt16DefTable getTableInt16Def() {
@@ -4568,28 +3666,12 @@ public class CFBamJpaSchema
 		tableInt16Def = value;
 	}
 
-	public ICFBamInt16DefFactory getFactoryInt16Def() {
-		return( factoryInt16Def );
-	}
-
-	public void setFactoryInt16Def( ICFBamInt16DefFactory value ) {
-		factoryInt16Def = value;
-	}
-
 	public ICFBamInt16TypeTable getTableInt16Type() {
 		return( tableInt16Type );
 	}
 
 	public void setTableInt16Type( ICFBamInt16TypeTable value ) {
 		tableInt16Type = value;
-	}
-
-	public ICFBamInt16TypeFactory getFactoryInt16Type() {
-		return( factoryInt16Type );
-	}
-
-	public void setFactoryInt16Type( ICFBamInt16TypeFactory value ) {
-		factoryInt16Type = value;
 	}
 
 	public ICFBamInt32ColTable getTableInt32Col() {
@@ -4600,28 +3682,12 @@ public class CFBamJpaSchema
 		tableInt32Col = value;
 	}
 
-	public ICFBamInt32ColFactory getFactoryInt32Col() {
-		return( factoryInt32Col );
-	}
-
-	public void setFactoryInt32Col( ICFBamInt32ColFactory value ) {
-		factoryInt32Col = value;
-	}
-
 	public ICFBamInt32DefTable getTableInt32Def() {
 		return( tableInt32Def );
 	}
 
 	public void setTableInt32Def( ICFBamInt32DefTable value ) {
 		tableInt32Def = value;
-	}
-
-	public ICFBamInt32DefFactory getFactoryInt32Def() {
-		return( factoryInt32Def );
-	}
-
-	public void setFactoryInt32Def( ICFBamInt32DefFactory value ) {
-		factoryInt32Def = value;
 	}
 
 	public ICFBamInt32TypeTable getTableInt32Type() {
@@ -4632,28 +3698,12 @@ public class CFBamJpaSchema
 		tableInt32Type = value;
 	}
 
-	public ICFBamInt32TypeFactory getFactoryInt32Type() {
-		return( factoryInt32Type );
-	}
-
-	public void setFactoryInt32Type( ICFBamInt32TypeFactory value ) {
-		factoryInt32Type = value;
-	}
-
 	public ICFBamInt64ColTable getTableInt64Col() {
 		return( tableInt64Col );
 	}
 
 	public void setTableInt64Col( ICFBamInt64ColTable value ) {
 		tableInt64Col = value;
-	}
-
-	public ICFBamInt64ColFactory getFactoryInt64Col() {
-		return( factoryInt64Col );
-	}
-
-	public void setFactoryInt64Col( ICFBamInt64ColFactory value ) {
-		factoryInt64Col = value;
 	}
 
 	public ICFBamInt64DefTable getTableInt64Def() {
@@ -4664,28 +3714,12 @@ public class CFBamJpaSchema
 		tableInt64Def = value;
 	}
 
-	public ICFBamInt64DefFactory getFactoryInt64Def() {
-		return( factoryInt64Def );
-	}
-
-	public void setFactoryInt64Def( ICFBamInt64DefFactory value ) {
-		factoryInt64Def = value;
-	}
-
 	public ICFBamInt64TypeTable getTableInt64Type() {
 		return( tableInt64Type );
 	}
 
 	public void setTableInt64Type( ICFBamInt64TypeTable value ) {
 		tableInt64Type = value;
-	}
-
-	public ICFBamInt64TypeFactory getFactoryInt64Type() {
-		return( factoryInt64Type );
-	}
-
-	public void setFactoryInt64Type( ICFBamInt64TypeFactory value ) {
-		factoryInt64Type = value;
 	}
 
 	public ICFIntLicenseTable getTableLicense() {
@@ -4696,28 +3730,12 @@ public class CFBamJpaSchema
 		tableLicense = value;
 	}
 
-	public ICFIntLicenseFactory getFactoryLicense() {
-		return( factoryLicense );
-	}
-
-	public void setFactoryLicense( ICFIntLicenseFactory value ) {
-		factoryLicense = value;
-	}
-
 	public ICFIntMajorVersionTable getTableMajorVersion() {
 		return( tableMajorVersion );
 	}
 
 	public void setTableMajorVersion( ICFIntMajorVersionTable value ) {
 		tableMajorVersion = value;
-	}
-
-	public ICFIntMajorVersionFactory getFactoryMajorVersion() {
-		return( factoryMajorVersion );
-	}
-
-	public void setFactoryMajorVersion( ICFIntMajorVersionFactory value ) {
-		factoryMajorVersion = value;
 	}
 
 	public ICFIntMimeTypeTable getTableMimeType() {
@@ -4728,28 +3746,12 @@ public class CFBamJpaSchema
 		tableMimeType = value;
 	}
 
-	public ICFIntMimeTypeFactory getFactoryMimeType() {
-		return( factoryMimeType );
-	}
-
-	public void setFactoryMimeType( ICFIntMimeTypeFactory value ) {
-		factoryMimeType = value;
-	}
-
 	public ICFIntMinorVersionTable getTableMinorVersion() {
 		return( tableMinorVersion );
 	}
 
 	public void setTableMinorVersion( ICFIntMinorVersionTable value ) {
 		tableMinorVersion = value;
-	}
-
-	public ICFIntMinorVersionFactory getFactoryMinorVersion() {
-		return( factoryMinorVersion );
-	}
-
-	public void setFactoryMinorVersion( ICFIntMinorVersionFactory value ) {
-		factoryMinorVersion = value;
 	}
 
 	public ICFBamNmTokenColTable getTableNmTokenCol() {
@@ -4760,28 +3762,12 @@ public class CFBamJpaSchema
 		tableNmTokenCol = value;
 	}
 
-	public ICFBamNmTokenColFactory getFactoryNmTokenCol() {
-		return( factoryNmTokenCol );
-	}
-
-	public void setFactoryNmTokenCol( ICFBamNmTokenColFactory value ) {
-		factoryNmTokenCol = value;
-	}
-
 	public ICFBamNmTokenDefTable getTableNmTokenDef() {
 		return( tableNmTokenDef );
 	}
 
 	public void setTableNmTokenDef( ICFBamNmTokenDefTable value ) {
 		tableNmTokenDef = value;
-	}
-
-	public ICFBamNmTokenDefFactory getFactoryNmTokenDef() {
-		return( factoryNmTokenDef );
-	}
-
-	public void setFactoryNmTokenDef( ICFBamNmTokenDefFactory value ) {
-		factoryNmTokenDef = value;
 	}
 
 	public ICFBamNmTokenTypeTable getTableNmTokenType() {
@@ -4792,28 +3778,12 @@ public class CFBamJpaSchema
 		tableNmTokenType = value;
 	}
 
-	public ICFBamNmTokenTypeFactory getFactoryNmTokenType() {
-		return( factoryNmTokenType );
-	}
-
-	public void setFactoryNmTokenType( ICFBamNmTokenTypeFactory value ) {
-		factoryNmTokenType = value;
-	}
-
 	public ICFBamNmTokensColTable getTableNmTokensCol() {
 		return( tableNmTokensCol );
 	}
 
 	public void setTableNmTokensCol( ICFBamNmTokensColTable value ) {
 		tableNmTokensCol = value;
-	}
-
-	public ICFBamNmTokensColFactory getFactoryNmTokensCol() {
-		return( factoryNmTokensCol );
-	}
-
-	public void setFactoryNmTokensCol( ICFBamNmTokensColFactory value ) {
-		factoryNmTokensCol = value;
 	}
 
 	public ICFBamNmTokensDefTable getTableNmTokensDef() {
@@ -4824,28 +3794,12 @@ public class CFBamJpaSchema
 		tableNmTokensDef = value;
 	}
 
-	public ICFBamNmTokensDefFactory getFactoryNmTokensDef() {
-		return( factoryNmTokensDef );
-	}
-
-	public void setFactoryNmTokensDef( ICFBamNmTokensDefFactory value ) {
-		factoryNmTokensDef = value;
-	}
-
 	public ICFBamNmTokensTypeTable getTableNmTokensType() {
 		return( tableNmTokensType );
 	}
 
 	public void setTableNmTokensType( ICFBamNmTokensTypeTable value ) {
 		tableNmTokensType = value;
-	}
-
-	public ICFBamNmTokensTypeFactory getFactoryNmTokensType() {
-		return( factoryNmTokensType );
-	}
-
-	public void setFactoryNmTokensType( ICFBamNmTokensTypeFactory value ) {
-		factoryNmTokensType = value;
 	}
 
 	public ICFBamNumberColTable getTableNumberCol() {
@@ -4856,28 +3810,12 @@ public class CFBamJpaSchema
 		tableNumberCol = value;
 	}
 
-	public ICFBamNumberColFactory getFactoryNumberCol() {
-		return( factoryNumberCol );
-	}
-
-	public void setFactoryNumberCol( ICFBamNumberColFactory value ) {
-		factoryNumberCol = value;
-	}
-
 	public ICFBamNumberDefTable getTableNumberDef() {
 		return( tableNumberDef );
 	}
 
 	public void setTableNumberDef( ICFBamNumberDefTable value ) {
 		tableNumberDef = value;
-	}
-
-	public ICFBamNumberDefFactory getFactoryNumberDef() {
-		return( factoryNumberDef );
-	}
-
-	public void setFactoryNumberDef( ICFBamNumberDefFactory value ) {
-		factoryNumberDef = value;
 	}
 
 	public ICFBamNumberTypeTable getTableNumberType() {
@@ -4888,28 +3826,12 @@ public class CFBamJpaSchema
 		tableNumberType = value;
 	}
 
-	public ICFBamNumberTypeFactory getFactoryNumberType() {
-		return( factoryNumberType );
-	}
-
-	public void setFactoryNumberType( ICFBamNumberTypeFactory value ) {
-		factoryNumberType = value;
-	}
-
 	public ICFBamParamTable getTableParam() {
 		return( tableParam );
 	}
 
 	public void setTableParam( ICFBamParamTable value ) {
 		tableParam = value;
-	}
-
-	public ICFBamParamFactory getFactoryParam() {
-		return( factoryParam );
-	}
-
-	public void setFactoryParam( ICFBamParamFactory value ) {
-		factoryParam = value;
 	}
 
 	public ICFBamPopDepTable getTablePopDep() {
@@ -4920,28 +3842,12 @@ public class CFBamJpaSchema
 		tablePopDep = value;
 	}
 
-	public ICFBamPopDepFactory getFactoryPopDep() {
-		return( factoryPopDep );
-	}
-
-	public void setFactoryPopDep( ICFBamPopDepFactory value ) {
-		factoryPopDep = value;
-	}
-
 	public ICFBamPopSubDep1Table getTablePopSubDep1() {
 		return( tablePopSubDep1 );
 	}
 
 	public void setTablePopSubDep1( ICFBamPopSubDep1Table value ) {
 		tablePopSubDep1 = value;
-	}
-
-	public ICFBamPopSubDep1Factory getFactoryPopSubDep1() {
-		return( factoryPopSubDep1 );
-	}
-
-	public void setFactoryPopSubDep1( ICFBamPopSubDep1Factory value ) {
-		factoryPopSubDep1 = value;
 	}
 
 	public ICFBamPopSubDep2Table getTablePopSubDep2() {
@@ -4952,28 +3858,12 @@ public class CFBamJpaSchema
 		tablePopSubDep2 = value;
 	}
 
-	public ICFBamPopSubDep2Factory getFactoryPopSubDep2() {
-		return( factoryPopSubDep2 );
-	}
-
-	public void setFactoryPopSubDep2( ICFBamPopSubDep2Factory value ) {
-		factoryPopSubDep2 = value;
-	}
-
 	public ICFBamPopSubDep3Table getTablePopSubDep3() {
 		return( tablePopSubDep3 );
 	}
 
 	public void setTablePopSubDep3( ICFBamPopSubDep3Table value ) {
 		tablePopSubDep3 = value;
-	}
-
-	public ICFBamPopSubDep3Factory getFactoryPopSubDep3() {
-		return( factoryPopSubDep3 );
-	}
-
-	public void setFactoryPopSubDep3( ICFBamPopSubDep3Factory value ) {
-		factoryPopSubDep3 = value;
 	}
 
 	public ICFBamPopTopDepTable getTablePopTopDep() {
@@ -4984,28 +3874,12 @@ public class CFBamJpaSchema
 		tablePopTopDep = value;
 	}
 
-	public ICFBamPopTopDepFactory getFactoryPopTopDep() {
-		return( factoryPopTopDep );
-	}
-
-	public void setFactoryPopTopDep( ICFBamPopTopDepFactory value ) {
-		factoryPopTopDep = value;
-	}
-
 	public ICFBamRelationTable getTableRelation() {
 		return( tableRelation );
 	}
 
 	public void setTableRelation( ICFBamRelationTable value ) {
 		tableRelation = value;
-	}
-
-	public ICFBamRelationFactory getFactoryRelation() {
-		return( factoryRelation );
-	}
-
-	public void setFactoryRelation( ICFBamRelationFactory value ) {
-		factoryRelation = value;
 	}
 
 	public ICFBamRelationColTable getTableRelationCol() {
@@ -5016,28 +3890,12 @@ public class CFBamJpaSchema
 		tableRelationCol = value;
 	}
 
-	public ICFBamRelationColFactory getFactoryRelationCol() {
-		return( factoryRelationCol );
-	}
-
-	public void setFactoryRelationCol( ICFBamRelationColFactory value ) {
-		factoryRelationCol = value;
-	}
-
 	public ICFBamRoleDefTable getTableRoleDef() {
 		return( tableRoleDef );
 	}
 
 	public void setTableRoleDef( ICFBamRoleDefTable value ) {
 		tableRoleDef = value;
-	}
-
-	public ICFBamRoleDefFactory getFactoryRoleDef() {
-		return( factoryRoleDef );
-	}
-
-	public void setFactoryRoleDef( ICFBamRoleDefFactory value ) {
-		factoryRoleDef = value;
 	}
 
 	public ICFBamSchemaDefTable getTableSchemaDef() {
@@ -5048,28 +3906,12 @@ public class CFBamJpaSchema
 		tableSchemaDef = value;
 	}
 
-	public ICFBamSchemaDefFactory getFactorySchemaDef() {
-		return( factorySchemaDef );
-	}
-
-	public void setFactorySchemaDef( ICFBamSchemaDefFactory value ) {
-		factorySchemaDef = value;
-	}
-
 	public ICFBamSchemaRefTable getTableSchemaRef() {
 		return( tableSchemaRef );
 	}
 
 	public void setTableSchemaRef( ICFBamSchemaRefTable value ) {
 		tableSchemaRef = value;
-	}
-
-	public ICFBamSchemaRefFactory getFactorySchemaRef() {
-		return( factorySchemaRef );
-	}
-
-	public void setFactorySchemaRef( ICFBamSchemaRefFactory value ) {
-		factorySchemaRef = value;
 	}
 
 	public ICFBamSchemaRoleTable getTableSchemaRole() {
@@ -5080,28 +3922,12 @@ public class CFBamJpaSchema
 		tableSchemaRole = value;
 	}
 
-	public ICFBamSchemaRoleFactory getFactorySchemaRole() {
-		return( factorySchemaRole );
-	}
-
-	public void setFactorySchemaRole( ICFBamSchemaRoleFactory value ) {
-		factorySchemaRole = value;
-	}
-
 	public ICFBamSchemaTweakTable getTableSchemaTweak() {
 		return( tableSchemaTweak );
 	}
 
 	public void setTableSchemaTweak( ICFBamSchemaTweakTable value ) {
 		tableSchemaTweak = value;
-	}
-
-	public ICFBamSchemaTweakFactory getFactorySchemaTweak() {
-		return( factorySchemaTweak );
-	}
-
-	public void setFactorySchemaTweak( ICFBamSchemaTweakFactory value ) {
-		factorySchemaTweak = value;
 	}
 
 	public ICFBamScopeTable getTableScope() {
@@ -5112,28 +3938,12 @@ public class CFBamJpaSchema
 		tableScope = value;
 	}
 
-	public ICFBamScopeFactory getFactoryScope() {
-		return( factoryScope );
-	}
-
-	public void setFactoryScope( ICFBamScopeFactory value ) {
-		factoryScope = value;
-	}
-
 	public ICFSecSecClusGrpTable getTableSecClusGrp() {
 		return( tableSecClusGrp );
 	}
 
 	public void setTableSecClusGrp( ICFSecSecClusGrpTable value ) {
 		tableSecClusGrp = value;
-	}
-
-	public ICFSecSecClusGrpFactory getFactorySecClusGrp() {
-		return( factorySecClusGrp );
-	}
-
-	public void setFactorySecClusGrp( ICFSecSecClusGrpFactory value ) {
-		factorySecClusGrp = value;
 	}
 
 	public ICFSecSecClusGrpMembTable getTableSecClusGrpMemb() {
@@ -5144,28 +3954,12 @@ public class CFBamJpaSchema
 		tableSecClusGrpMemb = value;
 	}
 
-	public ICFSecSecClusGrpMembFactory getFactorySecClusGrpMemb() {
-		return( factorySecClusGrpMemb );
-	}
-
-	public void setFactorySecClusGrpMemb( ICFSecSecClusGrpMembFactory value ) {
-		factorySecClusGrpMemb = value;
-	}
-
 	public ICFSecSecClusRoleTable getTableSecClusRole() {
 		return( tableSecClusRole );
 	}
 
 	public void setTableSecClusRole( ICFSecSecClusRoleTable value ) {
 		tableSecClusRole = value;
-	}
-
-	public ICFSecSecClusRoleFactory getFactorySecClusRole() {
-		return( factorySecClusRole );
-	}
-
-	public void setFactorySecClusRole( ICFSecSecClusRoleFactory value ) {
-		factorySecClusRole = value;
 	}
 
 	public ICFSecSecClusRoleMembTable getTableSecClusRoleMemb() {
@@ -5176,28 +3970,12 @@ public class CFBamJpaSchema
 		tableSecClusRoleMemb = value;
 	}
 
-	public ICFSecSecClusRoleMembFactory getFactorySecClusRoleMemb() {
-		return( factorySecClusRoleMemb );
-	}
-
-	public void setFactorySecClusRoleMemb( ICFSecSecClusRoleMembFactory value ) {
-		factorySecClusRoleMemb = value;
-	}
-
 	public ICFSecSecSessionTable getTableSecSession() {
 		return( tableSecSession );
 	}
 
 	public void setTableSecSession( ICFSecSecSessionTable value ) {
 		tableSecSession = value;
-	}
-
-	public ICFSecSecSessionFactory getFactorySecSession() {
-		return( factorySecSession );
-	}
-
-	public void setFactorySecSession( ICFSecSecSessionFactory value ) {
-		factorySecSession = value;
 	}
 
 	public ICFSecSecSysGrpTable getTableSecSysGrp() {
@@ -5208,28 +3986,12 @@ public class CFBamJpaSchema
 		tableSecSysGrp = value;
 	}
 
-	public ICFSecSecSysGrpFactory getFactorySecSysGrp() {
-		return( factorySecSysGrp );
-	}
-
-	public void setFactorySecSysGrp( ICFSecSecSysGrpFactory value ) {
-		factorySecSysGrp = value;
-	}
-
 	public ICFSecSecSysGrpIncTable getTableSecSysGrpInc() {
 		return( tableSecSysGrpInc );
 	}
 
 	public void setTableSecSysGrpInc( ICFSecSecSysGrpIncTable value ) {
 		tableSecSysGrpInc = value;
-	}
-
-	public ICFSecSecSysGrpIncFactory getFactorySecSysGrpInc() {
-		return( factorySecSysGrpInc );
-	}
-
-	public void setFactorySecSysGrpInc( ICFSecSecSysGrpIncFactory value ) {
-		factorySecSysGrpInc = value;
 	}
 
 	public ICFSecSecSysGrpMembTable getTableSecSysGrpMemb() {
@@ -5240,28 +4002,12 @@ public class CFBamJpaSchema
 		tableSecSysGrpMemb = value;
 	}
 
-	public ICFSecSecSysGrpMembFactory getFactorySecSysGrpMemb() {
-		return( factorySecSysGrpMemb );
-	}
-
-	public void setFactorySecSysGrpMemb( ICFSecSecSysGrpMembFactory value ) {
-		factorySecSysGrpMemb = value;
-	}
-
 	public ICFSecSecSysRoleTable getTableSecSysRole() {
 		return( tableSecSysRole );
 	}
 
 	public void setTableSecSysRole( ICFSecSecSysRoleTable value ) {
 		tableSecSysRole = value;
-	}
-
-	public ICFSecSecSysRoleFactory getFactorySecSysRole() {
-		return( factorySecSysRole );
-	}
-
-	public void setFactorySecSysRole( ICFSecSecSysRoleFactory value ) {
-		factorySecSysRole = value;
 	}
 
 	public ICFSecSecSysRoleEnablesTable getTableSecSysRoleEnables() {
@@ -5272,28 +4018,12 @@ public class CFBamJpaSchema
 		tableSecSysRoleEnables = value;
 	}
 
-	public ICFSecSecSysRoleEnablesFactory getFactorySecSysRoleEnables() {
-		return( factorySecSysRoleEnables );
-	}
-
-	public void setFactorySecSysRoleEnables( ICFSecSecSysRoleEnablesFactory value ) {
-		factorySecSysRoleEnables = value;
-	}
-
 	public ICFSecSecSysRoleMembTable getTableSecSysRoleMemb() {
 		return( tableSecSysRoleMemb );
 	}
 
 	public void setTableSecSysRoleMemb( ICFSecSecSysRoleMembTable value ) {
 		tableSecSysRoleMemb = value;
-	}
-
-	public ICFSecSecSysRoleMembFactory getFactorySecSysRoleMemb() {
-		return( factorySecSysRoleMemb );
-	}
-
-	public void setFactorySecSysRoleMemb( ICFSecSecSysRoleMembFactory value ) {
-		factorySecSysRoleMemb = value;
 	}
 
 	public ICFSecSecTentGrpTable getTableSecTentGrp() {
@@ -5304,28 +4034,12 @@ public class CFBamJpaSchema
 		tableSecTentGrp = value;
 	}
 
-	public ICFSecSecTentGrpFactory getFactorySecTentGrp() {
-		return( factorySecTentGrp );
-	}
-
-	public void setFactorySecTentGrp( ICFSecSecTentGrpFactory value ) {
-		factorySecTentGrp = value;
-	}
-
 	public ICFSecSecTentGrpMembTable getTableSecTentGrpMemb() {
 		return( tableSecTentGrpMemb );
 	}
 
 	public void setTableSecTentGrpMemb( ICFSecSecTentGrpMembTable value ) {
 		tableSecTentGrpMemb = value;
-	}
-
-	public ICFSecSecTentGrpMembFactory getFactorySecTentGrpMemb() {
-		return( factorySecTentGrpMemb );
-	}
-
-	public void setFactorySecTentGrpMemb( ICFSecSecTentGrpMembFactory value ) {
-		factorySecTentGrpMemb = value;
 	}
 
 	public ICFSecSecTentRoleTable getTableSecTentRole() {
@@ -5336,28 +4050,12 @@ public class CFBamJpaSchema
 		tableSecTentRole = value;
 	}
 
-	public ICFSecSecTentRoleFactory getFactorySecTentRole() {
-		return( factorySecTentRole );
-	}
-
-	public void setFactorySecTentRole( ICFSecSecTentRoleFactory value ) {
-		factorySecTentRole = value;
-	}
-
 	public ICFSecSecTentRoleMembTable getTableSecTentRoleMemb() {
 		return( tableSecTentRoleMemb );
 	}
 
 	public void setTableSecTentRoleMemb( ICFSecSecTentRoleMembTable value ) {
 		tableSecTentRoleMemb = value;
-	}
-
-	public ICFSecSecTentRoleMembFactory getFactorySecTentRoleMemb() {
-		return( factorySecTentRoleMemb );
-	}
-
-	public void setFactorySecTentRoleMemb( ICFSecSecTentRoleMembFactory value ) {
-		factorySecTentRoleMemb = value;
 	}
 
 	public ICFSecSecUserTable getTableSecUser() {
@@ -5368,28 +4066,12 @@ public class CFBamJpaSchema
 		tableSecUser = value;
 	}
 
-	public ICFSecSecUserFactory getFactorySecUser() {
-		return( factorySecUser );
-	}
-
-	public void setFactorySecUser( ICFSecSecUserFactory value ) {
-		factorySecUser = value;
-	}
-
 	public ICFSecSecUserEMConfTable getTableSecUserEMConf() {
 		return( tableSecUserEMConf );
 	}
 
 	public void setTableSecUserEMConf( ICFSecSecUserEMConfTable value ) {
 		tableSecUserEMConf = value;
-	}
-
-	public ICFSecSecUserEMConfFactory getFactorySecUserEMConf() {
-		return( factorySecUserEMConf );
-	}
-
-	public void setFactorySecUserEMConf( ICFSecSecUserEMConfFactory value ) {
-		factorySecUserEMConf = value;
 	}
 
 	public ICFSecSecUserPWHistoryTable getTableSecUserPWHistory() {
@@ -5400,28 +4082,12 @@ public class CFBamJpaSchema
 		tableSecUserPWHistory = value;
 	}
 
-	public ICFSecSecUserPWHistoryFactory getFactorySecUserPWHistory() {
-		return( factorySecUserPWHistory );
-	}
-
-	public void setFactorySecUserPWHistory( ICFSecSecUserPWHistoryFactory value ) {
-		factorySecUserPWHistory = value;
-	}
-
 	public ICFSecSecUserPWResetTable getTableSecUserPWReset() {
 		return( tableSecUserPWReset );
 	}
 
 	public void setTableSecUserPWReset( ICFSecSecUserPWResetTable value ) {
 		tableSecUserPWReset = value;
-	}
-
-	public ICFSecSecUserPWResetFactory getFactorySecUserPWReset() {
-		return( factorySecUserPWReset );
-	}
-
-	public void setFactorySecUserPWReset( ICFSecSecUserPWResetFactory value ) {
-		factorySecUserPWReset = value;
 	}
 
 	public ICFSecSecUserPasswordTable getTableSecUserPassword() {
@@ -5432,28 +4098,12 @@ public class CFBamJpaSchema
 		tableSecUserPassword = value;
 	}
 
-	public ICFSecSecUserPasswordFactory getFactorySecUserPassword() {
-		return( factorySecUserPassword );
-	}
-
-	public void setFactorySecUserPassword( ICFSecSecUserPasswordFactory value ) {
-		factorySecUserPassword = value;
-	}
-
 	public ICFBamServerListFuncTable getTableServerListFunc() {
 		return( tableServerListFunc );
 	}
 
 	public void setTableServerListFunc( ICFBamServerListFuncTable value ) {
 		tableServerListFunc = value;
-	}
-
-	public ICFBamServerListFuncFactory getFactoryServerListFunc() {
-		return( factoryServerListFunc );
-	}
-
-	public void setFactoryServerListFunc( ICFBamServerListFuncFactory value ) {
-		factoryServerListFunc = value;
 	}
 
 	public ICFBamServerMethodTable getTableServerMethod() {
@@ -5464,28 +4114,12 @@ public class CFBamJpaSchema
 		tableServerMethod = value;
 	}
 
-	public ICFBamServerMethodFactory getFactoryServerMethod() {
-		return( factoryServerMethod );
-	}
-
-	public void setFactoryServerMethod( ICFBamServerMethodFactory value ) {
-		factoryServerMethod = value;
-	}
-
 	public ICFBamServerObjFuncTable getTableServerObjFunc() {
 		return( tableServerObjFunc );
 	}
 
 	public void setTableServerObjFunc( ICFBamServerObjFuncTable value ) {
 		tableServerObjFunc = value;
-	}
-
-	public ICFBamServerObjFuncFactory getFactoryServerObjFunc() {
-		return( factoryServerObjFunc );
-	}
-
-	public void setFactoryServerObjFunc( ICFBamServerObjFuncFactory value ) {
-		factoryServerObjFunc = value;
 	}
 
 	public ICFBamServerProcTable getTableServerProc() {
@@ -5496,28 +4130,12 @@ public class CFBamJpaSchema
 		tableServerProc = value;
 	}
 
-	public ICFBamServerProcFactory getFactoryServerProc() {
-		return( factoryServerProc );
-	}
-
-	public void setFactoryServerProc( ICFBamServerProcFactory value ) {
-		factoryServerProc = value;
-	}
-
 	public ICFBamStringColTable getTableStringCol() {
 		return( tableStringCol );
 	}
 
 	public void setTableStringCol( ICFBamStringColTable value ) {
 		tableStringCol = value;
-	}
-
-	public ICFBamStringColFactory getFactoryStringCol() {
-		return( factoryStringCol );
-	}
-
-	public void setFactoryStringCol( ICFBamStringColFactory value ) {
-		factoryStringCol = value;
 	}
 
 	public ICFBamStringDefTable getTableStringDef() {
@@ -5528,28 +4146,12 @@ public class CFBamJpaSchema
 		tableStringDef = value;
 	}
 
-	public ICFBamStringDefFactory getFactoryStringDef() {
-		return( factoryStringDef );
-	}
-
-	public void setFactoryStringDef( ICFBamStringDefFactory value ) {
-		factoryStringDef = value;
-	}
-
 	public ICFBamStringTypeTable getTableStringType() {
 		return( tableStringType );
 	}
 
 	public void setTableStringType( ICFBamStringTypeTable value ) {
 		tableStringType = value;
-	}
-
-	public ICFBamStringTypeFactory getFactoryStringType() {
-		return( factoryStringType );
-	}
-
-	public void setFactoryStringType( ICFBamStringTypeFactory value ) {
-		factoryStringType = value;
 	}
 
 	public ICFIntSubProjectTable getTableSubProject() {
@@ -5560,28 +4162,12 @@ public class CFBamJpaSchema
 		tableSubProject = value;
 	}
 
-	public ICFIntSubProjectFactory getFactorySubProject() {
-		return( factorySubProject );
-	}
-
-	public void setFactorySubProject( ICFIntSubProjectFactory value ) {
-		factorySubProject = value;
-	}
-
 	public ICFSecSysClusterTable getTableSysCluster() {
 		return( tableSysCluster );
 	}
 
 	public void setTableSysCluster( ICFSecSysClusterTable value ) {
 		tableSysCluster = value;
-	}
-
-	public ICFSecSysClusterFactory getFactorySysCluster() {
-		return( factorySysCluster );
-	}
-
-	public void setFactorySysCluster( ICFSecSysClusterFactory value ) {
-		factorySysCluster = value;
 	}
 
 	public ICFBamTZDateColTable getTableTZDateCol() {
@@ -5592,28 +4178,12 @@ public class CFBamJpaSchema
 		tableTZDateCol = value;
 	}
 
-	public ICFBamTZDateColFactory getFactoryTZDateCol() {
-		return( factoryTZDateCol );
-	}
-
-	public void setFactoryTZDateCol( ICFBamTZDateColFactory value ) {
-		factoryTZDateCol = value;
-	}
-
 	public ICFBamTZDateDefTable getTableTZDateDef() {
 		return( tableTZDateDef );
 	}
 
 	public void setTableTZDateDef( ICFBamTZDateDefTable value ) {
 		tableTZDateDef = value;
-	}
-
-	public ICFBamTZDateDefFactory getFactoryTZDateDef() {
-		return( factoryTZDateDef );
-	}
-
-	public void setFactoryTZDateDef( ICFBamTZDateDefFactory value ) {
-		factoryTZDateDef = value;
 	}
 
 	public ICFBamTZDateTypeTable getTableTZDateType() {
@@ -5624,28 +4194,12 @@ public class CFBamJpaSchema
 		tableTZDateType = value;
 	}
 
-	public ICFBamTZDateTypeFactory getFactoryTZDateType() {
-		return( factoryTZDateType );
-	}
-
-	public void setFactoryTZDateType( ICFBamTZDateTypeFactory value ) {
-		factoryTZDateType = value;
-	}
-
 	public ICFBamTZTimeColTable getTableTZTimeCol() {
 		return( tableTZTimeCol );
 	}
 
 	public void setTableTZTimeCol( ICFBamTZTimeColTable value ) {
 		tableTZTimeCol = value;
-	}
-
-	public ICFBamTZTimeColFactory getFactoryTZTimeCol() {
-		return( factoryTZTimeCol );
-	}
-
-	public void setFactoryTZTimeCol( ICFBamTZTimeColFactory value ) {
-		factoryTZTimeCol = value;
 	}
 
 	public ICFBamTZTimeDefTable getTableTZTimeDef() {
@@ -5656,28 +4210,12 @@ public class CFBamJpaSchema
 		tableTZTimeDef = value;
 	}
 
-	public ICFBamTZTimeDefFactory getFactoryTZTimeDef() {
-		return( factoryTZTimeDef );
-	}
-
-	public void setFactoryTZTimeDef( ICFBamTZTimeDefFactory value ) {
-		factoryTZTimeDef = value;
-	}
-
 	public ICFBamTZTimeTypeTable getTableTZTimeType() {
 		return( tableTZTimeType );
 	}
 
 	public void setTableTZTimeType( ICFBamTZTimeTypeTable value ) {
 		tableTZTimeType = value;
-	}
-
-	public ICFBamTZTimeTypeFactory getFactoryTZTimeType() {
-		return( factoryTZTimeType );
-	}
-
-	public void setFactoryTZTimeType( ICFBamTZTimeTypeFactory value ) {
-		factoryTZTimeType = value;
 	}
 
 	public ICFBamTZTimestampColTable getTableTZTimestampCol() {
@@ -5688,28 +4226,12 @@ public class CFBamJpaSchema
 		tableTZTimestampCol = value;
 	}
 
-	public ICFBamTZTimestampColFactory getFactoryTZTimestampCol() {
-		return( factoryTZTimestampCol );
-	}
-
-	public void setFactoryTZTimestampCol( ICFBamTZTimestampColFactory value ) {
-		factoryTZTimestampCol = value;
-	}
-
 	public ICFBamTZTimestampDefTable getTableTZTimestampDef() {
 		return( tableTZTimestampDef );
 	}
 
 	public void setTableTZTimestampDef( ICFBamTZTimestampDefTable value ) {
 		tableTZTimestampDef = value;
-	}
-
-	public ICFBamTZTimestampDefFactory getFactoryTZTimestampDef() {
-		return( factoryTZTimestampDef );
-	}
-
-	public void setFactoryTZTimestampDef( ICFBamTZTimestampDefFactory value ) {
-		factoryTZTimestampDef = value;
 	}
 
 	public ICFBamTZTimestampTypeTable getTableTZTimestampType() {
@@ -5720,28 +4242,12 @@ public class CFBamJpaSchema
 		tableTZTimestampType = value;
 	}
 
-	public ICFBamTZTimestampTypeFactory getFactoryTZTimestampType() {
-		return( factoryTZTimestampType );
-	}
-
-	public void setFactoryTZTimestampType( ICFBamTZTimestampTypeFactory value ) {
-		factoryTZTimestampType = value;
-	}
-
 	public ICFBamTableTable getTableTable() {
 		return( tableTable );
 	}
 
 	public void setTableTable( ICFBamTableTable value ) {
 		tableTable = value;
-	}
-
-	public ICFBamTableFactory getFactoryTable() {
-		return( factoryTable );
-	}
-
-	public void setFactoryTable( ICFBamTableFactory value ) {
-		factoryTable = value;
 	}
 
 	public ICFBamTableColTable getTableTableCol() {
@@ -5752,28 +4258,12 @@ public class CFBamJpaSchema
 		tableTableCol = value;
 	}
 
-	public ICFBamTableColFactory getFactoryTableCol() {
-		return( factoryTableCol );
-	}
-
-	public void setFactoryTableCol( ICFBamTableColFactory value ) {
-		factoryTableCol = value;
-	}
-
 	public ICFSecTableInfoTable getTableTableInfo() {
 		return( tableTableInfo );
 	}
 
 	public void setTableTableInfo( ICFSecTableInfoTable value ) {
 		tableTableInfo = value;
-	}
-
-	public ICFSecTableInfoFactory getFactoryTableInfo() {
-		return( factoryTableInfo );
-	}
-
-	public void setFactoryTableInfo( ICFSecTableInfoFactory value ) {
-		factoryTableInfo = value;
 	}
 
 	public ICFBamTableTweakTable getTableTableTweak() {
@@ -5784,28 +4274,12 @@ public class CFBamJpaSchema
 		tableTableTweak = value;
 	}
 
-	public ICFBamTableTweakFactory getFactoryTableTweak() {
-		return( factoryTableTweak );
-	}
-
-	public void setFactoryTableTweak( ICFBamTableTweakFactory value ) {
-		factoryTableTweak = value;
-	}
-
 	public ICFSecTenantTable getTableTenant() {
 		return( tableTenant );
 	}
 
 	public void setTableTenant( ICFSecTenantTable value ) {
 		tableTenant = value;
-	}
-
-	public ICFSecTenantFactory getFactoryTenant() {
-		return( factoryTenant );
-	}
-
-	public void setFactoryTenant( ICFSecTenantFactory value ) {
-		factoryTenant = value;
 	}
 
 	public ICFBamTextColTable getTableTextCol() {
@@ -5816,28 +4290,12 @@ public class CFBamJpaSchema
 		tableTextCol = value;
 	}
 
-	public ICFBamTextColFactory getFactoryTextCol() {
-		return( factoryTextCol );
-	}
-
-	public void setFactoryTextCol( ICFBamTextColFactory value ) {
-		factoryTextCol = value;
-	}
-
 	public ICFBamTextDefTable getTableTextDef() {
 		return( tableTextDef );
 	}
 
 	public void setTableTextDef( ICFBamTextDefTable value ) {
 		tableTextDef = value;
-	}
-
-	public ICFBamTextDefFactory getFactoryTextDef() {
-		return( factoryTextDef );
-	}
-
-	public void setFactoryTextDef( ICFBamTextDefFactory value ) {
-		factoryTextDef = value;
 	}
 
 	public ICFBamTextTypeTable getTableTextType() {
@@ -5848,28 +4306,12 @@ public class CFBamJpaSchema
 		tableTextType = value;
 	}
 
-	public ICFBamTextTypeFactory getFactoryTextType() {
-		return( factoryTextType );
-	}
-
-	public void setFactoryTextType( ICFBamTextTypeFactory value ) {
-		factoryTextType = value;
-	}
-
 	public ICFBamTimeColTable getTableTimeCol() {
 		return( tableTimeCol );
 	}
 
 	public void setTableTimeCol( ICFBamTimeColTable value ) {
 		tableTimeCol = value;
-	}
-
-	public ICFBamTimeColFactory getFactoryTimeCol() {
-		return( factoryTimeCol );
-	}
-
-	public void setFactoryTimeCol( ICFBamTimeColFactory value ) {
-		factoryTimeCol = value;
 	}
 
 	public ICFBamTimeDefTable getTableTimeDef() {
@@ -5880,28 +4322,12 @@ public class CFBamJpaSchema
 		tableTimeDef = value;
 	}
 
-	public ICFBamTimeDefFactory getFactoryTimeDef() {
-		return( factoryTimeDef );
-	}
-
-	public void setFactoryTimeDef( ICFBamTimeDefFactory value ) {
-		factoryTimeDef = value;
-	}
-
 	public ICFBamTimeTypeTable getTableTimeType() {
 		return( tableTimeType );
 	}
 
 	public void setTableTimeType( ICFBamTimeTypeTable value ) {
 		tableTimeType = value;
-	}
-
-	public ICFBamTimeTypeFactory getFactoryTimeType() {
-		return( factoryTimeType );
-	}
-
-	public void setFactoryTimeType( ICFBamTimeTypeFactory value ) {
-		factoryTimeType = value;
 	}
 
 	public ICFBamTimestampColTable getTableTimestampCol() {
@@ -5912,28 +4338,12 @@ public class CFBamJpaSchema
 		tableTimestampCol = value;
 	}
 
-	public ICFBamTimestampColFactory getFactoryTimestampCol() {
-		return( factoryTimestampCol );
-	}
-
-	public void setFactoryTimestampCol( ICFBamTimestampColFactory value ) {
-		factoryTimestampCol = value;
-	}
-
 	public ICFBamTimestampDefTable getTableTimestampDef() {
 		return( tableTimestampDef );
 	}
 
 	public void setTableTimestampDef( ICFBamTimestampDefTable value ) {
 		tableTimestampDef = value;
-	}
-
-	public ICFBamTimestampDefFactory getFactoryTimestampDef() {
-		return( factoryTimestampDef );
-	}
-
-	public void setFactoryTimestampDef( ICFBamTimestampDefFactory value ) {
-		factoryTimestampDef = value;
 	}
 
 	public ICFBamTimestampTypeTable getTableTimestampType() {
@@ -5944,28 +4354,12 @@ public class CFBamJpaSchema
 		tableTimestampType = value;
 	}
 
-	public ICFBamTimestampTypeFactory getFactoryTimestampType() {
-		return( factoryTimestampType );
-	}
-
-	public void setFactoryTimestampType( ICFBamTimestampTypeFactory value ) {
-		factoryTimestampType = value;
-	}
-
 	public ICFIntTldTable getTableTld() {
 		return( tableTld );
 	}
 
 	public void setTableTld( ICFIntTldTable value ) {
 		tableTld = value;
-	}
-
-	public ICFIntTldFactory getFactoryTld() {
-		return( factoryTld );
-	}
-
-	public void setFactoryTld( ICFIntTldFactory value ) {
-		factoryTld = value;
 	}
 
 	public ICFBamTokenColTable getTableTokenCol() {
@@ -5976,28 +4370,12 @@ public class CFBamJpaSchema
 		tableTokenCol = value;
 	}
 
-	public ICFBamTokenColFactory getFactoryTokenCol() {
-		return( factoryTokenCol );
-	}
-
-	public void setFactoryTokenCol( ICFBamTokenColFactory value ) {
-		factoryTokenCol = value;
-	}
-
 	public ICFBamTokenDefTable getTableTokenDef() {
 		return( tableTokenDef );
 	}
 
 	public void setTableTokenDef( ICFBamTokenDefTable value ) {
 		tableTokenDef = value;
-	}
-
-	public ICFBamTokenDefFactory getFactoryTokenDef() {
-		return( factoryTokenDef );
-	}
-
-	public void setFactoryTokenDef( ICFBamTokenDefFactory value ) {
-		factoryTokenDef = value;
 	}
 
 	public ICFBamTokenTypeTable getTableTokenType() {
@@ -6008,28 +4386,12 @@ public class CFBamJpaSchema
 		tableTokenType = value;
 	}
 
-	public ICFBamTokenTypeFactory getFactoryTokenType() {
-		return( factoryTokenType );
-	}
-
-	public void setFactoryTokenType( ICFBamTokenTypeFactory value ) {
-		factoryTokenType = value;
-	}
-
 	public ICFIntTopDomainTable getTableTopDomain() {
 		return( tableTopDomain );
 	}
 
 	public void setTableTopDomain( ICFIntTopDomainTable value ) {
 		tableTopDomain = value;
-	}
-
-	public ICFIntTopDomainFactory getFactoryTopDomain() {
-		return( factoryTopDomain );
-	}
-
-	public void setFactoryTopDomain( ICFIntTopDomainFactory value ) {
-		factoryTopDomain = value;
 	}
 
 	public ICFIntTopProjectTable getTableTopProject() {
@@ -6040,28 +4402,12 @@ public class CFBamJpaSchema
 		tableTopProject = value;
 	}
 
-	public ICFIntTopProjectFactory getFactoryTopProject() {
-		return( factoryTopProject );
-	}
-
-	public void setFactoryTopProject( ICFIntTopProjectFactory value ) {
-		factoryTopProject = value;
-	}
-
 	public ICFBamTweakTable getTableTweak() {
 		return( tableTweak );
 	}
 
 	public void setTableTweak( ICFBamTweakTable value ) {
 		tableTweak = value;
-	}
-
-	public ICFBamTweakFactory getFactoryTweak() {
-		return( factoryTweak );
-	}
-
-	public void setFactoryTweak( ICFBamTweakFactory value ) {
-		factoryTweak = value;
 	}
 
 	public ICFBamUInt16ColTable getTableUInt16Col() {
@@ -6072,28 +4418,12 @@ public class CFBamJpaSchema
 		tableUInt16Col = value;
 	}
 
-	public ICFBamUInt16ColFactory getFactoryUInt16Col() {
-		return( factoryUInt16Col );
-	}
-
-	public void setFactoryUInt16Col( ICFBamUInt16ColFactory value ) {
-		factoryUInt16Col = value;
-	}
-
 	public ICFBamUInt16DefTable getTableUInt16Def() {
 		return( tableUInt16Def );
 	}
 
 	public void setTableUInt16Def( ICFBamUInt16DefTable value ) {
 		tableUInt16Def = value;
-	}
-
-	public ICFBamUInt16DefFactory getFactoryUInt16Def() {
-		return( factoryUInt16Def );
-	}
-
-	public void setFactoryUInt16Def( ICFBamUInt16DefFactory value ) {
-		factoryUInt16Def = value;
 	}
 
 	public ICFBamUInt16TypeTable getTableUInt16Type() {
@@ -6104,28 +4434,12 @@ public class CFBamJpaSchema
 		tableUInt16Type = value;
 	}
 
-	public ICFBamUInt16TypeFactory getFactoryUInt16Type() {
-		return( factoryUInt16Type );
-	}
-
-	public void setFactoryUInt16Type( ICFBamUInt16TypeFactory value ) {
-		factoryUInt16Type = value;
-	}
-
 	public ICFBamUInt32ColTable getTableUInt32Col() {
 		return( tableUInt32Col );
 	}
 
 	public void setTableUInt32Col( ICFBamUInt32ColTable value ) {
 		tableUInt32Col = value;
-	}
-
-	public ICFBamUInt32ColFactory getFactoryUInt32Col() {
-		return( factoryUInt32Col );
-	}
-
-	public void setFactoryUInt32Col( ICFBamUInt32ColFactory value ) {
-		factoryUInt32Col = value;
 	}
 
 	public ICFBamUInt32DefTable getTableUInt32Def() {
@@ -6136,28 +4450,12 @@ public class CFBamJpaSchema
 		tableUInt32Def = value;
 	}
 
-	public ICFBamUInt32DefFactory getFactoryUInt32Def() {
-		return( factoryUInt32Def );
-	}
-
-	public void setFactoryUInt32Def( ICFBamUInt32DefFactory value ) {
-		factoryUInt32Def = value;
-	}
-
 	public ICFBamUInt32TypeTable getTableUInt32Type() {
 		return( tableUInt32Type );
 	}
 
 	public void setTableUInt32Type( ICFBamUInt32TypeTable value ) {
 		tableUInt32Type = value;
-	}
-
-	public ICFBamUInt32TypeFactory getFactoryUInt32Type() {
-		return( factoryUInt32Type );
-	}
-
-	public void setFactoryUInt32Type( ICFBamUInt32TypeFactory value ) {
-		factoryUInt32Type = value;
 	}
 
 	public ICFBamUInt64ColTable getTableUInt64Col() {
@@ -6168,28 +4466,12 @@ public class CFBamJpaSchema
 		tableUInt64Col = value;
 	}
 
-	public ICFBamUInt64ColFactory getFactoryUInt64Col() {
-		return( factoryUInt64Col );
-	}
-
-	public void setFactoryUInt64Col( ICFBamUInt64ColFactory value ) {
-		factoryUInt64Col = value;
-	}
-
 	public ICFBamUInt64DefTable getTableUInt64Def() {
 		return( tableUInt64Def );
 	}
 
 	public void setTableUInt64Def( ICFBamUInt64DefTable value ) {
 		tableUInt64Def = value;
-	}
-
-	public ICFBamUInt64DefFactory getFactoryUInt64Def() {
-		return( factoryUInt64Def );
-	}
-
-	public void setFactoryUInt64Def( ICFBamUInt64DefFactory value ) {
-		factoryUInt64Def = value;
 	}
 
 	public ICFBamUInt64TypeTable getTableUInt64Type() {
@@ -6200,28 +4482,12 @@ public class CFBamJpaSchema
 		tableUInt64Type = value;
 	}
 
-	public ICFBamUInt64TypeFactory getFactoryUInt64Type() {
-		return( factoryUInt64Type );
-	}
-
-	public void setFactoryUInt64Type( ICFBamUInt64TypeFactory value ) {
-		factoryUInt64Type = value;
-	}
-
 	public ICFIntURLProtocolTable getTableURLProtocol() {
 		return( tableURLProtocol );
 	}
 
 	public void setTableURLProtocol( ICFIntURLProtocolTable value ) {
 		tableURLProtocol = value;
-	}
-
-	public ICFIntURLProtocolFactory getFactoryURLProtocol() {
-		return( factoryURLProtocol );
-	}
-
-	public void setFactoryURLProtocol( ICFIntURLProtocolFactory value ) {
-		factoryURLProtocol = value;
 	}
 
 	public ICFBamUuid6ColTable getTableUuid6Col() {
@@ -6232,28 +4498,12 @@ public class CFBamJpaSchema
 		tableUuid6Col = value;
 	}
 
-	public ICFBamUuid6ColFactory getFactoryUuid6Col() {
-		return( factoryUuid6Col );
-	}
-
-	public void setFactoryUuid6Col( ICFBamUuid6ColFactory value ) {
-		factoryUuid6Col = value;
-	}
-
 	public ICFBamUuid6DefTable getTableUuid6Def() {
 		return( tableUuid6Def );
 	}
 
 	public void setTableUuid6Def( ICFBamUuid6DefTable value ) {
 		tableUuid6Def = value;
-	}
-
-	public ICFBamUuid6DefFactory getFactoryUuid6Def() {
-		return( factoryUuid6Def );
-	}
-
-	public void setFactoryUuid6Def( ICFBamUuid6DefFactory value ) {
-		factoryUuid6Def = value;
 	}
 
 	public ICFBamUuid6GenTable getTableUuid6Gen() {
@@ -6264,28 +4514,12 @@ public class CFBamJpaSchema
 		tableUuid6Gen = value;
 	}
 
-	public ICFBamUuid6GenFactory getFactoryUuid6Gen() {
-		return( factoryUuid6Gen );
-	}
-
-	public void setFactoryUuid6Gen( ICFBamUuid6GenFactory value ) {
-		factoryUuid6Gen = value;
-	}
-
 	public ICFBamUuid6TypeTable getTableUuid6Type() {
 		return( tableUuid6Type );
 	}
 
 	public void setTableUuid6Type( ICFBamUuid6TypeTable value ) {
 		tableUuid6Type = value;
-	}
-
-	public ICFBamUuid6TypeFactory getFactoryUuid6Type() {
-		return( factoryUuid6Type );
-	}
-
-	public void setFactoryUuid6Type( ICFBamUuid6TypeFactory value ) {
-		factoryUuid6Type = value;
 	}
 
 	public ICFBamUuidColTable getTableUuidCol() {
@@ -6296,28 +4530,12 @@ public class CFBamJpaSchema
 		tableUuidCol = value;
 	}
 
-	public ICFBamUuidColFactory getFactoryUuidCol() {
-		return( factoryUuidCol );
-	}
-
-	public void setFactoryUuidCol( ICFBamUuidColFactory value ) {
-		factoryUuidCol = value;
-	}
-
 	public ICFBamUuidDefTable getTableUuidDef() {
 		return( tableUuidDef );
 	}
 
 	public void setTableUuidDef( ICFBamUuidDefTable value ) {
 		tableUuidDef = value;
-	}
-
-	public ICFBamUuidDefFactory getFactoryUuidDef() {
-		return( factoryUuidDef );
-	}
-
-	public void setFactoryUuidDef( ICFBamUuidDefFactory value ) {
-		factoryUuidDef = value;
 	}
 
 	public ICFBamUuidGenTable getTableUuidGen() {
@@ -6328,14 +4546,6 @@ public class CFBamJpaSchema
 		tableUuidGen = value;
 	}
 
-	public ICFBamUuidGenFactory getFactoryUuidGen() {
-		return( factoryUuidGen );
-	}
-
-	public void setFactoryUuidGen( ICFBamUuidGenFactory value ) {
-		factoryUuidGen = value;
-	}
-
 	public ICFBamUuidTypeTable getTableUuidType() {
 		return( tableUuidType );
 	}
@@ -6344,28 +4554,12 @@ public class CFBamJpaSchema
 		tableUuidType = value;
 	}
 
-	public ICFBamUuidTypeFactory getFactoryUuidType() {
-		return( factoryUuidType );
-	}
-
-	public void setFactoryUuidType( ICFBamUuidTypeFactory value ) {
-		factoryUuidType = value;
-	}
-
 	public ICFBamValueTable getTableValue() {
 		return( tableValue );
 	}
 
 	public void setTableValue( ICFBamValueTable value ) {
 		tableValue = value;
-	}
-
-	public ICFBamValueFactory getFactoryValue() {
-		return( factoryValue );
-	}
-
-	public void setFactoryValue( ICFBamValueFactory value ) {
-		factoryValue = value;
 	}
 
 	public void bootstrapSchema(CFSecTableData tableData[]) {

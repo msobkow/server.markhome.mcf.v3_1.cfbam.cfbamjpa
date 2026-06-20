@@ -69,7 +69,7 @@ import server.markhome.mcf.v3_1.cfbam.cfbam.*;
 /**
  *	Service for the CFBamId generation methods defined in server.markhome.mcf.v3_1.cfbam.cfbam application model.
  */
-@Service("CFBamJpaIdGenService")
+@Service("CFBam31JpaIdGenService")
 public class CFBamJpaIdGenService {
 
     @Autowired
@@ -79,7 +79,7 @@ public class CFBamJpaIdGenService {
 	/**
 	 *	Generate a ChainIdGen CFLibDbKeyHash256 id.
 	 *
-	 *		@return A pseudo-randomly generated CFLibDBKeyHash128 value
+	 *		@return A cryptographically-random generated CFLibDBKeyHash128 value
 	 */
 	public CFLibDbKeyHash256 generateChainIdGen() {
 		return( new CFLibDbKeyHash256(0) );
@@ -88,7 +88,7 @@ public class CFBamJpaIdGenService {
 	/**
 	 *	Generate a EnumTagIdGen CFLibDbKeyHash256 id.
 	 *
-	 *		@return A pseudo-randomly generated CFLibDBKeyHash128 value
+	 *		@return A cryptographically-random generated CFLibDBKeyHash128 value
 	 */
 	public CFLibDbKeyHash256 generateEnumTagIdGen() {
 		return( new CFLibDbKeyHash256(0) );
@@ -97,7 +97,7 @@ public class CFBamJpaIdGenService {
 	/**
 	 *	Generate a IndexColIdGen CFLibDbKeyHash256 id.
 	 *
-	 *		@return A pseudo-randomly generated CFLibDBKeyHash128 value
+	 *		@return A cryptographically-random generated CFLibDBKeyHash128 value
 	 */
 	public CFLibDbKeyHash256 generateIndexColIdGen() {
 		return( new CFLibDbKeyHash256(0) );
@@ -106,7 +106,7 @@ public class CFBamJpaIdGenService {
 	/**
 	 *	Generate a ParamIdGen CFLibDbKeyHash256 id.
 	 *
-	 *		@return A pseudo-randomly generated CFLibDBKeyHash128 value
+	 *		@return A cryptographically-random generated CFLibDBKeyHash128 value
 	 */
 	public CFLibDbKeyHash256 generateParamIdGen() {
 		return( new CFLibDbKeyHash256(0) );
@@ -115,7 +115,7 @@ public class CFBamJpaIdGenService {
 	/**
 	 *	Generate a RelationColIdGen CFLibDbKeyHash256 id.
 	 *
-	 *		@return A pseudo-randomly generated CFLibDBKeyHash128 value
+	 *		@return A cryptographically-random generated CFLibDBKeyHash128 value
 	 */
 	public CFLibDbKeyHash256 generateRelationColIdGen() {
 		return( new CFLibDbKeyHash256(0) );
@@ -124,7 +124,7 @@ public class CFBamJpaIdGenService {
 	/**
 	 *	Generate a TweakIdGen CFLibDbKeyHash256 id.
 	 *
-	 *		@return A pseudo-randomly generated CFLibDBKeyHash128 value
+	 *		@return A cryptographically-random generated CFLibDBKeyHash128 value
 	 */
 	public CFLibDbKeyHash256 generateTweakIdGen() {
 		return( new CFLibDbKeyHash256(0) );
@@ -133,7 +133,7 @@ public class CFBamJpaIdGenService {
 	/**
 	 *	Generate a ScopeIdGen CFLibDbKeyHash256 id.
 	 *
-	 *		@return A pseudo-randomly generated CFLibDBKeyHash128 value
+	 *		@return A cryptographically-random generated CFLibDBKeyHash128 value
 	 */
 	public CFLibDbKeyHash256 generateScopeIdGen() {
 		return( new CFLibDbKeyHash256(0) );
@@ -142,7 +142,7 @@ public class CFBamJpaIdGenService {
 	/**
 	 *	Generate a ValueIdGen CFLibDbKeyHash256 id.
 	 *
-	 *		@return A pseudo-randomly generated CFLibDBKeyHash128 value
+	 *		@return A cryptographically-random generated CFLibDBKeyHash128 value
 	 */
 	public CFLibDbKeyHash256 generateValueIdGen() {
 		return( new CFLibDbKeyHash256(0) );
@@ -151,7 +151,7 @@ public class CFBamJpaIdGenService {
 	/**
 	 *	Generate a RoleIdGen CFLibDbKeyHash256 id.
 	 *
-	 *		@return A pseudo-randomly generated CFLibDBKeyHash128 value
+	 *		@return A cryptographically-random generated CFLibDBKeyHash128 value
 	 */
 	public CFLibDbKeyHash256 generateRoleIdGen() {
 		return( new CFLibDbKeyHash256(0) );
