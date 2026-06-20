@@ -646,712 +646,1280 @@ public class CFBamJpaFactoryService
 	public CFBamJpaFactoryService() { }
 
 	@Override
-	public ICFBamScopeFactoryService getScopeFactoryService() {
+	public ICFBamScopeFactory getFactoryScope() {
+		return(scopeFactoryService);
+	}
+
+	public CFBamJpaScopeFactoryService getScopeFactoryService() {
 		return(scopeFactoryService);
 	}
 
 	@Override
-	public ICFBamSchemaDefFactoryService getSchemaDefFactoryService() {
+	public ICFBamSchemaDefFactory getFactorySchemaDef() {
+		return(schemadefFactoryService);
+	}
+
+	public CFBamJpaSchemaDefFactoryService getSchemaDefFactoryService() {
 		return(schemadefFactoryService);
 	}
 
 	@Override
-	public ICFBamSchemaRefFactoryService getSchemaRefFactoryService() {
+	public ICFBamSchemaRefFactory getFactorySchemaRef() {
+		return(schemarefFactoryService);
+	}
+
+	public CFBamJpaSchemaRefFactoryService getSchemaRefFactoryService() {
 		return(schemarefFactoryService);
 	}
 
 	@Override
-	public ICFBamServerMethodFactoryService getServerMethodFactoryService() {
+	public ICFBamServerMethodFactory getFactoryServerMethod() {
+		return(servermethodFactoryService);
+	}
+
+	public CFBamJpaServerMethodFactoryService getServerMethodFactoryService() {
 		return(servermethodFactoryService);
 	}
 
 	@Override
-	public ICFBamServerObjFuncFactoryService getServerObjFuncFactoryService() {
+	public ICFBamServerObjFuncFactory getFactoryServerObjFunc() {
+		return(serverobjfuncFactoryService);
+	}
+
+	public CFBamJpaServerObjFuncFactoryService getServerObjFuncFactoryService() {
 		return(serverobjfuncFactoryService);
 	}
 
 	@Override
-	public ICFBamServerProcFactoryService getServerProcFactoryService() {
+	public ICFBamServerProcFactory getFactoryServerProc() {
+		return(serverprocFactoryService);
+	}
+
+	public CFBamJpaServerProcFactoryService getServerProcFactoryService() {
 		return(serverprocFactoryService);
 	}
 
 	@Override
-	public ICFBamTableFactoryService getTableFactoryService() {
+	public ICFBamTableFactory getFactoryTable() {
+		return(tableFactoryService);
+	}
+
+	public CFBamJpaTableFactoryService getTableFactoryService() {
 		return(tableFactoryService);
 	}
 
 	@Override
-	public ICFBamTweakFactoryService getTweakFactoryService() {
+	public ICFBamTweakFactory getFactoryTweak() {
+		return(tweakFactoryService);
+	}
+
+	public CFBamJpaTweakFactoryService getTweakFactoryService() {
 		return(tweakFactoryService);
 	}
 
 	@Override
-	public ICFBamTableTweakFactoryService getTableTweakFactoryService() {
+	public ICFBamTableTweakFactory getFactoryTableTweak() {
+		return(tabletweakFactoryService);
+	}
+
+	public CFBamJpaTableTweakFactoryService getTableTweakFactoryService() {
 		return(tabletweakFactoryService);
 	}
 
 	@Override
-	public ICFBamSchemaTweakFactoryService getSchemaTweakFactoryService() {
+	public ICFBamSchemaTweakFactory getFactorySchemaTweak() {
+		return(schematweakFactoryService);
+	}
+
+	public CFBamJpaSchemaTweakFactoryService getSchemaTweakFactoryService() {
 		return(schematweakFactoryService);
 	}
 
 	@Override
-	public ICFBamIndexTweakFactoryService getIndexTweakFactoryService() {
+	public ICFBamIndexTweakFactory getFactoryIndexTweak() {
+		return(indextweakFactoryService);
+	}
+
+	public CFBamJpaIndexTweakFactoryService getIndexTweakFactoryService() {
 		return(indextweakFactoryService);
 	}
 
 	@Override
-	public ICFBamValueFactoryService getValueFactoryService() {
+	public ICFBamValueFactory getFactoryValue() {
+		return(valueFactoryService);
+	}
+
+	public CFBamJpaValueFactoryService getValueFactoryService() {
 		return(valueFactoryService);
 	}
 
 	@Override
-	public ICFBamAtomFactoryService getAtomFactoryService() {
+	public ICFBamAtomFactory getFactoryAtom() {
+		return(atomFactoryService);
+	}
+
+	public CFBamJpaAtomFactoryService getAtomFactoryService() {
 		return(atomFactoryService);
 	}
 
 	@Override
-	public ICFBamBlobDefFactoryService getBlobDefFactoryService() {
+	public ICFBamBlobDefFactory getFactoryBlobDef() {
+		return(blobdefFactoryService);
+	}
+
+	public CFBamJpaBlobDefFactoryService getBlobDefFactoryService() {
 		return(blobdefFactoryService);
 	}
 
 	@Override
-	public ICFBamBlobTypeFactoryService getBlobTypeFactoryService() {
+	public ICFBamBlobTypeFactory getFactoryBlobType() {
+		return(blobtypeFactoryService);
+	}
+
+	public CFBamJpaBlobTypeFactoryService getBlobTypeFactoryService() {
 		return(blobtypeFactoryService);
 	}
 
 	@Override
-	public ICFBamBoolDefFactoryService getBoolDefFactoryService() {
+	public ICFBamBoolDefFactory getFactoryBoolDef() {
+		return(booldefFactoryService);
+	}
+
+	public CFBamJpaBoolDefFactoryService getBoolDefFactoryService() {
 		return(booldefFactoryService);
 	}
 
 	@Override
-	public ICFBamBoolTypeFactoryService getBoolTypeFactoryService() {
+	public ICFBamBoolTypeFactory getFactoryBoolType() {
+		return(booltypeFactoryService);
+	}
+
+	public CFBamJpaBoolTypeFactoryService getBoolTypeFactoryService() {
 		return(booltypeFactoryService);
 	}
 
 	@Override
-	public ICFBamChainFactoryService getChainFactoryService() {
+	public ICFBamChainFactory getFactoryChain() {
+		return(chainFactoryService);
+	}
+
+	public CFBamJpaChainFactoryService getChainFactoryService() {
 		return(chainFactoryService);
 	}
 
 	@Override
-	public ICFBamClearDepFactoryService getClearDepFactoryService() {
+	public ICFBamClearDepFactory getFactoryClearDep() {
+		return(cleardepFactoryService);
+	}
+
+	public CFBamJpaClearDepFactoryService getClearDepFactoryService() {
 		return(cleardepFactoryService);
 	}
 
 	@Override
-	public ICFBamClearSubDep1FactoryService getClearSubDep1FactoryService() {
+	public ICFBamClearSubDep1Factory getFactoryClearSubDep1() {
+		return(clearsubdep1FactoryService);
+	}
+
+	public CFBamJpaClearSubDep1FactoryService getClearSubDep1FactoryService() {
 		return(clearsubdep1FactoryService);
 	}
 
 	@Override
-	public ICFBamClearSubDep2FactoryService getClearSubDep2FactoryService() {
+	public ICFBamClearSubDep2Factory getFactoryClearSubDep2() {
+		return(clearsubdep2FactoryService);
+	}
+
+	public CFBamJpaClearSubDep2FactoryService getClearSubDep2FactoryService() {
 		return(clearsubdep2FactoryService);
 	}
 
 	@Override
-	public ICFBamClearSubDep3FactoryService getClearSubDep3FactoryService() {
+	public ICFBamClearSubDep3Factory getFactoryClearSubDep3() {
+		return(clearsubdep3FactoryService);
+	}
+
+	public CFBamJpaClearSubDep3FactoryService getClearSubDep3FactoryService() {
 		return(clearsubdep3FactoryService);
 	}
 
 	@Override
-	public ICFBamClearTopDepFactoryService getClearTopDepFactoryService() {
+	public ICFBamClearTopDepFactory getFactoryClearTopDep() {
+		return(cleartopdepFactoryService);
+	}
+
+	public CFBamJpaClearTopDepFactoryService getClearTopDepFactoryService() {
 		return(cleartopdepFactoryService);
 	}
 
 	@Override
-	public ICFBamDateDefFactoryService getDateDefFactoryService() {
+	public ICFBamDateDefFactory getFactoryDateDef() {
+		return(datedefFactoryService);
+	}
+
+	public CFBamJpaDateDefFactoryService getDateDefFactoryService() {
 		return(datedefFactoryService);
 	}
 
 	@Override
-	public ICFBamDateTypeFactoryService getDateTypeFactoryService() {
+	public ICFBamDateTypeFactory getFactoryDateType() {
+		return(datetypeFactoryService);
+	}
+
+	public CFBamJpaDateTypeFactoryService getDateTypeFactoryService() {
 		return(datetypeFactoryService);
 	}
 
 	@Override
-	public ICFBamDelDepFactoryService getDelDepFactoryService() {
+	public ICFBamDelDepFactory getFactoryDelDep() {
+		return(deldepFactoryService);
+	}
+
+	public CFBamJpaDelDepFactoryService getDelDepFactoryService() {
 		return(deldepFactoryService);
 	}
 
 	@Override
-	public ICFBamDelSubDep1FactoryService getDelSubDep1FactoryService() {
+	public ICFBamDelSubDep1Factory getFactoryDelSubDep1() {
+		return(delsubdep1FactoryService);
+	}
+
+	public CFBamJpaDelSubDep1FactoryService getDelSubDep1FactoryService() {
 		return(delsubdep1FactoryService);
 	}
 
 	@Override
-	public ICFBamDelSubDep2FactoryService getDelSubDep2FactoryService() {
+	public ICFBamDelSubDep2Factory getFactoryDelSubDep2() {
+		return(delsubdep2FactoryService);
+	}
+
+	public CFBamJpaDelSubDep2FactoryService getDelSubDep2FactoryService() {
 		return(delsubdep2FactoryService);
 	}
 
 	@Override
-	public ICFBamDelSubDep3FactoryService getDelSubDep3FactoryService() {
+	public ICFBamDelSubDep3Factory getFactoryDelSubDep3() {
+		return(delsubdep3FactoryService);
+	}
+
+	public CFBamJpaDelSubDep3FactoryService getDelSubDep3FactoryService() {
 		return(delsubdep3FactoryService);
 	}
 
 	@Override
-	public ICFBamDelTopDepFactoryService getDelTopDepFactoryService() {
+	public ICFBamDelTopDepFactory getFactoryDelTopDep() {
+		return(deltopdepFactoryService);
+	}
+
+	public CFBamJpaDelTopDepFactoryService getDelTopDepFactoryService() {
 		return(deltopdepFactoryService);
 	}
 
 	@Override
-	public ICFBamDoubleDefFactoryService getDoubleDefFactoryService() {
+	public ICFBamDoubleDefFactory getFactoryDoubleDef() {
+		return(doubledefFactoryService);
+	}
+
+	public CFBamJpaDoubleDefFactoryService getDoubleDefFactoryService() {
 		return(doubledefFactoryService);
 	}
 
 	@Override
-	public ICFBamDoubleTypeFactoryService getDoubleTypeFactoryService() {
+	public ICFBamDoubleTypeFactory getFactoryDoubleType() {
+		return(doubletypeFactoryService);
+	}
+
+	public CFBamJpaDoubleTypeFactoryService getDoubleTypeFactoryService() {
 		return(doubletypeFactoryService);
 	}
 
 	@Override
-	public ICFBamEnumTagFactoryService getEnumTagFactoryService() {
+	public ICFBamEnumTagFactory getFactoryEnumTag() {
+		return(enumtagFactoryService);
+	}
+
+	public CFBamJpaEnumTagFactoryService getEnumTagFactoryService() {
 		return(enumtagFactoryService);
 	}
 
 	@Override
-	public ICFBamFloatDefFactoryService getFloatDefFactoryService() {
+	public ICFBamFloatDefFactory getFactoryFloatDef() {
+		return(floatdefFactoryService);
+	}
+
+	public CFBamJpaFloatDefFactoryService getFloatDefFactoryService() {
 		return(floatdefFactoryService);
 	}
 
 	@Override
-	public ICFBamFloatTypeFactoryService getFloatTypeFactoryService() {
+	public ICFBamFloatTypeFactory getFactoryFloatType() {
+		return(floattypeFactoryService);
+	}
+
+	public CFBamJpaFloatTypeFactoryService getFloatTypeFactoryService() {
 		return(floattypeFactoryService);
 	}
 
 	@Override
-	public ICFBamIndexFactoryService getIndexFactoryService() {
+	public ICFBamIndexFactory getFactoryIndex() {
+		return(indexFactoryService);
+	}
+
+	public CFBamJpaIndexFactoryService getIndexFactoryService() {
 		return(indexFactoryService);
 	}
 
 	@Override
-	public ICFBamIndexColFactoryService getIndexColFactoryService() {
+	public ICFBamIndexColFactory getFactoryIndexCol() {
+		return(indexcolFactoryService);
+	}
+
+	public CFBamJpaIndexColFactoryService getIndexColFactoryService() {
 		return(indexcolFactoryService);
 	}
 
 	@Override
-	public ICFBamInt16DefFactoryService getInt16DefFactoryService() {
+	public ICFBamInt16DefFactory getFactoryInt16Def() {
+		return(int16defFactoryService);
+	}
+
+	public CFBamJpaInt16DefFactoryService getInt16DefFactoryService() {
 		return(int16defFactoryService);
 	}
 
 	@Override
-	public ICFBamInt16TypeFactoryService getInt16TypeFactoryService() {
+	public ICFBamInt16TypeFactory getFactoryInt16Type() {
+		return(int16typeFactoryService);
+	}
+
+	public CFBamJpaInt16TypeFactoryService getInt16TypeFactoryService() {
 		return(int16typeFactoryService);
 	}
 
 	@Override
-	public ICFBamInt32DefFactoryService getInt32DefFactoryService() {
+	public ICFBamInt32DefFactory getFactoryInt32Def() {
+		return(int32defFactoryService);
+	}
+
+	public CFBamJpaInt32DefFactoryService getInt32DefFactoryService() {
 		return(int32defFactoryService);
 	}
 
 	@Override
-	public ICFBamInt32TypeFactoryService getInt32TypeFactoryService() {
+	public ICFBamInt32TypeFactory getFactoryInt32Type() {
+		return(int32typeFactoryService);
+	}
+
+	public CFBamJpaInt32TypeFactoryService getInt32TypeFactoryService() {
 		return(int32typeFactoryService);
 	}
 
 	@Override
-	public ICFBamInt64DefFactoryService getInt64DefFactoryService() {
+	public ICFBamInt64DefFactory getFactoryInt64Def() {
+		return(int64defFactoryService);
+	}
+
+	public CFBamJpaInt64DefFactoryService getInt64DefFactoryService() {
 		return(int64defFactoryService);
 	}
 
 	@Override
-	public ICFBamInt64TypeFactoryService getInt64TypeFactoryService() {
+	public ICFBamInt64TypeFactory getFactoryInt64Type() {
+		return(int64typeFactoryService);
+	}
+
+	public CFBamJpaInt64TypeFactoryService getInt64TypeFactoryService() {
 		return(int64typeFactoryService);
 	}
 
 	@Override
-	public ICFBamNmTokenDefFactoryService getNmTokenDefFactoryService() {
+	public ICFBamNmTokenDefFactory getFactoryNmTokenDef() {
+		return(nmtokendefFactoryService);
+	}
+
+	public CFBamJpaNmTokenDefFactoryService getNmTokenDefFactoryService() {
 		return(nmtokendefFactoryService);
 	}
 
 	@Override
-	public ICFBamNmTokenTypeFactoryService getNmTokenTypeFactoryService() {
+	public ICFBamNmTokenTypeFactory getFactoryNmTokenType() {
+		return(nmtokentypeFactoryService);
+	}
+
+	public CFBamJpaNmTokenTypeFactoryService getNmTokenTypeFactoryService() {
 		return(nmtokentypeFactoryService);
 	}
 
 	@Override
-	public ICFBamNmTokensDefFactoryService getNmTokensDefFactoryService() {
+	public ICFBamNmTokensDefFactory getFactoryNmTokensDef() {
+		return(nmtokensdefFactoryService);
+	}
+
+	public CFBamJpaNmTokensDefFactoryService getNmTokensDefFactoryService() {
 		return(nmtokensdefFactoryService);
 	}
 
 	@Override
-	public ICFBamNmTokensTypeFactoryService getNmTokensTypeFactoryService() {
+	public ICFBamNmTokensTypeFactory getFactoryNmTokensType() {
+		return(nmtokenstypeFactoryService);
+	}
+
+	public CFBamJpaNmTokensTypeFactoryService getNmTokensTypeFactoryService() {
 		return(nmtokenstypeFactoryService);
 	}
 
 	@Override
-	public ICFBamNumberDefFactoryService getNumberDefFactoryService() {
+	public ICFBamNumberDefFactory getFactoryNumberDef() {
+		return(numberdefFactoryService);
+	}
+
+	public CFBamJpaNumberDefFactoryService getNumberDefFactoryService() {
 		return(numberdefFactoryService);
 	}
 
 	@Override
-	public ICFBamNumberTypeFactoryService getNumberTypeFactoryService() {
+	public ICFBamNumberTypeFactory getFactoryNumberType() {
+		return(numbertypeFactoryService);
+	}
+
+	public CFBamJpaNumberTypeFactoryService getNumberTypeFactoryService() {
 		return(numbertypeFactoryService);
 	}
 
 	@Override
-	public ICFBamParamFactoryService getParamFactoryService() {
+	public ICFBamParamFactory getFactoryParam() {
+		return(paramFactoryService);
+	}
+
+	public CFBamJpaParamFactoryService getParamFactoryService() {
 		return(paramFactoryService);
 	}
 
 	@Override
-	public ICFBamPopDepFactoryService getPopDepFactoryService() {
+	public ICFBamPopDepFactory getFactoryPopDep() {
+		return(popdepFactoryService);
+	}
+
+	public CFBamJpaPopDepFactoryService getPopDepFactoryService() {
 		return(popdepFactoryService);
 	}
 
 	@Override
-	public ICFBamPopSubDep1FactoryService getPopSubDep1FactoryService() {
+	public ICFBamPopSubDep1Factory getFactoryPopSubDep1() {
+		return(popsubdep1FactoryService);
+	}
+
+	public CFBamJpaPopSubDep1FactoryService getPopSubDep1FactoryService() {
 		return(popsubdep1FactoryService);
 	}
 
 	@Override
-	public ICFBamPopSubDep2FactoryService getPopSubDep2FactoryService() {
+	public ICFBamPopSubDep2Factory getFactoryPopSubDep2() {
+		return(popsubdep2FactoryService);
+	}
+
+	public CFBamJpaPopSubDep2FactoryService getPopSubDep2FactoryService() {
 		return(popsubdep2FactoryService);
 	}
 
 	@Override
-	public ICFBamPopSubDep3FactoryService getPopSubDep3FactoryService() {
+	public ICFBamPopSubDep3Factory getFactoryPopSubDep3() {
+		return(popsubdep3FactoryService);
+	}
+
+	public CFBamJpaPopSubDep3FactoryService getPopSubDep3FactoryService() {
 		return(popsubdep3FactoryService);
 	}
 
 	@Override
-	public ICFBamPopTopDepFactoryService getPopTopDepFactoryService() {
+	public ICFBamPopTopDepFactory getFactoryPopTopDep() {
+		return(poptopdepFactoryService);
+	}
+
+	public CFBamJpaPopTopDepFactoryService getPopTopDepFactoryService() {
 		return(poptopdepFactoryService);
 	}
 
 	@Override
-	public ICFBamRelationFactoryService getRelationFactoryService() {
+	public ICFBamRelationFactory getFactoryRelation() {
+		return(relationFactoryService);
+	}
+
+	public CFBamJpaRelationFactoryService getRelationFactoryService() {
 		return(relationFactoryService);
 	}
 
 	@Override
-	public ICFBamRelationColFactoryService getRelationColFactoryService() {
+	public ICFBamRelationColFactory getFactoryRelationCol() {
+		return(relationcolFactoryService);
+	}
+
+	public CFBamJpaRelationColFactoryService getRelationColFactoryService() {
 		return(relationcolFactoryService);
 	}
 
 	@Override
-	public ICFBamServerListFuncFactoryService getServerListFuncFactoryService() {
+	public ICFBamServerListFuncFactory getFactoryServerListFunc() {
+		return(serverlistfuncFactoryService);
+	}
+
+	public CFBamJpaServerListFuncFactoryService getServerListFuncFactoryService() {
 		return(serverlistfuncFactoryService);
 	}
 
 	@Override
-	public ICFBamDbKeyHash128DefFactoryService getDbKeyHash128DefFactoryService() {
+	public ICFBamDbKeyHash128DefFactory getFactoryDbKeyHash128Def() {
+		return(dbkeyhash128defFactoryService);
+	}
+
+	public CFBamJpaDbKeyHash128DefFactoryService getDbKeyHash128DefFactoryService() {
 		return(dbkeyhash128defFactoryService);
 	}
 
 	@Override
-	public ICFBamDbKeyHash128ColFactoryService getDbKeyHash128ColFactoryService() {
+	public ICFBamDbKeyHash128ColFactory getFactoryDbKeyHash128Col() {
+		return(dbkeyhash128colFactoryService);
+	}
+
+	public CFBamJpaDbKeyHash128ColFactoryService getDbKeyHash128ColFactoryService() {
 		return(dbkeyhash128colFactoryService);
 	}
 
 	@Override
-	public ICFBamDbKeyHash128TypeFactoryService getDbKeyHash128TypeFactoryService() {
+	public ICFBamDbKeyHash128TypeFactory getFactoryDbKeyHash128Type() {
+		return(dbkeyhash128typeFactoryService);
+	}
+
+	public CFBamJpaDbKeyHash128TypeFactoryService getDbKeyHash128TypeFactoryService() {
 		return(dbkeyhash128typeFactoryService);
 	}
 
 	@Override
-	public ICFBamDbKeyHash128GenFactoryService getDbKeyHash128GenFactoryService() {
+	public ICFBamDbKeyHash128GenFactory getFactoryDbKeyHash128Gen() {
+		return(dbkeyhash128genFactoryService);
+	}
+
+	public CFBamJpaDbKeyHash128GenFactoryService getDbKeyHash128GenFactoryService() {
 		return(dbkeyhash128genFactoryService);
 	}
 
 	@Override
-	public ICFBamDbKeyHash160DefFactoryService getDbKeyHash160DefFactoryService() {
+	public ICFBamDbKeyHash160DefFactory getFactoryDbKeyHash160Def() {
+		return(dbkeyhash160defFactoryService);
+	}
+
+	public CFBamJpaDbKeyHash160DefFactoryService getDbKeyHash160DefFactoryService() {
 		return(dbkeyhash160defFactoryService);
 	}
 
 	@Override
-	public ICFBamDbKeyHash160ColFactoryService getDbKeyHash160ColFactoryService() {
+	public ICFBamDbKeyHash160ColFactory getFactoryDbKeyHash160Col() {
+		return(dbkeyhash160colFactoryService);
+	}
+
+	public CFBamJpaDbKeyHash160ColFactoryService getDbKeyHash160ColFactoryService() {
 		return(dbkeyhash160colFactoryService);
 	}
 
 	@Override
-	public ICFBamDbKeyHash160TypeFactoryService getDbKeyHash160TypeFactoryService() {
+	public ICFBamDbKeyHash160TypeFactory getFactoryDbKeyHash160Type() {
+		return(dbkeyhash160typeFactoryService);
+	}
+
+	public CFBamJpaDbKeyHash160TypeFactoryService getDbKeyHash160TypeFactoryService() {
 		return(dbkeyhash160typeFactoryService);
 	}
 
 	@Override
-	public ICFBamDbKeyHash160GenFactoryService getDbKeyHash160GenFactoryService() {
+	public ICFBamDbKeyHash160GenFactory getFactoryDbKeyHash160Gen() {
+		return(dbkeyhash160genFactoryService);
+	}
+
+	public CFBamJpaDbKeyHash160GenFactoryService getDbKeyHash160GenFactoryService() {
 		return(dbkeyhash160genFactoryService);
 	}
 
 	@Override
-	public ICFBamDbKeyHash224DefFactoryService getDbKeyHash224DefFactoryService() {
+	public ICFBamDbKeyHash224DefFactory getFactoryDbKeyHash224Def() {
+		return(dbkeyhash224defFactoryService);
+	}
+
+	public CFBamJpaDbKeyHash224DefFactoryService getDbKeyHash224DefFactoryService() {
 		return(dbkeyhash224defFactoryService);
 	}
 
 	@Override
-	public ICFBamDbKeyHash224ColFactoryService getDbKeyHash224ColFactoryService() {
+	public ICFBamDbKeyHash224ColFactory getFactoryDbKeyHash224Col() {
+		return(dbkeyhash224colFactoryService);
+	}
+
+	public CFBamJpaDbKeyHash224ColFactoryService getDbKeyHash224ColFactoryService() {
 		return(dbkeyhash224colFactoryService);
 	}
 
 	@Override
-	public ICFBamDbKeyHash224TypeFactoryService getDbKeyHash224TypeFactoryService() {
+	public ICFBamDbKeyHash224TypeFactory getFactoryDbKeyHash224Type() {
+		return(dbkeyhash224typeFactoryService);
+	}
+
+	public CFBamJpaDbKeyHash224TypeFactoryService getDbKeyHash224TypeFactoryService() {
 		return(dbkeyhash224typeFactoryService);
 	}
 
 	@Override
-	public ICFBamDbKeyHash224GenFactoryService getDbKeyHash224GenFactoryService() {
+	public ICFBamDbKeyHash224GenFactory getFactoryDbKeyHash224Gen() {
+		return(dbkeyhash224genFactoryService);
+	}
+
+	public CFBamJpaDbKeyHash224GenFactoryService getDbKeyHash224GenFactoryService() {
 		return(dbkeyhash224genFactoryService);
 	}
 
 	@Override
-	public ICFBamDbKeyHash256DefFactoryService getDbKeyHash256DefFactoryService() {
+	public ICFBamDbKeyHash256DefFactory getFactoryDbKeyHash256Def() {
+		return(dbkeyhash256defFactoryService);
+	}
+
+	public CFBamJpaDbKeyHash256DefFactoryService getDbKeyHash256DefFactoryService() {
 		return(dbkeyhash256defFactoryService);
 	}
 
 	@Override
-	public ICFBamDbKeyHash256ColFactoryService getDbKeyHash256ColFactoryService() {
+	public ICFBamDbKeyHash256ColFactory getFactoryDbKeyHash256Col() {
+		return(dbkeyhash256colFactoryService);
+	}
+
+	public CFBamJpaDbKeyHash256ColFactoryService getDbKeyHash256ColFactoryService() {
 		return(dbkeyhash256colFactoryService);
 	}
 
 	@Override
-	public ICFBamDbKeyHash256TypeFactoryService getDbKeyHash256TypeFactoryService() {
+	public ICFBamDbKeyHash256TypeFactory getFactoryDbKeyHash256Type() {
+		return(dbkeyhash256typeFactoryService);
+	}
+
+	public CFBamJpaDbKeyHash256TypeFactoryService getDbKeyHash256TypeFactoryService() {
 		return(dbkeyhash256typeFactoryService);
 	}
 
 	@Override
-	public ICFBamDbKeyHash256GenFactoryService getDbKeyHash256GenFactoryService() {
+	public ICFBamDbKeyHash256GenFactory getFactoryDbKeyHash256Gen() {
+		return(dbkeyhash256genFactoryService);
+	}
+
+	public CFBamJpaDbKeyHash256GenFactoryService getDbKeyHash256GenFactoryService() {
 		return(dbkeyhash256genFactoryService);
 	}
 
 	@Override
-	public ICFBamDbKeyHash384DefFactoryService getDbKeyHash384DefFactoryService() {
+	public ICFBamDbKeyHash384DefFactory getFactoryDbKeyHash384Def() {
+		return(dbkeyhash384defFactoryService);
+	}
+
+	public CFBamJpaDbKeyHash384DefFactoryService getDbKeyHash384DefFactoryService() {
 		return(dbkeyhash384defFactoryService);
 	}
 
 	@Override
-	public ICFBamDbKeyHash384ColFactoryService getDbKeyHash384ColFactoryService() {
+	public ICFBamDbKeyHash384ColFactory getFactoryDbKeyHash384Col() {
+		return(dbkeyhash384colFactoryService);
+	}
+
+	public CFBamJpaDbKeyHash384ColFactoryService getDbKeyHash384ColFactoryService() {
 		return(dbkeyhash384colFactoryService);
 	}
 
 	@Override
-	public ICFBamDbKeyHash384TypeFactoryService getDbKeyHash384TypeFactoryService() {
+	public ICFBamDbKeyHash384TypeFactory getFactoryDbKeyHash384Type() {
+		return(dbkeyhash384typeFactoryService);
+	}
+
+	public CFBamJpaDbKeyHash384TypeFactoryService getDbKeyHash384TypeFactoryService() {
 		return(dbkeyhash384typeFactoryService);
 	}
 
 	@Override
-	public ICFBamDbKeyHash384GenFactoryService getDbKeyHash384GenFactoryService() {
+	public ICFBamDbKeyHash384GenFactory getFactoryDbKeyHash384Gen() {
+		return(dbkeyhash384genFactoryService);
+	}
+
+	public CFBamJpaDbKeyHash384GenFactoryService getDbKeyHash384GenFactoryService() {
 		return(dbkeyhash384genFactoryService);
 	}
 
 	@Override
-	public ICFBamDbKeyHash512DefFactoryService getDbKeyHash512DefFactoryService() {
+	public ICFBamDbKeyHash512DefFactory getFactoryDbKeyHash512Def() {
+		return(dbkeyhash512defFactoryService);
+	}
+
+	public CFBamJpaDbKeyHash512DefFactoryService getDbKeyHash512DefFactoryService() {
 		return(dbkeyhash512defFactoryService);
 	}
 
 	@Override
-	public ICFBamDbKeyHash512ColFactoryService getDbKeyHash512ColFactoryService() {
+	public ICFBamDbKeyHash512ColFactory getFactoryDbKeyHash512Col() {
+		return(dbkeyhash512colFactoryService);
+	}
+
+	public CFBamJpaDbKeyHash512ColFactoryService getDbKeyHash512ColFactoryService() {
 		return(dbkeyhash512colFactoryService);
 	}
 
 	@Override
-	public ICFBamDbKeyHash512TypeFactoryService getDbKeyHash512TypeFactoryService() {
+	public ICFBamDbKeyHash512TypeFactory getFactoryDbKeyHash512Type() {
+		return(dbkeyhash512typeFactoryService);
+	}
+
+	public CFBamJpaDbKeyHash512TypeFactoryService getDbKeyHash512TypeFactoryService() {
 		return(dbkeyhash512typeFactoryService);
 	}
 
 	@Override
-	public ICFBamDbKeyHash512GenFactoryService getDbKeyHash512GenFactoryService() {
+	public ICFBamDbKeyHash512GenFactory getFactoryDbKeyHash512Gen() {
+		return(dbkeyhash512genFactoryService);
+	}
+
+	public CFBamJpaDbKeyHash512GenFactoryService getDbKeyHash512GenFactoryService() {
 		return(dbkeyhash512genFactoryService);
 	}
 
 	@Override
-	public ICFBamStringDefFactoryService getStringDefFactoryService() {
+	public ICFBamStringDefFactory getFactoryStringDef() {
+		return(stringdefFactoryService);
+	}
+
+	public CFBamJpaStringDefFactoryService getStringDefFactoryService() {
 		return(stringdefFactoryService);
 	}
 
 	@Override
-	public ICFBamStringTypeFactoryService getStringTypeFactoryService() {
+	public ICFBamStringTypeFactory getFactoryStringType() {
+		return(stringtypeFactoryService);
+	}
+
+	public CFBamJpaStringTypeFactoryService getStringTypeFactoryService() {
 		return(stringtypeFactoryService);
 	}
 
 	@Override
-	public ICFBamTZDateDefFactoryService getTZDateDefFactoryService() {
+	public ICFBamTZDateDefFactory getFactoryTZDateDef() {
+		return(tzdatedefFactoryService);
+	}
+
+	public CFBamJpaTZDateDefFactoryService getTZDateDefFactoryService() {
 		return(tzdatedefFactoryService);
 	}
 
 	@Override
-	public ICFBamTZDateTypeFactoryService getTZDateTypeFactoryService() {
+	public ICFBamTZDateTypeFactory getFactoryTZDateType() {
+		return(tzdatetypeFactoryService);
+	}
+
+	public CFBamJpaTZDateTypeFactoryService getTZDateTypeFactoryService() {
 		return(tzdatetypeFactoryService);
 	}
 
 	@Override
-	public ICFBamTZTimeDefFactoryService getTZTimeDefFactoryService() {
+	public ICFBamTZTimeDefFactory getFactoryTZTimeDef() {
+		return(tztimedefFactoryService);
+	}
+
+	public CFBamJpaTZTimeDefFactoryService getTZTimeDefFactoryService() {
 		return(tztimedefFactoryService);
 	}
 
 	@Override
-	public ICFBamTZTimeTypeFactoryService getTZTimeTypeFactoryService() {
+	public ICFBamTZTimeTypeFactory getFactoryTZTimeType() {
+		return(tztimetypeFactoryService);
+	}
+
+	public CFBamJpaTZTimeTypeFactoryService getTZTimeTypeFactoryService() {
 		return(tztimetypeFactoryService);
 	}
 
 	@Override
-	public ICFBamTZTimestampDefFactoryService getTZTimestampDefFactoryService() {
+	public ICFBamTZTimestampDefFactory getFactoryTZTimestampDef() {
+		return(tztimestampdefFactoryService);
+	}
+
+	public CFBamJpaTZTimestampDefFactoryService getTZTimestampDefFactoryService() {
 		return(tztimestampdefFactoryService);
 	}
 
 	@Override
-	public ICFBamTZTimestampTypeFactoryService getTZTimestampTypeFactoryService() {
+	public ICFBamTZTimestampTypeFactory getFactoryTZTimestampType() {
+		return(tztimestamptypeFactoryService);
+	}
+
+	public CFBamJpaTZTimestampTypeFactoryService getTZTimestampTypeFactoryService() {
 		return(tztimestamptypeFactoryService);
 	}
 
 	@Override
-	public ICFBamTableColFactoryService getTableColFactoryService() {
+	public ICFBamTableColFactory getFactoryTableCol() {
+		return(tablecolFactoryService);
+	}
+
+	public CFBamJpaTableColFactoryService getTableColFactoryService() {
 		return(tablecolFactoryService);
 	}
 
 	@Override
-	public ICFBamTextDefFactoryService getTextDefFactoryService() {
+	public ICFBamTextDefFactory getFactoryTextDef() {
+		return(textdefFactoryService);
+	}
+
+	public CFBamJpaTextDefFactoryService getTextDefFactoryService() {
 		return(textdefFactoryService);
 	}
 
 	@Override
-	public ICFBamTextTypeFactoryService getTextTypeFactoryService() {
+	public ICFBamTextTypeFactory getFactoryTextType() {
+		return(texttypeFactoryService);
+	}
+
+	public CFBamJpaTextTypeFactoryService getTextTypeFactoryService() {
 		return(texttypeFactoryService);
 	}
 
 	@Override
-	public ICFBamTimeDefFactoryService getTimeDefFactoryService() {
+	public ICFBamTimeDefFactory getFactoryTimeDef() {
+		return(timedefFactoryService);
+	}
+
+	public CFBamJpaTimeDefFactoryService getTimeDefFactoryService() {
 		return(timedefFactoryService);
 	}
 
 	@Override
-	public ICFBamTimeTypeFactoryService getTimeTypeFactoryService() {
+	public ICFBamTimeTypeFactory getFactoryTimeType() {
+		return(timetypeFactoryService);
+	}
+
+	public CFBamJpaTimeTypeFactoryService getTimeTypeFactoryService() {
 		return(timetypeFactoryService);
 	}
 
 	@Override
-	public ICFBamTimestampDefFactoryService getTimestampDefFactoryService() {
+	public ICFBamTimestampDefFactory getFactoryTimestampDef() {
+		return(timestampdefFactoryService);
+	}
+
+	public CFBamJpaTimestampDefFactoryService getTimestampDefFactoryService() {
 		return(timestampdefFactoryService);
 	}
 
 	@Override
-	public ICFBamTimestampTypeFactoryService getTimestampTypeFactoryService() {
+	public ICFBamTimestampTypeFactory getFactoryTimestampType() {
+		return(timestamptypeFactoryService);
+	}
+
+	public CFBamJpaTimestampTypeFactoryService getTimestampTypeFactoryService() {
 		return(timestamptypeFactoryService);
 	}
 
 	@Override
-	public ICFBamTokenDefFactoryService getTokenDefFactoryService() {
+	public ICFBamTokenDefFactory getFactoryTokenDef() {
+		return(tokendefFactoryService);
+	}
+
+	public CFBamJpaTokenDefFactoryService getTokenDefFactoryService() {
 		return(tokendefFactoryService);
 	}
 
 	@Override
-	public ICFBamTokenTypeFactoryService getTokenTypeFactoryService() {
+	public ICFBamTokenTypeFactory getFactoryTokenType() {
+		return(tokentypeFactoryService);
+	}
+
+	public CFBamJpaTokenTypeFactoryService getTokenTypeFactoryService() {
 		return(tokentypeFactoryService);
 	}
 
 	@Override
-	public ICFBamUInt16DefFactoryService getUInt16DefFactoryService() {
+	public ICFBamUInt16DefFactory getFactoryUInt16Def() {
+		return(uint16defFactoryService);
+	}
+
+	public CFBamJpaUInt16DefFactoryService getUInt16DefFactoryService() {
 		return(uint16defFactoryService);
 	}
 
 	@Override
-	public ICFBamUInt16TypeFactoryService getUInt16TypeFactoryService() {
+	public ICFBamUInt16TypeFactory getFactoryUInt16Type() {
+		return(uint16typeFactoryService);
+	}
+
+	public CFBamJpaUInt16TypeFactoryService getUInt16TypeFactoryService() {
 		return(uint16typeFactoryService);
 	}
 
 	@Override
-	public ICFBamUInt32DefFactoryService getUInt32DefFactoryService() {
+	public ICFBamUInt32DefFactory getFactoryUInt32Def() {
+		return(uint32defFactoryService);
+	}
+
+	public CFBamJpaUInt32DefFactoryService getUInt32DefFactoryService() {
 		return(uint32defFactoryService);
 	}
 
 	@Override
-	public ICFBamUInt32TypeFactoryService getUInt32TypeFactoryService() {
+	public ICFBamUInt32TypeFactory getFactoryUInt32Type() {
+		return(uint32typeFactoryService);
+	}
+
+	public CFBamJpaUInt32TypeFactoryService getUInt32TypeFactoryService() {
 		return(uint32typeFactoryService);
 	}
 
 	@Override
-	public ICFBamUInt64DefFactoryService getUInt64DefFactoryService() {
+	public ICFBamUInt64DefFactory getFactoryUInt64Def() {
+		return(uint64defFactoryService);
+	}
+
+	public CFBamJpaUInt64DefFactoryService getUInt64DefFactoryService() {
 		return(uint64defFactoryService);
 	}
 
 	@Override
-	public ICFBamUInt64TypeFactoryService getUInt64TypeFactoryService() {
+	public ICFBamUInt64TypeFactory getFactoryUInt64Type() {
+		return(uint64typeFactoryService);
+	}
+
+	public CFBamJpaUInt64TypeFactoryService getUInt64TypeFactoryService() {
 		return(uint64typeFactoryService);
 	}
 
 	@Override
-	public ICFBamUuidDefFactoryService getUuidDefFactoryService() {
+	public ICFBamUuidDefFactory getFactoryUuidDef() {
+		return(uuiddefFactoryService);
+	}
+
+	public CFBamJpaUuidDefFactoryService getUuidDefFactoryService() {
 		return(uuiddefFactoryService);
 	}
 
 	@Override
-	public ICFBamUuid6DefFactoryService getUuid6DefFactoryService() {
+	public ICFBamUuid6DefFactory getFactoryUuid6Def() {
+		return(uuid6defFactoryService);
+	}
+
+	public CFBamJpaUuid6DefFactoryService getUuid6DefFactoryService() {
 		return(uuid6defFactoryService);
 	}
 
 	@Override
-	public ICFBamUuidTypeFactoryService getUuidTypeFactoryService() {
+	public ICFBamUuidTypeFactory getFactoryUuidType() {
+		return(uuidtypeFactoryService);
+	}
+
+	public CFBamJpaUuidTypeFactoryService getUuidTypeFactoryService() {
 		return(uuidtypeFactoryService);
 	}
 
 	@Override
-	public ICFBamUuid6TypeFactoryService getUuid6TypeFactoryService() {
+	public ICFBamUuid6TypeFactory getFactoryUuid6Type() {
+		return(uuid6typeFactoryService);
+	}
+
+	public CFBamJpaUuid6TypeFactoryService getUuid6TypeFactoryService() {
 		return(uuid6typeFactoryService);
 	}
 
 	@Override
-	public ICFBamBlobColFactoryService getBlobColFactoryService() {
+	public ICFBamBlobColFactory getFactoryBlobCol() {
+		return(blobcolFactoryService);
+	}
+
+	public CFBamJpaBlobColFactoryService getBlobColFactoryService() {
 		return(blobcolFactoryService);
 	}
 
 	@Override
-	public ICFBamBoolColFactoryService getBoolColFactoryService() {
+	public ICFBamBoolColFactory getFactoryBoolCol() {
+		return(boolcolFactoryService);
+	}
+
+	public CFBamJpaBoolColFactoryService getBoolColFactoryService() {
 		return(boolcolFactoryService);
 	}
 
 	@Override
-	public ICFBamDateColFactoryService getDateColFactoryService() {
+	public ICFBamDateColFactory getFactoryDateCol() {
+		return(datecolFactoryService);
+	}
+
+	public CFBamJpaDateColFactoryService getDateColFactoryService() {
 		return(datecolFactoryService);
 	}
 
 	@Override
-	public ICFBamDoubleColFactoryService getDoubleColFactoryService() {
+	public ICFBamDoubleColFactory getFactoryDoubleCol() {
+		return(doublecolFactoryService);
+	}
+
+	public CFBamJpaDoubleColFactoryService getDoubleColFactoryService() {
 		return(doublecolFactoryService);
 	}
 
 	@Override
-	public ICFBamEnumDefFactoryService getEnumDefFactoryService() {
+	public ICFBamEnumDefFactory getFactoryEnumDef() {
+		return(enumdefFactoryService);
+	}
+
+	public CFBamJpaEnumDefFactoryService getEnumDefFactoryService() {
 		return(enumdefFactoryService);
 	}
 
 	@Override
-	public ICFBamEnumTypeFactoryService getEnumTypeFactoryService() {
+	public ICFBamEnumTypeFactory getFactoryEnumType() {
+		return(enumtypeFactoryService);
+	}
+
+	public CFBamJpaEnumTypeFactoryService getEnumTypeFactoryService() {
 		return(enumtypeFactoryService);
 	}
 
 	@Override
-	public ICFBamFloatColFactoryService getFloatColFactoryService() {
+	public ICFBamFloatColFactory getFactoryFloatCol() {
+		return(floatcolFactoryService);
+	}
+
+	public CFBamJpaFloatColFactoryService getFloatColFactoryService() {
 		return(floatcolFactoryService);
 	}
 
 	@Override
-	public ICFBamId16GenFactoryService getId16GenFactoryService() {
+	public ICFBamId16GenFactory getFactoryId16Gen() {
+		return(id16genFactoryService);
+	}
+
+	public CFBamJpaId16GenFactoryService getId16GenFactoryService() {
 		return(id16genFactoryService);
 	}
 
 	@Override
-	public ICFBamId32GenFactoryService getId32GenFactoryService() {
+	public ICFBamId32GenFactory getFactoryId32Gen() {
+		return(id32genFactoryService);
+	}
+
+	public CFBamJpaId32GenFactoryService getId32GenFactoryService() {
 		return(id32genFactoryService);
 	}
 
 	@Override
-	public ICFBamId64GenFactoryService getId64GenFactoryService() {
+	public ICFBamId64GenFactory getFactoryId64Gen() {
+		return(id64genFactoryService);
+	}
+
+	public CFBamJpaId64GenFactoryService getId64GenFactoryService() {
 		return(id64genFactoryService);
 	}
 
 	@Override
-	public ICFBamInt16ColFactoryService getInt16ColFactoryService() {
+	public ICFBamInt16ColFactory getFactoryInt16Col() {
+		return(int16colFactoryService);
+	}
+
+	public CFBamJpaInt16ColFactoryService getInt16ColFactoryService() {
 		return(int16colFactoryService);
 	}
 
 	@Override
-	public ICFBamInt32ColFactoryService getInt32ColFactoryService() {
+	public ICFBamInt32ColFactory getFactoryInt32Col() {
+		return(int32colFactoryService);
+	}
+
+	public CFBamJpaInt32ColFactoryService getInt32ColFactoryService() {
 		return(int32colFactoryService);
 	}
 
 	@Override
-	public ICFBamInt64ColFactoryService getInt64ColFactoryService() {
+	public ICFBamInt64ColFactory getFactoryInt64Col() {
+		return(int64colFactoryService);
+	}
+
+	public CFBamJpaInt64ColFactoryService getInt64ColFactoryService() {
 		return(int64colFactoryService);
 	}
 
 	@Override
-	public ICFBamNmTokenColFactoryService getNmTokenColFactoryService() {
+	public ICFBamNmTokenColFactory getFactoryNmTokenCol() {
+		return(nmtokencolFactoryService);
+	}
+
+	public CFBamJpaNmTokenColFactoryService getNmTokenColFactoryService() {
 		return(nmtokencolFactoryService);
 	}
 
 	@Override
-	public ICFBamNmTokensColFactoryService getNmTokensColFactoryService() {
+	public ICFBamNmTokensColFactory getFactoryNmTokensCol() {
+		return(nmtokenscolFactoryService);
+	}
+
+	public CFBamJpaNmTokensColFactoryService getNmTokensColFactoryService() {
 		return(nmtokenscolFactoryService);
 	}
 
 	@Override
-	public ICFBamNumberColFactoryService getNumberColFactoryService() {
+	public ICFBamNumberColFactory getFactoryNumberCol() {
+		return(numbercolFactoryService);
+	}
+
+	public CFBamJpaNumberColFactoryService getNumberColFactoryService() {
 		return(numbercolFactoryService);
 	}
 
 	@Override
-	public ICFBamStringColFactoryService getStringColFactoryService() {
+	public ICFBamStringColFactory getFactoryStringCol() {
+		return(stringcolFactoryService);
+	}
+
+	public CFBamJpaStringColFactoryService getStringColFactoryService() {
 		return(stringcolFactoryService);
 	}
 
 	@Override
-	public ICFBamTZDateColFactoryService getTZDateColFactoryService() {
+	public ICFBamTZDateColFactory getFactoryTZDateCol() {
+		return(tzdatecolFactoryService);
+	}
+
+	public CFBamJpaTZDateColFactoryService getTZDateColFactoryService() {
 		return(tzdatecolFactoryService);
 	}
 
 	@Override
-	public ICFBamTZTimeColFactoryService getTZTimeColFactoryService() {
+	public ICFBamTZTimeColFactory getFactoryTZTimeCol() {
+		return(tztimecolFactoryService);
+	}
+
+	public CFBamJpaTZTimeColFactoryService getTZTimeColFactoryService() {
 		return(tztimecolFactoryService);
 	}
 
 	@Override
-	public ICFBamTZTimestampColFactoryService getTZTimestampColFactoryService() {
+	public ICFBamTZTimestampColFactory getFactoryTZTimestampCol() {
+		return(tztimestampcolFactoryService);
+	}
+
+	public CFBamJpaTZTimestampColFactoryService getTZTimestampColFactoryService() {
 		return(tztimestampcolFactoryService);
 	}
 
 	@Override
-	public ICFBamTextColFactoryService getTextColFactoryService() {
+	public ICFBamTextColFactory getFactoryTextCol() {
+		return(textcolFactoryService);
+	}
+
+	public CFBamJpaTextColFactoryService getTextColFactoryService() {
 		return(textcolFactoryService);
 	}
 
 	@Override
-	public ICFBamTimeColFactoryService getTimeColFactoryService() {
+	public ICFBamTimeColFactory getFactoryTimeCol() {
+		return(timecolFactoryService);
+	}
+
+	public CFBamJpaTimeColFactoryService getTimeColFactoryService() {
 		return(timecolFactoryService);
 	}
 
 	@Override
-	public ICFBamTimestampColFactoryService getTimestampColFactoryService() {
+	public ICFBamTimestampColFactory getFactoryTimestampCol() {
+		return(timestampcolFactoryService);
+	}
+
+	public CFBamJpaTimestampColFactoryService getTimestampColFactoryService() {
 		return(timestampcolFactoryService);
 	}
 
 	@Override
-	public ICFBamTokenColFactoryService getTokenColFactoryService() {
+	public ICFBamTokenColFactory getFactoryTokenCol() {
+		return(tokencolFactoryService);
+	}
+
+	public CFBamJpaTokenColFactoryService getTokenColFactoryService() {
 		return(tokencolFactoryService);
 	}
 
 	@Override
-	public ICFBamUInt16ColFactoryService getUInt16ColFactoryService() {
+	public ICFBamUInt16ColFactory getFactoryUInt16Col() {
+		return(uint16colFactoryService);
+	}
+
+	public CFBamJpaUInt16ColFactoryService getUInt16ColFactoryService() {
 		return(uint16colFactoryService);
 	}
 
 	@Override
-	public ICFBamUInt32ColFactoryService getUInt32ColFactoryService() {
+	public ICFBamUInt32ColFactory getFactoryUInt32Col() {
+		return(uint32colFactoryService);
+	}
+
+	public CFBamJpaUInt32ColFactoryService getUInt32ColFactoryService() {
 		return(uint32colFactoryService);
 	}
 
 	@Override
-	public ICFBamUInt64ColFactoryService getUInt64ColFactoryService() {
+	public ICFBamUInt64ColFactory getFactoryUInt64Col() {
+		return(uint64colFactoryService);
+	}
+
+	public CFBamJpaUInt64ColFactoryService getUInt64ColFactoryService() {
 		return(uint64colFactoryService);
 	}
 
 	@Override
-	public ICFBamUuidColFactoryService getUuidColFactoryService() {
+	public ICFBamUuidColFactory getFactoryUuidCol() {
+		return(uuidcolFactoryService);
+	}
+
+	public CFBamJpaUuidColFactoryService getUuidColFactoryService() {
 		return(uuidcolFactoryService);
 	}
 
 	@Override
-	public ICFBamUuid6ColFactoryService getUuid6ColFactoryService() {
+	public ICFBamUuid6ColFactory getFactoryUuid6Col() {
+		return(uuid6colFactoryService);
+	}
+
+	public CFBamJpaUuid6ColFactoryService getUuid6ColFactoryService() {
 		return(uuid6colFactoryService);
 	}
 
 	@Override
-	public ICFBamUuidGenFactoryService getUuidGenFactoryService() {
+	public ICFBamUuidGenFactory getFactoryUuidGen() {
+		return(uuidgenFactoryService);
+	}
+
+	public CFBamJpaUuidGenFactoryService getUuidGenFactoryService() {
 		return(uuidgenFactoryService);
 	}
 
 	@Override
-	public ICFBamUuid6GenFactoryService getUuid6GenFactoryService() {
+	public ICFBamUuid6GenFactory getFactoryUuid6Gen() {
+		return(uuid6genFactoryService);
+	}
+
+	public CFBamJpaUuid6GenFactoryService getUuid6GenFactoryService() {
 		return(uuid6genFactoryService);
 	}
 
 	@Override
-	public ICFBamRoleDefFactoryService getRoleDefFactoryService() {
+	public ICFBamRoleDefFactory getFactoryRoleDef() {
+		return(roledefFactoryService);
+	}
+
+	public CFBamJpaRoleDefFactoryService getRoleDefFactoryService() {
 		return(roledefFactoryService);
 	}
 
 	@Override
-	public ICFBamSchemaRoleFactoryService getSchemaRoleFactoryService() {
+	public ICFBamSchemaRoleFactory getFactorySchemaRole() {
+		return(schemaroleFactoryService);
+	}
+
+	public CFBamJpaSchemaRoleFactoryService getSchemaRoleFactoryService() {
 		return(schemaroleFactoryService);
 	}
 

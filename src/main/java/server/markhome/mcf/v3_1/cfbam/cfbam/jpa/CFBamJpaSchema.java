@@ -2731,6 +2731,28 @@ public class CFBamJpaSchema
 	}
 
 	@Override
+	public ICFSecFactory getCFSecFactory() {
+		ICFSecSchema sch = ICFSecSchema.getBackingCFSec();
+		if (sch == null) {
+			return null;
+		}
+		else {
+			return(sch.getCFSecFactory());
+		}
+	}
+
+	@Override
+	public ICFIntFactory getCFIntFactory() {
+		ICFIntSchema sch = ICFIntSchema.getBackingCFInt();
+		if (sch == null) {
+			return null;
+		}
+		else {
+			return(sch.getCFIntFactory());
+		}
+	}
+
+	@Override
 	public ICFBamFactory getCFBamFactory() {
 		return(CFBamJpaSchema.getJpaHooksSchema().getFactoryService());
 	}
