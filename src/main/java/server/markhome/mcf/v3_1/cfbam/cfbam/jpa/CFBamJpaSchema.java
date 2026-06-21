@@ -2750,7 +2750,7 @@ public class CFBamJpaSchema
 	
 	@Override
 	public CFSecBuffFactoryService getCFSecBuffFactory() {
-		return(CFSecBuffSchema.getBuffHooksSchema().getCFSecFactory());
+		return(CFSecBuffSchema.getBuffHooksSchema().getFactoryService());
 	}
 
 	@Override
@@ -2766,7 +2766,7 @@ public class CFBamJpaSchema
 	
 	@Override
 	public CFIntBuffFactoryService getCFIntBuffFactory() {
-		return(CFIntBuffSchema.getBuffHooksSchema().getCFIntFactory());
+		return(CFIntBuffSchema.getBuffHooksSchema().getFactoryService());
 	}
 
 	@Override
