@@ -87,9 +87,24 @@ public class CFBamJpaDateDefFactoryService
 			return( (CFBamJpaDateDef)rec );
 		}
 		else {
-			CFBamJpaDateDef mapped = new CFBamJpaDateDef();
-			mapped.set(rec);
-			return( mapped );
+			switch(rec.getClassCode()) {
+				case ICFBamDateDef.CLASS_CODE: {
+					CFBamJpaDateDef mapped = new CFBamJpaDateDef();
+					mapped.set(rec);
+					return( mapped ); }
+				case ICFBamDateType.CLASS_CODE: {
+					CFBamJpaDateType mapped = new CFBamJpaDateType();
+					mapped.set((ICFBamDateType)rec);
+					return(mapped); }
+				case ICFBamDateCol.CLASS_CODE: {
+					CFBamJpaDateCol mapped = new CFBamJpaDateCol();
+					mapped.set((ICFBamDateCol)rec);
+					return(mapped); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureRec",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamDateDef",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamDateDef");
+			}
 		}
 	}
 
@@ -100,16 +115,31 @@ public class CFBamJpaDateDefFactoryService
     }
 
 	public CFBamJpaDateDefH ensureHRec(ICFBamDateDefH hrec) {
-		if (hrec == null) {
+		if( hrec == null ) {
 			return( null );
 		}
-		else if( hrec instanceof CFBamJpaDateDefH) {
+		else if (hrec instanceof CFBamJpaDateDefH) {
 			return( (CFBamJpaDateDefH)hrec );
 		}
 		else {
-			CFBamJpaDateDefH mapped = new CFBamJpaDateDefH();
-			mapped.set(hrec);
-			return( mapped );
+			switch(hrec.getClassCode()) {
+				case ICFBamDateDef.CLASS_CODE: {
+					CFBamJpaDateDefH mapped = new CFBamJpaDateDefH();
+					mapped.set(hrec);
+					return( mapped ); }
+				case ICFBamDateType.CLASS_CODE: {
+					CFBamJpaDateTypeH mapped = new CFBamJpaDateTypeH();
+					mapped.set((ICFBamDateTypeH)hrec);
+					return(mapped); }
+				case ICFBamDateCol.CLASS_CODE: {
+					CFBamJpaDateColH mapped = new CFBamJpaDateColH();
+					mapped.set((ICFBamDateColH)hrec);
+					return(mapped); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureHRec",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamDateDef",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamDateDef");
+			}
 		}
 	}
 }

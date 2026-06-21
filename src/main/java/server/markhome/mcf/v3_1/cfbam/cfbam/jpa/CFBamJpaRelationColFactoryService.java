@@ -294,9 +294,16 @@ public class CFBamJpaRelationColFactoryService
 			return( (CFBamJpaRelationCol)rec );
 		}
 		else {
-			CFBamJpaRelationCol mapped = new CFBamJpaRelationCol();
-			mapped.set(rec);
-			return( mapped );
+			switch(rec.getClassCode()) {
+				case ICFBamRelationCol.CLASS_CODE: {
+					CFBamJpaRelationCol mapped = new CFBamJpaRelationCol();
+					mapped.set(rec);
+					return( mapped ); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureRec",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamRelationCol",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamRelationCol");
+			}
 		}
 	}
 
@@ -307,16 +314,23 @@ public class CFBamJpaRelationColFactoryService
     }
 
 	public CFBamJpaRelationColH ensureHRec(ICFBamRelationColH hrec) {
-		if (hrec == null) {
+		if( hrec == null ) {
 			return( null );
 		}
-		else if( hrec instanceof CFBamJpaRelationColH) {
+		else if (hrec instanceof CFBamJpaRelationColH) {
 			return( (CFBamJpaRelationColH)hrec );
 		}
 		else {
-			CFBamJpaRelationColH mapped = new CFBamJpaRelationColH();
-			mapped.set(hrec);
-			return( mapped );
+			switch(hrec.getClassCode()) {
+				case ICFBamRelationCol.CLASS_CODE: {
+					CFBamJpaRelationColH mapped = new CFBamJpaRelationColH();
+					mapped.set(hrec);
+					return( mapped ); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureHRec",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamRelationCol",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamRelationCol");
+			}
 		}
 	}
 }

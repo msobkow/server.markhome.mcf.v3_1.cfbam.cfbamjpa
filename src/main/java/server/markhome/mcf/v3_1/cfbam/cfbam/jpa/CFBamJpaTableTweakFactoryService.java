@@ -107,9 +107,16 @@ public class CFBamJpaTableTweakFactoryService
 			return( (CFBamJpaTableTweak)rec );
 		}
 		else {
-			CFBamJpaTableTweak mapped = new CFBamJpaTableTweak();
-			mapped.set(rec);
-			return( mapped );
+			switch(rec.getClassCode()) {
+				case ICFBamTableTweak.CLASS_CODE: {
+					CFBamJpaTableTweak mapped = new CFBamJpaTableTweak();
+					mapped.set(rec);
+					return( mapped ); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureRec",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamTableTweak",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamTableTweak");
+			}
 		}
 	}
 
@@ -120,16 +127,23 @@ public class CFBamJpaTableTweakFactoryService
     }
 
 	public CFBamJpaTableTweakH ensureHRec(ICFBamTableTweakH hrec) {
-		if (hrec == null) {
+		if( hrec == null ) {
 			return( null );
 		}
-		else if( hrec instanceof CFBamJpaTableTweakH) {
+		else if (hrec instanceof CFBamJpaTableTweakH) {
 			return( (CFBamJpaTableTweakH)hrec );
 		}
 		else {
-			CFBamJpaTableTweakH mapped = new CFBamJpaTableTweakH();
-			mapped.set(hrec);
-			return( mapped );
+			switch(hrec.getClassCode()) {
+				case ICFBamTableTweak.CLASS_CODE: {
+					CFBamJpaTableTweakH mapped = new CFBamJpaTableTweakH();
+					mapped.set(hrec);
+					return( mapped ); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureHRec",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamTableTweak",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamTableTweak");
+			}
 		}
 	}
 }

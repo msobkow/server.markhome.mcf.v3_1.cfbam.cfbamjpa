@@ -87,9 +87,16 @@ public class CFBamJpaUuid6GenFactoryService
 			return( (CFBamJpaUuid6Gen)rec );
 		}
 		else {
-			CFBamJpaUuid6Gen mapped = new CFBamJpaUuid6Gen();
-			mapped.set(rec);
-			return( mapped );
+			switch(rec.getClassCode()) {
+				case ICFBamUuid6Gen.CLASS_CODE: {
+					CFBamJpaUuid6Gen mapped = new CFBamJpaUuid6Gen();
+					mapped.set(rec);
+					return( mapped ); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureRec",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamUuid6Gen",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamUuid6Gen");
+			}
 		}
 	}
 
@@ -100,16 +107,23 @@ public class CFBamJpaUuid6GenFactoryService
     }
 
 	public CFBamJpaUuid6GenH ensureHRec(ICFBamUuid6GenH hrec) {
-		if (hrec == null) {
+		if( hrec == null ) {
 			return( null );
 		}
-		else if( hrec instanceof CFBamJpaUuid6GenH) {
+		else if (hrec instanceof CFBamJpaUuid6GenH) {
 			return( (CFBamJpaUuid6GenH)hrec );
 		}
 		else {
-			CFBamJpaUuid6GenH mapped = new CFBamJpaUuid6GenH();
-			mapped.set(hrec);
-			return( mapped );
+			switch(hrec.getClassCode()) {
+				case ICFBamUuid6Gen.CLASS_CODE: {
+					CFBamJpaUuid6GenH mapped = new CFBamJpaUuid6GenH();
+					mapped.set(hrec);
+					return( mapped ); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureHRec",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamUuid6Gen",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamUuid6Gen");
+			}
 		}
 	}
 }

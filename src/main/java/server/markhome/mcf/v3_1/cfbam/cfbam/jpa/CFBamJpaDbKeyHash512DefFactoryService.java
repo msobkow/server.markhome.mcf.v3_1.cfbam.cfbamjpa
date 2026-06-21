@@ -87,9 +87,28 @@ public class CFBamJpaDbKeyHash512DefFactoryService
 			return( (CFBamJpaDbKeyHash512Def)rec );
 		}
 		else {
-			CFBamJpaDbKeyHash512Def mapped = new CFBamJpaDbKeyHash512Def();
-			mapped.set(rec);
-			return( mapped );
+			switch(rec.getClassCode()) {
+				case ICFBamDbKeyHash512Def.CLASS_CODE: {
+					CFBamJpaDbKeyHash512Def mapped = new CFBamJpaDbKeyHash512Def();
+					mapped.set(rec);
+					return( mapped ); }
+				case ICFBamDbKeyHash512Col.CLASS_CODE: {
+					CFBamJpaDbKeyHash512Col mapped = new CFBamJpaDbKeyHash512Col();
+					mapped.set((ICFBamDbKeyHash512Col)rec);
+					return(mapped); }
+				case ICFBamDbKeyHash512Type.CLASS_CODE: {
+					CFBamJpaDbKeyHash512Type mapped = new CFBamJpaDbKeyHash512Type();
+					mapped.set((ICFBamDbKeyHash512Type)rec);
+					return(mapped); }
+				case ICFBamDbKeyHash512Gen.CLASS_CODE: {
+					CFBamJpaDbKeyHash512Gen mapped = new CFBamJpaDbKeyHash512Gen();
+					mapped.set((ICFBamDbKeyHash512Gen)rec);
+					return(mapped); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureRec",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamDbKeyHash512Def",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamDbKeyHash512Def");
+			}
 		}
 	}
 
@@ -100,16 +119,35 @@ public class CFBamJpaDbKeyHash512DefFactoryService
     }
 
 	public CFBamJpaDbKeyHash512DefH ensureHRec(ICFBamDbKeyHash512DefH hrec) {
-		if (hrec == null) {
+		if( hrec == null ) {
 			return( null );
 		}
-		else if( hrec instanceof CFBamJpaDbKeyHash512DefH) {
+		else if (hrec instanceof CFBamJpaDbKeyHash512DefH) {
 			return( (CFBamJpaDbKeyHash512DefH)hrec );
 		}
 		else {
-			CFBamJpaDbKeyHash512DefH mapped = new CFBamJpaDbKeyHash512DefH();
-			mapped.set(hrec);
-			return( mapped );
+			switch(hrec.getClassCode()) {
+				case ICFBamDbKeyHash512Def.CLASS_CODE: {
+					CFBamJpaDbKeyHash512DefH mapped = new CFBamJpaDbKeyHash512DefH();
+					mapped.set(hrec);
+					return( mapped ); }
+				case ICFBamDbKeyHash512Col.CLASS_CODE: {
+					CFBamJpaDbKeyHash512ColH mapped = new CFBamJpaDbKeyHash512ColH();
+					mapped.set((ICFBamDbKeyHash512ColH)hrec);
+					return(mapped); }
+				case ICFBamDbKeyHash512Type.CLASS_CODE: {
+					CFBamJpaDbKeyHash512TypeH mapped = new CFBamJpaDbKeyHash512TypeH();
+					mapped.set((ICFBamDbKeyHash512TypeH)hrec);
+					return(mapped); }
+				case ICFBamDbKeyHash512Gen.CLASS_CODE: {
+					CFBamJpaDbKeyHash512GenH mapped = new CFBamJpaDbKeyHash512GenH();
+					mapped.set((ICFBamDbKeyHash512GenH)hrec);
+					return(mapped); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureHRec",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamDbKeyHash512Def",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamDbKeyHash512Def");
+			}
 		}
 	}
 }

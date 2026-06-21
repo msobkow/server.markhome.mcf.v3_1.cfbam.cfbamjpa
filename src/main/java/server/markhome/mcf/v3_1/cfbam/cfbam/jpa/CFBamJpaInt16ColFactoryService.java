@@ -107,9 +107,16 @@ public class CFBamJpaInt16ColFactoryService
 			return( (CFBamJpaInt16Col)rec );
 		}
 		else {
-			CFBamJpaInt16Col mapped = new CFBamJpaInt16Col();
-			mapped.set(rec);
-			return( mapped );
+			switch(rec.getClassCode()) {
+				case ICFBamInt16Col.CLASS_CODE: {
+					CFBamJpaInt16Col mapped = new CFBamJpaInt16Col();
+					mapped.set(rec);
+					return( mapped ); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureRec",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamInt16Col",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamInt16Col");
+			}
 		}
 	}
 
@@ -120,16 +127,23 @@ public class CFBamJpaInt16ColFactoryService
     }
 
 	public CFBamJpaInt16ColH ensureHRec(ICFBamInt16ColH hrec) {
-		if (hrec == null) {
+		if( hrec == null ) {
 			return( null );
 		}
-		else if( hrec instanceof CFBamJpaInt16ColH) {
+		else if (hrec instanceof CFBamJpaInt16ColH) {
 			return( (CFBamJpaInt16ColH)hrec );
 		}
 		else {
-			CFBamJpaInt16ColH mapped = new CFBamJpaInt16ColH();
-			mapped.set(hrec);
-			return( mapped );
+			switch(hrec.getClassCode()) {
+				case ICFBamInt16Col.CLASS_CODE: {
+					CFBamJpaInt16ColH mapped = new CFBamJpaInt16ColH();
+					mapped.set(hrec);
+					return( mapped ); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureHRec",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamInt16Col",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamInt16Col");
+			}
 		}
 	}
 }

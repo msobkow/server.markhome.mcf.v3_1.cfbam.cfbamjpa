@@ -131,9 +131,112 @@ public class CFBamJpaScopeFactoryService
 			return( (CFBamJpaScope)rec );
 		}
 		else {
-			CFBamJpaScope mapped = new CFBamJpaScope();
-			mapped.set(rec);
-			return( mapped );
+			switch(rec.getClassCode()) {
+				case ICFBamScope.CLASS_CODE: {
+					CFBamJpaScope mapped = new CFBamJpaScope();
+					mapped.set(rec);
+					return( mapped ); }
+				case ICFBamSchemaDef.CLASS_CODE: {
+					CFBamJpaSchemaDef mapped = new CFBamJpaSchemaDef();
+					mapped.set((ICFBamSchemaDef)rec);
+					return(mapped); }
+				case ICFBamSchemaRef.CLASS_CODE: {
+					CFBamJpaSchemaRef mapped = new CFBamJpaSchemaRef();
+					mapped.set((ICFBamSchemaRef)rec);
+					return(mapped); }
+				case ICFBamServerMethod.CLASS_CODE: {
+					CFBamJpaServerMethod mapped = new CFBamJpaServerMethod();
+					mapped.set((ICFBamServerMethod)rec);
+					return(mapped); }
+				case ICFBamServerObjFunc.CLASS_CODE: {
+					CFBamJpaServerObjFunc mapped = new CFBamJpaServerObjFunc();
+					mapped.set((ICFBamServerObjFunc)rec);
+					return(mapped); }
+				case ICFBamServerProc.CLASS_CODE: {
+					CFBamJpaServerProc mapped = new CFBamJpaServerProc();
+					mapped.set((ICFBamServerProc)rec);
+					return(mapped); }
+				case ICFBamServerListFunc.CLASS_CODE: {
+					CFBamJpaServerListFunc mapped = new CFBamJpaServerListFunc();
+					mapped.set((ICFBamServerListFunc)rec);
+					return(mapped); }
+				case ICFBamTable.CLASS_CODE: {
+					CFBamJpaTable mapped = new CFBamJpaTable();
+					mapped.set((ICFBamTable)rec);
+					return(mapped); }
+				case ICFBamClearDep.CLASS_CODE: {
+					CFBamJpaClearDep mapped = new CFBamJpaClearDep();
+					mapped.set((ICFBamClearDep)rec);
+					return(mapped); }
+				case ICFBamClearSubDep1.CLASS_CODE: {
+					CFBamJpaClearSubDep1 mapped = new CFBamJpaClearSubDep1();
+					mapped.set((ICFBamClearSubDep1)rec);
+					return(mapped); }
+				case ICFBamClearSubDep2.CLASS_CODE: {
+					CFBamJpaClearSubDep2 mapped = new CFBamJpaClearSubDep2();
+					mapped.set((ICFBamClearSubDep2)rec);
+					return(mapped); }
+				case ICFBamClearSubDep3.CLASS_CODE: {
+					CFBamJpaClearSubDep3 mapped = new CFBamJpaClearSubDep3();
+					mapped.set((ICFBamClearSubDep3)rec);
+					return(mapped); }
+				case ICFBamClearTopDep.CLASS_CODE: {
+					CFBamJpaClearTopDep mapped = new CFBamJpaClearTopDep();
+					mapped.set((ICFBamClearTopDep)rec);
+					return(mapped); }
+				case ICFBamDelDep.CLASS_CODE: {
+					CFBamJpaDelDep mapped = new CFBamJpaDelDep();
+					mapped.set((ICFBamDelDep)rec);
+					return(mapped); }
+				case ICFBamDelSubDep1.CLASS_CODE: {
+					CFBamJpaDelSubDep1 mapped = new CFBamJpaDelSubDep1();
+					mapped.set((ICFBamDelSubDep1)rec);
+					return(mapped); }
+				case ICFBamDelSubDep2.CLASS_CODE: {
+					CFBamJpaDelSubDep2 mapped = new CFBamJpaDelSubDep2();
+					mapped.set((ICFBamDelSubDep2)rec);
+					return(mapped); }
+				case ICFBamDelSubDep3.CLASS_CODE: {
+					CFBamJpaDelSubDep3 mapped = new CFBamJpaDelSubDep3();
+					mapped.set((ICFBamDelSubDep3)rec);
+					return(mapped); }
+				case ICFBamDelTopDep.CLASS_CODE: {
+					CFBamJpaDelTopDep mapped = new CFBamJpaDelTopDep();
+					mapped.set((ICFBamDelTopDep)rec);
+					return(mapped); }
+				case ICFBamIndex.CLASS_CODE: {
+					CFBamJpaIndex mapped = new CFBamJpaIndex();
+					mapped.set((ICFBamIndex)rec);
+					return(mapped); }
+				case ICFBamPopDep.CLASS_CODE: {
+					CFBamJpaPopDep mapped = new CFBamJpaPopDep();
+					mapped.set((ICFBamPopDep)rec);
+					return(mapped); }
+				case ICFBamPopSubDep1.CLASS_CODE: {
+					CFBamJpaPopSubDep1 mapped = new CFBamJpaPopSubDep1();
+					mapped.set((ICFBamPopSubDep1)rec);
+					return(mapped); }
+				case ICFBamPopSubDep2.CLASS_CODE: {
+					CFBamJpaPopSubDep2 mapped = new CFBamJpaPopSubDep2();
+					mapped.set((ICFBamPopSubDep2)rec);
+					return(mapped); }
+				case ICFBamPopSubDep3.CLASS_CODE: {
+					CFBamJpaPopSubDep3 mapped = new CFBamJpaPopSubDep3();
+					mapped.set((ICFBamPopSubDep3)rec);
+					return(mapped); }
+				case ICFBamPopTopDep.CLASS_CODE: {
+					CFBamJpaPopTopDep mapped = new CFBamJpaPopTopDep();
+					mapped.set((ICFBamPopTopDep)rec);
+					return(mapped); }
+				case ICFBamRelation.CLASS_CODE: {
+					CFBamJpaRelation mapped = new CFBamJpaRelation();
+					mapped.set((ICFBamRelation)rec);
+					return(mapped); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureRec",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamScope",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamScope");
+			}
 		}
 	}
 
@@ -144,16 +247,119 @@ public class CFBamJpaScopeFactoryService
     }
 
 	public CFBamJpaScopeH ensureHRec(ICFBamScopeH hrec) {
-		if (hrec == null) {
+		if( hrec == null ) {
 			return( null );
 		}
-		else if( hrec instanceof CFBamJpaScopeH) {
+		else if (hrec instanceof CFBamJpaScopeH) {
 			return( (CFBamJpaScopeH)hrec );
 		}
 		else {
-			CFBamJpaScopeH mapped = new CFBamJpaScopeH();
-			mapped.set(hrec);
-			return( mapped );
+			switch(hrec.getClassCode()) {
+				case ICFBamScope.CLASS_CODE: {
+					CFBamJpaScopeH mapped = new CFBamJpaScopeH();
+					mapped.set(hrec);
+					return( mapped ); }
+				case ICFBamSchemaDef.CLASS_CODE: {
+					CFBamJpaSchemaDefH mapped = new CFBamJpaSchemaDefH();
+					mapped.set((ICFBamSchemaDefH)hrec);
+					return(mapped); }
+				case ICFBamSchemaRef.CLASS_CODE: {
+					CFBamJpaSchemaRefH mapped = new CFBamJpaSchemaRefH();
+					mapped.set((ICFBamSchemaRefH)hrec);
+					return(mapped); }
+				case ICFBamServerMethod.CLASS_CODE: {
+					CFBamJpaServerMethodH mapped = new CFBamJpaServerMethodH();
+					mapped.set((ICFBamServerMethodH)hrec);
+					return(mapped); }
+				case ICFBamServerObjFunc.CLASS_CODE: {
+					CFBamJpaServerObjFuncH mapped = new CFBamJpaServerObjFuncH();
+					mapped.set((ICFBamServerObjFuncH)hrec);
+					return(mapped); }
+				case ICFBamServerProc.CLASS_CODE: {
+					CFBamJpaServerProcH mapped = new CFBamJpaServerProcH();
+					mapped.set((ICFBamServerProcH)hrec);
+					return(mapped); }
+				case ICFBamServerListFunc.CLASS_CODE: {
+					CFBamJpaServerListFuncH mapped = new CFBamJpaServerListFuncH();
+					mapped.set((ICFBamServerListFuncH)hrec);
+					return(mapped); }
+				case ICFBamTable.CLASS_CODE: {
+					CFBamJpaTableH mapped = new CFBamJpaTableH();
+					mapped.set((ICFBamTableH)hrec);
+					return(mapped); }
+				case ICFBamClearDep.CLASS_CODE: {
+					CFBamJpaClearDepH mapped = new CFBamJpaClearDepH();
+					mapped.set((ICFBamClearDepH)hrec);
+					return(mapped); }
+				case ICFBamClearSubDep1.CLASS_CODE: {
+					CFBamJpaClearSubDep1H mapped = new CFBamJpaClearSubDep1H();
+					mapped.set((ICFBamClearSubDep1H)hrec);
+					return(mapped); }
+				case ICFBamClearSubDep2.CLASS_CODE: {
+					CFBamJpaClearSubDep2H mapped = new CFBamJpaClearSubDep2H();
+					mapped.set((ICFBamClearSubDep2H)hrec);
+					return(mapped); }
+				case ICFBamClearSubDep3.CLASS_CODE: {
+					CFBamJpaClearSubDep3H mapped = new CFBamJpaClearSubDep3H();
+					mapped.set((ICFBamClearSubDep3H)hrec);
+					return(mapped); }
+				case ICFBamClearTopDep.CLASS_CODE: {
+					CFBamJpaClearTopDepH mapped = new CFBamJpaClearTopDepH();
+					mapped.set((ICFBamClearTopDepH)hrec);
+					return(mapped); }
+				case ICFBamDelDep.CLASS_CODE: {
+					CFBamJpaDelDepH mapped = new CFBamJpaDelDepH();
+					mapped.set((ICFBamDelDepH)hrec);
+					return(mapped); }
+				case ICFBamDelSubDep1.CLASS_CODE: {
+					CFBamJpaDelSubDep1H mapped = new CFBamJpaDelSubDep1H();
+					mapped.set((ICFBamDelSubDep1H)hrec);
+					return(mapped); }
+				case ICFBamDelSubDep2.CLASS_CODE: {
+					CFBamJpaDelSubDep2H mapped = new CFBamJpaDelSubDep2H();
+					mapped.set((ICFBamDelSubDep2H)hrec);
+					return(mapped); }
+				case ICFBamDelSubDep3.CLASS_CODE: {
+					CFBamJpaDelSubDep3H mapped = new CFBamJpaDelSubDep3H();
+					mapped.set((ICFBamDelSubDep3H)hrec);
+					return(mapped); }
+				case ICFBamDelTopDep.CLASS_CODE: {
+					CFBamJpaDelTopDepH mapped = new CFBamJpaDelTopDepH();
+					mapped.set((ICFBamDelTopDepH)hrec);
+					return(mapped); }
+				case ICFBamIndex.CLASS_CODE: {
+					CFBamJpaIndexH mapped = new CFBamJpaIndexH();
+					mapped.set((ICFBamIndexH)hrec);
+					return(mapped); }
+				case ICFBamPopDep.CLASS_CODE: {
+					CFBamJpaPopDepH mapped = new CFBamJpaPopDepH();
+					mapped.set((ICFBamPopDepH)hrec);
+					return(mapped); }
+				case ICFBamPopSubDep1.CLASS_CODE: {
+					CFBamJpaPopSubDep1H mapped = new CFBamJpaPopSubDep1H();
+					mapped.set((ICFBamPopSubDep1H)hrec);
+					return(mapped); }
+				case ICFBamPopSubDep2.CLASS_CODE: {
+					CFBamJpaPopSubDep2H mapped = new CFBamJpaPopSubDep2H();
+					mapped.set((ICFBamPopSubDep2H)hrec);
+					return(mapped); }
+				case ICFBamPopSubDep3.CLASS_CODE: {
+					CFBamJpaPopSubDep3H mapped = new CFBamJpaPopSubDep3H();
+					mapped.set((ICFBamPopSubDep3H)hrec);
+					return(mapped); }
+				case ICFBamPopTopDep.CLASS_CODE: {
+					CFBamJpaPopTopDepH mapped = new CFBamJpaPopTopDepH();
+					mapped.set((ICFBamPopTopDepH)hrec);
+					return(mapped); }
+				case ICFBamRelation.CLASS_CODE: {
+					CFBamJpaRelationH mapped = new CFBamJpaRelationH();
+					mapped.set((ICFBamRelationH)hrec);
+					return(mapped); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureHRec",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamScope",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamScope");
+			}
 		}
 	}
 }

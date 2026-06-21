@@ -107,9 +107,16 @@ public class CFBamJpaDbKeyHash160ColFactoryService
 			return( (CFBamJpaDbKeyHash160Col)rec );
 		}
 		else {
-			CFBamJpaDbKeyHash160Col mapped = new CFBamJpaDbKeyHash160Col();
-			mapped.set(rec);
-			return( mapped );
+			switch(rec.getClassCode()) {
+				case ICFBamDbKeyHash160Col.CLASS_CODE: {
+					CFBamJpaDbKeyHash160Col mapped = new CFBamJpaDbKeyHash160Col();
+					mapped.set(rec);
+					return( mapped ); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureRec",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamDbKeyHash160Col",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamDbKeyHash160Col");
+			}
 		}
 	}
 
@@ -120,16 +127,23 @@ public class CFBamJpaDbKeyHash160ColFactoryService
     }
 
 	public CFBamJpaDbKeyHash160ColH ensureHRec(ICFBamDbKeyHash160ColH hrec) {
-		if (hrec == null) {
+		if( hrec == null ) {
 			return( null );
 		}
-		else if( hrec instanceof CFBamJpaDbKeyHash160ColH) {
+		else if (hrec instanceof CFBamJpaDbKeyHash160ColH) {
 			return( (CFBamJpaDbKeyHash160ColH)hrec );
 		}
 		else {
-			CFBamJpaDbKeyHash160ColH mapped = new CFBamJpaDbKeyHash160ColH();
-			mapped.set(hrec);
-			return( mapped );
+			switch(hrec.getClassCode()) {
+				case ICFBamDbKeyHash160Col.CLASS_CODE: {
+					CFBamJpaDbKeyHash160ColH mapped = new CFBamJpaDbKeyHash160ColH();
+					mapped.set(hrec);
+					return( mapped ); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureHRec",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamDbKeyHash160Col",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamDbKeyHash160Col");
+			}
 		}
 	}
 }

@@ -107,9 +107,20 @@ public class CFBamJpaDbKeyHash224TypeFactoryService
 			return( (CFBamJpaDbKeyHash224Type)rec );
 		}
 		else {
-			CFBamJpaDbKeyHash224Type mapped = new CFBamJpaDbKeyHash224Type();
-			mapped.set(rec);
-			return( mapped );
+			switch(rec.getClassCode()) {
+				case ICFBamDbKeyHash224Type.CLASS_CODE: {
+					CFBamJpaDbKeyHash224Type mapped = new CFBamJpaDbKeyHash224Type();
+					mapped.set(rec);
+					return( mapped ); }
+				case ICFBamDbKeyHash224Gen.CLASS_CODE: {
+					CFBamJpaDbKeyHash224Gen mapped = new CFBamJpaDbKeyHash224Gen();
+					mapped.set((ICFBamDbKeyHash224Gen)rec);
+					return(mapped); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureRec",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamDbKeyHash224Type",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamDbKeyHash224Type");
+			}
 		}
 	}
 
@@ -120,16 +131,27 @@ public class CFBamJpaDbKeyHash224TypeFactoryService
     }
 
 	public CFBamJpaDbKeyHash224TypeH ensureHRec(ICFBamDbKeyHash224TypeH hrec) {
-		if (hrec == null) {
+		if( hrec == null ) {
 			return( null );
 		}
-		else if( hrec instanceof CFBamJpaDbKeyHash224TypeH) {
+		else if (hrec instanceof CFBamJpaDbKeyHash224TypeH) {
 			return( (CFBamJpaDbKeyHash224TypeH)hrec );
 		}
 		else {
-			CFBamJpaDbKeyHash224TypeH mapped = new CFBamJpaDbKeyHash224TypeH();
-			mapped.set(hrec);
-			return( mapped );
+			switch(hrec.getClassCode()) {
+				case ICFBamDbKeyHash224Type.CLASS_CODE: {
+					CFBamJpaDbKeyHash224TypeH mapped = new CFBamJpaDbKeyHash224TypeH();
+					mapped.set(hrec);
+					return( mapped ); }
+				case ICFBamDbKeyHash224Gen.CLASS_CODE: {
+					CFBamJpaDbKeyHash224GenH mapped = new CFBamJpaDbKeyHash224GenH();
+					mapped.set((ICFBamDbKeyHash224GenH)hrec);
+					return(mapped); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureHRec",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamDbKeyHash224Type",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamDbKeyHash224Type");
+			}
 		}
 	}
 }

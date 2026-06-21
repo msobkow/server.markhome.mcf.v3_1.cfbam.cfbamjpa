@@ -107,9 +107,16 @@ public class CFBamJpaFloatTypeFactoryService
 			return( (CFBamJpaFloatType)rec );
 		}
 		else {
-			CFBamJpaFloatType mapped = new CFBamJpaFloatType();
-			mapped.set(rec);
-			return( mapped );
+			switch(rec.getClassCode()) {
+				case ICFBamFloatType.CLASS_CODE: {
+					CFBamJpaFloatType mapped = new CFBamJpaFloatType();
+					mapped.set(rec);
+					return( mapped ); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureRec",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamFloatType",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamFloatType");
+			}
 		}
 	}
 
@@ -120,16 +127,23 @@ public class CFBamJpaFloatTypeFactoryService
     }
 
 	public CFBamJpaFloatTypeH ensureHRec(ICFBamFloatTypeH hrec) {
-		if (hrec == null) {
+		if( hrec == null ) {
 			return( null );
 		}
-		else if( hrec instanceof CFBamJpaFloatTypeH) {
+		else if (hrec instanceof CFBamJpaFloatTypeH) {
 			return( (CFBamJpaFloatTypeH)hrec );
 		}
 		else {
-			CFBamJpaFloatTypeH mapped = new CFBamJpaFloatTypeH();
-			mapped.set(hrec);
-			return( mapped );
+			switch(hrec.getClassCode()) {
+				case ICFBamFloatType.CLASS_CODE: {
+					CFBamJpaFloatTypeH mapped = new CFBamJpaFloatTypeH();
+					mapped.set(hrec);
+					return( mapped ); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureHRec",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamFloatType",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamFloatType");
+			}
 		}
 	}
 }

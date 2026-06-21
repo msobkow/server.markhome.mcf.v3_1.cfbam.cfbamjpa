@@ -87,9 +87,24 @@ public class CFBamJpaFloatDefFactoryService
 			return( (CFBamJpaFloatDef)rec );
 		}
 		else {
-			CFBamJpaFloatDef mapped = new CFBamJpaFloatDef();
-			mapped.set(rec);
-			return( mapped );
+			switch(rec.getClassCode()) {
+				case ICFBamFloatDef.CLASS_CODE: {
+					CFBamJpaFloatDef mapped = new CFBamJpaFloatDef();
+					mapped.set(rec);
+					return( mapped ); }
+				case ICFBamFloatType.CLASS_CODE: {
+					CFBamJpaFloatType mapped = new CFBamJpaFloatType();
+					mapped.set((ICFBamFloatType)rec);
+					return(mapped); }
+				case ICFBamFloatCol.CLASS_CODE: {
+					CFBamJpaFloatCol mapped = new CFBamJpaFloatCol();
+					mapped.set((ICFBamFloatCol)rec);
+					return(mapped); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureRec",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamFloatDef",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamFloatDef");
+			}
 		}
 	}
 
@@ -100,16 +115,31 @@ public class CFBamJpaFloatDefFactoryService
     }
 
 	public CFBamJpaFloatDefH ensureHRec(ICFBamFloatDefH hrec) {
-		if (hrec == null) {
+		if( hrec == null ) {
 			return( null );
 		}
-		else if( hrec instanceof CFBamJpaFloatDefH) {
+		else if (hrec instanceof CFBamJpaFloatDefH) {
 			return( (CFBamJpaFloatDefH)hrec );
 		}
 		else {
-			CFBamJpaFloatDefH mapped = new CFBamJpaFloatDefH();
-			mapped.set(hrec);
-			return( mapped );
+			switch(hrec.getClassCode()) {
+				case ICFBamFloatDef.CLASS_CODE: {
+					CFBamJpaFloatDefH mapped = new CFBamJpaFloatDefH();
+					mapped.set(hrec);
+					return( mapped ); }
+				case ICFBamFloatType.CLASS_CODE: {
+					CFBamJpaFloatTypeH mapped = new CFBamJpaFloatTypeH();
+					mapped.set((ICFBamFloatTypeH)hrec);
+					return(mapped); }
+				case ICFBamFloatCol.CLASS_CODE: {
+					CFBamJpaFloatColH mapped = new CFBamJpaFloatColH();
+					mapped.set((ICFBamFloatColH)hrec);
+					return(mapped); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureHRec",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamFloatDef",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamFloatDef");
+			}
 		}
 	}
 }

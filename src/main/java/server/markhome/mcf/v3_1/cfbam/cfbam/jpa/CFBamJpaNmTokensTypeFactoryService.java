@@ -107,9 +107,16 @@ public class CFBamJpaNmTokensTypeFactoryService
 			return( (CFBamJpaNmTokensType)rec );
 		}
 		else {
-			CFBamJpaNmTokensType mapped = new CFBamJpaNmTokensType();
-			mapped.set(rec);
-			return( mapped );
+			switch(rec.getClassCode()) {
+				case ICFBamNmTokensType.CLASS_CODE: {
+					CFBamJpaNmTokensType mapped = new CFBamJpaNmTokensType();
+					mapped.set(rec);
+					return( mapped ); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureRec",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamNmTokensType",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamNmTokensType");
+			}
 		}
 	}
 
@@ -120,16 +127,23 @@ public class CFBamJpaNmTokensTypeFactoryService
     }
 
 	public CFBamJpaNmTokensTypeH ensureHRec(ICFBamNmTokensTypeH hrec) {
-		if (hrec == null) {
+		if( hrec == null ) {
 			return( null );
 		}
-		else if( hrec instanceof CFBamJpaNmTokensTypeH) {
+		else if (hrec instanceof CFBamJpaNmTokensTypeH) {
 			return( (CFBamJpaNmTokensTypeH)hrec );
 		}
 		else {
-			CFBamJpaNmTokensTypeH mapped = new CFBamJpaNmTokensTypeH();
-			mapped.set(hrec);
-			return( mapped );
+			switch(hrec.getClassCode()) {
+				case ICFBamNmTokensType.CLASS_CODE: {
+					CFBamJpaNmTokensTypeH mapped = new CFBamJpaNmTokensTypeH();
+					mapped.set(hrec);
+					return( mapped ); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureHRec",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamNmTokensType",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamNmTokensType");
+			}
 		}
 	}
 }

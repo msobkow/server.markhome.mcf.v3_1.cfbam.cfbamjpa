@@ -87,9 +87,24 @@ public class CFBamJpaTextDefFactoryService
 			return( (CFBamJpaTextDef)rec );
 		}
 		else {
-			CFBamJpaTextDef mapped = new CFBamJpaTextDef();
-			mapped.set(rec);
-			return( mapped );
+			switch(rec.getClassCode()) {
+				case ICFBamTextDef.CLASS_CODE: {
+					CFBamJpaTextDef mapped = new CFBamJpaTextDef();
+					mapped.set(rec);
+					return( mapped ); }
+				case ICFBamTextType.CLASS_CODE: {
+					CFBamJpaTextType mapped = new CFBamJpaTextType();
+					mapped.set((ICFBamTextType)rec);
+					return(mapped); }
+				case ICFBamTextCol.CLASS_CODE: {
+					CFBamJpaTextCol mapped = new CFBamJpaTextCol();
+					mapped.set((ICFBamTextCol)rec);
+					return(mapped); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureRec",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamTextDef",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamTextDef");
+			}
 		}
 	}
 
@@ -100,16 +115,31 @@ public class CFBamJpaTextDefFactoryService
     }
 
 	public CFBamJpaTextDefH ensureHRec(ICFBamTextDefH hrec) {
-		if (hrec == null) {
+		if( hrec == null ) {
 			return( null );
 		}
-		else if( hrec instanceof CFBamJpaTextDefH) {
+		else if (hrec instanceof CFBamJpaTextDefH) {
 			return( (CFBamJpaTextDefH)hrec );
 		}
 		else {
-			CFBamJpaTextDefH mapped = new CFBamJpaTextDefH();
-			mapped.set(hrec);
-			return( mapped );
+			switch(hrec.getClassCode()) {
+				case ICFBamTextDef.CLASS_CODE: {
+					CFBamJpaTextDefH mapped = new CFBamJpaTextDefH();
+					mapped.set(hrec);
+					return( mapped ); }
+				case ICFBamTextType.CLASS_CODE: {
+					CFBamJpaTextTypeH mapped = new CFBamJpaTextTypeH();
+					mapped.set((ICFBamTextTypeH)hrec);
+					return(mapped); }
+				case ICFBamTextCol.CLASS_CODE: {
+					CFBamJpaTextColH mapped = new CFBamJpaTextColH();
+					mapped.set((ICFBamTextColH)hrec);
+					return(mapped); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureHRec",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamTextDef",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamTextDef");
+			}
 		}
 	}
 }

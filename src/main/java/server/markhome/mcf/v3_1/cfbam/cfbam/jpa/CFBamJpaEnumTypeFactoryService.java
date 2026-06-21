@@ -107,9 +107,16 @@ public class CFBamJpaEnumTypeFactoryService
 			return( (CFBamJpaEnumType)rec );
 		}
 		else {
-			CFBamJpaEnumType mapped = new CFBamJpaEnumType();
-			mapped.set(rec);
-			return( mapped );
+			switch(rec.getClassCode()) {
+				case ICFBamEnumType.CLASS_CODE: {
+					CFBamJpaEnumType mapped = new CFBamJpaEnumType();
+					mapped.set(rec);
+					return( mapped ); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureRec",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamEnumType",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamEnumType");
+			}
 		}
 	}
 
@@ -120,16 +127,23 @@ public class CFBamJpaEnumTypeFactoryService
     }
 
 	public CFBamJpaEnumTypeH ensureHRec(ICFBamEnumTypeH hrec) {
-		if (hrec == null) {
+		if( hrec == null ) {
 			return( null );
 		}
-		else if( hrec instanceof CFBamJpaEnumTypeH) {
+		else if (hrec instanceof CFBamJpaEnumTypeH) {
 			return( (CFBamJpaEnumTypeH)hrec );
 		}
 		else {
-			CFBamJpaEnumTypeH mapped = new CFBamJpaEnumTypeH();
-			mapped.set(hrec);
-			return( mapped );
+			switch(hrec.getClassCode()) {
+				case ICFBamEnumType.CLASS_CODE: {
+					CFBamJpaEnumTypeH mapped = new CFBamJpaEnumTypeH();
+					mapped.set(hrec);
+					return( mapped ); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureHRec",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamEnumType",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamEnumType");
+			}
 		}
 	}
 }

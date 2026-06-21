@@ -290,9 +290,16 @@ public class CFBamJpaTableFactoryService
 			return( (CFBamJpaTable)rec );
 		}
 		else {
-			CFBamJpaTable mapped = new CFBamJpaTable();
-			mapped.set(rec);
-			return( mapped );
+			switch(rec.getClassCode()) {
+				case ICFBamTable.CLASS_CODE: {
+					CFBamJpaTable mapped = new CFBamJpaTable();
+					mapped.set(rec);
+					return( mapped ); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureRec",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamTable",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamTable");
+			}
 		}
 	}
 
@@ -303,16 +310,23 @@ public class CFBamJpaTableFactoryService
     }
 
 	public CFBamJpaTableH ensureHRec(ICFBamTableH hrec) {
-		if (hrec == null) {
+		if( hrec == null ) {
 			return( null );
 		}
-		else if( hrec instanceof CFBamJpaTableH) {
+		else if (hrec instanceof CFBamJpaTableH) {
 			return( (CFBamJpaTableH)hrec );
 		}
 		else {
-			CFBamJpaTableH mapped = new CFBamJpaTableH();
-			mapped.set(hrec);
-			return( mapped );
+			switch(hrec.getClassCode()) {
+				case ICFBamTable.CLASS_CODE: {
+					CFBamJpaTableH mapped = new CFBamJpaTableH();
+					mapped.set(hrec);
+					return( mapped ); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureHRec",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamTable",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamTable");
+			}
 		}
 	}
 }

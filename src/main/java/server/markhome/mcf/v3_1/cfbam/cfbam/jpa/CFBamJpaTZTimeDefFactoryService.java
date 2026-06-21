@@ -87,9 +87,24 @@ public class CFBamJpaTZTimeDefFactoryService
 			return( (CFBamJpaTZTimeDef)rec );
 		}
 		else {
-			CFBamJpaTZTimeDef mapped = new CFBamJpaTZTimeDef();
-			mapped.set(rec);
-			return( mapped );
+			switch(rec.getClassCode()) {
+				case ICFBamTZTimeDef.CLASS_CODE: {
+					CFBamJpaTZTimeDef mapped = new CFBamJpaTZTimeDef();
+					mapped.set(rec);
+					return( mapped ); }
+				case ICFBamTZTimeType.CLASS_CODE: {
+					CFBamJpaTZTimeType mapped = new CFBamJpaTZTimeType();
+					mapped.set((ICFBamTZTimeType)rec);
+					return(mapped); }
+				case ICFBamTZTimeCol.CLASS_CODE: {
+					CFBamJpaTZTimeCol mapped = new CFBamJpaTZTimeCol();
+					mapped.set((ICFBamTZTimeCol)rec);
+					return(mapped); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureRec",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamTZTimeDef",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamTZTimeDef");
+			}
 		}
 	}
 
@@ -100,16 +115,31 @@ public class CFBamJpaTZTimeDefFactoryService
     }
 
 	public CFBamJpaTZTimeDefH ensureHRec(ICFBamTZTimeDefH hrec) {
-		if (hrec == null) {
+		if( hrec == null ) {
 			return( null );
 		}
-		else if( hrec instanceof CFBamJpaTZTimeDefH) {
+		else if (hrec instanceof CFBamJpaTZTimeDefH) {
 			return( (CFBamJpaTZTimeDefH)hrec );
 		}
 		else {
-			CFBamJpaTZTimeDefH mapped = new CFBamJpaTZTimeDefH();
-			mapped.set(hrec);
-			return( mapped );
+			switch(hrec.getClassCode()) {
+				case ICFBamTZTimeDef.CLASS_CODE: {
+					CFBamJpaTZTimeDefH mapped = new CFBamJpaTZTimeDefH();
+					mapped.set(hrec);
+					return( mapped ); }
+				case ICFBamTZTimeType.CLASS_CODE: {
+					CFBamJpaTZTimeTypeH mapped = new CFBamJpaTZTimeTypeH();
+					mapped.set((ICFBamTZTimeTypeH)hrec);
+					return(mapped); }
+				case ICFBamTZTimeCol.CLASS_CODE: {
+					CFBamJpaTZTimeColH mapped = new CFBamJpaTZTimeColH();
+					mapped.set((ICFBamTZTimeColH)hrec);
+					return(mapped); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureHRec",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamTZTimeDef",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamTZTimeDef");
+			}
 		}
 	}
 }

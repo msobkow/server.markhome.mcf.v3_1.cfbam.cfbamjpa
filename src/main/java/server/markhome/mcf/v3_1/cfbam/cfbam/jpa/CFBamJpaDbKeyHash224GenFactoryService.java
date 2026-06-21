@@ -87,9 +87,16 @@ public class CFBamJpaDbKeyHash224GenFactoryService
 			return( (CFBamJpaDbKeyHash224Gen)rec );
 		}
 		else {
-			CFBamJpaDbKeyHash224Gen mapped = new CFBamJpaDbKeyHash224Gen();
-			mapped.set(rec);
-			return( mapped );
+			switch(rec.getClassCode()) {
+				case ICFBamDbKeyHash224Gen.CLASS_CODE: {
+					CFBamJpaDbKeyHash224Gen mapped = new CFBamJpaDbKeyHash224Gen();
+					mapped.set(rec);
+					return( mapped ); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureRec",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamDbKeyHash224Gen",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamDbKeyHash224Gen");
+			}
 		}
 	}
 
@@ -100,16 +107,23 @@ public class CFBamJpaDbKeyHash224GenFactoryService
     }
 
 	public CFBamJpaDbKeyHash224GenH ensureHRec(ICFBamDbKeyHash224GenH hrec) {
-		if (hrec == null) {
+		if( hrec == null ) {
 			return( null );
 		}
-		else if( hrec instanceof CFBamJpaDbKeyHash224GenH) {
+		else if (hrec instanceof CFBamJpaDbKeyHash224GenH) {
 			return( (CFBamJpaDbKeyHash224GenH)hrec );
 		}
 		else {
-			CFBamJpaDbKeyHash224GenH mapped = new CFBamJpaDbKeyHash224GenH();
-			mapped.set(hrec);
-			return( mapped );
+			switch(hrec.getClassCode()) {
+				case ICFBamDbKeyHash224Gen.CLASS_CODE: {
+					CFBamJpaDbKeyHash224GenH mapped = new CFBamJpaDbKeyHash224GenH();
+					mapped.set(hrec);
+					return( mapped ); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureHRec",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamDbKeyHash224Gen",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamDbKeyHash224Gen");
+			}
 		}
 	}
 }

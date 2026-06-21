@@ -107,9 +107,16 @@ public class CFBamJpaDateColFactoryService
 			return( (CFBamJpaDateCol)rec );
 		}
 		else {
-			CFBamJpaDateCol mapped = new CFBamJpaDateCol();
-			mapped.set(rec);
-			return( mapped );
+			switch(rec.getClassCode()) {
+				case ICFBamDateCol.CLASS_CODE: {
+					CFBamJpaDateCol mapped = new CFBamJpaDateCol();
+					mapped.set(rec);
+					return( mapped ); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureRec",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamDateCol",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamDateCol");
+			}
 		}
 	}
 
@@ -120,16 +127,23 @@ public class CFBamJpaDateColFactoryService
     }
 
 	public CFBamJpaDateColH ensureHRec(ICFBamDateColH hrec) {
-		if (hrec == null) {
+		if( hrec == null ) {
 			return( null );
 		}
-		else if( hrec instanceof CFBamJpaDateColH) {
+		else if (hrec instanceof CFBamJpaDateColH) {
 			return( (CFBamJpaDateColH)hrec );
 		}
 		else {
-			CFBamJpaDateColH mapped = new CFBamJpaDateColH();
-			mapped.set(hrec);
-			return( mapped );
+			switch(hrec.getClassCode()) {
+				case ICFBamDateCol.CLASS_CODE: {
+					CFBamJpaDateColH mapped = new CFBamJpaDateColH();
+					mapped.set(hrec);
+					return( mapped ); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureHRec",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamDateCol",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamDateCol");
+			}
 		}
 	}
 }

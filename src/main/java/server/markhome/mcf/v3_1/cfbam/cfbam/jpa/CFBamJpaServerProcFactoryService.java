@@ -87,9 +87,16 @@ public class CFBamJpaServerProcFactoryService
 			return( (CFBamJpaServerProc)rec );
 		}
 		else {
-			CFBamJpaServerProc mapped = new CFBamJpaServerProc();
-			mapped.set(rec);
-			return( mapped );
+			switch(rec.getClassCode()) {
+				case ICFBamServerProc.CLASS_CODE: {
+					CFBamJpaServerProc mapped = new CFBamJpaServerProc();
+					mapped.set(rec);
+					return( mapped ); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureRec",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamServerProc",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamServerProc");
+			}
 		}
 	}
 
@@ -100,16 +107,23 @@ public class CFBamJpaServerProcFactoryService
     }
 
 	public CFBamJpaServerProcH ensureHRec(ICFBamServerProcH hrec) {
-		if (hrec == null) {
+		if( hrec == null ) {
 			return( null );
 		}
-		else if( hrec instanceof CFBamJpaServerProcH) {
+		else if (hrec instanceof CFBamJpaServerProcH) {
 			return( (CFBamJpaServerProcH)hrec );
 		}
 		else {
-			CFBamJpaServerProcH mapped = new CFBamJpaServerProcH();
-			mapped.set(hrec);
-			return( mapped );
+			switch(hrec.getClassCode()) {
+				case ICFBamServerProc.CLASS_CODE: {
+					CFBamJpaServerProcH mapped = new CFBamJpaServerProcH();
+					mapped.set(hrec);
+					return( mapped ); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureHRec",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamServerProc",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamServerProc");
+			}
 		}
 	}
 }

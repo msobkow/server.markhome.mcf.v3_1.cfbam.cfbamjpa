@@ -107,9 +107,20 @@ public class CFBamJpaDbKeyHash160TypeFactoryService
 			return( (CFBamJpaDbKeyHash160Type)rec );
 		}
 		else {
-			CFBamJpaDbKeyHash160Type mapped = new CFBamJpaDbKeyHash160Type();
-			mapped.set(rec);
-			return( mapped );
+			switch(rec.getClassCode()) {
+				case ICFBamDbKeyHash160Type.CLASS_CODE: {
+					CFBamJpaDbKeyHash160Type mapped = new CFBamJpaDbKeyHash160Type();
+					mapped.set(rec);
+					return( mapped ); }
+				case ICFBamDbKeyHash160Gen.CLASS_CODE: {
+					CFBamJpaDbKeyHash160Gen mapped = new CFBamJpaDbKeyHash160Gen();
+					mapped.set((ICFBamDbKeyHash160Gen)rec);
+					return(mapped); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureRec",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamDbKeyHash160Type",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamDbKeyHash160Type");
+			}
 		}
 	}
 
@@ -120,16 +131,27 @@ public class CFBamJpaDbKeyHash160TypeFactoryService
     }
 
 	public CFBamJpaDbKeyHash160TypeH ensureHRec(ICFBamDbKeyHash160TypeH hrec) {
-		if (hrec == null) {
+		if( hrec == null ) {
 			return( null );
 		}
-		else if( hrec instanceof CFBamJpaDbKeyHash160TypeH) {
+		else if (hrec instanceof CFBamJpaDbKeyHash160TypeH) {
 			return( (CFBamJpaDbKeyHash160TypeH)hrec );
 		}
 		else {
-			CFBamJpaDbKeyHash160TypeH mapped = new CFBamJpaDbKeyHash160TypeH();
-			mapped.set(hrec);
-			return( mapped );
+			switch(hrec.getClassCode()) {
+				case ICFBamDbKeyHash160Type.CLASS_CODE: {
+					CFBamJpaDbKeyHash160TypeH mapped = new CFBamJpaDbKeyHash160TypeH();
+					mapped.set(hrec);
+					return( mapped ); }
+				case ICFBamDbKeyHash160Gen.CLASS_CODE: {
+					CFBamJpaDbKeyHash160GenH mapped = new CFBamJpaDbKeyHash160GenH();
+					mapped.set((ICFBamDbKeyHash160GenH)hrec);
+					return(mapped); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureHRec",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamDbKeyHash160Type",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamDbKeyHash160Type");
+			}
 		}
 	}
 }

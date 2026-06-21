@@ -87,9 +87,24 @@ public class CFBamJpaUInt32DefFactoryService
 			return( (CFBamJpaUInt32Def)rec );
 		}
 		else {
-			CFBamJpaUInt32Def mapped = new CFBamJpaUInt32Def();
-			mapped.set(rec);
-			return( mapped );
+			switch(rec.getClassCode()) {
+				case ICFBamUInt32Def.CLASS_CODE: {
+					CFBamJpaUInt32Def mapped = new CFBamJpaUInt32Def();
+					mapped.set(rec);
+					return( mapped ); }
+				case ICFBamUInt32Type.CLASS_CODE: {
+					CFBamJpaUInt32Type mapped = new CFBamJpaUInt32Type();
+					mapped.set((ICFBamUInt32Type)rec);
+					return(mapped); }
+				case ICFBamUInt32Col.CLASS_CODE: {
+					CFBamJpaUInt32Col mapped = new CFBamJpaUInt32Col();
+					mapped.set((ICFBamUInt32Col)rec);
+					return(mapped); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureRec",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamUInt32Def",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamUInt32Def");
+			}
 		}
 	}
 
@@ -100,16 +115,31 @@ public class CFBamJpaUInt32DefFactoryService
     }
 
 	public CFBamJpaUInt32DefH ensureHRec(ICFBamUInt32DefH hrec) {
-		if (hrec == null) {
+		if( hrec == null ) {
 			return( null );
 		}
-		else if( hrec instanceof CFBamJpaUInt32DefH) {
+		else if (hrec instanceof CFBamJpaUInt32DefH) {
 			return( (CFBamJpaUInt32DefH)hrec );
 		}
 		else {
-			CFBamJpaUInt32DefH mapped = new CFBamJpaUInt32DefH();
-			mapped.set(hrec);
-			return( mapped );
+			switch(hrec.getClassCode()) {
+				case ICFBamUInt32Def.CLASS_CODE: {
+					CFBamJpaUInt32DefH mapped = new CFBamJpaUInt32DefH();
+					mapped.set(hrec);
+					return( mapped ); }
+				case ICFBamUInt32Type.CLASS_CODE: {
+					CFBamJpaUInt32TypeH mapped = new CFBamJpaUInt32TypeH();
+					mapped.set((ICFBamUInt32TypeH)hrec);
+					return(mapped); }
+				case ICFBamUInt32Col.CLASS_CODE: {
+					CFBamJpaUInt32ColH mapped = new CFBamJpaUInt32ColH();
+					mapped.set((ICFBamUInt32ColH)hrec);
+					return(mapped); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureHRec",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamUInt32Def",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamUInt32Def");
+			}
 		}
 	}
 }

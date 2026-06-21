@@ -87,9 +87,24 @@ public class CFBamJpaNumberDefFactoryService
 			return( (CFBamJpaNumberDef)rec );
 		}
 		else {
-			CFBamJpaNumberDef mapped = new CFBamJpaNumberDef();
-			mapped.set(rec);
-			return( mapped );
+			switch(rec.getClassCode()) {
+				case ICFBamNumberDef.CLASS_CODE: {
+					CFBamJpaNumberDef mapped = new CFBamJpaNumberDef();
+					mapped.set(rec);
+					return( mapped ); }
+				case ICFBamNumberType.CLASS_CODE: {
+					CFBamJpaNumberType mapped = new CFBamJpaNumberType();
+					mapped.set((ICFBamNumberType)rec);
+					return(mapped); }
+				case ICFBamNumberCol.CLASS_CODE: {
+					CFBamJpaNumberCol mapped = new CFBamJpaNumberCol();
+					mapped.set((ICFBamNumberCol)rec);
+					return(mapped); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureRec",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamNumberDef",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamNumberDef");
+			}
 		}
 	}
 
@@ -100,16 +115,31 @@ public class CFBamJpaNumberDefFactoryService
     }
 
 	public CFBamJpaNumberDefH ensureHRec(ICFBamNumberDefH hrec) {
-		if (hrec == null) {
+		if( hrec == null ) {
 			return( null );
 		}
-		else if( hrec instanceof CFBamJpaNumberDefH) {
+		else if (hrec instanceof CFBamJpaNumberDefH) {
 			return( (CFBamJpaNumberDefH)hrec );
 		}
 		else {
-			CFBamJpaNumberDefH mapped = new CFBamJpaNumberDefH();
-			mapped.set(hrec);
-			return( mapped );
+			switch(hrec.getClassCode()) {
+				case ICFBamNumberDef.CLASS_CODE: {
+					CFBamJpaNumberDefH mapped = new CFBamJpaNumberDefH();
+					mapped.set(hrec);
+					return( mapped ); }
+				case ICFBamNumberType.CLASS_CODE: {
+					CFBamJpaNumberTypeH mapped = new CFBamJpaNumberTypeH();
+					mapped.set((ICFBamNumberTypeH)hrec);
+					return(mapped); }
+				case ICFBamNumberCol.CLASS_CODE: {
+					CFBamJpaNumberColH mapped = new CFBamJpaNumberColH();
+					mapped.set((ICFBamNumberColH)hrec);
+					return(mapped); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureHRec",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamNumberDef",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamNumberDef");
+			}
 		}
 	}
 }

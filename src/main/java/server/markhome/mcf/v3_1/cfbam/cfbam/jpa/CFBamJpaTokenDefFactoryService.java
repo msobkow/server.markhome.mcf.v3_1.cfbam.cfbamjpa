@@ -87,9 +87,24 @@ public class CFBamJpaTokenDefFactoryService
 			return( (CFBamJpaTokenDef)rec );
 		}
 		else {
-			CFBamJpaTokenDef mapped = new CFBamJpaTokenDef();
-			mapped.set(rec);
-			return( mapped );
+			switch(rec.getClassCode()) {
+				case ICFBamTokenDef.CLASS_CODE: {
+					CFBamJpaTokenDef mapped = new CFBamJpaTokenDef();
+					mapped.set(rec);
+					return( mapped ); }
+				case ICFBamTokenType.CLASS_CODE: {
+					CFBamJpaTokenType mapped = new CFBamJpaTokenType();
+					mapped.set((ICFBamTokenType)rec);
+					return(mapped); }
+				case ICFBamTokenCol.CLASS_CODE: {
+					CFBamJpaTokenCol mapped = new CFBamJpaTokenCol();
+					mapped.set((ICFBamTokenCol)rec);
+					return(mapped); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureRec",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamTokenDef",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamTokenDef");
+			}
 		}
 	}
 
@@ -100,16 +115,31 @@ public class CFBamJpaTokenDefFactoryService
     }
 
 	public CFBamJpaTokenDefH ensureHRec(ICFBamTokenDefH hrec) {
-		if (hrec == null) {
+		if( hrec == null ) {
 			return( null );
 		}
-		else if( hrec instanceof CFBamJpaTokenDefH) {
+		else if (hrec instanceof CFBamJpaTokenDefH) {
 			return( (CFBamJpaTokenDefH)hrec );
 		}
 		else {
-			CFBamJpaTokenDefH mapped = new CFBamJpaTokenDefH();
-			mapped.set(hrec);
-			return( mapped );
+			switch(hrec.getClassCode()) {
+				case ICFBamTokenDef.CLASS_CODE: {
+					CFBamJpaTokenDefH mapped = new CFBamJpaTokenDefH();
+					mapped.set(hrec);
+					return( mapped ); }
+				case ICFBamTokenType.CLASS_CODE: {
+					CFBamJpaTokenTypeH mapped = new CFBamJpaTokenTypeH();
+					mapped.set((ICFBamTokenTypeH)hrec);
+					return(mapped); }
+				case ICFBamTokenCol.CLASS_CODE: {
+					CFBamJpaTokenColH mapped = new CFBamJpaTokenColH();
+					mapped.set((ICFBamTokenColH)hrec);
+					return(mapped); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureHRec",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamTokenDef",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamTokenDef");
+			}
 		}
 	}
 }

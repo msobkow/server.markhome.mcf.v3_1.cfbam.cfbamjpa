@@ -87,9 +87,28 @@ public class CFBamJpaDbKeyHash128DefFactoryService
 			return( (CFBamJpaDbKeyHash128Def)rec );
 		}
 		else {
-			CFBamJpaDbKeyHash128Def mapped = new CFBamJpaDbKeyHash128Def();
-			mapped.set(rec);
-			return( mapped );
+			switch(rec.getClassCode()) {
+				case ICFBamDbKeyHash128Def.CLASS_CODE: {
+					CFBamJpaDbKeyHash128Def mapped = new CFBamJpaDbKeyHash128Def();
+					mapped.set(rec);
+					return( mapped ); }
+				case ICFBamDbKeyHash128Col.CLASS_CODE: {
+					CFBamJpaDbKeyHash128Col mapped = new CFBamJpaDbKeyHash128Col();
+					mapped.set((ICFBamDbKeyHash128Col)rec);
+					return(mapped); }
+				case ICFBamDbKeyHash128Type.CLASS_CODE: {
+					CFBamJpaDbKeyHash128Type mapped = new CFBamJpaDbKeyHash128Type();
+					mapped.set((ICFBamDbKeyHash128Type)rec);
+					return(mapped); }
+				case ICFBamDbKeyHash128Gen.CLASS_CODE: {
+					CFBamJpaDbKeyHash128Gen mapped = new CFBamJpaDbKeyHash128Gen();
+					mapped.set((ICFBamDbKeyHash128Gen)rec);
+					return(mapped); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureRec",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamDbKeyHash128Def",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamDbKeyHash128Def");
+			}
 		}
 	}
 
@@ -100,16 +119,35 @@ public class CFBamJpaDbKeyHash128DefFactoryService
     }
 
 	public CFBamJpaDbKeyHash128DefH ensureHRec(ICFBamDbKeyHash128DefH hrec) {
-		if (hrec == null) {
+		if( hrec == null ) {
 			return( null );
 		}
-		else if( hrec instanceof CFBamJpaDbKeyHash128DefH) {
+		else if (hrec instanceof CFBamJpaDbKeyHash128DefH) {
 			return( (CFBamJpaDbKeyHash128DefH)hrec );
 		}
 		else {
-			CFBamJpaDbKeyHash128DefH mapped = new CFBamJpaDbKeyHash128DefH();
-			mapped.set(hrec);
-			return( mapped );
+			switch(hrec.getClassCode()) {
+				case ICFBamDbKeyHash128Def.CLASS_CODE: {
+					CFBamJpaDbKeyHash128DefH mapped = new CFBamJpaDbKeyHash128DefH();
+					mapped.set(hrec);
+					return( mapped ); }
+				case ICFBamDbKeyHash128Col.CLASS_CODE: {
+					CFBamJpaDbKeyHash128ColH mapped = new CFBamJpaDbKeyHash128ColH();
+					mapped.set((ICFBamDbKeyHash128ColH)hrec);
+					return(mapped); }
+				case ICFBamDbKeyHash128Type.CLASS_CODE: {
+					CFBamJpaDbKeyHash128TypeH mapped = new CFBamJpaDbKeyHash128TypeH();
+					mapped.set((ICFBamDbKeyHash128TypeH)hrec);
+					return(mapped); }
+				case ICFBamDbKeyHash128Gen.CLASS_CODE: {
+					CFBamJpaDbKeyHash128GenH mapped = new CFBamJpaDbKeyHash128GenH();
+					mapped.set((ICFBamDbKeyHash128GenH)hrec);
+					return(mapped); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureHRec",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamDbKeyHash128Def",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamDbKeyHash128Def");
+			}
 		}
 	}
 }

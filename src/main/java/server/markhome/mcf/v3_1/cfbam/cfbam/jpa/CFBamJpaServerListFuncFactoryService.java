@@ -107,9 +107,16 @@ public class CFBamJpaServerListFuncFactoryService
 			return( (CFBamJpaServerListFunc)rec );
 		}
 		else {
-			CFBamJpaServerListFunc mapped = new CFBamJpaServerListFunc();
-			mapped.set(rec);
-			return( mapped );
+			switch(rec.getClassCode()) {
+				case ICFBamServerListFunc.CLASS_CODE: {
+					CFBamJpaServerListFunc mapped = new CFBamJpaServerListFunc();
+					mapped.set(rec);
+					return( mapped ); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureRec",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamServerListFunc",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamServerListFunc");
+			}
 		}
 	}
 
@@ -120,16 +127,23 @@ public class CFBamJpaServerListFuncFactoryService
     }
 
 	public CFBamJpaServerListFuncH ensureHRec(ICFBamServerListFuncH hrec) {
-		if (hrec == null) {
+		if( hrec == null ) {
 			return( null );
 		}
-		else if( hrec instanceof CFBamJpaServerListFuncH) {
+		else if (hrec instanceof CFBamJpaServerListFuncH) {
 			return( (CFBamJpaServerListFuncH)hrec );
 		}
 		else {
-			CFBamJpaServerListFuncH mapped = new CFBamJpaServerListFuncH();
-			mapped.set(hrec);
-			return( mapped );
+			switch(hrec.getClassCode()) {
+				case ICFBamServerListFunc.CLASS_CODE: {
+					CFBamJpaServerListFuncH mapped = new CFBamJpaServerListFuncH();
+					mapped.set(hrec);
+					return( mapped ); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureHRec",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamServerListFunc",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamServerListFunc");
+			}
 		}
 	}
 }

@@ -87,9 +87,28 @@ public class CFBamJpaInt32DefFactoryService
 			return( (CFBamJpaInt32Def)rec );
 		}
 		else {
-			CFBamJpaInt32Def mapped = new CFBamJpaInt32Def();
-			mapped.set(rec);
-			return( mapped );
+			switch(rec.getClassCode()) {
+				case ICFBamInt32Def.CLASS_CODE: {
+					CFBamJpaInt32Def mapped = new CFBamJpaInt32Def();
+					mapped.set(rec);
+					return( mapped ); }
+				case ICFBamInt32Type.CLASS_CODE: {
+					CFBamJpaInt32Type mapped = new CFBamJpaInt32Type();
+					mapped.set((ICFBamInt32Type)rec);
+					return(mapped); }
+				case ICFBamId32Gen.CLASS_CODE: {
+					CFBamJpaId32Gen mapped = new CFBamJpaId32Gen();
+					mapped.set((ICFBamId32Gen)rec);
+					return(mapped); }
+				case ICFBamInt32Col.CLASS_CODE: {
+					CFBamJpaInt32Col mapped = new CFBamJpaInt32Col();
+					mapped.set((ICFBamInt32Col)rec);
+					return(mapped); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureRec",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamInt32Def",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamInt32Def");
+			}
 		}
 	}
 
@@ -100,16 +119,35 @@ public class CFBamJpaInt32DefFactoryService
     }
 
 	public CFBamJpaInt32DefH ensureHRec(ICFBamInt32DefH hrec) {
-		if (hrec == null) {
+		if( hrec == null ) {
 			return( null );
 		}
-		else if( hrec instanceof CFBamJpaInt32DefH) {
+		else if (hrec instanceof CFBamJpaInt32DefH) {
 			return( (CFBamJpaInt32DefH)hrec );
 		}
 		else {
-			CFBamJpaInt32DefH mapped = new CFBamJpaInt32DefH();
-			mapped.set(hrec);
-			return( mapped );
+			switch(hrec.getClassCode()) {
+				case ICFBamInt32Def.CLASS_CODE: {
+					CFBamJpaInt32DefH mapped = new CFBamJpaInt32DefH();
+					mapped.set(hrec);
+					return( mapped ); }
+				case ICFBamInt32Type.CLASS_CODE: {
+					CFBamJpaInt32TypeH mapped = new CFBamJpaInt32TypeH();
+					mapped.set((ICFBamInt32TypeH)hrec);
+					return(mapped); }
+				case ICFBamId32Gen.CLASS_CODE: {
+					CFBamJpaId32GenH mapped = new CFBamJpaId32GenH();
+					mapped.set((ICFBamId32GenH)hrec);
+					return(mapped); }
+				case ICFBamInt32Col.CLASS_CODE: {
+					CFBamJpaInt32ColH mapped = new CFBamJpaInt32ColH();
+					mapped.set((ICFBamInt32ColH)hrec);
+					return(mapped); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureHRec",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamInt32Def",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamInt32Def");
+			}
 		}
 	}
 }

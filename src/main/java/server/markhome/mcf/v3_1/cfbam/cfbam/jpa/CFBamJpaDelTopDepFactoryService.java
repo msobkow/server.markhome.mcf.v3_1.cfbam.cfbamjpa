@@ -168,9 +168,16 @@ public class CFBamJpaDelTopDepFactoryService
 			return( (CFBamJpaDelTopDep)rec );
 		}
 		else {
-			CFBamJpaDelTopDep mapped = new CFBamJpaDelTopDep();
-			mapped.set(rec);
-			return( mapped );
+			switch(rec.getClassCode()) {
+				case ICFBamDelTopDep.CLASS_CODE: {
+					CFBamJpaDelTopDep mapped = new CFBamJpaDelTopDep();
+					mapped.set(rec);
+					return( mapped ); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureRec",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamDelTopDep",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamDelTopDep");
+			}
 		}
 	}
 
@@ -181,16 +188,23 @@ public class CFBamJpaDelTopDepFactoryService
     }
 
 	public CFBamJpaDelTopDepH ensureHRec(ICFBamDelTopDepH hrec) {
-		if (hrec == null) {
+		if( hrec == null ) {
 			return( null );
 		}
-		else if( hrec instanceof CFBamJpaDelTopDepH) {
+		else if (hrec instanceof CFBamJpaDelTopDepH) {
 			return( (CFBamJpaDelTopDepH)hrec );
 		}
 		else {
-			CFBamJpaDelTopDepH mapped = new CFBamJpaDelTopDepH();
-			mapped.set(hrec);
-			return( mapped );
+			switch(hrec.getClassCode()) {
+				case ICFBamDelTopDep.CLASS_CODE: {
+					CFBamJpaDelTopDepH mapped = new CFBamJpaDelTopDepH();
+					mapped.set(hrec);
+					return( mapped ); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureHRec",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamDelTopDep",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamDelTopDep");
+			}
 		}
 	}
 }

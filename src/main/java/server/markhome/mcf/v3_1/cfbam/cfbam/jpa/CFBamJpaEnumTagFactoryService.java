@@ -212,9 +212,16 @@ public class CFBamJpaEnumTagFactoryService
 			return( (CFBamJpaEnumTag)rec );
 		}
 		else {
-			CFBamJpaEnumTag mapped = new CFBamJpaEnumTag();
-			mapped.set(rec);
-			return( mapped );
+			switch(rec.getClassCode()) {
+				case ICFBamEnumTag.CLASS_CODE: {
+					CFBamJpaEnumTag mapped = new CFBamJpaEnumTag();
+					mapped.set(rec);
+					return( mapped ); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureRec",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamEnumTag",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamEnumTag");
+			}
 		}
 	}
 
@@ -225,16 +232,23 @@ public class CFBamJpaEnumTagFactoryService
     }
 
 	public CFBamJpaEnumTagH ensureHRec(ICFBamEnumTagH hrec) {
-		if (hrec == null) {
+		if( hrec == null ) {
 			return( null );
 		}
-		else if( hrec instanceof CFBamJpaEnumTagH) {
+		else if (hrec instanceof CFBamJpaEnumTagH) {
 			return( (CFBamJpaEnumTagH)hrec );
 		}
 		else {
-			CFBamJpaEnumTagH mapped = new CFBamJpaEnumTagH();
-			mapped.set(hrec);
-			return( mapped );
+			switch(hrec.getClassCode()) {
+				case ICFBamEnumTag.CLASS_CODE: {
+					CFBamJpaEnumTagH mapped = new CFBamJpaEnumTagH();
+					mapped.set(hrec);
+					return( mapped ); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureHRec",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamEnumTag",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamEnumTag");
+			}
 		}
 	}
 }
