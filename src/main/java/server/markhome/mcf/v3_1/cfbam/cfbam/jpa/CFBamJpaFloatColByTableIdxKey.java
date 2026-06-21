@@ -225,7 +225,7 @@ public class CFBamJpaFloatColByTableIdxKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamFloatColByTableIdxKey, ICFBamFloatCol, ICFBamFloatColH");
+				"ICFBamFloatColByTableIdxKey, ICFBamFloatCol$emitIndexKeyEqualsHistoryClass$");
 		}
 	}
 

@@ -341,7 +341,7 @@ public class CFBamJpaSchemaDefByProjectURLIdxKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamSchemaDefByProjectURLIdxKey, ICFBamSchemaDef, ICFBamSchemaDefH");
+				"ICFBamSchemaDefByProjectURLIdxKey, ICFBamSchemaDef$emitIndexKeyEqualsHistoryClass$");
 		}
 	}
 

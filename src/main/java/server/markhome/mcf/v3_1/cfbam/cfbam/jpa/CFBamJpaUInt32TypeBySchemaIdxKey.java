@@ -225,7 +225,7 @@ public class CFBamJpaUInt32TypeBySchemaIdxKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamUInt32TypeBySchemaIdxKey, ICFBamUInt32Type, ICFBamUInt32TypeH");
+				"ICFBamUInt32TypeBySchemaIdxKey, ICFBamUInt32Type$emitIndexKeyEqualsHistoryClass$");
 		}
 	}
 

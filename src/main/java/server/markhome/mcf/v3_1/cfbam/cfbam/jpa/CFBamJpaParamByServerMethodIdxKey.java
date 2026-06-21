@@ -225,7 +225,7 @@ public class CFBamJpaParamByServerMethodIdxKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamParamByServerMethodIdxKey, ICFBamParam, ICFBamParamH");
+				"ICFBamParamByServerMethodIdxKey, ICFBamParam$emitIndexKeyEqualsHistoryClass$");
 		}
 	}
 

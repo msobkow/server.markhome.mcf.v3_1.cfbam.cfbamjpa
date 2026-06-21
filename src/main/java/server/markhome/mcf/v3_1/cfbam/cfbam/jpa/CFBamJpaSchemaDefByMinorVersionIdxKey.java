@@ -225,7 +225,7 @@ public class CFBamJpaSchemaDefByMinorVersionIdxKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamSchemaDefByMinorVersionIdxKey, ICFBamSchemaDef, ICFBamSchemaDefH");
+				"ICFBamSchemaDefByMinorVersionIdxKey, ICFBamSchemaDef$emitIndexKeyEqualsHistoryClass$");
 		}
 	}
 

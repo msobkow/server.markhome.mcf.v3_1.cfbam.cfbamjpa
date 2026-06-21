@@ -225,7 +225,7 @@ public class CFBamJpaPopSubDep1ByPopTopDepIdxKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamPopSubDep1ByPopTopDepIdxKey, ICFBamPopSubDep1, ICFBamPopSubDep1H");
+				"ICFBamPopSubDep1ByPopTopDepIdxKey, ICFBamPopSubDep1$emitIndexKeyEqualsHistoryClass$");
 		}
 	}
 

@@ -225,7 +225,7 @@ public class CFBamJpaChainByPrevRelIdxKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamChainByPrevRelIdxKey, ICFBamChain, ICFBamChainH");
+				"ICFBamChainByPrevRelIdxKey, ICFBamChain$emitIndexKeyEqualsHistoryClass$");
 		}
 	}
 

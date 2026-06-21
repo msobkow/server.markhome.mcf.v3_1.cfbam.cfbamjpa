@@ -331,7 +331,7 @@ public class CFBamJpaRelationByRelTableCodeVisXKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamRelationByRelTableCodeVisXKey, ICFBamRelation, ICFBamRelationH");
+				"ICFBamRelationByRelTableCodeVisXKey, ICFBamRelation$emitIndexKeyEqualsHistoryClass$");
 		}
 	}
 

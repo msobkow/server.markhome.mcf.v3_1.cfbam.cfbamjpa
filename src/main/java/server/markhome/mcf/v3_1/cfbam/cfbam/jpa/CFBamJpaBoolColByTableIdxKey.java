@@ -225,7 +225,7 @@ public class CFBamJpaBoolColByTableIdxKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamBoolColByTableIdxKey, ICFBamBoolCol, ICFBamBoolColH");
+				"ICFBamBoolColByTableIdxKey, ICFBamBoolCol$emitIndexKeyEqualsHistoryClass$");
 		}
 	}
 

@@ -333,7 +333,7 @@ public class CFBamJpaParamByContNextIdxKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamParamByContNextIdxKey, ICFBamParam, ICFBamParamH");
+				"ICFBamParamByContNextIdxKey, ICFBamParam$emitIndexKeyEqualsHistoryClass$");
 		}
 	}
 

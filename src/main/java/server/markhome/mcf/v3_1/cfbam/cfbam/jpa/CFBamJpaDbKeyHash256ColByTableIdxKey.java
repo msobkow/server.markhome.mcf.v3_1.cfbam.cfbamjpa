@@ -225,7 +225,7 @@ public class CFBamJpaDbKeyHash256ColByTableIdxKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamDbKeyHash256ColByTableIdxKey, ICFBamDbKeyHash256Col, ICFBamDbKeyHash256ColH");
+				"ICFBamDbKeyHash256ColByTableIdxKey, ICFBamDbKeyHash256Col$emitIndexKeyEqualsHistoryClass$");
 		}
 	}
 

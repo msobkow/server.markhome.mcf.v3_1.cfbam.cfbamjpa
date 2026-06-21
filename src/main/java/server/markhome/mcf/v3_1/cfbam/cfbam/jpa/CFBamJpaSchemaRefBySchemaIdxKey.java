@@ -225,7 +225,7 @@ public class CFBamJpaSchemaRefBySchemaIdxKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamSchemaRefBySchemaIdxKey, ICFBamSchemaRef, ICFBamSchemaRefH");
+				"ICFBamSchemaRefBySchemaIdxKey, ICFBamSchemaRef$emitIndexKeyEqualsHistoryClass$");
 		}
 	}
 

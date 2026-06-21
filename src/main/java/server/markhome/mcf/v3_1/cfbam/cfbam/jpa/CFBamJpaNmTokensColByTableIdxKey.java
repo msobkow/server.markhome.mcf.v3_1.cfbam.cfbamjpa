@@ -225,7 +225,7 @@ public class CFBamJpaNmTokensColByTableIdxKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamNmTokensColByTableIdxKey, ICFBamNmTokensCol, ICFBamNmTokensColH");
+				"ICFBamNmTokensColByTableIdxKey, ICFBamNmTokensCol$emitIndexKeyEqualsHistoryClass$");
 		}
 	}
 

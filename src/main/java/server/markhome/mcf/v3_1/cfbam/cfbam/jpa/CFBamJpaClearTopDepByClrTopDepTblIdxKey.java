@@ -225,7 +225,7 @@ public class CFBamJpaClearTopDepByClrTopDepTblIdxKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamClearTopDepByClrTopDepTblIdxKey, ICFBamClearTopDep, ICFBamClearTopDepH");
+				"ICFBamClearTopDepByClrTopDepTblIdxKey, ICFBamClearTopDep$emitIndexKeyEqualsHistoryClass$");
 		}
 	}
 

@@ -225,7 +225,7 @@ public class CFBamJpaTimeColByTableIdxKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamTimeColByTableIdxKey, ICFBamTimeCol, ICFBamTimeColH");
+				"ICFBamTimeColByTableIdxKey, ICFBamTimeCol$emitIndexKeyEqualsHistoryClass$");
 		}
 	}
 

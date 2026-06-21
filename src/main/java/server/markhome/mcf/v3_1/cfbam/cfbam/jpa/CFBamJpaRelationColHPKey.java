@@ -516,7 +516,7 @@ public class CFBamJpaRelationColHPKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamRelationColPKey, ICFBamRelationCol, ICFBamRelationColHPKey, ICFBamRelationColH" );
+				"ICFBamRelationColPKey, ICFBamRelationCol$emitHPKeyHistoryClassNames$" );
 		}
 	}
 

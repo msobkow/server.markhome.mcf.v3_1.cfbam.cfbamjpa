@@ -331,7 +331,7 @@ public class CFBamJpaSchemaRoleBySchRoleScpIdxKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamSchemaRoleBySchRoleScpIdxKey, ICFBamSchemaRole, ICFBamSchemaRoleH");
+				"ICFBamSchemaRoleBySchRoleScpIdxKey, ICFBamSchemaRole$emitIndexKeyEqualsHistoryClass$");
 		}
 	}
 

@@ -225,7 +225,7 @@ public class CFBamJpaTimeTypeBySchemaIdxKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamTimeTypeBySchemaIdxKey, ICFBamTimeType, ICFBamTimeTypeH");
+				"ICFBamTimeTypeBySchemaIdxKey, ICFBamTimeType$emitIndexKeyEqualsHistoryClass$");
 		}
 	}
 

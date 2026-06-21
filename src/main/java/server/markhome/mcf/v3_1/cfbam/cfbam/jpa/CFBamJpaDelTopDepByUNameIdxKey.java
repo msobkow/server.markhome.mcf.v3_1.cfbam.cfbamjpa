@@ -341,7 +341,7 @@ public class CFBamJpaDelTopDepByUNameIdxKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamDelTopDepByUNameIdxKey, ICFBamDelTopDep, ICFBamDelTopDepH");
+				"ICFBamDelTopDepByUNameIdxKey, ICFBamDelTopDep$emitIndexKeyEqualsHistoryClass$");
 		}
 	}
 

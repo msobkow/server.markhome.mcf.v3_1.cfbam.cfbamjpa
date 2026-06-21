@@ -341,7 +341,7 @@ public class CFBamJpaServerMethodByUNameIdxKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamServerMethodByUNameIdxKey, ICFBamServerMethod, ICFBamServerMethodH");
+				"ICFBamServerMethodByUNameIdxKey, ICFBamServerMethod$emitIndexKeyEqualsHistoryClass$");
 		}
 	}
 

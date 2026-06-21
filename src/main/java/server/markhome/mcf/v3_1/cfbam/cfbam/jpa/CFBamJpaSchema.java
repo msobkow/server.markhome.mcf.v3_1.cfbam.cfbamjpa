@@ -71,6 +71,13 @@ import server.markhome.mcf.v3_1.cfsec.cfsec.jpa.*;
 import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 import server.markhome.mcf.v3_1.cfbam.cfbam.jpa.CFBamJpaHooksSchema;
 
+import server.markhome.mcf.v3_1.cfsec.cfsec.buff.CFSecBuffSchema;
+import server.markhome.mcf.v3_1.cfsec.cfsec.buff.CFSecBuffFactoryService;
+import server.markhome.mcf.v3_1.cfint.cfint.buff.CFIntBuffSchema;
+import server.markhome.mcf.v3_1.cfint.cfint.buff.CFIntBuffFactoryService;
+import server.markhome.mcf.v3_1.cfbam.cfbam.buff.CFBamBuffSchema;
+import server.markhome.mcf.v3_1.cfbam.cfbam.buff.CFBamBuffFactoryService;
+
 public class CFBamJpaSchema
 	implements ICFBamSchema,
 		ICFSecSchema,
@@ -2740,6 +2747,11 @@ public class CFBamJpaSchema
 			return(sch.getCFSecFactory());
 		}
 	}
+	
+	@Override
+	public CFSecBuffFactoryService getCFSecBuffFactory() {
+		return(CFSecBuffSchema.getBuffHooksSchema().getCFSecFactory());
+	}
 
 	@Override
 	public ICFIntFactory getCFIntFactory() {
@@ -2751,10 +2763,20 @@ public class CFBamJpaSchema
 			return(sch.getCFIntFactory());
 		}
 	}
+	
+	@Override
+	public CFIntBuffFactoryService getCFIntBuffFactory() {
+		return(CFIntBuffSchema.getBuffHooksSchema().getCFIntFactory());
+	}
 
 	@Override
 	public ICFBamFactory getCFBamFactory() {
 		return(CFBamJpaSchema.getJpaHooksSchema().getFactoryService());
+	}
+
+	@Override
+	public CFBamBuffFactoryService getCFBamBuffFactory() {
+		return((CFBamBuffFactoryService)(CFBamBuffSchema.getBuffHooksSchema().getFactoryService()));
 	}
 
 	public CFBamJpaSchemaService getSchemaService() {

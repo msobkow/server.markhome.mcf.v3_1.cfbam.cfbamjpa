@@ -516,7 +516,7 @@ public class CFBamJpaTweakHPKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamTweakPKey, ICFBamTweak, ICFBamTweakHPKey, ICFBamTweakH" );
+				"ICFBamTweakPKey, ICFBamTweak$emitHPKeyHistoryClassNames$" );
 		}
 	}
 

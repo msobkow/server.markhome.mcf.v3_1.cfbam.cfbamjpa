@@ -516,7 +516,7 @@ public class CFBamJpaRoleDefHPKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamRoleDefPKey, ICFBamRoleDef, ICFBamRoleDefHPKey, ICFBamRoleDefH" );
+				"ICFBamRoleDefPKey, ICFBamRoleDef$emitHPKeyHistoryClassNames$" );
 		}
 	}
 

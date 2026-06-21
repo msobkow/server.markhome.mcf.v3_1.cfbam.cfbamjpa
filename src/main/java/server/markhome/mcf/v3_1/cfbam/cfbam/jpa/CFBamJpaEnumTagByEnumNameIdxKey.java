@@ -341,7 +341,7 @@ public class CFBamJpaEnumTagByEnumNameIdxKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamEnumTagByEnumNameIdxKey, ICFBamEnumTag, ICFBamEnumTagH");
+				"ICFBamEnumTagByEnumNameIdxKey, ICFBamEnumTag$emitIndexKeyEqualsHistoryClass$");
 		}
 	}
 

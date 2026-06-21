@@ -227,7 +227,7 @@ public class CFBamJpaServerListFuncByRetTblIdxKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamServerListFuncByRetTblIdxKey, ICFBamServerListFunc, ICFBamServerListFuncH");
+				"ICFBamServerListFuncByRetTblIdxKey, ICFBamServerListFunc$emitIndexKeyEqualsHistoryClass$");
 		}
 	}
 

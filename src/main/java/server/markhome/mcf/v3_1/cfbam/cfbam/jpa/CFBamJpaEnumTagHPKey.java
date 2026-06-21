@@ -516,7 +516,7 @@ public class CFBamJpaEnumTagHPKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamEnumTagPKey, ICFBamEnumTag, ICFBamEnumTagHPKey, ICFBamEnumTagH" );
+				"ICFBamEnumTagPKey, ICFBamEnumTag$emitHPKeyHistoryClassNames$" );
 		}
 	}
 

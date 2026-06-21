@@ -516,7 +516,7 @@ public class CFBamJpaParamHPKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamParamPKey, ICFBamParam, ICFBamParamHPKey, ICFBamParamH" );
+				"ICFBamParamPKey, ICFBamParam$emitHPKeyHistoryClassNames$" );
 		}
 	}
 

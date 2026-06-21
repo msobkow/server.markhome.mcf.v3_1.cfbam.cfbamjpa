@@ -225,7 +225,7 @@ public class CFBamJpaIndexTweakByIndexIdxKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamIndexTweakByIndexIdxKey, ICFBamIndexTweak, ICFBamIndexTweakH");
+				"ICFBamIndexTweakByIndexIdxKey, ICFBamIndexTweak$emitIndexKeyEqualsHistoryClass$");
 		}
 	}
 

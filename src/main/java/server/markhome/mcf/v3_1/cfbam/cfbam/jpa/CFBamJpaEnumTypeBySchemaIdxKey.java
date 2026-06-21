@@ -225,7 +225,7 @@ public class CFBamJpaEnumTypeBySchemaIdxKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamEnumTypeBySchemaIdxKey, ICFBamEnumType, ICFBamEnumTypeH");
+				"ICFBamEnumTypeBySchemaIdxKey, ICFBamEnumType$emitIndexKeyEqualsHistoryClass$");
 		}
 	}
 

@@ -225,7 +225,7 @@ public class CFBamJpaDateColByTableIdxKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamDateColByTableIdxKey, ICFBamDateCol, ICFBamDateColH");
+				"ICFBamDateColByTableIdxKey, ICFBamDateCol$emitIndexKeyEqualsHistoryClass$");
 		}
 	}
 

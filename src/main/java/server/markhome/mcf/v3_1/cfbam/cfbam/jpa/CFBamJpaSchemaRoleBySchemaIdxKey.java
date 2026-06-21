@@ -225,7 +225,7 @@ public class CFBamJpaSchemaRoleBySchemaIdxKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamSchemaRoleBySchemaIdxKey, ICFBamSchemaRole, ICFBamSchemaRoleH");
+				"ICFBamSchemaRoleBySchemaIdxKey, ICFBamSchemaRole$emitIndexKeyEqualsHistoryClass$");
 		}
 	}
 

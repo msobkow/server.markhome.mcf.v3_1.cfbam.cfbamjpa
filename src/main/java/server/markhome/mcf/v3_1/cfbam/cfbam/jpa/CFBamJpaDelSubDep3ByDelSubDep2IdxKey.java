@@ -225,7 +225,7 @@ public class CFBamJpaDelSubDep3ByDelSubDep2IdxKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamDelSubDep3ByDelSubDep2IdxKey, ICFBamDelSubDep3, ICFBamDelSubDep3H");
+				"ICFBamDelSubDep3ByDelSubDep2IdxKey, ICFBamDelSubDep3$emitIndexKeyEqualsHistoryClass$");
 		}
 	}
 

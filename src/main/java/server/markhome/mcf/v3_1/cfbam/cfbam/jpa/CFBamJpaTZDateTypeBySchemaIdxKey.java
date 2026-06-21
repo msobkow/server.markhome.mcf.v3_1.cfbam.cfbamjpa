@@ -225,7 +225,7 @@ public class CFBamJpaTZDateTypeBySchemaIdxKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamTZDateTypeBySchemaIdxKey, ICFBamTZDateType, ICFBamTZDateTypeH");
+				"ICFBamTZDateTypeBySchemaIdxKey, ICFBamTZDateType$emitIndexKeyEqualsHistoryClass$");
 		}
 	}
 

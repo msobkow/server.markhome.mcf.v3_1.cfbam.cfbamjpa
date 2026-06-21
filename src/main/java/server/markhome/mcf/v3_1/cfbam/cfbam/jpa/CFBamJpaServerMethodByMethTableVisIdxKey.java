@@ -331,7 +331,7 @@ public class CFBamJpaServerMethodByMethTableVisIdxKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamServerMethodByMethTableVisIdxKey, ICFBamServerMethod, ICFBamServerMethodH");
+				"ICFBamServerMethodByMethTableVisIdxKey, ICFBamServerMethod$emitIndexKeyEqualsHistoryClass$");
 		}
 	}
 
