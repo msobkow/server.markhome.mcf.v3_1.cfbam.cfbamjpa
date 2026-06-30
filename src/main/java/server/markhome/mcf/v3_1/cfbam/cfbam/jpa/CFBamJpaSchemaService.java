@@ -63,9 +63,18 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import server.markhome.mcf.v3_1.cfsec.cfsecpub.*;
+import server.markhome.mcf.v3_1.cfint.cfintpub.*;
+import server.markhome.mcf.v3_1.cfbam.cfbampub.*;
+import server.markhome.mcf.v3_1.cfsec.cfsecpubobj.*;
+import server.markhome.mcf.v3_1.cfint.cfintpubobj.*;
+import server.markhome.mcf.v3_1.cfbam.cfbampubobj.*;
 import server.markhome.mcf.v3_1.cfsec.cfsec.*;
 import server.markhome.mcf.v3_1.cfint.cfint.*;
-import server.markhome.mcf.v3_1.cfbam.cfbam.*;
+import server.markhome.mcf.v3_1.cfbam.cfbam.*;$importJavaJpaPackageSchemaName$$importJavaJpaPackageSchemaName$
+import server.markhome.mcf.v3_1.cfsec.cfsecpubobj.*;
+import server.markhome.mcf.v3_1.cfint.cfintpubobj.*;
+import server.markhome.mcf.v3_1.cfbam.cfbampubobj.*;
 
 /**
  *	Services for schema CFBam defined in server.markhome.mcf.v3_1.cfbam.cfbam.jpa
@@ -504,15 +513,15 @@ public class CFBamJpaSchemaService {
 	private CFBamJpaSchemaRoleService schemaroleService;
 
 
-	public void bootstrapSchema(CFSecTableData tableData[]) {
+	public void bootstrapSchema(CFSecPubTableData tableData[]) {
 		ICFSecSchema.getBackingCFSec().bootstrapSchema(tableData);
 	}
 
-	public void bootstrapAllTablesSecurity(CFSecTableData tableData[]) {
+	public void bootstrapAllTablesSecurity(CFSecPubTableData tableData[]) {
 		bootstrapAllTablesSecurity(ICFSecSchema.getSysClusterId(), ICFSecSchema.getSysTenantId(), tableData);
 	}
 
-	public void bootstrapAllTablesSecurity(CFLibDbKeyHash256 clusterId, CFLibDbKeyHash256 tenantId, CFSecTableData tableData[]) {
+	public void bootstrapAllTablesSecurity(CFLibDbKeyHash256 clusterId, CFLibDbKeyHash256 tenantId, CFSecPubTableData tableData[]) {
 		ICFSecSchema.getBackingCFSec().bootstrapAllTablesSecurity(clusterId, tenantId, tableData);
 	}
 
