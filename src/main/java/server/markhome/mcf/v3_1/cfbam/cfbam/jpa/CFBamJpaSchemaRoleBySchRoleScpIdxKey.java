@@ -66,7 +66,7 @@ public class CFBamJpaSchemaRoleBySchRoleScpIdxKey
 	implements ICFBamSchemaRoleBySchRoleScpIdxKey, Comparable<Object>, Serializable
 {
 	protected CFLibDbKeyHash256 requiredSchemaDefId;
-	protected ICFBamSchema.RoleScopeEnum requiredRoleScope;
+	protected ICFBamPubSchema.RoleScopeEnum requiredRoleScope;
 	public CFBamJpaSchemaRoleBySchRoleScpIdxKey() {
 		requiredSchemaDefId = CFLibDbKeyHash256.fromHex( ICFBamSchemaRole.SCHEMADEFID_INIT_VALUE.toString() );
 		requiredRoleScope = ICFBamSchemaRole.ROLESCOPE_INIT_VALUE;

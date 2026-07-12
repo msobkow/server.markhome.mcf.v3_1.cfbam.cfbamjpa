@@ -89,7 +89,7 @@ public class CFBamJpaSchemaRole extends CFBamJpaRoleDef
 	})
 	protected CFLibDbKeyHash256 requiredSchemaDefId;
 	@Column( name="RoleScopeId", nullable=false )
-	protected ICFBamSchema.RoleScopeEnum requiredRoleScope;
+	protected ICFBamPubSchema.RoleScopeEnum requiredRoleScope;
 
 	public CFBamJpaSchemaRole() {
 		super();

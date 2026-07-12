@@ -385,7 +385,7 @@ public class CFBamJpaIndexTable implements ICFBamIndexTable
 	 */
 	@Override
 	public void deleteIndexByIdxCodeVisIdx( ICFSecAuthorization Authorization,
-		ICFBamSchema.CodeVisibilityEnum argCodeVis )
+		ICFBamPubSchema.CodeVisibilityEnum argCodeVis )
 	{
 		final String S_ProcName = "deleteIndexByIdxCodeVisIdx";
 		boolean permissionGranted = canDeleteIndex(S_ProcName, Authorization);
@@ -429,7 +429,7 @@ public class CFBamJpaIndexTable implements ICFBamIndexTable
 	@Override
 	public void deleteIndexByIdxTblCdVisX( ICFSecAuthorization Authorization,
 		CFLibDbKeyHash256 argTableId,
-		ICFBamSchema.CodeVisibilityEnum argCodeVis )
+		ICFBamPubSchema.CodeVisibilityEnum argCodeVis )
 	{
 		final String S_ProcName = "deleteIndexByIdxTblCdVisX";
 		boolean permissionGranted = canDeleteIndex(S_ProcName, Authorization);
@@ -783,7 +783,7 @@ public class CFBamJpaIndexTable implements ICFBamIndexTable
 	 */
 	@Override
 	public ICFBamIndex[] readDerivedByIdxCodeVisIdx( ICFSecAuthorization Authorization,
-		ICFBamSchema.CodeVisibilityEnum argCodeVis )
+		ICFBamPubSchema.CodeVisibilityEnum argCodeVis )
 	{
 		final String S_ProcName = "readDerivedByIdxCodeVisIdx";
 		boolean permissionGranted = false;
@@ -816,7 +816,7 @@ public class CFBamJpaIndexTable implements ICFBamIndexTable
 	@Override
 	public ICFBamIndex[] readDerivedByIdxTblCdVisX( ICFSecAuthorization Authorization,
 		CFLibDbKeyHash256 argTableId,
-		ICFBamSchema.CodeVisibilityEnum argCodeVis )
+		ICFBamPubSchema.CodeVisibilityEnum argCodeVis )
 	{
 		final String S_ProcName = "readDerivedByIdxTblCdVisX";
 		boolean permissionGranted = false;
@@ -1057,7 +1057,7 @@ public class CFBamJpaIndexTable implements ICFBamIndexTable
 	 */
 	@Override
 	public ICFBamIndex[] readRecByIdxCodeVisIdx( ICFSecAuthorization Authorization,
-		ICFBamSchema.CodeVisibilityEnum argCodeVis )
+		ICFBamPubSchema.CodeVisibilityEnum argCodeVis )
 	{
 		final String S_ProcName = "readRecByIdxCodeVisIdx";
 		boolean permissionGranted = false;
@@ -1086,7 +1086,7 @@ public class CFBamJpaIndexTable implements ICFBamIndexTable
 	@Override
 	public ICFBamIndex[] readRecByIdxTblCdVisX( ICFSecAuthorization Authorization,
 		CFLibDbKeyHash256 argTableId,
-		ICFBamSchema.CodeVisibilityEnum argCodeVis )
+		ICFBamPubSchema.CodeVisibilityEnum argCodeVis )
 	{
 		final String S_ProcName = "readRecByIdxTblCdVisX";
 		boolean permissionGranted = false;

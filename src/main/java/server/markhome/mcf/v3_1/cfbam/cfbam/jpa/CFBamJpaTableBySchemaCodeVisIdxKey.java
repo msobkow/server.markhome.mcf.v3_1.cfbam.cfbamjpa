@@ -66,7 +66,7 @@ public class CFBamJpaTableBySchemaCodeVisIdxKey
 	implements ICFBamTableBySchemaCodeVisIdxKey, Comparable<Object>, Serializable
 {
 	protected CFLibDbKeyHash256 requiredSchemaDefId;
-	protected ICFBamSchema.CodeVisibilityEnum requiredCodeVis;
+	protected ICFBamPubSchema.CodeVisibilityEnum requiredCodeVis;
 	public CFBamJpaTableBySchemaCodeVisIdxKey() {
 		requiredSchemaDefId = CFLibDbKeyHash256.fromHex( ICFBamTable.SCHEMADEFID_INIT_VALUE.toString() );
 		requiredCodeVis = ICFBamTable.CODEVIS_INIT_VALUE;

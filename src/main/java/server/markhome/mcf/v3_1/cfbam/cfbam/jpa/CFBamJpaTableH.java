@@ -141,11 +141,11 @@ public class CFBamJpaTableH extends CFBamJpaScopeH
 	@Column( name="IsServerOnly", nullable=false )
 	protected boolean requiredIsServerOnly;
 	@Column( name="LoadBehavId", nullable=false )
-	protected ICFBamSchema.LoaderBehaviourEnum requiredLoaderBehaviour;
+	protected ICFBamPubSchema.LoaderBehaviourEnum requiredLoaderBehaviour;
 	@Column( name="SecScopeId", nullable=false )
-	protected ICFBamSchema.SecScopeEnum requiredSecScope;
+	protected ICFBamPubSchema.SecScopeEnum requiredSecScope;
 	@Column( name="codevis", nullable=false )
-	protected ICFBamSchema.CodeVisibilityEnum requiredCodeVis;
+	protected ICFBamPubSchema.CodeVisibilityEnum requiredCodeVis;
 
     public CFBamJpaTableH() {
             super();

@@ -110,7 +110,7 @@ public class CFBamJpaServerMethodH extends CFBamJpaScopeH
 	@Column( name="srv_only", nullable=false )
 	protected boolean requiredIsServerOnly;
 	@Column( name="codevis", nullable=false )
-	protected ICFBamSchema.CodeVisibilityEnum requiredCodeVis;
+	protected ICFBamPubSchema.CodeVisibilityEnum requiredCodeVis;
 	@Column( name="jmeth_body", nullable=false, length=2000000 )
 	protected String requiredJMethodBody;
 	@Column( name="cppmeth_body", nullable=false, length=2000000 )

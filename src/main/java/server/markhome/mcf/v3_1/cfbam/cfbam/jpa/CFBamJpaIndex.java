@@ -117,7 +117,7 @@ public class CFBamJpaIndex extends CFBamJpaScope
 	@Column( name="IsDbMapped", nullable=false )
 	protected boolean requiredIsDbMapped;
 	@Column( name="codevis", nullable=false )
-	protected ICFBamSchema.CodeVisibilityEnum requiredCodeVis;
+	protected ICFBamPubSchema.CodeVisibilityEnum requiredCodeVis;
 
 	public CFBamJpaIndex() {
 		super();

@@ -163,7 +163,7 @@ public interface CFBamJpaRelationRepository extends JpaRepository<CFBamJpaRelati
 	 *		@return List&lt;CFBamJpaRelation&gt; of the found entities, typically from the JPA cache, or an empty list if no such entities exist.
 	 */
 	@Query("select r from CFBamJpaRelation r where r.requiredCodeVis = :codeVis")
-	List<CFBamJpaRelation> findByRelCodeVisIdx(@Param("codeVis") ICFBamSchema.CodeVisibilityEnum requiredCodeVis);
+	List<CFBamJpaRelation> findByRelCodeVisIdx(@Param("codeVis") ICFBamPubSchema.CodeVisibilityEnum requiredCodeVis);
 
 	/**
 	 *	CFBamRelationByRelCodeVisIdxKey entity list reader convenience method for object-based access.
@@ -186,7 +186,7 @@ public interface CFBamJpaRelationRepository extends JpaRepository<CFBamJpaRelati
 	 */
 	@Query("select r from CFBamJpaRelation r where r.requiredContainerFromTable.requiredId = :tableId and r.requiredCodeVis = :codeVis")
 	List<CFBamJpaRelation> findByRelTableCodeVisX(@Param("tableId") CFLibDbKeyHash256 requiredTableId,
-		@Param("codeVis") ICFBamSchema.CodeVisibilityEnum requiredCodeVis);
+		@Param("codeVis") ICFBamPubSchema.CodeVisibilityEnum requiredCodeVis);
 
 	/**
 	 *	CFBamRelationByRelTableCodeVisXKey entity list reader convenience method for object-based access.
@@ -401,7 +401,7 @@ public interface CFBamJpaRelationRepository extends JpaRepository<CFBamJpaRelati
 	@Transactional
 	@Lock(LockModeType.WRITE)
 	@Query("select r from CFBamJpaRelation r where r.requiredCodeVis = :codeVis")
-	List<CFBamJpaRelation> lockByRelCodeVisIdx(@Param("codeVis") ICFBamSchema.CodeVisibilityEnum requiredCodeVis);
+	List<CFBamJpaRelation> lockByRelCodeVisIdx(@Param("codeVis") ICFBamPubSchema.CodeVisibilityEnum requiredCodeVis);
 
 	/**
 	 *	CFBamRelationByRelCodeVisIdxKey based lock method for object-based access.
@@ -426,7 +426,7 @@ public interface CFBamJpaRelationRepository extends JpaRepository<CFBamJpaRelati
 	@Lock(LockModeType.WRITE)
 	@Query("select r from CFBamJpaRelation r where r.requiredContainerFromTable.requiredId = :tableId and r.requiredCodeVis = :codeVis")
 	List<CFBamJpaRelation> lockByRelTableCodeVisX(@Param("tableId") CFLibDbKeyHash256 requiredTableId,
-		@Param("codeVis") ICFBamSchema.CodeVisibilityEnum requiredCodeVis);
+		@Param("codeVis") ICFBamPubSchema.CodeVisibilityEnum requiredCodeVis);
 
 	/**
 	 *	CFBamRelationByRelTableCodeVisXKey based lock method for object-based access.
@@ -635,7 +635,7 @@ public interface CFBamJpaRelationRepository extends JpaRepository<CFBamJpaRelati
 	@Transactional
 	@Modifying
 	@Query("delete from CFBamJpaRelation r where r.requiredCodeVis = :codeVis")
-	void deleteByRelCodeVisIdx(@Param("codeVis") ICFBamSchema.CodeVisibilityEnum requiredCodeVis);
+	void deleteByRelCodeVisIdx(@Param("codeVis") ICFBamPubSchema.CodeVisibilityEnum requiredCodeVis);
 
 	/**
 	 *	CFBamRelationByRelCodeVisIdxKey based lock method for object-based access.
@@ -656,7 +656,7 @@ public interface CFBamJpaRelationRepository extends JpaRepository<CFBamJpaRelati
 	@Modifying
 	@Query("delete from CFBamJpaRelation r where r.requiredContainerFromTable.requiredId = :tableId and r.requiredCodeVis = :codeVis")
 	void deleteByRelTableCodeVisX(@Param("tableId") CFLibDbKeyHash256 requiredTableId,
-		@Param("codeVis") ICFBamSchema.CodeVisibilityEnum requiredCodeVis);
+		@Param("codeVis") ICFBamPubSchema.CodeVisibilityEnum requiredCodeVis);
 
 	/**
 	 *	CFBamRelationByRelTableCodeVisXKey based lock method for object-based access.

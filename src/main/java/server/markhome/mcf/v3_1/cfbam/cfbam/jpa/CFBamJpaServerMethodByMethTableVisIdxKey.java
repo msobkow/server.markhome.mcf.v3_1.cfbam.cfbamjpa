@@ -66,7 +66,7 @@ public class CFBamJpaServerMethodByMethTableVisIdxKey
 	implements ICFBamServerMethodByMethTableVisIdxKey, Comparable<Object>, Serializable
 {
 	protected CFLibDbKeyHash256 requiredTableId;
-	protected ICFBamSchema.CodeVisibilityEnum requiredCodeVis;
+	protected ICFBamPubSchema.CodeVisibilityEnum requiredCodeVis;
 	public CFBamJpaServerMethodByMethTableVisIdxKey() {
 		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamServerMethod.TABLEID_INIT_VALUE.toString() );
 		requiredCodeVis = ICFBamServerMethod.CODEVIS_INIT_VALUE;

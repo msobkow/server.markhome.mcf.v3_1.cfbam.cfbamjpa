@@ -370,7 +370,7 @@ public class CFBamJpaIndexService {
 	 *		@return List&lt;CFBamJpaIndex&gt; of the found entities, or an empty list if no such entities exist.
 	 */
 	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
-	public List<CFBamJpaIndex> findByIdxCodeVisIdx(@Param("codeVis") ICFBamSchema.CodeVisibilityEnum requiredCodeVis) {
+	public List<CFBamJpaIndex> findByIdxCodeVisIdx(@Param("codeVis") ICFBamPubSchema.CodeVisibilityEnum requiredCodeVis) {
 		return( cfbam31IndexRepository.findByIdxCodeVisIdx(requiredCodeVis));
 	}
 
@@ -396,7 +396,7 @@ public class CFBamJpaIndexService {
 	 */
 	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public List<CFBamJpaIndex> findByIdxTblCdVisX(@Param("tableId") CFLibDbKeyHash256 requiredTableId,
-		@Param("codeVis") ICFBamSchema.CodeVisibilityEnum requiredCodeVis) {
+		@Param("codeVis") ICFBamPubSchema.CodeVisibilityEnum requiredCodeVis) {
 		return( cfbam31IndexRepository.findByIdxTblCdVisX(requiredTableId,
 			requiredCodeVis));
 	}
@@ -536,7 +536,7 @@ public class CFBamJpaIndexService {
 	 *		@return A list of locked entities, refreshed from the data store, or an empty list if no such entities exist.
 	 */
 	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
-	public List<CFBamJpaIndex> lockByIdxCodeVisIdx(@Param("codeVis") ICFBamSchema.CodeVisibilityEnum requiredCodeVis) {
+	public List<CFBamJpaIndex> lockByIdxCodeVisIdx(@Param("codeVis") ICFBamPubSchema.CodeVisibilityEnum requiredCodeVis) {
 		return( cfbam31IndexRepository.lockByIdxCodeVisIdx(requiredCodeVis));
 	}
 
@@ -562,7 +562,7 @@ public class CFBamJpaIndexService {
 	 */
 	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public List<CFBamJpaIndex> lockByIdxTblCdVisX(@Param("tableId") CFLibDbKeyHash256 requiredTableId,
-		@Param("codeVis") ICFBamSchema.CodeVisibilityEnum requiredCodeVis) {
+		@Param("codeVis") ICFBamPubSchema.CodeVisibilityEnum requiredCodeVis) {
 		return( cfbam31IndexRepository.lockByIdxTblCdVisX(requiredTableId,
 			requiredCodeVis));
 	}
@@ -686,7 +686,7 @@ public class CFBamJpaIndexService {
 	 *		@param requiredCodeVis
 	 */
 	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
-	public void deleteByIdxCodeVisIdx(@Param("codeVis") ICFBamSchema.CodeVisibilityEnum requiredCodeVis) {
+	public void deleteByIdxCodeVisIdx(@Param("codeVis") ICFBamPubSchema.CodeVisibilityEnum requiredCodeVis) {
 		cfbam31IndexRepository.deleteByIdxCodeVisIdx(requiredCodeVis);
 	}
 
@@ -708,7 +708,7 @@ public class CFBamJpaIndexService {
 	 */
 	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public void deleteByIdxTblCdVisX(@Param("tableId") CFLibDbKeyHash256 requiredTableId,
-		@Param("codeVis") ICFBamSchema.CodeVisibilityEnum requiredCodeVis) {
+		@Param("codeVis") ICFBamPubSchema.CodeVisibilityEnum requiredCodeVis) {
 		cfbam31IndexRepository.deleteByIdxTblCdVisX(requiredTableId,
 			requiredCodeVis);
 	}

@@ -408,7 +408,7 @@ public class CFBamJpaServerMethodService {
 	 *		@return List&lt;CFBamJpaServerMethod&gt; of the found entities, or an empty list if no such entities exist.
 	 */
 	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
-	public List<CFBamJpaServerMethod> findByMethCodeVisIdx(@Param("codeVis") ICFBamSchema.CodeVisibilityEnum requiredCodeVis) {
+	public List<CFBamJpaServerMethod> findByMethCodeVisIdx(@Param("codeVis") ICFBamPubSchema.CodeVisibilityEnum requiredCodeVis) {
 		return( cfbam31ServerMethodRepository.findByMethCodeVisIdx(requiredCodeVis));
 	}
 
@@ -434,7 +434,7 @@ public class CFBamJpaServerMethodService {
 	 */
 	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public List<CFBamJpaServerMethod> findByMethTableVisIdx(@Param("tableId") CFLibDbKeyHash256 requiredTableId,
-		@Param("codeVis") ICFBamSchema.CodeVisibilityEnum requiredCodeVis) {
+		@Param("codeVis") ICFBamPubSchema.CodeVisibilityEnum requiredCodeVis) {
 		return( cfbam31ServerMethodRepository.findByMethTableVisIdx(requiredTableId,
 			requiredCodeVis));
 	}
@@ -574,7 +574,7 @@ public class CFBamJpaServerMethodService {
 	 *		@return A list of locked entities, refreshed from the data store, or an empty list if no such entities exist.
 	 */
 	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
-	public List<CFBamJpaServerMethod> lockByMethCodeVisIdx(@Param("codeVis") ICFBamSchema.CodeVisibilityEnum requiredCodeVis) {
+	public List<CFBamJpaServerMethod> lockByMethCodeVisIdx(@Param("codeVis") ICFBamPubSchema.CodeVisibilityEnum requiredCodeVis) {
 		return( cfbam31ServerMethodRepository.lockByMethCodeVisIdx(requiredCodeVis));
 	}
 
@@ -600,7 +600,7 @@ public class CFBamJpaServerMethodService {
 	 */
 	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public List<CFBamJpaServerMethod> lockByMethTableVisIdx(@Param("tableId") CFLibDbKeyHash256 requiredTableId,
-		@Param("codeVis") ICFBamSchema.CodeVisibilityEnum requiredCodeVis) {
+		@Param("codeVis") ICFBamPubSchema.CodeVisibilityEnum requiredCodeVis) {
 		return( cfbam31ServerMethodRepository.lockByMethTableVisIdx(requiredTableId,
 			requiredCodeVis));
 	}
@@ -724,7 +724,7 @@ public class CFBamJpaServerMethodService {
 	 *		@param requiredCodeVis
 	 */
 	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
-	public void deleteByMethCodeVisIdx(@Param("codeVis") ICFBamSchema.CodeVisibilityEnum requiredCodeVis) {
+	public void deleteByMethCodeVisIdx(@Param("codeVis") ICFBamPubSchema.CodeVisibilityEnum requiredCodeVis) {
 		cfbam31ServerMethodRepository.deleteByMethCodeVisIdx(requiredCodeVis);
 	}
 
@@ -746,7 +746,7 @@ public class CFBamJpaServerMethodService {
 	 */
 	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public void deleteByMethTableVisIdx(@Param("tableId") CFLibDbKeyHash256 requiredTableId,
-		@Param("codeVis") ICFBamSchema.CodeVisibilityEnum requiredCodeVis) {
+		@Param("codeVis") ICFBamPubSchema.CodeVisibilityEnum requiredCodeVis) {
 		cfbam31ServerMethodRepository.deleteByMethTableVisIdx(requiredTableId,
 			requiredCodeVis);
 	}

@@ -209,7 +209,7 @@ public interface CFBamJpaSchemaRoleRepository extends JpaRepository<CFBamJpaSche
 	 *		@return List&lt;CFBamJpaSchemaRole&gt; of the found entities, typically from the JPA cache, or an empty list if no such entities exist.
 	 */
 	@Query("select r from CFBamJpaSchemaRole r where r.requiredRoleScope = :roleScope")
-	List<CFBamJpaSchemaRole> findByRoleScopeIdx(@Param("roleScope") ICFBamSchema.RoleScopeEnum requiredRoleScope);
+	List<CFBamJpaSchemaRole> findByRoleScopeIdx(@Param("roleScope") ICFBamPubSchema.RoleScopeEnum requiredRoleScope);
 
 	/**
 	 *	CFBamSchemaRoleByRoleScopeIdxKey entity list reader convenience method for object-based access.
@@ -232,7 +232,7 @@ public interface CFBamJpaSchemaRoleRepository extends JpaRepository<CFBamJpaSche
 	 */
 	@Query("select r from CFBamJpaSchemaRole r where r.requiredContainerSchemaDef.requiredId = :schemaDefId and r.requiredRoleScope = :roleScope")
 	List<CFBamJpaSchemaRole> findBySchRoleScpIdx(@Param("schemaDefId") CFLibDbKeyHash256 requiredSchemaDefId,
-		@Param("roleScope") ICFBamSchema.RoleScopeEnum requiredRoleScope);
+		@Param("roleScope") ICFBamPubSchema.RoleScopeEnum requiredRoleScope);
 
 	/**
 	 *	CFBamSchemaRoleBySchRoleScpIdxKey entity list reader convenience method for object-based access.
@@ -392,7 +392,7 @@ public interface CFBamJpaSchemaRoleRepository extends JpaRepository<CFBamJpaSche
 	@Transactional
 	@Lock(LockModeType.WRITE)
 	@Query("select r from CFBamJpaSchemaRole r where r.requiredRoleScope = :roleScope")
-	List<CFBamJpaSchemaRole> lockByRoleScopeIdx(@Param("roleScope") ICFBamSchema.RoleScopeEnum requiredRoleScope);
+	List<CFBamJpaSchemaRole> lockByRoleScopeIdx(@Param("roleScope") ICFBamPubSchema.RoleScopeEnum requiredRoleScope);
 
 	/**
 	 *	CFBamSchemaRoleByRoleScopeIdxKey based lock method for object-based access.
@@ -417,7 +417,7 @@ public interface CFBamJpaSchemaRoleRepository extends JpaRepository<CFBamJpaSche
 	@Lock(LockModeType.WRITE)
 	@Query("select r from CFBamJpaSchemaRole r where r.requiredContainerSchemaDef.requiredId = :schemaDefId and r.requiredRoleScope = :roleScope")
 	List<CFBamJpaSchemaRole> lockBySchRoleScpIdx(@Param("schemaDefId") CFLibDbKeyHash256 requiredSchemaDefId,
-		@Param("roleScope") ICFBamSchema.RoleScopeEnum requiredRoleScope);
+		@Param("roleScope") ICFBamPubSchema.RoleScopeEnum requiredRoleScope);
 
 	/**
 	 *	CFBamSchemaRoleBySchRoleScpIdxKey based lock method for object-based access.
@@ -553,7 +553,7 @@ public interface CFBamJpaSchemaRoleRepository extends JpaRepository<CFBamJpaSche
 	@Transactional
 	@Modifying
 	@Query("delete from CFBamJpaSchemaRole r where r.requiredRoleScope = :roleScope")
-	void deleteByRoleScopeIdx(@Param("roleScope") ICFBamSchema.RoleScopeEnum requiredRoleScope);
+	void deleteByRoleScopeIdx(@Param("roleScope") ICFBamPubSchema.RoleScopeEnum requiredRoleScope);
 
 	/**
 	 *	CFBamSchemaRoleByRoleScopeIdxKey based lock method for object-based access.
@@ -574,7 +574,7 @@ public interface CFBamJpaSchemaRoleRepository extends JpaRepository<CFBamJpaSche
 	@Modifying
 	@Query("delete from CFBamJpaSchemaRole r where r.requiredContainerSchemaDef.requiredId = :schemaDefId and r.requiredRoleScope = :roleScope")
 	void deleteBySchRoleScpIdx(@Param("schemaDefId") CFLibDbKeyHash256 requiredSchemaDefId,
-		@Param("roleScope") ICFBamSchema.RoleScopeEnum requiredRoleScope);
+		@Param("roleScope") ICFBamPubSchema.RoleScopeEnum requiredRoleScope);
 
 	/**
 	 *	CFBamSchemaRoleBySchRoleScpIdxKey based lock method for object-based access.

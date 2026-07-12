@@ -66,7 +66,7 @@ public class CFBamJpaIndexByIdxTblCdVisXKey
 	implements ICFBamIndexByIdxTblCdVisXKey, Comparable<Object>, Serializable
 {
 	protected CFLibDbKeyHash256 requiredTableId;
-	protected ICFBamSchema.CodeVisibilityEnum requiredCodeVis;
+	protected ICFBamPubSchema.CodeVisibilityEnum requiredCodeVis;
 	public CFBamJpaIndexByIdxTblCdVisXKey() {
 		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamIndex.TABLEID_INIT_VALUE.toString() );
 		requiredCodeVis = ICFBamIndex.CODEVIS_INIT_VALUE;

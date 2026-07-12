@@ -339,7 +339,7 @@ public class CFBamJpaTableTable implements ICFBamTableTable
 	 */
 	@Override
 	public void deleteTableByCodeVisIdx( ICFSecAuthorization Authorization,
-		ICFBamSchema.CodeVisibilityEnum argCodeVis )
+		ICFBamPubSchema.CodeVisibilityEnum argCodeVis )
 	{
 		final String S_ProcName = "deleteTableByCodeVisIdx";
 		boolean permissionGranted = canDeleteTable(S_ProcName, Authorization);
@@ -383,7 +383,7 @@ public class CFBamJpaTableTable implements ICFBamTableTable
 	@Override
 	public void deleteTableBySchemaCodeVisIdx( ICFSecAuthorization Authorization,
 		CFLibDbKeyHash256 argSchemaDefId,
-		ICFBamSchema.CodeVisibilityEnum argCodeVis )
+		ICFBamPubSchema.CodeVisibilityEnum argCodeVis )
 	{
 		final String S_ProcName = "deleteTableBySchemaCodeVisIdx";
 		boolean permissionGranted = canDeleteTable(S_ProcName, Authorization);
@@ -954,7 +954,7 @@ public class CFBamJpaTableTable implements ICFBamTableTable
 	 */
 	@Override
 	public ICFBamTable[] readDerivedByCodeVisIdx( ICFSecAuthorization Authorization,
-		ICFBamSchema.CodeVisibilityEnum argCodeVis )
+		ICFBamPubSchema.CodeVisibilityEnum argCodeVis )
 	{
 		final String S_ProcName = "readDerivedByCodeVisIdx";
 		boolean permissionGranted = false;
@@ -987,7 +987,7 @@ public class CFBamJpaTableTable implements ICFBamTableTable
 	@Override
 	public ICFBamTable[] readDerivedBySchemaCodeVisIdx( ICFSecAuthorization Authorization,
 		CFLibDbKeyHash256 argSchemaDefId,
-		ICFBamSchema.CodeVisibilityEnum argCodeVis )
+		ICFBamPubSchema.CodeVisibilityEnum argCodeVis )
 	{
 		final String S_ProcName = "readDerivedBySchemaCodeVisIdx";
 		boolean permissionGranted = false;
@@ -1396,7 +1396,7 @@ public class CFBamJpaTableTable implements ICFBamTableTable
 	 */
 	@Override
 	public ICFBamTable[] readRecByCodeVisIdx( ICFSecAuthorization Authorization,
-		ICFBamSchema.CodeVisibilityEnum argCodeVis )
+		ICFBamPubSchema.CodeVisibilityEnum argCodeVis )
 	{
 		final String S_ProcName = "readRecByCodeVisIdx";
 		boolean permissionGranted = false;
@@ -1425,7 +1425,7 @@ public class CFBamJpaTableTable implements ICFBamTableTable
 	@Override
 	public ICFBamTable[] readRecBySchemaCodeVisIdx( ICFSecAuthorization Authorization,
 		CFLibDbKeyHash256 argSchemaDefId,
-		ICFBamSchema.CodeVisibilityEnum argCodeVis )
+		ICFBamPubSchema.CodeVisibilityEnum argCodeVis )
 	{
 		final String S_ProcName = "readRecBySchemaCodeVisIdx";
 		boolean permissionGranted = false;

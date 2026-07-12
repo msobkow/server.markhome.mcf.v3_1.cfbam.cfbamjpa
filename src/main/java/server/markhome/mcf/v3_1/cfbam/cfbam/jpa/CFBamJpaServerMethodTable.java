@@ -385,7 +385,7 @@ public class CFBamJpaServerMethodTable implements ICFBamServerMethodTable
 	 */
 	@Override
 	public void deleteServerMethodByMethCodeVisIdx( ICFSecAuthorization Authorization,
-		ICFBamSchema.CodeVisibilityEnum argCodeVis )
+		ICFBamPubSchema.CodeVisibilityEnum argCodeVis )
 	{
 		final String S_ProcName = "deleteServerMethodByMethCodeVisIdx";
 		boolean permissionGranted = canDeleteServerMethod(S_ProcName, Authorization);
@@ -429,7 +429,7 @@ public class CFBamJpaServerMethodTable implements ICFBamServerMethodTable
 	@Override
 	public void deleteServerMethodByMethTableVisIdx( ICFSecAuthorization Authorization,
 		CFLibDbKeyHash256 argTableId,
-		ICFBamSchema.CodeVisibilityEnum argCodeVis )
+		ICFBamPubSchema.CodeVisibilityEnum argCodeVis )
 	{
 		final String S_ProcName = "deleteServerMethodByMethTableVisIdx";
 		boolean permissionGranted = canDeleteServerMethod(S_ProcName, Authorization);
@@ -783,7 +783,7 @@ public class CFBamJpaServerMethodTable implements ICFBamServerMethodTable
 	 */
 	@Override
 	public ICFBamServerMethod[] readDerivedByMethCodeVisIdx( ICFSecAuthorization Authorization,
-		ICFBamSchema.CodeVisibilityEnum argCodeVis )
+		ICFBamPubSchema.CodeVisibilityEnum argCodeVis )
 	{
 		final String S_ProcName = "readDerivedByMethCodeVisIdx";
 		boolean permissionGranted = false;
@@ -816,7 +816,7 @@ public class CFBamJpaServerMethodTable implements ICFBamServerMethodTable
 	@Override
 	public ICFBamServerMethod[] readDerivedByMethTableVisIdx( ICFSecAuthorization Authorization,
 		CFLibDbKeyHash256 argTableId,
-		ICFBamSchema.CodeVisibilityEnum argCodeVis )
+		ICFBamPubSchema.CodeVisibilityEnum argCodeVis )
 	{
 		final String S_ProcName = "readDerivedByMethTableVisIdx";
 		boolean permissionGranted = false;
@@ -1057,7 +1057,7 @@ public class CFBamJpaServerMethodTable implements ICFBamServerMethodTable
 	 */
 	@Override
 	public ICFBamServerMethod[] readRecByMethCodeVisIdx( ICFSecAuthorization Authorization,
-		ICFBamSchema.CodeVisibilityEnum argCodeVis )
+		ICFBamPubSchema.CodeVisibilityEnum argCodeVis )
 	{
 		final String S_ProcName = "readRecByMethCodeVisIdx";
 		boolean permissionGranted = false;
@@ -1086,7 +1086,7 @@ public class CFBamJpaServerMethodTable implements ICFBamServerMethodTable
 	@Override
 	public ICFBamServerMethod[] readRecByMethTableVisIdx( ICFSecAuthorization Authorization,
 		CFLibDbKeyHash256 argTableId,
-		ICFBamSchema.CodeVisibilityEnum argCodeVis )
+		ICFBamPubSchema.CodeVisibilityEnum argCodeVis )
 	{
 		final String S_ProcName = "readRecByMethTableVisIdx";
 		boolean permissionGranted = false;

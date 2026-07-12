@@ -442,7 +442,7 @@ public class CFBamJpaSchemaRoleService {
 	 *		@return List&lt;CFBamJpaSchemaRole&gt; of the found entities, or an empty list if no such entities exist.
 	 */
 	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
-	public List<CFBamJpaSchemaRole> findByRoleScopeIdx(@Param("roleScope") ICFBamSchema.RoleScopeEnum requiredRoleScope) {
+	public List<CFBamJpaSchemaRole> findByRoleScopeIdx(@Param("roleScope") ICFBamPubSchema.RoleScopeEnum requiredRoleScope) {
 		return( cfbam31SchemaRoleRepository.findByRoleScopeIdx(requiredRoleScope));
 	}
 
@@ -468,7 +468,7 @@ public class CFBamJpaSchemaRoleService {
 	 */
 	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public List<CFBamJpaSchemaRole> findBySchRoleScpIdx(@Param("schemaDefId") CFLibDbKeyHash256 requiredSchemaDefId,
-		@Param("roleScope") ICFBamSchema.RoleScopeEnum requiredRoleScope) {
+		@Param("roleScope") ICFBamPubSchema.RoleScopeEnum requiredRoleScope) {
 		return( cfbam31SchemaRoleRepository.findBySchRoleScpIdx(requiredSchemaDefId,
 			requiredRoleScope));
 	}
@@ -638,7 +638,7 @@ public class CFBamJpaSchemaRoleService {
 	 *		@return A list of locked entities, refreshed from the data store, or an empty list if no such entities exist.
 	 */
 	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
-	public List<CFBamJpaSchemaRole> lockByRoleScopeIdx(@Param("roleScope") ICFBamSchema.RoleScopeEnum requiredRoleScope) {
+	public List<CFBamJpaSchemaRole> lockByRoleScopeIdx(@Param("roleScope") ICFBamPubSchema.RoleScopeEnum requiredRoleScope) {
 		return( cfbam31SchemaRoleRepository.lockByRoleScopeIdx(requiredRoleScope));
 	}
 
@@ -664,7 +664,7 @@ public class CFBamJpaSchemaRoleService {
 	 */
 	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public List<CFBamJpaSchemaRole> lockBySchRoleScpIdx(@Param("schemaDefId") CFLibDbKeyHash256 requiredSchemaDefId,
-		@Param("roleScope") ICFBamSchema.RoleScopeEnum requiredRoleScope) {
+		@Param("roleScope") ICFBamPubSchema.RoleScopeEnum requiredRoleScope) {
 		return( cfbam31SchemaRoleRepository.lockBySchRoleScpIdx(requiredSchemaDefId,
 			requiredRoleScope));
 	}
@@ -810,7 +810,7 @@ public class CFBamJpaSchemaRoleService {
 	 *		@param requiredRoleScope
 	 */
 	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
-	public void deleteByRoleScopeIdx(@Param("roleScope") ICFBamSchema.RoleScopeEnum requiredRoleScope) {
+	public void deleteByRoleScopeIdx(@Param("roleScope") ICFBamPubSchema.RoleScopeEnum requiredRoleScope) {
 		cfbam31SchemaRoleRepository.deleteByRoleScopeIdx(requiredRoleScope);
 	}
 
@@ -832,7 +832,7 @@ public class CFBamJpaSchemaRoleService {
 	 */
 	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public void deleteBySchRoleScpIdx(@Param("schemaDefId") CFLibDbKeyHash256 requiredSchemaDefId,
-		@Param("roleScope") ICFBamSchema.RoleScopeEnum requiredRoleScope) {
+		@Param("roleScope") ICFBamPubSchema.RoleScopeEnum requiredRoleScope) {
 		cfbam31SchemaRoleRepository.deleteBySchRoleScpIdx(requiredSchemaDefId,
 			requiredRoleScope);
 	}

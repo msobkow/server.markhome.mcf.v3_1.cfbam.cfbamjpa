@@ -163,7 +163,7 @@ public interface CFBamJpaServerMethodRepository extends JpaRepository<CFBamJpaSe
 	 *		@return List&lt;CFBamJpaServerMethod&gt; of the found entities, typically from the JPA cache, or an empty list if no such entities exist.
 	 */
 	@Query("select r from CFBamJpaServerMethod r where r.requiredCodeVis = :codeVis")
-	List<CFBamJpaServerMethod> findByMethCodeVisIdx(@Param("codeVis") ICFBamSchema.CodeVisibilityEnum requiredCodeVis);
+	List<CFBamJpaServerMethod> findByMethCodeVisIdx(@Param("codeVis") ICFBamPubSchema.CodeVisibilityEnum requiredCodeVis);
 
 	/**
 	 *	CFBamServerMethodByMethCodeVisIdxKey entity list reader convenience method for object-based access.
@@ -186,7 +186,7 @@ public interface CFBamJpaServerMethodRepository extends JpaRepository<CFBamJpaSe
 	 */
 	@Query("select r from CFBamJpaServerMethod r where r.requiredContainerForTable.requiredId = :tableId and r.requiredCodeVis = :codeVis")
 	List<CFBamJpaServerMethod> findByMethTableVisIdx(@Param("tableId") CFLibDbKeyHash256 requiredTableId,
-		@Param("codeVis") ICFBamSchema.CodeVisibilityEnum requiredCodeVis);
+		@Param("codeVis") ICFBamPubSchema.CodeVisibilityEnum requiredCodeVis);
 
 	/**
 	 *	CFBamServerMethodByMethTableVisIdxKey entity list reader convenience method for object-based access.
@@ -317,7 +317,7 @@ public interface CFBamJpaServerMethodRepository extends JpaRepository<CFBamJpaSe
 	@Transactional
 	@Lock(LockModeType.WRITE)
 	@Query("select r from CFBamJpaServerMethod r where r.requiredCodeVis = :codeVis")
-	List<CFBamJpaServerMethod> lockByMethCodeVisIdx(@Param("codeVis") ICFBamSchema.CodeVisibilityEnum requiredCodeVis);
+	List<CFBamJpaServerMethod> lockByMethCodeVisIdx(@Param("codeVis") ICFBamPubSchema.CodeVisibilityEnum requiredCodeVis);
 
 	/**
 	 *	CFBamServerMethodByMethCodeVisIdxKey based lock method for object-based access.
@@ -342,7 +342,7 @@ public interface CFBamJpaServerMethodRepository extends JpaRepository<CFBamJpaSe
 	@Lock(LockModeType.WRITE)
 	@Query("select r from CFBamJpaServerMethod r where r.requiredContainerForTable.requiredId = :tableId and r.requiredCodeVis = :codeVis")
 	List<CFBamJpaServerMethod> lockByMethTableVisIdx(@Param("tableId") CFLibDbKeyHash256 requiredTableId,
-		@Param("codeVis") ICFBamSchema.CodeVisibilityEnum requiredCodeVis);
+		@Param("codeVis") ICFBamPubSchema.CodeVisibilityEnum requiredCodeVis);
 
 	/**
 	 *	CFBamServerMethodByMethTableVisIdxKey based lock method for object-based access.
@@ -459,7 +459,7 @@ public interface CFBamJpaServerMethodRepository extends JpaRepository<CFBamJpaSe
 	@Transactional
 	@Modifying
 	@Query("delete from CFBamJpaServerMethod r where r.requiredCodeVis = :codeVis")
-	void deleteByMethCodeVisIdx(@Param("codeVis") ICFBamSchema.CodeVisibilityEnum requiredCodeVis);
+	void deleteByMethCodeVisIdx(@Param("codeVis") ICFBamPubSchema.CodeVisibilityEnum requiredCodeVis);
 
 	/**
 	 *	CFBamServerMethodByMethCodeVisIdxKey based lock method for object-based access.
@@ -480,7 +480,7 @@ public interface CFBamJpaServerMethodRepository extends JpaRepository<CFBamJpaSe
 	@Modifying
 	@Query("delete from CFBamJpaServerMethod r where r.requiredContainerForTable.requiredId = :tableId and r.requiredCodeVis = :codeVis")
 	void deleteByMethTableVisIdx(@Param("tableId") CFLibDbKeyHash256 requiredTableId,
-		@Param("codeVis") ICFBamSchema.CodeVisibilityEnum requiredCodeVis);
+		@Param("codeVis") ICFBamPubSchema.CodeVisibilityEnum requiredCodeVis);
 
 	/**
 	 *	CFBamServerMethodByMethTableVisIdxKey based lock method for object-based access.

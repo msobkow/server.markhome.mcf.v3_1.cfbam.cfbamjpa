@@ -385,7 +385,7 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 	 */
 	@Override
 	public void deleteRelationByRelCodeVisIdx( ICFSecAuthorization Authorization,
-		ICFBamSchema.CodeVisibilityEnum argCodeVis )
+		ICFBamPubSchema.CodeVisibilityEnum argCodeVis )
 	{
 		final String S_ProcName = "deleteRelationByRelCodeVisIdx";
 		boolean permissionGranted = canDeleteRelation(S_ProcName, Authorization);
@@ -429,7 +429,7 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 	@Override
 	public void deleteRelationByRelTableCodeVisX( ICFSecAuthorization Authorization,
 		CFLibDbKeyHash256 argTableId,
-		ICFBamSchema.CodeVisibilityEnum argCodeVis )
+		ICFBamPubSchema.CodeVisibilityEnum argCodeVis )
 	{
 		final String S_ProcName = "deleteRelationByRelTableCodeVisX";
 		boolean permissionGranted = canDeleteRelation(S_ProcName, Authorization);
@@ -947,7 +947,7 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 	 */
 	@Override
 	public ICFBamRelation[] readDerivedByRelCodeVisIdx( ICFSecAuthorization Authorization,
-		ICFBamSchema.CodeVisibilityEnum argCodeVis )
+		ICFBamPubSchema.CodeVisibilityEnum argCodeVis )
 	{
 		final String S_ProcName = "readDerivedByRelCodeVisIdx";
 		boolean permissionGranted = false;
@@ -980,7 +980,7 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 	@Override
 	public ICFBamRelation[] readDerivedByRelTableCodeVisX( ICFSecAuthorization Authorization,
 		CFLibDbKeyHash256 argTableId,
-		ICFBamSchema.CodeVisibilityEnum argCodeVis )
+		ICFBamPubSchema.CodeVisibilityEnum argCodeVis )
 	{
 		final String S_ProcName = "readDerivedByRelTableCodeVisX";
 		boolean permissionGranted = false;
@@ -1341,7 +1341,7 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 	 */
 	@Override
 	public ICFBamRelation[] readRecByRelCodeVisIdx( ICFSecAuthorization Authorization,
-		ICFBamSchema.CodeVisibilityEnum argCodeVis )
+		ICFBamPubSchema.CodeVisibilityEnum argCodeVis )
 	{
 		final String S_ProcName = "readRecByRelCodeVisIdx";
 		boolean permissionGranted = false;
@@ -1370,7 +1370,7 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 	@Override
 	public ICFBamRelation[] readRecByRelTableCodeVisX( ICFSecAuthorization Authorization,
 		CFLibDbKeyHash256 argTableId,
-		ICFBamSchema.CodeVisibilityEnum argCodeVis )
+		ICFBamPubSchema.CodeVisibilityEnum argCodeVis )
 	{
 		final String S_ProcName = "readRecByRelTableCodeVisX";
 		boolean permissionGranted = false;

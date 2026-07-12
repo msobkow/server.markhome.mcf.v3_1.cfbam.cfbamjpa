@@ -129,7 +129,7 @@ public class CFBamJpaRelation extends CFBamJpaScope
 	@Column( name="descr", nullable=true, length=1023 )
 	protected String optionalDescription;
 	@Column( name="RelationType", nullable=false )
-	protected ICFBamSchema.RelationTypeEnum requiredRelationType;
+	protected ICFBamPubSchema.RelationTypeEnum requiredRelationType;
 	@Column( name="DbName", nullable=true, length=32 )
 	protected String optionalDbName;
 	@Column( name="Suffix", nullable=true, length=16 )
@@ -159,7 +159,7 @@ public class CFBamJpaRelation extends CFBamJpaScope
 	})
 	protected CFLibDbKeyHash256 optionalNarrowedId;
 	@Column( name="codevis", nullable=false )
-	protected ICFBamSchema.CodeVisibilityEnum requiredCodeVis;
+	protected ICFBamPubSchema.CodeVisibilityEnum requiredCodeVis;
 
 	public CFBamJpaRelation() {
 		super();
