@@ -519,7 +519,7 @@ public class CFBamJpaRelation extends CFBamJpaScope
 	}
 
 	@Override
-	public void setRequiredRelationType( ICFBamSchema.RelationTypeEnum value ) {
+	public void setRequiredRelationType( ICFBamPubSchema.RelationTypeEnum value ) {
 		if( value == null ) {
 			throw new CFLibNullArgumentException( getClass(),
 				"setRequiredRelationType",
@@ -631,7 +631,7 @@ public class CFBamJpaRelation extends CFBamJpaScope
 	}
 
 	@Override
-	public void setRequiredCodeVis( ICFBamSchema.CodeVisibilityEnum value ) {
+	public void setRequiredCodeVis( ICFBamPubSchema.CodeVisibilityEnum value ) {
 		if( value == null ) {
 			throw new CFLibNullArgumentException( getClass(),
 				"setRequiredCodeVis",
