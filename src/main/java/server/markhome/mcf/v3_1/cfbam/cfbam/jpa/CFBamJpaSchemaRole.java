@@ -144,7 +144,7 @@ public class CFBamJpaSchemaRole extends CFBamJpaRoleDef
 	}
 
 	@Override
-	public ICFBamSchema.RoleScopeEnum getRequiredRoleScope() {
+	public ICFBamPubSchema.RoleScopeEnum getRequiredRoleScope() {
 		return( requiredRoleScope );
 	}
 

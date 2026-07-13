@@ -89,7 +89,7 @@ public class CFBamJpaSchemaRoleBySchRoleScpIdxKey
 	}
 
 	@Override
-	public ICFBamSchema.RoleScopeEnum getRequiredRoleScope() {
+	public ICFBamPubSchema.RoleScopeEnum getRequiredRoleScope() {
 		return( requiredRoleScope );
 	}
 

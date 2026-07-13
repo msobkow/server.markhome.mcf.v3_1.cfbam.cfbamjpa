@@ -649,7 +649,7 @@ public class CFBamJpaTable extends CFBamJpaScope
 	}
 
 	@Override
-	public ICFBamSchema.LoaderBehaviourEnum getRequiredLoaderBehaviour() {
+	public ICFBamPubSchema.LoaderBehaviourEnum getRequiredLoaderBehaviour() {
 		return( requiredLoaderBehaviour );
 	}
 
@@ -665,7 +665,7 @@ public class CFBamJpaTable extends CFBamJpaScope
 	}
 
 	@Override
-	public ICFBamSchema.SecScopeEnum getRequiredSecScope() {
+	public ICFBamPubSchema.SecScopeEnum getRequiredSecScope() {
 		return( requiredSecScope );
 	}
 
@@ -681,7 +681,7 @@ public class CFBamJpaTable extends CFBamJpaScope
 	}
 
 	@Override
-	public ICFBamSchema.CodeVisibilityEnum getRequiredCodeVis() {
+	public ICFBamPubSchema.CodeVisibilityEnum getRequiredCodeVis() {
 		return( requiredCodeVis );
 	}
 

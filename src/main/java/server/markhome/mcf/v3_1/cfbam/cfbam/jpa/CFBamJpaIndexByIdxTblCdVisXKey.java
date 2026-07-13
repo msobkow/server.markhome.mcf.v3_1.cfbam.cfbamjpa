@@ -89,7 +89,7 @@ public class CFBamJpaIndexByIdxTblCdVisXKey
 	}
 
 	@Override
-	public ICFBamSchema.CodeVisibilityEnum getRequiredCodeVis() {
+	public ICFBamPubSchema.CodeVisibilityEnum getRequiredCodeVis() {
 		return( requiredCodeVis );
 	}
 

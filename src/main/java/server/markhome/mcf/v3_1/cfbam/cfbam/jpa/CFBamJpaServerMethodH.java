@@ -302,7 +302,7 @@ public class CFBamJpaServerMethodH extends CFBamJpaScopeH
 	}
 
 	@Override
-	public ICFBamSchema.CodeVisibilityEnum getRequiredCodeVis() {
+	public ICFBamPubSchema.CodeVisibilityEnum getRequiredCodeVis() {
 		return( requiredCodeVis );
 	}
 

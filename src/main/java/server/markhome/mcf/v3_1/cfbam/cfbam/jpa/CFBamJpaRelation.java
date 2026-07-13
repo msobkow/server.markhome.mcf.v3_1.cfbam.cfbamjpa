@@ -514,7 +514,7 @@ public class CFBamJpaRelation extends CFBamJpaScope
 	}
 
 	@Override
-	public ICFBamSchema.RelationTypeEnum getRequiredRelationType() {
+	public ICFBamPubSchema.RelationTypeEnum getRequiredRelationType() {
 		return( requiredRelationType );
 	}
 
@@ -626,7 +626,7 @@ public class CFBamJpaRelation extends CFBamJpaScope
 	}
 
 	@Override
-	public ICFBamSchema.CodeVisibilityEnum getRequiredCodeVis() {
+	public ICFBamPubSchema.CodeVisibilityEnum getRequiredCodeVis() {
 		return( requiredCodeVis );
 	}
 

@@ -71,7 +71,7 @@ public class CFBamJpaSchemaRoleByRoleScopeIdxKey
 	}
 
 	@Override
-	public ICFBamSchema.RoleScopeEnum getRequiredRoleScope() {
+	public ICFBamPubSchema.RoleScopeEnum getRequiredRoleScope() {
 		return( requiredRoleScope );
 	}
 
