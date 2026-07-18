@@ -124,6 +124,16 @@ public class CFBamJpaPopSubDep3 extends CFBamJpaPopDep
 	}
 
 	@Override
+	public void setRequiredContainerPopSubDep2(ICFBamProtPopSubDep2 argObj) {
+		setRequiredContainerPopSubDep2(argObj.getRequiredId());
+	}
+
+	@Override
+	public void setRequiredContainerPopSubDep2(ICFBamPubPopSubDep2 argObj) {
+		setRequiredContainerPopSubDep2(argObj.getRequiredId());
+	}
+
+	@Override
 	public void setRequiredContainerPopSubDep2(CFLibDbKeyHash256 argPopSubDep2Id) {
 		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
 		if (targetBackingSchema == null) {

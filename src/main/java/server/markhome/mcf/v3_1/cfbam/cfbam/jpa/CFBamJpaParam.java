@@ -197,6 +197,16 @@ public class CFBamJpaParam
 	}
 
 	@Override
+	public void setRequiredContainerServerMeth(ICFBamProtServerMethod argObj) {
+		setRequiredContainerServerMeth(argObj.getRequiredId());
+	}
+
+	@Override
+	public void setRequiredContainerServerMeth(ICFBamPubServerMethod argObj) {
+		setRequiredContainerServerMeth(argObj.getRequiredId());
+	}
+
+	@Override
 	public void setRequiredContainerServerMeth(CFLibDbKeyHash256 argServerMethodId) {
 		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
 		if (targetBackingSchema == null) {
@@ -231,6 +241,16 @@ public class CFBamJpaParam
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "setLookupDefSchema", "argObj", argObj, "CFBamJpaSchemaDef");
 		}
+	}
+
+	@Override
+	public void setOptionalLookupDefSchema(ICFBamProtSchemaDef argObj) {
+		setOptionalLookupDefSchema(argObj.getRequiredId());
+	}
+
+	@Override
+	public void setOptionalLookupDefSchema(ICFBamPubSchemaDef argObj) {
+		setOptionalLookupDefSchema(argObj.getRequiredId());
 	}
 
 	@Override
@@ -271,6 +291,16 @@ public class CFBamJpaParam
 	}
 
 	@Override
+	public void setOptionalLookupPrev(ICFBamProtParam argObj) {
+		setOptionalLookupPrev(argObj.getRequiredId());
+	}
+
+	@Override
+	public void setOptionalLookupPrev(ICFBamPubParam argObj) {
+		setOptionalLookupPrev(argObj.getRequiredId());
+	}
+
+	@Override
 	public void setOptionalLookupPrev(CFLibDbKeyHash256 argPrevId) {
 		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
 		if (targetBackingSchema == null) {
@@ -308,6 +338,16 @@ public class CFBamJpaParam
 	}
 
 	@Override
+	public void setOptionalLookupNext(ICFBamProtParam argObj) {
+		setOptionalLookupNext(argObj.getRequiredId());
+	}
+
+	@Override
+	public void setOptionalLookupNext(ICFBamPubParam argObj) {
+		setOptionalLookupNext(argObj.getRequiredId());
+	}
+
+	@Override
 	public void setOptionalLookupNext(CFLibDbKeyHash256 argNextId) {
 		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
 		if (targetBackingSchema == null) {
@@ -342,6 +382,16 @@ public class CFBamJpaParam
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "setLookupType", "argObj", argObj, "CFBamJpaValue");
 		}
+	}
+
+	@Override
+	public void setRequiredLookupType(ICFBamProtValue argObj) {
+		setRequiredLookupType(argObj.getRequiredId());
+	}
+
+	@Override
+	public void setRequiredLookupType(ICFBamPubValue argObj) {
+		setRequiredLookupType(argObj.getRequiredId());
 	}
 
 	@Override

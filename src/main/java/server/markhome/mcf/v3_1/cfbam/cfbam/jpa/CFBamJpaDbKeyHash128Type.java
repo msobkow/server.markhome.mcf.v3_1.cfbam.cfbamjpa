@@ -120,6 +120,16 @@ public class CFBamJpaDbKeyHash128Type extends CFBamJpaDbKeyHash128Def
 	}
 
 	@Override
+	public void setRequiredContainerSchemaDef(ICFBamProtSchemaDef argObj) {
+		setRequiredContainerSchemaDef(argObj.getRequiredId());
+	}
+
+	@Override
+	public void setRequiredContainerSchemaDef(ICFBamPubSchemaDef argObj) {
+		setRequiredContainerSchemaDef(argObj.getRequiredId());
+	}
+
+	@Override
 	public void setRequiredContainerSchemaDef(CFLibDbKeyHash256 argSchemaDefId) {
 		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
 		if (targetBackingSchema == null) {

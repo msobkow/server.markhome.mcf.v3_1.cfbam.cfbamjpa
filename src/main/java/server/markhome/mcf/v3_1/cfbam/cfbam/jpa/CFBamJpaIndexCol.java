@@ -217,6 +217,16 @@ public class CFBamJpaIndexCol
 	}
 
 	@Override
+	public void setRequiredContainerIndex(ICFBamProtIndex argObj) {
+		setRequiredContainerIndex(argObj.getRequiredId());
+	}
+
+	@Override
+	public void setRequiredContainerIndex(ICFBamPubIndex argObj) {
+		setRequiredContainerIndex(argObj.getRequiredId());
+	}
+
+	@Override
 	public void setRequiredContainerIndex(CFLibDbKeyHash256 argIndexId) {
 		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
 		if (targetBackingSchema == null) {
@@ -251,6 +261,16 @@ public class CFBamJpaIndexCol
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "setLookupDefSchema", "argObj", argObj, "CFBamJpaSchemaDef");
 		}
+	}
+
+	@Override
+	public void setOptionalLookupDefSchema(ICFBamProtSchemaDef argObj) {
+		setOptionalLookupDefSchema(argObj.getRequiredId());
+	}
+
+	@Override
+	public void setOptionalLookupDefSchema(ICFBamPubSchemaDef argObj) {
+		setOptionalLookupDefSchema(argObj.getRequiredId());
 	}
 
 	@Override
@@ -291,6 +311,16 @@ public class CFBamJpaIndexCol
 	}
 
 	@Override
+	public void setOptionalLookupPrev(ICFBamProtIndexCol argObj) {
+		setOptionalLookupPrev(argObj.getRequiredId());
+	}
+
+	@Override
+	public void setOptionalLookupPrev(ICFBamPubIndexCol argObj) {
+		setOptionalLookupPrev(argObj.getRequiredId());
+	}
+
+	@Override
 	public void setOptionalLookupPrev(CFLibDbKeyHash256 argPrevId) {
 		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
 		if (targetBackingSchema == null) {
@@ -328,6 +358,16 @@ public class CFBamJpaIndexCol
 	}
 
 	@Override
+	public void setOptionalLookupNext(ICFBamProtIndexCol argObj) {
+		setOptionalLookupNext(argObj.getRequiredId());
+	}
+
+	@Override
+	public void setOptionalLookupNext(ICFBamPubIndexCol argObj) {
+		setOptionalLookupNext(argObj.getRequiredId());
+	}
+
+	@Override
 	public void setOptionalLookupNext(CFLibDbKeyHash256 argNextId) {
 		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
 		if (targetBackingSchema == null) {
@@ -361,6 +401,16 @@ public class CFBamJpaIndexCol
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "setLookupColumn", "argObj", argObj, "CFBamJpaValue");
 		}
+	}
+
+	@Override
+	public void setRequiredLookupColumn(ICFBamProtValue argObj) {
+		setRequiredLookupColumn(argObj.getRequiredId());
+	}
+
+	@Override
+	public void setRequiredLookupColumn(ICFBamPubValue argObj) {
+		setRequiredLookupColumn(argObj.getRequiredId());
 	}
 
 	@Override

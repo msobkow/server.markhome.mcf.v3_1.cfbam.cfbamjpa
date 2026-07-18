@@ -121,6 +121,16 @@ public class CFBamJpaServerObjFunc extends CFBamJpaServerMethod
 	}
 
 	@Override
+	public void setOptionalLookupRetTable(ICFBamProtTable argObj) {
+		setOptionalLookupRetTable(argObj.getRequiredId());
+	}
+
+	@Override
+	public void setOptionalLookupRetTable(ICFBamPubTable argObj) {
+		setOptionalLookupRetTable(argObj.getRequiredId());
+	}
+
+	@Override
 	public void setOptionalLookupRetTable(CFLibDbKeyHash256 argRetTableId) {
 		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
 		if (targetBackingSchema == null) {

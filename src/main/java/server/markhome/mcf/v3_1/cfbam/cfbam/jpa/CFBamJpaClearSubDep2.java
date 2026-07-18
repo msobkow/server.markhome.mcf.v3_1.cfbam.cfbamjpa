@@ -124,6 +124,16 @@ public class CFBamJpaClearSubDep2 extends CFBamJpaClearDep
 	}
 
 	@Override
+	public void setRequiredContainerClearSubDep1(ICFBamProtClearSubDep1 argObj) {
+		setRequiredContainerClearSubDep1(argObj.getRequiredId());
+	}
+
+	@Override
+	public void setRequiredContainerClearSubDep1(ICFBamPubClearSubDep1 argObj) {
+		setRequiredContainerClearSubDep1(argObj.getRequiredId());
+	}
+
+	@Override
 	public void setRequiredContainerClearSubDep1(CFLibDbKeyHash256 argClearSubDep1Id) {
 		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
 		if (targetBackingSchema == null) {

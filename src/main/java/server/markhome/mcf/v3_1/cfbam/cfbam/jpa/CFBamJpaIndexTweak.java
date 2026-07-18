@@ -120,6 +120,16 @@ public class CFBamJpaIndexTweak extends CFBamJpaTweak
 	}
 
 	@Override
+	public void setRequiredContainerIndexDef(ICFBamProtIndex argObj) {
+		setRequiredContainerIndexDef(argObj.getRequiredId());
+	}
+
+	@Override
+	public void setRequiredContainerIndexDef(ICFBamPubIndex argObj) {
+		setRequiredContainerIndexDef(argObj.getRequiredId());
+	}
+
+	@Override
 	public void setRequiredContainerIndexDef(CFLibDbKeyHash256 argIndexId) {
 		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
 		if (targetBackingSchema == null) {

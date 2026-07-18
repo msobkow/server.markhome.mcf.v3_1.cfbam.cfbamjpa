@@ -160,6 +160,16 @@ public class CFBamJpaSchemaRef extends CFBamJpaScope
 	}
 
 	@Override
+	public void setRequiredContainerSchema(ICFBamProtSchemaDef argObj) {
+		setRequiredContainerSchema(argObj.getRequiredId());
+	}
+
+	@Override
+	public void setRequiredContainerSchema(ICFBamPubSchemaDef argObj) {
+		setRequiredContainerSchema(argObj.getRequiredId());
+	}
+
+	@Override
 	public void setRequiredContainerSchema(CFLibDbKeyHash256 argSchemaId) {
 		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
 		if (targetBackingSchema == null) {
@@ -194,6 +204,16 @@ public class CFBamJpaSchemaRef extends CFBamJpaScope
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "setLookupRefSchema", "argObj", argObj, "CFBamJpaSchemaDef");
 		}
+	}
+
+	@Override
+	public void setOptionalLookupRefSchema(ICFBamProtSchemaDef argObj) {
+		setOptionalLookupRefSchema(argObj.getRequiredId());
+	}
+
+	@Override
+	public void setOptionalLookupRefSchema(ICFBamPubSchemaDef argObj) {
+		setOptionalLookupRefSchema(argObj.getRequiredId());
 	}
 
 	@Override
@@ -234,6 +254,16 @@ public class CFBamJpaSchemaRef extends CFBamJpaScope
 	}
 
 	@Override
+	public void setOptionalLookupPrev(ICFBamProtSchemaRef argObj) {
+		setOptionalLookupPrev(argObj.getRequiredId());
+	}
+
+	@Override
+	public void setOptionalLookupPrev(ICFBamPubSchemaRef argObj) {
+		setOptionalLookupPrev(argObj.getRequiredId());
+	}
+
+	@Override
 	public void setOptionalLookupPrev(CFLibDbKeyHash256 argPrevId) {
 		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
 		if (targetBackingSchema == null) {
@@ -268,6 +298,16 @@ public class CFBamJpaSchemaRef extends CFBamJpaScope
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "setLookupNext", "argObj", argObj, "CFBamJpaSchemaRef");
 		}
+	}
+
+	@Override
+	public void setOptionalLookupNext(ICFBamProtSchemaRef argObj) {
+		setOptionalLookupNext(argObj.getRequiredId());
+	}
+
+	@Override
+	public void setOptionalLookupNext(ICFBamPubSchemaRef argObj) {
+		setOptionalLookupNext(argObj.getRequiredId());
 	}
 
 	@Override

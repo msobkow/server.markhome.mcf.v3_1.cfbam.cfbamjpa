@@ -170,6 +170,16 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 	}
 
 	@Override
+	public void setOptionalLookupDefSchema(ICFBamProtSchemaDef argObj) {
+		setOptionalLookupDefSchema(argObj.getRequiredId());
+	}
+
+	@Override
+	public void setOptionalLookupDefSchema(ICFBamPubSchemaDef argObj) {
+		setOptionalLookupDefSchema(argObj.getRequiredId());
+	}
+
+	@Override
 	public void setOptionalLookupDefSchema(CFLibDbKeyHash256 argDefSchemaId) {
 		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
 		if (targetBackingSchema == null) {
@@ -203,6 +213,16 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "setContainerForTable", "argObj", argObj, "CFBamJpaTable");
 		}
+	}
+
+	@Override
+	public void setRequiredContainerForTable(ICFBamProtTable argObj) {
+		setRequiredContainerForTable(argObj.getRequiredId());
+	}
+
+	@Override
+	public void setRequiredContainerForTable(ICFBamPubTable argObj) {
+		setRequiredContainerForTable(argObj.getRequiredId());
 	}
 
 	@Override

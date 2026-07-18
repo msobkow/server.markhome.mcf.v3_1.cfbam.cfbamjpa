@@ -120,6 +120,16 @@ public class CFBamJpaTimestampCol extends CFBamJpaTimestampDef
 	}
 
 	@Override
+	public void setRequiredContainerTable(ICFBamProtTable argObj) {
+		setRequiredContainerTable(argObj.getRequiredId());
+	}
+
+	@Override
+	public void setRequiredContainerTable(ICFBamPubTable argObj) {
+		setRequiredContainerTable(argObj.getRequiredId());
+	}
+
+	@Override
 	public void setRequiredContainerTable(CFLibDbKeyHash256 argTableId) {
 		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
 		if (targetBackingSchema == null) {

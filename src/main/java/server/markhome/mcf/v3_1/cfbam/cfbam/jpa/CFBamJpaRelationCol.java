@@ -210,6 +210,16 @@ public class CFBamJpaRelationCol
 	}
 
 	@Override
+	public void setRequiredContainerRelation(ICFBamProtRelation argObj) {
+		setRequiredContainerRelation(argObj.getRequiredId());
+	}
+
+	@Override
+	public void setRequiredContainerRelation(ICFBamPubRelation argObj) {
+		setRequiredContainerRelation(argObj.getRequiredId());
+	}
+
+	@Override
 	public void setRequiredContainerRelation(CFLibDbKeyHash256 argRelationId) {
 		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
 		if (targetBackingSchema == null) {
@@ -244,6 +254,16 @@ public class CFBamJpaRelationCol
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "setLookupDefSchema", "argObj", argObj, "CFBamJpaSchemaDef");
 		}
+	}
+
+	@Override
+	public void setOptionalLookupDefSchema(ICFBamProtSchemaDef argObj) {
+		setOptionalLookupDefSchema(argObj.getRequiredId());
+	}
+
+	@Override
+	public void setOptionalLookupDefSchema(ICFBamPubSchemaDef argObj) {
+		setOptionalLookupDefSchema(argObj.getRequiredId());
 	}
 
 	@Override
@@ -284,6 +304,16 @@ public class CFBamJpaRelationCol
 	}
 
 	@Override
+	public void setOptionalLookupPrev(ICFBamProtRelationCol argObj) {
+		setOptionalLookupPrev(argObj.getRequiredId());
+	}
+
+	@Override
+	public void setOptionalLookupPrev(ICFBamPubRelationCol argObj) {
+		setOptionalLookupPrev(argObj.getRequiredId());
+	}
+
+	@Override
 	public void setOptionalLookupPrev(CFLibDbKeyHash256 argPrevId) {
 		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
 		if (targetBackingSchema == null) {
@@ -318,6 +348,16 @@ public class CFBamJpaRelationCol
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "setLookupNext", "argObj", argObj, "CFBamJpaRelationCol");
 		}
+	}
+
+	@Override
+	public void setOptionalLookupNext(ICFBamProtRelationCol argObj) {
+		setOptionalLookupNext(argObj.getRequiredId());
+	}
+
+	@Override
+	public void setOptionalLookupNext(ICFBamPubRelationCol argObj) {
+		setOptionalLookupNext(argObj.getRequiredId());
 	}
 
 	@Override
@@ -357,6 +397,16 @@ public class CFBamJpaRelationCol
 	}
 
 	@Override
+	public void setRequiredLookupFromCol(ICFBamProtIndexCol argObj) {
+		setRequiredLookupFromCol(argObj.getRequiredId());
+	}
+
+	@Override
+	public void setRequiredLookupFromCol(ICFBamPubIndexCol argObj) {
+		setRequiredLookupFromCol(argObj.getRequiredId());
+	}
+
+	@Override
 	public void setRequiredLookupFromCol(CFLibDbKeyHash256 argFromColId) {
 		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
 		if (targetBackingSchema == null) {
@@ -390,6 +440,16 @@ public class CFBamJpaRelationCol
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "setLookupToCol", "argObj", argObj, "CFBamJpaIndexCol");
 		}
+	}
+
+	@Override
+	public void setRequiredLookupToCol(ICFBamProtIndexCol argObj) {
+		setRequiredLookupToCol(argObj.getRequiredId());
+	}
+
+	@Override
+	public void setRequiredLookupToCol(ICFBamPubIndexCol argObj) {
+		setRequiredLookupToCol(argObj.getRequiredId());
 	}
 
 	@Override

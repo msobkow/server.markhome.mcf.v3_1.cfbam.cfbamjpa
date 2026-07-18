@@ -136,6 +136,16 @@ public class CFBamJpaTableCol extends CFBamJpaValue
 	}
 
 	@Override
+	public void setRequiredContainerTable(ICFBamProtTable argObj) {
+		setRequiredContainerTable(argObj.getRequiredId());
+	}
+
+	@Override
+	public void setRequiredContainerTable(ICFBamPubTable argObj) {
+		setRequiredContainerTable(argObj.getRequiredId());
+	}
+
+	@Override
 	public void setRequiredContainerTable(CFLibDbKeyHash256 argTableId) {
 		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
 		if (targetBackingSchema == null) {
@@ -170,6 +180,16 @@ public class CFBamJpaTableCol extends CFBamJpaValue
 		else {
 			throw new CFLibUnsupportedClassException(getClass(), "setParentDataType", "argObj", argObj, "CFBamJpaValue");
 		}
+	}
+
+	@Override
+	public void setRequiredParentDataType(ICFBamProtValue argObj) {
+		setRequiredParentDataType(argObj.getRequiredId());
+	}
+
+	@Override
+	public void setRequiredParentDataType(ICFBamPubValue argObj) {
+		setRequiredParentDataType(argObj.getRequiredId());
 	}
 
 	@Override

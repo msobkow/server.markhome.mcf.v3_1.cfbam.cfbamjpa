@@ -124,6 +124,16 @@ public class CFBamJpaDelSubDep2 extends CFBamJpaDelDep
 	}
 
 	@Override
+	public void setRequiredContainerDelSubDep1(ICFBamProtDelSubDep1 argObj) {
+		setRequiredContainerDelSubDep1(argObj.getRequiredId());
+	}
+
+	@Override
+	public void setRequiredContainerDelSubDep1(ICFBamPubDelSubDep1 argObj) {
+		setRequiredContainerDelSubDep1(argObj.getRequiredId());
+	}
+
+	@Override
 	public void setRequiredContainerDelSubDep1(CFLibDbKeyHash256 argDelSubDep1Id) {
 		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
 		if (targetBackingSchema == null) {
