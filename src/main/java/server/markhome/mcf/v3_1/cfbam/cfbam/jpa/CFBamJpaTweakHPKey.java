@@ -871,23 +871,6 @@ public class CFBamJpaTweakHPKey
 			}
 			return( 0 );
 		}
-		else if (obj instanceof ICFBamProtTweakPKey rhs) {
-			if (getRequiredId() != null) {
-				if (rhs.getRequiredId() != null) {
-					cmp = getRequiredId().compareTo( rhs.getRequiredId() );
-					if( cmp != 0 ) {
-						return( cmp );
-					}
-				}
-				else {
-					return( 1 );
-				}
-			}
-			else if (rhs.getRequiredId() != null) {
-				return( -1 );
-			}
-			return( 0 );
-		}
 		else if (obj instanceof ICFBamProtTweakH rhs) {
 			if( getAuditClusterId() == null ) {
 				if( rhs.getAuditClusterId() != null ) {
