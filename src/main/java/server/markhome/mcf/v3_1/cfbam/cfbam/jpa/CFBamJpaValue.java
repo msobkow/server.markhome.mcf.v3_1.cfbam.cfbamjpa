@@ -188,12 +188,12 @@ public class CFBamJpaValue
 
 	@Override
 	public List<ICFBamTableCol> getOptionalChildrenRefTableCol() {
-		List<ICFBamTableCol> retlist = (optionalChildrenRefTableCol != null) ? new ArrayList<>(optionalChildrenRefTableCol) : new ArrayList<>();
+		$emitInterfaceDataTypeSet$ retlist = (optionalChildrenRefTableCol != null) ? new ArrayList<>(optionalChildrenRefTableCol) : new ArrayList<>();
 		return( retlist );
 	}
 	@Override
 	public List<ICFBamIndexCol> getOptionalChildrenRefIndexCol() {
-		List<ICFBamIndexCol> retlist = (optionalChildrenRefIndexCol != null) ? new ArrayList<>(optionalChildrenRefIndexCol) : new ArrayList<>();
+		$emitInterfaceDataTypeSet$ retlist = (optionalChildrenRefIndexCol != null) ? new ArrayList<>(optionalChildrenRefIndexCol) : new ArrayList<>();
 		return( retlist );
 	}
 	@Override
