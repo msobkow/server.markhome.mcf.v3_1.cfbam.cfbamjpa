@@ -105,6 +105,7 @@ public class CFBamJpaClearSubDep1 extends CFBamJpaClearDep
 	public ICFBamClearTopDep getRequiredContainerClearTopDep() {
 		return(requiredContainerClearTopDep);
 	}
+
 	@Override
 	public void setRequiredContainerClearTopDep(ICFBamClearTopDep argObj) {
 		if(argObj == null) {
@@ -315,7 +316,7 @@ public class CFBamJpaClearSubDep1 extends CFBamJpaClearDep
 			return( super.equals(obj) );
 		}
 	}
-	
+
 	@Override
 	public int hashCode() {
 		int hashCode = super.hashCode();

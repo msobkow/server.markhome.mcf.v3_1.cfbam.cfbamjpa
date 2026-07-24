@@ -191,15 +191,18 @@ public class CFBamJpaValue
 		List<ICFBamTableCol> retlist = (optionalChildrenRefTableCol != null) ? new ArrayList<>(optionalChildrenRefTableCol) : new ArrayList<>();
 		return( retlist );
 	}
+
 	@Override
 	public List<ICFBamIndexCol> getOptionalChildrenRefIndexCol() {
 		List<ICFBamIndexCol> retlist = (optionalChildrenRefIndexCol != null) ? new ArrayList<>(optionalChildrenRefIndexCol) : new ArrayList<>();
 		return( retlist );
 	}
+
 	@Override
 	public ICFBamScope getRequiredContainerScope() {
 		return(requiredContainerScope);
 	}
+
 	@Override
 	public void setRequiredContainerScope(ICFBamScope argObj) {
 		if(argObj == null) {
@@ -246,6 +249,7 @@ public class CFBamJpaValue
 	public ICFBamSchemaDef getOptionalLookupDefSchema() {
 		return(optionalLookupDefSchema);
 	}
+
 	@Override
 	public void setOptionalLookupDefSchema(ICFBamSchemaDef argObj) {
 		if(argObj == null) {
@@ -293,6 +297,7 @@ public class CFBamJpaValue
 	public ICFBamValue getOptionalLookupPrev() {
 		return(optionalLookupPrev);
 	}
+
 	@Override
 	public void setOptionalLookupPrev(ICFBamValue argObj) {
 		if(argObj == null) {
@@ -340,6 +345,7 @@ public class CFBamJpaValue
 	public ICFBamValue getOptionalLookupNext() {
 		return(optionalLookupNext);
 	}
+
 	@Override
 	public void setOptionalLookupNext(ICFBamValue argObj) {
 		if(argObj == null) {
@@ -444,7 +450,7 @@ public class CFBamJpaValue
 	public void setPKey(CFLibDbKeyHash256 requiredId) {
 		this.requiredId = requiredId;
 	}
-	
+
 	@Override
 	public CFLibDbKeyHash256 getRequiredId() {
 		return( requiredId );
@@ -461,7 +467,6 @@ public class CFBamJpaValue
 		requiredId = value;
 	}
 
-	
 	@Override
 	public int getRequiredRevision() {
 		return( requiredRevision );
@@ -1246,7 +1251,7 @@ public class CFBamJpaValue
 			return( false );
 		}
 	}
-	
+
 	@Override
 	public int hashCode() {
 		int hashCode = getPKey().hashCode();

@@ -101,6 +101,7 @@ public class CFBamJpaFloatCol extends CFBamJpaFloatDef
 	public ICFBamTable getRequiredContainerTable() {
 		return(requiredContainerTable);
 	}
+
 	@Override
 	public void setRequiredContainerTable(ICFBamTable argObj) {
 		if(argObj == null) {
@@ -223,7 +224,7 @@ public class CFBamJpaFloatCol extends CFBamJpaFloatDef
 			return( super.equals(obj) );
 		}
 	}
-	
+
 	@Override
 	public int hashCode() {
 		int hashCode = super.hashCode();

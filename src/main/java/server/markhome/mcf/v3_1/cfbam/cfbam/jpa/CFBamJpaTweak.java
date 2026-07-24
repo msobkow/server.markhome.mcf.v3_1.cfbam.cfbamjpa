@@ -158,6 +158,7 @@ public class CFBamJpaTweak
 	public ICFBamScope getRequiredContainerScopeDef() {
 		return(requiredContainerScopeDef);
 	}
+
 	@Override
 	public void setRequiredContainerScopeDef(ICFBamScope argObj) {
 		if(argObj == null) {
@@ -204,6 +205,7 @@ public class CFBamJpaTweak
 	public ICFBamSchemaDef getOptionalLookupDefSchema() {
 		return(optionalLookupDefSchema);
 	}
+
 	@Override
 	public void setOptionalLookupDefSchema(ICFBamSchemaDef argObj) {
 		if(argObj == null) {
@@ -308,7 +310,7 @@ public class CFBamJpaTweak
 	public void setPKey(CFLibDbKeyHash256 requiredId) {
 		this.requiredId = requiredId;
 	}
-	
+
 	@Override
 	public CFLibDbKeyHash256 getRequiredId() {
 		return( requiredId );
@@ -325,7 +327,6 @@ public class CFBamJpaTweak
 		requiredId = value;
 	}
 
-	
 	@Override
 	public int getRequiredRevision() {
 		return( requiredRevision );
@@ -876,7 +877,7 @@ public class CFBamJpaTweak
 			return( false );
 		}
 	}
-	
+
 	@Override
 	public int hashCode() {
 		int hashCode = getPKey().hashCode();

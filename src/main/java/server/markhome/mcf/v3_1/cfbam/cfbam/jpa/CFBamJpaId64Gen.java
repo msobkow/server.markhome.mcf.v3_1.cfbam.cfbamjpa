@@ -183,7 +183,7 @@ public class CFBamJpaId64Gen extends CFBamJpaInt64Type
 			return( super.equals(obj) );
 		}
 	}
-	
+
 	@Override
 	public int hashCode() {
 		int hashCode = super.hashCode();

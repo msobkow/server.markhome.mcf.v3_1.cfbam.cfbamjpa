@@ -125,6 +125,7 @@ public class CFBamJpaClearTopDep extends CFBamJpaClearDep
 	public ICFBamTable getRequiredContainerTable() {
 		return(requiredContainerTable);
 	}
+
 	@Override
 	public void setRequiredContainerTable(ICFBamTable argObj) {
 		if(argObj == null) {
@@ -171,6 +172,7 @@ public class CFBamJpaClearTopDep extends CFBamJpaClearDep
 	public ICFBamClearTopDep getOptionalLookupPrev() {
 		return(optionalLookupPrev);
 	}
+
 	@Override
 	public void setOptionalLookupPrev(ICFBamClearTopDep argObj) {
 		if(argObj == null) {
@@ -218,6 +220,7 @@ public class CFBamJpaClearTopDep extends CFBamJpaClearDep
 	public ICFBamClearTopDep getOptionalLookupNext() {
 		return(optionalLookupNext);
 	}
+
 	@Override
 	public void setOptionalLookupNext(ICFBamClearTopDep argObj) {
 		if(argObj == null) {
@@ -537,7 +540,7 @@ public class CFBamJpaClearTopDep extends CFBamJpaClearDep
 			return( super.equals(obj) );
 		}
 	}
-	
+
 	@Override
 	public int hashCode() {
 		int hashCode = super.hashCode();

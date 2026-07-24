@@ -105,6 +105,7 @@ public class CFBamJpaDelSubDep3 extends CFBamJpaDelDep
 	public ICFBamDelSubDep2 getRequiredContainerDelSubDep2() {
 		return(requiredContainerDelSubDep2);
 	}
+
 	@Override
 	public void setRequiredContainerDelSubDep2(ICFBamDelSubDep2 argObj) {
 		if(argObj == null) {
@@ -315,7 +316,7 @@ public class CFBamJpaDelSubDep3 extends CFBamJpaDelDep
 			return( super.equals(obj) );
 		}
 	}
-	
+
 	@Override
 	public int hashCode() {
 		int hashCode = super.hashCode();

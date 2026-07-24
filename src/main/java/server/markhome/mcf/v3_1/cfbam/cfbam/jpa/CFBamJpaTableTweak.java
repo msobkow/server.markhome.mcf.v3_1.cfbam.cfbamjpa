@@ -101,6 +101,7 @@ public class CFBamJpaTableTweak extends CFBamJpaTweak
 	public ICFBamTable getRequiredContainerTableDef() {
 		return(requiredContainerTableDef);
 	}
+
 	@Override
 	public void setRequiredContainerTableDef(ICFBamTable argObj) {
 		if(argObj == null) {
@@ -223,7 +224,7 @@ public class CFBamJpaTableTweak extends CFBamJpaTweak
 			return( super.equals(obj) );
 		}
 	}
-	
+
 	@Override
 	public int hashCode() {
 		int hashCode = super.hashCode();

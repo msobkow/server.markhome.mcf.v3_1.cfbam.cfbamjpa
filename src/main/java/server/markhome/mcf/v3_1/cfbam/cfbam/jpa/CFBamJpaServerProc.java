@@ -164,7 +164,7 @@ public class CFBamJpaServerProc extends CFBamJpaServerMethod
 			return( super.equals(obj) );
 		}
 	}
-	
+
 	@Override
 	public int hashCode() {
 		int hashCode = super.hashCode();

@@ -183,7 +183,7 @@ public class CFBamJpaDbKeyHash512Gen extends CFBamJpaDbKeyHash512Type
 			return( super.equals(obj) );
 		}
 	}
-	
+
 	@Override
 	public int hashCode() {
 		int hashCode = super.hashCode();

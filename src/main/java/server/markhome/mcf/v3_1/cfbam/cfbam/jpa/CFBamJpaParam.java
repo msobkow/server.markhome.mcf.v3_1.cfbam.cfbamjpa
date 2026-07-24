@@ -178,6 +178,7 @@ public class CFBamJpaParam
 	public ICFBamServerMethod getRequiredContainerServerMeth() {
 		return(requiredContainerServerMeth);
 	}
+
 	@Override
 	public void setRequiredContainerServerMeth(ICFBamServerMethod argObj) {
 		if(argObj == null) {
@@ -224,6 +225,7 @@ public class CFBamJpaParam
 	public ICFBamSchemaDef getOptionalLookupDefSchema() {
 		return(optionalLookupDefSchema);
 	}
+
 	@Override
 	public void setOptionalLookupDefSchema(ICFBamSchemaDef argObj) {
 		if(argObj == null) {
@@ -271,6 +273,7 @@ public class CFBamJpaParam
 	public ICFBamParam getOptionalLookupPrev() {
 		return(optionalLookupPrev);
 	}
+
 	@Override
 	public void setOptionalLookupPrev(ICFBamParam argObj) {
 		if(argObj == null) {
@@ -318,6 +321,7 @@ public class CFBamJpaParam
 	public ICFBamParam getOptionalLookupNext() {
 		return(optionalLookupNext);
 	}
+
 	@Override
 	public void setOptionalLookupNext(ICFBamParam argObj) {
 		if(argObj == null) {
@@ -365,6 +369,7 @@ public class CFBamJpaParam
 	public ICFBamValue getRequiredLookupType() {
 		return(requiredLookupType);
 	}
+
 	@Override
 	public void setRequiredLookupType(ICFBamValue argObj) {
 		if(argObj == null) {
@@ -469,7 +474,7 @@ public class CFBamJpaParam
 	public void setPKey(CFLibDbKeyHash256 requiredId) {
 		this.requiredId = requiredId;
 	}
-	
+
 	@Override
 	public CFLibDbKeyHash256 getRequiredId() {
 		return( requiredId );
@@ -486,7 +491,6 @@ public class CFBamJpaParam
 		requiredId = value;
 	}
 
-	
 	@Override
 	public int getRequiredRevision() {
 		return( requiredRevision );
@@ -1125,7 +1129,7 @@ public class CFBamJpaParam
 			return( false );
 		}
 	}
-	
+
 	@Override
 	public int hashCode() {
 		int hashCode = getPKey().hashCode();

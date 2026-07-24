@@ -189,15 +189,18 @@ public class CFBamJpaIndexCol
 		List<ICFBamRelationCol> retlist = (optionalChildrenRefRelFromCol != null) ? new ArrayList<>(optionalChildrenRefRelFromCol) : new ArrayList<>();
 		return( retlist );
 	}
+
 	@Override
 	public List<ICFBamRelationCol> getOptionalChildrenRefRelToCol() {
 		List<ICFBamRelationCol> retlist = (optionalChildrenRefRelToCol != null) ? new ArrayList<>(optionalChildrenRefRelToCol) : new ArrayList<>();
 		return( retlist );
 	}
+
 	@Override
 	public ICFBamIndex getRequiredContainerIndex() {
 		return(requiredContainerIndex);
 	}
+
 	@Override
 	public void setRequiredContainerIndex(ICFBamIndex argObj) {
 		if(argObj == null) {
@@ -244,6 +247,7 @@ public class CFBamJpaIndexCol
 	public ICFBamSchemaDef getOptionalLookupDefSchema() {
 		return(optionalLookupDefSchema);
 	}
+
 	@Override
 	public void setOptionalLookupDefSchema(ICFBamSchemaDef argObj) {
 		if(argObj == null) {
@@ -291,6 +295,7 @@ public class CFBamJpaIndexCol
 	public ICFBamIndexCol getOptionalLookupPrev() {
 		return(optionalLookupPrev);
 	}
+
 	@Override
 	public void setOptionalLookupPrev(ICFBamIndexCol argObj) {
 		if(argObj == null) {
@@ -338,6 +343,7 @@ public class CFBamJpaIndexCol
 	public ICFBamIndexCol getOptionalLookupNext() {
 		return(optionalLookupNext);
 	}
+
 	@Override
 	public void setOptionalLookupNext(ICFBamIndexCol argObj) {
 		if(argObj == null) {
@@ -385,6 +391,7 @@ public class CFBamJpaIndexCol
 	public ICFBamValue getRequiredLookupColumn() {
 		return(requiredLookupColumn);
 	}
+
 	@Override
 	public void setRequiredLookupColumn(ICFBamValue argObj) {
 		if(argObj == null) {
@@ -488,7 +495,7 @@ public class CFBamJpaIndexCol
 	public void setPKey(CFLibDbKeyHash256 requiredId) {
 		this.requiredId = requiredId;
 	}
-	
+
 	@Override
 	public CFLibDbKeyHash256 getRequiredId() {
 		return( requiredId );
@@ -505,7 +512,6 @@ public class CFBamJpaIndexCol
 		requiredId = value;
 	}
 
-	
 	@Override
 	public int getRequiredRevision() {
 		return( requiredRevision );
@@ -1240,7 +1246,7 @@ public class CFBamJpaIndexCol
 			return( false );
 		}
 	}
-	
+
 	@Override
 	public int hashCode() {
 		int hashCode = getPKey().hashCode();

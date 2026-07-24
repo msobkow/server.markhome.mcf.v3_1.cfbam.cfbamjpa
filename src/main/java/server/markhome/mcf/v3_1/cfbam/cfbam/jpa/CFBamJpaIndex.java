@@ -144,6 +144,7 @@ public class CFBamJpaIndex extends CFBamJpaScope
 	public ICFBamTable getRequiredContainerTable() {
 		return(requiredContainerTable);
 	}
+
 	@Override
 	public void setRequiredContainerTable(ICFBamTable argObj) {
 		if(argObj == null) {
@@ -190,6 +191,7 @@ public class CFBamJpaIndex extends CFBamJpaScope
 	public ICFBamSchemaDef getOptionalLookupDefSchema() {
 		return(optionalLookupDefSchema);
 	}
+
 	@Override
 	public void setOptionalLookupDefSchema(ICFBamSchemaDef argObj) {
 		if(argObj == null) {
@@ -874,7 +876,7 @@ public class CFBamJpaIndex extends CFBamJpaScope
 			return( super.equals(obj) );
 		}
 	}
-	
+
 	@Override
 	public int hashCode() {
 		int hashCode = super.hashCode();

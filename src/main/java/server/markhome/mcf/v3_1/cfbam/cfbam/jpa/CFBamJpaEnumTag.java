@@ -160,6 +160,7 @@ public class CFBamJpaEnumTag
 	public ICFBamEnumDef getRequiredContainerEnumDef() {
 		return(requiredContainerEnumDef);
 	}
+
 	@Override
 	public void setRequiredContainerEnumDef(ICFBamEnumDef argObj) {
 		if(argObj == null) {
@@ -206,6 +207,7 @@ public class CFBamJpaEnumTag
 	public ICFBamSchemaDef getOptionalLookupDefSchema() {
 		return(optionalLookupDefSchema);
 	}
+
 	@Override
 	public void setOptionalLookupDefSchema(ICFBamSchemaDef argObj) {
 		if(argObj == null) {
@@ -253,6 +255,7 @@ public class CFBamJpaEnumTag
 	public ICFBamEnumTag getOptionalLookupPrev() {
 		return(optionalLookupPrev);
 	}
+
 	@Override
 	public void setOptionalLookupPrev(ICFBamEnumTag argObj) {
 		if(argObj == null) {
@@ -300,6 +303,7 @@ public class CFBamJpaEnumTag
 	public ICFBamEnumTag getOptionalLookupNext() {
 		return(optionalLookupNext);
 	}
+
 	@Override
 	public void setOptionalLookupNext(ICFBamEnumTag argObj) {
 		if(argObj == null) {
@@ -404,7 +408,7 @@ public class CFBamJpaEnumTag
 	public void setPKey(CFLibDbKeyHash256 requiredId) {
 		this.requiredId = requiredId;
 	}
-	
+
 	@Override
 	public CFLibDbKeyHash256 getRequiredId() {
 		return( requiredId );
@@ -421,7 +425,6 @@ public class CFBamJpaEnumTag
 		requiredId = value;
 	}
 
-	
 	@Override
 	public int getRequiredRevision() {
 		return( requiredRevision );
@@ -882,7 +885,7 @@ public class CFBamJpaEnumTag
 			return( false );
 		}
 	}
-	
+
 	@Override
 	public int hashCode() {
 		int hashCode = getPKey().hashCode();

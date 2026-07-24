@@ -101,6 +101,7 @@ public class CFBamJpaIndexTweak extends CFBamJpaTweak
 	public ICFBamIndex getRequiredContainerIndexDef() {
 		return(requiredContainerIndexDef);
 	}
+
 	@Override
 	public void setRequiredContainerIndexDef(ICFBamIndex argObj) {
 		if(argObj == null) {
@@ -223,7 +224,7 @@ public class CFBamJpaIndexTweak extends CFBamJpaTweak
 			return( super.equals(obj) );
 		}
 	}
-	
+
 	@Override
 	public int hashCode() {
 		int hashCode = super.hashCode();

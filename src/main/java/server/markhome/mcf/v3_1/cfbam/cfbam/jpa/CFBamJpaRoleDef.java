@@ -147,6 +147,7 @@ public class CFBamJpaRoleDef
 	public ICFBamScope getRequiredContainerScopeDef() {
 		return(requiredContainerScopeDef);
 	}
+
 	@Override
 	public void setRequiredContainerScopeDef(ICFBamScope argObj) {
 		if(argObj == null) {
@@ -193,6 +194,7 @@ public class CFBamJpaRoleDef
 	public ICFBamSchemaDef getOptionalLookupDefSchema() {
 		return(optionalLookupDefSchema);
 	}
+
 	@Override
 	public void setOptionalLookupDefSchema(ICFBamSchemaDef argObj) {
 		if(argObj == null) {
@@ -297,7 +299,7 @@ public class CFBamJpaRoleDef
 	public void setPKey(CFLibDbKeyHash256 requiredId) {
 		this.requiredId = requiredId;
 	}
-	
+
 	@Override
 	public CFLibDbKeyHash256 getRequiredId() {
 		return( requiredId );
@@ -314,7 +316,6 @@ public class CFBamJpaRoleDef
 		requiredId = value;
 	}
 
-	
 	@Override
 	public int getRequiredRevision() {
 		return( requiredRevision );
@@ -768,7 +769,7 @@ public class CFBamJpaRoleDef
 			return( false );
 		}
 	}
-	
+
 	@Override
 	public int hashCode() {
 		int hashCode = getPKey().hashCode();

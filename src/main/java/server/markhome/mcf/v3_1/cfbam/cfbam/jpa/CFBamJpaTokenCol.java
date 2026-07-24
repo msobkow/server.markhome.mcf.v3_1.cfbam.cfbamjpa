@@ -101,6 +101,7 @@ public class CFBamJpaTokenCol extends CFBamJpaTokenDef
 	public ICFBamTable getRequiredContainerTable() {
 		return(requiredContainerTable);
 	}
+
 	@Override
 	public void setRequiredContainerTable(ICFBamTable argObj) {
 		if(argObj == null) {
@@ -223,7 +224,7 @@ public class CFBamJpaTokenCol extends CFBamJpaTokenDef
 			return( super.equals(obj) );
 		}
 	}
-	
+
 	@Override
 	public int hashCode() {
 		int hashCode = super.hashCode();

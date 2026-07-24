@@ -111,6 +111,7 @@ public class CFBamJpaDelDep extends CFBamJpaScope
 	public ICFBamRelation getRequiredLookupRelation() {
 		return(requiredLookupRelation);
 	}
+
 	@Override
 	public void setRequiredLookupRelation(ICFBamRelation argObj) {
 		if(argObj == null) {
@@ -157,6 +158,7 @@ public class CFBamJpaDelDep extends CFBamJpaScope
 	public ICFBamSchemaDef getOptionalLookupDefSchema() {
 		return(optionalLookupDefSchema);
 	}
+
 	@Override
 	public void setOptionalLookupDefSchema(ICFBamSchemaDef argObj) {
 		if(argObj == null) {
@@ -334,7 +336,7 @@ public class CFBamJpaDelDep extends CFBamJpaScope
 			return( super.equals(obj) );
 		}
 	}
-	
+
 	@Override
 	public int hashCode() {
 		int hashCode = super.hashCode();

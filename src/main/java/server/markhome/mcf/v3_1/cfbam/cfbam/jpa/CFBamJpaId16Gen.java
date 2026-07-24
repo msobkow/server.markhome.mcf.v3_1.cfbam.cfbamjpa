@@ -183,7 +183,7 @@ public class CFBamJpaId16Gen extends CFBamJpaInt16Type
 			return( super.equals(obj) );
 		}
 	}
-	
+
 	@Override
 	public int hashCode() {
 		int hashCode = super.hashCode();

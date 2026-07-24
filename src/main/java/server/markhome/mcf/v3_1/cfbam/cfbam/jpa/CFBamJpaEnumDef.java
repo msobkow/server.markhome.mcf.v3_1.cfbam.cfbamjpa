@@ -113,7 +113,7 @@ public class CFBamJpaEnumDef extends CFBamJpaInt16Def
 			return( super.equals(obj) );
 		}
 	}
-	
+
 	@Override
 	public int hashCode() {
 		int hashCode = super.hashCode();

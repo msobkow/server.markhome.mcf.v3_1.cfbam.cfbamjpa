@@ -101,6 +101,7 @@ public class CFBamJpaBoolType extends CFBamJpaBoolDef
 	public ICFBamSchemaDef getRequiredContainerSchemaDef() {
 		return(requiredContainerSchemaDef);
 	}
+
 	@Override
 	public void setRequiredContainerSchemaDef(ICFBamSchemaDef argObj) {
 		if(argObj == null) {
@@ -223,7 +224,7 @@ public class CFBamJpaBoolType extends CFBamJpaBoolDef
 			return( super.equals(obj) );
 		}
 	}
-	
+
 	@Override
 	public int hashCode() {
 		int hashCode = super.hashCode();

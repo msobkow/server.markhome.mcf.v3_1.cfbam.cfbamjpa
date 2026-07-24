@@ -191,6 +191,7 @@ public class CFBamJpaRelationCol
 	public ICFBamRelation getRequiredContainerRelation() {
 		return(requiredContainerRelation);
 	}
+
 	@Override
 	public void setRequiredContainerRelation(ICFBamRelation argObj) {
 		if(argObj == null) {
@@ -237,6 +238,7 @@ public class CFBamJpaRelationCol
 	public ICFBamSchemaDef getOptionalLookupDefSchema() {
 		return(optionalLookupDefSchema);
 	}
+
 	@Override
 	public void setOptionalLookupDefSchema(ICFBamSchemaDef argObj) {
 		if(argObj == null) {
@@ -284,6 +286,7 @@ public class CFBamJpaRelationCol
 	public ICFBamRelationCol getOptionalLookupPrev() {
 		return(optionalLookupPrev);
 	}
+
 	@Override
 	public void setOptionalLookupPrev(ICFBamRelationCol argObj) {
 		if(argObj == null) {
@@ -331,6 +334,7 @@ public class CFBamJpaRelationCol
 	public ICFBamRelationCol getOptionalLookupNext() {
 		return(optionalLookupNext);
 	}
+
 	@Override
 	public void setOptionalLookupNext(ICFBamRelationCol argObj) {
 		if(argObj == null) {
@@ -378,6 +382,7 @@ public class CFBamJpaRelationCol
 	public ICFBamIndexCol getRequiredLookupFromCol() {
 		return(requiredLookupFromCol);
 	}
+
 	@Override
 	public void setRequiredLookupFromCol(ICFBamIndexCol argObj) {
 		if(argObj == null) {
@@ -424,6 +429,7 @@ public class CFBamJpaRelationCol
 	public ICFBamIndexCol getRequiredLookupToCol() {
 		return(requiredLookupToCol);
 	}
+
 	@Override
 	public void setRequiredLookupToCol(ICFBamIndexCol argObj) {
 		if(argObj == null) {
@@ -527,7 +533,7 @@ public class CFBamJpaRelationCol
 	public void setPKey(CFLibDbKeyHash256 requiredId) {
 		this.requiredId = requiredId;
 	}
-	
+
 	@Override
 	public CFLibDbKeyHash256 getRequiredId() {
 		return( requiredId );
@@ -544,7 +550,6 @@ public class CFBamJpaRelationCol
 		requiredId = value;
 	}
 
-	
 	@Override
 	public int getRequiredRevision() {
 		return( requiredRevision );
@@ -1317,7 +1322,7 @@ public class CFBamJpaRelationCol
 			return( false );
 		}
 	}
-	
+
 	@Override
 	public int hashCode() {
 		int hashCode = getPKey().hashCode();

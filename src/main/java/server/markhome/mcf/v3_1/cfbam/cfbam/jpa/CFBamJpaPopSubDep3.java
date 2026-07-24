@@ -105,6 +105,7 @@ public class CFBamJpaPopSubDep3 extends CFBamJpaPopDep
 	public ICFBamPopSubDep2 getRequiredContainerPopSubDep2() {
 		return(requiredContainerPopSubDep2);
 	}
+
 	@Override
 	public void setRequiredContainerPopSubDep2(ICFBamPopSubDep2 argObj) {
 		if(argObj == null) {
@@ -315,7 +316,7 @@ public class CFBamJpaPopSubDep3 extends CFBamJpaPopDep
 			return( super.equals(obj) );
 		}
 	}
-	
+
 	@Override
 	public int hashCode() {
 		int hashCode = super.hashCode();

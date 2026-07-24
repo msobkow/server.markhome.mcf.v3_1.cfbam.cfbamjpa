@@ -150,6 +150,7 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 	public ICFBamSchemaDef getOptionalLookupDefSchema() {
 		return(optionalLookupDefSchema);
 	}
+
 	@Override
 	public void setOptionalLookupDefSchema(ICFBamSchemaDef argObj) {
 		if(argObj == null) {
@@ -197,6 +198,7 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 	public ICFBamTable getRequiredContainerForTable() {
 		return(requiredContainerForTable);
 	}
+
 	@Override
 	public void setRequiredContainerForTable(ICFBamTable argObj) {
 		if(argObj == null) {
@@ -994,7 +996,7 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 			return( super.equals(obj) );
 		}
 	}
-	
+
 	@Override
 	public int hashCode() {
 		int hashCode = super.hashCode();

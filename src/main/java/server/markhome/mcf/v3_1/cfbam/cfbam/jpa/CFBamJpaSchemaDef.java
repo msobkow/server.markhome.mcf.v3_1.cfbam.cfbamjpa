@@ -149,6 +149,7 @@ public class CFBamJpaSchemaDef extends CFBamJpaScope
 		ICFIntMinorVersion targetRec = targetTable.readDerivedByIdIdx(ICFSecSchema.getAuthorizationCallback().getEffectiveAuthorization(), getRequiredMinorVersionId());
 		return(targetRec);
 	}
+
 	@Override
 	public void setRequiredContainerMinorVersion(ICFIntMinorVersion argObj) {
 		if(argObj == null) {
@@ -177,6 +178,7 @@ public class CFBamJpaSchemaDef extends CFBamJpaScope
 		ICFSecTenant targetRec = targetTable.readDerivedByIdIdx(ICFSecSchema.getAuthorizationCallback().getEffectiveAuthorization(), getRequiredCTenantId());
 		return(targetRec);
 	}
+
 	@Override
 	public void setRequiredOwnerCTenant(ICFSecTenant argObj) {
 		if(argObj == null) {
@@ -1026,7 +1028,7 @@ public class CFBamJpaSchemaDef extends CFBamJpaScope
 			return( super.equals(obj) );
 		}
 	}
-	
+
 	@Override
 	public int hashCode() {
 		int hashCode = super.hashCode();

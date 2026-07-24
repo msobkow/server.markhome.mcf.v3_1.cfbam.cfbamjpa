@@ -101,6 +101,7 @@ public class CFBamJpaServerListFunc extends CFBamJpaServerMethod
 	public ICFBamTable getOptionalLookupRetTable() {
 		return(optionalLookupRetTable);
 	}
+
 	@Override
 	public void setOptionalLookupRetTable(ICFBamTable argObj) {
 		if(argObj == null) {
@@ -224,7 +225,7 @@ public class CFBamJpaServerListFunc extends CFBamJpaServerMethod
 			return( super.equals(obj) );
 		}
 	}
-	
+
 	@Override
 	public int hashCode() {
 		int hashCode = super.hashCode();

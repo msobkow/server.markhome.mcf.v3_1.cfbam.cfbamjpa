@@ -183,7 +183,7 @@ public class CFBamJpaUuid6Gen extends CFBamJpaUuid6Type
 			return( super.equals(obj) );
 		}
 	}
-	
+
 	@Override
 	public int hashCode() {
 		int hashCode = super.hashCode();

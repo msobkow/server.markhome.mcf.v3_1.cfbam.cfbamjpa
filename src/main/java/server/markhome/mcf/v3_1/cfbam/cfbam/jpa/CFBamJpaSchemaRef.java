@@ -141,6 +141,7 @@ public class CFBamJpaSchemaRef extends CFBamJpaScope
 	public ICFBamSchemaDef getRequiredContainerSchema() {
 		return(requiredContainerSchema);
 	}
+
 	@Override
 	public void setRequiredContainerSchema(ICFBamSchemaDef argObj) {
 		if(argObj == null) {
@@ -187,6 +188,7 @@ public class CFBamJpaSchemaRef extends CFBamJpaScope
 	public ICFBamSchemaDef getOptionalLookupRefSchema() {
 		return(optionalLookupRefSchema);
 	}
+
 	@Override
 	public void setOptionalLookupRefSchema(ICFBamSchemaDef argObj) {
 		if(argObj == null) {
@@ -234,6 +236,7 @@ public class CFBamJpaSchemaRef extends CFBamJpaScope
 	public ICFBamSchemaRef getOptionalLookupPrev() {
 		return(optionalLookupPrev);
 	}
+
 	@Override
 	public void setOptionalLookupPrev(ICFBamSchemaRef argObj) {
 		if(argObj == null) {
@@ -281,6 +284,7 @@ public class CFBamJpaSchemaRef extends CFBamJpaScope
 	public ICFBamSchemaRef getOptionalLookupNext() {
 		return(optionalLookupNext);
 	}
+
 	@Override
 	public void setOptionalLookupNext(ICFBamSchemaRef argObj) {
 		if(argObj == null) {
@@ -762,7 +766,7 @@ public class CFBamJpaSchemaRef extends CFBamJpaScope
 			return( super.equals(obj) );
 		}
 	}
-	
+
 	@Override
 	public int hashCode() {
 		int hashCode = super.hashCode();

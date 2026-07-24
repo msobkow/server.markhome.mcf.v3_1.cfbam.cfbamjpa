@@ -172,6 +172,7 @@ public class CFBamJpaChain
 	public ICFBamTable getRequiredContainerTable() {
 		return(requiredContainerTable);
 	}
+
 	@Override
 	public void setRequiredContainerTable(ICFBamTable argObj) {
 		if(argObj == null) {
@@ -218,6 +219,7 @@ public class CFBamJpaChain
 	public ICFBamSchemaDef getOptionalLookupDefSchema() {
 		return(optionalLookupDefSchema);
 	}
+
 	@Override
 	public void setOptionalLookupDefSchema(ICFBamSchemaDef argObj) {
 		if(argObj == null) {
@@ -265,6 +267,7 @@ public class CFBamJpaChain
 	public ICFBamRelation getRequiredLookupPrevRel() {
 		return(requiredLookupPrevRel);
 	}
+
 	@Override
 	public void setRequiredLookupPrevRel(ICFBamRelation argObj) {
 		if(argObj == null) {
@@ -311,6 +314,7 @@ public class CFBamJpaChain
 	public ICFBamRelation getRequiredLookupNextRel() {
 		return(requiredLookupNextRel);
 	}
+
 	@Override
 	public void setRequiredLookupNextRel(ICFBamRelation argObj) {
 		if(argObj == null) {
@@ -414,7 +418,7 @@ public class CFBamJpaChain
 	public void setPKey(CFLibDbKeyHash256 requiredId) {
 		this.requiredId = requiredId;
 	}
-	
+
 	@Override
 	public CFLibDbKeyHash256 getRequiredId() {
 		return( requiredId );
@@ -431,7 +435,6 @@ public class CFBamJpaChain
 		requiredId = value;
 	}
 
-	
 	@Override
 	public int getRequiredRevision() {
 		return( requiredRevision );
@@ -1076,7 +1079,7 @@ public class CFBamJpaChain
 			return( false );
 		}
 	}
-	
+
 	@Override
 	public int hashCode() {
 		int hashCode = getPKey().hashCode();

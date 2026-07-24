@@ -193,6 +193,7 @@ public class CFBamJpaRelation extends CFBamJpaScope
 	public ICFBamSchemaDef getOptionalLookupDefSchema() {
 		return(optionalLookupDefSchema);
 	}
+
 	@Override
 	public void setOptionalLookupDefSchema(ICFBamSchemaDef argObj) {
 		if(argObj == null) {
@@ -240,6 +241,7 @@ public class CFBamJpaRelation extends CFBamJpaScope
 	public ICFBamTable getRequiredContainerFromTable() {
 		return(requiredContainerFromTable);
 	}
+
 	@Override
 	public void setRequiredContainerFromTable(ICFBamTable argObj) {
 		if(argObj == null) {
@@ -286,6 +288,7 @@ public class CFBamJpaRelation extends CFBamJpaScope
 	public ICFBamIndex getRequiredLookupFromIndex() {
 		return(requiredLookupFromIndex);
 	}
+
 	@Override
 	public void setRequiredLookupFromIndex(ICFBamIndex argObj) {
 		if(argObj == null) {
@@ -332,6 +335,7 @@ public class CFBamJpaRelation extends CFBamJpaScope
 	public ICFBamTable getRequiredLookupToTable() {
 		return(requiredLookupToTable);
 	}
+
 	@Override
 	public void setRequiredLookupToTable(ICFBamTable argObj) {
 		if(argObj == null) {
@@ -378,6 +382,7 @@ public class CFBamJpaRelation extends CFBamJpaScope
 	public ICFBamIndex getRequiredLookupToIndex() {
 		return(requiredLookupToIndex);
 	}
+
 	@Override
 	public void setRequiredLookupToIndex(ICFBamIndex argObj) {
 		if(argObj == null) {
@@ -424,6 +429,7 @@ public class CFBamJpaRelation extends CFBamJpaScope
 	public ICFBamRelation getOptionalLookupNarrowed() {
 		return(optionalLookupNarrowed);
 	}
+
 	@Override
 	public void setOptionalLookupNarrowed(ICFBamRelation argObj) {
 		if(argObj == null) {
@@ -1402,7 +1408,7 @@ public class CFBamJpaRelation extends CFBamJpaScope
 			return( super.equals(obj) );
 		}
 	}
-	
+
 	@Override
 	public int hashCode() {
 		int hashCode = super.hashCode();

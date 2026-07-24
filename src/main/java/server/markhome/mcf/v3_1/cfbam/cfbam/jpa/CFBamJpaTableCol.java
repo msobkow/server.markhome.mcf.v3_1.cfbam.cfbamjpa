@@ -117,6 +117,7 @@ public class CFBamJpaTableCol extends CFBamJpaValue
 	public ICFBamTable getRequiredContainerTable() {
 		return(requiredContainerTable);
 	}
+
 	@Override
 	public void setRequiredContainerTable(ICFBamTable argObj) {
 		if(argObj == null) {
@@ -163,6 +164,7 @@ public class CFBamJpaTableCol extends CFBamJpaValue
 	public ICFBamValue getRequiredParentDataType() {
 		return(requiredParentDataType);
 	}
+
 	@Override
 	public void setRequiredParentDataType(ICFBamValue argObj) {
 		if(argObj == null) {
@@ -436,7 +438,7 @@ public class CFBamJpaTableCol extends CFBamJpaValue
 			return( super.equals(obj) );
 		}
 	}
-	
+
 	@Override
 	public int hashCode() {
 		int hashCode = super.hashCode();

@@ -106,6 +106,7 @@ public class CFBamJpaSchemaRole extends CFBamJpaRoleDef
 	public ICFBamSchemaDef getRequiredContainerSchemaDef() {
 		return(requiredContainerSchemaDef);
 	}
+
 	@Override
 	public void setRequiredContainerSchemaDef(ICFBamSchemaDef argObj) {
 		if(argObj == null) {
@@ -327,7 +328,7 @@ public class CFBamJpaSchemaRole extends CFBamJpaRoleDef
 			return( super.equals(obj) );
 		}
 	}
-	
+
 	@Override
 	public int hashCode() {
 		int hashCode = super.hashCode();

@@ -312,7 +312,7 @@ public class CFBamJpaNumberDef extends CFBamJpaAtom
 			return( super.equals(obj) );
 		}
 	}
-	
+
 	@Override
 	public int hashCode() {
 		int hashCode = super.hashCode();
