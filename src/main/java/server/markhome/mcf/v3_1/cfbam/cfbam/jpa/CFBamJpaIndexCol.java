@@ -186,12 +186,12 @@ public class CFBamJpaIndexCol
 
 	@Override
 	public List<ICFBamRelationCol> getOptionalChildrenRefRelFromCol() {
-		$emitInterfaceDataTypeSet$ retlist = (optionalChildrenRefRelFromCol != null) ? new ArrayList<>(optionalChildrenRefRelFromCol) : new ArrayList<>();
+		List<ICFBamRelationCol> retlist = (optionalChildrenRefRelFromCol != null) ? new ArrayList<>(optionalChildrenRefRelFromCol) : new ArrayList<>();
 		return( retlist );
 	}
 	@Override
 	public List<ICFBamRelationCol> getOptionalChildrenRefRelToCol() {
-		$emitInterfaceDataTypeSet$ retlist = (optionalChildrenRefRelToCol != null) ? new ArrayList<>(optionalChildrenRefRelToCol) : new ArrayList<>();
+		List<ICFBamRelationCol> retlist = (optionalChildrenRefRelToCol != null) ? new ArrayList<>(optionalChildrenRefRelToCol) : new ArrayList<>();
 		return( retlist );
 	}
 	@Override
