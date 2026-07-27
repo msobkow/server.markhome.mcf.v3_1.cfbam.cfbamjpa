@@ -1,0 +1,1371 @@
+
+// Description: Java 25 DbIO implementation for UInt64Col.
+
+/*
+ *	server.markhome.mcf.CFBam
+ *
+ *	Copyright (c) 2016-2026 Mark Stephen Sobkow
+ *	
+ *	Mark's Code Fractal CFBam 3.1 Business Application Model
+ *	
+ *	Copyright 2016-2026 Mark Stephen Sobkow
+ *	
+ *	This file is part of Mark's Code Fractal CFBam.
+ *	
+ *	Mark's Code Fractal CFBam is available under dual commercial license from
+ *	Mark Stephen Sobkow, or under the terms of the GNU General Public License,
+ *	Version 3 or later with classpath and static linking exceptions.
+ *	
+ *	As a special exception, Mark Sobkow gives you permission to link this library
+ *	with independent modules to produce an executable, provided that none of them
+ *	conflict with the intent of the GPLv3; that is, you are not allowed to invoke
+ *	the methods of this library from non-GPLv3-compatibly licensed code. You may not
+ *	implement an LPGLv3 "wedge" to try to bypass this restriction. That said, code which
+ *	does not rely on this library is free to specify whatever license its authors decide
+ *	to use. Mark Sobkow specifically rejects the infectious nature of the GPLv3, and
+ *	considers the mere act of including GPLv3 modules in an executable to be perfectly
+ *	reasonable given tools like modern Java's single-jar deployment options.
+ *	
+ *	Mark's Code Fractal CFBam is free software: you can redistribute it and/or
+ *	modify it under the terms of the GNU General Public License as published by
+ *	the Free Software Foundation, either version 3 of the License, or
+ *	(at your option) any later version.
+ *	
+ *	Mark's Code Fractal CFBam is distributed in the hope that it will be useful,
+ *	but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *	GNU General Public License for more details.
+ *	
+ *	You should have received a copy of the GNU General Public License
+ *	along with Mark's Code Fractal CFBam.  If not, see <https://www.gnu.org/licenses/>.
+ *	
+ *	If you wish to modify and use this code without publishing your changes,
+ *	or integrate it with proprietary code, please contact Mark Stephen Sobkow
+ *	for a commercial license at mark.sobkow@gmail.com
+ */
+
+package server.markhome.mcf.v3_1.cfbam.cfbam.jpa;
+
+import java.lang.reflect.*;
+import java.net.*;
+import java.rmi.*;
+import java.sql.*;
+import java.text.*;
+import java.time.*;
+import java.util.*;
+import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.text.StringEscapeUtils;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.NoResultException;
+
+import server.markhome.mcf.v3_1.cflib.*;
+import server.markhome.mcf.v3_1.cflib.dbutil.*;
+import server.markhome.mcf.v3_1.cfsec.cfsec.*;
+import server.markhome.mcf.v3_1.cfint.cfint.*;
+import server.markhome.mcf.v3_1.cfbam.cfbam.*;
+import server.markhome.mcf.v3_1.cfsec.cfsecobj.*;
+import server.markhome.mcf.v3_1.cfint.cfintobj.*;
+import server.markhome.mcf.v3_1.cfbam.cfbamobj.*;
+import server.markhome.mcf.v3_1.cfbam.cfbam.jpa.CFBamJpaHooksSchema;
+
+/*
+ *	CFBamJpaUInt64ColTable database implementation for UInt64Col
+ */
+public class CFBamJpaUInt64ColTable implements ICFBamUInt64ColTable
+{
+	protected CFBamJpaSchema schema;
+
+
+	public CFBamJpaUInt64ColTable(ICFBamSchema schema) {
+		if( schema == null ) {
+			throw new CFLibNullArgumentException(getClass(), "constructor", 1, "schema" );
+		}
+		if (schema instanceof CFBamJpaSchema) {
+			this.schema = (CFBamJpaSchema)schema;
+		}
+		else {
+			throw new CFLibUnsupportedClassException(getClass(), "constructor", "schema", schema, "CFBamJpaSchema");
+		}
+	}
+
+	protected boolean canCreateUInt64Col(String S_ProcName, ICFSecAuthorization Authorization) {
+		if (Authorization == null) {
+			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization");
+		}
+		boolean permissionGranted = false;
+		CFLibDbKeyHash256 authUserId = Authorization.getSecUserId();
+		if ((!permissionGranted) && (authUserId == null || authUserId.isNull())) {
+			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
+		}
+		// Check for "system" user
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
+			permissionGranted = true;
+		}
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
+			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
+		}
+		if(!permissionGranted) {
+			permissionGranted = ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), Authorization.getSecTenantId(), "createuint64col");
+		}
+		return( permissionGranted );
+	}
+
+	protected boolean canReadUInt64Col(String S_ProcName, ICFSecAuthorization Authorization) {
+		if (Authorization == null) {
+			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization");
+		}
+		boolean permissionGranted = false;
+		CFLibDbKeyHash256 authUserId = Authorization.getSecUserId();
+		if ((!permissionGranted) && (authUserId == null || authUserId.isNull())) {
+			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
+		}
+		// Check for "system" user
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
+			permissionGranted = true;
+		}
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
+			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
+		}
+		if(!permissionGranted) {
+			permissionGranted = ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), Authorization.getSecClusterId(), Authorization.getSecTenantId(), "readuint64col");
+		}
+		return( permissionGranted );
+	}
+
+	protected boolean canUpdateUInt64Col(String S_ProcName, ICFSecAuthorization Authorization) {
+		if (Authorization == null) {
+			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization");
+		}
+		boolean permissionGranted = false;
+		CFLibDbKeyHash256 authUserId = Authorization.getSecUserId();
+		if ((!permissionGranted) && (authUserId == null || authUserId.isNull())) {
+			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
+		}
+		// Check for "system" user
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
+			permissionGranted = true;
+		}
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
+			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
+		}
+		if(!permissionGranted) {
+			permissionGranted = ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), ICFSecSchema.getSysTenantId(), "updateuint64col");
+		}
+		return( permissionGranted );
+	}
+
+	protected boolean canDeleteUInt64Col(String S_ProcName, ICFSecAuthorization Authorization) {
+		if (Authorization == null) {
+			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization");
+		}
+		boolean permissionGranted = false;
+		CFLibDbKeyHash256 authUserId = Authorization.getSecUserId();
+		if ((!permissionGranted) && (authUserId == null || authUserId.isNull())) {
+			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "Authorization.getSecUserId()");
+		}
+		// Check for "system" user
+		CFLibDbKeyHash256 systemId = ICFSecSchema.getSystemId();
+		if ((!permissionGranted) && (systemId != null && !systemId.isNull() && systemId.equals(authUserId))) {
+			permissionGranted = true;
+		}
+		else if ((!permissionGranted) && (systemId == null || systemId.isNull())) {
+			throw new CFLibNullArgumentException(getClass(), S_ProcName, 0, "ICFSecSchema.getSystemId()");
+		}
+		if(!permissionGranted) {
+			permissionGranted = ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), ICFSecSchema.getSysClusterId(), ICFSecSchema.getSysTenantId(), "deleteuint64col");
+		}
+		return( permissionGranted );
+	}
+
+	/**
+	 *	Create the instance in the database, and update the specified record
+	 *	with the assigned primary key.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	rec	The instance interface to be created.
+	 */
+	@Override
+	public ICFBamUInt64Col createUInt64Col( ICFSecAuthorization Authorization,
+		ICFBamUInt64Col rec )
+	{
+		final String S_ProcName = "createUInt64Col";
+		boolean permissionGranted = canCreateUInt64Col(S_ProcName, Authorization);
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "createuint64col", ICFBamSchema.SCHEMA_NAME, ICFBamUInt64ColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+
+		if (rec == null) {
+			throw new CFLibNullArgumentException(getClass(), "createUInt64Col", 1, "rec");
+		}
+		else if (rec instanceof CFBamJpaUInt64Col) {
+			CFBamJpaUInt64Col jparec = (CFBamJpaUInt64Col)rec;
+			jparec.setCreatedAt(LocalDateTime.now());
+			jparec.setUpdatedAt(jparec.getCreatedAt());
+			jparec.setCreatedByUserId(Authorization.getSecUserId());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
+			CFBamJpaUInt64Col retval = schema.getJpaHooksSchema().getUInt64ColService().create(jparec);
+		return(retval);
+		}
+		else {
+			throw new CFLibUnsupportedClassException(getClass(), "createUInt64Col", "rec", rec, "CFBamJpaUInt64Col");
+		}
+	}
+
+	/**
+	 *	Update the instance in the database, and update the specified record
+	 *	with any calculated changes imposed by the associated stored procedure.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	rec	The instance interface to be updated
+	 */
+	@Override
+	public ICFBamUInt64Col updateUInt64Col( ICFSecAuthorization Authorization,
+		ICFBamUInt64Col rec )
+	{
+		final String S_ProcName = "updateUInt64Col";
+		boolean permissionGranted = canUpdateUInt64Col(S_ProcName, Authorization);
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "updateuint64col", ICFBamSchema.SCHEMA_NAME, ICFBamUInt64ColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+
+		if (rec == null) {
+			throw new CFLibNullArgumentException(getClass(), "updateUInt64Col", 1, "rec");
+		}
+		else if (rec instanceof CFBamJpaUInt64Col) {
+			CFBamJpaUInt64Col jparec = (CFBamJpaUInt64Col)rec;
+			jparec.setUpdatedAt(LocalDateTime.now());
+			jparec.setUpdatedByUserId(Authorization.getSecUserId());
+			CFBamJpaUInt64Col retval = schema.getJpaHooksSchema().getUInt64ColService().update(jparec);
+		return(retval);
+		}
+		else {
+			throw new CFLibUnsupportedClassException(getClass(), "updateUInt64Col", "rec", rec, "CFBamJpaUInt64Col");
+		}
+	}
+
+	/**
+	 *	Delete the instance from the database.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	rec	The instance interface to be deleted.
+	 */
+	@Override
+	public void deleteUInt64Col( ICFSecAuthorization Authorization,
+		ICFBamUInt64Col rec )
+	{
+		final String S_ProcName = "deleteUInt64Col";
+		boolean permissionGranted = canDeleteUInt64Col(S_ProcName, Authorization);
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteuint64col", ICFBamSchema.SCHEMA_NAME, ICFBamUInt64ColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+
+		if (rec == null) {
+			return;
+		}
+		if (rec instanceof CFBamJpaUInt64Col) {
+			CFBamJpaUInt64Col jparec = (CFBamJpaUInt64Col)rec;
+			schema.getJpaHooksSchema().getUInt64ColService().deleteByIdIdx(jparec.getPKey());
+		}
+		else {
+			throw new CFLibUnsupportedClassException(getClass(), "deleteUInt64Col", "rec", rec, "CFBamJpaUInt64Col");
+		}
+
+		throw new CFLibNotImplementedYetException(getClass(), "deleteUInt64Col");
+	}
+
+	/**
+	 *	Delete the UInt64Col instances identified by the key TableIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	TableId	The UInt64Col key attribute of the instance generating the id.
+	 */
+	@Override
+	public void deleteUInt64ColByTableIdx( ICFSecAuthorization Authorization,
+		CFLibDbKeyHash256 argTableId )
+	{
+		final String S_ProcName = "deleteUInt64ColByTableIdx";
+		boolean permissionGranted = canDeleteUInt64Col(S_ProcName, Authorization);
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteuint64col", ICFBamSchema.SCHEMA_NAME, ICFBamUInt64ColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+
+		schema.getJpaHooksSchema().getUInt64ColService().deleteByTableIdx(argTableId);
+	}
+
+
+	/**
+	 *	Delete the UInt64Col instances identified by the key TableIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	argKey	The key identifying the instances to be deleted.
+	 */
+	@Override
+	public void deleteUInt64ColByTableIdx( ICFSecAuthorization Authorization,
+		ICFBamUInt64ColByTableIdxKey argKey )
+	{
+		final String S_ProcName = "deleteUInt64ColByTableIdx";
+		boolean permissionGranted = canDeleteUInt64Col(S_ProcName, Authorization);
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteuint64col", ICFBamSchema.SCHEMA_NAME, ICFBamUInt64ColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+
+		schema.getJpaHooksSchema().getUInt64ColService().deleteByTableIdx(argKey.getRequiredTableId());
+	}
+
+	/**
+	 *	Delete the UInt64Col instance identified by the primary key.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	argKey	The primary key identifying the instance to be deleted.
+	 */
+	@Override
+	public void deleteUInt64ColByIdIdx( ICFSecAuthorization Authorization,
+		CFLibDbKeyHash256 argKey )
+	{
+		final String S_ProcName = "deleteUInt64ColByIdIdx";
+		boolean permissionGranted = canDeleteUInt64Col(S_ProcName, Authorization);
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteuint64col", ICFBamSchema.SCHEMA_NAME, ICFBamUInt64ColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+
+		schema.getJpaHooksSchema().getUInt64ColService().deleteByIdIdx(argKey);
+	}
+
+	/**
+	 *	Delete the UInt64Col instances identified by the key UNameIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	ScopeId	The UInt64Col key attribute of the instance generating the id.
+	 *
+	 *	@param	Name	The UInt64Col key attribute of the instance generating the id.
+	 */
+	@Override
+	public void deleteUInt64ColByUNameIdx( ICFSecAuthorization Authorization,
+		CFLibDbKeyHash256 argScopeId,
+		String argName )
+	{
+		final String S_ProcName = "deleteUInt64ColByUNameIdx";
+		boolean permissionGranted = canDeleteUInt64Col(S_ProcName, Authorization);
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteuint64col", ICFBamSchema.SCHEMA_NAME, ICFBamUInt64ColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+
+		schema.getJpaHooksSchema().getUInt64ColService().deleteByUNameIdx(argScopeId,
+		argName);
+	}
+
+
+	/**
+	 *	Delete the UInt64Col instances identified by the key UNameIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	argKey	The key identifying the instances to be deleted.
+	 */
+	@Override
+	public void deleteUInt64ColByUNameIdx( ICFSecAuthorization Authorization,
+		ICFBamValueByUNameIdxKey argKey )
+	{
+		final String S_ProcName = "deleteUInt64ColByUNameIdx";
+		boolean permissionGranted = canDeleteUInt64Col(S_ProcName, Authorization);
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteuint64col", ICFBamSchema.SCHEMA_NAME, ICFBamUInt64ColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+
+		schema.getJpaHooksSchema().getUInt64ColService().deleteByUNameIdx(argKey.getRequiredScopeId(),
+			argKey.getRequiredName());
+	}
+
+	/**
+	 *	Delete the UInt64Col instances identified by the key ScopeIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	ScopeId	The UInt64Col key attribute of the instance generating the id.
+	 */
+	@Override
+	public void deleteUInt64ColByScopeIdx( ICFSecAuthorization Authorization,
+		CFLibDbKeyHash256 argScopeId )
+	{
+		final String S_ProcName = "deleteUInt64ColByScopeIdx";
+		boolean permissionGranted = canDeleteUInt64Col(S_ProcName, Authorization);
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteuint64col", ICFBamSchema.SCHEMA_NAME, ICFBamUInt64ColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+
+		schema.getJpaHooksSchema().getUInt64ColService().deleteByScopeIdx(argScopeId);
+	}
+
+
+	/**
+	 *	Delete the UInt64Col instances identified by the key ScopeIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	argKey	The key identifying the instances to be deleted.
+	 */
+	@Override
+	public void deleteUInt64ColByScopeIdx( ICFSecAuthorization Authorization,
+		ICFBamValueByScopeIdxKey argKey )
+	{
+		final String S_ProcName = "deleteUInt64ColByScopeIdx";
+		boolean permissionGranted = canDeleteUInt64Col(S_ProcName, Authorization);
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteuint64col", ICFBamSchema.SCHEMA_NAME, ICFBamUInt64ColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+
+		schema.getJpaHooksSchema().getUInt64ColService().deleteByScopeIdx(argKey.getRequiredScopeId());
+	}
+
+	/**
+	 *	Delete the UInt64Col instances identified by the key DefSchemaIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	DefSchemaId	The UInt64Col key attribute of the instance generating the id.
+	 */
+	@Override
+	public void deleteUInt64ColByDefSchemaIdx( ICFSecAuthorization Authorization,
+		CFLibDbKeyHash256 argDefSchemaId )
+	{
+		final String S_ProcName = "deleteUInt64ColByDefSchemaIdx";
+		boolean permissionGranted = canDeleteUInt64Col(S_ProcName, Authorization);
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteuint64col", ICFBamSchema.SCHEMA_NAME, ICFBamUInt64ColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+
+		schema.getJpaHooksSchema().getUInt64ColService().deleteByDefSchemaIdx(argDefSchemaId);
+	}
+
+
+	/**
+	 *	Delete the UInt64Col instances identified by the key DefSchemaIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	argKey	The key identifying the instances to be deleted.
+	 */
+	@Override
+	public void deleteUInt64ColByDefSchemaIdx( ICFSecAuthorization Authorization,
+		ICFBamValueByDefSchemaIdxKey argKey )
+	{
+		final String S_ProcName = "deleteUInt64ColByDefSchemaIdx";
+		boolean permissionGranted = canDeleteUInt64Col(S_ProcName, Authorization);
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteuint64col", ICFBamSchema.SCHEMA_NAME, ICFBamUInt64ColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+
+		schema.getJpaHooksSchema().getUInt64ColService().deleteByDefSchemaIdx(argKey.getOptionalDefSchemaId());
+	}
+
+	/**
+	 *	Delete the UInt64Col instances identified by the key PrevIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	PrevId	The UInt64Col key attribute of the instance generating the id.
+	 */
+	@Override
+	public void deleteUInt64ColByPrevIdx( ICFSecAuthorization Authorization,
+		CFLibDbKeyHash256 argPrevId )
+	{
+		final String S_ProcName = "deleteUInt64ColByPrevIdx";
+		boolean permissionGranted = canDeleteUInt64Col(S_ProcName, Authorization);
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteuint64col", ICFBamSchema.SCHEMA_NAME, ICFBamUInt64ColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+
+		schema.getJpaHooksSchema().getUInt64ColService().deleteByPrevIdx(argPrevId);
+	}
+
+
+	/**
+	 *	Delete the UInt64Col instances identified by the key PrevIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	argKey	The key identifying the instances to be deleted.
+	 */
+	@Override
+	public void deleteUInt64ColByPrevIdx( ICFSecAuthorization Authorization,
+		ICFBamValueByPrevIdxKey argKey )
+	{
+		final String S_ProcName = "deleteUInt64ColByPrevIdx";
+		boolean permissionGranted = canDeleteUInt64Col(S_ProcName, Authorization);
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteuint64col", ICFBamSchema.SCHEMA_NAME, ICFBamUInt64ColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+
+		schema.getJpaHooksSchema().getUInt64ColService().deleteByPrevIdx(argKey.getOptionalPrevId());
+	}
+
+	/**
+	 *	Delete the UInt64Col instances identified by the key NextIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	NextId	The UInt64Col key attribute of the instance generating the id.
+	 */
+	@Override
+	public void deleteUInt64ColByNextIdx( ICFSecAuthorization Authorization,
+		CFLibDbKeyHash256 argNextId )
+	{
+		final String S_ProcName = "deleteUInt64ColByNextIdx";
+		boolean permissionGranted = canDeleteUInt64Col(S_ProcName, Authorization);
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteuint64col", ICFBamSchema.SCHEMA_NAME, ICFBamUInt64ColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+
+		schema.getJpaHooksSchema().getUInt64ColService().deleteByNextIdx(argNextId);
+	}
+
+
+	/**
+	 *	Delete the UInt64Col instances identified by the key NextIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	argKey	The key identifying the instances to be deleted.
+	 */
+	@Override
+	public void deleteUInt64ColByNextIdx( ICFSecAuthorization Authorization,
+		ICFBamValueByNextIdxKey argKey )
+	{
+		final String S_ProcName = "deleteUInt64ColByNextIdx";
+		boolean permissionGranted = canDeleteUInt64Col(S_ProcName, Authorization);
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteuint64col", ICFBamSchema.SCHEMA_NAME, ICFBamUInt64ColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+
+		schema.getJpaHooksSchema().getUInt64ColService().deleteByNextIdx(argKey.getOptionalNextId());
+	}
+
+	/**
+	 *	Delete the UInt64Col instances identified by the key ContPrevIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	ScopeId	The UInt64Col key attribute of the instance generating the id.
+	 *
+	 *	@param	PrevId	The UInt64Col key attribute of the instance generating the id.
+	 */
+	@Override
+	public void deleteUInt64ColByContPrevIdx( ICFSecAuthorization Authorization,
+		CFLibDbKeyHash256 argScopeId,
+		CFLibDbKeyHash256 argPrevId )
+	{
+		final String S_ProcName = "deleteUInt64ColByContPrevIdx";
+		boolean permissionGranted = canDeleteUInt64Col(S_ProcName, Authorization);
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteuint64col", ICFBamSchema.SCHEMA_NAME, ICFBamUInt64ColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+
+		schema.getJpaHooksSchema().getUInt64ColService().deleteByContPrevIdx(argScopeId,
+		argPrevId);
+	}
+
+
+	/**
+	 *	Delete the UInt64Col instances identified by the key ContPrevIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	argKey	The key identifying the instances to be deleted.
+	 */
+	@Override
+	public void deleteUInt64ColByContPrevIdx( ICFSecAuthorization Authorization,
+		ICFBamValueByContPrevIdxKey argKey )
+	{
+		final String S_ProcName = "deleteUInt64ColByContPrevIdx";
+		boolean permissionGranted = canDeleteUInt64Col(S_ProcName, Authorization);
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteuint64col", ICFBamSchema.SCHEMA_NAME, ICFBamUInt64ColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+
+		schema.getJpaHooksSchema().getUInt64ColService().deleteByContPrevIdx(argKey.getRequiredScopeId(),
+			argKey.getOptionalPrevId());
+	}
+
+	/**
+	 *	Delete the UInt64Col instances identified by the key ContNextIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	ScopeId	The UInt64Col key attribute of the instance generating the id.
+	 *
+	 *	@param	NextId	The UInt64Col key attribute of the instance generating the id.
+	 */
+	@Override
+	public void deleteUInt64ColByContNextIdx( ICFSecAuthorization Authorization,
+		CFLibDbKeyHash256 argScopeId,
+		CFLibDbKeyHash256 argNextId )
+	{
+		final String S_ProcName = "deleteUInt64ColByContNextIdx";
+		boolean permissionGranted = canDeleteUInt64Col(S_ProcName, Authorization);
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteuint64col", ICFBamSchema.SCHEMA_NAME, ICFBamUInt64ColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+
+		schema.getJpaHooksSchema().getUInt64ColService().deleteByContNextIdx(argScopeId,
+		argNextId);
+	}
+
+
+	/**
+	 *	Delete the UInt64Col instances identified by the key ContNextIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	argKey	The key identifying the instances to be deleted.
+	 */
+	@Override
+	public void deleteUInt64ColByContNextIdx( ICFSecAuthorization Authorization,
+		ICFBamValueByContNextIdxKey argKey )
+	{
+		final String S_ProcName = "deleteUInt64ColByContNextIdx";
+		boolean permissionGranted = canDeleteUInt64Col(S_ProcName, Authorization);
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "deleteuint64col", ICFBamSchema.SCHEMA_NAME, ICFBamUInt64ColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+
+		schema.getJpaHooksSchema().getUInt64ColService().deleteByContNextIdx(argKey.getRequiredScopeId(),
+			argKey.getOptionalNextId());
+	}
+
+
+	/**
+	 *	Read the derived UInt64Col record instance by primary key.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	PKey	The primary key of the UInt64Col instance to be read.
+	 *
+	 *	@return The record instance for the specified primary key, or null if there is
+	 *		no such existing key value.
+	 */
+	@Override
+	public ICFBamUInt64Col readDerived( ICFSecAuthorization Authorization,
+		CFLibDbKeyHash256 PKey )
+	{
+		final String S_ProcName = "readDerived";
+		boolean permissionGranted = canReadUInt64Col(S_ProcName, Authorization);
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readuint64col", ICFBamSchema.SCHEMA_NAME, ICFBamUInt64ColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+
+		ICFBamUInt64Col retval = schema.getJpaHooksSchema().getUInt64ColService().find(PKey);
+		return(retval);
+	}
+
+	/**
+	 *	Lock the derived UInt64Col record instance by primary key.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	PKey	The primary key of the UInt64Col instance to be locked.
+	 *
+	 *	@return The record instance for the specified primary key, or null if there is
+	 *		no such existing key value.
+	 */
+	@Override
+	public ICFBamUInt64Col lockDerived( ICFSecAuthorization Authorization,
+		CFLibDbKeyHash256 PKey )
+	{
+		final String S_ProcName = "lockDerived";
+		boolean permissionGranted = canUpdateUInt64Col(S_ProcName, Authorization);
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "updateuint64col", ICFBamSchema.SCHEMA_NAME, ICFBamUInt64ColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+
+		ICFBamUInt64Col retval = schema.getJpaHooksSchema().getUInt64ColService().lockByIdIdx(PKey);
+		return(retval);
+	}
+
+	/**
+	 *	Read all UInt64Col instances.
+	 *
+	 *	@param	Authorization	The session authorization information.	
+	 *
+	 *	@return An array of derived record instances, potentially with 0 elements in the set.
+	 */
+	@Override
+	public ICFBamUInt64Col[] readAllDerived( ICFSecAuthorization Authorization ) {
+		final String S_ProcName = "readAllDerived";
+		boolean permissionGranted = canReadUInt64Col(S_ProcName, Authorization);
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readuint64col", ICFBamSchema.SCHEMA_NAME, ICFBamUInt64ColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+
+		List<CFBamJpaUInt64Col> retlist = schema.getJpaHooksSchema().getUInt64ColService().findAll();
+		ICFBamUInt64Col[] retset = new ICFBamUInt64Col[retlist.size()];
+		int idx = 0;
+		for (CFBamJpaUInt64Col cur: retlist) {
+			retset[idx++] = cur;
+		}
+		return( retset );
+	}
+
+	/**
+	 *	Read the derived UInt64Col record instance identified by the unique key IdIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	Id	The UInt64Col key attribute of the instance generating the id.
+	 *
+	 *	@return The record instance for the specified key, or null if there is
+	 *		no such existing key value.
+	 */
+	@Override
+	public ICFBamUInt64Col readDerivedByIdIdx( ICFSecAuthorization Authorization,
+		CFLibDbKeyHash256 argId )
+	{
+		final String S_ProcName = "readDerivedByIdIdx";
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadUInt64Col(S_ProcName, Authorization);
+		}
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readuint64col", ICFBamSchema.SCHEMA_NAME, ICFBamUInt64ColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+		ICFBamUInt64Col retval = schema.getJpaHooksSchema().getUInt64ColService().find(argId);
+		if(retval != null && !ICFSecSchema.getSystemId().equals(Authorization.getSecUserId())) {
+				ICFSecTenant tenant = retval.getRequiredContainerTable().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readuint64col")) {
+				retval = null;
+			}
+		}
+		return(retval);
+	}
+
+	/**
+	 *	Read the derived UInt64Col record instance identified by the unique key UNameIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	ScopeId	The UInt64Col key attribute of the instance generating the id.
+	 *
+	 *	@param	Name	The UInt64Col key attribute of the instance generating the id.
+	 *
+	 *	@return The record instance for the specified key, or null if there is
+	 *		no such existing key value.
+	 */
+	@Override
+	public ICFBamUInt64Col readDerivedByUNameIdx( ICFSecAuthorization Authorization,
+		CFLibDbKeyHash256 argScopeId,
+		String argName )
+	{
+		final String S_ProcName = "readDerivedByUNameIdx";
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadUInt64Col(S_ProcName, Authorization);
+		}
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readuint64col", ICFBamSchema.SCHEMA_NAME, ICFBamUInt64ColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+		ICFBamUInt64Col retval = schema.getJpaHooksSchema().getUInt64ColService().findByUNameIdx(argScopeId,
+		argName);
+		if(retval != null && !ICFSecSchema.getSystemId().equals(Authorization.getSecUserId())) {
+				ICFSecTenant tenant = retval.getRequiredContainerTable().getRequiredOwnerTenant();
+				ICFSecCluster cluster = tenant.getRequiredContainerCluster();
+			CFLibDbKeyHash256 effClusterId = cluster.getRequiredId();
+			CFLibDbKeyHash256 effTenantId = tenant.getRequiredId();
+			if (!ICFSecSchema.getSecurityService().isMemberOfTenantGroup(Authorization.getSecUserId(), effClusterId, effTenantId, "readuint64col")) {
+				retval = null;
+			}
+		}
+		return(retval);
+	}
+
+	/**
+	 *	Read an array of the derived UInt64Col record instances identified by the duplicate key ScopeIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	ScopeId	The UInt64Col key attribute of the instance generating the id.
+	 *
+	 *	@return An array of derived instances for the specified key, potentially with 0 elements in the set.
+	 */
+	@Override
+	public ICFBamUInt64Col[] readDerivedByScopeIdx( ICFSecAuthorization Authorization,
+		CFLibDbKeyHash256 argScopeId )
+	{
+		final String S_ProcName = "readDerivedByScopeIdx";
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadUInt64Col(S_ProcName, Authorization);
+		}
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readuint64col", ICFBamSchema.SCHEMA_NAME, ICFBamUInt64ColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+		List<CFBamJpaUInt64Col> retlist = schema.getJpaHooksSchema().getUInt64ColService().findByScopeIdx(argScopeId);
+		ICFBamUInt64Col[] retset = new ICFBamUInt64Col[retlist.size()];
+		int idx = 0;
+		for (CFBamJpaUInt64Col cur: retlist) {
+			retset[idx++] = cur;
+		}
+		return( retset );
+	}
+
+	/**
+	 *	Read an array of the derived UInt64Col record instances identified by the duplicate key DefSchemaIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	DefSchemaId	The UInt64Col key attribute of the instance generating the id.
+	 *
+	 *	@return An array of derived instances for the specified key, potentially with 0 elements in the set.
+	 */
+	@Override
+	public ICFBamUInt64Col[] readDerivedByDefSchemaIdx( ICFSecAuthorization Authorization,
+		CFLibDbKeyHash256 argDefSchemaId )
+	{
+		final String S_ProcName = "readDerivedByDefSchemaIdx";
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadUInt64Col(S_ProcName, Authorization);
+		}
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readuint64col", ICFBamSchema.SCHEMA_NAME, ICFBamUInt64ColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+		List<CFBamJpaUInt64Col> retlist = schema.getJpaHooksSchema().getUInt64ColService().findByDefSchemaIdx(argDefSchemaId);
+		ICFBamUInt64Col[] retset = new ICFBamUInt64Col[retlist.size()];
+		int idx = 0;
+		for (CFBamJpaUInt64Col cur: retlist) {
+			retset[idx++] = cur;
+		}
+		return( retset );
+	}
+
+	/**
+	 *	Read an array of the derived UInt64Col record instances identified by the duplicate key PrevIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	PrevId	The UInt64Col key attribute of the instance generating the id.
+	 *
+	 *	@return An array of derived instances for the specified key, potentially with 0 elements in the set.
+	 */
+	@Override
+	public ICFBamUInt64Col[] readDerivedByPrevIdx( ICFSecAuthorization Authorization,
+		CFLibDbKeyHash256 argPrevId )
+	{
+		final String S_ProcName = "readDerivedByPrevIdx";
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadUInt64Col(S_ProcName, Authorization);
+		}
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readuint64col", ICFBamSchema.SCHEMA_NAME, ICFBamUInt64ColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+		List<CFBamJpaUInt64Col> retlist = schema.getJpaHooksSchema().getUInt64ColService().findByPrevIdx(argPrevId);
+		ICFBamUInt64Col[] retset = new ICFBamUInt64Col[retlist.size()];
+		int idx = 0;
+		for (CFBamJpaUInt64Col cur: retlist) {
+			retset[idx++] = cur;
+		}
+		return( retset );
+	}
+
+	/**
+	 *	Read an array of the derived UInt64Col record instances identified by the duplicate key NextIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	NextId	The UInt64Col key attribute of the instance generating the id.
+	 *
+	 *	@return An array of derived instances for the specified key, potentially with 0 elements in the set.
+	 */
+	@Override
+	public ICFBamUInt64Col[] readDerivedByNextIdx( ICFSecAuthorization Authorization,
+		CFLibDbKeyHash256 argNextId )
+	{
+		final String S_ProcName = "readDerivedByNextIdx";
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadUInt64Col(S_ProcName, Authorization);
+		}
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readuint64col", ICFBamSchema.SCHEMA_NAME, ICFBamUInt64ColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+		List<CFBamJpaUInt64Col> retlist = schema.getJpaHooksSchema().getUInt64ColService().findByNextIdx(argNextId);
+		ICFBamUInt64Col[] retset = new ICFBamUInt64Col[retlist.size()];
+		int idx = 0;
+		for (CFBamJpaUInt64Col cur: retlist) {
+			retset[idx++] = cur;
+		}
+		return( retset );
+	}
+
+	/**
+	 *	Read an array of the derived UInt64Col record instances identified by the duplicate key ContPrevIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	ScopeId	The UInt64Col key attribute of the instance generating the id.
+	 *
+	 *	@param	PrevId	The UInt64Col key attribute of the instance generating the id.
+	 *
+	 *	@return An array of derived instances for the specified key, potentially with 0 elements in the set.
+	 */
+	@Override
+	public ICFBamUInt64Col[] readDerivedByContPrevIdx( ICFSecAuthorization Authorization,
+		CFLibDbKeyHash256 argScopeId,
+		CFLibDbKeyHash256 argPrevId )
+	{
+		final String S_ProcName = "readDerivedByContPrevIdx";
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadUInt64Col(S_ProcName, Authorization);
+		}
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readuint64col", ICFBamSchema.SCHEMA_NAME, ICFBamUInt64ColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+		List<CFBamJpaUInt64Col> retlist = schema.getJpaHooksSchema().getUInt64ColService().findByContPrevIdx(argScopeId,
+		argPrevId);
+		ICFBamUInt64Col[] retset = new ICFBamUInt64Col[retlist.size()];
+		int idx = 0;
+		for (CFBamJpaUInt64Col cur: retlist) {
+			retset[idx++] = cur;
+		}
+		return( retset );
+	}
+
+	/**
+	 *	Read an array of the derived UInt64Col record instances identified by the duplicate key ContNextIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	ScopeId	The UInt64Col key attribute of the instance generating the id.
+	 *
+	 *	@param	NextId	The UInt64Col key attribute of the instance generating the id.
+	 *
+	 *	@return An array of derived instances for the specified key, potentially with 0 elements in the set.
+	 */
+	@Override
+	public ICFBamUInt64Col[] readDerivedByContNextIdx( ICFSecAuthorization Authorization,
+		CFLibDbKeyHash256 argScopeId,
+		CFLibDbKeyHash256 argNextId )
+	{
+		final String S_ProcName = "readDerivedByContNextIdx";
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadUInt64Col(S_ProcName, Authorization);
+		}
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readuint64col", ICFBamSchema.SCHEMA_NAME, ICFBamUInt64ColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+		List<CFBamJpaUInt64Col> retlist = schema.getJpaHooksSchema().getUInt64ColService().findByContNextIdx(argScopeId,
+		argNextId);
+		ICFBamUInt64Col[] retset = new ICFBamUInt64Col[retlist.size()];
+		int idx = 0;
+		for (CFBamJpaUInt64Col cur: retlist) {
+			retset[idx++] = cur;
+		}
+		return( retset );
+	}
+
+	/**
+	 *	Read an array of the derived UInt64Col record instances identified by the duplicate key TableIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	TableId	The UInt64Col key attribute of the instance generating the id.
+	 *
+	 *	@return An array of derived instances for the specified key, potentially with 0 elements in the set.
+	 */
+	@Override
+	public ICFBamUInt64Col[] readDerivedByTableIdx( ICFSecAuthorization Authorization,
+		CFLibDbKeyHash256 argTableId )
+	{
+		final String S_ProcName = "readDerivedByTableIdx";
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadUInt64Col(S_ProcName, Authorization);
+		}
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readuint64col", ICFBamSchema.SCHEMA_NAME, ICFBamUInt64ColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+		List<CFBamJpaUInt64Col> retlist = schema.getJpaHooksSchema().getUInt64ColService().findByTableIdx(argTableId);
+		ICFBamUInt64Col[] retset = new ICFBamUInt64Col[retlist.size()];
+		int idx = 0;
+		for (CFBamJpaUInt64Col cur: retlist) {
+			retset[idx++] = cur;
+		}
+		return( retset );
+	}
+
+	/**
+	 *	Read the specific UInt64Col record instance identified by the primary key.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	PKey	The primary key of the UInt64Col instance to be locked.
+	 *
+	 *	@return The record instance for the specified primary key, or null if there is
+	 *		no such existing key value.
+	 *
+	 *	@throws	CFLibNotSupportedException thrown by client-side implementations.
+	 */
+	@Override
+	public ICFBamUInt64Col readRec( ICFSecAuthorization Authorization,
+		CFLibDbKeyHash256 PKey )
+	{
+		final String S_ProcName = "readRec";
+		boolean permissionGranted = canReadUInt64Col(S_ProcName, Authorization);
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readuint64col", ICFBamSchema.SCHEMA_NAME, ICFBamUInt64ColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+
+		throw new CFLibNotImplementedYetException(getClass(), "readRec");
+	}
+
+	/**
+	 *	Lock the specific UInt64Col record instance identified by the primary key.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	PKey	The primary key of the UInt64Col instance to be locked.
+	 *
+	 *	@return The record instance for the specified primary key, or null if there is
+	 *		no such existing key value.
+	 *
+	 *	@throws	CFLibNotSupportedException thrown by client-side implementations.
+	 */
+	@Override
+	public ICFBamUInt64Col lockRec( ICFSecAuthorization Authorization,
+		CFLibDbKeyHash256 PKey )
+	{
+		final String S_ProcName = "lockRec";
+		boolean permissionGranted = canUpdateUInt64Col(S_ProcName, Authorization);
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "updateuint64col", ICFBamSchema.SCHEMA_NAME, ICFBamUInt64ColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+
+		throw new CFLibNotImplementedYetException(getClass(), "lockRec");
+	}
+
+	/**
+	 *	Read all the specific UInt64Col record instances.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@return All the specific UInt64Col instances in the database accessible for the Authorization.
+	 */
+	@Override
+	public ICFBamUInt64Col[] readAllRec( ICFSecAuthorization Authorization ) {
+		final String S_ProcName = "readAllRec";
+		boolean permissionGranted = canReadUInt64Col(S_ProcName, Authorization);
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readuint64col", ICFBamSchema.SCHEMA_NAME, ICFBamUInt64ColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+
+		throw new CFLibNotImplementedYetException(getClass(), "readAllRec");
+	}
+
+
+	/**
+	 *	Read the specific UInt64Col record instance identified by the unique key IdIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	Id	The UInt64Col key attribute of the instance generating the id.
+	 *
+	 *	@return The record instance for the specified key, or null if there is
+	 *		no such existing key value.
+	 *
+	 *	@throws	CFLibNotSupportedException thrown by client-side implementations.
+	 */
+	@Override
+	public ICFBamUInt64Col readRecByIdIdx( ICFSecAuthorization Authorization,
+		CFLibDbKeyHash256 argId )
+	{
+		final String S_ProcName = "readRecByIdIdx";
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadUInt64Col(S_ProcName, Authorization);
+		}
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readuint64col", ICFBamSchema.SCHEMA_NAME, ICFBamUInt64ColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+		throw new CFLibNotImplementedYetException(getClass(), "readRecByIdIdx");
+	}
+
+	/**
+	 *	Read the specific UInt64Col record instance identified by the unique key UNameIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	ScopeId	The UInt64Col key attribute of the instance generating the id.
+	 *
+	 *	@param	Name	The UInt64Col key attribute of the instance generating the id.
+	 *
+	 *	@return The record instance for the specified key, or null if there is
+	 *		no such existing key value.
+	 *
+	 *	@throws	CFLibNotSupportedException thrown by client-side implementations.
+	 */
+	@Override
+	public ICFBamUInt64Col readRecByUNameIdx( ICFSecAuthorization Authorization,
+		CFLibDbKeyHash256 argScopeId,
+		String argName )
+	{
+		final String S_ProcName = "readRecByUNameIdx";
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadUInt64Col(S_ProcName, Authorization);
+		}
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readuint64col", ICFBamSchema.SCHEMA_NAME, ICFBamUInt64ColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+		throw new CFLibNotImplementedYetException(getClass(), "readRecByUNameIdx");
+	}
+
+	/**
+	 *	Read an array of the specific UInt64Col record instances identified by the duplicate key ScopeIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	ScopeId	The UInt64Col key attribute of the instance generating the id.
+	 *
+	 *	@return An array of derived record instances for the specified key, potentially with 0 elements in the set.
+	 *
+	 *	@throws	CFLibNotSupportedException thrown by client-side implementations.
+	 */
+	@Override
+	public ICFBamUInt64Col[] readRecByScopeIdx( ICFSecAuthorization Authorization,
+		CFLibDbKeyHash256 argScopeId )
+	{
+		final String S_ProcName = "readRecByScopeIdx";
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadUInt64Col(S_ProcName, Authorization);
+		}
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readuint64col", ICFBamSchema.SCHEMA_NAME, ICFBamUInt64ColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+		throw new CFLibNotImplementedYetException(getClass(), "readRecByScopeIdx");
+	}
+
+	/**
+	 *	Read an array of the specific UInt64Col record instances identified by the duplicate key DefSchemaIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	DefSchemaId	The UInt64Col key attribute of the instance generating the id.
+	 *
+	 *	@return An array of derived record instances for the specified key, potentially with 0 elements in the set.
+	 *
+	 *	@throws	CFLibNotSupportedException thrown by client-side implementations.
+	 */
+	@Override
+	public ICFBamUInt64Col[] readRecByDefSchemaIdx( ICFSecAuthorization Authorization,
+		CFLibDbKeyHash256 argDefSchemaId )
+	{
+		final String S_ProcName = "readRecByDefSchemaIdx";
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadUInt64Col(S_ProcName, Authorization);
+		}
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readuint64col", ICFBamSchema.SCHEMA_NAME, ICFBamUInt64ColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+		throw new CFLibNotImplementedYetException(getClass(), "readRecByDefSchemaIdx");
+	}
+
+	/**
+	 *	Read an array of the specific UInt64Col record instances identified by the duplicate key PrevIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	PrevId	The UInt64Col key attribute of the instance generating the id.
+	 *
+	 *	@return An array of derived record instances for the specified key, potentially with 0 elements in the set.
+	 *
+	 *	@throws	CFLibNotSupportedException thrown by client-side implementations.
+	 */
+	@Override
+	public ICFBamUInt64Col[] readRecByPrevIdx( ICFSecAuthorization Authorization,
+		CFLibDbKeyHash256 argPrevId )
+	{
+		final String S_ProcName = "readRecByPrevIdx";
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadUInt64Col(S_ProcName, Authorization);
+		}
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readuint64col", ICFBamSchema.SCHEMA_NAME, ICFBamUInt64ColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+		throw new CFLibNotImplementedYetException(getClass(), "readRecByPrevIdx");
+	}
+
+	/**
+	 *	Read an array of the specific UInt64Col record instances identified by the duplicate key NextIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	NextId	The UInt64Col key attribute of the instance generating the id.
+	 *
+	 *	@return An array of derived record instances for the specified key, potentially with 0 elements in the set.
+	 *
+	 *	@throws	CFLibNotSupportedException thrown by client-side implementations.
+	 */
+	@Override
+	public ICFBamUInt64Col[] readRecByNextIdx( ICFSecAuthorization Authorization,
+		CFLibDbKeyHash256 argNextId )
+	{
+		final String S_ProcName = "readRecByNextIdx";
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadUInt64Col(S_ProcName, Authorization);
+		}
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readuint64col", ICFBamSchema.SCHEMA_NAME, ICFBamUInt64ColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+		throw new CFLibNotImplementedYetException(getClass(), "readRecByNextIdx");
+	}
+
+	/**
+	 *	Read an array of the specific UInt64Col record instances identified by the duplicate key ContPrevIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	ScopeId	The UInt64Col key attribute of the instance generating the id.
+	 *
+	 *	@param	PrevId	The UInt64Col key attribute of the instance generating the id.
+	 *
+	 *	@return An array of derived record instances for the specified key, potentially with 0 elements in the set.
+	 *
+	 *	@throws	CFLibNotSupportedException thrown by client-side implementations.
+	 */
+	@Override
+	public ICFBamUInt64Col[] readRecByContPrevIdx( ICFSecAuthorization Authorization,
+		CFLibDbKeyHash256 argScopeId,
+		CFLibDbKeyHash256 argPrevId )
+	{
+		final String S_ProcName = "readRecByContPrevIdx";
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadUInt64Col(S_ProcName, Authorization);
+		}
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readuint64col", ICFBamSchema.SCHEMA_NAME, ICFBamUInt64ColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+		throw new CFLibNotImplementedYetException(getClass(), "readRecByContPrevIdx");
+	}
+
+	/**
+	 *	Read an array of the specific UInt64Col record instances identified by the duplicate key ContNextIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	ScopeId	The UInt64Col key attribute of the instance generating the id.
+	 *
+	 *	@param	NextId	The UInt64Col key attribute of the instance generating the id.
+	 *
+	 *	@return An array of derived record instances for the specified key, potentially with 0 elements in the set.
+	 *
+	 *	@throws	CFLibNotSupportedException thrown by client-side implementations.
+	 */
+	@Override
+	public ICFBamUInt64Col[] readRecByContNextIdx( ICFSecAuthorization Authorization,
+		CFLibDbKeyHash256 argScopeId,
+		CFLibDbKeyHash256 argNextId )
+	{
+		final String S_ProcName = "readRecByContNextIdx";
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadUInt64Col(S_ProcName, Authorization);
+		}
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readuint64col", ICFBamSchema.SCHEMA_NAME, ICFBamUInt64ColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+		throw new CFLibNotImplementedYetException(getClass(), "readRecByContNextIdx");
+	}
+
+	/**
+	 *	Read an array of the specific UInt64Col record instances identified by the duplicate key TableIdx.
+	 *
+	 *	@param	Authorization	The session authorization information.
+	 *
+	 *	@param	TableId	The UInt64Col key attribute of the instance generating the id.
+	 *
+	 *	@return An array of derived record instances for the specified key, potentially with 0 elements in the set.
+	 *
+	 *	@throws	CFLibNotSupportedException thrown by client-side implementations.
+	 */
+	@Override
+	public ICFBamUInt64Col[] readRecByTableIdx( ICFSecAuthorization Authorization,
+		CFLibDbKeyHash256 argTableId )
+	{
+		final String S_ProcName = "readRecByTableIdx";
+		boolean permissionGranted = false;
+		if (!permissionGranted) {
+			permissionGranted = canReadUInt64Col(S_ProcName, Authorization);
+		}
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "readuint64col", ICFBamSchema.SCHEMA_NAME, ICFBamUInt64ColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+		throw new CFLibNotImplementedYetException(getClass(), "readRecByTableIdx");
+	}
+
+	/**
+	 *	Move the specified record up in the chain (i.e. to the previous position.)
+	 *
+	 *	@return	The refreshed record after it has been moved
+	 */
+	@Override
+	public ICFBamUInt64Col moveRecUp( ICFSecAuthorization Authorization,
+		CFLibDbKeyHash256 argId,
+		int revision )
+	{
+		final String S_ProcName = "moveRecUp";
+		boolean permissionGranted = canUpdateUInt64Col(S_ProcName, Authorization);
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "updateuint64col", ICFBamSchema.SCHEMA_NAME, ICFBamUInt64ColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+
+		throw new CFLibNotImplementedYetException(getClass(), "moveRecUp");
+	}
+
+	/**
+	 *	Move the specified record down in the chain (i.e. to the next position.)
+	 *
+	 *	@return	The refreshed record after it has been moved
+	 */
+	@Override
+	public ICFBamUInt64Col moveRecDown( ICFSecAuthorization Authorization,
+		CFLibDbKeyHash256 argId,
+		int revision )
+	{
+		final String S_ProcName = "moveRecDown";
+		boolean permissionGranted = canUpdateUInt64Col(S_ProcName, Authorization);
+		if (!permissionGranted) {
+			throw new CFLibPermissionDeniedException(getClass(), S_ProcName, "updateuint64col", ICFBamSchema.SCHEMA_NAME, ICFBamUInt64ColTable.TABLE_NAME, Authorization.getAuthUuid6().toString());//"Permission '%4$s' denied attempting to access %1$s.%2$s for user id %3$s"
+		}
+
+		throw new CFLibNotImplementedYetException(getClass(), "moveRecDown");
+	}
+}

@@ -1,0 +1,311 @@
+
+// Description: Java 25 Factory service implementation for Relation JPA objects
+
+/*
+ *	server.markhome.mcf.CFBam
+ *
+ *	Copyright (c) 2016-2026 Mark Stephen Sobkow
+ *	
+ *	Mark's Code Fractal CFBam 3.1 Business Application Model
+ *	
+ *	Copyright 2016-2026 Mark Stephen Sobkow
+ *	
+ *	This file is part of Mark's Code Fractal CFBam.
+ *	
+ *	Mark's Code Fractal CFBam is available under dual commercial license from
+ *	Mark Stephen Sobkow, or under the terms of the GNU General Public License,
+ *	Version 3 or later with classpath and static linking exceptions.
+ *	
+ *	As a special exception, Mark Sobkow gives you permission to link this library
+ *	with independent modules to produce an executable, provided that none of them
+ *	conflict with the intent of the GPLv3; that is, you are not allowed to invoke
+ *	the methods of this library from non-GPLv3-compatibly licensed code. You may not
+ *	implement an LPGLv3 "wedge" to try to bypass this restriction. That said, code which
+ *	does not rely on this library is free to specify whatever license its authors decide
+ *	to use. Mark Sobkow specifically rejects the infectious nature of the GPLv3, and
+ *	considers the mere act of including GPLv3 modules in an executable to be perfectly
+ *	reasonable given tools like modern Java's single-jar deployment options.
+ *	
+ *	Mark's Code Fractal CFBam is free software: you can redistribute it and/or
+ *	modify it under the terms of the GNU General Public License as published by
+ *	the Free Software Foundation, either version 3 of the License, or
+ *	(at your option) any later version.
+ *	
+ *	Mark's Code Fractal CFBam is distributed in the hope that it will be useful,
+ *	but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *	GNU General Public License for more details.
+ *	
+ *	You should have received a copy of the GNU General Public License
+ *	along with Mark's Code Fractal CFBam.  If not, see <https://www.gnu.org/licenses/>.
+ *	
+ *	If you wish to modify and use this code without publishing your changes,
+ *	or integrate it with proprietary code, please contact Mark Stephen Sobkow
+ *	for a commercial license at mark.sobkow@gmail.com
+ */
+
+package server.markhome.mcf.v3_1.cfbam.cfbam.jpa;
+
+import java.lang.reflect.*;
+import java.net.*;
+import java.rmi.*;
+import java.sql.*;
+import java.text.*;
+import java.util.*;
+import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.text.StringEscapeUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
+import server.markhome.mcf.v3_1.cflib.*;
+import server.markhome.mcf.v3_1.cflib.dbutil.*;
+import server.markhome.mcf.v3_1.cfsec.cfsec.*;
+import server.markhome.mcf.v3_1.cfint.cfint.*;
+import server.markhome.mcf.v3_1.cfbam.cfbam.*;
+import server.markhome.mcf.v3_1.cfsec.cfsec.jpa.*;
+import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
+
+/*
+ *	Java 25 Factory service implementation for Relation JPA objects.
+ */
+public class CFBamJpaRelationFactoryService
+    implements ICFBamRelationFactory
+{
+    public CFBamJpaRelationFactoryService() { }
+
+    @Override
+    public ICFBamRelationByUNameIdxKey newByUNameIdxKey() {
+		ICFBamRelationByUNameIdxKey key = new CFBamJpaRelationByUNameIdxKey();
+	return( key );
+    }
+
+	public CFBamJpaRelationByUNameIdxKey ensureByUNameIdxKey(ICFBamRelationByUNameIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamJpaRelationByUNameIdxKey) {
+			return( (CFBamJpaRelationByUNameIdxKey)key );
+		}
+		else {
+			CFBamJpaRelationByUNameIdxKey mapped = new CFBamJpaRelationByUNameIdxKey();
+			mapped.setRequiredTableId( key.getRequiredTableId() );
+			mapped.setRequiredName( key.getRequiredName() );
+			return( mapped );
+		}
+	}
+
+    @Override
+    public ICFBamRelationByRelTableIdxKey newByRelTableIdxKey() {
+		ICFBamRelationByRelTableIdxKey key = new CFBamJpaRelationByRelTableIdxKey();
+	return( key );
+    }
+
+	public CFBamJpaRelationByRelTableIdxKey ensureByRelTableIdxKey(ICFBamRelationByRelTableIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamJpaRelationByRelTableIdxKey) {
+			return( (CFBamJpaRelationByRelTableIdxKey)key );
+		}
+		else {
+			CFBamJpaRelationByRelTableIdxKey mapped = new CFBamJpaRelationByRelTableIdxKey();
+			mapped.setRequiredTableId( key.getRequiredTableId() );
+			return( mapped );
+		}
+	}
+
+    @Override
+    public ICFBamRelationByRelCodeVisIdxKey newByRelCodeVisIdxKey() {
+		ICFBamRelationByRelCodeVisIdxKey key = new CFBamJpaRelationByRelCodeVisIdxKey();
+	return( key );
+    }
+
+	public CFBamJpaRelationByRelCodeVisIdxKey ensureByRelCodeVisIdxKey(ICFBamRelationByRelCodeVisIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamJpaRelationByRelCodeVisIdxKey) {
+			return( (CFBamJpaRelationByRelCodeVisIdxKey)key );
+		}
+		else {
+			CFBamJpaRelationByRelCodeVisIdxKey mapped = new CFBamJpaRelationByRelCodeVisIdxKey();
+			mapped.setRequiredCodeVis( key.getRequiredCodeVis() );
+			return( mapped );
+		}
+	}
+
+    @Override
+    public ICFBamRelationByRelTableCodeVisXKey newByRelTableCodeVisXKey() {
+		ICFBamRelationByRelTableCodeVisXKey key = new CFBamJpaRelationByRelTableCodeVisXKey();
+	return( key );
+    }
+
+	public CFBamJpaRelationByRelTableCodeVisXKey ensureByRelTableCodeVisXKey(ICFBamRelationByRelTableCodeVisXKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamJpaRelationByRelTableCodeVisXKey) {
+			return( (CFBamJpaRelationByRelTableCodeVisXKey)key );
+		}
+		else {
+			CFBamJpaRelationByRelTableCodeVisXKey mapped = new CFBamJpaRelationByRelTableCodeVisXKey();
+			mapped.setRequiredTableId( key.getRequiredTableId() );
+			mapped.setRequiredCodeVis( key.getRequiredCodeVis() );
+			return( mapped );
+		}
+	}
+
+    @Override
+    public ICFBamRelationByDefSchemaIdxKey newByDefSchemaIdxKey() {
+		ICFBamRelationByDefSchemaIdxKey key = new CFBamJpaRelationByDefSchemaIdxKey();
+	return( key );
+    }
+
+	public CFBamJpaRelationByDefSchemaIdxKey ensureByDefSchemaIdxKey(ICFBamRelationByDefSchemaIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamJpaRelationByDefSchemaIdxKey) {
+			return( (CFBamJpaRelationByDefSchemaIdxKey)key );
+		}
+		else {
+			CFBamJpaRelationByDefSchemaIdxKey mapped = new CFBamJpaRelationByDefSchemaIdxKey();
+			mapped.setOptionalDefSchemaId( key.getOptionalDefSchemaId() );
+			return( mapped );
+		}
+	}
+
+    @Override
+    public ICFBamRelationByFromKeyIdxKey newByFromKeyIdxKey() {
+		ICFBamRelationByFromKeyIdxKey key = new CFBamJpaRelationByFromKeyIdxKey();
+	return( key );
+    }
+
+	public CFBamJpaRelationByFromKeyIdxKey ensureByFromKeyIdxKey(ICFBamRelationByFromKeyIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamJpaRelationByFromKeyIdxKey) {
+			return( (CFBamJpaRelationByFromKeyIdxKey)key );
+		}
+		else {
+			CFBamJpaRelationByFromKeyIdxKey mapped = new CFBamJpaRelationByFromKeyIdxKey();
+			mapped.setRequiredFromIndexId( key.getRequiredFromIndexId() );
+			return( mapped );
+		}
+	}
+
+    @Override
+    public ICFBamRelationByToTblIdxKey newByToTblIdxKey() {
+		ICFBamRelationByToTblIdxKey key = new CFBamJpaRelationByToTblIdxKey();
+	return( key );
+    }
+
+	public CFBamJpaRelationByToTblIdxKey ensureByToTblIdxKey(ICFBamRelationByToTblIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamJpaRelationByToTblIdxKey) {
+			return( (CFBamJpaRelationByToTblIdxKey)key );
+		}
+		else {
+			CFBamJpaRelationByToTblIdxKey mapped = new CFBamJpaRelationByToTblIdxKey();
+			mapped.setRequiredToTableId( key.getRequiredToTableId() );
+			return( mapped );
+		}
+	}
+
+    @Override
+    public ICFBamRelationByToKeyIdxKey newByToKeyIdxKey() {
+		ICFBamRelationByToKeyIdxKey key = new CFBamJpaRelationByToKeyIdxKey();
+	return( key );
+    }
+
+	public CFBamJpaRelationByToKeyIdxKey ensureByToKeyIdxKey(ICFBamRelationByToKeyIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamJpaRelationByToKeyIdxKey) {
+			return( (CFBamJpaRelationByToKeyIdxKey)key );
+		}
+		else {
+			CFBamJpaRelationByToKeyIdxKey mapped = new CFBamJpaRelationByToKeyIdxKey();
+			mapped.setRequiredToIndexId( key.getRequiredToIndexId() );
+			return( mapped );
+		}
+	}
+
+    @Override
+    public ICFBamRelationByNarrowedIdxKey newByNarrowedIdxKey() {
+		ICFBamRelationByNarrowedIdxKey key = new CFBamJpaRelationByNarrowedIdxKey();
+	return( key );
+    }
+
+	public CFBamJpaRelationByNarrowedIdxKey ensureByNarrowedIdxKey(ICFBamRelationByNarrowedIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamJpaRelationByNarrowedIdxKey) {
+			return( (CFBamJpaRelationByNarrowedIdxKey)key );
+		}
+		else {
+			CFBamJpaRelationByNarrowedIdxKey mapped = new CFBamJpaRelationByNarrowedIdxKey();
+			mapped.setOptionalNarrowedId( key.getOptionalNarrowedId() );
+			return( mapped );
+		}
+	}
+
+    @Override
+    public ICFBamRelation newRec() {
+        ICFBamRelation rec = new CFBamJpaRelation();
+        return( rec );
+    }
+
+	public CFBamJpaRelation ensureRec(ICFBamRelation rec) {
+		if( rec == null ) {
+			return( null );
+		}
+		else if (rec instanceof CFBamJpaRelation) {
+			return( (CFBamJpaRelation)rec );
+		}
+		else {
+			switch(rec.getClassCode()) {
+				case ICFBamRelation.CLASS_CODE: {
+					CFBamJpaRelation mapped = new CFBamJpaRelation();
+					mapped.set(rec);
+					return( mapped ); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureRec",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamRelation",
+						"Unsupported class code " + rec.getClassCode() + " is not a derivative of CFBamRelation");
+			}
+		}
+	}
+
+    @Override
+    public ICFBamRelationH newHRec() {
+        ICFBamRelationH hrec = new CFBamJpaRelationH();
+        return( hrec );
+    }
+
+	public CFBamJpaRelationH ensureHRec(ICFBamRelationH hrec) {
+		if( hrec == null ) {
+			return( null );
+		}
+		else if (hrec instanceof CFBamJpaRelationH) {
+			return( (CFBamJpaRelationH)hrec );
+		}
+		else {
+			switch(hrec.getClassCode()) {
+				case ICFBamRelation.CLASS_CODE: {
+					CFBamJpaRelationH mapped = new CFBamJpaRelationH();
+					mapped.set(hrec);
+					return( mapped ); }
+				default:
+					throw new CFLibUnsupportedClassException(getClass(), "ensureHRec",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamRelation",
+						"Unsupported class code " + hrec.getClassCode() + " is not a derivative of CFBamRelation");
+			}
+		}
+	}
+}
