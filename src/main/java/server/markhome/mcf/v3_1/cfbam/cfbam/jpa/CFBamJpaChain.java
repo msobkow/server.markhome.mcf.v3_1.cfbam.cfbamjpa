@@ -421,7 +421,7 @@ public class CFBamJpaChain
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredId() {
-		return( requiredId );
+		return( getPKey() );
 	}
 
 	@Override
@@ -432,7 +432,7 @@ public class CFBamJpaChain
 				1,
 				"value" );
 		}
-		requiredId = value;
+		setPKey( value );
 	}
 
 	@Override

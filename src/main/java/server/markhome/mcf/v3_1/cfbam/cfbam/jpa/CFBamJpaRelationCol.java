@@ -536,7 +536,7 @@ public class CFBamJpaRelationCol
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredId() {
-		return( requiredId );
+		return( getPKey() );
 	}
 
 	@Override
@@ -547,7 +547,7 @@ public class CFBamJpaRelationCol
 				1,
 				"value" );
 		}
-		requiredId = value;
+		setPKey( value );
 	}
 
 	@Override

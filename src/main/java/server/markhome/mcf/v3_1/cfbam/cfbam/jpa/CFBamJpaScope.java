@@ -211,7 +211,7 @@ public class CFBamJpaScope
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredId() {
-		return( requiredId );
+		return( getPKey() );
 	}
 
 	@Override
@@ -222,7 +222,7 @@ public class CFBamJpaScope
 				1,
 				"value" );
 		}
-		requiredId = value;
+		setPKey( value );
 	}
 
 	@Override
