@@ -78,24 +78,8 @@ public class CFBamJpaRelationColByRelPrevIdxKey
 	}
 
 	@Override
-	public void setRequiredRelationId( CFLibDbKeyHash256 value ) {
-		if( value == null || value.isNull() ) {
-			throw new CFLibNullArgumentException( getClass(),
-				"setRequiredRelationId",
-				1,
-				"value" );
-		}
-		requiredRelationId = value;
-	}
-
-	@Override
 	public CFLibDbKeyHash256 getOptionalPrevId() {
 		return( optionalPrevId );
-	}
-
-	@Override
-	public void setOptionalPrevId( CFLibDbKeyHash256 value ) {
-		optionalPrevId = value;
 	}
 
 	@Override

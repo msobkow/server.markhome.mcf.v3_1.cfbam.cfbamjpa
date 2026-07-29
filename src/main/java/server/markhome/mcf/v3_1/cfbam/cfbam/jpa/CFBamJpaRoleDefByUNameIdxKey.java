@@ -78,17 +78,6 @@ public class CFBamJpaRoleDefByUNameIdxKey
 	}
 
 	@Override
-	public void setRequiredScopeId( CFLibDbKeyHash256 value ) {
-		if( value == null || value.isNull() ) {
-			throw new CFLibNullArgumentException( getClass(),
-				"setRequiredScopeId",
-				1,
-				"value" );
-		}
-		requiredScopeId = value;
-	}
-
-	@Override
 	public String getRequiredName() {
 		return( requiredName );
 	}

@@ -76,17 +76,6 @@ public class CFBamJpaClearSubDep2ByClearSubDep1IdxKey
 	}
 
 	@Override
-	public void setRequiredClearSubDep1Id( CFLibDbKeyHash256 value ) {
-		if( value == null || value.isNull() ) {
-			throw new CFLibNullArgumentException( getClass(),
-				"setRequiredClearSubDep1Id",
-				1,
-				"value" );
-		}
-		requiredClearSubDep1Id = value;
-	}
-
-	@Override
 	public boolean equals( Object obj ) {
 		if (obj == null) {
 			return( false );

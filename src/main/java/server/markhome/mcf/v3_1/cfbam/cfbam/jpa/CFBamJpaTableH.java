@@ -184,24 +184,8 @@ public class CFBamJpaTableH extends CFBamJpaScopeH
 	}
 
 	@Override
-	public void setRequiredSchemaDefId( CFLibDbKeyHash256 value ) {
-		if( value == null || value.isNull() ) {
-			throw new CFLibNullArgumentException( getClass(),
-				"setRequiredSchemaDefId",
-				1,
-				"value" );
-		}
-		requiredSchemaDefId = value;
-	}
-
-	@Override
 	public CFLibDbKeyHash256 getOptionalDefSchemaId() {
 		return( optionalDefSchemaId );
-	}
-
-	@Override
-	public void setOptionalDefSchemaId( CFLibDbKeyHash256 value ) {
-		optionalDefSchemaId = value;
 	}
 
 	@Override
@@ -334,11 +318,6 @@ public class CFBamJpaTableH extends CFBamJpaScopeH
 	}
 
 	@Override
-	public void setOptionalPrimaryIndexId( CFLibDbKeyHash256 value ) {
-		optionalPrimaryIndexId = value;
-	}
-
-	@Override
 	public String getRequiredTableClassCode() {
 		return( requiredTableClassCode );
 	}
@@ -368,28 +347,13 @@ public class CFBamJpaTableH extends CFBamJpaScopeH
 	}
 
 	@Override
-	public void setOptionalLookupIndexId( CFLibDbKeyHash256 value ) {
-		optionalLookupIndexId = value;
-	}
-
-	@Override
 	public CFLibDbKeyHash256 getOptionalAltIndexId() {
 		return( optionalAltIndexId );
 	}
 
 	@Override
-	public void setOptionalAltIndexId( CFLibDbKeyHash256 value ) {
-		optionalAltIndexId = value;
-	}
-
-	@Override
 	public CFLibDbKeyHash256 getOptionalQualifyingTableId() {
 		return( optionalQualifyingTableId );
-	}
-
-	@Override
-	public void setOptionalQualifyingTableId( CFLibDbKeyHash256 value ) {
-		optionalQualifyingTableId = value;
 	}
 
 	@Override

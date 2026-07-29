@@ -78,17 +78,6 @@ public class CFBamJpaPopSubDep1ByUNameIdxKey
 	}
 
 	@Override
-	public void setRequiredPopTopDepId( CFLibDbKeyHash256 value ) {
-		if( value == null || value.isNull() ) {
-			throw new CFLibNullArgumentException( getClass(),
-				"setRequiredPopTopDepId",
-				1,
-				"value" );
-		}
-		requiredPopTopDepId = value;
-	}
-
-	@Override
 	public String getRequiredName() {
 		return( requiredName );
 	}

@@ -78,17 +78,6 @@ public class CFBamJpaSchemaDefByUNameIdxKey
 	}
 
 	@Override
-	public void setRequiredMinorVersionId( CFLibDbKeyHash256 value ) {
-		if( value == null || value.isNull() ) {
-			throw new CFLibNullArgumentException( getClass(),
-				"setRequiredMinorVersionId",
-				1,
-				"value" );
-		}
-		requiredMinorVersionId = value;
-	}
-
-	@Override
 	public String getRequiredName() {
 		return( requiredName );
 	}

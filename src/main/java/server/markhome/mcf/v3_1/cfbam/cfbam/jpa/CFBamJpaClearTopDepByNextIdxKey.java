@@ -76,11 +76,6 @@ public class CFBamJpaClearTopDepByNextIdxKey
 	}
 
 	@Override
-	public void setOptionalNextId( CFLibDbKeyHash256 value ) {
-		optionalNextId = value;
-	}
-
-	@Override
 	public boolean equals( Object obj ) {
 		if (obj == null) {
 			return( false );

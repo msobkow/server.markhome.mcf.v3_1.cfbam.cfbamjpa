@@ -76,11 +76,6 @@ public class CFBamJpaParamByServerTypeIdxKey
 	}
 
 	@Override
-	public void setOptionalTypeId( CFLibDbKeyHash256 value ) {
-		optionalTypeId = value;
-	}
-
-	@Override
 	public boolean equals( Object obj ) {
 		if (obj == null) {
 			return( false );

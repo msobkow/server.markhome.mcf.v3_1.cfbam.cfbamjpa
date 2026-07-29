@@ -76,11 +76,6 @@ public class CFBamJpaRelationByNarrowedIdxKey
 	}
 
 	@Override
-	public void setOptionalNarrowedId( CFLibDbKeyHash256 value ) {
-		optionalNarrowedId = value;
-	}
-
-	@Override
 	public boolean equals( Object obj ) {
 		if (obj == null) {
 			return( false );

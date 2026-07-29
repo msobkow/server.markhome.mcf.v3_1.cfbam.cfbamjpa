@@ -76,17 +76,6 @@ public class CFBamJpaPopDepByRelationIdxKey
 	}
 
 	@Override
-	public void setRequiredRelationId( CFLibDbKeyHash256 value ) {
-		if( value == null || value.isNull() ) {
-			throw new CFLibNullArgumentException( getClass(),
-				"setRequiredRelationId",
-				1,
-				"value" );
-		}
-		requiredRelationId = value;
-	}
-
-	@Override
 	public boolean equals( Object obj ) {
 		if (obj == null) {
 			return( false );

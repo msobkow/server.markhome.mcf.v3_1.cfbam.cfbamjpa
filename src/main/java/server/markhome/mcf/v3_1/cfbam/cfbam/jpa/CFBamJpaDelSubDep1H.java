@@ -106,17 +106,6 @@ public class CFBamJpaDelSubDep1H extends CFBamJpaDelDepH
 	}
 
 	@Override
-	public void setRequiredDelTopDepId( CFLibDbKeyHash256 value ) {
-		if( value == null || value.isNull() ) {
-			throw new CFLibNullArgumentException( getClass(),
-				"setRequiredDelTopDepId",
-				1,
-				"value" );
-		}
-		requiredDelTopDepId = value;
-	}
-
-	@Override
 	public String getRequiredName() {
 		return( requiredName );
 	}

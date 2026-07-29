@@ -76,11 +76,6 @@ public class CFBamJpaSchemaRefByRefSchemaIdxKey
 	}
 
 	@Override
-	public void setOptionalRefSchemaId( CFLibDbKeyHash256 value ) {
-		optionalRefSchemaId = value;
-	}
-
-	@Override
 	public boolean equals( Object obj ) {
 		if (obj == null) {
 			return( false );

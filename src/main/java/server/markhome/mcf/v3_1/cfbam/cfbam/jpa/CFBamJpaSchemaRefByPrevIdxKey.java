@@ -76,11 +76,6 @@ public class CFBamJpaSchemaRefByPrevIdxKey
 	}
 
 	@Override
-	public void setOptionalPrevId( CFLibDbKeyHash256 value ) {
-		optionalPrevId = value;
-	}
-
-	@Override
 	public boolean equals( Object obj ) {
 		if (obj == null) {
 			return( false );

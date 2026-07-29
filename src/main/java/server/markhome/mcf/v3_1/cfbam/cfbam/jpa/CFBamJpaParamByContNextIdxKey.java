@@ -78,24 +78,8 @@ public class CFBamJpaParamByContNextIdxKey
 	}
 
 	@Override
-	public void setRequiredServerMethodId( CFLibDbKeyHash256 value ) {
-		if( value == null || value.isNull() ) {
-			throw new CFLibNullArgumentException( getClass(),
-				"setRequiredServerMethodId",
-				1,
-				"value" );
-		}
-		requiredServerMethodId = value;
-	}
-
-	@Override
 	public CFLibDbKeyHash256 getOptionalNextId() {
 		return( optionalNextId );
-	}
-
-	@Override
-	public void setOptionalNextId( CFLibDbKeyHash256 value ) {
-		optionalNextId = value;
 	}
 
 	@Override

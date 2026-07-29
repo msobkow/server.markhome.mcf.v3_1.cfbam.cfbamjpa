@@ -76,11 +76,6 @@ public class CFBamJpaTableByPrimaryIndexIdxKey
 	}
 
 	@Override
-	public void setOptionalPrimaryIndexId( CFLibDbKeyHash256 value ) {
-		optionalPrimaryIndexId = value;
-	}
-
-	@Override
 	public boolean equals( Object obj ) {
 		if (obj == null) {
 			return( false );

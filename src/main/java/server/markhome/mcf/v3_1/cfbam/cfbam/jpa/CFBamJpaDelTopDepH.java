@@ -142,34 +142,13 @@ public class CFBamJpaDelTopDepH extends CFBamJpaDelDepH
 	}
 
 	@Override
-	public void setRequiredTableId( CFLibDbKeyHash256 value ) {
-		if( value == null || value.isNull() ) {
-			throw new CFLibNullArgumentException( getClass(),
-				"setRequiredTableId",
-				1,
-				"value" );
-		}
-		requiredTableId = value;
-	}
-
-	@Override
 	public CFLibDbKeyHash256 getOptionalPrevId() {
 		return( optionalPrevId );
 	}
 
 	@Override
-	public void setOptionalPrevId( CFLibDbKeyHash256 value ) {
-		optionalPrevId = value;
-	}
-
-	@Override
 	public CFLibDbKeyHash256 getOptionalNextId() {
 		return( optionalNextId );
-	}
-
-	@Override
-	public void setOptionalNextId( CFLibDbKeyHash256 value ) {
-		optionalNextId = value;
 	}
 
     @Override

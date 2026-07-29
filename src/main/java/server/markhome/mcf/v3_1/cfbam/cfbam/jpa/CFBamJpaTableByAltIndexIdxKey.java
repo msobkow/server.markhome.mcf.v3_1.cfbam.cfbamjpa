@@ -76,11 +76,6 @@ public class CFBamJpaTableByAltIndexIdxKey
 	}
 
 	@Override
-	public void setOptionalAltIndexId( CFLibDbKeyHash256 value ) {
-		optionalAltIndexId = value;
-	}
-
-	@Override
 	public boolean equals( Object obj ) {
 		if (obj == null) {
 			return( false );

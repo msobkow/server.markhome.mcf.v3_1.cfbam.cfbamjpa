@@ -76,17 +76,6 @@ public class CFBamJpaPopSubDep1ByPopTopDepIdxKey
 	}
 
 	@Override
-	public void setRequiredPopTopDepId( CFLibDbKeyHash256 value ) {
-		if( value == null || value.isNull() ) {
-			throw new CFLibNullArgumentException( getClass(),
-				"setRequiredPopTopDepId",
-				1,
-				"value" );
-		}
-		requiredPopTopDepId = value;
-	}
-
-	@Override
 	public boolean equals( Object obj ) {
 		if (obj == null) {
 			return( false );

@@ -280,24 +280,8 @@ public class CFBamJpaEnumTagH
 	}
 
 	@Override
-	public void setOptionalDefSchemaId( CFLibDbKeyHash256 value ) {
-		optionalDefSchemaId = value;
-	}
-
-	@Override
 	public CFLibDbKeyHash256 getRequiredEnumId() {
 		return( requiredEnumId );
-	}
-
-	@Override
-	public void setRequiredEnumId( CFLibDbKeyHash256 value ) {
-		if( value == null || value.isNull() ) {
-			throw new CFLibNullArgumentException( getClass(),
-				"setRequiredEnumId",
-				1,
-				"value" );
-		}
-		requiredEnumId = value;
 	}
 
 	@Override
@@ -356,18 +340,8 @@ public class CFBamJpaEnumTagH
 	}
 
 	@Override
-	public void setOptionalPrevId( CFLibDbKeyHash256 value ) {
-		optionalPrevId = value;
-	}
-
-	@Override
 	public CFLibDbKeyHash256 getOptionalNextId() {
 		return( optionalNextId );
-	}
-
-	@Override
-	public void setOptionalNextId( CFLibDbKeyHash256 value ) {
-		optionalNextId = value;
 	}
 
     @Override

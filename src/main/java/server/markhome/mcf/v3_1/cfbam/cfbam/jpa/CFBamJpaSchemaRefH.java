@@ -130,17 +130,6 @@ public class CFBamJpaSchemaRefH extends CFBamJpaScopeH
 	}
 
 	@Override
-	public void setRequiredSchemaId( CFLibDbKeyHash256 value ) {
-		if( value == null || value.isNull() ) {
-			throw new CFLibNullArgumentException( getClass(),
-				"setRequiredSchemaId",
-				1,
-				"value" );
-		}
-		requiredSchemaId = value;
-	}
-
-	@Override
 	public String getRequiredName() {
 		return( requiredName );
 	}
@@ -218,28 +207,13 @@ public class CFBamJpaSchemaRefH extends CFBamJpaScopeH
 	}
 
 	@Override
-	public void setOptionalRefSchemaId( CFLibDbKeyHash256 value ) {
-		optionalRefSchemaId = value;
-	}
-
-	@Override
 	public CFLibDbKeyHash256 getOptionalPrevId() {
 		return( optionalPrevId );
 	}
 
 	@Override
-	public void setOptionalPrevId( CFLibDbKeyHash256 value ) {
-		optionalPrevId = value;
-	}
-
-	@Override
 	public CFLibDbKeyHash256 getOptionalNextId() {
 		return( optionalNextId );
-	}
-
-	@Override
-	public void setOptionalNextId( CFLibDbKeyHash256 value ) {
-		optionalNextId = value;
 	}
 
     @Override

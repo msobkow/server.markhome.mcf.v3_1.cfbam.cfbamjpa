@@ -294,24 +294,8 @@ public class CFBamJpaParamH
 	}
 
 	@Override
-	public void setRequiredServerMethodId( CFLibDbKeyHash256 value ) {
-		if( value == null || value.isNull() ) {
-			throw new CFLibNullArgumentException( getClass(),
-				"setRequiredServerMethodId",
-				1,
-				"value" );
-		}
-		requiredServerMethodId = value;
-	}
-
-	@Override
 	public CFLibDbKeyHash256 getOptionalDefSchemaId() {
 		return( optionalDefSchemaId );
-	}
-
-	@Override
-	public void setOptionalDefSchemaId( CFLibDbKeyHash256 value ) {
-		optionalDefSchemaId = value;
 	}
 
 	@Override
@@ -390,28 +374,13 @@ public class CFBamJpaParamH
 	}
 
 	@Override
-	public void setOptionalTypeId( CFLibDbKeyHash256 value ) {
-		optionalTypeId = value;
-	}
-
-	@Override
 	public CFLibDbKeyHash256 getOptionalPrevId() {
 		return( optionalPrevId );
 	}
 
 	@Override
-	public void setOptionalPrevId( CFLibDbKeyHash256 value ) {
-		optionalPrevId = value;
-	}
-
-	@Override
 	public CFLibDbKeyHash256 getOptionalNextId() {
 		return( optionalNextId );
-	}
-
-	@Override
-	public void setOptionalNextId( CFLibDbKeyHash256 value ) {
-		optionalNextId = value;
 	}
 
     @Override

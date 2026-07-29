@@ -76,11 +76,6 @@ public class CFBamJpaTableByLookupIndexIdxKey
 	}
 
 	@Override
-	public void setOptionalLookupIndexId( CFLibDbKeyHash256 value ) {
-		optionalLookupIndexId = value;
-	}
-
-	@Override
 	public boolean equals( Object obj ) {
 		if (obj == null) {
 			return( false );

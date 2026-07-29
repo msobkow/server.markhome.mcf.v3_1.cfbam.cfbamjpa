@@ -76,11 +76,6 @@ public class CFBamJpaTableColByDataIdxKey
 	}
 
 	@Override
-	public void setOptionalDataId( CFLibDbKeyHash256 value ) {
-		optionalDataId = value;
-	}
-
-	@Override
 	public boolean equals( Object obj ) {
 		if (obj == null) {
 			return( false );

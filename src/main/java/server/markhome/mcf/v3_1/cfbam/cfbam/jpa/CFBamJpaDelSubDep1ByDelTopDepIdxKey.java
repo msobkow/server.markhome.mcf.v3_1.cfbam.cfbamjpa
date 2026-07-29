@@ -76,17 +76,6 @@ public class CFBamJpaDelSubDep1ByDelTopDepIdxKey
 	}
 
 	@Override
-	public void setRequiredDelTopDepId( CFLibDbKeyHash256 value ) {
-		if( value == null || value.isNull() ) {
-			throw new CFLibNullArgumentException( getClass(),
-				"setRequiredDelTopDepId",
-				1,
-				"value" );
-		}
-		requiredDelTopDepId = value;
-	}
-
-	@Override
 	public boolean equals( Object obj ) {
 		if (obj == null) {
 			return( false );

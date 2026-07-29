@@ -76,17 +76,6 @@ public class CFBamJpaPopTopDepByContRelIdxKey
 	}
 
 	@Override
-	public void setRequiredContRelationId( CFLibDbKeyHash256 value ) {
-		if( value == null || value.isNull() ) {
-			throw new CFLibNullArgumentException( getClass(),
-				"setRequiredContRelationId",
-				1,
-				"value" );
-		}
-		requiredContRelationId = value;
-	}
-
-	@Override
 	public boolean equals( Object obj ) {
 		if (obj == null) {
 			return( false );

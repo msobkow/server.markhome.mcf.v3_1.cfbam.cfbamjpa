@@ -300,24 +300,8 @@ public class CFBamJpaIndexColH
 	}
 
 	@Override
-	public void setRequiredIndexId( CFLibDbKeyHash256 value ) {
-		if( value == null || value.isNull() ) {
-			throw new CFLibNullArgumentException( getClass(),
-				"setRequiredIndexId",
-				1,
-				"value" );
-		}
-		requiredIndexId = value;
-	}
-
-	@Override
 	public CFLibDbKeyHash256 getOptionalDefSchemaId() {
 		return( optionalDefSchemaId );
-	}
-
-	@Override
-	public void setOptionalDefSchemaId( CFLibDbKeyHash256 value ) {
-		optionalDefSchemaId = value;
 	}
 
 	@Override
@@ -422,17 +406,6 @@ public class CFBamJpaIndexColH
 	}
 
 	@Override
-	public void setRequiredColumnId( CFLibDbKeyHash256 value ) {
-		if( value == null || value.isNull() ) {
-			throw new CFLibNullArgumentException( getClass(),
-				"setRequiredColumnId",
-				1,
-				"value" );
-		}
-		requiredColumnId = value;
-	}
-
-	@Override
 	public boolean getRequiredIsAscending() {
 		return( requiredIsAscending );
 	}
@@ -448,18 +421,8 @@ public class CFBamJpaIndexColH
 	}
 
 	@Override
-	public void setOptionalPrevId( CFLibDbKeyHash256 value ) {
-		optionalPrevId = value;
-	}
-
-	@Override
 	public CFLibDbKeyHash256 getOptionalNextId() {
 		return( optionalNextId );
-	}
-
-	@Override
-	public void setOptionalNextId( CFLibDbKeyHash256 value ) {
-		optionalNextId = value;
 	}
 
     @Override

@@ -78,17 +78,6 @@ public class CFBamJpaIndexColByUNameIdxKey
 	}
 
 	@Override
-	public void setRequiredIndexId( CFLibDbKeyHash256 value ) {
-		if( value == null || value.isNull() ) {
-			throw new CFLibNullArgumentException( getClass(),
-				"setRequiredIndexId",
-				1,
-				"value" );
-		}
-		requiredIndexId = value;
-	}
-
-	@Override
 	public String getRequiredName() {
 		return( requiredName );
 	}

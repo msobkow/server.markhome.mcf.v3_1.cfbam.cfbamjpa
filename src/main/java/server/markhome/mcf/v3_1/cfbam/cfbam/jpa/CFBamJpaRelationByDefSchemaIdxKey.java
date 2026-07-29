@@ -76,11 +76,6 @@ public class CFBamJpaRelationByDefSchemaIdxKey
 	}
 
 	@Override
-	public void setOptionalDefSchemaId( CFLibDbKeyHash256 value ) {
-		optionalDefSchemaId = value;
-	}
-
-	@Override
 	public boolean equals( Object obj ) {
 		if (obj == null) {
 			return( false );

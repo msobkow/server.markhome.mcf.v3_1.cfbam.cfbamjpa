@@ -78,17 +78,6 @@ public class CFBamJpaClearTopDepByUNameIdxKey
 	}
 
 	@Override
-	public void setRequiredTableId( CFLibDbKeyHash256 value ) {
-		if( value == null || value.isNull() ) {
-			throw new CFLibNullArgumentException( getClass(),
-				"setRequiredTableId",
-				1,
-				"value" );
-		}
-		requiredTableId = value;
-	}
-
-	@Override
 	public String getRequiredName() {
 		return( requiredName );
 	}
