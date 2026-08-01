@@ -95,7 +95,6 @@ public class CFBamJpaTimestampDef extends CFBamJpaAtom
 		return( optionalDummy );
 	}
 
-	@Override
 	public void setOptionalDummy( String value ) {
 		if( value != null && value.length() > 4 ) {
 			throw new CFLibArgumentOverflowException( getClass(),

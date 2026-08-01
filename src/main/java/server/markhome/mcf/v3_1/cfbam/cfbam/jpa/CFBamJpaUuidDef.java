@@ -95,7 +95,6 @@ public class CFBamJpaUuidDef extends CFBamJpaAtom
 		return( optionalInitValue );
 	}
 
-	@Override
 	public void setOptionalInitValue( UUID value ) {
 		optionalInitValue = value;
 	}

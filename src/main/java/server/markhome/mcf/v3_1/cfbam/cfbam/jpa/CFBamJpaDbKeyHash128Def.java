@@ -95,7 +95,6 @@ public class CFBamJpaDbKeyHash128Def extends CFBamJpaAtom
 		return( optionalInitValue );
 	}
 
-	@Override
 	public void setOptionalInitValue( String value ) {
 		if( value != null && value.length() > 32 ) {
 			throw new CFLibArgumentOverflowException( getClass(),

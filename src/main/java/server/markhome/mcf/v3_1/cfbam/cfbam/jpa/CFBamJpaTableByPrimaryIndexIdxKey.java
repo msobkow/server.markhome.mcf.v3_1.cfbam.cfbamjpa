@@ -75,6 +75,10 @@ public class CFBamJpaTableByPrimaryIndexIdxKey
 		return( optionalPrimaryIndexId );
 	}
 
+	public void setOptionalPrimaryIndexId( CFLibDbKeyHash256 value ) {
+		optionalPrimaryIndexId = value;
+	}
+
 	@Override
 	public boolean equals( Object obj ) {
 		if (obj == null) {

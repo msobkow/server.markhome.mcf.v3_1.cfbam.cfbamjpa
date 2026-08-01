@@ -161,12 +161,21 @@ public class CFBamJpaClearSubDep2 extends CFBamJpaClearDep
 		return( requiredClearSubDep1Id );
 	}
 
+	public void setRequiredClearSubDep1Id( CFLibDbKeyHash256 value ) {
+		if( value == null || value.isNull() ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredClearSubDep1Id",
+				1,
+				"value" );
+		}
+		requiredClearSubDep1Id = value;
+	}
+
 	@Override
 	public String getRequiredName() {
 		return( requiredName );
 	}
 
-	@Override
 	public void setRequiredName( String value ) {
 		if( value == null ) {
 			throw new CFLibNullArgumentException( getClass(),

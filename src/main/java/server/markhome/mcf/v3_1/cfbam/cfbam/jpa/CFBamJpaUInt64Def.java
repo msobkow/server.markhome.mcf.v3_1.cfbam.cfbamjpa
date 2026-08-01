@@ -101,7 +101,6 @@ public class CFBamJpaUInt64Def extends CFBamJpaAtom
 		return( optionalInitValue );
 	}
 
-	@Override
 	public void setOptionalInitValue( BigDecimal value ) {
 		if( value != null && value.compareTo( ICFBamUInt64Def.INITVALUE_MIN_VALUE ) < 0 ) {
 			throw new CFLibArgumentUnderflowException( getClass(),
@@ -120,7 +119,6 @@ public class CFBamJpaUInt64Def extends CFBamJpaAtom
 		return( optionalMinValue );
 	}
 
-	@Override
 	public void setOptionalMinValue( BigDecimal value ) {
 		if( value != null && value.compareTo( ICFBamUInt64Def.MINVALUE_MIN_VALUE ) < 0 ) {
 			throw new CFLibArgumentUnderflowException( getClass(),
@@ -139,7 +137,6 @@ public class CFBamJpaUInt64Def extends CFBamJpaAtom
 		return( optionalMaxValue );
 	}
 
-	@Override
 	public void setOptionalMaxValue( BigDecimal value ) {
 		if( value != null && value.compareTo( ICFBamUInt64Def.MAXVALUE_MIN_VALUE ) < 0 ) {
 			throw new CFLibArgumentUnderflowException( getClass(),

@@ -75,6 +75,10 @@ public class CFBamJpaServerListFuncByRetTblIdxKey
 		return( optionalRetTableId );
 	}
 
+	public void setOptionalRetTableId( CFLibDbKeyHash256 value ) {
+		optionalRetTableId = value;
+	}
+
 	@Override
 	public boolean equals( Object obj ) {
 		if (obj == null) {

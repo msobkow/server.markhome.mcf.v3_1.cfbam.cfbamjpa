@@ -77,12 +77,21 @@ public class CFBamJpaSchemaRefByUNameIdxKey
 		return( requiredSchemaId );
 	}
 
+	public void setRequiredSchemaId( CFLibDbKeyHash256 value ) {
+		if( value == null || value.isNull() ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredSchemaId",
+				1,
+				"value" );
+		}
+		requiredSchemaId = value;
+	}
+
 	@Override
 	public String getRequiredName() {
 		return( requiredName );
 	}
 
-	@Override
 	public void setRequiredName( String value ) {
 		if( value == null ) {
 			throw new CFLibNullArgumentException( getClass(),

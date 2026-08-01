@@ -77,9 +77,23 @@ public class CFBamJpaParamByContPrevIdxKey
 		return( requiredServerMethodId );
 	}
 
+	public void setRequiredServerMethodId( CFLibDbKeyHash256 value ) {
+		if( value == null || value.isNull() ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredServerMethodId",
+				1,
+				"value" );
+		}
+		requiredServerMethodId = value;
+	}
+
 	@Override
 	public CFLibDbKeyHash256 getOptionalPrevId() {
 		return( optionalPrevId );
+	}
+
+	public void setOptionalPrevId( CFLibDbKeyHash256 value ) {
+		optionalPrevId = value;
 	}
 
 	@Override

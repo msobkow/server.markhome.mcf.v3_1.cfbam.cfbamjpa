@@ -424,7 +424,6 @@ public class CFBamJpaChain
 		return( getPKey() );
 	}
 
-	@Override
 	public void setRequiredId( CFLibDbKeyHash256 value ) {
 		if( value == null || value.isNull() ) {
 			throw new CFLibNullArgumentException( getClass(),
@@ -450,12 +449,15 @@ public class CFBamJpaChain
 		return( optionalDefSchemaId );
 	}
 
+	public void setOptionalDefSchemaId( CFLibDbKeyHash256 value ) {
+		optionalDefSchemaId = value;
+	}
+
 	@Override
 	public String getRequiredName() {
 		return( requiredName );
 	}
 
-	@Override
 	public void setRequiredName( String value ) {
 		if( value == null ) {
 			throw new CFLibNullArgumentException( getClass(),
@@ -479,7 +481,6 @@ public class CFBamJpaChain
 		return( optionalShortName );
 	}
 
-	@Override
 	public void setOptionalShortName( String value ) {
 		if( value != null && value.length() > 16 ) {
 			throw new CFLibArgumentOverflowException( getClass(),
@@ -497,7 +498,6 @@ public class CFBamJpaChain
 		return( optionalLabel );
 	}
 
-	@Override
 	public void setOptionalLabel( String value ) {
 		if( value != null && value.length() > 64 ) {
 			throw new CFLibArgumentOverflowException( getClass(),
@@ -515,7 +515,6 @@ public class CFBamJpaChain
 		return( optionalShortDescription );
 	}
 
-	@Override
 	public void setOptionalShortDescription( String value ) {
 		if( value != null && value.length() > 128 ) {
 			throw new CFLibArgumentOverflowException( getClass(),
@@ -533,7 +532,6 @@ public class CFBamJpaChain
 		return( optionalDescription );
 	}
 
-	@Override
 	public void setOptionalDescription( String value ) {
 		if( value != null && value.length() > 1023 ) {
 			throw new CFLibArgumentOverflowException( getClass(),
@@ -551,12 +549,21 @@ public class CFBamJpaChain
 		return( requiredTableId );
 	}
 
+	public void setRequiredTableId( CFLibDbKeyHash256 value ) {
+		if( value == null || value.isNull() ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredTableId",
+				1,
+				"value" );
+		}
+		requiredTableId = value;
+	}
+
 	@Override
 	public String getOptionalSuffix() {
 		return( optionalSuffix );
 	}
 
-	@Override
 	public void setOptionalSuffix( String value ) {
 		if( value != null && value.length() > 16 ) {
 			throw new CFLibArgumentOverflowException( getClass(),
@@ -574,9 +581,29 @@ public class CFBamJpaChain
 		return( requiredPrevRelationId );
 	}
 
+	public void setRequiredPrevRelationId( CFLibDbKeyHash256 value ) {
+		if( value == null || value.isNull() ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredPrevRelationId",
+				1,
+				"value" );
+		}
+		requiredPrevRelationId = value;
+	}
+
 	@Override
 	public CFLibDbKeyHash256 getRequiredNextRelationId() {
 		return( requiredNextRelationId );
+	}
+
+	public void setRequiredNextRelationId( CFLibDbKeyHash256 value ) {
+		if( value == null || value.isNull() ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredNextRelationId",
+				1,
+				"value" );
+		}
+		requiredNextRelationId = value;
 	}
 
 	@Override

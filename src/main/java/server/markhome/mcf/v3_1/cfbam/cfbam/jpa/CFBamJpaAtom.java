@@ -95,7 +95,6 @@ public class CFBamJpaAtom extends CFBamJpaValue
 		return( optionalDbName );
 	}
 
-	@Override
 	public void setOptionalDbName( String value ) {
 		if( value != null && value.length() > 32 ) {
 			throw new CFLibArgumentOverflowException( getClass(),

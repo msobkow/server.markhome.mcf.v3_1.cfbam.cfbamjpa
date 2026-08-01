@@ -293,9 +293,23 @@ public class CFBamJpaParamH
 		return( requiredServerMethodId );
 	}
 
+	public void setRequiredServerMethodId( CFLibDbKeyHash256 value ) {
+		if( value == null || value.isNull() ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredServerMethodId",
+				1,
+				"value" );
+		}
+		requiredServerMethodId = value;
+	}
+
 	@Override
 	public CFLibDbKeyHash256 getOptionalDefSchemaId() {
 		return( optionalDefSchemaId );
+	}
+
+	public void setOptionalDefSchemaId( CFLibDbKeyHash256 value ) {
+		optionalDefSchemaId = value;
 	}
 
 	@Override
@@ -303,7 +317,6 @@ public class CFBamJpaParamH
 		return( requiredName );
 	}
 
-	@Override
 	public void setRequiredName( String value ) {
 		if( value == null ) {
 			throw new CFLibNullArgumentException( getClass(),
@@ -327,7 +340,6 @@ public class CFBamJpaParamH
 		return( optionalShortDescription );
 	}
 
-	@Override
 	public void setOptionalShortDescription( String value ) {
 		if( value != null && value.length() > 128 ) {
 			throw new CFLibArgumentOverflowException( getClass(),
@@ -345,7 +357,6 @@ public class CFBamJpaParamH
 		return( optionalDescription );
 	}
 
-	@Override
 	public void setOptionalDescription( String value ) {
 		if( value != null && value.length() > 1023 ) {
 			throw new CFLibArgumentOverflowException( getClass(),
@@ -363,7 +374,6 @@ public class CFBamJpaParamH
 		return( requiredIsNullable );
 	}
 
-	@Override
 	public void setRequiredIsNullable( boolean value ) {
 		requiredIsNullable = value;
 	}
@@ -373,14 +383,26 @@ public class CFBamJpaParamH
 		return( optionalTypeId );
 	}
 
+	public void setOptionalTypeId( CFLibDbKeyHash256 value ) {
+		optionalTypeId = value;
+	}
+
 	@Override
 	public CFLibDbKeyHash256 getOptionalPrevId() {
 		return( optionalPrevId );
 	}
 
+	public void setOptionalPrevId( CFLibDbKeyHash256 value ) {
+		optionalPrevId = value;
+	}
+
 	@Override
 	public CFLibDbKeyHash256 getOptionalNextId() {
 		return( optionalNextId );
+	}
+
+	public void setOptionalNextId( CFLibDbKeyHash256 value ) {
+		optionalNextId = value;
 	}
 
     @Override

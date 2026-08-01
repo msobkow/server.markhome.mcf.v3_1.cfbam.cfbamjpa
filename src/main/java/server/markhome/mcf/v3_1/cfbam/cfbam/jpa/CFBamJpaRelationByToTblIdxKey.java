@@ -75,6 +75,16 @@ public class CFBamJpaRelationByToTblIdxKey
 		return( requiredToTableId );
 	}
 
+	public void setRequiredToTableId( CFLibDbKeyHash256 value ) {
+		if( value == null || value.isNull() ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredToTableId",
+				1,
+				"value" );
+		}
+		requiredToTableId = value;
+	}
+
 	@Override
 	public boolean equals( Object obj ) {
 		if (obj == null) {

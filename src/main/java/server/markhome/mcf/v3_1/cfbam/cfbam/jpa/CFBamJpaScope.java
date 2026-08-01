@@ -214,7 +214,6 @@ public class CFBamJpaScope
 		return( getPKey() );
 	}
 
-	@Override
 	public void setRequiredId( CFLibDbKeyHash256 value ) {
 		if( value == null || value.isNull() ) {
 			throw new CFLibNullArgumentException( getClass(),
@@ -238,6 +237,16 @@ public class CFBamJpaScope
 	@Override
 	public CFLibDbKeyHash256 getRequiredTenantId() {
 		return( requiredTenantId );
+	}
+
+	public void setRequiredTenantId( CFLibDbKeyHash256 value ) {
+		if( value == null || value.isNull() ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredTenantId",
+				1,
+				"value" );
+		}
+		requiredTenantId = value;
 	}
 
 	@Override

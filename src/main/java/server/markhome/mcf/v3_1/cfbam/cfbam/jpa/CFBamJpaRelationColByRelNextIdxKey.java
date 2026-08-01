@@ -77,9 +77,23 @@ public class CFBamJpaRelationColByRelNextIdxKey
 		return( requiredRelationId );
 	}
 
+	public void setRequiredRelationId( CFLibDbKeyHash256 value ) {
+		if( value == null || value.isNull() ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredRelationId",
+				1,
+				"value" );
+		}
+		requiredRelationId = value;
+	}
+
 	@Override
 	public CFLibDbKeyHash256 getOptionalNextId() {
 		return( optionalNextId );
+	}
+
+	public void setOptionalNextId( CFLibDbKeyHash256 value ) {
+		optionalNextId = value;
 	}
 
 	@Override

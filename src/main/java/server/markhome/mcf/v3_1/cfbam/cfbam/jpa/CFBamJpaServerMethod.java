@@ -254,9 +254,23 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 		return( requiredTableId );
 	}
 
+	public void setRequiredTableId( CFLibDbKeyHash256 value ) {
+		if( value == null || value.isNull() ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredTableId",
+				1,
+				"value" );
+		}
+		requiredTableId = value;
+	}
+
 	@Override
 	public CFLibDbKeyHash256 getOptionalDefSchemaId() {
 		return( optionalDefSchemaId );
+	}
+
+	public void setOptionalDefSchemaId( CFLibDbKeyHash256 value ) {
+		optionalDefSchemaId = value;
 	}
 
 	@Override
@@ -264,7 +278,6 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 		return( requiredName );
 	}
 
-	@Override
 	public void setRequiredName( String value ) {
 		if( value == null ) {
 			throw new CFLibNullArgumentException( getClass(),
@@ -288,7 +301,6 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 		return( optionalShortName );
 	}
 
-	@Override
 	public void setOptionalShortName( String value ) {
 		if( value != null && value.length() > 16 ) {
 			throw new CFLibArgumentOverflowException( getClass(),
@@ -306,7 +318,6 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 		return( optionalLabel );
 	}
 
-	@Override
 	public void setOptionalLabel( String value ) {
 		if( value != null && value.length() > 64 ) {
 			throw new CFLibArgumentOverflowException( getClass(),
@@ -324,7 +335,6 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 		return( optionalShortDescription );
 	}
 
-	@Override
 	public void setOptionalShortDescription( String value ) {
 		if( value != null && value.length() > 128 ) {
 			throw new CFLibArgumentOverflowException( getClass(),
@@ -342,7 +352,6 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 		return( optionalDescription );
 	}
 
-	@Override
 	public void setOptionalDescription( String value ) {
 		if( value != null && value.length() > 1023 ) {
 			throw new CFLibArgumentOverflowException( getClass(),
@@ -360,7 +369,6 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 		return( optionalSuffix );
 	}
 
-	@Override
 	public void setOptionalSuffix( String value ) {
 		if( value != null && value.length() > 16 ) {
 			throw new CFLibArgumentOverflowException( getClass(),
@@ -378,7 +386,6 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 		return( requiredIsInstanceMethod );
 	}
 
-	@Override
 	public void setRequiredIsInstanceMethod( boolean value ) {
 		requiredIsInstanceMethod = value;
 	}
@@ -388,7 +395,6 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 		return( requiredIsServerOnly );
 	}
 
-	@Override
 	public void setRequiredIsServerOnly( boolean value ) {
 		requiredIsServerOnly = value;
 	}
@@ -398,7 +404,6 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 		return( requiredCodeVis );
 	}
 
-	@Override
 	public void setRequiredCodeVis( ICFBamPubSchema.CodeVisibilityEnum value ) {
 		if( value == null ) {
 			throw new CFLibNullArgumentException( getClass(),
@@ -414,7 +419,6 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 		return( requiredJMethodBody );
 	}
 
-	@Override
 	public void setRequiredJMethodBody( String value ) {
 		if( value == null ) {
 			throw new CFLibNullArgumentException( getClass(),
@@ -438,7 +442,6 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 		return( requiredCppMethodBody );
 	}
 
-	@Override
 	public void setRequiredCppMethodBody( String value ) {
 		if( value == null ) {
 			throw new CFLibNullArgumentException( getClass(),
@@ -462,7 +465,6 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 		return( requiredCsMethodBody );
 	}
 
-	@Override
 	public void setRequiredCsMethodBody( String value ) {
 		if( value == null ) {
 			throw new CFLibNullArgumentException( getClass(),

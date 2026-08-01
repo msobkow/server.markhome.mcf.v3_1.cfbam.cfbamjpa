@@ -480,7 +480,6 @@ public class CFBamJpaParam
 		return( getPKey() );
 	}
 
-	@Override
 	public void setRequiredId( CFLibDbKeyHash256 value ) {
 		if( value == null || value.isNull() ) {
 			throw new CFLibNullArgumentException( getClass(),
@@ -506,9 +505,23 @@ public class CFBamJpaParam
 		return( requiredServerMethodId );
 	}
 
+	public void setRequiredServerMethodId( CFLibDbKeyHash256 value ) {
+		if( value == null || value.isNull() ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredServerMethodId",
+				1,
+				"value" );
+		}
+		requiredServerMethodId = value;
+	}
+
 	@Override
 	public CFLibDbKeyHash256 getOptionalDefSchemaId() {
 		return( optionalDefSchemaId );
+	}
+
+	public void setOptionalDefSchemaId( CFLibDbKeyHash256 value ) {
+		optionalDefSchemaId = value;
 	}
 
 	@Override
@@ -516,7 +529,6 @@ public class CFBamJpaParam
 		return( requiredName );
 	}
 
-	@Override
 	public void setRequiredName( String value ) {
 		if( value == null ) {
 			throw new CFLibNullArgumentException( getClass(),
@@ -540,7 +552,6 @@ public class CFBamJpaParam
 		return( optionalShortDescription );
 	}
 
-	@Override
 	public void setOptionalShortDescription( String value ) {
 		if( value != null && value.length() > 128 ) {
 			throw new CFLibArgumentOverflowException( getClass(),
@@ -558,7 +569,6 @@ public class CFBamJpaParam
 		return( optionalDescription );
 	}
 
-	@Override
 	public void setOptionalDescription( String value ) {
 		if( value != null && value.length() > 1023 ) {
 			throw new CFLibArgumentOverflowException( getClass(),
@@ -576,7 +586,6 @@ public class CFBamJpaParam
 		return( requiredIsNullable );
 	}
 
-	@Override
 	public void setRequiredIsNullable( boolean value ) {
 		requiredIsNullable = value;
 	}
@@ -586,14 +595,26 @@ public class CFBamJpaParam
 		return( optionalTypeId );
 	}
 
+	public void setOptionalTypeId( CFLibDbKeyHash256 value ) {
+		optionalTypeId = value;
+	}
+
 	@Override
 	public CFLibDbKeyHash256 getOptionalPrevId() {
 		return( optionalPrevId );
 	}
 
+	public void setOptionalPrevId( CFLibDbKeyHash256 value ) {
+		optionalPrevId = value;
+	}
+
 	@Override
 	public CFLibDbKeyHash256 getOptionalNextId() {
 		return( optionalNextId );
+	}
+
+	public void setOptionalNextId( CFLibDbKeyHash256 value ) {
+		optionalNextId = value;
 	}
 
 	@Override

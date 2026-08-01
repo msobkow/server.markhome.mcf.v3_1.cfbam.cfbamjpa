@@ -129,12 +129,21 @@ public class CFBamJpaSchemaRefH extends CFBamJpaScopeH
 		return( requiredSchemaId );
 	}
 
+	public void setRequiredSchemaId( CFLibDbKeyHash256 value ) {
+		if( value == null || value.isNull() ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredSchemaId",
+				1,
+				"value" );
+		}
+		requiredSchemaId = value;
+	}
+
 	@Override
 	public String getRequiredName() {
 		return( requiredName );
 	}
 
-	@Override
 	public void setRequiredName( String value ) {
 		if( value == null ) {
 			throw new CFLibNullArgumentException( getClass(),
@@ -158,7 +167,6 @@ public class CFBamJpaSchemaRefH extends CFBamJpaScopeH
 		return( requiredRefModelName );
 	}
 
-	@Override
 	public void setRequiredRefModelName( String value ) {
 		if( value == null ) {
 			throw new CFLibNullArgumentException( getClass(),
@@ -182,7 +190,6 @@ public class CFBamJpaSchemaRefH extends CFBamJpaScopeH
 		return( requiredIncludeRoot );
 	}
 
-	@Override
 	public void setRequiredIncludeRoot( String value ) {
 		if( value == null ) {
 			throw new CFLibNullArgumentException( getClass(),
@@ -206,14 +213,26 @@ public class CFBamJpaSchemaRefH extends CFBamJpaScopeH
 		return( optionalRefSchemaId );
 	}
 
+	public void setOptionalRefSchemaId( CFLibDbKeyHash256 value ) {
+		optionalRefSchemaId = value;
+	}
+
 	@Override
 	public CFLibDbKeyHash256 getOptionalPrevId() {
 		return( optionalPrevId );
 	}
 
+	public void setOptionalPrevId( CFLibDbKeyHash256 value ) {
+		optionalPrevId = value;
+	}
+
 	@Override
 	public CFLibDbKeyHash256 getOptionalNextId() {
 		return( optionalNextId );
+	}
+
+	public void setOptionalNextId( CFLibDbKeyHash256 value ) {
+		optionalNextId = value;
 	}
 
     @Override

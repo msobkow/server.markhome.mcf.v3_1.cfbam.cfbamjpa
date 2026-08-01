@@ -107,7 +107,6 @@ public class CFBamJpaBoolDefH extends CFBamJpaAtomH
 		return( optionalInitValue );
 	}
 
-	@Override
 	public void setOptionalInitValue( Boolean value ) {
 		optionalInitValue = value;
 	}
@@ -117,7 +116,6 @@ public class CFBamJpaBoolDefH extends CFBamJpaAtomH
 		return( optionalFalseString );
 	}
 
-	@Override
 	public void setOptionalFalseString( String value ) {
 		if( value != null && value.length() > 32 ) {
 			throw new CFLibArgumentOverflowException( getClass(),
@@ -135,7 +133,6 @@ public class CFBamJpaBoolDefH extends CFBamJpaAtomH
 		return( optionalTrueString );
 	}
 
-	@Override
 	public void setOptionalTrueString( String value ) {
 		if( value != null && value.length() > 32 ) {
 			throw new CFLibArgumentOverflowException( getClass(),
@@ -153,7 +150,6 @@ public class CFBamJpaBoolDefH extends CFBamJpaAtomH
 		return( optionalNullString );
 	}
 
-	@Override
 	public void setOptionalNullString( String value ) {
 		if( value != null && value.length() > 32 ) {
 			throw new CFLibArgumentOverflowException( getClass(),

@@ -305,7 +305,6 @@ public class CFBamJpaRoleDef
 		return( getPKey() );
 	}
 
-	@Override
 	public void setRequiredId( CFLibDbKeyHash256 value ) {
 		if( value == null || value.isNull() ) {
 			throw new CFLibNullArgumentException( getClass(),
@@ -331,9 +330,23 @@ public class CFBamJpaRoleDef
 		return( requiredScopeId );
 	}
 
+	public void setRequiredScopeId( CFLibDbKeyHash256 value ) {
+		if( value == null || value.isNull() ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredScopeId",
+				1,
+				"value" );
+		}
+		requiredScopeId = value;
+	}
+
 	@Override
 	public CFLibDbKeyHash256 getOptionalDefSchemaId() {
 		return( optionalDefSchemaId );
+	}
+
+	public void setOptionalDefSchemaId( CFLibDbKeyHash256 value ) {
+		optionalDefSchemaId = value;
 	}
 
 	@Override
@@ -341,7 +354,6 @@ public class CFBamJpaRoleDef
 		return( requiredName );
 	}
 
-	@Override
 	public void setRequiredName( String value ) {
 		if( value == null ) {
 			throw new CFLibNullArgumentException( getClass(),
@@ -365,7 +377,6 @@ public class CFBamJpaRoleDef
 		return( requiredEnables );
 	}
 
-	@Override
 	public void setRequiredEnables( String value ) {
 		if( value == null ) {
 			throw new CFLibNullArgumentException( getClass(),
@@ -389,7 +400,6 @@ public class CFBamJpaRoleDef
 		return( requiredIncludes );
 	}
 
-	@Override
 	public void setRequiredIncludes( String value ) {
 		if( value == null ) {
 			throw new CFLibNullArgumentException( getClass(),

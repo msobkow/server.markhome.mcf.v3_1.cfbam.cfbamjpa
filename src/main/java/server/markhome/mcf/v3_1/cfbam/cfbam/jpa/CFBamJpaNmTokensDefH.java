@@ -127,7 +127,6 @@ public class CFBamJpaNmTokensDefH extends CFBamJpaAtomH
 		return( optionalInitValue );
 	}
 
-	@Override
 	public void setOptionalInitValue( String value ) {
 		if( value != null && value.length() > 256 ) {
 			throw new CFLibArgumentOverflowException( getClass(),

@@ -494,9 +494,23 @@ public class CFBamJpaRelation extends CFBamJpaScope
 		return( requiredTableId );
 	}
 
+	public void setRequiredTableId( CFLibDbKeyHash256 value ) {
+		if( value == null || value.isNull() ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredTableId",
+				1,
+				"value" );
+		}
+		requiredTableId = value;
+	}
+
 	@Override
 	public CFLibDbKeyHash256 getOptionalDefSchemaId() {
 		return( optionalDefSchemaId );
+	}
+
+	public void setOptionalDefSchemaId( CFLibDbKeyHash256 value ) {
+		optionalDefSchemaId = value;
 	}
 
 	@Override
@@ -504,7 +518,6 @@ public class CFBamJpaRelation extends CFBamJpaScope
 		return( requiredName );
 	}
 
-	@Override
 	public void setRequiredName( String value ) {
 		if( value == null ) {
 			throw new CFLibNullArgumentException( getClass(),
@@ -528,7 +541,6 @@ public class CFBamJpaRelation extends CFBamJpaScope
 		return( optionalShortName );
 	}
 
-	@Override
 	public void setOptionalShortName( String value ) {
 		if( value != null && value.length() > 16 ) {
 			throw new CFLibArgumentOverflowException( getClass(),
@@ -546,7 +558,6 @@ public class CFBamJpaRelation extends CFBamJpaScope
 		return( optionalLabel );
 	}
 
-	@Override
 	public void setOptionalLabel( String value ) {
 		if( value != null && value.length() > 64 ) {
 			throw new CFLibArgumentOverflowException( getClass(),
@@ -564,7 +575,6 @@ public class CFBamJpaRelation extends CFBamJpaScope
 		return( optionalShortDescription );
 	}
 
-	@Override
 	public void setOptionalShortDescription( String value ) {
 		if( value != null && value.length() > 128 ) {
 			throw new CFLibArgumentOverflowException( getClass(),
@@ -582,7 +592,6 @@ public class CFBamJpaRelation extends CFBamJpaScope
 		return( optionalDescription );
 	}
 
-	@Override
 	public void setOptionalDescription( String value ) {
 		if( value != null && value.length() > 1023 ) {
 			throw new CFLibArgumentOverflowException( getClass(),
@@ -600,7 +609,6 @@ public class CFBamJpaRelation extends CFBamJpaScope
 		return( requiredRelationType );
 	}
 
-	@Override
 	public void setRequiredRelationType( ICFBamPubSchema.RelationTypeEnum value ) {
 		if( value == null ) {
 			throw new CFLibNullArgumentException( getClass(),
@@ -616,7 +624,6 @@ public class CFBamJpaRelation extends CFBamJpaScope
 		return( optionalDbName );
 	}
 
-	@Override
 	public void setOptionalDbName( String value ) {
 		if( value != null && value.length() > 32 ) {
 			throw new CFLibArgumentOverflowException( getClass(),
@@ -634,7 +641,6 @@ public class CFBamJpaRelation extends CFBamJpaScope
 		return( optionalSuffix );
 	}
 
-	@Override
 	public void setOptionalSuffix( String value ) {
 		if( value != null && value.length() > 16 ) {
 			throw new CFLibArgumentOverflowException( getClass(),
@@ -652,9 +658,29 @@ public class CFBamJpaRelation extends CFBamJpaScope
 		return( requiredFromIndexId );
 	}
 
+	public void setRequiredFromIndexId( CFLibDbKeyHash256 value ) {
+		if( value == null || value.isNull() ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredFromIndexId",
+				1,
+				"value" );
+		}
+		requiredFromIndexId = value;
+	}
+
 	@Override
 	public CFLibDbKeyHash256 getRequiredToTableId() {
 		return( requiredToTableId );
+	}
+
+	public void setRequiredToTableId( CFLibDbKeyHash256 value ) {
+		if( value == null || value.isNull() ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredToTableId",
+				1,
+				"value" );
+		}
+		requiredToTableId = value;
 	}
 
 	@Override
@@ -662,12 +688,21 @@ public class CFBamJpaRelation extends CFBamJpaScope
 		return( requiredToIndexId );
 	}
 
+	public void setRequiredToIndexId( CFLibDbKeyHash256 value ) {
+		if( value == null || value.isNull() ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredToIndexId",
+				1,
+				"value" );
+		}
+		requiredToIndexId = value;
+	}
+
 	@Override
 	public boolean getRequiredIsRequired() {
 		return( requiredIsRequired );
 	}
 
-	@Override
 	public void setRequiredIsRequired( boolean value ) {
 		requiredIsRequired = value;
 	}
@@ -677,7 +712,6 @@ public class CFBamJpaRelation extends CFBamJpaScope
 		return( requiredIsXsdContainer );
 	}
 
-	@Override
 	public void setRequiredIsXsdContainer( boolean value ) {
 		requiredIsXsdContainer = value;
 	}
@@ -687,7 +721,6 @@ public class CFBamJpaRelation extends CFBamJpaScope
 		return( requiredIsLateResolver );
 	}
 
-	@Override
 	public void setRequiredIsLateResolver( boolean value ) {
 		requiredIsLateResolver = value;
 	}
@@ -697,7 +730,6 @@ public class CFBamJpaRelation extends CFBamJpaScope
 		return( requiredAllowAddendum );
 	}
 
-	@Override
 	public void setRequiredAllowAddendum( boolean value ) {
 		requiredAllowAddendum = value;
 	}
@@ -707,12 +739,15 @@ public class CFBamJpaRelation extends CFBamJpaScope
 		return( optionalNarrowedId );
 	}
 
+	public void setOptionalNarrowedId( CFLibDbKeyHash256 value ) {
+		optionalNarrowedId = value;
+	}
+
 	@Override
 	public ICFBamPubSchema.CodeVisibilityEnum getRequiredCodeVis() {
 		return( requiredCodeVis );
 	}
 
-	@Override
 	public void setRequiredCodeVis( ICFBamPubSchema.CodeVisibilityEnum value ) {
 		if( value == null ) {
 			throw new CFLibNullArgumentException( getClass(),

@@ -77,12 +77,21 @@ public class CFBamJpaTableBySchemaCodeVisIdxKey
 		return( requiredSchemaDefId );
 	}
 
+	public void setRequiredSchemaDefId( CFLibDbKeyHash256 value ) {
+		if( value == null || value.isNull() ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredSchemaDefId",
+				1,
+				"value" );
+		}
+		requiredSchemaDefId = value;
+	}
+
 	@Override
 	public ICFBamPubSchema.CodeVisibilityEnum getRequiredCodeVis() {
 		return( requiredCodeVis );
 	}
 
-	@Override
 	public void setRequiredCodeVis( ICFBamPubSchema.CodeVisibilityEnum value ) {
 		if( value == null ) {
 			throw new CFLibNullArgumentException( getClass(),

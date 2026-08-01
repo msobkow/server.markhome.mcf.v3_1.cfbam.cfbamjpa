@@ -75,6 +75,16 @@ public class CFBamJpaSchemaTweakBySchemaIdxKey
 		return( requiredSchemaDefId );
 	}
 
+	public void setRequiredSchemaDefId( CFLibDbKeyHash256 value ) {
+		if( value == null || value.isNull() ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredSchemaDefId",
+				1,
+				"value" );
+		}
+		requiredSchemaDefId = value;
+	}
+
 	@Override
 	public boolean equals( Object obj ) {
 		if (obj == null) {

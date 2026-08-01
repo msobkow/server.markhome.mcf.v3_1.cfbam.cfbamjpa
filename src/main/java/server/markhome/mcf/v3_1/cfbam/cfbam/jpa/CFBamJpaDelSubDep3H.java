@@ -105,12 +105,21 @@ public class CFBamJpaDelSubDep3H extends CFBamJpaDelDepH
 		return( requiredDelSubDep2Id );
 	}
 
+	public void setRequiredDelSubDep2Id( CFLibDbKeyHash256 value ) {
+		if( value == null || value.isNull() ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredDelSubDep2Id",
+				1,
+				"value" );
+		}
+		requiredDelSubDep2Id = value;
+	}
+
 	@Override
 	public String getRequiredName() {
 		return( requiredName );
 	}
 
-	@Override
 	public void setRequiredName( String value ) {
 		if( value == null ) {
 			throw new CFLibNullArgumentException( getClass(),

@@ -105,12 +105,21 @@ public class CFBamJpaPopTopDepH extends CFBamJpaPopDepH
 		return( requiredContRelationId );
 	}
 
+	public void setRequiredContRelationId( CFLibDbKeyHash256 value ) {
+		if( value == null || value.isNull() ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredContRelationId",
+				1,
+				"value" );
+		}
+		requiredContRelationId = value;
+	}
+
 	@Override
 	public String getRequiredName() {
 		return( requiredName );
 	}
 
-	@Override
 	public void setRequiredName( String value ) {
 		if( value == null ) {
 			throw new CFLibNullArgumentException( getClass(),

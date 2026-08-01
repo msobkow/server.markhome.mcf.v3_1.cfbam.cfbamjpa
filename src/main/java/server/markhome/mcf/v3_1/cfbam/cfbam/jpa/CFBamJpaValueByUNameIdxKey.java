@@ -77,12 +77,21 @@ public class CFBamJpaValueByUNameIdxKey
 		return( requiredScopeId );
 	}
 
+	public void setRequiredScopeId( CFLibDbKeyHash256 value ) {
+		if( value == null || value.isNull() ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredScopeId",
+				1,
+				"value" );
+		}
+		requiredScopeId = value;
+	}
+
 	@Override
 	public String getRequiredName() {
 		return( requiredName );
 	}
 
-	@Override
 	public void setRequiredName( String value ) {
 		if( value == null ) {
 			throw new CFLibNullArgumentException( getClass(),

@@ -75,6 +75,16 @@ public class CFBamJpaChainByPrevRelIdxKey
 		return( requiredPrevRelationId );
 	}
 
+	public void setRequiredPrevRelationId( CFLibDbKeyHash256 value ) {
+		if( value == null || value.isNull() ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredPrevRelationId",
+				1,
+				"value" );
+		}
+		requiredPrevRelationId = value;
+	}
+
 	@Override
 	public boolean equals( Object obj ) {
 		if (obj == null) {

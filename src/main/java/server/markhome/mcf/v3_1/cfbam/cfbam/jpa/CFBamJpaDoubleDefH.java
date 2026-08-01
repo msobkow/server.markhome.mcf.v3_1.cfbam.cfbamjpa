@@ -104,7 +104,6 @@ public class CFBamJpaDoubleDefH extends CFBamJpaAtomH
 		return( optionalInitValue );
 	}
 
-	@Override
 	public void setOptionalInitValue( Double value ) {
 		if( value < ICFBamDoubleDef.INITVALUE_MIN_VALUE ) {
 			throw new CFLibArgumentUnderflowException( getClass(),
@@ -130,7 +129,6 @@ public class CFBamJpaDoubleDefH extends CFBamJpaAtomH
 		return( optionalMinValue );
 	}
 
-	@Override
 	public void setOptionalMinValue( Double value ) {
 		if( value < ICFBamDoubleDef.MINVALUE_MIN_VALUE ) {
 			throw new CFLibArgumentUnderflowException( getClass(),
@@ -156,7 +154,6 @@ public class CFBamJpaDoubleDefH extends CFBamJpaAtomH
 		return( optionalMaxValue );
 	}
 
-	@Override
 	public void setOptionalMaxValue( Double value ) {
 		if( value < ICFBamDoubleDef.MAXVALUE_MIN_VALUE ) {
 			throw new CFLibArgumentUnderflowException( getClass(),

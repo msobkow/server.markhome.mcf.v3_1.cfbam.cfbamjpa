@@ -130,7 +130,6 @@ public class CFBamJpaTextDefH extends CFBamJpaAtomH
 		return( optionalInitValue );
 	}
 
-	@Override
 	public void setOptionalInitValue( String value ) {
 		if( value != null && value.length() > 65535 ) {
 			throw new CFLibArgumentOverflowException( getClass(),
@@ -148,7 +147,6 @@ public class CFBamJpaTextDefH extends CFBamJpaAtomH
 		return( optionalXmlElementName );
 	}
 
-	@Override
 	public void setOptionalXmlElementName( String value ) {
 		if( value != null && value.length() > 192 ) {
 			throw new CFLibArgumentOverflowException( getClass(),

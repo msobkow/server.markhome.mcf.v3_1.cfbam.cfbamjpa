@@ -285,7 +285,6 @@ public class CFBamJpaTweakH
 		return( requiredTenantId );
 	}
 
-	@Override
 	public void setRequiredTenantId( CFLibDbKeyHash256 value ) {
 		if( value == null || value.isNull() ) {
 			throw new CFLibNullArgumentException( getClass(),
@@ -301,12 +300,21 @@ public class CFBamJpaTweakH
 		return( requiredScopeId );
 	}
 
+	public void setRequiredScopeId( CFLibDbKeyHash256 value ) {
+		if( value == null || value.isNull() ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredScopeId",
+				1,
+				"value" );
+		}
+		requiredScopeId = value;
+	}
+
 	@Override
 	public CFLibDbKeyHash256 getOptionalDefSchemaTenantId() {
 		return( optionalDefSchemaTenantId );
 	}
 
-	@Override
 	public void setOptionalDefSchemaTenantId( CFLibDbKeyHash256 value ) {
 		optionalDefSchemaTenantId = value;
 	}
@@ -316,12 +324,15 @@ public class CFBamJpaTweakH
 		return( optionalDefSchemaId );
 	}
 
+	public void setOptionalDefSchemaId( CFLibDbKeyHash256 value ) {
+		optionalDefSchemaId = value;
+	}
+
 	@Override
 	public String getRequiredName() {
 		return( requiredName );
 	}
 
-	@Override
 	public void setRequiredName( String value ) {
 		if( value == null ) {
 			throw new CFLibNullArgumentException( getClass(),
@@ -345,7 +356,6 @@ public class CFBamJpaTweakH
 		return( requiredReplacesInherited );
 	}
 
-	@Override
 	public void setRequiredReplacesInherited( boolean value ) {
 		requiredReplacesInherited = value;
 	}
@@ -355,7 +365,6 @@ public class CFBamJpaTweakH
 		return( requiredTweakGelText );
 	}
 
-	@Override
 	public void setRequiredTweakGelText( String value ) {
 		if( value == null ) {
 			throw new CFLibNullArgumentException( getClass(),

@@ -207,9 +207,23 @@ public class CFBamJpaClearDep extends CFBamJpaScope
 		return( requiredRelationId );
 	}
 
+	public void setRequiredRelationId( CFLibDbKeyHash256 value ) {
+		if( value == null || value.isNull() ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredRelationId",
+				1,
+				"value" );
+		}
+		requiredRelationId = value;
+	}
+
 	@Override
 	public CFLibDbKeyHash256 getOptionalDefSchemaId() {
 		return( optionalDefSchemaId );
+	}
+
+	public void setOptionalDefSchemaId( CFLibDbKeyHash256 value ) {
+		optionalDefSchemaId = value;
 	}
 
 	@Override
