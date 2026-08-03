@@ -76,6 +76,7 @@ public class CFBamJpaClearTopDepByNextIdxKey
 	}
 
 	public void setOptionalNextId( CFLibDbKeyHash256 value ) {
+		
 		optionalNextId = value;
 	}
 

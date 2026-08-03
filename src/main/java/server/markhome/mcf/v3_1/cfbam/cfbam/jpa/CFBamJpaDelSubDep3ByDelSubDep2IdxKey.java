@@ -82,6 +82,7 @@ public class CFBamJpaDelSubDep3ByDelSubDep2IdxKey
 				1,
 				"value" );
 		}
+		
 		requiredDelSubDep2Id = value;
 	}
 

@@ -82,6 +82,7 @@ public class CFBamJpaClearDepByClearDepIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredRelationId = value;
 	}
 

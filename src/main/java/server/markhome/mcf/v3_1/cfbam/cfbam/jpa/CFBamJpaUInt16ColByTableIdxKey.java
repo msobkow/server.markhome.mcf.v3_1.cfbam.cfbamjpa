@@ -82,6 +82,7 @@ public class CFBamJpaUInt16ColByTableIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredTableId = value;
 	}
 

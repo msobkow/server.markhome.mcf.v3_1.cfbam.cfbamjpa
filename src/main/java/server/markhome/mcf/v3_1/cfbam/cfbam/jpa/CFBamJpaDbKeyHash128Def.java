@@ -104,6 +104,7 @@ public class CFBamJpaDbKeyHash128Def extends CFBamJpaAtom
 				value.length(),
 				32 );
 		}
+		
 		optionalInitValue = value;
 	}
 

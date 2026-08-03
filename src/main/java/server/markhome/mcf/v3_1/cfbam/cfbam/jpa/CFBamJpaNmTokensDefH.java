@@ -103,21 +103,38 @@ public class CFBamJpaNmTokensDefH extends CFBamJpaAtomH
 
 	@Override
 	public void setRequiredMaxLen( int value ) {
-		if( value < ICFBamNmTokensDef.MAXLEN_MIN_VALUE ) {
+		if( value < ICFBamPubNmTokensDef.MAXLEN_MIN_VALUE ) {
 			throw new CFLibArgumentUnderflowException( getClass(),
 				"setRequiredMaxLen",
 				1,
 				"value",
 				value,
-				ICFBamNmTokensDef.MAXLEN_MIN_VALUE );
+				ICFBamPubNmTokensDef.MAXLEN_MIN_VALUE );
 		}
-		if( value > ICFBamNmTokensDef.MAXLEN_MAX_VALUE ) {
+		if( value > ICFBamPubNmTokensDef.MAXLEN_MAX_VALUE ) {
 			throw new CFLibArgumentOverflowException( getClass(),
 				"setRequiredMaxLen",
 				1,
 				"value",
 				value,
-				ICFBamNmTokensDef.MAXLEN_MAX_VALUE );
+				ICFBamPubNmTokensDef.MAXLEN_MAX_VALUE );
+		}
+		
+		if( value < ICFBamPubNmTokensDef.MAXLEN_MIN_VALUE ) {
+			throw new CFLibArgumentUnderflowException( getClass(),
+				"setRequiredMaxLen",
+				1,
+				"value",
+				value,
+				ICFBamPubNmTokensDef.MAXLEN_MIN_VALUE );
+		}
+		if( value > ICFBamPubNmTokensDef.MAXLEN_MAX_VALUE ) {
+			throw new CFLibArgumentOverflowException( getClass(),
+				"setRequiredMaxLen",
+				1,
+				"value",
+				value,
+				ICFBamPubNmTokensDef.MAXLEN_MAX_VALUE );
 		}
 		requiredMaxLen = value;
 	}
@@ -136,6 +153,7 @@ public class CFBamJpaNmTokensDefH extends CFBamJpaAtomH
 				value.length(),
 				256 );
 		}
+		
 		optionalInitValue = value;
 	}
 

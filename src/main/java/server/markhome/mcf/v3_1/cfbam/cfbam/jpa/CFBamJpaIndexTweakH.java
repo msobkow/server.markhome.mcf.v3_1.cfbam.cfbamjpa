@@ -108,6 +108,7 @@ public class CFBamJpaIndexTweakH extends CFBamJpaTweakH
 				1,
 				"value" );
 		}
+		
 		requiredIndexId = value;
 	}
 

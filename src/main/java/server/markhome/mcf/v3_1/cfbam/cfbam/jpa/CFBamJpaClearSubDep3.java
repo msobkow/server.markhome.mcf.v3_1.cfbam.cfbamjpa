@@ -160,6 +160,7 @@ public class CFBamJpaClearSubDep3 extends CFBamJpaClearDep
 				1,
 				"value" );
 		}
+		
 		requiredClearSubDep2Id = value;
 	}
 
@@ -183,6 +184,7 @@ public class CFBamJpaClearSubDep3 extends CFBamJpaClearDep
 				value.length(),
 				192 );
 		}
+		
 		requiredName = value;
 	}
 

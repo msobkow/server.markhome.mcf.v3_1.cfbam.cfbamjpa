@@ -108,6 +108,7 @@ public class CFBamJpaDelDepH extends CFBamJpaScopeH
 	}
 
 	public void setOptionalDefSchemaId( CFLibDbKeyHash256 value ) {
+		
 		optionalDefSchemaId = value;
 	}
 
@@ -123,6 +124,7 @@ public class CFBamJpaDelDepH extends CFBamJpaScopeH
 				1,
 				"value" );
 		}
+		
 		requiredRelationId = value;
 	}
 

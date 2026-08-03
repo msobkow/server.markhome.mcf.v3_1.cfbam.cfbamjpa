@@ -107,6 +107,7 @@ public class CFBamJpaServerProcH extends CFBamJpaServerMethodH
 				value.length(),
 				16 );
 		}
+		
 		optionalDummy = value;
 	}
 

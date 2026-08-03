@@ -84,6 +84,7 @@ public class CFBamJpaEnumTagByEnumNameIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredEnumId = value;
 	}
 
@@ -107,6 +108,7 @@ public class CFBamJpaEnumTagByEnumNameIdxKey
 				value.length(),
 				64 );
 		}
+		
 		requiredName = value;
 	}
 

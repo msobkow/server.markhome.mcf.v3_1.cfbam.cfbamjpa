@@ -82,6 +82,7 @@ public class CFBamJpaBlobTypeBySchemaIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredSchemaDefId = value;
 	}
 

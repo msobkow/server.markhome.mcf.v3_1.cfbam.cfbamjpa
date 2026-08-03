@@ -113,6 +113,7 @@ public class CFBamJpaSchemaRoleH extends CFBamJpaRoleDefH
 				1,
 				"value" );
 		}
+		
 		requiredSchemaDefId = value;
 	}
 
@@ -128,6 +129,7 @@ public class CFBamJpaSchemaRoleH extends CFBamJpaRoleDefH
 				1,
 				"value" );
 		}
+		
 		requiredRoleScope = value;
 	}
 

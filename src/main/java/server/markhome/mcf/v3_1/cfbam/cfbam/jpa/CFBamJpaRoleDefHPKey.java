@@ -164,6 +164,7 @@ public class CFBamJpaRoleDefHPKey
 				1,
 				"value" );
 		}
+		
 		requiredId = value;
 	}
 

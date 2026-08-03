@@ -82,6 +82,7 @@ public class CFBamJpaClearTopDepByClrTopDepTblIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredTableId = value;
 	}
 

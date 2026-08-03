@@ -76,6 +76,7 @@ public class CFBamJpaClearTopDepByPrevIdxKey
 	}
 
 	public void setOptionalPrevId( CFLibDbKeyHash256 value ) {
+		
 		optionalPrevId = value;
 	}
 

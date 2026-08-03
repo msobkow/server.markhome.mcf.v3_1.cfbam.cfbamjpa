@@ -164,6 +164,7 @@ public class CFBamJpaScopeHPKey
 				1,
 				"value" );
 		}
+		
 		requiredId = value;
 	}
 

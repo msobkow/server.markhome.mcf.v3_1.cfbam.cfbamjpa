@@ -108,6 +108,7 @@ public class CFBamJpaBoolColH extends CFBamJpaBoolDefH
 				1,
 				"value" );
 		}
+		
 		requiredTableId = value;
 	}
 

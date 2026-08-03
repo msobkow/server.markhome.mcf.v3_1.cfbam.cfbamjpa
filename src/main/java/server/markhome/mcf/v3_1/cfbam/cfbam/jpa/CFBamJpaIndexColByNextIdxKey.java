@@ -76,6 +76,7 @@ public class CFBamJpaIndexColByNextIdxKey
 	}
 
 	public void setOptionalNextId( CFLibDbKeyHash256 value ) {
+		
 		optionalNextId = value;
 	}
 

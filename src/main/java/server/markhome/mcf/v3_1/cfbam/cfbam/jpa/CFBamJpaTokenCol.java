@@ -156,6 +156,7 @@ public class CFBamJpaTokenCol extends CFBamJpaTokenDef
 				1,
 				"value" );
 		}
+		
 		requiredTableId = value;
 	}
 

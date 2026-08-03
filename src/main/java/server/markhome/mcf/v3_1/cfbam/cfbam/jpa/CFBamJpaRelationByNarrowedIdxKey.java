@@ -76,6 +76,7 @@ public class CFBamJpaRelationByNarrowedIdxKey
 	}
 
 	public void setOptionalNarrowedId( CFLibDbKeyHash256 value ) {
+		
 		optionalNarrowedId = value;
 	}
 

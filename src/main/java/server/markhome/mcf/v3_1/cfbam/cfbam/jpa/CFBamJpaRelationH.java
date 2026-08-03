@@ -180,6 +180,7 @@ public class CFBamJpaRelationH extends CFBamJpaScopeH
 				1,
 				"value" );
 		}
+		
 		requiredTableId = value;
 	}
 
@@ -189,6 +190,7 @@ public class CFBamJpaRelationH extends CFBamJpaScopeH
 	}
 
 	public void setOptionalDefSchemaId( CFLibDbKeyHash256 value ) {
+		
 		optionalDefSchemaId = value;
 	}
 
@@ -212,6 +214,7 @@ public class CFBamJpaRelationH extends CFBamJpaScopeH
 				value.length(),
 				192 );
 		}
+		
 		requiredName = value;
 	}
 
@@ -229,6 +232,7 @@ public class CFBamJpaRelationH extends CFBamJpaScopeH
 				value.length(),
 				16 );
 		}
+		
 		optionalShortName = value;
 	}
 
@@ -246,6 +250,7 @@ public class CFBamJpaRelationH extends CFBamJpaScopeH
 				value.length(),
 				64 );
 		}
+		
 		optionalLabel = value;
 	}
 
@@ -263,6 +268,7 @@ public class CFBamJpaRelationH extends CFBamJpaScopeH
 				value.length(),
 				128 );
 		}
+		
 		optionalShortDescription = value;
 	}
 
@@ -280,6 +286,7 @@ public class CFBamJpaRelationH extends CFBamJpaScopeH
 				value.length(),
 				1023 );
 		}
+		
 		optionalDescription = value;
 	}
 
@@ -295,6 +302,7 @@ public class CFBamJpaRelationH extends CFBamJpaScopeH
 				1,
 				"value" );
 		}
+		
 		requiredRelationType = value;
 	}
 
@@ -312,6 +320,7 @@ public class CFBamJpaRelationH extends CFBamJpaScopeH
 				value.length(),
 				32 );
 		}
+		
 		optionalDbName = value;
 	}
 
@@ -329,6 +338,7 @@ public class CFBamJpaRelationH extends CFBamJpaScopeH
 				value.length(),
 				16 );
 		}
+		
 		optionalSuffix = value;
 	}
 
@@ -344,6 +354,7 @@ public class CFBamJpaRelationH extends CFBamJpaScopeH
 				1,
 				"value" );
 		}
+		
 		requiredFromIndexId = value;
 	}
 
@@ -359,6 +370,7 @@ public class CFBamJpaRelationH extends CFBamJpaScopeH
 				1,
 				"value" );
 		}
+		
 		requiredToTableId = value;
 	}
 
@@ -374,6 +386,7 @@ public class CFBamJpaRelationH extends CFBamJpaScopeH
 				1,
 				"value" );
 		}
+		
 		requiredToIndexId = value;
 	}
 
@@ -383,6 +396,7 @@ public class CFBamJpaRelationH extends CFBamJpaScopeH
 	}
 
 	public void setRequiredIsRequired( boolean value ) {
+		
 		requiredIsRequired = value;
 	}
 
@@ -392,6 +406,7 @@ public class CFBamJpaRelationH extends CFBamJpaScopeH
 	}
 
 	public void setRequiredIsXsdContainer( boolean value ) {
+		
 		requiredIsXsdContainer = value;
 	}
 
@@ -401,6 +416,7 @@ public class CFBamJpaRelationH extends CFBamJpaScopeH
 	}
 
 	public void setRequiredIsLateResolver( boolean value ) {
+		
 		requiredIsLateResolver = value;
 	}
 
@@ -410,6 +426,7 @@ public class CFBamJpaRelationH extends CFBamJpaScopeH
 	}
 
 	public void setRequiredAllowAddendum( boolean value ) {
+		
 		requiredAllowAddendum = value;
 	}
 
@@ -419,6 +436,7 @@ public class CFBamJpaRelationH extends CFBamJpaScopeH
 	}
 
 	public void setOptionalNarrowedId( CFLibDbKeyHash256 value ) {
+		
 		optionalNarrowedId = value;
 	}
 
@@ -434,6 +452,7 @@ public class CFBamJpaRelationH extends CFBamJpaScopeH
 				1,
 				"value" );
 		}
+		
 		requiredCodeVis = value;
 	}
 

@@ -112,6 +112,7 @@ public class CFBamJpaPopSubDep3H extends CFBamJpaPopDepH
 				1,
 				"value" );
 		}
+		
 		requiredPopSubDep2Id = value;
 	}
 
@@ -135,6 +136,7 @@ public class CFBamJpaPopSubDep3H extends CFBamJpaPopDepH
 				value.length(),
 				192 );
 		}
+		
 		requiredName = value;
 	}
 

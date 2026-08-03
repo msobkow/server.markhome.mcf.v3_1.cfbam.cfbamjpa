@@ -76,6 +76,7 @@ public class CFBamJpaSchemaRefByRefSchemaIdxKey
 	}
 
 	public void setOptionalRefSchemaId( CFLibDbKeyHash256 value ) {
+		
 		optionalRefSchemaId = value;
 	}
 

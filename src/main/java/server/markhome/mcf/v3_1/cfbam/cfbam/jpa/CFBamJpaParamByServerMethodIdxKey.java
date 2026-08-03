@@ -82,6 +82,7 @@ public class CFBamJpaParamByServerMethodIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredServerMethodId = value;
 	}
 

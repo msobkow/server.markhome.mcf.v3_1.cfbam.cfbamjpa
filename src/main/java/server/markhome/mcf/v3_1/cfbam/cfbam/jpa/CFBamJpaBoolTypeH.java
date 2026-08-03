@@ -108,6 +108,7 @@ public class CFBamJpaBoolTypeH extends CFBamJpaBoolDefH
 				1,
 				"value" );
 		}
+		
 		requiredSchemaDefId = value;
 	}
 

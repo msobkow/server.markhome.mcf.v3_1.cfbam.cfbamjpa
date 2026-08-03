@@ -82,6 +82,7 @@ public class CFBamJpaValueByScopeIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredScopeId = value;
 	}
 

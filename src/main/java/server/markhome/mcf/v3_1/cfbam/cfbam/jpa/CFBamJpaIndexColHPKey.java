@@ -164,6 +164,7 @@ public class CFBamJpaIndexColHPKey
 				1,
 				"value" );
 		}
+		
 		requiredId = value;
 	}
 

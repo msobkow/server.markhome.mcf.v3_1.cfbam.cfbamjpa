@@ -136,6 +136,7 @@ public class CFBamJpaSchemaRefH extends CFBamJpaScopeH
 				1,
 				"value" );
 		}
+		
 		requiredSchemaId = value;
 	}
 
@@ -159,6 +160,7 @@ public class CFBamJpaSchemaRefH extends CFBamJpaScopeH
 				value.length(),
 				192 );
 		}
+		
 		requiredName = value;
 	}
 
@@ -182,6 +184,7 @@ public class CFBamJpaSchemaRefH extends CFBamJpaScopeH
 				value.length(),
 				1024 );
 		}
+		
 		requiredRefModelName = value;
 	}
 
@@ -205,6 +208,7 @@ public class CFBamJpaSchemaRefH extends CFBamJpaScopeH
 				value.length(),
 				1024 );
 		}
+		
 		requiredIncludeRoot = value;
 	}
 
@@ -214,6 +218,7 @@ public class CFBamJpaSchemaRefH extends CFBamJpaScopeH
 	}
 
 	public void setOptionalRefSchemaId( CFLibDbKeyHash256 value ) {
+		
 		optionalRefSchemaId = value;
 	}
 
@@ -223,6 +228,7 @@ public class CFBamJpaSchemaRefH extends CFBamJpaScopeH
 	}
 
 	public void setOptionalPrevId( CFLibDbKeyHash256 value ) {
+		
 		optionalPrevId = value;
 	}
 
@@ -232,6 +238,7 @@ public class CFBamJpaSchemaRefH extends CFBamJpaScopeH
 	}
 
 	public void setOptionalNextId( CFLibDbKeyHash256 value ) {
+		
 		optionalNextId = value;
 	}
 

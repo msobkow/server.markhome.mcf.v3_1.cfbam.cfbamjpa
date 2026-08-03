@@ -108,6 +108,7 @@ public class CFBamJpaTimeTypeH extends CFBamJpaTimeDefH
 				1,
 				"value" );
 		}
+		
 		requiredSchemaDefId = value;
 	}
 

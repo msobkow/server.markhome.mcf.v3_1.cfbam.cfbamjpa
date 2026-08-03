@@ -102,6 +102,7 @@ public class CFBamJpaServerObjFuncH extends CFBamJpaServerMethodH
 	}
 
 	public void setOptionalRetTableId( CFLibDbKeyHash256 value ) {
+		
 		optionalRetTableId = value;
 	}
 

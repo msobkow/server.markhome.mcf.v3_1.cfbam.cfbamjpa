@@ -84,6 +84,7 @@ public class CFBamJpaRelationColByUNameIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredRelationId = value;
 	}
 
@@ -107,6 +108,7 @@ public class CFBamJpaRelationColByUNameIdxKey
 				value.length(),
 				192 );
 		}
+		
 		requiredName = value;
 	}
 

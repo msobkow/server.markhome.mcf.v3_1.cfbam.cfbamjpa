@@ -221,7 +221,8 @@ public class CFBamJpaScope
 				1,
 				"value" );
 		}
-		setPKey( value );
+		
+		setPKey(value);
 	}
 
 	@Override
@@ -246,6 +247,7 @@ public class CFBamJpaScope
 				1,
 				"value" );
 		}
+		
 		requiredTenantId = value;
 	}
 

@@ -147,6 +147,7 @@ public class CFBamJpaIndexH extends CFBamJpaScopeH
 				1,
 				"value" );
 		}
+		
 		requiredTableId = value;
 	}
 
@@ -156,6 +157,7 @@ public class CFBamJpaIndexH extends CFBamJpaScopeH
 	}
 
 	public void setOptionalDefSchemaId( CFLibDbKeyHash256 value ) {
+		
 		optionalDefSchemaId = value;
 	}
 
@@ -179,6 +181,7 @@ public class CFBamJpaIndexH extends CFBamJpaScopeH
 				value.length(),
 				192 );
 		}
+		
 		requiredName = value;
 	}
 
@@ -196,6 +199,7 @@ public class CFBamJpaIndexH extends CFBamJpaScopeH
 				value.length(),
 				16 );
 		}
+		
 		optionalShortName = value;
 	}
 
@@ -213,6 +217,7 @@ public class CFBamJpaIndexH extends CFBamJpaScopeH
 				value.length(),
 				64 );
 		}
+		
 		optionalLabel = value;
 	}
 
@@ -230,6 +235,7 @@ public class CFBamJpaIndexH extends CFBamJpaScopeH
 				value.length(),
 				128 );
 		}
+		
 		optionalShortDescription = value;
 	}
 
@@ -247,6 +253,7 @@ public class CFBamJpaIndexH extends CFBamJpaScopeH
 				value.length(),
 				1023 );
 		}
+		
 		optionalDescription = value;
 	}
 
@@ -264,6 +271,7 @@ public class CFBamJpaIndexH extends CFBamJpaScopeH
 				value.length(),
 				32 );
 		}
+		
 		optionalDbName = value;
 	}
 
@@ -281,6 +289,7 @@ public class CFBamJpaIndexH extends CFBamJpaScopeH
 				value.length(),
 				16 );
 		}
+		
 		optionalSuffix = value;
 	}
 
@@ -290,6 +299,7 @@ public class CFBamJpaIndexH extends CFBamJpaScopeH
 	}
 
 	public void setRequiredIsUnique( boolean value ) {
+		
 		requiredIsUnique = value;
 	}
 
@@ -299,6 +309,7 @@ public class CFBamJpaIndexH extends CFBamJpaScopeH
 	}
 
 	public void setRequiredIsDbMapped( boolean value ) {
+		
 		requiredIsDbMapped = value;
 	}
 
@@ -314,6 +325,7 @@ public class CFBamJpaIndexH extends CFBamJpaScopeH
 				1,
 				"value" );
 		}
+		
 		requiredCodeVis = value;
 	}
 

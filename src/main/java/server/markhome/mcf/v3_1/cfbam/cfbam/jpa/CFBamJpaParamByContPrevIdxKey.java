@@ -84,6 +84,7 @@ public class CFBamJpaParamByContPrevIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredServerMethodId = value;
 	}
 
@@ -93,6 +94,7 @@ public class CFBamJpaParamByContPrevIdxKey
 	}
 
 	public void setOptionalPrevId( CFLibDbKeyHash256 value ) {
+		
 		optionalPrevId = value;
 	}
 

@@ -108,6 +108,7 @@ public class CFBamJpaBlobColH extends CFBamJpaBlobDefH
 				1,
 				"value" );
 		}
+		
 		requiredTableId = value;
 	}
 

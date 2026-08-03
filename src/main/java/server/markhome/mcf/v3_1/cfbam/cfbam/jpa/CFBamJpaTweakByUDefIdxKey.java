@@ -90,6 +90,7 @@ public class CFBamJpaTweakByUDefIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredTenantId = value;
 	}
 
@@ -105,6 +106,7 @@ public class CFBamJpaTweakByUDefIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredScopeId = value;
 	}
 
@@ -114,6 +116,7 @@ public class CFBamJpaTweakByUDefIdxKey
 	}
 
 	public void setOptionalDefSchemaTenantId( CFLibDbKeyHash256 value ) {
+		
 		optionalDefSchemaTenantId = value;
 	}
 
@@ -123,6 +126,7 @@ public class CFBamJpaTweakByUDefIdxKey
 	}
 
 	public void setOptionalDefSchemaId( CFLibDbKeyHash256 value ) {
+		
 		optionalDefSchemaId = value;
 	}
 
@@ -146,6 +150,7 @@ public class CFBamJpaTweakByUDefIdxKey
 				value.length(),
 				192 );
 		}
+		
 		requiredName = value;
 	}
 

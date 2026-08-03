@@ -156,6 +156,7 @@ public class CFBamJpaDbKeyHash512Col extends CFBamJpaDbKeyHash512Def
 				1,
 				"value" );
 		}
+		
 		requiredTableId = value;
 	}
 

@@ -84,6 +84,7 @@ public class CFBamJpaIndexColByIdxPrevIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredIndexId = value;
 	}
 
@@ -93,6 +94,7 @@ public class CFBamJpaIndexColByIdxPrevIdxKey
 	}
 
 	public void setOptionalPrevId( CFLibDbKeyHash256 value ) {
+		
 		optionalPrevId = value;
 	}
 

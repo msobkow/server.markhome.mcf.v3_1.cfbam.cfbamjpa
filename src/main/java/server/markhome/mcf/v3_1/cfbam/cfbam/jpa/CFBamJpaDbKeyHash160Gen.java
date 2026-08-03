@@ -100,21 +100,38 @@ public class CFBamJpaDbKeyHash160Gen extends CFBamJpaDbKeyHash160Type
 
 	@Override
 	public void setRequiredSlice( short value ) {
-		if( value < ICFBamDbKeyHash160Gen.SLICE_MIN_VALUE ) {
+		if( value < ICFBamPubDbKeyHash160Gen.SLICE_MIN_VALUE ) {
 			throw new CFLibArgumentUnderflowException( getClass(),
 				"setRequiredSlice",
 				1,
 				"value",
 				value,
-				ICFBamDbKeyHash160Gen.SLICE_MIN_VALUE );
+				ICFBamPubDbKeyHash160Gen.SLICE_MIN_VALUE );
 		}
-		if( value > ICFBamDbKeyHash160Gen.SLICE_MAX_VALUE ) {
+		if( value > ICFBamPubDbKeyHash160Gen.SLICE_MAX_VALUE ) {
 			throw new CFLibArgumentOverflowException( getClass(),
 				"setRequiredSlice",
 				1,
 				"value",
 				value,
-				ICFBamDbKeyHash160Gen.SLICE_MAX_VALUE );
+				ICFBamPubDbKeyHash160Gen.SLICE_MAX_VALUE );
+		}
+		
+		if( value < ICFBamPubDbKeyHash160Gen.SLICE_MIN_VALUE ) {
+			throw new CFLibArgumentUnderflowException( getClass(),
+				"setRequiredSlice",
+				1,
+				"value",
+				value,
+				ICFBamPubDbKeyHash160Gen.SLICE_MIN_VALUE );
+		}
+		if( value > ICFBamPubDbKeyHash160Gen.SLICE_MAX_VALUE ) {
+			throw new CFLibArgumentOverflowException( getClass(),
+				"setRequiredSlice",
+				1,
+				"value",
+				value,
+				ICFBamPubDbKeyHash160Gen.SLICE_MAX_VALUE );
 		}
 		requiredSlice = value;
 	}
@@ -126,21 +143,38 @@ public class CFBamJpaDbKeyHash160Gen extends CFBamJpaDbKeyHash160Type
 
 	@Override
 	public void setRequiredBlockSize( int value ) {
-		if( value < ICFBamDbKeyHash160Gen.BLOCKSIZE_MIN_VALUE ) {
+		if( value < ICFBamPubDbKeyHash160Gen.BLOCKSIZE_MIN_VALUE ) {
 			throw new CFLibArgumentUnderflowException( getClass(),
 				"setRequiredBlockSize",
 				1,
 				"value",
 				value,
-				ICFBamDbKeyHash160Gen.BLOCKSIZE_MIN_VALUE );
+				ICFBamPubDbKeyHash160Gen.BLOCKSIZE_MIN_VALUE );
 		}
-		if( value > ICFBamDbKeyHash160Gen.BLOCKSIZE_MAX_VALUE ) {
+		if( value > ICFBamPubDbKeyHash160Gen.BLOCKSIZE_MAX_VALUE ) {
 			throw new CFLibArgumentOverflowException( getClass(),
 				"setRequiredBlockSize",
 				1,
 				"value",
 				value,
-				ICFBamDbKeyHash160Gen.BLOCKSIZE_MAX_VALUE );
+				ICFBamPubDbKeyHash160Gen.BLOCKSIZE_MAX_VALUE );
+		}
+		
+		if( value < ICFBamPubDbKeyHash160Gen.BLOCKSIZE_MIN_VALUE ) {
+			throw new CFLibArgumentUnderflowException( getClass(),
+				"setRequiredBlockSize",
+				1,
+				"value",
+				value,
+				ICFBamPubDbKeyHash160Gen.BLOCKSIZE_MIN_VALUE );
+		}
+		if( value > ICFBamPubDbKeyHash160Gen.BLOCKSIZE_MAX_VALUE ) {
+			throw new CFLibArgumentOverflowException( getClass(),
+				"setRequiredBlockSize",
+				1,
+				"value",
+				value,
+				ICFBamPubDbKeyHash160Gen.BLOCKSIZE_MAX_VALUE );
 		}
 		requiredBlockSize = value;
 	}

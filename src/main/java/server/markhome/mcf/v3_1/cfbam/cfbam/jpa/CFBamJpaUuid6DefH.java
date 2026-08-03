@@ -107,6 +107,7 @@ public class CFBamJpaUuid6DefH extends CFBamJpaAtomH
 				value.length(),
 				62 );
 		}
+		
 		optionalInitValue = value;
 	}
 

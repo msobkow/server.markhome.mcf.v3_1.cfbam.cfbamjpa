@@ -108,6 +108,7 @@ public class CFBamJpaTokenColH extends CFBamJpaTokenDefH
 				1,
 				"value" );
 		}
+		
 		requiredTableId = value;
 	}
 

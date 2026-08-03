@@ -82,6 +82,7 @@ public class CFBamJpaClearSubDep3ByClearSubDep2IdxKey
 				1,
 				"value" );
 		}
+		
 		requiredClearSubDep2Id = value;
 	}
 

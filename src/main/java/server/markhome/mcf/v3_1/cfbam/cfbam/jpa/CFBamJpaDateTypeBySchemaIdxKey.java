@@ -82,6 +82,7 @@ public class CFBamJpaDateTypeBySchemaIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredSchemaDefId = value;
 	}
 

@@ -82,6 +82,7 @@ public class CFBamJpaDbKeyHash256ColByTableIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredTableId = value;
 	}
 

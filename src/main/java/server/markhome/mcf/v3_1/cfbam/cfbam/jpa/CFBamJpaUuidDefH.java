@@ -99,6 +99,7 @@ public class CFBamJpaUuidDefH extends CFBamJpaAtomH
 	}
 
 	public void setOptionalInitValue( UUID value ) {
+		
 		optionalInitValue = value;
 	}
 

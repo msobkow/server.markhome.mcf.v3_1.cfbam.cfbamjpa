@@ -156,6 +156,7 @@ public class CFBamJpaNmTokensType extends CFBamJpaNmTokensDef
 				1,
 				"value" );
 		}
+		
 		requiredSchemaDefId = value;
 	}
 

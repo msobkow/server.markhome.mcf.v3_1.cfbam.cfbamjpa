@@ -108,6 +108,7 @@ public class CFBamJpaUInt32TypeH extends CFBamJpaUInt32DefH
 				1,
 				"value" );
 		}
+		
 		requiredSchemaDefId = value;
 	}
 

@@ -156,6 +156,7 @@ public class CFBamJpaDoubleType extends CFBamJpaDoubleDef
 				1,
 				"value" );
 		}
+		
 		requiredSchemaDefId = value;
 	}
 

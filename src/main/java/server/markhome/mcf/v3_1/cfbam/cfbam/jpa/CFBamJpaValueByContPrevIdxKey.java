@@ -84,6 +84,7 @@ public class CFBamJpaValueByContPrevIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredScopeId = value;
 	}
 
@@ -93,6 +94,7 @@ public class CFBamJpaValueByContPrevIdxKey
 	}
 
 	public void setOptionalPrevId( CFLibDbKeyHash256 value ) {
+		
 		optionalPrevId = value;
 	}
 

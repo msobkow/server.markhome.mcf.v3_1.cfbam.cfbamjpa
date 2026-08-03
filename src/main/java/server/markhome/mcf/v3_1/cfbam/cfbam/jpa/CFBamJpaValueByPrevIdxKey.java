@@ -76,6 +76,7 @@ public class CFBamJpaValueByPrevIdxKey
 	}
 
 	public void setOptionalPrevId( CFLibDbKeyHash256 value ) {
+		
 		optionalPrevId = value;
 	}
 

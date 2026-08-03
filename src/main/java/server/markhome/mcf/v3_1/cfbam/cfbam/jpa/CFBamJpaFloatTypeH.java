@@ -108,6 +108,7 @@ public class CFBamJpaFloatTypeH extends CFBamJpaFloatDefH
 				1,
 				"value" );
 		}
+		
 		requiredSchemaDefId = value;
 	}
 

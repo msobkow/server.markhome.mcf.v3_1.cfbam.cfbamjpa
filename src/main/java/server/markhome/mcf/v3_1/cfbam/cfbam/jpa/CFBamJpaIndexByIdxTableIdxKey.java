@@ -82,6 +82,7 @@ public class CFBamJpaIndexByIdxTableIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredTableId = value;
 	}
 

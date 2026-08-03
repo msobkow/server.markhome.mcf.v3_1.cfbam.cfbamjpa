@@ -82,6 +82,7 @@ public class CFBamJpaBlobColByTableIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredTableId = value;
 	}
 

@@ -82,6 +82,7 @@ public class CFBamJpaEnumTagByEnumIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredEnumId = value;
 	}
 

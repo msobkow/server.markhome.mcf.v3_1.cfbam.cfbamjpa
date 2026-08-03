@@ -112,6 +112,7 @@ public class CFBamJpaDelSubDep2H extends CFBamJpaDelDepH
 				1,
 				"value" );
 		}
+		
 		requiredDelSubDep1Id = value;
 	}
 
@@ -135,6 +136,7 @@ public class CFBamJpaDelSubDep2H extends CFBamJpaDelDepH
 				value.length(),
 				192 );
 		}
+		
 		requiredName = value;
 	}
 

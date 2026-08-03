@@ -82,6 +82,7 @@ public class CFBamJpaClearSubDep1ByClearTopDepIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredClearTopDepId = value;
 	}
 

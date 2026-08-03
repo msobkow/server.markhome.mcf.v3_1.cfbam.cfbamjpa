@@ -109,21 +109,38 @@ public class CFBamJpaNumberDef extends CFBamJpaAtom
 
 	@Override
 	public void setRequiredDigits( short value ) {
-		if( value < ICFBamNumberDef.DIGITS_MIN_VALUE ) {
+		if( value < ICFBamPubNumberDef.DIGITS_MIN_VALUE ) {
 			throw new CFLibArgumentUnderflowException( getClass(),
 				"setRequiredDigits",
 				1,
 				"value",
 				value,
-				ICFBamNumberDef.DIGITS_MIN_VALUE );
+				ICFBamPubNumberDef.DIGITS_MIN_VALUE );
 		}
-		if( value > ICFBamNumberDef.DIGITS_MAX_VALUE ) {
+		if( value > ICFBamPubNumberDef.DIGITS_MAX_VALUE ) {
 			throw new CFLibArgumentOverflowException( getClass(),
 				"setRequiredDigits",
 				1,
 				"value",
 				value,
-				ICFBamNumberDef.DIGITS_MAX_VALUE );
+				ICFBamPubNumberDef.DIGITS_MAX_VALUE );
+		}
+		
+		if( value < ICFBamPubNumberDef.DIGITS_MIN_VALUE ) {
+			throw new CFLibArgumentUnderflowException( getClass(),
+				"setRequiredDigits",
+				1,
+				"value",
+				value,
+				ICFBamPubNumberDef.DIGITS_MIN_VALUE );
+		}
+		if( value > ICFBamPubNumberDef.DIGITS_MAX_VALUE ) {
+			throw new CFLibArgumentOverflowException( getClass(),
+				"setRequiredDigits",
+				1,
+				"value",
+				value,
+				ICFBamPubNumberDef.DIGITS_MAX_VALUE );
 		}
 		requiredDigits = value;
 	}
@@ -135,21 +152,38 @@ public class CFBamJpaNumberDef extends CFBamJpaAtom
 
 	@Override
 	public void setRequiredPrecis( short value ) {
-		if( value < ICFBamNumberDef.PRECIS_MIN_VALUE ) {
+		if( value < ICFBamPubNumberDef.PRECIS_MIN_VALUE ) {
 			throw new CFLibArgumentUnderflowException( getClass(),
 				"setRequiredPrecis",
 				1,
 				"value",
 				value,
-				ICFBamNumberDef.PRECIS_MIN_VALUE );
+				ICFBamPubNumberDef.PRECIS_MIN_VALUE );
 		}
-		if( value > ICFBamNumberDef.PRECIS_MAX_VALUE ) {
+		if( value > ICFBamPubNumberDef.PRECIS_MAX_VALUE ) {
 			throw new CFLibArgumentOverflowException( getClass(),
 				"setRequiredPrecis",
 				1,
 				"value",
 				value,
-				ICFBamNumberDef.PRECIS_MAX_VALUE );
+				ICFBamPubNumberDef.PRECIS_MAX_VALUE );
+		}
+		
+		if( value < ICFBamPubNumberDef.PRECIS_MIN_VALUE ) {
+			throw new CFLibArgumentUnderflowException( getClass(),
+				"setRequiredPrecis",
+				1,
+				"value",
+				value,
+				ICFBamPubNumberDef.PRECIS_MIN_VALUE );
+		}
+		if( value > ICFBamPubNumberDef.PRECIS_MAX_VALUE ) {
+			throw new CFLibArgumentOverflowException( getClass(),
+				"setRequiredPrecis",
+				1,
+				"value",
+				value,
+				ICFBamPubNumberDef.PRECIS_MAX_VALUE );
 		}
 		requiredPrecis = value;
 	}
@@ -161,6 +195,7 @@ public class CFBamJpaNumberDef extends CFBamJpaAtom
 
 	public void setOptionalInitValue( BigDecimal value ) {
 		value = CFLibBigDecimalUtil.coerce( getClass().getName() + ".InitValue", 31, 5, value );
+		
 		optionalInitValue = value;
 	}
 
@@ -171,6 +206,7 @@ public class CFBamJpaNumberDef extends CFBamJpaAtom
 
 	public void setOptionalMinValue( BigDecimal value ) {
 		value = CFLibBigDecimalUtil.coerce( getClass().getName() + ".MinValue", 31, 5, value );
+		
 		optionalMinValue = value;
 	}
 
@@ -181,6 +217,7 @@ public class CFBamJpaNumberDef extends CFBamJpaAtom
 
 	public void setOptionalMaxValue( BigDecimal value ) {
 		value = CFLibBigDecimalUtil.coerce( getClass().getName() + ".MaxValue", 31, 5, value );
+		
 		optionalMaxValue = value;
 	}
 

@@ -164,6 +164,7 @@ public class CFBamJpaTweakHPKey
 				1,
 				"value" );
 		}
+		
 		requiredId = value;
 	}
 

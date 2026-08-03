@@ -76,6 +76,7 @@ public class CFBamJpaEnumTagByPrevIdxKey
 	}
 
 	public void setOptionalPrevId( CFLibDbKeyHash256 value ) {
+		
 		optionalPrevId = value;
 	}
 

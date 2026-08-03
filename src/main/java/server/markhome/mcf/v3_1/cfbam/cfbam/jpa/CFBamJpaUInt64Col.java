@@ -156,6 +156,7 @@ public class CFBamJpaUInt64Col extends CFBamJpaUInt64Def
 				1,
 				"value" );
 		}
+		
 		requiredTableId = value;
 	}
 

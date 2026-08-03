@@ -76,6 +76,7 @@ public class CFBamJpaIndexColByDefSchemaIdxKey
 	}
 
 	public void setOptionalDefSchemaId( CFLibDbKeyHash256 value ) {
+		
 		optionalDefSchemaId = value;
 	}
 

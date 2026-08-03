@@ -264,6 +264,7 @@ public class CFBamJpaScopeH
 				1,
 				"value" );
 		}
+		
 		requiredTenantId = value;
 	}
 

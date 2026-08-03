@@ -82,6 +82,7 @@ public class CFBamJpaTZTimeColByTableIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredTableId = value;
 	}
 

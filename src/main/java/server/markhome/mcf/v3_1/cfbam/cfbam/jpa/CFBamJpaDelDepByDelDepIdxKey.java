@@ -82,6 +82,7 @@ public class CFBamJpaDelDepByDelDepIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredRelationId = value;
 	}
 

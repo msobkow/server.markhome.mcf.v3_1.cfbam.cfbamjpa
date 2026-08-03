@@ -108,6 +108,7 @@ public class CFBamJpaTableTweakH extends CFBamJpaTweakH
 				1,
 				"value" );
 		}
+		
 		requiredTableId = value;
 	}
 

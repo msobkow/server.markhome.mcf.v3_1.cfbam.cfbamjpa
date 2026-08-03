@@ -214,6 +214,7 @@ public class CFBamJpaClearDep extends CFBamJpaScope
 				1,
 				"value" );
 		}
+		
 		requiredRelationId = value;
 	}
 
@@ -223,6 +224,7 @@ public class CFBamJpaClearDep extends CFBamJpaScope
 	}
 
 	public void setOptionalDefSchemaId( CFLibDbKeyHash256 value ) {
+		
 		optionalDefSchemaId = value;
 	}
 

@@ -153,6 +153,7 @@ public class CFBamJpaServerMethodH extends CFBamJpaScopeH
 				1,
 				"value" );
 		}
+		
 		requiredTableId = value;
 	}
 
@@ -162,6 +163,7 @@ public class CFBamJpaServerMethodH extends CFBamJpaScopeH
 	}
 
 	public void setOptionalDefSchemaId( CFLibDbKeyHash256 value ) {
+		
 		optionalDefSchemaId = value;
 	}
 
@@ -185,6 +187,7 @@ public class CFBamJpaServerMethodH extends CFBamJpaScopeH
 				value.length(),
 				192 );
 		}
+		
 		requiredName = value;
 	}
 
@@ -202,6 +205,7 @@ public class CFBamJpaServerMethodH extends CFBamJpaScopeH
 				value.length(),
 				16 );
 		}
+		
 		optionalShortName = value;
 	}
 
@@ -219,6 +223,7 @@ public class CFBamJpaServerMethodH extends CFBamJpaScopeH
 				value.length(),
 				64 );
 		}
+		
 		optionalLabel = value;
 	}
 
@@ -236,6 +241,7 @@ public class CFBamJpaServerMethodH extends CFBamJpaScopeH
 				value.length(),
 				128 );
 		}
+		
 		optionalShortDescription = value;
 	}
 
@@ -253,6 +259,7 @@ public class CFBamJpaServerMethodH extends CFBamJpaScopeH
 				value.length(),
 				1023 );
 		}
+		
 		optionalDescription = value;
 	}
 
@@ -270,6 +277,7 @@ public class CFBamJpaServerMethodH extends CFBamJpaScopeH
 				value.length(),
 				16 );
 		}
+		
 		optionalSuffix = value;
 	}
 
@@ -279,6 +287,7 @@ public class CFBamJpaServerMethodH extends CFBamJpaScopeH
 	}
 
 	public void setRequiredIsInstanceMethod( boolean value ) {
+		
 		requiredIsInstanceMethod = value;
 	}
 
@@ -288,6 +297,7 @@ public class CFBamJpaServerMethodH extends CFBamJpaScopeH
 	}
 
 	public void setRequiredIsServerOnly( boolean value ) {
+		
 		requiredIsServerOnly = value;
 	}
 
@@ -303,6 +313,7 @@ public class CFBamJpaServerMethodH extends CFBamJpaScopeH
 				1,
 				"value" );
 		}
+		
 		requiredCodeVis = value;
 	}
 
@@ -326,6 +337,7 @@ public class CFBamJpaServerMethodH extends CFBamJpaScopeH
 				value.length(),
 				2000000 );
 		}
+		
 		requiredJMethodBody = value;
 	}
 
@@ -349,6 +361,7 @@ public class CFBamJpaServerMethodH extends CFBamJpaScopeH
 				value.length(),
 				2000000 );
 		}
+		
 		requiredCppMethodBody = value;
 	}
 
@@ -372,6 +385,7 @@ public class CFBamJpaServerMethodH extends CFBamJpaScopeH
 				value.length(),
 				2000000 );
 		}
+		
 		requiredCsMethodBody = value;
 	}
 

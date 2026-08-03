@@ -570,6 +570,7 @@ public class CFBamJpaTable extends CFBamJpaScope
 				1,
 				"value" );
 		}
+		
 		requiredSchemaDefId = value;
 	}
 
@@ -579,6 +580,7 @@ public class CFBamJpaTable extends CFBamJpaScope
 	}
 
 	public void setOptionalDefSchemaId( CFLibDbKeyHash256 value ) {
+		
 		optionalDefSchemaId = value;
 	}
 
@@ -602,6 +604,7 @@ public class CFBamJpaTable extends CFBamJpaScope
 				value.length(),
 				192 );
 		}
+		
 		requiredName = value;
 	}
 
@@ -619,6 +622,7 @@ public class CFBamJpaTable extends CFBamJpaScope
 				value.length(),
 				32 );
 		}
+		
 		optionalDbName = value;
 	}
 
@@ -636,6 +640,7 @@ public class CFBamJpaTable extends CFBamJpaScope
 				value.length(),
 				16 );
 		}
+		
 		optionalShortName = value;
 	}
 
@@ -653,6 +658,7 @@ public class CFBamJpaTable extends CFBamJpaScope
 				value.length(),
 				64 );
 		}
+		
 		optionalLabel = value;
 	}
 
@@ -670,6 +676,7 @@ public class CFBamJpaTable extends CFBamJpaScope
 				value.length(),
 				50 );
 		}
+		
 		optionalShortDescription = value;
 	}
 
@@ -687,6 +694,7 @@ public class CFBamJpaTable extends CFBamJpaScope
 				value.length(),
 				100 );
 		}
+		
 		optionalDescription = value;
 	}
 
@@ -696,6 +704,7 @@ public class CFBamJpaTable extends CFBamJpaScope
 	}
 
 	public void setRequiredPageData( boolean value ) {
+		
 		requiredPageData = value;
 	}
 
@@ -705,6 +714,7 @@ public class CFBamJpaTable extends CFBamJpaScope
 	}
 
 	public void setOptionalPrimaryIndexId( CFLibDbKeyHash256 value ) {
+		
 		optionalPrimaryIndexId = value;
 	}
 
@@ -728,6 +738,7 @@ public class CFBamJpaTable extends CFBamJpaScope
 				value.length(),
 				4 );
 		}
+		
 		requiredTableClassCode = value;
 	}
 
@@ -737,6 +748,7 @@ public class CFBamJpaTable extends CFBamJpaScope
 	}
 
 	public void setOptionalLookupIndexId( CFLibDbKeyHash256 value ) {
+		
 		optionalLookupIndexId = value;
 	}
 
@@ -746,6 +758,7 @@ public class CFBamJpaTable extends CFBamJpaScope
 	}
 
 	public void setOptionalAltIndexId( CFLibDbKeyHash256 value ) {
+		
 		optionalAltIndexId = value;
 	}
 
@@ -755,6 +768,7 @@ public class CFBamJpaTable extends CFBamJpaScope
 	}
 
 	public void setOptionalQualifyingTableId( CFLibDbKeyHash256 value ) {
+		
 		optionalQualifyingTableId = value;
 	}
 
@@ -764,6 +778,7 @@ public class CFBamJpaTable extends CFBamJpaScope
 	}
 
 	public void setRequiredIsInstantiable( boolean value ) {
+		
 		requiredIsInstantiable = value;
 	}
 
@@ -773,6 +788,7 @@ public class CFBamJpaTable extends CFBamJpaScope
 	}
 
 	public void setRequiredHasHistory( boolean value ) {
+		
 		requiredHasHistory = value;
 	}
 
@@ -782,6 +798,7 @@ public class CFBamJpaTable extends CFBamJpaScope
 	}
 
 	public void setRequiredHasAuditColumns( boolean value ) {
+		
 		requiredHasAuditColumns = value;
 	}
 
@@ -791,6 +808,7 @@ public class CFBamJpaTable extends CFBamJpaScope
 	}
 
 	public void setRequiredIsMutable( boolean value ) {
+		
 		requiredIsMutable = value;
 	}
 
@@ -800,6 +818,7 @@ public class CFBamJpaTable extends CFBamJpaScope
 	}
 
 	public void setRequiredIsServerOnly( boolean value ) {
+		
 		requiredIsServerOnly = value;
 	}
 
@@ -815,6 +834,7 @@ public class CFBamJpaTable extends CFBamJpaScope
 				1,
 				"value" );
 		}
+		
 		requiredLoaderBehaviour = value;
 	}
 
@@ -830,6 +850,7 @@ public class CFBamJpaTable extends CFBamJpaScope
 				1,
 				"value" );
 		}
+		
 		requiredSecScope = value;
 	}
 
@@ -845,6 +866,7 @@ public class CFBamJpaTable extends CFBamJpaScope
 				1,
 				"value" );
 		}
+		
 		requiredCodeVis = value;
 	}
 

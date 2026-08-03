@@ -82,6 +82,7 @@ public class CFBamJpaChainByPrevRelIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredPrevRelationId = value;
 	}
 

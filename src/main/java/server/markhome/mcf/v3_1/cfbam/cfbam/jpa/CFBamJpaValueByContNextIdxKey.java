@@ -84,6 +84,7 @@ public class CFBamJpaValueByContNextIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredScopeId = value;
 	}
 
@@ -93,6 +94,7 @@ public class CFBamJpaValueByContNextIdxKey
 	}
 
 	public void setOptionalNextId( CFLibDbKeyHash256 value ) {
+		
 		optionalNextId = value;
 	}
 

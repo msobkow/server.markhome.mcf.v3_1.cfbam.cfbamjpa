@@ -84,6 +84,7 @@ public class CFBamJpaDelSubDep2ByUNameIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredDelSubDep1Id = value;
 	}
 
@@ -107,6 +108,7 @@ public class CFBamJpaDelSubDep2ByUNameIdxKey
 				value.length(),
 				192 );
 		}
+		
 		requiredName = value;
 	}
 

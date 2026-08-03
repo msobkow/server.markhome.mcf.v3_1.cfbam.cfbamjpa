@@ -156,6 +156,7 @@ public class CFBamJpaUuid6Type extends CFBamJpaUuid6Def
 				1,
 				"value" );
 		}
+		
 		requiredSchemaDefId = value;
 	}
 

@@ -82,6 +82,7 @@ public class CFBamJpaDoubleTypeBySchemaIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredSchemaDefId = value;
 	}
 

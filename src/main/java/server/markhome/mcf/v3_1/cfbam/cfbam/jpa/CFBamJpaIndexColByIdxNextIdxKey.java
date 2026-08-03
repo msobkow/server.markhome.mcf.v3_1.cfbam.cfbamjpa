@@ -84,6 +84,7 @@ public class CFBamJpaIndexColByIdxNextIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredIndexId = value;
 	}
 
@@ -93,6 +94,7 @@ public class CFBamJpaIndexColByIdxNextIdxKey
 	}
 
 	public void setOptionalNextId( CFLibDbKeyHash256 value ) {
+		
 		optionalNextId = value;
 	}
 

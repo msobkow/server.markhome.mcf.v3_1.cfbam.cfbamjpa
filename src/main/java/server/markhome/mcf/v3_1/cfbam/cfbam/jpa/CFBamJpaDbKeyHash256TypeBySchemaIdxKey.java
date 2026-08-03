@@ -82,6 +82,7 @@ public class CFBamJpaDbKeyHash256TypeBySchemaIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredSchemaDefId = value;
 	}
 

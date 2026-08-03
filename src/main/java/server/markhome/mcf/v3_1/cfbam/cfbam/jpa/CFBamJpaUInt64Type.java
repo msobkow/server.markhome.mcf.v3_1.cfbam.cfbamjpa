@@ -156,6 +156,7 @@ public class CFBamJpaUInt64Type extends CFBamJpaUInt64Def
 				1,
 				"value" );
 		}
+		
 		requiredSchemaDefId = value;
 	}
 

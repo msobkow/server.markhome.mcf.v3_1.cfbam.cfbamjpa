@@ -124,6 +124,7 @@ public class CFBamJpaClearTopDepH extends CFBamJpaClearDepH
 				1,
 				"value" );
 		}
+		
 		requiredTableId = value;
 	}
 
@@ -147,6 +148,7 @@ public class CFBamJpaClearTopDepH extends CFBamJpaClearDepH
 				value.length(),
 				192 );
 		}
+		
 		requiredName = value;
 	}
 
@@ -156,6 +158,7 @@ public class CFBamJpaClearTopDepH extends CFBamJpaClearDepH
 	}
 
 	public void setOptionalPrevId( CFLibDbKeyHash256 value ) {
+		
 		optionalPrevId = value;
 	}
 
@@ -165,6 +168,7 @@ public class CFBamJpaClearTopDepH extends CFBamJpaClearDepH
 	}
 
 	public void setOptionalNextId( CFLibDbKeyHash256 value ) {
+		
 		optionalNextId = value;
 	}
 

@@ -82,6 +82,7 @@ public class CFBamJpaTweakByScopeIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredScopeId = value;
 	}
 

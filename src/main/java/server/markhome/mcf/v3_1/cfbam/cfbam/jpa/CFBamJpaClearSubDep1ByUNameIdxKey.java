@@ -84,6 +84,7 @@ public class CFBamJpaClearSubDep1ByUNameIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredClearTopDepId = value;
 	}
 
@@ -107,6 +108,7 @@ public class CFBamJpaClearSubDep1ByUNameIdxKey
 				value.length(),
 				192 );
 		}
+		
 		requiredName = value;
 	}
 

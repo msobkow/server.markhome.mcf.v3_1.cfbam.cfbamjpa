@@ -104,6 +104,7 @@ public class CFBamJpaTZTimestampDef extends CFBamJpaAtom
 				value.length(),
 				4 );
 		}
+		
 		optionalDummy = value;
 	}
 

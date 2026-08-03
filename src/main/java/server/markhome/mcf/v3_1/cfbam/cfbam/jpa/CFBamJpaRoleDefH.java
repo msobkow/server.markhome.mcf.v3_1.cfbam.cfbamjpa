@@ -281,6 +281,7 @@ public class CFBamJpaRoleDefH
 				1,
 				"value" );
 		}
+		
 		requiredScopeId = value;
 	}
 
@@ -290,6 +291,7 @@ public class CFBamJpaRoleDefH
 	}
 
 	public void setOptionalDefSchemaId( CFLibDbKeyHash256 value ) {
+		
 		optionalDefSchemaId = value;
 	}
 
@@ -313,6 +315,7 @@ public class CFBamJpaRoleDefH
 				value.length(),
 				192 );
 		}
+		
 		requiredName = value;
 	}
 
@@ -336,6 +339,7 @@ public class CFBamJpaRoleDefH
 				value.length(),
 				2000000 );
 		}
+		
 		requiredEnables = value;
 	}
 
@@ -359,6 +363,7 @@ public class CFBamJpaRoleDefH
 				value.length(),
 				2000000 );
 		}
+		
 		requiredIncludes = value;
 	}
 

@@ -76,6 +76,7 @@ public class CFBamJpaTableColByDataIdxKey
 	}
 
 	public void setOptionalDataId( CFLibDbKeyHash256 value ) {
+		
 		optionalDataId = value;
 	}
 

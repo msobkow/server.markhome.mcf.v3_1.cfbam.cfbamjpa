@@ -82,6 +82,7 @@ public class CFBamJpaPopSubDep3ByPopSubDep2IdxKey
 				1,
 				"value" );
 		}
+		
 		requiredPopSubDep2Id = value;
 	}
 

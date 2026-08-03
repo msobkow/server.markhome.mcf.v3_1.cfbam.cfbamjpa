@@ -84,6 +84,7 @@ public class CFBamJpaIndexColByUNameIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredIndexId = value;
 	}
 
@@ -107,6 +108,7 @@ public class CFBamJpaIndexColByUNameIdxKey
 				value.length(),
 				192 );
 		}
+		
 		requiredName = value;
 	}
 

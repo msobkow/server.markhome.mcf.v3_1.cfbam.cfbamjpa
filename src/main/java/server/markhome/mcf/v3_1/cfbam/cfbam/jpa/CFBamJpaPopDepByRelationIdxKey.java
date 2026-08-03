@@ -82,6 +82,7 @@ public class CFBamJpaPopDepByRelationIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredRelationId = value;
 	}
 

@@ -82,6 +82,7 @@ public class CFBamJpaBoolTypeBySchemaIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredSchemaDefId = value;
 	}
 

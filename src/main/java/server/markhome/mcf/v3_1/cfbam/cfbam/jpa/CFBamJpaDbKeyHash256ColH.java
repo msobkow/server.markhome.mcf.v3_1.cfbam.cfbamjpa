@@ -108,6 +108,7 @@ public class CFBamJpaDbKeyHash256ColH extends CFBamJpaDbKeyHash256DefH
 				1,
 				"value" );
 		}
+		
 		requiredTableId = value;
 	}
 

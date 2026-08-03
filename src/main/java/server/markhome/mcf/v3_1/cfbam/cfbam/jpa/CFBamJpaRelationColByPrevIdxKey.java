@@ -76,6 +76,7 @@ public class CFBamJpaRelationColByPrevIdxKey
 	}
 
 	public void setOptionalPrevId( CFLibDbKeyHash256 value ) {
+		
 		optionalPrevId = value;
 	}
 

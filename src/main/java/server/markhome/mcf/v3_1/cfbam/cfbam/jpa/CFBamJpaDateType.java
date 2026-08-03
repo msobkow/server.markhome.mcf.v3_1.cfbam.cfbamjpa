@@ -156,6 +156,7 @@ public class CFBamJpaDateType extends CFBamJpaDateDef
 				1,
 				"value" );
 		}
+		
 		requiredSchemaDefId = value;
 	}
 

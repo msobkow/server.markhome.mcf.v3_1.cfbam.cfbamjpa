@@ -82,6 +82,7 @@ public class CFBamJpaSchemaDefByMinorVersionIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredMinorVersionId = value;
 	}
 

@@ -84,6 +84,7 @@ public class CFBamJpaRelationColByRelPrevIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredRelationId = value;
 	}
 
@@ -93,6 +94,7 @@ public class CFBamJpaRelationColByRelPrevIdxKey
 	}
 
 	public void setOptionalPrevId( CFLibDbKeyHash256 value ) {
+		
 		optionalPrevId = value;
 	}
 

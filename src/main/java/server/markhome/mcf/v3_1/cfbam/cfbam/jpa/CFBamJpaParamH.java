@@ -300,6 +300,7 @@ public class CFBamJpaParamH
 				1,
 				"value" );
 		}
+		
 		requiredServerMethodId = value;
 	}
 
@@ -309,6 +310,7 @@ public class CFBamJpaParamH
 	}
 
 	public void setOptionalDefSchemaId( CFLibDbKeyHash256 value ) {
+		
 		optionalDefSchemaId = value;
 	}
 
@@ -332,6 +334,7 @@ public class CFBamJpaParamH
 				value.length(),
 				192 );
 		}
+		
 		requiredName = value;
 	}
 
@@ -349,6 +352,7 @@ public class CFBamJpaParamH
 				value.length(),
 				128 );
 		}
+		
 		optionalShortDescription = value;
 	}
 
@@ -366,6 +370,7 @@ public class CFBamJpaParamH
 				value.length(),
 				1023 );
 		}
+		
 		optionalDescription = value;
 	}
 
@@ -375,6 +380,7 @@ public class CFBamJpaParamH
 	}
 
 	public void setRequiredIsNullable( boolean value ) {
+		
 		requiredIsNullable = value;
 	}
 
@@ -384,6 +390,7 @@ public class CFBamJpaParamH
 	}
 
 	public void setOptionalTypeId( CFLibDbKeyHash256 value ) {
+		
 		optionalTypeId = value;
 	}
 
@@ -393,6 +400,7 @@ public class CFBamJpaParamH
 	}
 
 	public void setOptionalPrevId( CFLibDbKeyHash256 value ) {
+		
 		optionalPrevId = value;
 	}
 
@@ -402,6 +410,7 @@ public class CFBamJpaParamH
 	}
 
 	public void setOptionalNextId( CFLibDbKeyHash256 value ) {
+		
 		optionalNextId = value;
 	}
 

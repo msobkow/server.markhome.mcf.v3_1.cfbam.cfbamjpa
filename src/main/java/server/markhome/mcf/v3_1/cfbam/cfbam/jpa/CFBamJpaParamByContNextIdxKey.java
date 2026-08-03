@@ -84,6 +84,7 @@ public class CFBamJpaParamByContNextIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredServerMethodId = value;
 	}
 
@@ -93,6 +94,7 @@ public class CFBamJpaParamByContNextIdxKey
 	}
 
 	public void setOptionalNextId( CFLibDbKeyHash256 value ) {
+		
 		optionalNextId = value;
 	}
 

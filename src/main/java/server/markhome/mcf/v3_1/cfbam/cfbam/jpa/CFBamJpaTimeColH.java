@@ -108,6 +108,7 @@ public class CFBamJpaTimeColH extends CFBamJpaTimeDefH
 				1,
 				"value" );
 		}
+		
 		requiredTableId = value;
 	}
 

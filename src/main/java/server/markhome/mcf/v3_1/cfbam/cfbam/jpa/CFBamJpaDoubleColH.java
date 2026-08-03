@@ -108,6 +108,7 @@ public class CFBamJpaDoubleColH extends CFBamJpaDoubleDefH
 				1,
 				"value" );
 		}
+		
 		requiredTableId = value;
 	}
 

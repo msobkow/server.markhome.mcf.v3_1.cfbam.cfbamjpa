@@ -103,21 +103,38 @@ public class CFBamJpaBlobDefH extends CFBamJpaAtomH
 
 	@Override
 	public void setRequiredMaxLen( int value ) {
-		if( value < ICFBamBlobDef.MAXLEN_MIN_VALUE ) {
+		if( value < ICFBamPubBlobDef.MAXLEN_MIN_VALUE ) {
 			throw new CFLibArgumentUnderflowException( getClass(),
 				"setRequiredMaxLen",
 				1,
 				"value",
 				value,
-				ICFBamBlobDef.MAXLEN_MIN_VALUE );
+				ICFBamPubBlobDef.MAXLEN_MIN_VALUE );
 		}
-		if( value > ICFBamBlobDef.MAXLEN_MAX_VALUE ) {
+		if( value > ICFBamPubBlobDef.MAXLEN_MAX_VALUE ) {
 			throw new CFLibArgumentOverflowException( getClass(),
 				"setRequiredMaxLen",
 				1,
 				"value",
 				value,
-				ICFBamBlobDef.MAXLEN_MAX_VALUE );
+				ICFBamPubBlobDef.MAXLEN_MAX_VALUE );
+		}
+		
+		if( value < ICFBamPubBlobDef.MAXLEN_MIN_VALUE ) {
+			throw new CFLibArgumentUnderflowException( getClass(),
+				"setRequiredMaxLen",
+				1,
+				"value",
+				value,
+				ICFBamPubBlobDef.MAXLEN_MIN_VALUE );
+		}
+		if( value > ICFBamPubBlobDef.MAXLEN_MAX_VALUE ) {
+			throw new CFLibArgumentOverflowException( getClass(),
+				"setRequiredMaxLen",
+				1,
+				"value",
+				value,
+				ICFBamPubBlobDef.MAXLEN_MAX_VALUE );
 		}
 		requiredMaxLen = value;
 	}
@@ -136,6 +153,7 @@ public class CFBamJpaBlobDefH extends CFBamJpaAtomH
 				value.length,
 				16384 );
 		}
+		
 		optionalInitValue = value;
 	}
 

@@ -103,21 +103,38 @@ public class CFBamJpaTextDef extends CFBamJpaAtom
 
 	@Override
 	public void setRequiredMaxLen( int value ) {
-		if( value < ICFBamTextDef.MAXLEN_MIN_VALUE ) {
+		if( value < ICFBamPubTextDef.MAXLEN_MIN_VALUE ) {
 			throw new CFLibArgumentUnderflowException( getClass(),
 				"setRequiredMaxLen",
 				1,
 				"value",
 				value,
-				ICFBamTextDef.MAXLEN_MIN_VALUE );
+				ICFBamPubTextDef.MAXLEN_MIN_VALUE );
 		}
-		if( value > ICFBamTextDef.MAXLEN_MAX_VALUE ) {
+		if( value > ICFBamPubTextDef.MAXLEN_MAX_VALUE ) {
 			throw new CFLibArgumentOverflowException( getClass(),
 				"setRequiredMaxLen",
 				1,
 				"value",
 				value,
-				ICFBamTextDef.MAXLEN_MAX_VALUE );
+				ICFBamPubTextDef.MAXLEN_MAX_VALUE );
+		}
+		
+		if( value < ICFBamPubTextDef.MAXLEN_MIN_VALUE ) {
+			throw new CFLibArgumentUnderflowException( getClass(),
+				"setRequiredMaxLen",
+				1,
+				"value",
+				value,
+				ICFBamPubTextDef.MAXLEN_MIN_VALUE );
+		}
+		if( value > ICFBamPubTextDef.MAXLEN_MAX_VALUE ) {
+			throw new CFLibArgumentOverflowException( getClass(),
+				"setRequiredMaxLen",
+				1,
+				"value",
+				value,
+				ICFBamPubTextDef.MAXLEN_MAX_VALUE );
 		}
 		requiredMaxLen = value;
 	}
@@ -136,6 +153,7 @@ public class CFBamJpaTextDef extends CFBamJpaAtom
 				value.length(),
 				65535 );
 		}
+		
 		optionalInitValue = value;
 	}
 
@@ -153,6 +171,7 @@ public class CFBamJpaTextDef extends CFBamJpaAtom
 				value.length(),
 				192 );
 		}
+		
 		optionalXmlElementName = value;
 	}
 

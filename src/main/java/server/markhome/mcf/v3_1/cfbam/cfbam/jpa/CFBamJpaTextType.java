@@ -156,6 +156,7 @@ public class CFBamJpaTextType extends CFBamJpaTextDef
 				1,
 				"value" );
 		}
+		
 		requiredSchemaDefId = value;
 	}
 

@@ -156,6 +156,7 @@ public class CFBamJpaDoubleCol extends CFBamJpaDoubleDef
 				1,
 				"value" );
 		}
+		
 		requiredTableId = value;
 	}
 

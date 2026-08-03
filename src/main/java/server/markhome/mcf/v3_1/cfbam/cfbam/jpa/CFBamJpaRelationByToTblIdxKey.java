@@ -82,6 +82,7 @@ public class CFBamJpaRelationByToTblIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredToTableId = value;
 	}
 

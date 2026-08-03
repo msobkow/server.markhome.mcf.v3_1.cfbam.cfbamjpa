@@ -82,6 +82,7 @@ public class CFBamJpaSchemaDefByCTenantIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredCTenantId = value;
 	}
 

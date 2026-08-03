@@ -156,6 +156,7 @@ public class CFBamJpaTokenType extends CFBamJpaTokenDef
 				1,
 				"value" );
 		}
+		
 		requiredSchemaDefId = value;
 	}
 

@@ -156,6 +156,7 @@ public class CFBamJpaStringCol extends CFBamJpaStringDef
 				1,
 				"value" );
 		}
+		
 		requiredTableId = value;
 	}
 

@@ -156,6 +156,7 @@ public class CFBamJpaDbKeyHash224Type extends CFBamJpaDbKeyHash224Def
 				1,
 				"value" );
 		}
+		
 		requiredSchemaDefId = value;
 	}
 

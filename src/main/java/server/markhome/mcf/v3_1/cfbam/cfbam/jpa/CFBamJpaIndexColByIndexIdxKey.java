@@ -82,6 +82,7 @@ public class CFBamJpaIndexColByIndexIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredIndexId = value;
 	}
 

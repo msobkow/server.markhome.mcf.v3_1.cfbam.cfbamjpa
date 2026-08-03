@@ -156,6 +156,7 @@ public class CFBamJpaFloatCol extends CFBamJpaFloatDef
 				1,
 				"value" );
 		}
+		
 		requiredTableId = value;
 	}
 

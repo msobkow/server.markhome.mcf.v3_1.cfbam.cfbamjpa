@@ -103,13 +103,22 @@ public class CFBamJpaUInt32Def extends CFBamJpaAtom
 
 	@Override
 	public void setOptionalInitValue( Long value ) {
-		if( value < ICFBamUInt32Def.INITVALUE_MIN_VALUE ) {
+		if( value < ICFBamPubUInt32Def.INITVALUE_MIN_VALUE ) {
 			throw new CFLibArgumentUnderflowException( getClass(),
 				"setOptionalInitValue",
 				1,
 				"value",
 				value,
-				ICFBamUInt32Def.INITVALUE_MIN_VALUE );
+				ICFBamPubUInt32Def.INITVALUE_MIN_VALUE );
+		}
+		
+		if( value < ICFBamPubUInt32Def.INITVALUE_MIN_VALUE ) {
+			throw new CFLibArgumentUnderflowException( getClass(),
+				"setOptionalInitValue",
+				1,
+				"value",
+				value,
+				ICFBamPubUInt32Def.INITVALUE_MIN_VALUE );
 		}
 		optionalInitValue = value;
 	}
@@ -121,13 +130,22 @@ public class CFBamJpaUInt32Def extends CFBamJpaAtom
 
 	@Override
 	public void setOptionalMinValue( Long value ) {
-		if( value < ICFBamUInt32Def.MINVALUE_MIN_VALUE ) {
+		if( value < ICFBamPubUInt32Def.MINVALUE_MIN_VALUE ) {
 			throw new CFLibArgumentUnderflowException( getClass(),
 				"setOptionalMinValue",
 				1,
 				"value",
 				value,
-				ICFBamUInt32Def.MINVALUE_MIN_VALUE );
+				ICFBamPubUInt32Def.MINVALUE_MIN_VALUE );
+		}
+		
+		if( value < ICFBamPubUInt32Def.MINVALUE_MIN_VALUE ) {
+			throw new CFLibArgumentUnderflowException( getClass(),
+				"setOptionalMinValue",
+				1,
+				"value",
+				value,
+				ICFBamPubUInt32Def.MINVALUE_MIN_VALUE );
 		}
 		optionalMinValue = value;
 	}
@@ -139,13 +157,22 @@ public class CFBamJpaUInt32Def extends CFBamJpaAtom
 
 	@Override
 	public void setOptionalMaxValue( Long value ) {
-		if( value < ICFBamUInt32Def.MAXVALUE_MIN_VALUE ) {
+		if( value < ICFBamPubUInt32Def.MAXVALUE_MIN_VALUE ) {
 			throw new CFLibArgumentUnderflowException( getClass(),
 				"setOptionalMaxValue",
 				1,
 				"value",
 				value,
-				ICFBamUInt32Def.MAXVALUE_MIN_VALUE );
+				ICFBamPubUInt32Def.MAXVALUE_MIN_VALUE );
+		}
+		
+		if( value < ICFBamPubUInt32Def.MAXVALUE_MIN_VALUE ) {
+			throw new CFLibArgumentUnderflowException( getClass(),
+				"setOptionalMaxValue",
+				1,
+				"value",
+				value,
+				ICFBamPubUInt32Def.MAXVALUE_MIN_VALUE );
 		}
 		optionalMaxValue = value;
 	}

@@ -164,6 +164,7 @@ public class CFBamJpaValueHPKey
 				1,
 				"value" );
 		}
+		
 		requiredId = value;
 	}
 

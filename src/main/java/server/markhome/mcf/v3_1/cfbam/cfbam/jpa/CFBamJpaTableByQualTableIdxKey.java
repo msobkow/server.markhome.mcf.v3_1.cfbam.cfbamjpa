@@ -76,6 +76,7 @@ public class CFBamJpaTableByQualTableIdxKey
 	}
 
 	public void setOptionalQualifyingTableId( CFLibDbKeyHash256 value ) {
+		
 		optionalQualifyingTableId = value;
 	}
 

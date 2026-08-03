@@ -108,6 +108,7 @@ public class CFBamJpaBlobTypeH extends CFBamJpaBlobDefH
 				1,
 				"value" );
 		}
+		
 		requiredSchemaDefId = value;
 	}
 

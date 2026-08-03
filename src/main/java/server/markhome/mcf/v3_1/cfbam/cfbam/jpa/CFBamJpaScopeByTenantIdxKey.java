@@ -82,6 +82,7 @@ public class CFBamJpaScopeByTenantIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredTenantId = value;
 	}
 

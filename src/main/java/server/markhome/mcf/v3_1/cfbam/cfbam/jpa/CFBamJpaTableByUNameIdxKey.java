@@ -84,6 +84,7 @@ public class CFBamJpaTableByUNameIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredSchemaDefId = value;
 	}
 
@@ -107,6 +108,7 @@ public class CFBamJpaTableByUNameIdxKey
 				value.length(),
 				192 );
 		}
+		
 		requiredName = value;
 	}
 

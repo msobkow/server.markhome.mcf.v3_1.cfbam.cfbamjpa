@@ -546,7 +546,8 @@ public class CFBamJpaRelationCol
 				1,
 				"value" );
 		}
-		setPKey( value );
+		
+		setPKey(value);
 	}
 
 	@Override
@@ -571,6 +572,7 @@ public class CFBamJpaRelationCol
 				1,
 				"value" );
 		}
+		
 		requiredRelationId = value;
 	}
 
@@ -580,6 +582,7 @@ public class CFBamJpaRelationCol
 	}
 
 	public void setOptionalDefSchemaId( CFLibDbKeyHash256 value ) {
+		
 		optionalDefSchemaId = value;
 	}
 
@@ -603,6 +606,7 @@ public class CFBamJpaRelationCol
 				value.length(),
 				192 );
 		}
+		
 		requiredName = value;
 	}
 
@@ -620,6 +624,7 @@ public class CFBamJpaRelationCol
 				value.length(),
 				16 );
 		}
+		
 		optionalShortName = value;
 	}
 
@@ -637,6 +642,7 @@ public class CFBamJpaRelationCol
 				value.length(),
 				64 );
 		}
+		
 		optionalLabel = value;
 	}
 
@@ -654,6 +660,7 @@ public class CFBamJpaRelationCol
 				value.length(),
 				128 );
 		}
+		
 		optionalShortDescription = value;
 	}
 
@@ -671,6 +678,7 @@ public class CFBamJpaRelationCol
 				value.length(),
 				1023 );
 		}
+		
 		optionalDescription = value;
 	}
 
@@ -686,6 +694,7 @@ public class CFBamJpaRelationCol
 				1,
 				"value" );
 		}
+		
 		requiredFromColId = value;
 	}
 
@@ -701,6 +710,7 @@ public class CFBamJpaRelationCol
 				1,
 				"value" );
 		}
+		
 		requiredToColId = value;
 	}
 
@@ -710,6 +720,7 @@ public class CFBamJpaRelationCol
 	}
 
 	public void setOptionalPrevId( CFLibDbKeyHash256 value ) {
+		
 		optionalPrevId = value;
 	}
 
@@ -719,6 +730,7 @@ public class CFBamJpaRelationCol
 	}
 
 	public void setOptionalNextId( CFLibDbKeyHash256 value ) {
+		
 		optionalNextId = value;
 	}
 

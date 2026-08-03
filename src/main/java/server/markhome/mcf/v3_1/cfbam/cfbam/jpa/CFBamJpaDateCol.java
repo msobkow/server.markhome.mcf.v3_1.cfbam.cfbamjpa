@@ -156,6 +156,7 @@ public class CFBamJpaDateCol extends CFBamJpaDateDef
 				1,
 				"value" );
 		}
+		
 		requiredTableId = value;
 	}
 

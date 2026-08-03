@@ -84,6 +84,7 @@ public class CFBamJpaSchemaDefByPubURIIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredCTenantId = value;
 	}
 
@@ -107,6 +108,7 @@ public class CFBamJpaSchemaDefByPubURIIdxKey
 				value.length(),
 				512 );
 		}
+		
 		requiredPublishURI = value;
 	}
 

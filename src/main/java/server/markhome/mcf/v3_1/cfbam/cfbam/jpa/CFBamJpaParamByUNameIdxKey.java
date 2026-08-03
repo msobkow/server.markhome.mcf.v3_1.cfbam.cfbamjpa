@@ -84,6 +84,7 @@ public class CFBamJpaParamByUNameIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredServerMethodId = value;
 	}
 
@@ -107,6 +108,7 @@ public class CFBamJpaParamByUNameIdxKey
 				value.length(),
 				192 );
 		}
+		
 		requiredName = value;
 	}
 

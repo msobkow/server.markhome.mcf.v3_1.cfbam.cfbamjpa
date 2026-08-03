@@ -84,6 +84,7 @@ public class CFBamJpaRelationColByRelNextIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredRelationId = value;
 	}
 
@@ -93,6 +94,7 @@ public class CFBamJpaRelationColByRelNextIdxKey
 	}
 
 	public void setOptionalNextId( CFLibDbKeyHash256 value ) {
+		
 		optionalNextId = value;
 	}
 

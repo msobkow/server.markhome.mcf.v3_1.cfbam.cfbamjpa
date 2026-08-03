@@ -107,6 +107,7 @@ public class CFBamJpaDbKeyHash224DefH extends CFBamJpaAtomH
 				value.length(),
 				56 );
 		}
+		
 		optionalInitValue = value;
 	}
 

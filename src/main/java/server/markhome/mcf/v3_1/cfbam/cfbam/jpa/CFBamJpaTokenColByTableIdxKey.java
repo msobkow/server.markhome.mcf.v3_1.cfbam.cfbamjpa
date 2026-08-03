@@ -82,6 +82,7 @@ public class CFBamJpaTokenColByTableIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredTableId = value;
 	}
 

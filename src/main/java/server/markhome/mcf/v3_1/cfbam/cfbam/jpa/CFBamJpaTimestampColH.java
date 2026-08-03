@@ -108,6 +108,7 @@ public class CFBamJpaTimestampColH extends CFBamJpaTimestampDefH
 				1,
 				"value" );
 		}
+		
 		requiredTableId = value;
 	}
 

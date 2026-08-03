@@ -463,7 +463,8 @@ public class CFBamJpaValue
 				1,
 				"value" );
 		}
-		setPKey( value );
+		
+		setPKey(value);
 	}
 
 	@Override
@@ -488,6 +489,7 @@ public class CFBamJpaValue
 				1,
 				"value" );
 		}
+		
 		requiredScopeId = value;
 	}
 
@@ -497,6 +499,7 @@ public class CFBamJpaValue
 	}
 
 	public void setOptionalDefSchemaId( CFLibDbKeyHash256 value ) {
+		
 		optionalDefSchemaId = value;
 	}
 
@@ -520,6 +523,7 @@ public class CFBamJpaValue
 				value.length(),
 				192 );
 		}
+		
 		requiredName = value;
 	}
 
@@ -537,6 +541,7 @@ public class CFBamJpaValue
 				value.length(),
 				16 );
 		}
+		
 		optionalShortName = value;
 	}
 
@@ -554,6 +559,7 @@ public class CFBamJpaValue
 				value.length(),
 				64 );
 		}
+		
 		optionalLabel = value;
 	}
 
@@ -571,6 +577,7 @@ public class CFBamJpaValue
 				value.length(),
 				128 );
 		}
+		
 		optionalShortDescription = value;
 	}
 
@@ -588,6 +595,7 @@ public class CFBamJpaValue
 				value.length(),
 				1023 );
 		}
+		
 		optionalDescription = value;
 	}
 
@@ -605,6 +613,7 @@ public class CFBamJpaValue
 				value.length(),
 				1023 );
 		}
+		
 		optionalDefaultXmlValue = value;
 	}
 
@@ -614,6 +623,7 @@ public class CFBamJpaValue
 	}
 
 	public void setRequiredIsNullable( boolean value ) {
+		
 		requiredIsNullable = value;
 	}
 
@@ -623,6 +633,7 @@ public class CFBamJpaValue
 	}
 
 	public void setOptionalGenerateId( Boolean value ) {
+		
 		optionalGenerateId = value;
 	}
 
@@ -632,6 +643,7 @@ public class CFBamJpaValue
 	}
 
 	public void setRequiredImplementsPolymorph( boolean value ) {
+		
 		requiredImplementsPolymorph = value;
 	}
 
@@ -641,6 +653,7 @@ public class CFBamJpaValue
 	}
 
 	public void setOptionalPrevId( CFLibDbKeyHash256 value ) {
+		
 		optionalPrevId = value;
 	}
 
@@ -650,6 +663,7 @@ public class CFBamJpaValue
 	}
 
 	public void setOptionalNextId( CFLibDbKeyHash256 value ) {
+		
 		optionalNextId = value;
 	}
 

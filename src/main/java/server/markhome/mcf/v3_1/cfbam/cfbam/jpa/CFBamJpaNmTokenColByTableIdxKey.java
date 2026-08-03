@@ -82,6 +82,7 @@ public class CFBamJpaNmTokenColByTableIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredTableId = value;
 	}
 

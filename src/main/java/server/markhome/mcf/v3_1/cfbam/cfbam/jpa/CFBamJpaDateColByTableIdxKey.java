@@ -82,6 +82,7 @@ public class CFBamJpaDateColByTableIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredTableId = value;
 	}
 

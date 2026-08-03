@@ -82,6 +82,7 @@ public class CFBamJpaServerMethodByMethTableIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredTableId = value;
 	}
 

@@ -82,6 +82,7 @@ public class CFBamJpaTweakByValTentIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredTenantId = value;
 	}
 

@@ -82,6 +82,7 @@ public class CFBamJpaTZTimeTypeBySchemaIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredSchemaDefId = value;
 	}
 

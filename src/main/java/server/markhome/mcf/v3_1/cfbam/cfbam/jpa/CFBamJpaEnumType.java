@@ -156,6 +156,7 @@ public class CFBamJpaEnumType extends CFBamJpaEnumDef
 				1,
 				"value" );
 		}
+		
 		requiredSchemaDefId = value;
 	}
 

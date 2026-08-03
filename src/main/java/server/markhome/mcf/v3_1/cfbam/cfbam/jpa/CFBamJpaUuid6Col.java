@@ -156,6 +156,7 @@ public class CFBamJpaUuid6Col extends CFBamJpaUuid6Def
 				1,
 				"value" );
 		}
+		
 		requiredTableId = value;
 	}
 

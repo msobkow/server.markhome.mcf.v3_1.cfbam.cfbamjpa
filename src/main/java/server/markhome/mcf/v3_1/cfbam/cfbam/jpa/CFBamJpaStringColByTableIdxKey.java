@@ -82,6 +82,7 @@ public class CFBamJpaStringColByTableIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredTableId = value;
 	}
 

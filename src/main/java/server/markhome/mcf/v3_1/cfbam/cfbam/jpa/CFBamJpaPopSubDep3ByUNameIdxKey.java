@@ -84,6 +84,7 @@ public class CFBamJpaPopSubDep3ByUNameIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredPopSubDep2Id = value;
 	}
 
@@ -107,6 +108,7 @@ public class CFBamJpaPopSubDep3ByUNameIdxKey
 				value.length(),
 				192 );
 		}
+		
 		requiredName = value;
 	}
 

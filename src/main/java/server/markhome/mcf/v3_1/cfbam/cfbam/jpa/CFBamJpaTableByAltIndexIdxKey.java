@@ -76,6 +76,7 @@ public class CFBamJpaTableByAltIndexIdxKey
 	}
 
 	public void setOptionalAltIndexId( CFLibDbKeyHash256 value ) {
+		
 		optionalAltIndexId = value;
 	}
 

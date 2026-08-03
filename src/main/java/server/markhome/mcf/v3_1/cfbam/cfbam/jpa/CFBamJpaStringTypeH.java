@@ -108,6 +108,7 @@ public class CFBamJpaStringTypeH extends CFBamJpaStringDefH
 				1,
 				"value" );
 		}
+		
 		requiredSchemaDefId = value;
 	}
 

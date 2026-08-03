@@ -102,15 +102,24 @@ public class CFBamJpaUInt64Def extends CFBamJpaAtom
 	}
 
 	public void setOptionalInitValue( BigDecimal value ) {
-		if( value != null && value.compareTo( ICFBamUInt64Def.INITVALUE_MIN_VALUE ) < 0 ) {
+		if( value != null && value.compareTo( ICFBamPubUInt64Def.INITVALUE_MIN_VALUE ) < 0 ) {
 			throw new CFLibArgumentUnderflowException( getClass(),
 				"setOptionalInitValue",
 				1,
 				"value",
 				value.toString(),
-				ICFBamUInt64Def.INITVALUE_MIN_VALUE.toString() );
+				ICFBamPubUInt64Def.INITVALUE_MIN_VALUE.toString() );
 		}
 		value = CFLibBigDecimalUtil.coerce( getClass().getName() + ".InitValue", 19, 0, value );
+		
+		if( value.compareTo( ICFBamPubUInt64Def.INITVALUE_MIN_VALUE ) < 0 ) {
+			throw new CFLibArgumentUnderflowException( getClass(),
+				"setOptionalInitValue",
+				1,
+				"value",
+				value.toString(),
+				ICFBamPubUInt64Def.INITVALUE_MIN_VALUE.toString() );
+		}
 		optionalInitValue = value;
 	}
 
@@ -120,15 +129,24 @@ public class CFBamJpaUInt64Def extends CFBamJpaAtom
 	}
 
 	public void setOptionalMinValue( BigDecimal value ) {
-		if( value != null && value.compareTo( ICFBamUInt64Def.MINVALUE_MIN_VALUE ) < 0 ) {
+		if( value != null && value.compareTo( ICFBamPubUInt64Def.MINVALUE_MIN_VALUE ) < 0 ) {
 			throw new CFLibArgumentUnderflowException( getClass(),
 				"setOptionalMinValue",
 				1,
 				"value",
 				value.toString(),
-				ICFBamUInt64Def.MINVALUE_MIN_VALUE.toString() );
+				ICFBamPubUInt64Def.MINVALUE_MIN_VALUE.toString() );
 		}
 		value = CFLibBigDecimalUtil.coerce( getClass().getName() + ".MinValue", 19, 0, value );
+		
+		if( value.compareTo( ICFBamPubUInt64Def.MINVALUE_MIN_VALUE ) < 0 ) {
+			throw new CFLibArgumentUnderflowException( getClass(),
+				"setOptionalMinValue",
+				1,
+				"value",
+				value.toString(),
+				ICFBamPubUInt64Def.MINVALUE_MIN_VALUE.toString() );
+		}
 		optionalMinValue = value;
 	}
 
@@ -138,15 +156,24 @@ public class CFBamJpaUInt64Def extends CFBamJpaAtom
 	}
 
 	public void setOptionalMaxValue( BigDecimal value ) {
-		if( value != null && value.compareTo( ICFBamUInt64Def.MAXVALUE_MIN_VALUE ) < 0 ) {
+		if( value != null && value.compareTo( ICFBamPubUInt64Def.MAXVALUE_MIN_VALUE ) < 0 ) {
 			throw new CFLibArgumentUnderflowException( getClass(),
 				"setOptionalMaxValue",
 				1,
 				"value",
 				value.toString(),
-				ICFBamUInt64Def.MAXVALUE_MIN_VALUE.toString() );
+				ICFBamPubUInt64Def.MAXVALUE_MIN_VALUE.toString() );
 		}
 		value = CFLibBigDecimalUtil.coerce( getClass().getName() + ".MaxValue", 19, 0, value );
+		
+		if( value.compareTo( ICFBamPubUInt64Def.MAXVALUE_MIN_VALUE ) < 0 ) {
+			throw new CFLibArgumentUnderflowException( getClass(),
+				"setOptionalMaxValue",
+				1,
+				"value",
+				value.toString(),
+				ICFBamPubUInt64Def.MAXVALUE_MIN_VALUE.toString() );
+		}
 		optionalMaxValue = value;
 	}
 

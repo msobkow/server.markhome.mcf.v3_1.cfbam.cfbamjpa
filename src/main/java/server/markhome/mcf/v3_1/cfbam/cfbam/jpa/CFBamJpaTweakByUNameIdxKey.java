@@ -84,6 +84,7 @@ public class CFBamJpaTweakByUNameIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredScopeId = value;
 	}
 
@@ -107,6 +108,7 @@ public class CFBamJpaTweakByUNameIdxKey
 				value.length(),
 				192 );
 		}
+		
 		requiredName = value;
 	}
 

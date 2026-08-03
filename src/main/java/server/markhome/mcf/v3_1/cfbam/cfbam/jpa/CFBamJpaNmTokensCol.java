@@ -156,6 +156,7 @@ public class CFBamJpaNmTokensCol extends CFBamJpaNmTokensDef
 				1,
 				"value" );
 		}
+		
 		requiredTableId = value;
 	}
 

@@ -120,6 +120,7 @@ public class CFBamJpaTableColH extends CFBamJpaValueH
 				1,
 				"value" );
 		}
+		
 		requiredTableId = value;
 	}
 
@@ -137,6 +138,7 @@ public class CFBamJpaTableColH extends CFBamJpaValueH
 				value.length(),
 				32 );
 		}
+		
 		optionalDbName = value;
 	}
 
@@ -146,6 +148,7 @@ public class CFBamJpaTableColH extends CFBamJpaValueH
 	}
 
 	public void setOptionalDataId( CFLibDbKeyHash256 value ) {
+		
 		optionalDataId = value;
 	}
 
@@ -163,6 +166,7 @@ public class CFBamJpaTableColH extends CFBamJpaValueH
 				value.length(),
 				192 );
 		}
+		
 		optionalXmlElementName = value;
 	}
 

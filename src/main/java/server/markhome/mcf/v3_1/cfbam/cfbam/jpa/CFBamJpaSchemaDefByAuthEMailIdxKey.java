@@ -84,6 +84,7 @@ public class CFBamJpaSchemaDefByAuthEMailIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredCTenantId = value;
 	}
 
@@ -107,6 +108,7 @@ public class CFBamJpaSchemaDefByAuthEMailIdxKey
 				value.length(),
 				512 );
 		}
+		
 		requiredAuthorEMail = value;
 	}
 

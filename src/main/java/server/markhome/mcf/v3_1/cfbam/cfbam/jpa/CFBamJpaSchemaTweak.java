@@ -156,6 +156,7 @@ public class CFBamJpaSchemaTweak extends CFBamJpaTweak
 				1,
 				"value" );
 		}
+		
 		requiredSchemaDefId = value;
 	}
 

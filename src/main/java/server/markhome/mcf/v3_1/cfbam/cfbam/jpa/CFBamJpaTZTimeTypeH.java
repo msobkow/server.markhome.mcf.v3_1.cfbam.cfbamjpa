@@ -108,6 +108,7 @@ public class CFBamJpaTZTimeTypeH extends CFBamJpaTZTimeDefH
 				1,
 				"value" );
 		}
+		
 		requiredSchemaDefId = value;
 	}
 

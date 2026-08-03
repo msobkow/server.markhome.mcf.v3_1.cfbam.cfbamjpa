@@ -82,6 +82,7 @@ public class CFBamJpaDelTopDepByDelTopDepTblIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredTableId = value;
 	}
 

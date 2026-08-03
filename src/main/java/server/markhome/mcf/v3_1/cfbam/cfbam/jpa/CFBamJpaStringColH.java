@@ -108,6 +108,7 @@ public class CFBamJpaStringColH extends CFBamJpaStringDefH
 				1,
 				"value" );
 		}
+		
 		requiredTableId = value;
 	}
 

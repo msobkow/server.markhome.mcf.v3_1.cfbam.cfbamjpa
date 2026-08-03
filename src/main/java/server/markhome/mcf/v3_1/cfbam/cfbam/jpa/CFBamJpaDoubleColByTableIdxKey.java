@@ -82,6 +82,7 @@ public class CFBamJpaDoubleColByTableIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredTableId = value;
 	}
 

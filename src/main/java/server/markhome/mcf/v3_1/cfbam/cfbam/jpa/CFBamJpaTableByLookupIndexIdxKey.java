@@ -76,6 +76,7 @@ public class CFBamJpaTableByLookupIndexIdxKey
 	}
 
 	public void setOptionalLookupIndexId( CFLibDbKeyHash256 value ) {
+		
 		optionalLookupIndexId = value;
 	}
 

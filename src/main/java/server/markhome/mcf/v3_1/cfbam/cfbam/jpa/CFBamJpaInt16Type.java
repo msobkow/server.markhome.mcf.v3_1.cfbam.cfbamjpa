@@ -156,6 +156,7 @@ public class CFBamJpaInt16Type extends CFBamJpaInt16Def
 				1,
 				"value" );
 		}
+		
 		requiredSchemaDefId = value;
 	}
 

@@ -107,6 +107,7 @@ public class CFBamJpaAtomH extends CFBamJpaValueH
 				value.length(),
 				32 );
 		}
+		
 		optionalDbName = value;
 	}
 

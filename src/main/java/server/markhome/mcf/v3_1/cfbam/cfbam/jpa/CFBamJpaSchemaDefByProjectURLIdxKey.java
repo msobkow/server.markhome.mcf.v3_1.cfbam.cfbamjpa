@@ -84,6 +84,7 @@ public class CFBamJpaSchemaDefByProjectURLIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredCTenantId = value;
 	}
 
@@ -107,6 +108,7 @@ public class CFBamJpaSchemaDefByProjectURLIdxKey
 				value.length(),
 				1024 );
 		}
+		
 		requiredProjectURL = value;
 	}
 

@@ -156,6 +156,7 @@ public class CFBamJpaTZTimestampCol extends CFBamJpaTZTimestampDef
 				1,
 				"value" );
 		}
+		
 		requiredTableId = value;
 	}
 

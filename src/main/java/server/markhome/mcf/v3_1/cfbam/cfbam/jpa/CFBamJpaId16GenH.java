@@ -103,21 +103,38 @@ public class CFBamJpaId16GenH extends CFBamJpaInt16TypeH
 
 	@Override
 	public void setRequiredSlice( short value ) {
-		if( value < ICFBamId16Gen.SLICE_MIN_VALUE ) {
+		if( value < ICFBamPubId16Gen.SLICE_MIN_VALUE ) {
 			throw new CFLibArgumentUnderflowException( getClass(),
 				"setRequiredSlice",
 				1,
 				"value",
 				value,
-				ICFBamId16Gen.SLICE_MIN_VALUE );
+				ICFBamPubId16Gen.SLICE_MIN_VALUE );
 		}
-		if( value > ICFBamId16Gen.SLICE_MAX_VALUE ) {
+		if( value > ICFBamPubId16Gen.SLICE_MAX_VALUE ) {
 			throw new CFLibArgumentOverflowException( getClass(),
 				"setRequiredSlice",
 				1,
 				"value",
 				value,
-				ICFBamId16Gen.SLICE_MAX_VALUE );
+				ICFBamPubId16Gen.SLICE_MAX_VALUE );
+		}
+		
+		if( value < ICFBamPubId16Gen.SLICE_MIN_VALUE ) {
+			throw new CFLibArgumentUnderflowException( getClass(),
+				"setRequiredSlice",
+				1,
+				"value",
+				value,
+				ICFBamPubId16Gen.SLICE_MIN_VALUE );
+		}
+		if( value > ICFBamPubId16Gen.SLICE_MAX_VALUE ) {
+			throw new CFLibArgumentOverflowException( getClass(),
+				"setRequiredSlice",
+				1,
+				"value",
+				value,
+				ICFBamPubId16Gen.SLICE_MAX_VALUE );
 		}
 		requiredSlice = value;
 	}
@@ -129,21 +146,38 @@ public class CFBamJpaId16GenH extends CFBamJpaInt16TypeH
 
 	@Override
 	public void setRequiredBlockSize( short value ) {
-		if( value < ICFBamId16Gen.BLOCKSIZE_MIN_VALUE ) {
+		if( value < ICFBamPubId16Gen.BLOCKSIZE_MIN_VALUE ) {
 			throw new CFLibArgumentUnderflowException( getClass(),
 				"setRequiredBlockSize",
 				1,
 				"value",
 				value,
-				ICFBamId16Gen.BLOCKSIZE_MIN_VALUE );
+				ICFBamPubId16Gen.BLOCKSIZE_MIN_VALUE );
 		}
-		if( value > ICFBamId16Gen.BLOCKSIZE_MAX_VALUE ) {
+		if( value > ICFBamPubId16Gen.BLOCKSIZE_MAX_VALUE ) {
 			throw new CFLibArgumentOverflowException( getClass(),
 				"setRequiredBlockSize",
 				1,
 				"value",
 				value,
-				ICFBamId16Gen.BLOCKSIZE_MAX_VALUE );
+				ICFBamPubId16Gen.BLOCKSIZE_MAX_VALUE );
+		}
+		
+		if( value < ICFBamPubId16Gen.BLOCKSIZE_MIN_VALUE ) {
+			throw new CFLibArgumentUnderflowException( getClass(),
+				"setRequiredBlockSize",
+				1,
+				"value",
+				value,
+				ICFBamPubId16Gen.BLOCKSIZE_MIN_VALUE );
+		}
+		if( value > ICFBamPubId16Gen.BLOCKSIZE_MAX_VALUE ) {
+			throw new CFLibArgumentOverflowException( getClass(),
+				"setRequiredBlockSize",
+				1,
+				"value",
+				value,
+				ICFBamPubId16Gen.BLOCKSIZE_MAX_VALUE );
 		}
 		requiredBlockSize = value;
 	}

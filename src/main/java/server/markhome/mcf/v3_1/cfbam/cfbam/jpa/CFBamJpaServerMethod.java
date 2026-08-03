@@ -261,6 +261,7 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 				1,
 				"value" );
 		}
+		
 		requiredTableId = value;
 	}
 
@@ -270,6 +271,7 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 	}
 
 	public void setOptionalDefSchemaId( CFLibDbKeyHash256 value ) {
+		
 		optionalDefSchemaId = value;
 	}
 
@@ -293,6 +295,7 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 				value.length(),
 				192 );
 		}
+		
 		requiredName = value;
 	}
 
@@ -310,6 +313,7 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 				value.length(),
 				16 );
 		}
+		
 		optionalShortName = value;
 	}
 
@@ -327,6 +331,7 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 				value.length(),
 				64 );
 		}
+		
 		optionalLabel = value;
 	}
 
@@ -344,6 +349,7 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 				value.length(),
 				128 );
 		}
+		
 		optionalShortDescription = value;
 	}
 
@@ -361,6 +367,7 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 				value.length(),
 				1023 );
 		}
+		
 		optionalDescription = value;
 	}
 
@@ -378,6 +385,7 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 				value.length(),
 				16 );
 		}
+		
 		optionalSuffix = value;
 	}
 
@@ -387,6 +395,7 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 	}
 
 	public void setRequiredIsInstanceMethod( boolean value ) {
+		
 		requiredIsInstanceMethod = value;
 	}
 
@@ -396,6 +405,7 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 	}
 
 	public void setRequiredIsServerOnly( boolean value ) {
+		
 		requiredIsServerOnly = value;
 	}
 
@@ -411,6 +421,7 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 				1,
 				"value" );
 		}
+		
 		requiredCodeVis = value;
 	}
 
@@ -434,6 +445,7 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 				value.length(),
 				2000000 );
 		}
+		
 		requiredJMethodBody = value;
 	}
 
@@ -457,6 +469,7 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 				value.length(),
 				2000000 );
 		}
+		
 		requiredCppMethodBody = value;
 	}
 
@@ -480,6 +493,7 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 				value.length(),
 				2000000 );
 		}
+		
 		requiredCsMethodBody = value;
 	}
 

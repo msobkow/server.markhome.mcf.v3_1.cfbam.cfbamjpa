@@ -108,6 +108,7 @@ public class CFBamJpaTZTimeColH extends CFBamJpaTZTimeDefH
 				1,
 				"value" );
 		}
+		
 		requiredTableId = value;
 	}
 

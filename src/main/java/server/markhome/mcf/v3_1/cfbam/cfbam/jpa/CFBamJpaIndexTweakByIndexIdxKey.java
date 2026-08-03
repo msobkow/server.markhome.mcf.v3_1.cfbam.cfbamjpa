@@ -82,6 +82,7 @@ public class CFBamJpaIndexTweakByIndexIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredIndexId = value;
 	}
 

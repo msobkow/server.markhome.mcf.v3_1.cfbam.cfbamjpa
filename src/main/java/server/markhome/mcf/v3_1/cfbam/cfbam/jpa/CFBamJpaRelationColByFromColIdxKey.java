@@ -82,6 +82,7 @@ public class CFBamJpaRelationColByFromColIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredFromColId = value;
 	}
 

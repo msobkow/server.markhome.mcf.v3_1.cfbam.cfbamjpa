@@ -82,6 +82,7 @@ public class CFBamJpaEnumTypeBySchemaIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredSchemaDefId = value;
 	}
 

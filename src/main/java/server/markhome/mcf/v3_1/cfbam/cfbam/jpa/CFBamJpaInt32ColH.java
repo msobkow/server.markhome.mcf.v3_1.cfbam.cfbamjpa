@@ -108,6 +108,7 @@ public class CFBamJpaInt32ColH extends CFBamJpaInt32DefH
 				1,
 				"value" );
 		}
+		
 		requiredTableId = value;
 	}
 

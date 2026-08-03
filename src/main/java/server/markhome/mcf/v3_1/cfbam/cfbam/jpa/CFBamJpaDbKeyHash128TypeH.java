@@ -108,6 +108,7 @@ public class CFBamJpaDbKeyHash128TypeH extends CFBamJpaDbKeyHash128DefH
 				1,
 				"value" );
 		}
+		
 		requiredSchemaDefId = value;
 	}
 

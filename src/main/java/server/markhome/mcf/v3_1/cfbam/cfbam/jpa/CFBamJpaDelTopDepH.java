@@ -132,6 +132,7 @@ public class CFBamJpaDelTopDepH extends CFBamJpaDelDepH
 				value.length(),
 				192 );
 		}
+		
 		requiredName = value;
 	}
 
@@ -147,6 +148,7 @@ public class CFBamJpaDelTopDepH extends CFBamJpaDelDepH
 				1,
 				"value" );
 		}
+		
 		requiredTableId = value;
 	}
 
@@ -156,6 +158,7 @@ public class CFBamJpaDelTopDepH extends CFBamJpaDelDepH
 	}
 
 	public void setOptionalPrevId( CFLibDbKeyHash256 value ) {
+		
 		optionalPrevId = value;
 	}
 
@@ -165,6 +168,7 @@ public class CFBamJpaDelTopDepH extends CFBamJpaDelDepH
 	}
 
 	public void setOptionalNextId( CFLibDbKeyHash256 value ) {
+		
 		optionalNextId = value;
 	}
 

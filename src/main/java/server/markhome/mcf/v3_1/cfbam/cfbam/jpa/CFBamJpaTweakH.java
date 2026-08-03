@@ -292,6 +292,7 @@ public class CFBamJpaTweakH
 				1,
 				"value" );
 		}
+		
 		requiredTenantId = value;
 	}
 
@@ -307,6 +308,7 @@ public class CFBamJpaTweakH
 				1,
 				"value" );
 		}
+		
 		requiredScopeId = value;
 	}
 
@@ -316,6 +318,7 @@ public class CFBamJpaTweakH
 	}
 
 	public void setOptionalDefSchemaTenantId( CFLibDbKeyHash256 value ) {
+		
 		optionalDefSchemaTenantId = value;
 	}
 
@@ -325,6 +328,7 @@ public class CFBamJpaTweakH
 	}
 
 	public void setOptionalDefSchemaId( CFLibDbKeyHash256 value ) {
+		
 		optionalDefSchemaId = value;
 	}
 
@@ -348,6 +352,7 @@ public class CFBamJpaTweakH
 				value.length(),
 				192 );
 		}
+		
 		requiredName = value;
 	}
 
@@ -357,6 +362,7 @@ public class CFBamJpaTweakH
 	}
 
 	public void setRequiredReplacesInherited( boolean value ) {
+		
 		requiredReplacesInherited = value;
 	}
 
@@ -380,6 +386,7 @@ public class CFBamJpaTweakH
 				value.length(),
 				2000000 );
 		}
+		
 		requiredTweakGelText = value;
 	}
 

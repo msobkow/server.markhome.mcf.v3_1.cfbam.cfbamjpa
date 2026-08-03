@@ -108,6 +108,7 @@ public class CFBamJpaBoolDefH extends CFBamJpaAtomH
 	}
 
 	public void setOptionalInitValue( Boolean value ) {
+		
 		optionalInitValue = value;
 	}
 
@@ -125,6 +126,7 @@ public class CFBamJpaBoolDefH extends CFBamJpaAtomH
 				value.length(),
 				32 );
 		}
+		
 		optionalFalseString = value;
 	}
 
@@ -142,6 +144,7 @@ public class CFBamJpaBoolDefH extends CFBamJpaAtomH
 				value.length(),
 				32 );
 		}
+		
 		optionalTrueString = value;
 	}
 
@@ -159,6 +162,7 @@ public class CFBamJpaBoolDefH extends CFBamJpaAtomH
 				value.length(),
 				32 );
 		}
+		
 		optionalNullString = value;
 	}
 

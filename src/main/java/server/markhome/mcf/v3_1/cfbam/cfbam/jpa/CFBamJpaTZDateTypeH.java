@@ -108,6 +108,7 @@ public class CFBamJpaTZDateTypeH extends CFBamJpaTZDateDefH
 				1,
 				"value" );
 		}
+		
 		requiredSchemaDefId = value;
 	}
 

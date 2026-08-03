@@ -82,6 +82,7 @@ public class CFBamJpaPopTopDepByContRelIdxKey
 				1,
 				"value" );
 		}
+		
 		requiredContRelationId = value;
 	}
 

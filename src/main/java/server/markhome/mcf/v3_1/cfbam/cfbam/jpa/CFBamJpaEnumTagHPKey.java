@@ -164,6 +164,7 @@ public class CFBamJpaEnumTagHPKey
 				1,
 				"value" );
 		}
+		
 		requiredId = value;
 	}
 
