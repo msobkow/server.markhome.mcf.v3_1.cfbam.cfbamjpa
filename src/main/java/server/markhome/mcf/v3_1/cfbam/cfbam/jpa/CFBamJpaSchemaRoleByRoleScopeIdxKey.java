@@ -71,11 +71,11 @@ public class CFBamJpaSchemaRoleByRoleScopeIdxKey
 	}
 
 	@Override
-	public $reference DataType EffCodeVisSchemaName$.$reference DataType Name$ getRequiredRoleScope() {
+	public ICFBamPubSchema.RoleScopeEnum getRequiredRoleScope() {
 		return( requiredRoleScope );
 	}
 
-	public void setRequiredRoleScope( $reference DataType EffCodeVisSchemaName$.$reference DataType Name$ value ) {
+	public void setRequiredRoleScope( ICFBamPubSchema.RoleScopeEnum value ) {
 		if( value == null ) {
 			throw new CFLibNullArgumentException( getClass(),
 				"setRequiredRoleScope",
