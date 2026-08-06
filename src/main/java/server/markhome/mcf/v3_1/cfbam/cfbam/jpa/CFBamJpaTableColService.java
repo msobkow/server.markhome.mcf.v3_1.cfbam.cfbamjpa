@@ -254,6 +254,8 @@ public class CFBamJpaTableColService {
 		existing.setOptionalLookupPrev(data.getOptionalLookupPrev());
 		existing.setOptionalLookupNext(data.getOptionalLookupNext());
 		// Apply data columns of CFBamValue to existing object
+		existing.setRequiredScopeId(data.getRequiredScopeId());
+		existing.setOptionalDefSchemaId(data.getOptionalDefSchemaId());
 		existing.setRequiredName(data.getRequiredName());
 		existing.setOptionalShortName(data.getOptionalShortName());
 		existing.setOptionalLabel(data.getOptionalLabel());
@@ -263,11 +265,15 @@ public class CFBamJpaTableColService {
 		existing.setRequiredIsNullable(data.getRequiredIsNullable());
 		existing.setOptionalGenerateId(data.getOptionalGenerateId());
 		existing.setRequiredImplementsPolymorph(data.getRequiredImplementsPolymorph());
+		existing.setOptionalPrevId(data.getOptionalPrevId());
+		existing.setOptionalNextId(data.getOptionalNextId());
 		// Apply superior data relationships of CFBamTableCol to existing object
 		existing.setRequiredContainerTable(data.getRequiredContainerTable());
 		existing.setRequiredParentDataType(data.getRequiredParentDataType());
 		// Apply data columns of CFBamTableCol to existing object
+		existing.setRequiredTableId(data.getRequiredTableId());
 		existing.setOptionalDbName(data.getOptionalDbName());
+		existing.setOptionalDataId(data.getOptionalDataId());
 		existing.setOptionalXmlElementName(data.getOptionalXmlElementName());
 		// Update the audit columns
 		data.setUpdatedAt(LocalDateTime.now());

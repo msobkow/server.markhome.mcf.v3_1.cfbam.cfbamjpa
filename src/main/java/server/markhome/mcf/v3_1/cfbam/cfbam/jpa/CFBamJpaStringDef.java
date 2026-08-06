@@ -98,28 +98,11 @@ public class CFBamJpaStringDef extends CFBamJpaAtom
 
 	@Override
 	public int getRequiredMaxLen() {
-		return( requiredMaxLen );
+		return(requiredMaxLen);
 	}
 
 	@Override
 	public void setRequiredMaxLen( int value ) {
-		if( value < ICFBamPubStringDef.MAXLEN_MIN_VALUE ) {
-			throw new CFLibArgumentUnderflowException( getClass(),
-				"setRequiredMaxLen",
-				1,
-				"value",
-				value,
-				ICFBamPubStringDef.MAXLEN_MIN_VALUE );
-		}
-		if( value > ICFBamPubStringDef.MAXLEN_MAX_VALUE ) {
-			throw new CFLibArgumentOverflowException( getClass(),
-				"setRequiredMaxLen",
-				1,
-				"value",
-				value,
-				ICFBamPubStringDef.MAXLEN_MAX_VALUE );
-		}
-		
 		if( value < ICFBamPubStringDef.MAXLEN_MIN_VALUE ) {
 			throw new CFLibArgumentUnderflowException( getClass(),
 				"setRequiredMaxLen",
@@ -141,17 +124,16 @@ public class CFBamJpaStringDef extends CFBamJpaAtom
 
 	@Override
 	public boolean getRequiredIsPolymorph() {
-		return( requiredIsPolymorph );
+		return(requiredIsPolymorph);
 	}
 
 	public void setRequiredIsPolymorph( boolean value ) {
-		
 		requiredIsPolymorph = value;
 	}
 
 	@Override
 	public String getOptionalInitValue() {
-		return( optionalInitValue );
+		return(optionalInitValue);
 	}
 
 	public void setOptionalInitValue( String value ) {
@@ -163,7 +145,6 @@ public class CFBamJpaStringDef extends CFBamJpaAtom
 				value.length(),
 				500 );
 		}
-		
 		optionalInitValue = value;
 	}
 

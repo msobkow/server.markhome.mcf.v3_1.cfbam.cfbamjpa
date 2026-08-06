@@ -146,7 +146,7 @@ public class CFBamJpaBoolType extends CFBamJpaBoolDef
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredSchemaDefId() {
-		return( requiredSchemaDefId );
+		return(requiredSchemaDefId);
 	}
 
 	public void setRequiredSchemaDefId( CFLibDbKeyHash256 value ) {
@@ -156,7 +156,6 @@ public class CFBamJpaBoolType extends CFBamJpaBoolDef
 				1,
 				"value" );
 		}
-		
 		requiredSchemaDefId = value;
 	}
 
@@ -335,6 +334,7 @@ public class CFBamJpaBoolType extends CFBamJpaBoolDef
 	public void setBoolType( ICFBamBoolType src ) {
 		super.setBoolDef( src );
 		setRequiredContainerSchemaDef(src.getRequiredContainerSchemaDef());
+		setRequiredSchemaDefId(src.getRequiredSchemaDefId());
 	}
 
 	@Override
@@ -355,6 +355,7 @@ public class CFBamJpaBoolType extends CFBamJpaBoolDef
 	public void setBoolType( ICFBamBoolTypeH src ) {
 		super.setBoolDef( src );
 		setRequiredContainerSchemaDef(src.getRequiredSchemaDefId());
+		setRequiredSchemaDefId(src.getRequiredSchemaDefId());
 	}
 
 	@Override

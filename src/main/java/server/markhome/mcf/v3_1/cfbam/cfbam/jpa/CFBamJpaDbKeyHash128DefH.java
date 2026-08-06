@@ -95,7 +95,7 @@ public class CFBamJpaDbKeyHash128DefH extends CFBamJpaAtomH
 
 	@Override
 	public String getOptionalInitValue() {
-		return( optionalInitValue );
+		return(optionalInitValue);
 	}
 
 	public void setOptionalInitValue( String value ) {
@@ -107,7 +107,6 @@ public class CFBamJpaDbKeyHash128DefH extends CFBamJpaAtomH
 				value.length(),
 				32 );
 		}
-		
 		optionalInitValue = value;
 	}
 

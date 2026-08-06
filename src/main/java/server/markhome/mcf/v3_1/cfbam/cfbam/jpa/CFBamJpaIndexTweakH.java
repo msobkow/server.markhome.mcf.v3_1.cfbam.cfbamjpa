@@ -98,7 +98,7 @@ public class CFBamJpaIndexTweakH extends CFBamJpaTweakH
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredIndexId() {
-		return( requiredIndexId );
+		return(requiredIndexId);
 	}
 
 	public void setRequiredIndexId( CFLibDbKeyHash256 value ) {
@@ -108,7 +108,6 @@ public class CFBamJpaIndexTweakH extends CFBamJpaTweakH
 				1,
 				"value" );
 		}
-		
 		requiredIndexId = value;
 	}
 

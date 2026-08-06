@@ -74,7 +74,7 @@ public class CFBamJpaSchemaDefByPubURIIdxKey
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredCTenantId() {
-		return( requiredCTenantId );
+		return(requiredCTenantId);
 	}
 
 	public void setRequiredCTenantId( CFLibDbKeyHash256 value ) {
@@ -84,13 +84,12 @@ public class CFBamJpaSchemaDefByPubURIIdxKey
 				1,
 				"value" );
 		}
-		
 		requiredCTenantId = value;
 	}
 
 	@Override
 	public String getRequiredPublishURI() {
-		return( requiredPublishURI );
+		return(requiredPublishURI);
 	}
 
 	public void setRequiredPublishURI( String value ) {
@@ -108,7 +107,6 @@ public class CFBamJpaSchemaDefByPubURIIdxKey
 				value.length(),
 				512 );
 		}
-		
 		requiredPublishURI = value;
 	}
 

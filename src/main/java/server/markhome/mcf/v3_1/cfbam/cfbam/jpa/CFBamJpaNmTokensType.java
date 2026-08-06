@@ -146,7 +146,7 @@ public class CFBamJpaNmTokensType extends CFBamJpaNmTokensDef
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredSchemaDefId() {
-		return( requiredSchemaDefId );
+		return(requiredSchemaDefId);
 	}
 
 	public void setRequiredSchemaDefId( CFLibDbKeyHash256 value ) {
@@ -156,7 +156,6 @@ public class CFBamJpaNmTokensType extends CFBamJpaNmTokensDef
 				1,
 				"value" );
 		}
-		
 		requiredSchemaDefId = value;
 	}
 
@@ -335,6 +334,7 @@ public class CFBamJpaNmTokensType extends CFBamJpaNmTokensDef
 	public void setNmTokensType( ICFBamNmTokensType src ) {
 		super.setNmTokensDef( src );
 		setRequiredContainerSchemaDef(src.getRequiredContainerSchemaDef());
+		setRequiredSchemaDefId(src.getRequiredSchemaDefId());
 	}
 
 	@Override
@@ -355,6 +355,7 @@ public class CFBamJpaNmTokensType extends CFBamJpaNmTokensDef
 	public void setNmTokensType( ICFBamNmTokensTypeH src ) {
 		super.setNmTokensDef( src );
 		setRequiredContainerSchemaDef(src.getRequiredSchemaDefId());
+		setRequiredSchemaDefId(src.getRequiredSchemaDefId());
 	}
 
 	@Override

@@ -74,7 +74,7 @@ public class CFBamJpaSchemaDefByAuthEMailIdxKey
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredCTenantId() {
-		return( requiredCTenantId );
+		return(requiredCTenantId);
 	}
 
 	public void setRequiredCTenantId( CFLibDbKeyHash256 value ) {
@@ -84,13 +84,12 @@ public class CFBamJpaSchemaDefByAuthEMailIdxKey
 				1,
 				"value" );
 		}
-		
 		requiredCTenantId = value;
 	}
 
 	@Override
 	public String getRequiredAuthorEMail() {
-		return( requiredAuthorEMail );
+		return(requiredAuthorEMail);
 	}
 
 	public void setRequiredAuthorEMail( String value ) {
@@ -108,7 +107,6 @@ public class CFBamJpaSchemaDefByAuthEMailIdxKey
 				value.length(),
 				512 );
 		}
-		
 		requiredAuthorEMail = value;
 	}
 

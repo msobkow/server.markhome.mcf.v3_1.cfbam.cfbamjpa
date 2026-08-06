@@ -253,15 +253,20 @@ public class CFBamJpaSchemaRefService {
 		// Apply superior data relationships of CFBamScope to existing object
 		existing.setRequiredOwnerTenant(data.getRequiredTenantId());
 		// Apply data columns of CFBamScope to existing object
+		existing.setRequiredTenantId(data.getRequiredTenantId());
 		// Apply superior data relationships of CFBamSchemaRef to existing object
 		existing.setRequiredContainerSchema(data.getRequiredContainerSchema());
 		existing.setOptionalLookupRefSchema(data.getOptionalLookupRefSchema());
 		existing.setOptionalLookupPrev(data.getOptionalLookupPrev());
 		existing.setOptionalLookupNext(data.getOptionalLookupNext());
 		// Apply data columns of CFBamSchemaRef to existing object
+		existing.setRequiredSchemaId(data.getRequiredSchemaId());
 		existing.setRequiredName(data.getRequiredName());
 		existing.setRequiredRefModelName(data.getRequiredRefModelName());
 		existing.setRequiredIncludeRoot(data.getRequiredIncludeRoot());
+		existing.setOptionalRefSchemaId(data.getOptionalRefSchemaId());
+		existing.setOptionalPrevId(data.getOptionalPrevId());
+		existing.setOptionalNextId(data.getOptionalNextId());
 		// Update the audit columns
 		data.setUpdatedAt(LocalDateTime.now());
 		// Save the changes we've made

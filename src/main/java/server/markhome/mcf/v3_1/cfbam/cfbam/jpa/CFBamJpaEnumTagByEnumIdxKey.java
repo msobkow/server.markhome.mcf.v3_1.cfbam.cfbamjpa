@@ -72,7 +72,7 @@ public class CFBamJpaEnumTagByEnumIdxKey
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredEnumId() {
-		return( requiredEnumId );
+		return(requiredEnumId);
 	}
 
 	public void setRequiredEnumId( CFLibDbKeyHash256 value ) {
@@ -82,7 +82,6 @@ public class CFBamJpaEnumTagByEnumIdxKey
 				1,
 				"value" );
 		}
-		
 		requiredEnumId = value;
 	}
 

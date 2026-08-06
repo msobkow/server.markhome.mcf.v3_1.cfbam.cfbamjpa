@@ -98,7 +98,7 @@ public class CFBamJpaUuidTypeH extends CFBamJpaUuidDefH
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredSchemaDefId() {
-		return( requiredSchemaDefId );
+		return(requiredSchemaDefId);
 	}
 
 	public void setRequiredSchemaDefId( CFLibDbKeyHash256 value ) {
@@ -108,7 +108,6 @@ public class CFBamJpaUuidTypeH extends CFBamJpaUuidDefH
 				1,
 				"value" );
 		}
-		
 		requiredSchemaDefId = value;
 	}
 

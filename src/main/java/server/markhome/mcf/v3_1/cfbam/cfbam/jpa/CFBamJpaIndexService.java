@@ -241,10 +241,13 @@ public class CFBamJpaIndexService {
 		// Apply superior data relationships of CFBamScope to existing object
 		existing.setRequiredOwnerTenant(data.getRequiredTenantId());
 		// Apply data columns of CFBamScope to existing object
+		existing.setRequiredTenantId(data.getRequiredTenantId());
 		// Apply superior data relationships of CFBamIndex to existing object
 		existing.setRequiredContainerTable(data.getRequiredContainerTable());
 		existing.setOptionalLookupDefSchema(data.getOptionalLookupDefSchema());
 		// Apply data columns of CFBamIndex to existing object
+		existing.setRequiredTableId(data.getRequiredTableId());
+		existing.setOptionalDefSchemaId(data.getOptionalDefSchemaId());
 		existing.setRequiredName(data.getRequiredName());
 		existing.setOptionalShortName(data.getOptionalShortName());
 		existing.setOptionalLabel(data.getOptionalLabel());

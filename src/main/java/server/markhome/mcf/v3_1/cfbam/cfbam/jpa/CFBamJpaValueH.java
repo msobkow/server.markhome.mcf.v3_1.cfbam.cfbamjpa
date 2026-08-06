@@ -302,7 +302,7 @@ public class CFBamJpaValueH
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredScopeId() {
-		return( requiredScopeId );
+		return(requiredScopeId);
 	}
 
 	public void setRequiredScopeId( CFLibDbKeyHash256 value ) {
@@ -312,23 +312,21 @@ public class CFBamJpaValueH
 				1,
 				"value" );
 		}
-		
 		requiredScopeId = value;
 	}
 
 	@Override
 	public CFLibDbKeyHash256 getOptionalDefSchemaId() {
-		return( optionalDefSchemaId );
+		return(optionalDefSchemaId);
 	}
 
 	public void setOptionalDefSchemaId( CFLibDbKeyHash256 value ) {
-		
 		optionalDefSchemaId = value;
 	}
 
 	@Override
 	public String getRequiredName() {
-		return( requiredName );
+		return(requiredName);
 	}
 
 	public void setRequiredName( String value ) {
@@ -346,13 +344,12 @@ public class CFBamJpaValueH
 				value.length(),
 				192 );
 		}
-		
 		requiredName = value;
 	}
 
 	@Override
 	public String getOptionalShortName() {
-		return( optionalShortName );
+		return(optionalShortName);
 	}
 
 	public void setOptionalShortName( String value ) {
@@ -364,13 +361,12 @@ public class CFBamJpaValueH
 				value.length(),
 				16 );
 		}
-		
 		optionalShortName = value;
 	}
 
 	@Override
 	public String getOptionalLabel() {
-		return( optionalLabel );
+		return(optionalLabel);
 	}
 
 	public void setOptionalLabel( String value ) {
@@ -382,13 +378,12 @@ public class CFBamJpaValueH
 				value.length(),
 				64 );
 		}
-		
 		optionalLabel = value;
 	}
 
 	@Override
 	public String getOptionalShortDescription() {
-		return( optionalShortDescription );
+		return(optionalShortDescription);
 	}
 
 	public void setOptionalShortDescription( String value ) {
@@ -400,13 +395,12 @@ public class CFBamJpaValueH
 				value.length(),
 				128 );
 		}
-		
 		optionalShortDescription = value;
 	}
 
 	@Override
 	public String getOptionalDescription() {
-		return( optionalDescription );
+		return(optionalDescription);
 	}
 
 	public void setOptionalDescription( String value ) {
@@ -418,13 +412,12 @@ public class CFBamJpaValueH
 				value.length(),
 				1023 );
 		}
-		
 		optionalDescription = value;
 	}
 
 	@Override
 	public String getOptionalDefaultXmlValue() {
-		return( optionalDefaultXmlValue );
+		return(optionalDefaultXmlValue);
 	}
 
 	public void setOptionalDefaultXmlValue( String value ) {
@@ -436,57 +429,51 @@ public class CFBamJpaValueH
 				value.length(),
 				1023 );
 		}
-		
 		optionalDefaultXmlValue = value;
 	}
 
 	@Override
 	public boolean getRequiredIsNullable() {
-		return( requiredIsNullable );
+		return(requiredIsNullable);
 	}
 
 	public void setRequiredIsNullable( boolean value ) {
-		
 		requiredIsNullable = value;
 	}
 
 	@Override
 	public Boolean getOptionalGenerateId() {
-		return( optionalGenerateId );
+		return(optionalGenerateId);
 	}
 
 	public void setOptionalGenerateId( Boolean value ) {
-		
 		optionalGenerateId = value;
 	}
 
 	@Override
 	public boolean getRequiredImplementsPolymorph() {
-		return( requiredImplementsPolymorph );
+		return(requiredImplementsPolymorph);
 	}
 
 	public void setRequiredImplementsPolymorph( boolean value ) {
-		
 		requiredImplementsPolymorph = value;
 	}
 
 	@Override
 	public CFLibDbKeyHash256 getOptionalPrevId() {
-		return( optionalPrevId );
+		return(optionalPrevId);
 	}
 
 	public void setOptionalPrevId( CFLibDbKeyHash256 value ) {
-		
 		optionalPrevId = value;
 	}
 
 	@Override
 	public CFLibDbKeyHash256 getOptionalNextId() {
-		return( optionalNextId );
+		return(optionalNextId);
 	}
 
 	public void setOptionalNextId( CFLibDbKeyHash256 value ) {
-		
 		optionalNextId = value;
 	}
 

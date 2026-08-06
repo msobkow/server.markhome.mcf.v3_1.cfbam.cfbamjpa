@@ -146,7 +146,7 @@ public class CFBamJpaNumberCol extends CFBamJpaNumberDef
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredTableId() {
-		return( requiredTableId );
+		return(requiredTableId);
 	}
 
 	public void setRequiredTableId( CFLibDbKeyHash256 value ) {
@@ -156,7 +156,6 @@ public class CFBamJpaNumberCol extends CFBamJpaNumberDef
 				1,
 				"value" );
 		}
-		
 		requiredTableId = value;
 	}
 
@@ -335,6 +334,7 @@ public class CFBamJpaNumberCol extends CFBamJpaNumberDef
 	public void setNumberCol( ICFBamNumberCol src ) {
 		super.setNumberDef( src );
 		setRequiredContainerTable(src.getRequiredContainerTable());
+		setRequiredTableId(src.getRequiredTableId());
 	}
 
 	@Override
@@ -355,6 +355,7 @@ public class CFBamJpaNumberCol extends CFBamJpaNumberDef
 	public void setNumberCol( ICFBamNumberColH src ) {
 		super.setNumberDef( src );
 		setRequiredContainerTable(src.getRequiredTableId());
+		setRequiredTableId(src.getRequiredTableId());
 	}
 
 	@Override

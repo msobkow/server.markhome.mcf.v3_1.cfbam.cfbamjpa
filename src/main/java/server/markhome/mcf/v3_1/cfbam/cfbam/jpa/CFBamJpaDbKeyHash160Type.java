@@ -146,7 +146,7 @@ public class CFBamJpaDbKeyHash160Type extends CFBamJpaDbKeyHash160Def
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredSchemaDefId() {
-		return( requiredSchemaDefId );
+		return(requiredSchemaDefId);
 	}
 
 	public void setRequiredSchemaDefId( CFLibDbKeyHash256 value ) {
@@ -156,7 +156,6 @@ public class CFBamJpaDbKeyHash160Type extends CFBamJpaDbKeyHash160Def
 				1,
 				"value" );
 		}
-		
 		requiredSchemaDefId = value;
 	}
 
@@ -335,6 +334,7 @@ public class CFBamJpaDbKeyHash160Type extends CFBamJpaDbKeyHash160Def
 	public void setDbKeyHash160Type( ICFBamDbKeyHash160Type src ) {
 		super.setDbKeyHash160Def( src );
 		setRequiredContainerSchemaDef(src.getRequiredContainerSchemaDef());
+		setRequiredSchemaDefId(src.getRequiredSchemaDefId());
 	}
 
 	@Override
@@ -355,6 +355,7 @@ public class CFBamJpaDbKeyHash160Type extends CFBamJpaDbKeyHash160Def
 	public void setDbKeyHash160Type( ICFBamDbKeyHash160TypeH src ) {
 		super.setDbKeyHash160Def( src );
 		setRequiredContainerSchemaDef(src.getRequiredSchemaDefId());
+		setRequiredSchemaDefId(src.getRequiredSchemaDefId());
 	}
 
 	@Override

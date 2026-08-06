@@ -98,7 +98,7 @@ public class CFBamJpaNmTokensColH extends CFBamJpaNmTokensDefH
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredTableId() {
-		return( requiredTableId );
+		return(requiredTableId);
 	}
 
 	public void setRequiredTableId( CFLibDbKeyHash256 value ) {
@@ -108,7 +108,6 @@ public class CFBamJpaNmTokensColH extends CFBamJpaNmTokensDefH
 				1,
 				"value" );
 		}
-		
 		requiredTableId = value;
 	}
 

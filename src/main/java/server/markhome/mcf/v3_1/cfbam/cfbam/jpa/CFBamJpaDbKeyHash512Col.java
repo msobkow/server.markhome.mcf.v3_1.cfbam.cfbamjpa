@@ -146,7 +146,7 @@ public class CFBamJpaDbKeyHash512Col extends CFBamJpaDbKeyHash512Def
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredTableId() {
-		return( requiredTableId );
+		return(requiredTableId);
 	}
 
 	public void setRequiredTableId( CFLibDbKeyHash256 value ) {
@@ -156,7 +156,6 @@ public class CFBamJpaDbKeyHash512Col extends CFBamJpaDbKeyHash512Def
 				1,
 				"value" );
 		}
-		
 		requiredTableId = value;
 	}
 
@@ -335,6 +334,7 @@ public class CFBamJpaDbKeyHash512Col extends CFBamJpaDbKeyHash512Def
 	public void setDbKeyHash512Col( ICFBamDbKeyHash512Col src ) {
 		super.setDbKeyHash512Def( src );
 		setRequiredContainerTable(src.getRequiredContainerTable());
+		setRequiredTableId(src.getRequiredTableId());
 	}
 
 	@Override
@@ -355,6 +355,7 @@ public class CFBamJpaDbKeyHash512Col extends CFBamJpaDbKeyHash512Def
 	public void setDbKeyHash512Col( ICFBamDbKeyHash512ColH src ) {
 		super.setDbKeyHash512Def( src );
 		setRequiredContainerTable(src.getRequiredTableId());
+		setRequiredTableId(src.getRequiredTableId());
 	}
 
 	@Override

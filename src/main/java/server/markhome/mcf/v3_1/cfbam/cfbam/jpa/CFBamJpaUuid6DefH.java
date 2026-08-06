@@ -95,7 +95,7 @@ public class CFBamJpaUuid6DefH extends CFBamJpaAtomH
 
 	@Override
 	public String getOptionalInitValue() {
-		return( optionalInitValue );
+		return(optionalInitValue);
 	}
 
 	public void setOptionalInitValue( String value ) {
@@ -107,7 +107,6 @@ public class CFBamJpaUuid6DefH extends CFBamJpaAtomH
 				value.length(),
 				62 );
 		}
-		
 		optionalInitValue = value;
 	}
 

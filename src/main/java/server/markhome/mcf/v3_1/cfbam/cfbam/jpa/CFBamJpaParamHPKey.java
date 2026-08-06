@@ -154,7 +154,7 @@ public class CFBamJpaParamHPKey
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredId() {
-		return( requiredId );
+		return(requiredId);
 	}
 
 	public void setRequiredId( CFLibDbKeyHash256 value ) {
@@ -164,7 +164,6 @@ public class CFBamJpaParamHPKey
 				1,
 				"value" );
 		}
-		
 		requiredId = value;
 	}
 

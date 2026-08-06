@@ -296,6 +296,8 @@ public class CFBamJpaDbKeyHash128GenService {
 		existing.setOptionalLookupPrev(data.getOptionalLookupPrev());
 		existing.setOptionalLookupNext(data.getOptionalLookupNext());
 		// Apply data columns of CFBamValue to existing object
+		existing.setRequiredScopeId(data.getRequiredScopeId());
+		existing.setOptionalDefSchemaId(data.getOptionalDefSchemaId());
 		existing.setRequiredName(data.getRequiredName());
 		existing.setOptionalShortName(data.getOptionalShortName());
 		existing.setOptionalLabel(data.getOptionalLabel());
@@ -305,6 +307,8 @@ public class CFBamJpaDbKeyHash128GenService {
 		existing.setRequiredIsNullable(data.getRequiredIsNullable());
 		existing.setOptionalGenerateId(data.getOptionalGenerateId());
 		existing.setRequiredImplementsPolymorph(data.getRequiredImplementsPolymorph());
+		existing.setOptionalPrevId(data.getOptionalPrevId());
+		existing.setOptionalNextId(data.getOptionalNextId());
 		// Apply superior data relationships of CFBamAtom to existing object
 		// Apply data columns of CFBamAtom to existing object
 		existing.setOptionalDbName(data.getOptionalDbName());
@@ -314,6 +318,7 @@ public class CFBamJpaDbKeyHash128GenService {
 		// Apply superior data relationships of CFBamDbKeyHash128Type to existing object
 		existing.setRequiredContainerSchemaDef(data.getRequiredContainerSchemaDef());
 		// Apply data columns of CFBamDbKeyHash128Type to existing object
+		existing.setRequiredSchemaDefId(data.getRequiredSchemaDefId());
 		// Apply superior data relationships of CFBamDbKeyHash128Gen to existing object
 		// Apply data columns of CFBamDbKeyHash128Gen to existing object
 		existing.setRequiredSlice(data.getRequiredSlice());

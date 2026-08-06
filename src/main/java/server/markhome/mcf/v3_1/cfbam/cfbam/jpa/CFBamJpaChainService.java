@@ -266,12 +266,16 @@ public class CFBamJpaChainService {
 		existing.setRequiredLookupPrevRel(data.getRequiredLookupPrevRel());
 		existing.setRequiredLookupNextRel(data.getRequiredLookupNextRel());
 		// Apply data columns of CFBamChain to existing object
+		existing.setOptionalDefSchemaId(data.getOptionalDefSchemaId());
 		existing.setRequiredName(data.getRequiredName());
 		existing.setOptionalShortName(data.getOptionalShortName());
 		existing.setOptionalLabel(data.getOptionalLabel());
 		existing.setOptionalShortDescription(data.getOptionalShortDescription());
 		existing.setOptionalDescription(data.getOptionalDescription());
+		existing.setRequiredTableId(data.getRequiredTableId());
 		existing.setOptionalSuffix(data.getOptionalSuffix());
+		existing.setRequiredPrevRelationId(data.getRequiredPrevRelationId());
+		existing.setRequiredNextRelationId(data.getRequiredNextRelationId());
 		// Update the audit columns
 		data.setUpdatedAt(LocalDateTime.now());
 		// Save the changes we've made

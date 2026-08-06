@@ -104,17 +104,16 @@ public class CFBamJpaBoolDefH extends CFBamJpaAtomH
 
 	@Override
 	public Boolean getOptionalInitValue() {
-		return( optionalInitValue );
+		return(optionalInitValue);
 	}
 
 	public void setOptionalInitValue( Boolean value ) {
-		
 		optionalInitValue = value;
 	}
 
 	@Override
 	public String getOptionalFalseString() {
-		return( optionalFalseString );
+		return(optionalFalseString);
 	}
 
 	public void setOptionalFalseString( String value ) {
@@ -126,13 +125,12 @@ public class CFBamJpaBoolDefH extends CFBamJpaAtomH
 				value.length(),
 				32 );
 		}
-		
 		optionalFalseString = value;
 	}
 
 	@Override
 	public String getOptionalTrueString() {
-		return( optionalTrueString );
+		return(optionalTrueString);
 	}
 
 	public void setOptionalTrueString( String value ) {
@@ -144,13 +142,12 @@ public class CFBamJpaBoolDefH extends CFBamJpaAtomH
 				value.length(),
 				32 );
 		}
-		
 		optionalTrueString = value;
 	}
 
 	@Override
 	public String getOptionalNullString() {
-		return( optionalNullString );
+		return(optionalNullString);
 	}
 
 	public void setOptionalNullString( String value ) {
@@ -162,7 +159,6 @@ public class CFBamJpaBoolDefH extends CFBamJpaAtomH
 				value.length(),
 				32 );
 		}
-		
 		optionalNullString = value;
 	}
 

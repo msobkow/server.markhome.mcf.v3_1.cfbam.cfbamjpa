@@ -72,11 +72,10 @@ public class CFBamJpaIndexColByPrevIdxKey
 
 	@Override
 	public CFLibDbKeyHash256 getOptionalPrevId() {
-		return( optionalPrevId );
+		return(optionalPrevId);
 	}
 
 	public void setOptionalPrevId( CFLibDbKeyHash256 value ) {
-		
 		optionalPrevId = value;
 	}
 

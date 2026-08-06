@@ -277,6 +277,7 @@ public class CFBamJpaTableService {
 		// Apply superior data relationships of CFBamScope to existing object
 		existing.setRequiredOwnerTenant(data.getRequiredTenantId());
 		// Apply data columns of CFBamScope to existing object
+		existing.setRequiredTenantId(data.getRequiredTenantId());
 		// Apply superior data relationships of CFBamTable to existing object
 		existing.setRequiredContainerSchemaDef(data.getRequiredContainerSchemaDef());
 		existing.setOptionalLookupDefSchema(data.getOptionalLookupDefSchema());
@@ -285,6 +286,8 @@ public class CFBamJpaTableService {
 		existing.setOptionalLookupQualTable(data.getOptionalLookupQualTable());
 		existing.setOptionalLookupPrimaryIndex(data.getOptionalLookupPrimaryIndex());
 		// Apply data columns of CFBamTable to existing object
+		existing.setRequiredSchemaDefId(data.getRequiredSchemaDefId());
+		existing.setOptionalDefSchemaId(data.getOptionalDefSchemaId());
 		existing.setRequiredName(data.getRequiredName());
 		existing.setOptionalDbName(data.getOptionalDbName());
 		existing.setOptionalShortName(data.getOptionalShortName());
@@ -292,7 +295,11 @@ public class CFBamJpaTableService {
 		existing.setOptionalShortDescription(data.getOptionalShortDescription());
 		existing.setOptionalDescription(data.getOptionalDescription());
 		existing.setRequiredPageData(data.getRequiredPageData());
+		existing.setOptionalPrimaryIndexId(data.getOptionalPrimaryIndexId());
 		existing.setRequiredTableClassCode(data.getRequiredTableClassCode());
+		existing.setOptionalLookupIndexId(data.getOptionalLookupIndexId());
+		existing.setOptionalAltIndexId(data.getOptionalAltIndexId());
+		existing.setOptionalQualifyingTableId(data.getOptionalQualifyingTableId());
 		existing.setRequiredIsInstantiable(data.getRequiredIsInstantiable());
 		existing.setRequiredHasHistory(data.getRequiredHasHistory());
 		existing.setRequiredHasAuditColumns(data.getRequiredHasAuditColumns());

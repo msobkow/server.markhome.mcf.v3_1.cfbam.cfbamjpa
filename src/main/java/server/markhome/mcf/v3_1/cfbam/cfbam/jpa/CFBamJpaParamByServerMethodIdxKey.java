@@ -72,7 +72,7 @@ public class CFBamJpaParamByServerMethodIdxKey
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredServerMethodId() {
-		return( requiredServerMethodId );
+		return(requiredServerMethodId);
 	}
 
 	public void setRequiredServerMethodId( CFLibDbKeyHash256 value ) {
@@ -82,7 +82,6 @@ public class CFBamJpaParamByServerMethodIdxKey
 				1,
 				"value" );
 		}
-		
 		requiredServerMethodId = value;
 	}
 

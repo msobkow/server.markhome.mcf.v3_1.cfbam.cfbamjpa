@@ -72,7 +72,7 @@ public class CFBamJpaRelationColByFromColIdxKey
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredFromColId() {
-		return( requiredFromColId );
+		return(requiredFromColId);
 	}
 
 	public void setRequiredFromColId( CFLibDbKeyHash256 value ) {
@@ -82,7 +82,6 @@ public class CFBamJpaRelationColByFromColIdxKey
 				1,
 				"value" );
 		}
-		
 		requiredFromColId = value;
 	}
 

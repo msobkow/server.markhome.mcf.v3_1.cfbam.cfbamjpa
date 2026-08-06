@@ -74,7 +74,7 @@ public class CFBamJpaDelSubDep2ByUNameIdxKey
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredDelSubDep1Id() {
-		return( requiredDelSubDep1Id );
+		return(requiredDelSubDep1Id);
 	}
 
 	public void setRequiredDelSubDep1Id( CFLibDbKeyHash256 value ) {
@@ -84,13 +84,12 @@ public class CFBamJpaDelSubDep2ByUNameIdxKey
 				1,
 				"value" );
 		}
-		
 		requiredDelSubDep1Id = value;
 	}
 
 	@Override
 	public String getRequiredName() {
-		return( requiredName );
+		return(requiredName);
 	}
 
 	public void setRequiredName( String value ) {
@@ -108,7 +107,6 @@ public class CFBamJpaDelSubDep2ByUNameIdxKey
 				value.length(),
 				192 );
 		}
-		
 		requiredName = value;
 	}
 

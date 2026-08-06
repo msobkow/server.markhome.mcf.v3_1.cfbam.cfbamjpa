@@ -95,7 +95,7 @@ public class CFBamJpaServerProcH extends CFBamJpaServerMethodH
 
 	@Override
 	public String getOptionalDummy() {
-		return( optionalDummy );
+		return(optionalDummy);
 	}
 
 	public void setOptionalDummy( String value ) {
@@ -107,7 +107,6 @@ public class CFBamJpaServerProcH extends CFBamJpaServerMethodH
 				value.length(),
 				16 );
 		}
-		
 		optionalDummy = value;
 	}
 

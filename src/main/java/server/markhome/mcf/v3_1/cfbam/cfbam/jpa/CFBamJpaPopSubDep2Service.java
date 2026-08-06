@@ -263,13 +263,17 @@ public class CFBamJpaPopSubDep2Service {
 		// Apply superior data relationships of CFBamScope to existing object
 		existing.setRequiredOwnerTenant(data.getRequiredTenantId());
 		// Apply data columns of CFBamScope to existing object
+		existing.setRequiredTenantId(data.getRequiredTenantId());
 		// Apply superior data relationships of CFBamPopDep to existing object
 		existing.setRequiredLookupRelation(data.getRequiredLookupRelation());
 		existing.setOptionalLookupDefSchema(data.getOptionalLookupDefSchema());
 		// Apply data columns of CFBamPopDep to existing object
+		existing.setOptionalDefSchemaId(data.getOptionalDefSchemaId());
+		existing.setRequiredRelationId(data.getRequiredRelationId());
 		// Apply superior data relationships of CFBamPopSubDep2 to existing object
 		existing.setRequiredContainerPopSubDep1(data.getRequiredContainerPopSubDep1());
 		// Apply data columns of CFBamPopSubDep2 to existing object
+		existing.setRequiredPopSubDep1Id(data.getRequiredPopSubDep1Id());
 		existing.setRequiredName(data.getRequiredName());
 		// Update the audit columns
 		data.setUpdatedAt(LocalDateTime.now());

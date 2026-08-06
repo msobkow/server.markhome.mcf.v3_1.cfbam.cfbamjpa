@@ -280,6 +280,8 @@ public class CFBamJpaUInt64ColService {
 		existing.setOptionalLookupPrev(data.getOptionalLookupPrev());
 		existing.setOptionalLookupNext(data.getOptionalLookupNext());
 		// Apply data columns of CFBamValue to existing object
+		existing.setRequiredScopeId(data.getRequiredScopeId());
+		existing.setOptionalDefSchemaId(data.getOptionalDefSchemaId());
 		existing.setRequiredName(data.getRequiredName());
 		existing.setOptionalShortName(data.getOptionalShortName());
 		existing.setOptionalLabel(data.getOptionalLabel());
@@ -289,6 +291,8 @@ public class CFBamJpaUInt64ColService {
 		existing.setRequiredIsNullable(data.getRequiredIsNullable());
 		existing.setOptionalGenerateId(data.getOptionalGenerateId());
 		existing.setRequiredImplementsPolymorph(data.getRequiredImplementsPolymorph());
+		existing.setOptionalPrevId(data.getOptionalPrevId());
+		existing.setOptionalNextId(data.getOptionalNextId());
 		// Apply superior data relationships of CFBamAtom to existing object
 		// Apply data columns of CFBamAtom to existing object
 		existing.setOptionalDbName(data.getOptionalDbName());
@@ -300,6 +304,7 @@ public class CFBamJpaUInt64ColService {
 		// Apply superior data relationships of CFBamUInt64Col to existing object
 		existing.setRequiredContainerTable(data.getRequiredContainerTable());
 		// Apply data columns of CFBamUInt64Col to existing object
+		existing.setRequiredTableId(data.getRequiredTableId());
 		// Update the audit columns
 		data.setUpdatedAt(LocalDateTime.now());
 		// Save the changes we've made

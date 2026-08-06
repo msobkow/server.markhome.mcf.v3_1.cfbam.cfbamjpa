@@ -72,7 +72,7 @@ public class CFBamJpaPopSubDep1ByPopTopDepIdxKey
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredPopTopDepId() {
-		return( requiredPopTopDepId );
+		return(requiredPopTopDepId);
 	}
 
 	public void setRequiredPopTopDepId( CFLibDbKeyHash256 value ) {
@@ -82,7 +82,6 @@ public class CFBamJpaPopSubDep1ByPopTopDepIdxKey
 				1,
 				"value" );
 		}
-		
 		requiredPopTopDepId = value;
 	}
 

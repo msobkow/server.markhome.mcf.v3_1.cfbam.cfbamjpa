@@ -72,7 +72,7 @@ public class CFBamJpaTZTimestampColByTableIdxKey
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredTableId() {
-		return( requiredTableId );
+		return(requiredTableId);
 	}
 
 	public void setRequiredTableId( CFLibDbKeyHash256 value ) {
@@ -82,7 +82,6 @@ public class CFBamJpaTZTimestampColByTableIdxKey
 				1,
 				"value" );
 		}
-		
 		requiredTableId = value;
 	}
 

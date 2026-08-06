@@ -254,7 +254,7 @@ public class CFBamJpaScopeH
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredTenantId() {
-		return( requiredTenantId );
+		return(requiredTenantId);
 	}
 
 	public void setRequiredTenantId( CFLibDbKeyHash256 value ) {
@@ -264,7 +264,6 @@ public class CFBamJpaScopeH
 				1,
 				"value" );
 		}
-		
 		requiredTenantId = value;
 	}
 

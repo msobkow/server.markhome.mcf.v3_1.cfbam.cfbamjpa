@@ -266,12 +266,15 @@ public class CFBamJpaSchemaRoleService {
 		existing.setRequiredContainerScopeDef(data.getRequiredContainerScopeDef());
 		existing.setOptionalLookupDefSchema(data.getOptionalLookupDefSchema());
 		// Apply data columns of CFBamRoleDef to existing object
+		existing.setRequiredScopeId(data.getRequiredScopeId());
+		existing.setOptionalDefSchemaId(data.getOptionalDefSchemaId());
 		existing.setRequiredName(data.getRequiredName());
 		existing.setRequiredEnables(data.getRequiredEnables());
 		existing.setRequiredIncludes(data.getRequiredIncludes());
 		// Apply superior data relationships of CFBamSchemaRole to existing object
 		existing.setRequiredContainerSchemaDef(data.getRequiredContainerSchemaDef());
 		// Apply data columns of CFBamSchemaRole to existing object
+		existing.setRequiredSchemaDefId(data.getRequiredSchemaDefId());
 		existing.setRequiredRoleScope(data.getRequiredRoleScope());
 		// Update the audit columns
 		data.setUpdatedAt(LocalDateTime.now());

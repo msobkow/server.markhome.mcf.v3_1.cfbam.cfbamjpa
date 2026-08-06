@@ -74,7 +74,7 @@ public class CFBamJpaTableBySchemaCdIdxKey
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredSchemaDefId() {
-		return( requiredSchemaDefId );
+		return(requiredSchemaDefId);
 	}
 
 	public void setRequiredSchemaDefId( CFLibDbKeyHash256 value ) {
@@ -84,13 +84,12 @@ public class CFBamJpaTableBySchemaCdIdxKey
 				1,
 				"value" );
 		}
-		
 		requiredSchemaDefId = value;
 	}
 
 	@Override
 	public String getRequiredTableClassCode() {
-		return( requiredTableClassCode );
+		return(requiredTableClassCode);
 	}
 
 	public void setRequiredTableClassCode( String value ) {
@@ -108,7 +107,6 @@ public class CFBamJpaTableBySchemaCdIdxKey
 				value.length(),
 				4 );
 		}
-		
 		requiredTableClassCode = value;
 	}
 

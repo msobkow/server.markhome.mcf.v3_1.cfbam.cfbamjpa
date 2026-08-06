@@ -263,13 +263,17 @@ public class CFBamJpaClearSubDep1Service {
 		// Apply superior data relationships of CFBamScope to existing object
 		existing.setRequiredOwnerTenant(data.getRequiredTenantId());
 		// Apply data columns of CFBamScope to existing object
+		existing.setRequiredTenantId(data.getRequiredTenantId());
 		// Apply superior data relationships of CFBamClearDep to existing object
 		existing.setRequiredLookupRelation(data.getRequiredLookupRelation());
 		existing.setOptionalLookupDefSchema(data.getOptionalLookupDefSchema());
 		// Apply data columns of CFBamClearDep to existing object
+		existing.setRequiredRelationId(data.getRequiredRelationId());
+		existing.setOptionalDefSchemaId(data.getOptionalDefSchemaId());
 		// Apply superior data relationships of CFBamClearSubDep1 to existing object
 		existing.setRequiredContainerClearTopDep(data.getRequiredContainerClearTopDep());
 		// Apply data columns of CFBamClearSubDep1 to existing object
+		existing.setRequiredClearTopDepId(data.getRequiredClearTopDepId());
 		existing.setRequiredName(data.getRequiredName());
 		// Update the audit columns
 		data.setUpdatedAt(LocalDateTime.now());

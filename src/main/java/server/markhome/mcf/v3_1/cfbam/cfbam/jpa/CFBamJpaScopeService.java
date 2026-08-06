@@ -183,6 +183,7 @@ public class CFBamJpaScopeService {
 		// Apply superior data relationships of CFBamScope to existing object
 		existing.setRequiredOwnerTenant(data.getRequiredTenantId());
 		// Apply data columns of CFBamScope to existing object
+		existing.setRequiredTenantId(data.getRequiredTenantId());
 		// Update the audit columns
 		data.setUpdatedAt(LocalDateTime.now());
 		// Save the changes we've made

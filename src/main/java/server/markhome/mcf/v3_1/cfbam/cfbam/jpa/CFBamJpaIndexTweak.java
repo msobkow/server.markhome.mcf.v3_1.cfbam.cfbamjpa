@@ -146,7 +146,7 @@ public class CFBamJpaIndexTweak extends CFBamJpaTweak
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredIndexId() {
-		return( requiredIndexId );
+		return(requiredIndexId);
 	}
 
 	public void setRequiredIndexId( CFLibDbKeyHash256 value ) {
@@ -156,7 +156,6 @@ public class CFBamJpaIndexTweak extends CFBamJpaTweak
 				1,
 				"value" );
 		}
-		
 		requiredIndexId = value;
 	}
 
@@ -335,6 +334,7 @@ public class CFBamJpaIndexTweak extends CFBamJpaTweak
 	public void setIndexTweak( ICFBamIndexTweak src ) {
 		super.setTweak( src );
 		setRequiredContainerIndexDef(src.getRequiredContainerIndexDef());
+		setRequiredIndexId(src.getRequiredIndexId());
 	}
 
 	@Override
@@ -355,6 +355,7 @@ public class CFBamJpaIndexTweak extends CFBamJpaTweak
 	public void setIndexTweak( ICFBamIndexTweakH src ) {
 		super.setTweak( src );
 		setRequiredContainerIndexDef(src.getRequiredIndexId());
+		setRequiredIndexId(src.getRequiredIndexId());
 	}
 
 	@Override

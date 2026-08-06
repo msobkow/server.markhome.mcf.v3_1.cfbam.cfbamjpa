@@ -146,7 +146,7 @@ public class CFBamJpaUInt32Type extends CFBamJpaUInt32Def
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredSchemaDefId() {
-		return( requiredSchemaDefId );
+		return(requiredSchemaDefId);
 	}
 
 	public void setRequiredSchemaDefId( CFLibDbKeyHash256 value ) {
@@ -156,7 +156,6 @@ public class CFBamJpaUInt32Type extends CFBamJpaUInt32Def
 				1,
 				"value" );
 		}
-		
 		requiredSchemaDefId = value;
 	}
 
@@ -335,6 +334,7 @@ public class CFBamJpaUInt32Type extends CFBamJpaUInt32Def
 	public void setUInt32Type( ICFBamUInt32Type src ) {
 		super.setUInt32Def( src );
 		setRequiredContainerSchemaDef(src.getRequiredContainerSchemaDef());
+		setRequiredSchemaDefId(src.getRequiredSchemaDefId());
 	}
 
 	@Override
@@ -355,6 +355,7 @@ public class CFBamJpaUInt32Type extends CFBamJpaUInt32Def
 	public void setUInt32Type( ICFBamUInt32TypeH src ) {
 		super.setUInt32Def( src );
 		setRequiredContainerSchemaDef(src.getRequiredSchemaDefId());
+		setRequiredSchemaDefId(src.getRequiredSchemaDefId());
 	}
 
 	@Override

@@ -72,11 +72,10 @@ public class CFBamJpaSchemaRefByNextIdxKey
 
 	@Override
 	public CFLibDbKeyHash256 getOptionalNextId() {
-		return( optionalNextId );
+		return(optionalNextId);
 	}
 
 	public void setOptionalNextId( CFLibDbKeyHash256 value ) {
-		
 		optionalNextId = value;
 	}
 

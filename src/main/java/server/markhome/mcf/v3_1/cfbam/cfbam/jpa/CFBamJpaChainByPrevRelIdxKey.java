@@ -72,7 +72,7 @@ public class CFBamJpaChainByPrevRelIdxKey
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredPrevRelationId() {
-		return( requiredPrevRelationId );
+		return(requiredPrevRelationId);
 	}
 
 	public void setRequiredPrevRelationId( CFLibDbKeyHash256 value ) {
@@ -82,7 +82,6 @@ public class CFBamJpaChainByPrevRelIdxKey
 				1,
 				"value" );
 		}
-		
 		requiredPrevRelationId = value;
 	}
 

@@ -110,7 +110,7 @@ public class CFBamJpaTableColH extends CFBamJpaValueH
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredTableId() {
-		return( requiredTableId );
+		return(requiredTableId);
 	}
 
 	public void setRequiredTableId( CFLibDbKeyHash256 value ) {
@@ -120,13 +120,12 @@ public class CFBamJpaTableColH extends CFBamJpaValueH
 				1,
 				"value" );
 		}
-		
 		requiredTableId = value;
 	}
 
 	@Override
 	public String getOptionalDbName() {
-		return( optionalDbName );
+		return(optionalDbName);
 	}
 
 	public void setOptionalDbName( String value ) {
@@ -138,23 +137,21 @@ public class CFBamJpaTableColH extends CFBamJpaValueH
 				value.length(),
 				32 );
 		}
-		
 		optionalDbName = value;
 	}
 
 	@Override
 	public CFLibDbKeyHash256 getOptionalDataId() {
-		return( optionalDataId );
+		return(optionalDataId);
 	}
 
 	public void setOptionalDataId( CFLibDbKeyHash256 value ) {
-		
 		optionalDataId = value;
 	}
 
 	@Override
 	public String getOptionalXmlElementName() {
-		return( optionalXmlElementName );
+		return(optionalXmlElementName);
 	}
 
 	public void setOptionalXmlElementName( String value ) {
@@ -166,7 +163,6 @@ public class CFBamJpaTableColH extends CFBamJpaValueH
 				value.length(),
 				192 );
 		}
-		
 		optionalXmlElementName = value;
 	}
 

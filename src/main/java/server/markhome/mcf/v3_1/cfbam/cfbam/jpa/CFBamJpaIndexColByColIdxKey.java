@@ -72,7 +72,7 @@ public class CFBamJpaIndexColByColIdxKey
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredColumnId() {
-		return( requiredColumnId );
+		return(requiredColumnId);
 	}
 
 	public void setRequiredColumnId( CFLibDbKeyHash256 value ) {
@@ -82,7 +82,6 @@ public class CFBamJpaIndexColByColIdxKey
 				1,
 				"value" );
 		}
-		
 		requiredColumnId = value;
 	}
 

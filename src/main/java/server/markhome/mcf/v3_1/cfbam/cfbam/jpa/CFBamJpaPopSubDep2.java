@@ -158,7 +158,7 @@ public class CFBamJpaPopSubDep2 extends CFBamJpaPopDep
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredPopSubDep1Id() {
-		return( requiredPopSubDep1Id );
+		return(requiredPopSubDep1Id);
 	}
 
 	public void setRequiredPopSubDep1Id( CFLibDbKeyHash256 value ) {
@@ -168,13 +168,12 @@ public class CFBamJpaPopSubDep2 extends CFBamJpaPopDep
 				1,
 				"value" );
 		}
-		
 		requiredPopSubDep1Id = value;
 	}
 
 	@Override
 	public String getRequiredName() {
-		return( requiredName );
+		return(requiredName);
 	}
 
 	public void setRequiredName( String value ) {
@@ -192,7 +191,6 @@ public class CFBamJpaPopSubDep2 extends CFBamJpaPopDep
 				value.length(),
 				192 );
 		}
-		
 		requiredName = value;
 	}
 
@@ -498,6 +496,7 @@ public class CFBamJpaPopSubDep2 extends CFBamJpaPopDep
 	public void setPopSubDep2( ICFBamPopSubDep2 src ) {
 		super.setPopDep( src );
 		setRequiredContainerPopSubDep1(src.getRequiredContainerPopSubDep1());
+		setRequiredPopSubDep1Id(src.getRequiredPopSubDep1Id());
 		setRequiredName(src.getRequiredName());
 	}
 
@@ -519,6 +518,7 @@ public class CFBamJpaPopSubDep2 extends CFBamJpaPopDep
 	public void setPopSubDep2( ICFBamPopSubDep2H src ) {
 		super.setPopDep( src );
 		setRequiredContainerPopSubDep1(src.getRequiredPopSubDep1Id());
+		setRequiredPopSubDep1Id(src.getRequiredPopSubDep1Id());
 		setRequiredName(src.getRequiredName());
 	}
 

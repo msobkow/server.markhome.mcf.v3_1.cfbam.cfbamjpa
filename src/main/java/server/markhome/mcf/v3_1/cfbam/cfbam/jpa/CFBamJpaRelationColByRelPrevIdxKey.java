@@ -74,7 +74,7 @@ public class CFBamJpaRelationColByRelPrevIdxKey
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredRelationId() {
-		return( requiredRelationId );
+		return(requiredRelationId);
 	}
 
 	public void setRequiredRelationId( CFLibDbKeyHash256 value ) {
@@ -84,17 +84,15 @@ public class CFBamJpaRelationColByRelPrevIdxKey
 				1,
 				"value" );
 		}
-		
 		requiredRelationId = value;
 	}
 
 	@Override
 	public CFLibDbKeyHash256 getOptionalPrevId() {
-		return( optionalPrevId );
+		return(optionalPrevId);
 	}
 
 	public void setOptionalPrevId( CFLibDbKeyHash256 value ) {
-		
 		optionalPrevId = value;
 	}
 

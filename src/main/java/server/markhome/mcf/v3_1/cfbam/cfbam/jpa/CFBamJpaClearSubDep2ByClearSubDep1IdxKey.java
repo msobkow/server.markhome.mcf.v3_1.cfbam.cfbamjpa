@@ -72,7 +72,7 @@ public class CFBamJpaClearSubDep2ByClearSubDep1IdxKey
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredClearSubDep1Id() {
-		return( requiredClearSubDep1Id );
+		return(requiredClearSubDep1Id);
 	}
 
 	public void setRequiredClearSubDep1Id( CFLibDbKeyHash256 value ) {
@@ -82,7 +82,6 @@ public class CFBamJpaClearSubDep2ByClearSubDep1IdxKey
 				1,
 				"value" );
 		}
-		
 		requiredClearSubDep1Id = value;
 	}
 

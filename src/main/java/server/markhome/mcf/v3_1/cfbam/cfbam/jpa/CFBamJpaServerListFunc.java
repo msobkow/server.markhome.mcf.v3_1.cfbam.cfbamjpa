@@ -147,11 +147,10 @@ public class CFBamJpaServerListFunc extends CFBamJpaServerMethod
 
 	@Override
 	public CFLibDbKeyHash256 getOptionalRetTableId() {
-		return( optionalRetTableId );
+		return(optionalRetTableId);
 	}
 
 	public void setOptionalRetTableId( CFLibDbKeyHash256 value ) {
-		
 		optionalRetTableId = value;
 	}
 
@@ -338,6 +337,7 @@ public class CFBamJpaServerListFunc extends CFBamJpaServerMethod
 	public void setServerListFunc( ICFBamServerListFunc src ) {
 		super.setServerMethod( src );
 		setOptionalLookupRetTable(src.getOptionalLookupRetTable());
+		setOptionalRetTableId(src.getOptionalRetTableId());
 	}
 
 	@Override
@@ -358,6 +358,7 @@ public class CFBamJpaServerListFunc extends CFBamJpaServerMethod
 	public void setServerListFunc( ICFBamServerListFuncH src ) {
 		super.setServerMethod( src );
 		setOptionalLookupRetTable(src.getOptionalRetTableId());
+		setOptionalRetTableId(src.getOptionalRetTableId());
 	}
 
 	@Override

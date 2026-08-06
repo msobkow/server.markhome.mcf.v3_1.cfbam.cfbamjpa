@@ -95,28 +95,11 @@ public class CFBamJpaDbKeyHash128Gen extends CFBamJpaDbKeyHash128Type
 
 	@Override
 	public short getRequiredSlice() {
-		return( requiredSlice );
+		return(requiredSlice);
 	}
 
 	@Override
 	public void setRequiredSlice( short value ) {
-		if( value < ICFBamPubDbKeyHash128Gen.SLICE_MIN_VALUE ) {
-			throw new CFLibArgumentUnderflowException( getClass(),
-				"setRequiredSlice",
-				1,
-				"value",
-				value,
-				ICFBamPubDbKeyHash128Gen.SLICE_MIN_VALUE );
-		}
-		if( value > ICFBamPubDbKeyHash128Gen.SLICE_MAX_VALUE ) {
-			throw new CFLibArgumentOverflowException( getClass(),
-				"setRequiredSlice",
-				1,
-				"value",
-				value,
-				ICFBamPubDbKeyHash128Gen.SLICE_MAX_VALUE );
-		}
-		
 		if( value < ICFBamPubDbKeyHash128Gen.SLICE_MIN_VALUE ) {
 			throw new CFLibArgumentUnderflowException( getClass(),
 				"setRequiredSlice",
@@ -138,28 +121,11 @@ public class CFBamJpaDbKeyHash128Gen extends CFBamJpaDbKeyHash128Type
 
 	@Override
 	public int getRequiredBlockSize() {
-		return( requiredBlockSize );
+		return(requiredBlockSize);
 	}
 
 	@Override
 	public void setRequiredBlockSize( int value ) {
-		if( value < ICFBamPubDbKeyHash128Gen.BLOCKSIZE_MIN_VALUE ) {
-			throw new CFLibArgumentUnderflowException( getClass(),
-				"setRequiredBlockSize",
-				1,
-				"value",
-				value,
-				ICFBamPubDbKeyHash128Gen.BLOCKSIZE_MIN_VALUE );
-		}
-		if( value > ICFBamPubDbKeyHash128Gen.BLOCKSIZE_MAX_VALUE ) {
-			throw new CFLibArgumentOverflowException( getClass(),
-				"setRequiredBlockSize",
-				1,
-				"value",
-				value,
-				ICFBamPubDbKeyHash128Gen.BLOCKSIZE_MAX_VALUE );
-		}
-		
 		if( value < ICFBamPubDbKeyHash128Gen.BLOCKSIZE_MIN_VALUE ) {
 			throw new CFLibArgumentUnderflowException( getClass(),
 				"setRequiredBlockSize",

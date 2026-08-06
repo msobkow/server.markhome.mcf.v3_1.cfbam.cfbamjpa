@@ -126,7 +126,7 @@ public class CFBamJpaSchemaRefH extends CFBamJpaScopeH
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredSchemaId() {
-		return( requiredSchemaId );
+		return(requiredSchemaId);
 	}
 
 	public void setRequiredSchemaId( CFLibDbKeyHash256 value ) {
@@ -136,13 +136,12 @@ public class CFBamJpaSchemaRefH extends CFBamJpaScopeH
 				1,
 				"value" );
 		}
-		
 		requiredSchemaId = value;
 	}
 
 	@Override
 	public String getRequiredName() {
-		return( requiredName );
+		return(requiredName);
 	}
 
 	public void setRequiredName( String value ) {
@@ -160,13 +159,12 @@ public class CFBamJpaSchemaRefH extends CFBamJpaScopeH
 				value.length(),
 				192 );
 		}
-		
 		requiredName = value;
 	}
 
 	@Override
 	public String getRequiredRefModelName() {
-		return( requiredRefModelName );
+		return(requiredRefModelName);
 	}
 
 	public void setRequiredRefModelName( String value ) {
@@ -184,13 +182,12 @@ public class CFBamJpaSchemaRefH extends CFBamJpaScopeH
 				value.length(),
 				1024 );
 		}
-		
 		requiredRefModelName = value;
 	}
 
 	@Override
 	public String getRequiredIncludeRoot() {
-		return( requiredIncludeRoot );
+		return(requiredIncludeRoot);
 	}
 
 	public void setRequiredIncludeRoot( String value ) {
@@ -208,37 +205,33 @@ public class CFBamJpaSchemaRefH extends CFBamJpaScopeH
 				value.length(),
 				1024 );
 		}
-		
 		requiredIncludeRoot = value;
 	}
 
 	@Override
 	public CFLibDbKeyHash256 getOptionalRefSchemaId() {
-		return( optionalRefSchemaId );
+		return(optionalRefSchemaId);
 	}
 
 	public void setOptionalRefSchemaId( CFLibDbKeyHash256 value ) {
-		
 		optionalRefSchemaId = value;
 	}
 
 	@Override
 	public CFLibDbKeyHash256 getOptionalPrevId() {
-		return( optionalPrevId );
+		return(optionalPrevId);
 	}
 
 	public void setOptionalPrevId( CFLibDbKeyHash256 value ) {
-		
 		optionalPrevId = value;
 	}
 
 	@Override
 	public CFLibDbKeyHash256 getOptionalNextId() {
-		return( optionalNextId );
+		return(optionalNextId);
 	}
 
 	public void setOptionalNextId( CFLibDbKeyHash256 value ) {
-		
 		optionalNextId = value;
 	}
 

@@ -74,7 +74,7 @@ public class CFBamJpaEnumTagByEnumNameIdxKey
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredEnumId() {
-		return( requiredEnumId );
+		return(requiredEnumId);
 	}
 
 	public void setRequiredEnumId( CFLibDbKeyHash256 value ) {
@@ -84,13 +84,12 @@ public class CFBamJpaEnumTagByEnumNameIdxKey
 				1,
 				"value" );
 		}
-		
 		requiredEnumId = value;
 	}
 
 	@Override
 	public String getRequiredName() {
-		return( requiredName );
+		return(requiredName);
 	}
 
 	public void setRequiredName( String value ) {
@@ -108,7 +107,6 @@ public class CFBamJpaEnumTagByEnumNameIdxKey
 				value.length(),
 				64 );
 		}
-		
 		requiredName = value;
 	}
 

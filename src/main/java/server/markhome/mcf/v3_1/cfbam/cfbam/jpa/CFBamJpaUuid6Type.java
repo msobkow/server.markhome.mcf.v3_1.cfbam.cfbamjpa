@@ -146,7 +146,7 @@ public class CFBamJpaUuid6Type extends CFBamJpaUuid6Def
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredSchemaDefId() {
-		return( requiredSchemaDefId );
+		return(requiredSchemaDefId);
 	}
 
 	public void setRequiredSchemaDefId( CFLibDbKeyHash256 value ) {
@@ -156,7 +156,6 @@ public class CFBamJpaUuid6Type extends CFBamJpaUuid6Def
 				1,
 				"value" );
 		}
-		
 		requiredSchemaDefId = value;
 	}
 
@@ -335,6 +334,7 @@ public class CFBamJpaUuid6Type extends CFBamJpaUuid6Def
 	public void setUuid6Type( ICFBamUuid6Type src ) {
 		super.setUuid6Def( src );
 		setRequiredContainerSchemaDef(src.getRequiredContainerSchemaDef());
+		setRequiredSchemaDefId(src.getRequiredSchemaDefId());
 	}
 
 	@Override
@@ -355,6 +355,7 @@ public class CFBamJpaUuid6Type extends CFBamJpaUuid6Def
 	public void setUuid6Type( ICFBamUuid6TypeH src ) {
 		super.setUuid6Def( src );
 		setRequiredContainerSchemaDef(src.getRequiredSchemaDefId());
+		setRequiredSchemaDefId(src.getRequiredSchemaDefId());
 	}
 
 	@Override

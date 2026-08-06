@@ -146,7 +146,7 @@ public class CFBamJpaDoubleType extends CFBamJpaDoubleDef
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredSchemaDefId() {
-		return( requiredSchemaDefId );
+		return(requiredSchemaDefId);
 	}
 
 	public void setRequiredSchemaDefId( CFLibDbKeyHash256 value ) {
@@ -156,7 +156,6 @@ public class CFBamJpaDoubleType extends CFBamJpaDoubleDef
 				1,
 				"value" );
 		}
-		
 		requiredSchemaDefId = value;
 	}
 
@@ -335,6 +334,7 @@ public class CFBamJpaDoubleType extends CFBamJpaDoubleDef
 	public void setDoubleType( ICFBamDoubleType src ) {
 		super.setDoubleDef( src );
 		setRequiredContainerSchemaDef(src.getRequiredContainerSchemaDef());
+		setRequiredSchemaDefId(src.getRequiredSchemaDefId());
 	}
 
 	@Override
@@ -355,6 +355,7 @@ public class CFBamJpaDoubleType extends CFBamJpaDoubleDef
 	public void setDoubleType( ICFBamDoubleTypeH src ) {
 		super.setDoubleDef( src );
 		setRequiredContainerSchemaDef(src.getRequiredSchemaDefId());
+		setRequiredSchemaDefId(src.getRequiredSchemaDefId());
 	}
 
 	@Override

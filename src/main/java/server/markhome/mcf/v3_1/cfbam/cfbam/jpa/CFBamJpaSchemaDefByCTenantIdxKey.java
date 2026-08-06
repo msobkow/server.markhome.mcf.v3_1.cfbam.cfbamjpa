@@ -72,7 +72,7 @@ public class CFBamJpaSchemaDefByCTenantIdxKey
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredCTenantId() {
-		return( requiredCTenantId );
+		return(requiredCTenantId);
 	}
 
 	public void setRequiredCTenantId( CFLibDbKeyHash256 value ) {
@@ -82,7 +82,6 @@ public class CFBamJpaSchemaDefByCTenantIdxKey
 				1,
 				"value" );
 		}
-		
 		requiredCTenantId = value;
 	}
 

@@ -323,10 +323,13 @@ public class CFBamJpaSchemaDefService {
 		// Apply superior data relationships of CFBamScope to existing object
 		existing.setRequiredOwnerTenant(data.getRequiredTenantId());
 		// Apply data columns of CFBamScope to existing object
+		existing.setRequiredTenantId(data.getRequiredTenantId());
 		// Apply superior data relationships of CFBamSchemaDef to existing object
 		existing.setRequiredContainerMinorVersion(data.getRequiredMinorVersionId());
 		existing.setRequiredOwnerCTenant(data.getRequiredCTenantId());
 		// Apply data columns of CFBamSchemaDef to existing object
+		existing.setRequiredCTenantId(data.getRequiredCTenantId());
+		existing.setRequiredMinorVersionId(data.getRequiredMinorVersionId());
 		existing.setRequiredName(data.getRequiredName());
 		existing.setOptionalDbName(data.getOptionalDbName());
 		existing.setOptionalShortName(data.getOptionalShortName());

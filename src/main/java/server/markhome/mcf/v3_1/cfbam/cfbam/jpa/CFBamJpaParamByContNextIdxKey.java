@@ -74,7 +74,7 @@ public class CFBamJpaParamByContNextIdxKey
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredServerMethodId() {
-		return( requiredServerMethodId );
+		return(requiredServerMethodId);
 	}
 
 	public void setRequiredServerMethodId( CFLibDbKeyHash256 value ) {
@@ -84,17 +84,15 @@ public class CFBamJpaParamByContNextIdxKey
 				1,
 				"value" );
 		}
-		
 		requiredServerMethodId = value;
 	}
 
 	@Override
 	public CFLibDbKeyHash256 getOptionalNextId() {
-		return( optionalNextId );
+		return(optionalNextId);
 	}
 
 	public void setOptionalNextId( CFLibDbKeyHash256 value ) {
-		
 		optionalNextId = value;
 	}
 

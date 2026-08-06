@@ -72,7 +72,7 @@ public class CFBamJpaChainByNextRelIdxKey
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredNextRelationId() {
-		return( requiredNextRelationId );
+		return(requiredNextRelationId);
 	}
 
 	public void setRequiredNextRelationId( CFLibDbKeyHash256 value ) {
@@ -82,7 +82,6 @@ public class CFBamJpaChainByNextRelIdxKey
 				1,
 				"value" );
 		}
-		
 		requiredNextRelationId = value;
 	}
 

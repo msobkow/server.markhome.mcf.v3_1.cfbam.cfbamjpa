@@ -74,7 +74,7 @@ public class CFBamJpaSchemaDefByUNameIdxKey
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredMinorVersionId() {
-		return( requiredMinorVersionId );
+		return(requiredMinorVersionId);
 	}
 
 	public void setRequiredMinorVersionId( CFLibDbKeyHash256 value ) {
@@ -84,13 +84,12 @@ public class CFBamJpaSchemaDefByUNameIdxKey
 				1,
 				"value" );
 		}
-		
 		requiredMinorVersionId = value;
 	}
 
 	@Override
 	public String getRequiredName() {
-		return( requiredName );
+		return(requiredName);
 	}
 
 	public void setRequiredName( String value ) {
@@ -108,7 +107,6 @@ public class CFBamJpaSchemaDefByUNameIdxKey
 				value.length(),
 				192 );
 		}
-		
 		requiredName = value;
 	}
 

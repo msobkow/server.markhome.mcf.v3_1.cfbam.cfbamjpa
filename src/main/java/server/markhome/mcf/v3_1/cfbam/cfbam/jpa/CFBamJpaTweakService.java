@@ -221,7 +221,9 @@ public class CFBamJpaTweakService {
 		existing.setOptionalLookupDefSchema(data.getOptionalLookupDefSchema());
 		// Apply data columns of CFBamTweak to existing object
 		existing.setRequiredTenantId(data.getRequiredTenantId());
+		existing.setRequiredScopeId(data.getRequiredScopeId());
 		existing.setOptionalDefSchemaTenantId(data.getOptionalDefSchemaTenantId());
+		existing.setOptionalDefSchemaId(data.getOptionalDefSchemaId());
 		existing.setRequiredName(data.getRequiredName());
 		existing.setRequiredReplacesInherited(data.getRequiredReplacesInherited());
 		existing.setRequiredTweakGelText(data.getRequiredTweakGelText());

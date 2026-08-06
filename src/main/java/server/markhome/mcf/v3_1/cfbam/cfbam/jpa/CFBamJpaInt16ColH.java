@@ -98,7 +98,7 @@ public class CFBamJpaInt16ColH extends CFBamJpaInt16DefH
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredTableId() {
-		return( requiredTableId );
+		return(requiredTableId);
 	}
 
 	public void setRequiredTableId( CFLibDbKeyHash256 value ) {
@@ -108,7 +108,6 @@ public class CFBamJpaInt16ColH extends CFBamJpaInt16DefH
 				1,
 				"value" );
 		}
-		
 		requiredTableId = value;
 	}
 

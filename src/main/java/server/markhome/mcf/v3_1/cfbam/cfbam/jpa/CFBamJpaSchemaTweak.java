@@ -146,7 +146,7 @@ public class CFBamJpaSchemaTweak extends CFBamJpaTweak
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredSchemaDefId() {
-		return( requiredSchemaDefId );
+		return(requiredSchemaDefId);
 	}
 
 	public void setRequiredSchemaDefId( CFLibDbKeyHash256 value ) {
@@ -156,7 +156,6 @@ public class CFBamJpaSchemaTweak extends CFBamJpaTweak
 				1,
 				"value" );
 		}
-		
 		requiredSchemaDefId = value;
 	}
 
@@ -335,6 +334,7 @@ public class CFBamJpaSchemaTweak extends CFBamJpaTweak
 	public void setSchemaTweak( ICFBamSchemaTweak src ) {
 		super.setTweak( src );
 		setRequiredContainerSchemaDef(src.getRequiredContainerSchemaDef());
+		setRequiredSchemaDefId(src.getRequiredSchemaDefId());
 	}
 
 	@Override
@@ -355,6 +355,7 @@ public class CFBamJpaSchemaTweak extends CFBamJpaTweak
 	public void setSchemaTweak( ICFBamSchemaTweakH src ) {
 		super.setTweak( src );
 		setRequiredContainerSchemaDef(src.getRequiredSchemaDefId());
+		setRequiredSchemaDefId(src.getRequiredSchemaDefId());
 	}
 
 	@Override

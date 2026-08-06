@@ -72,7 +72,7 @@ public class CFBamJpaBlobColByTableIdxKey
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredTableId() {
-		return( requiredTableId );
+		return(requiredTableId);
 	}
 
 	public void setRequiredTableId( CFLibDbKeyHash256 value ) {
@@ -82,7 +82,6 @@ public class CFBamJpaBlobColByTableIdxKey
 				1,
 				"value" );
 		}
-		
 		requiredTableId = value;
 	}
 

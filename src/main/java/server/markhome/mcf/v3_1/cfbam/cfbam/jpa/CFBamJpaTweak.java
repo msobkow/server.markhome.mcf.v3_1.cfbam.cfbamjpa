@@ -313,7 +313,7 @@ public class CFBamJpaTweak
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredId() {
-		return( requiredId );
+		return(requiredId);
 	}
 
 	public void setRequiredId( CFLibDbKeyHash256 value ) {
@@ -323,7 +323,6 @@ public class CFBamJpaTweak
 				1,
 				"value" );
 		}
-		
 		requiredId = value;
 	}
 
@@ -339,7 +338,7 @@ public class CFBamJpaTweak
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredTenantId() {
-		return( requiredTenantId );
+		return(requiredTenantId);
 	}
 
 	public void setRequiredTenantId( CFLibDbKeyHash256 value ) {
@@ -349,13 +348,12 @@ public class CFBamJpaTweak
 				1,
 				"value" );
 		}
-		
 		requiredTenantId = value;
 	}
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredScopeId() {
-		return( requiredScopeId );
+		return(requiredScopeId);
 	}
 
 	public void setRequiredScopeId( CFLibDbKeyHash256 value ) {
@@ -365,33 +363,30 @@ public class CFBamJpaTweak
 				1,
 				"value" );
 		}
-		
 		requiredScopeId = value;
 	}
 
 	@Override
 	public CFLibDbKeyHash256 getOptionalDefSchemaTenantId() {
-		return( optionalDefSchemaTenantId );
+		return(optionalDefSchemaTenantId);
 	}
 
 	public void setOptionalDefSchemaTenantId( CFLibDbKeyHash256 value ) {
-		
 		optionalDefSchemaTenantId = value;
 	}
 
 	@Override
 	public CFLibDbKeyHash256 getOptionalDefSchemaId() {
-		return( optionalDefSchemaId );
+		return(optionalDefSchemaId);
 	}
 
 	public void setOptionalDefSchemaId( CFLibDbKeyHash256 value ) {
-		
 		optionalDefSchemaId = value;
 	}
 
 	@Override
 	public String getRequiredName() {
-		return( requiredName );
+		return(requiredName);
 	}
 
 	public void setRequiredName( String value ) {
@@ -409,23 +404,21 @@ public class CFBamJpaTweak
 				value.length(),
 				192 );
 		}
-		
 		requiredName = value;
 	}
 
 	@Override
 	public boolean getRequiredReplacesInherited() {
-		return( requiredReplacesInherited );
+		return(requiredReplacesInherited);
 	}
 
 	public void setRequiredReplacesInherited( boolean value ) {
-		
 		requiredReplacesInherited = value;
 	}
 
 	@Override
 	public String getRequiredTweakGelText() {
-		return( requiredTweakGelText );
+		return(requiredTweakGelText);
 	}
 
 	public void setRequiredTweakGelText( String value ) {
@@ -443,7 +436,6 @@ public class CFBamJpaTweak
 				value.length(),
 				2000000 );
 		}
-		
 		requiredTweakGelText = value;
 	}
 
@@ -1406,7 +1398,9 @@ public class CFBamJpaTweak
 		setRequiredContainerScopeDef(src.getRequiredContainerScopeDef());
 		setOptionalLookupDefSchema(src.getOptionalLookupDefSchema());
 		setRequiredTenantId(src.getRequiredTenantId());
+		setRequiredScopeId(src.getRequiredScopeId());
 		setOptionalDefSchemaTenantId(src.getOptionalDefSchemaTenantId());
+		setOptionalDefSchemaId(src.getOptionalDefSchemaId());
 		setRequiredName(src.getRequiredName());
 		setRequiredReplacesInherited(src.getRequiredReplacesInherited());
 		setRequiredTweakGelText(src.getRequiredTweakGelText());
@@ -1423,7 +1417,9 @@ public class CFBamJpaTweak
 		setRequiredContainerScopeDef(src.getRequiredScopeId());
 		setOptionalLookupDefSchema(src.getOptionalDefSchemaId());
 		setRequiredTenantId(src.getRequiredTenantId());
+		setRequiredScopeId(src.getRequiredScopeId());
 		setOptionalDefSchemaTenantId(src.getOptionalDefSchemaTenantId());
+		setOptionalDefSchemaId(src.getOptionalDefSchemaId());
 		setRequiredName(src.getRequiredName());
 		setRequiredReplacesInherited(src.getRequiredReplacesInherited());
 		setRequiredTweakGelText(src.getRequiredTweakGelText());

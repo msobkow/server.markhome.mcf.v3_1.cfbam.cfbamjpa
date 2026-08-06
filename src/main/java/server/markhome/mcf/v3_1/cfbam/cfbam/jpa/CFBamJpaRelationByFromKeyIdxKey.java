@@ -72,7 +72,7 @@ public class CFBamJpaRelationByFromKeyIdxKey
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredFromIndexId() {
-		return( requiredFromIndexId );
+		return(requiredFromIndexId);
 	}
 
 	public void setRequiredFromIndexId( CFLibDbKeyHash256 value ) {
@@ -82,7 +82,6 @@ public class CFBamJpaRelationByFromKeyIdxKey
 				1,
 				"value" );
 		}
-		
 		requiredFromIndexId = value;
 	}
 

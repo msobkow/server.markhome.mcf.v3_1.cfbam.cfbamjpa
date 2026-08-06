@@ -72,7 +72,7 @@ public class CFBamJpaEnumTypeBySchemaIdxKey
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredSchemaDefId() {
-		return( requiredSchemaDefId );
+		return(requiredSchemaDefId);
 	}
 
 	public void setRequiredSchemaDefId( CFLibDbKeyHash256 value ) {
@@ -82,7 +82,6 @@ public class CFBamJpaEnumTypeBySchemaIdxKey
 				1,
 				"value" );
 		}
-		
 		requiredSchemaDefId = value;
 	}
 

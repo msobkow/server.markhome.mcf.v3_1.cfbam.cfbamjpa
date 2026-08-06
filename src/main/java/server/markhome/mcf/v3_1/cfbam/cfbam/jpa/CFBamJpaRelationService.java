@@ -355,6 +355,7 @@ public class CFBamJpaRelationService {
 		// Apply superior data relationships of CFBamScope to existing object
 		existing.setRequiredOwnerTenant(data.getRequiredTenantId());
 		// Apply data columns of CFBamScope to existing object
+		existing.setRequiredTenantId(data.getRequiredTenantId());
 		// Apply superior data relationships of CFBamRelation to existing object
 		existing.setOptionalLookupDefSchema(data.getOptionalLookupDefSchema());
 		existing.setRequiredContainerFromTable(data.getRequiredContainerFromTable());
@@ -363,6 +364,8 @@ public class CFBamJpaRelationService {
 		existing.setRequiredLookupToIndex(data.getRequiredLookupToIndex());
 		existing.setOptionalLookupNarrowed(data.getOptionalLookupNarrowed());
 		// Apply data columns of CFBamRelation to existing object
+		existing.setRequiredTableId(data.getRequiredTableId());
+		existing.setOptionalDefSchemaId(data.getOptionalDefSchemaId());
 		existing.setRequiredName(data.getRequiredName());
 		existing.setOptionalShortName(data.getOptionalShortName());
 		existing.setOptionalLabel(data.getOptionalLabel());
@@ -371,10 +374,14 @@ public class CFBamJpaRelationService {
 		existing.setRequiredRelationType(data.getRequiredRelationType());
 		existing.setOptionalDbName(data.getOptionalDbName());
 		existing.setOptionalSuffix(data.getOptionalSuffix());
+		existing.setRequiredFromIndexId(data.getRequiredFromIndexId());
+		existing.setRequiredToTableId(data.getRequiredToTableId());
+		existing.setRequiredToIndexId(data.getRequiredToIndexId());
 		existing.setRequiredIsRequired(data.getRequiredIsRequired());
 		existing.setRequiredIsXsdContainer(data.getRequiredIsXsdContainer());
 		existing.setRequiredIsLateResolver(data.getRequiredIsLateResolver());
 		existing.setRequiredAllowAddendum(data.getRequiredAllowAddendum());
+		existing.setOptionalNarrowedId(data.getOptionalNarrowedId());
 		existing.setRequiredCodeVis(data.getRequiredCodeVis());
 		// Update the audit columns
 		data.setUpdatedAt(LocalDateTime.now());

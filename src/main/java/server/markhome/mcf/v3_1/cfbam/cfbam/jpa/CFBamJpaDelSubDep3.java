@@ -150,7 +150,7 @@ public class CFBamJpaDelSubDep3 extends CFBamJpaDelDep
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredDelSubDep2Id() {
-		return( requiredDelSubDep2Id );
+		return(requiredDelSubDep2Id);
 	}
 
 	public void setRequiredDelSubDep2Id( CFLibDbKeyHash256 value ) {
@@ -160,13 +160,12 @@ public class CFBamJpaDelSubDep3 extends CFBamJpaDelDep
 				1,
 				"value" );
 		}
-		
 		requiredDelSubDep2Id = value;
 	}
 
 	@Override
 	public String getRequiredName() {
-		return( requiredName );
+		return(requiredName);
 	}
 
 	public void setRequiredName( String value ) {
@@ -184,7 +183,6 @@ public class CFBamJpaDelSubDep3 extends CFBamJpaDelDep
 				value.length(),
 				192 );
 		}
-		
 		requiredName = value;
 	}
 
@@ -490,6 +488,7 @@ public class CFBamJpaDelSubDep3 extends CFBamJpaDelDep
 	public void setDelSubDep3( ICFBamDelSubDep3 src ) {
 		super.setDelDep( src );
 		setRequiredContainerDelSubDep2(src.getRequiredContainerDelSubDep2());
+		setRequiredDelSubDep2Id(src.getRequiredDelSubDep2Id());
 		setRequiredName(src.getRequiredName());
 	}
 
@@ -511,6 +510,7 @@ public class CFBamJpaDelSubDep3 extends CFBamJpaDelDep
 	public void setDelSubDep3( ICFBamDelSubDep3H src ) {
 		super.setDelDep( src );
 		setRequiredContainerDelSubDep2(src.getRequiredDelSubDep2Id());
+		setRequiredDelSubDep2Id(src.getRequiredDelSubDep2Id());
 		setRequiredName(src.getRequiredName());
 	}
 

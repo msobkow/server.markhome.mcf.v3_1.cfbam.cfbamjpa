@@ -264,6 +264,8 @@ public class CFBamJpaTokenTypeService {
 		existing.setOptionalLookupPrev(data.getOptionalLookupPrev());
 		existing.setOptionalLookupNext(data.getOptionalLookupNext());
 		// Apply data columns of CFBamValue to existing object
+		existing.setRequiredScopeId(data.getRequiredScopeId());
+		existing.setOptionalDefSchemaId(data.getOptionalDefSchemaId());
 		existing.setRequiredName(data.getRequiredName());
 		existing.setOptionalShortName(data.getOptionalShortName());
 		existing.setOptionalLabel(data.getOptionalLabel());
@@ -273,6 +275,8 @@ public class CFBamJpaTokenTypeService {
 		existing.setRequiredIsNullable(data.getRequiredIsNullable());
 		existing.setOptionalGenerateId(data.getOptionalGenerateId());
 		existing.setRequiredImplementsPolymorph(data.getRequiredImplementsPolymorph());
+		existing.setOptionalPrevId(data.getOptionalPrevId());
+		existing.setOptionalNextId(data.getOptionalNextId());
 		// Apply superior data relationships of CFBamAtom to existing object
 		// Apply data columns of CFBamAtom to existing object
 		existing.setOptionalDbName(data.getOptionalDbName());
@@ -283,6 +287,7 @@ public class CFBamJpaTokenTypeService {
 		// Apply superior data relationships of CFBamTokenType to existing object
 		existing.setRequiredContainerSchemaDef(data.getRequiredContainerSchemaDef());
 		// Apply data columns of CFBamTokenType to existing object
+		existing.setRequiredSchemaDefId(data.getRequiredSchemaDefId());
 		// Update the audit columns
 		data.setUpdatedAt(LocalDateTime.now());
 		// Save the changes we've made

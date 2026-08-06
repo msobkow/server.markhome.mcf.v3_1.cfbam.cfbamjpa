@@ -146,7 +146,7 @@ public class CFBamJpaDateCol extends CFBamJpaDateDef
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredTableId() {
-		return( requiredTableId );
+		return(requiredTableId);
 	}
 
 	public void setRequiredTableId( CFLibDbKeyHash256 value ) {
@@ -156,7 +156,6 @@ public class CFBamJpaDateCol extends CFBamJpaDateDef
 				1,
 				"value" );
 		}
-		
 		requiredTableId = value;
 	}
 
@@ -335,6 +334,7 @@ public class CFBamJpaDateCol extends CFBamJpaDateDef
 	public void setDateCol( ICFBamDateCol src ) {
 		super.setDateDef( src );
 		setRequiredContainerTable(src.getRequiredContainerTable());
+		setRequiredTableId(src.getRequiredTableId());
 	}
 
 	@Override
@@ -355,6 +355,7 @@ public class CFBamJpaDateCol extends CFBamJpaDateDef
 	public void setDateCol( ICFBamDateColH src ) {
 		super.setDateDef( src );
 		setRequiredContainerTable(src.getRequiredTableId());
+		setRequiredTableId(src.getRequiredTableId());
 	}
 
 	@Override

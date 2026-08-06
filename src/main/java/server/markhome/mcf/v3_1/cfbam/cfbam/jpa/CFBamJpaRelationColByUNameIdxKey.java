@@ -74,7 +74,7 @@ public class CFBamJpaRelationColByUNameIdxKey
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredRelationId() {
-		return( requiredRelationId );
+		return(requiredRelationId);
 	}
 
 	public void setRequiredRelationId( CFLibDbKeyHash256 value ) {
@@ -84,13 +84,12 @@ public class CFBamJpaRelationColByUNameIdxKey
 				1,
 				"value" );
 		}
-		
 		requiredRelationId = value;
 	}
 
 	@Override
 	public String getRequiredName() {
-		return( requiredName );
+		return(requiredName);
 	}
 
 	public void setRequiredName( String value ) {
@@ -108,7 +107,6 @@ public class CFBamJpaRelationColByUNameIdxKey
 				value.length(),
 				192 );
 		}
-		
 		requiredName = value;
 	}
 

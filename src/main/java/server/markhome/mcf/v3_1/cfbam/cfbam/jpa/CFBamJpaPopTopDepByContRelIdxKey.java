@@ -72,7 +72,7 @@ public class CFBamJpaPopTopDepByContRelIdxKey
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredContRelationId() {
-		return( requiredContRelationId );
+		return(requiredContRelationId);
 	}
 
 	public void setRequiredContRelationId( CFLibDbKeyHash256 value ) {
@@ -82,7 +82,6 @@ public class CFBamJpaPopTopDepByContRelIdxKey
 				1,
 				"value" );
 		}
-		
 		requiredContRelationId = value;
 	}
 

@@ -302,7 +302,7 @@ public class CFBamJpaRoleDef
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredId() {
-		return( requiredId );
+		return(requiredId);
 	}
 
 	public void setRequiredId( CFLibDbKeyHash256 value ) {
@@ -312,7 +312,6 @@ public class CFBamJpaRoleDef
 				1,
 				"value" );
 		}
-		
 		requiredId = value;
 	}
 
@@ -328,7 +327,7 @@ public class CFBamJpaRoleDef
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredScopeId() {
-		return( requiredScopeId );
+		return(requiredScopeId);
 	}
 
 	public void setRequiredScopeId( CFLibDbKeyHash256 value ) {
@@ -338,23 +337,21 @@ public class CFBamJpaRoleDef
 				1,
 				"value" );
 		}
-		
 		requiredScopeId = value;
 	}
 
 	@Override
 	public CFLibDbKeyHash256 getOptionalDefSchemaId() {
-		return( optionalDefSchemaId );
+		return(optionalDefSchemaId);
 	}
 
 	public void setOptionalDefSchemaId( CFLibDbKeyHash256 value ) {
-		
 		optionalDefSchemaId = value;
 	}
 
 	@Override
 	public String getRequiredName() {
-		return( requiredName );
+		return(requiredName);
 	}
 
 	public void setRequiredName( String value ) {
@@ -372,13 +369,12 @@ public class CFBamJpaRoleDef
 				value.length(),
 				192 );
 		}
-		
 		requiredName = value;
 	}
 
 	@Override
 	public String getRequiredEnables() {
-		return( requiredEnables );
+		return(requiredEnables);
 	}
 
 	public void setRequiredEnables( String value ) {
@@ -396,13 +392,12 @@ public class CFBamJpaRoleDef
 				value.length(),
 				2000000 );
 		}
-		
 		requiredEnables = value;
 	}
 
 	@Override
 	public String getRequiredIncludes() {
-		return( requiredIncludes );
+		return(requiredIncludes);
 	}
 
 	public void setRequiredIncludes( String value ) {
@@ -420,7 +415,6 @@ public class CFBamJpaRoleDef
 				value.length(),
 				2000000 );
 		}
-		
 		requiredIncludes = value;
 	}
 
@@ -1190,6 +1184,8 @@ public class CFBamJpaRoleDef
 		setUpdatedAt( src.getUpdatedAt() );
 		setRequiredContainerScopeDef(src.getRequiredContainerScopeDef());
 		setOptionalLookupDefSchema(src.getOptionalLookupDefSchema());
+		setRequiredScopeId(src.getRequiredScopeId());
+		setOptionalDefSchemaId(src.getOptionalDefSchemaId());
 		setRequiredName(src.getRequiredName());
 		setRequiredEnables(src.getRequiredEnables());
 		setRequiredIncludes(src.getRequiredIncludes());
@@ -1205,6 +1201,8 @@ public class CFBamJpaRoleDef
 		setRequiredId(src.getRequiredId());
 		setRequiredContainerScopeDef(src.getRequiredScopeId());
 		setOptionalLookupDefSchema(src.getOptionalDefSchemaId());
+		setRequiredScopeId(src.getRequiredScopeId());
+		setOptionalDefSchemaId(src.getOptionalDefSchemaId());
 		setRequiredName(src.getRequiredName());
 		setRequiredEnables(src.getRequiredEnables());
 		setRequiredIncludes(src.getRequiredIncludes());

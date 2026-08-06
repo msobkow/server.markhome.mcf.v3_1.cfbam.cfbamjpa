@@ -102,7 +102,7 @@ public class CFBamJpaDelSubDep3H extends CFBamJpaDelDepH
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredDelSubDep2Id() {
-		return( requiredDelSubDep2Id );
+		return(requiredDelSubDep2Id);
 	}
 
 	public void setRequiredDelSubDep2Id( CFLibDbKeyHash256 value ) {
@@ -112,13 +112,12 @@ public class CFBamJpaDelSubDep3H extends CFBamJpaDelDepH
 				1,
 				"value" );
 		}
-		
 		requiredDelSubDep2Id = value;
 	}
 
 	@Override
 	public String getRequiredName() {
-		return( requiredName );
+		return(requiredName);
 	}
 
 	public void setRequiredName( String value ) {
@@ -136,7 +135,6 @@ public class CFBamJpaDelSubDep3H extends CFBamJpaDelDepH
 				value.length(),
 				192 );
 		}
-		
 		requiredName = value;
 	}
 

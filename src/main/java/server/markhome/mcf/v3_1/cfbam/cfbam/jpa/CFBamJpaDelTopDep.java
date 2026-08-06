@@ -274,7 +274,7 @@ public class CFBamJpaDelTopDep extends CFBamJpaDelDep
 
 	@Override
 	public String getRequiredName() {
-		return( requiredName );
+		return(requiredName);
 	}
 
 	public void setRequiredName( String value ) {
@@ -292,13 +292,12 @@ public class CFBamJpaDelTopDep extends CFBamJpaDelDep
 				value.length(),
 				192 );
 		}
-		
 		requiredName = value;
 	}
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredTableId() {
-		return( requiredTableId );
+		return(requiredTableId);
 	}
 
 	public void setRequiredTableId( CFLibDbKeyHash256 value ) {
@@ -308,27 +307,24 @@ public class CFBamJpaDelTopDep extends CFBamJpaDelDep
 				1,
 				"value" );
 		}
-		
 		requiredTableId = value;
 	}
 
 	@Override
 	public CFLibDbKeyHash256 getOptionalPrevId() {
-		return( optionalPrevId );
+		return(optionalPrevId);
 	}
 
 	public void setOptionalPrevId( CFLibDbKeyHash256 value ) {
-		
 		optionalPrevId = value;
 	}
 
 	@Override
 	public CFLibDbKeyHash256 getOptionalNextId() {
-		return( optionalNextId );
+		return(optionalNextId);
 	}
 
 	public void setOptionalNextId( CFLibDbKeyHash256 value ) {
-		
 		optionalNextId = value;
 	}
 
@@ -845,6 +841,9 @@ public class CFBamJpaDelTopDep extends CFBamJpaDelDep
 		setOptionalLookupPrev(src.getOptionalLookupPrev());
 		setOptionalLookupNext(src.getOptionalLookupNext());
 		setRequiredName(src.getRequiredName());
+		setRequiredTableId(src.getRequiredTableId());
+		setOptionalPrevId(src.getOptionalPrevId());
+		setOptionalNextId(src.getOptionalNextId());
 	}
 
 	@Override
@@ -868,6 +867,9 @@ public class CFBamJpaDelTopDep extends CFBamJpaDelDep
 		setOptionalLookupPrev(src.getOptionalPrevId());
 		setOptionalLookupNext(src.getOptionalNextId());
 		setRequiredName(src.getRequiredName());
+		setRequiredTableId(src.getRequiredTableId());
+		setOptionalPrevId(src.getOptionalPrevId());
+		setOptionalNextId(src.getOptionalNextId());
 	}
 
 	@Override

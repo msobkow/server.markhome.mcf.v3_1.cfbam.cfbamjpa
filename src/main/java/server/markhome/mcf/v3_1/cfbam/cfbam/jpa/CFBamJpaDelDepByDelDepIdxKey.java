@@ -72,7 +72,7 @@ public class CFBamJpaDelDepByDelDepIdxKey
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredRelationId() {
-		return( requiredRelationId );
+		return(requiredRelationId);
 	}
 
 	public void setRequiredRelationId( CFLibDbKeyHash256 value ) {
@@ -82,7 +82,6 @@ public class CFBamJpaDelDepByDelDepIdxKey
 				1,
 				"value" );
 		}
-		
 		requiredRelationId = value;
 	}
 

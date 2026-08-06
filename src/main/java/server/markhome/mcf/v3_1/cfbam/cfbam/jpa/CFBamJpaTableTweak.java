@@ -146,7 +146,7 @@ public class CFBamJpaTableTweak extends CFBamJpaTweak
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredTableId() {
-		return( requiredTableId );
+		return(requiredTableId);
 	}
 
 	public void setRequiredTableId( CFLibDbKeyHash256 value ) {
@@ -156,7 +156,6 @@ public class CFBamJpaTableTweak extends CFBamJpaTweak
 				1,
 				"value" );
 		}
-		
 		requiredTableId = value;
 	}
 
@@ -335,6 +334,7 @@ public class CFBamJpaTableTweak extends CFBamJpaTweak
 	public void setTableTweak( ICFBamTableTweak src ) {
 		super.setTweak( src );
 		setRequiredContainerTableDef(src.getRequiredContainerTableDef());
+		setRequiredTableId(src.getRequiredTableId());
 	}
 
 	@Override
@@ -355,6 +355,7 @@ public class CFBamJpaTableTweak extends CFBamJpaTweak
 	public void setTableTweak( ICFBamTableTweakH src ) {
 		super.setTweak( src );
 		setRequiredContainerTableDef(src.getRequiredTableId());
+		setRequiredTableId(src.getRequiredTableId());
 	}
 
 	@Override

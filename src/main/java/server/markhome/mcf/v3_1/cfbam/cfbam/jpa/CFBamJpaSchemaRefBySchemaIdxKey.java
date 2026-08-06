@@ -72,7 +72,7 @@ public class CFBamJpaSchemaRefBySchemaIdxKey
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredSchemaId() {
-		return( requiredSchemaId );
+		return(requiredSchemaId);
 	}
 
 	public void setRequiredSchemaId( CFLibDbKeyHash256 value ) {
@@ -82,7 +82,6 @@ public class CFBamJpaSchemaRefBySchemaIdxKey
 				1,
 				"value" );
 		}
-		
 		requiredSchemaId = value;
 	}
 

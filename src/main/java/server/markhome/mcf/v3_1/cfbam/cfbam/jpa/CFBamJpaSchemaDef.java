@@ -236,7 +236,7 @@ public class CFBamJpaSchemaDef extends CFBamJpaScope
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredCTenantId() {
-		return( requiredCTenantId );
+		return(requiredCTenantId);
 	}
 
 	public void setRequiredCTenantId( CFLibDbKeyHash256 value ) {
@@ -246,13 +246,12 @@ public class CFBamJpaSchemaDef extends CFBamJpaScope
 				1,
 				"value" );
 		}
-		
 		requiredCTenantId = value;
 	}
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredMinorVersionId() {
-		return( requiredMinorVersionId );
+		return(requiredMinorVersionId);
 	}
 
 	public void setRequiredMinorVersionId( CFLibDbKeyHash256 value ) {
@@ -262,13 +261,12 @@ public class CFBamJpaSchemaDef extends CFBamJpaScope
 				1,
 				"value" );
 		}
-		
 		requiredMinorVersionId = value;
 	}
 
 	@Override
 	public String getRequiredName() {
-		return( requiredName );
+		return(requiredName);
 	}
 
 	public void setRequiredName( String value ) {
@@ -286,13 +284,12 @@ public class CFBamJpaSchemaDef extends CFBamJpaScope
 				value.length(),
 				192 );
 		}
-		
 		requiredName = value;
 	}
 
 	@Override
 	public String getOptionalDbName() {
-		return( optionalDbName );
+		return(optionalDbName);
 	}
 
 	public void setOptionalDbName( String value ) {
@@ -304,13 +301,12 @@ public class CFBamJpaSchemaDef extends CFBamJpaScope
 				value.length(),
 				12 );
 		}
-		
 		optionalDbName = value;
 	}
 
 	@Override
 	public String getOptionalShortName() {
-		return( optionalShortName );
+		return(optionalShortName);
 	}
 
 	public void setOptionalShortName( String value ) {
@@ -322,13 +318,12 @@ public class CFBamJpaSchemaDef extends CFBamJpaScope
 				value.length(),
 				16 );
 		}
-		
 		optionalShortName = value;
 	}
 
 	@Override
 	public String getOptionalLabel() {
-		return( optionalLabel );
+		return(optionalLabel);
 	}
 
 	public void setOptionalLabel( String value ) {
@@ -340,13 +335,12 @@ public class CFBamJpaSchemaDef extends CFBamJpaScope
 				value.length(),
 				64 );
 		}
-		
 		optionalLabel = value;
 	}
 
 	@Override
 	public String getOptionalShortDescription() {
-		return( optionalShortDescription );
+		return(optionalShortDescription);
 	}
 
 	public void setOptionalShortDescription( String value ) {
@@ -358,13 +352,12 @@ public class CFBamJpaSchemaDef extends CFBamJpaScope
 				value.length(),
 				128 );
 		}
-		
 		optionalShortDescription = value;
 	}
 
 	@Override
 	public String getOptionalDescription() {
-		return( optionalDescription );
+		return(optionalDescription);
 	}
 
 	public void setOptionalDescription( String value ) {
@@ -376,13 +369,12 @@ public class CFBamJpaSchemaDef extends CFBamJpaScope
 				value.length(),
 				1023 );
 		}
-		
 		optionalDescription = value;
 	}
 
 	@Override
 	public String getRequiredCopyrightPeriod() {
-		return( requiredCopyrightPeriod );
+		return(requiredCopyrightPeriod);
 	}
 
 	public void setRequiredCopyrightPeriod( String value ) {
@@ -400,13 +392,12 @@ public class CFBamJpaSchemaDef extends CFBamJpaScope
 				value.length(),
 				10 );
 		}
-		
 		requiredCopyrightPeriod = value;
 	}
 
 	@Override
 	public String getRequiredCopyrightHolder() {
-		return( requiredCopyrightHolder );
+		return(requiredCopyrightHolder);
 	}
 
 	public void setRequiredCopyrightHolder( String value ) {
@@ -424,13 +415,12 @@ public class CFBamJpaSchemaDef extends CFBamJpaScope
 				value.length(),
 				511 );
 		}
-		
 		requiredCopyrightHolder = value;
 	}
 
 	@Override
 	public String getRequiredAuthorEMail() {
-		return( requiredAuthorEMail );
+		return(requiredAuthorEMail);
 	}
 
 	public void setRequiredAuthorEMail( String value ) {
@@ -448,13 +438,12 @@ public class CFBamJpaSchemaDef extends CFBamJpaScope
 				value.length(),
 				512 );
 		}
-		
 		requiredAuthorEMail = value;
 	}
 
 	@Override
 	public String getRequiredProjectURL() {
-		return( requiredProjectURL );
+		return(requiredProjectURL);
 	}
 
 	public void setRequiredProjectURL( String value ) {
@@ -472,13 +461,12 @@ public class CFBamJpaSchemaDef extends CFBamJpaScope
 				value.length(),
 				1024 );
 		}
-		
 		requiredProjectURL = value;
 	}
 
 	@Override
 	public String getRequiredPublishURI() {
-		return( requiredPublishURI );
+		return(requiredPublishURI);
 	}
 
 	public void setRequiredPublishURI( String value ) {
@@ -496,7 +484,6 @@ public class CFBamJpaSchemaDef extends CFBamJpaScope
 				value.length(),
 				512 );
 		}
-		
 		requiredPublishURI = value;
 	}
 
@@ -1727,6 +1714,8 @@ public class CFBamJpaSchemaDef extends CFBamJpaScope
 		super.setScope( src );
 		setRequiredContainerMinorVersion(src.getRequiredMinorVersionId());
 		setRequiredOwnerCTenant(src.getRequiredCTenantId());
+		setRequiredCTenantId(src.getRequiredCTenantId());
+		setRequiredMinorVersionId(src.getRequiredMinorVersionId());
 		setRequiredName(src.getRequiredName());
 		setOptionalDbName(src.getOptionalDbName());
 		setOptionalShortName(src.getOptionalShortName());
@@ -1759,6 +1748,8 @@ public class CFBamJpaSchemaDef extends CFBamJpaScope
 		super.setScope( src );
 		setRequiredContainerMinorVersion(src.getRequiredMinorVersionId());
 		setRequiredOwnerCTenant(src.getRequiredCTenantId());
+		setRequiredCTenantId(src.getRequiredCTenantId());
+		setRequiredMinorVersionId(src.getRequiredMinorVersionId());
 		setRequiredName(src.getRequiredName());
 		setOptionalDbName(src.getOptionalDbName());
 		setOptionalShortName(src.getOptionalShortName());

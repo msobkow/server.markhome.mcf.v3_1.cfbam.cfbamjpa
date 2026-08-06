@@ -92,7 +92,7 @@ public class CFBamJpaTZTimestampDef extends CFBamJpaAtom
 
 	@Override
 	public String getOptionalDummy() {
-		return( optionalDummy );
+		return(optionalDummy);
 	}
 
 	public void setOptionalDummy( String value ) {
@@ -104,7 +104,6 @@ public class CFBamJpaTZTimestampDef extends CFBamJpaAtom
 				value.length(),
 				4 );
 		}
-		
 		optionalDummy = value;
 	}
 

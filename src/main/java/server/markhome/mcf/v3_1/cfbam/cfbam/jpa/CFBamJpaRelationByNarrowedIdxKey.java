@@ -72,11 +72,10 @@ public class CFBamJpaRelationByNarrowedIdxKey
 
 	@Override
 	public CFLibDbKeyHash256 getOptionalNarrowedId() {
-		return( optionalNarrowedId );
+		return(optionalNarrowedId);
 	}
 
 	public void setOptionalNarrowedId( CFLibDbKeyHash256 value ) {
-		
 		optionalNarrowedId = value;
 	}
 

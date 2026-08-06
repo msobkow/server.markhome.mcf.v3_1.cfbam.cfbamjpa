@@ -233,12 +233,17 @@ public class CFBamJpaIndexColService {
 		existing.setOptionalLookupNext(data.getOptionalLookupNext());
 		existing.setRequiredLookupColumn(data.getRequiredLookupColumn());
 		// Apply data columns of CFBamIndexCol to existing object
+		existing.setRequiredIndexId(data.getRequiredIndexId());
+		existing.setOptionalDefSchemaId(data.getOptionalDefSchemaId());
 		existing.setRequiredName(data.getRequiredName());
 		existing.setOptionalShortName(data.getOptionalShortName());
 		existing.setOptionalLabel(data.getOptionalLabel());
 		existing.setOptionalShortDescription(data.getOptionalShortDescription());
 		existing.setOptionalDescription(data.getOptionalDescription());
+		existing.setRequiredColumnId(data.getRequiredColumnId());
 		existing.setRequiredIsAscending(data.getRequiredIsAscending());
+		existing.setOptionalPrevId(data.getOptionalPrevId());
+		existing.setOptionalNextId(data.getOptionalNextId());
 		// Update the audit columns
 		data.setUpdatedAt(LocalDateTime.now());
 		// Save the changes we've made

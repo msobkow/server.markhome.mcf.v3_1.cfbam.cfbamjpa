@@ -74,7 +74,7 @@ public class CFBamJpaPopTopDepByUNameIdxKey
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredContRelationId() {
-		return( requiredContRelationId );
+		return(requiredContRelationId);
 	}
 
 	public void setRequiredContRelationId( CFLibDbKeyHash256 value ) {
@@ -84,13 +84,12 @@ public class CFBamJpaPopTopDepByUNameIdxKey
 				1,
 				"value" );
 		}
-		
 		requiredContRelationId = value;
 	}
 
 	@Override
 	public String getRequiredName() {
-		return( requiredName );
+		return(requiredName);
 	}
 
 	public void setRequiredName( String value ) {
@@ -108,7 +107,6 @@ public class CFBamJpaPopTopDepByUNameIdxKey
 				value.length(),
 				192 );
 		}
-		
 		requiredName = value;
 	}
 

@@ -104,28 +104,11 @@ public class CFBamJpaNumberDef extends CFBamJpaAtom
 
 	@Override
 	public short getRequiredDigits() {
-		return( requiredDigits );
+		return(requiredDigits);
 	}
 
 	@Override
 	public void setRequiredDigits( short value ) {
-		if( value < ICFBamPubNumberDef.DIGITS_MIN_VALUE ) {
-			throw new CFLibArgumentUnderflowException( getClass(),
-				"setRequiredDigits",
-				1,
-				"value",
-				value,
-				ICFBamPubNumberDef.DIGITS_MIN_VALUE );
-		}
-		if( value > ICFBamPubNumberDef.DIGITS_MAX_VALUE ) {
-			throw new CFLibArgumentOverflowException( getClass(),
-				"setRequiredDigits",
-				1,
-				"value",
-				value,
-				ICFBamPubNumberDef.DIGITS_MAX_VALUE );
-		}
-		
 		if( value < ICFBamPubNumberDef.DIGITS_MIN_VALUE ) {
 			throw new CFLibArgumentUnderflowException( getClass(),
 				"setRequiredDigits",
@@ -147,28 +130,11 @@ public class CFBamJpaNumberDef extends CFBamJpaAtom
 
 	@Override
 	public short getRequiredPrecis() {
-		return( requiredPrecis );
+		return(requiredPrecis);
 	}
 
 	@Override
 	public void setRequiredPrecis( short value ) {
-		if( value < ICFBamPubNumberDef.PRECIS_MIN_VALUE ) {
-			throw new CFLibArgumentUnderflowException( getClass(),
-				"setRequiredPrecis",
-				1,
-				"value",
-				value,
-				ICFBamPubNumberDef.PRECIS_MIN_VALUE );
-		}
-		if( value > ICFBamPubNumberDef.PRECIS_MAX_VALUE ) {
-			throw new CFLibArgumentOverflowException( getClass(),
-				"setRequiredPrecis",
-				1,
-				"value",
-				value,
-				ICFBamPubNumberDef.PRECIS_MAX_VALUE );
-		}
-		
 		if( value < ICFBamPubNumberDef.PRECIS_MIN_VALUE ) {
 			throw new CFLibArgumentUnderflowException( getClass(),
 				"setRequiredPrecis",
@@ -190,34 +156,31 @@ public class CFBamJpaNumberDef extends CFBamJpaAtom
 
 	@Override
 	public BigDecimal getOptionalInitValue() {
-		return( optionalInitValue );
+		return(optionalInitValue);
 	}
 
 	public void setOptionalInitValue( BigDecimal value ) {
 		value = CFLibBigDecimalUtil.coerce( getClass().getName() + ".InitValue", 31, 5, value );
-		
 		optionalInitValue = value;
 	}
 
 	@Override
 	public BigDecimal getOptionalMinValue() {
-		return( optionalMinValue );
+		return(optionalMinValue);
 	}
 
 	public void setOptionalMinValue( BigDecimal value ) {
 		value = CFLibBigDecimalUtil.coerce( getClass().getName() + ".MinValue", 31, 5, value );
-		
 		optionalMinValue = value;
 	}
 
 	@Override
 	public BigDecimal getOptionalMaxValue() {
-		return( optionalMaxValue );
+		return(optionalMaxValue);
 	}
 
 	public void setOptionalMaxValue( BigDecimal value ) {
 		value = CFLibBigDecimalUtil.coerce( getClass().getName() + ".MaxValue", 31, 5, value );
-		
 		optionalMaxValue = value;
 	}
 

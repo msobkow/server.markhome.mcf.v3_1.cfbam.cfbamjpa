@@ -211,7 +211,7 @@ public class CFBamJpaScope
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredId() {
-		return( requiredId );
+		return(requiredId);
 	}
 
 	public void setRequiredId( CFLibDbKeyHash256 value ) {
@@ -221,7 +221,6 @@ public class CFBamJpaScope
 				1,
 				"value" );
 		}
-		
 		requiredId = value;
 	}
 
@@ -237,7 +236,7 @@ public class CFBamJpaScope
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredTenantId() {
-		return( requiredTenantId );
+		return(requiredTenantId);
 	}
 
 	public void setRequiredTenantId( CFLibDbKeyHash256 value ) {
@@ -247,7 +246,6 @@ public class CFBamJpaScope
 				1,
 				"value" );
 		}
-		
 		requiredTenantId = value;
 	}
 
@@ -566,6 +564,7 @@ public class CFBamJpaScope
 		setUpdatedByUserId( src.getUpdatedByUserId() );
 		setUpdatedAt( src.getUpdatedAt() );
 		setRequiredOwnerTenant(src.getRequiredTenantId());
+		setRequiredTenantId(src.getRequiredTenantId());
 	}
 
 	@Override
@@ -577,6 +576,7 @@ public class CFBamJpaScope
 	public void setScope( ICFBamScopeH src ) {
 		setRequiredId(src.getRequiredId());
 		setRequiredOwnerTenant(src.getRequiredTenantId());
+		setRequiredTenantId(src.getRequiredTenantId());
 	}
 
 	@Override

@@ -72,7 +72,7 @@ public class CFBamJpaDelSubDep3ByDelSubDep2IdxKey
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredDelSubDep2Id() {
-		return( requiredDelSubDep2Id );
+		return(requiredDelSubDep2Id);
 	}
 
 	public void setRequiredDelSubDep2Id( CFLibDbKeyHash256 value ) {
@@ -82,7 +82,6 @@ public class CFBamJpaDelSubDep3ByDelSubDep2IdxKey
 				1,
 				"value" );
 		}
-		
 		requiredDelSubDep2Id = value;
 	}
 

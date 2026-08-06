@@ -72,7 +72,7 @@ public class CFBamJpaTweakByScopeIdxKey
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredScopeId() {
-		return( requiredScopeId );
+		return(requiredScopeId);
 	}
 
 	public void setRequiredScopeId( CFLibDbKeyHash256 value ) {
@@ -82,7 +82,6 @@ public class CFBamJpaTweakByScopeIdxKey
 				1,
 				"value" );
 		}
-		
 		requiredScopeId = value;
 	}
 

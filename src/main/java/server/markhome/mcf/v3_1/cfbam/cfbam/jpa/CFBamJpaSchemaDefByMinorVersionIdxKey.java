@@ -72,7 +72,7 @@ public class CFBamJpaSchemaDefByMinorVersionIdxKey
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredMinorVersionId() {
-		return( requiredMinorVersionId );
+		return(requiredMinorVersionId);
 	}
 
 	public void setRequiredMinorVersionId( CFLibDbKeyHash256 value ) {
@@ -82,7 +82,6 @@ public class CFBamJpaSchemaDefByMinorVersionIdxKey
 				1,
 				"value" );
 		}
-		
 		requiredMinorVersionId = value;
 	}
 

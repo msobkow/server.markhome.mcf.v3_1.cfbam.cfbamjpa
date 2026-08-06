@@ -98,7 +98,7 @@ public class CFBamJpaDbKeyHash512TypeH extends CFBamJpaDbKeyHash512DefH
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredSchemaDefId() {
-		return( requiredSchemaDefId );
+		return(requiredSchemaDefId);
 	}
 
 	public void setRequiredSchemaDefId( CFLibDbKeyHash256 value ) {
@@ -108,7 +108,6 @@ public class CFBamJpaDbKeyHash512TypeH extends CFBamJpaDbKeyHash512DefH
 				1,
 				"value" );
 		}
-		
 		requiredSchemaDefId = value;
 	}
 

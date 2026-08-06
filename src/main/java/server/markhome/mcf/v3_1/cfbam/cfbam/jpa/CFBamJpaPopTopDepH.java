@@ -102,7 +102,7 @@ public class CFBamJpaPopTopDepH extends CFBamJpaPopDepH
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredContRelationId() {
-		return( requiredContRelationId );
+		return(requiredContRelationId);
 	}
 
 	public void setRequiredContRelationId( CFLibDbKeyHash256 value ) {
@@ -112,13 +112,12 @@ public class CFBamJpaPopTopDepH extends CFBamJpaPopDepH
 				1,
 				"value" );
 		}
-		
 		requiredContRelationId = value;
 	}
 
 	@Override
 	public String getRequiredName() {
-		return( requiredName );
+		return(requiredName);
 	}
 
 	public void setRequiredName( String value ) {
@@ -136,7 +135,6 @@ public class CFBamJpaPopTopDepH extends CFBamJpaPopDepH
 				value.length(),
 				192 );
 		}
-		
 		requiredName = value;
 	}
 

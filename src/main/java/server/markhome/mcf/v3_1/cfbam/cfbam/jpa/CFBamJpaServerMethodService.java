@@ -277,10 +277,13 @@ public class CFBamJpaServerMethodService {
 		// Apply superior data relationships of CFBamScope to existing object
 		existing.setRequiredOwnerTenant(data.getRequiredTenantId());
 		// Apply data columns of CFBamScope to existing object
+		existing.setRequiredTenantId(data.getRequiredTenantId());
 		// Apply superior data relationships of CFBamServerMethod to existing object
 		existing.setOptionalLookupDefSchema(data.getOptionalLookupDefSchema());
 		existing.setRequiredContainerForTable(data.getRequiredContainerForTable());
 		// Apply data columns of CFBamServerMethod to existing object
+		existing.setRequiredTableId(data.getRequiredTableId());
+		existing.setOptionalDefSchemaId(data.getOptionalDefSchemaId());
 		existing.setRequiredName(data.getRequiredName());
 		existing.setOptionalShortName(data.getOptionalShortName());
 		existing.setOptionalLabel(data.getOptionalLabel());

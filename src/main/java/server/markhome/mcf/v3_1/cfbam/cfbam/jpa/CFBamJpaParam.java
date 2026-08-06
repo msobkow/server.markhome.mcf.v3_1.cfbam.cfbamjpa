@@ -477,7 +477,7 @@ public class CFBamJpaParam
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredId() {
-		return( requiredId );
+		return(requiredId);
 	}
 
 	public void setRequiredId( CFLibDbKeyHash256 value ) {
@@ -487,7 +487,6 @@ public class CFBamJpaParam
 				1,
 				"value" );
 		}
-		
 		requiredId = value;
 	}
 
@@ -503,7 +502,7 @@ public class CFBamJpaParam
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredServerMethodId() {
-		return( requiredServerMethodId );
+		return(requiredServerMethodId);
 	}
 
 	public void setRequiredServerMethodId( CFLibDbKeyHash256 value ) {
@@ -513,23 +512,21 @@ public class CFBamJpaParam
 				1,
 				"value" );
 		}
-		
 		requiredServerMethodId = value;
 	}
 
 	@Override
 	public CFLibDbKeyHash256 getOptionalDefSchemaId() {
-		return( optionalDefSchemaId );
+		return(optionalDefSchemaId);
 	}
 
 	public void setOptionalDefSchemaId( CFLibDbKeyHash256 value ) {
-		
 		optionalDefSchemaId = value;
 	}
 
 	@Override
 	public String getRequiredName() {
-		return( requiredName );
+		return(requiredName);
 	}
 
 	public void setRequiredName( String value ) {
@@ -547,13 +544,12 @@ public class CFBamJpaParam
 				value.length(),
 				192 );
 		}
-		
 		requiredName = value;
 	}
 
 	@Override
 	public String getOptionalShortDescription() {
-		return( optionalShortDescription );
+		return(optionalShortDescription);
 	}
 
 	public void setOptionalShortDescription( String value ) {
@@ -565,13 +561,12 @@ public class CFBamJpaParam
 				value.length(),
 				128 );
 		}
-		
 		optionalShortDescription = value;
 	}
 
 	@Override
 	public String getOptionalDescription() {
-		return( optionalDescription );
+		return(optionalDescription);
 	}
 
 	public void setOptionalDescription( String value ) {
@@ -583,47 +578,42 @@ public class CFBamJpaParam
 				value.length(),
 				1023 );
 		}
-		
 		optionalDescription = value;
 	}
 
 	@Override
 	public boolean getRequiredIsNullable() {
-		return( requiredIsNullable );
+		return(requiredIsNullable);
 	}
 
 	public void setRequiredIsNullable( boolean value ) {
-		
 		requiredIsNullable = value;
 	}
 
 	@Override
 	public CFLibDbKeyHash256 getOptionalTypeId() {
-		return( optionalTypeId );
+		return(optionalTypeId);
 	}
 
 	public void setOptionalTypeId( CFLibDbKeyHash256 value ) {
-		
 		optionalTypeId = value;
 	}
 
 	@Override
 	public CFLibDbKeyHash256 getOptionalPrevId() {
-		return( optionalPrevId );
+		return(optionalPrevId);
 	}
 
 	public void setOptionalPrevId( CFLibDbKeyHash256 value ) {
-		
 		optionalPrevId = value;
 	}
 
 	@Override
 	public CFLibDbKeyHash256 getOptionalNextId() {
-		return( optionalNextId );
+		return(optionalNextId);
 	}
 
 	public void setOptionalNextId( CFLibDbKeyHash256 value ) {
-		
 		optionalNextId = value;
 	}
 
@@ -1787,10 +1777,15 @@ public class CFBamJpaParam
 		setOptionalLookupPrev(src.getOptionalLookupPrev());
 		setOptionalLookupNext(src.getOptionalLookupNext());
 		setRequiredLookupType(src.getRequiredLookupType());
+		setRequiredServerMethodId(src.getRequiredServerMethodId());
+		setOptionalDefSchemaId(src.getOptionalDefSchemaId());
 		setRequiredName(src.getRequiredName());
 		setOptionalShortDescription(src.getOptionalShortDescription());
 		setOptionalDescription(src.getOptionalDescription());
 		setRequiredIsNullable(src.getRequiredIsNullable());
+		setOptionalTypeId(src.getOptionalTypeId());
+		setOptionalPrevId(src.getOptionalPrevId());
+		setOptionalNextId(src.getOptionalNextId());
 	}
 
 	@Override
@@ -1806,10 +1801,15 @@ public class CFBamJpaParam
 		setOptionalLookupPrev(src.getOptionalPrevId());
 		setOptionalLookupNext(src.getOptionalNextId());
 		setRequiredLookupType(src.getOptionalTypeId());
+		setRequiredServerMethodId(src.getRequiredServerMethodId());
+		setOptionalDefSchemaId(src.getOptionalDefSchemaId());
 		setRequiredName(src.getRequiredName());
 		setOptionalShortDescription(src.getOptionalShortDescription());
 		setOptionalDescription(src.getOptionalDescription());
 		setRequiredIsNullable(src.getRequiredIsNullable());
+		setOptionalTypeId(src.getOptionalTypeId());
+		setOptionalPrevId(src.getOptionalPrevId());
+		setOptionalNextId(src.getOptionalNextId());
 	}
 
 	@Override

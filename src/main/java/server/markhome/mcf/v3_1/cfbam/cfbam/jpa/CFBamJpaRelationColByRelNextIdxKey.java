@@ -74,7 +74,7 @@ public class CFBamJpaRelationColByRelNextIdxKey
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredRelationId() {
-		return( requiredRelationId );
+		return(requiredRelationId);
 	}
 
 	public void setRequiredRelationId( CFLibDbKeyHash256 value ) {
@@ -84,17 +84,15 @@ public class CFBamJpaRelationColByRelNextIdxKey
 				1,
 				"value" );
 		}
-		
 		requiredRelationId = value;
 	}
 
 	@Override
 	public CFLibDbKeyHash256 getOptionalNextId() {
-		return( optionalNextId );
+		return(optionalNextId);
 	}
 
 	public void setOptionalNextId( CFLibDbKeyHash256 value ) {
-		
 		optionalNextId = value;
 	}
 

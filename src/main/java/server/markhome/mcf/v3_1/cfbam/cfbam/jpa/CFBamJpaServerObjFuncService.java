@@ -277,10 +277,13 @@ public class CFBamJpaServerObjFuncService {
 		// Apply superior data relationships of CFBamScope to existing object
 		existing.setRequiredOwnerTenant(data.getRequiredTenantId());
 		// Apply data columns of CFBamScope to existing object
+		existing.setRequiredTenantId(data.getRequiredTenantId());
 		// Apply superior data relationships of CFBamServerMethod to existing object
 		existing.setOptionalLookupDefSchema(data.getOptionalLookupDefSchema());
 		existing.setRequiredContainerForTable(data.getRequiredContainerForTable());
 		// Apply data columns of CFBamServerMethod to existing object
+		existing.setRequiredTableId(data.getRequiredTableId());
+		existing.setOptionalDefSchemaId(data.getOptionalDefSchemaId());
 		existing.setRequiredName(data.getRequiredName());
 		existing.setOptionalShortName(data.getOptionalShortName());
 		existing.setOptionalLabel(data.getOptionalLabel());
@@ -296,6 +299,7 @@ public class CFBamJpaServerObjFuncService {
 		// Apply superior data relationships of CFBamServerObjFunc to existing object
 		existing.setOptionalLookupRetTable(data.getOptionalLookupRetTable());
 		// Apply data columns of CFBamServerObjFunc to existing object
+		existing.setOptionalRetTableId(data.getOptionalRetTableId());
 		// Update the audit columns
 		data.setUpdatedAt(LocalDateTime.now());
 		// Save the changes we've made

@@ -72,7 +72,7 @@ public class CFBamJpaIndexTweakByIndexIdxKey
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredIndexId() {
-		return( requiredIndexId );
+		return(requiredIndexId);
 	}
 
 	public void setRequiredIndexId( CFLibDbKeyHash256 value ) {
@@ -82,7 +82,6 @@ public class CFBamJpaIndexTweakByIndexIdxKey
 				1,
 				"value" );
 		}
-		
 		requiredIndexId = value;
 	}
 

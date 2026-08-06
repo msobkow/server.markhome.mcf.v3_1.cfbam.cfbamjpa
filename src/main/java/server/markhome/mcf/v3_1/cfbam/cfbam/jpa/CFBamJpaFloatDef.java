@@ -98,27 +98,10 @@ public class CFBamJpaFloatDef extends CFBamJpaAtom
 
 	@Override
 	public Float getOptionalInitValue() {
-		return( optionalInitValue );
+		return(optionalInitValue);
 	}
 
 	public void setOptionalInitValue( Float value ) {
-		if( value < ICFBamPubFloatDef.INITVALUE_MIN_VALUE ) {
-			throw new CFLibArgumentUnderflowException( getClass(),
-				"setOptionalInitValue",
-				1,
-				"value",
-				value,
-				ICFBamPubFloatDef.INITVALUE_MIN_VALUE );
-		}
-		if( value > ICFBamPubFloatDef.INITVALUE_MAX_VALUE ) {
-			throw new CFLibArgumentOverflowException( getClass(),
-				"setOptionalInitValue",
-				1,
-				"value",
-				value,
-				ICFBamPubFloatDef.INITVALUE_MAX_VALUE );
-		}
-		
 		if( value < ICFBamPubFloatDef.INITVALUE_MIN_VALUE ) {
 			throw new CFLibArgumentUnderflowException( getClass(),
 				"setOptionalInitValue",
@@ -140,27 +123,10 @@ public class CFBamJpaFloatDef extends CFBamJpaAtom
 
 	@Override
 	public Float getOptionalMinValue() {
-		return( optionalMinValue );
+		return(optionalMinValue);
 	}
 
 	public void setOptionalMinValue( Float value ) {
-		if( value < ICFBamPubFloatDef.MINVALUE_MIN_VALUE ) {
-			throw new CFLibArgumentUnderflowException( getClass(),
-				"setOptionalMinValue",
-				1,
-				"value",
-				value,
-				ICFBamPubFloatDef.MINVALUE_MIN_VALUE );
-		}
-		if( value > ICFBamPubFloatDef.MINVALUE_MAX_VALUE ) {
-			throw new CFLibArgumentOverflowException( getClass(),
-				"setOptionalMinValue",
-				1,
-				"value",
-				value,
-				ICFBamPubFloatDef.MINVALUE_MAX_VALUE );
-		}
-		
 		if( value < ICFBamPubFloatDef.MINVALUE_MIN_VALUE ) {
 			throw new CFLibArgumentUnderflowException( getClass(),
 				"setOptionalMinValue",
@@ -182,27 +148,10 @@ public class CFBamJpaFloatDef extends CFBamJpaAtom
 
 	@Override
 	public Float getOptionalMaxValue() {
-		return( optionalMaxValue );
+		return(optionalMaxValue);
 	}
 
 	public void setOptionalMaxValue( Float value ) {
-		if( value < ICFBamPubFloatDef.MAXVALUE_MIN_VALUE ) {
-			throw new CFLibArgumentUnderflowException( getClass(),
-				"setOptionalMaxValue",
-				1,
-				"value",
-				value,
-				ICFBamPubFloatDef.MAXVALUE_MIN_VALUE );
-		}
-		if( value > ICFBamPubFloatDef.MAXVALUE_MAX_VALUE ) {
-			throw new CFLibArgumentOverflowException( getClass(),
-				"setOptionalMaxValue",
-				1,
-				"value",
-				value,
-				ICFBamPubFloatDef.MAXVALUE_MAX_VALUE );
-		}
-		
 		if( value < ICFBamPubFloatDef.MAXVALUE_MIN_VALUE ) {
 			throw new CFLibArgumentUnderflowException( getClass(),
 				"setOptionalMaxValue",

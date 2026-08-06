@@ -150,7 +150,7 @@ public class CFBamJpaClearSubDep3 extends CFBamJpaClearDep
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredClearSubDep2Id() {
-		return( requiredClearSubDep2Id );
+		return(requiredClearSubDep2Id);
 	}
 
 	public void setRequiredClearSubDep2Id( CFLibDbKeyHash256 value ) {
@@ -160,13 +160,12 @@ public class CFBamJpaClearSubDep3 extends CFBamJpaClearDep
 				1,
 				"value" );
 		}
-		
 		requiredClearSubDep2Id = value;
 	}
 
 	@Override
 	public String getRequiredName() {
-		return( requiredName );
+		return(requiredName);
 	}
 
 	public void setRequiredName( String value ) {
@@ -184,7 +183,6 @@ public class CFBamJpaClearSubDep3 extends CFBamJpaClearDep
 				value.length(),
 				192 );
 		}
-		
 		requiredName = value;
 	}
 
@@ -490,6 +488,7 @@ public class CFBamJpaClearSubDep3 extends CFBamJpaClearDep
 	public void setClearSubDep3( ICFBamClearSubDep3 src ) {
 		super.setClearDep( src );
 		setRequiredContainerClearSubDep2(src.getRequiredContainerClearSubDep2());
+		setRequiredClearSubDep2Id(src.getRequiredClearSubDep2Id());
 		setRequiredName(src.getRequiredName());
 	}
 
@@ -511,6 +510,7 @@ public class CFBamJpaClearSubDep3 extends CFBamJpaClearDep
 	public void setClearSubDep3( ICFBamClearSubDep3H src ) {
 		super.setClearDep( src );
 		setRequiredContainerClearSubDep2(src.getRequiredClearSubDep2Id());
+		setRequiredClearSubDep2Id(src.getRequiredClearSubDep2Id());
 		setRequiredName(src.getRequiredName());
 	}
 

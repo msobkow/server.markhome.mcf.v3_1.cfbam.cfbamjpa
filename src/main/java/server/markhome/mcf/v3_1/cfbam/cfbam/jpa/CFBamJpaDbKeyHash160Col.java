@@ -146,7 +146,7 @@ public class CFBamJpaDbKeyHash160Col extends CFBamJpaDbKeyHash160Def
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredTableId() {
-		return( requiredTableId );
+		return(requiredTableId);
 	}
 
 	public void setRequiredTableId( CFLibDbKeyHash256 value ) {
@@ -156,7 +156,6 @@ public class CFBamJpaDbKeyHash160Col extends CFBamJpaDbKeyHash160Def
 				1,
 				"value" );
 		}
-		
 		requiredTableId = value;
 	}
 
@@ -335,6 +334,7 @@ public class CFBamJpaDbKeyHash160Col extends CFBamJpaDbKeyHash160Def
 	public void setDbKeyHash160Col( ICFBamDbKeyHash160Col src ) {
 		super.setDbKeyHash160Def( src );
 		setRequiredContainerTable(src.getRequiredContainerTable());
+		setRequiredTableId(src.getRequiredTableId());
 	}
 
 	@Override
@@ -355,6 +355,7 @@ public class CFBamJpaDbKeyHash160Col extends CFBamJpaDbKeyHash160Def
 	public void setDbKeyHash160Col( ICFBamDbKeyHash160ColH src ) {
 		super.setDbKeyHash160Def( src );
 		setRequiredContainerTable(src.getRequiredTableId());
+		setRequiredTableId(src.getRequiredTableId());
 	}
 
 	@Override

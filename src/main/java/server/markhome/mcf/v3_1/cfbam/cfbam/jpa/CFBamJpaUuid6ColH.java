@@ -98,7 +98,7 @@ public class CFBamJpaUuid6ColH extends CFBamJpaUuid6DefH
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredTableId() {
-		return( requiredTableId );
+		return(requiredTableId);
 	}
 
 	public void setRequiredTableId( CFLibDbKeyHash256 value ) {
@@ -108,7 +108,6 @@ public class CFBamJpaUuid6ColH extends CFBamJpaUuid6DefH
 				1,
 				"value" );
 		}
-		
 		requiredTableId = value;
 	}
 

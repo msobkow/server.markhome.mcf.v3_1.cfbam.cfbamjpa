@@ -146,7 +146,7 @@ public class CFBamJpaUuid6Col extends CFBamJpaUuid6Def
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredTableId() {
-		return( requiredTableId );
+		return(requiredTableId);
 	}
 
 	public void setRequiredTableId( CFLibDbKeyHash256 value ) {
@@ -156,7 +156,6 @@ public class CFBamJpaUuid6Col extends CFBamJpaUuid6Def
 				1,
 				"value" );
 		}
-		
 		requiredTableId = value;
 	}
 
@@ -335,6 +334,7 @@ public class CFBamJpaUuid6Col extends CFBamJpaUuid6Def
 	public void setUuid6Col( ICFBamUuid6Col src ) {
 		super.setUuid6Def( src );
 		setRequiredContainerTable(src.getRequiredContainerTable());
+		setRequiredTableId(src.getRequiredTableId());
 	}
 
 	@Override
@@ -355,6 +355,7 @@ public class CFBamJpaUuid6Col extends CFBamJpaUuid6Def
 	public void setUuid6Col( ICFBamUuid6ColH src ) {
 		super.setUuid6Def( src );
 		setRequiredContainerTable(src.getRequiredTableId());
+		setRequiredTableId(src.getRequiredTableId());
 	}
 
 	@Override

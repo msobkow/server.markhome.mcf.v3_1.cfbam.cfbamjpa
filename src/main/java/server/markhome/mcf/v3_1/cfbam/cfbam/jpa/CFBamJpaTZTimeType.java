@@ -146,7 +146,7 @@ public class CFBamJpaTZTimeType extends CFBamJpaTZTimeDef
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredSchemaDefId() {
-		return( requiredSchemaDefId );
+		return(requiredSchemaDefId);
 	}
 
 	public void setRequiredSchemaDefId( CFLibDbKeyHash256 value ) {
@@ -156,7 +156,6 @@ public class CFBamJpaTZTimeType extends CFBamJpaTZTimeDef
 				1,
 				"value" );
 		}
-		
 		requiredSchemaDefId = value;
 	}
 
@@ -335,6 +334,7 @@ public class CFBamJpaTZTimeType extends CFBamJpaTZTimeDef
 	public void setTZTimeType( ICFBamTZTimeType src ) {
 		super.setTZTimeDef( src );
 		setRequiredContainerSchemaDef(src.getRequiredContainerSchemaDef());
+		setRequiredSchemaDefId(src.getRequiredSchemaDefId());
 	}
 
 	@Override
@@ -355,6 +355,7 @@ public class CFBamJpaTZTimeType extends CFBamJpaTZTimeDef
 	public void setTZTimeType( ICFBamTZTimeTypeH src ) {
 		super.setTZTimeDef( src );
 		setRequiredContainerSchemaDef(src.getRequiredSchemaDefId());
+		setRequiredSchemaDefId(src.getRequiredSchemaDefId());
 	}
 
 	@Override

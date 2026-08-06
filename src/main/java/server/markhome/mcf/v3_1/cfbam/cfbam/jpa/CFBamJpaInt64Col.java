@@ -146,7 +146,7 @@ public class CFBamJpaInt64Col extends CFBamJpaInt64Def
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredTableId() {
-		return( requiredTableId );
+		return(requiredTableId);
 	}
 
 	public void setRequiredTableId( CFLibDbKeyHash256 value ) {
@@ -156,7 +156,6 @@ public class CFBamJpaInt64Col extends CFBamJpaInt64Def
 				1,
 				"value" );
 		}
-		
 		requiredTableId = value;
 	}
 
@@ -335,6 +334,7 @@ public class CFBamJpaInt64Col extends CFBamJpaInt64Def
 	public void setInt64Col( ICFBamInt64Col src ) {
 		super.setInt64Def( src );
 		setRequiredContainerTable(src.getRequiredContainerTable());
+		setRequiredTableId(src.getRequiredTableId());
 	}
 
 	@Override
@@ -355,6 +355,7 @@ public class CFBamJpaInt64Col extends CFBamJpaInt64Def
 	public void setInt64Col( ICFBamInt64ColH src ) {
 		super.setInt64Def( src );
 		setRequiredContainerTable(src.getRequiredTableId());
+		setRequiredTableId(src.getRequiredTableId());
 	}
 
 	@Override

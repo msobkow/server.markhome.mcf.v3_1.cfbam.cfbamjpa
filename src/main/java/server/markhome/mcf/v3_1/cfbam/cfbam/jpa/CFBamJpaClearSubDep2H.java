@@ -102,7 +102,7 @@ public class CFBamJpaClearSubDep2H extends CFBamJpaClearDepH
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredClearSubDep1Id() {
-		return( requiredClearSubDep1Id );
+		return(requiredClearSubDep1Id);
 	}
 
 	public void setRequiredClearSubDep1Id( CFLibDbKeyHash256 value ) {
@@ -112,13 +112,12 @@ public class CFBamJpaClearSubDep2H extends CFBamJpaClearDepH
 				1,
 				"value" );
 		}
-		
 		requiredClearSubDep1Id = value;
 	}
 
 	@Override
 	public String getRequiredName() {
-		return( requiredName );
+		return(requiredName);
 	}
 
 	public void setRequiredName( String value ) {
@@ -136,7 +135,6 @@ public class CFBamJpaClearSubDep2H extends CFBamJpaClearDepH
 				value.length(),
 				192 );
 		}
-		
 		requiredName = value;
 	}
 

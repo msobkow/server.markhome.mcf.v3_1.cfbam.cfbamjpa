@@ -72,7 +72,7 @@ public class CFBamJpaTweakByValTentIdxKey
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredTenantId() {
-		return( requiredTenantId );
+		return(requiredTenantId);
 	}
 
 	public void setRequiredTenantId( CFLibDbKeyHash256 value ) {
@@ -82,7 +82,6 @@ public class CFBamJpaTweakByValTentIdxKey
 				1,
 				"value" );
 		}
-		
 		requiredTenantId = value;
 	}
 

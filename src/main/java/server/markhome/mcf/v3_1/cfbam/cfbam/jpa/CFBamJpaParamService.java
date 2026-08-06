@@ -221,10 +221,15 @@ public class CFBamJpaParamService {
 		existing.setOptionalLookupNext(data.getOptionalLookupNext());
 		existing.setRequiredLookupType(data.getRequiredLookupType());
 		// Apply data columns of CFBamParam to existing object
+		existing.setRequiredServerMethodId(data.getRequiredServerMethodId());
+		existing.setOptionalDefSchemaId(data.getOptionalDefSchemaId());
 		existing.setRequiredName(data.getRequiredName());
 		existing.setOptionalShortDescription(data.getOptionalShortDescription());
 		existing.setOptionalDescription(data.getOptionalDescription());
 		existing.setRequiredIsNullable(data.getRequiredIsNullable());
+		existing.setOptionalTypeId(data.getOptionalTypeId());
+		existing.setOptionalPrevId(data.getOptionalPrevId());
+		existing.setOptionalNextId(data.getOptionalNextId());
 		// Update the audit columns
 		data.setUpdatedAt(LocalDateTime.now());
 		// Save the changes we've made

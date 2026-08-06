@@ -146,7 +146,7 @@ public class CFBamJpaTextCol extends CFBamJpaTextDef
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredTableId() {
-		return( requiredTableId );
+		return(requiredTableId);
 	}
 
 	public void setRequiredTableId( CFLibDbKeyHash256 value ) {
@@ -156,7 +156,6 @@ public class CFBamJpaTextCol extends CFBamJpaTextDef
 				1,
 				"value" );
 		}
-		
 		requiredTableId = value;
 	}
 
@@ -335,6 +334,7 @@ public class CFBamJpaTextCol extends CFBamJpaTextDef
 	public void setTextCol( ICFBamTextCol src ) {
 		super.setTextDef( src );
 		setRequiredContainerTable(src.getRequiredContainerTable());
+		setRequiredTableId(src.getRequiredTableId());
 	}
 
 	@Override
@@ -355,6 +355,7 @@ public class CFBamJpaTextCol extends CFBamJpaTextDef
 	public void setTextCol( ICFBamTextColH src ) {
 		super.setTextDef( src );
 		setRequiredContainerTable(src.getRequiredTableId());
+		setRequiredTableId(src.getRequiredTableId());
 	}
 
 	@Override

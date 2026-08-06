@@ -74,7 +74,7 @@ public class CFBamJpaParamByContPrevIdxKey
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredServerMethodId() {
-		return( requiredServerMethodId );
+		return(requiredServerMethodId);
 	}
 
 	public void setRequiredServerMethodId( CFLibDbKeyHash256 value ) {
@@ -84,17 +84,15 @@ public class CFBamJpaParamByContPrevIdxKey
 				1,
 				"value" );
 		}
-		
 		requiredServerMethodId = value;
 	}
 
 	@Override
 	public CFLibDbKeyHash256 getOptionalPrevId() {
-		return( optionalPrevId );
+		return(optionalPrevId);
 	}
 
 	public void setOptionalPrevId( CFLibDbKeyHash256 value ) {
-		
 		optionalPrevId = value;
 	}
 

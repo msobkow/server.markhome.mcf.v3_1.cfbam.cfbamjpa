@@ -95,7 +95,7 @@ public class CFBamJpaAtomH extends CFBamJpaValueH
 
 	@Override
 	public String getOptionalDbName() {
-		return( optionalDbName );
+		return(optionalDbName);
 	}
 
 	public void setOptionalDbName( String value ) {
@@ -107,7 +107,6 @@ public class CFBamJpaAtomH extends CFBamJpaValueH
 				value.length(),
 				32 );
 		}
-		
 		optionalDbName = value;
 	}
 

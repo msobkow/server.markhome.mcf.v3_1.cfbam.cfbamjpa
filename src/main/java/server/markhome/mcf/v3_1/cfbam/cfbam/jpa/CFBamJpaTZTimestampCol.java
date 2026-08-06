@@ -146,7 +146,7 @@ public class CFBamJpaTZTimestampCol extends CFBamJpaTZTimestampDef
 
 	@Override
 	public CFLibDbKeyHash256 getRequiredTableId() {
-		return( requiredTableId );
+		return(requiredTableId);
 	}
 
 	public void setRequiredTableId( CFLibDbKeyHash256 value ) {
@@ -156,7 +156,6 @@ public class CFBamJpaTZTimestampCol extends CFBamJpaTZTimestampDef
 				1,
 				"value" );
 		}
-		
 		requiredTableId = value;
 	}
 
@@ -335,6 +334,7 @@ public class CFBamJpaTZTimestampCol extends CFBamJpaTZTimestampDef
 	public void setTZTimestampCol( ICFBamTZTimestampCol src ) {
 		super.setTZTimestampDef( src );
 		setRequiredContainerTable(src.getRequiredContainerTable());
+		setRequiredTableId(src.getRequiredTableId());
 	}
 
 	@Override
@@ -355,6 +355,7 @@ public class CFBamJpaTZTimestampCol extends CFBamJpaTZTimestampDef
 	public void setTZTimestampCol( ICFBamTZTimestampColH src ) {
 		super.setTZTimestampDef( src );
 		setRequiredContainerTable(src.getRequiredTableId());
+		setRequiredTableId(src.getRequiredTableId());
 	}
 
 	@Override

@@ -230,8 +230,12 @@ public class CFBamJpaEnumTagService {
 		existing.setOptionalLookupPrev(data.getOptionalLookupPrev());
 		existing.setOptionalLookupNext(data.getOptionalLookupNext());
 		// Apply data columns of CFBamEnumTag to existing object
+		existing.setOptionalDefSchemaId(data.getOptionalDefSchemaId());
+		existing.setRequiredEnumId(data.getRequiredEnumId());
 		existing.setOptionalEnumCode(data.getOptionalEnumCode());
 		existing.setRequiredName(data.getRequiredName());
+		existing.setOptionalPrevId(data.getOptionalPrevId());
+		existing.setOptionalNextId(data.getOptionalNextId());
 		// Update the audit columns
 		data.setUpdatedAt(LocalDateTime.now());
 		// Save the changes we've made

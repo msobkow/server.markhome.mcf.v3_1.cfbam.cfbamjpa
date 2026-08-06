@@ -268,11 +268,17 @@ public class CFBamJpaRelationColService {
 		existing.setRequiredLookupFromCol(data.getRequiredLookupFromCol());
 		existing.setRequiredLookupToCol(data.getRequiredLookupToCol());
 		// Apply data columns of CFBamRelationCol to existing object
+		existing.setRequiredRelationId(data.getRequiredRelationId());
+		existing.setOptionalDefSchemaId(data.getOptionalDefSchemaId());
 		existing.setRequiredName(data.getRequiredName());
 		existing.setOptionalShortName(data.getOptionalShortName());
 		existing.setOptionalLabel(data.getOptionalLabel());
 		existing.setOptionalShortDescription(data.getOptionalShortDescription());
 		existing.setOptionalDescription(data.getOptionalDescription());
+		existing.setRequiredFromColId(data.getRequiredFromColId());
+		existing.setRequiredToColId(data.getRequiredToColId());
+		existing.setOptionalPrevId(data.getOptionalPrevId());
+		existing.setOptionalNextId(data.getOptionalNextId());
 		// Update the audit columns
 		data.setUpdatedAt(LocalDateTime.now());
 		// Save the changes we've made
