@@ -67,7 +67,7 @@ public class CFBamJpaDbKeyHash224TypeBySchemaIdxKey
 {
 	protected CFLibDbKeyHash256 requiredSchemaDefId;
 	public CFBamJpaDbKeyHash224TypeBySchemaIdxKey() {
-		requiredSchemaDefId = CFLibDbKeyHash256.fromHex( ICFBamDbKeyHash224Type.SCHEMADEFID_INIT_VALUE.toString() );
+		requiredSchemaDefId = CFLibDbKeyHash256.fromHex( ICFBamPubDbKeyHash224Type.SCHEMADEFID_INIT_VALUE.toString() );
 	}
 
 	@Override

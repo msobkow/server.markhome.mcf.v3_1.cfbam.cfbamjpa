@@ -88,7 +88,7 @@ public class CFBamJpaDateTypeH extends CFBamJpaDateDefH
 
     public CFBamJpaDateTypeH() {
             super();
-		requiredSchemaDefId = CFLibDbKeyHash256.fromHex( ICFBamDateType.SCHEMADEFID_INIT_VALUE.toString() );
+		requiredSchemaDefId = CFLibDbKeyHash256.fromHex( ICFBamPubDateType.SCHEMADEFID_INIT_VALUE.toString() );
     }
 
     @Override

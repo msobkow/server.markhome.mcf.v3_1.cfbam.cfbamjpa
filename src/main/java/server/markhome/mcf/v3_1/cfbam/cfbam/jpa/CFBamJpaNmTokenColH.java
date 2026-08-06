@@ -88,7 +88,7 @@ public class CFBamJpaNmTokenColH extends CFBamJpaNmTokenDefH
 
     public CFBamJpaNmTokenColH() {
             super();
-		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamNmTokenCol.TABLEID_INIT_VALUE.toString() );
+		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamPubNmTokenCol.TABLEID_INIT_VALUE.toString() );
     }
 
     @Override

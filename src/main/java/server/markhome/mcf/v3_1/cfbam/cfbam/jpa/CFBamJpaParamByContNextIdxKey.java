@@ -68,7 +68,7 @@ public class CFBamJpaParamByContNextIdxKey
 	protected CFLibDbKeyHash256 requiredServerMethodId;
 	protected CFLibDbKeyHash256 optionalNextId;
 	public CFBamJpaParamByContNextIdxKey() {
-		requiredServerMethodId = CFLibDbKeyHash256.fromHex( ICFBamParam.SERVERMETHODID_INIT_VALUE.toString() );
+		requiredServerMethodId = CFLibDbKeyHash256.fromHex( ICFBamPubParam.SERVERMETHODID_INIT_VALUE.toString() );
 		optionalNextId = CFLibDbKeyHash256.nullGet();
 	}
 

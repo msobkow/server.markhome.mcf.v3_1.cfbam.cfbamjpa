@@ -89,7 +89,7 @@ public class CFBamJpaBoolCol extends CFBamJpaBoolDef
 
 	public CFBamJpaBoolCol() {
 		super();
-		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamBoolCol.TABLEID_INIT_VALUE.toString() );
+		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamPubBoolCol.TABLEID_INIT_VALUE.toString() );
 	}
 
 	@Override

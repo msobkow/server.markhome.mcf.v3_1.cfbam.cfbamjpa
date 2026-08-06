@@ -88,7 +88,7 @@ public class CFBamJpaInt64TypeH extends CFBamJpaInt64DefH
 
     public CFBamJpaInt64TypeH() {
             super();
-		requiredSchemaDefId = CFLibDbKeyHash256.fromHex( ICFBamInt64Type.SCHEMADEFID_INIT_VALUE.toString() );
+		requiredSchemaDefId = CFLibDbKeyHash256.fromHex( ICFBamPubInt64Type.SCHEMADEFID_INIT_VALUE.toString() );
     }
 
     @Override

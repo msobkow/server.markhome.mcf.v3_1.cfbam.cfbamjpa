@@ -123,10 +123,10 @@ public class CFBamJpaSchemaRef extends CFBamJpaScope
 
 	public CFBamJpaSchemaRef() {
 		super();
-		requiredSchemaId = CFLibDbKeyHash256.fromHex( ICFBamSchemaRef.SCHEMAID_INIT_VALUE.toString() );
-		requiredName = ICFBamSchemaRef.NAME_INIT_VALUE;
-		requiredRefModelName = ICFBamSchemaRef.REFMODELNAME_INIT_VALUE;
-		requiredIncludeRoot = ICFBamSchemaRef.INCLUDEROOT_INIT_VALUE;
+		requiredSchemaId = CFLibDbKeyHash256.fromHex( ICFBamPubSchemaRef.SCHEMAID_INIT_VALUE.toString() );
+		requiredName = ICFBamPubSchemaRef.NAME_INIT_VALUE;
+		requiredRefModelName = ICFBamPubSchemaRef.REFMODELNAME_INIT_VALUE;
+		requiredIncludeRoot = ICFBamPubSchemaRef.INCLUDEROOT_INIT_VALUE;
 		optionalRefSchemaId = CFLibDbKeyHash256.nullGet();
 		optionalPrevId = CFLibDbKeyHash256.nullGet();
 		optionalNextId = CFLibDbKeyHash256.nullGet();

@@ -67,7 +67,7 @@ public class CFBamJpaIndexByIdxTableIdxKey
 {
 	protected CFLibDbKeyHash256 requiredTableId;
 	public CFBamJpaIndexByIdxTableIdxKey() {
-		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamIndex.TABLEID_INIT_VALUE.toString() );
+		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamPubIndex.TABLEID_INIT_VALUE.toString() );
 	}
 
 	@Override

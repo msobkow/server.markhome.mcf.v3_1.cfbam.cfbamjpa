@@ -89,7 +89,7 @@ public class CFBamJpaInt16Col extends CFBamJpaInt16Def
 
 	public CFBamJpaInt16Col() {
 		super();
-		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamInt16Col.TABLEID_INIT_VALUE.toString() );
+		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamPubInt16Col.TABLEID_INIT_VALUE.toString() );
 	}
 
 	@Override

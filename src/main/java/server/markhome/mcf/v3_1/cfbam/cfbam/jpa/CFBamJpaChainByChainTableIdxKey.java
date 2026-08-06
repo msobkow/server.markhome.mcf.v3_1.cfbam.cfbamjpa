@@ -67,7 +67,7 @@ public class CFBamJpaChainByChainTableIdxKey
 {
 	protected CFLibDbKeyHash256 requiredTableId;
 	public CFBamJpaChainByChainTableIdxKey() {
-		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamChain.TABLEID_INIT_VALUE.toString() );
+		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamPubChain.TABLEID_INIT_VALUE.toString() );
 	}
 
 	@Override

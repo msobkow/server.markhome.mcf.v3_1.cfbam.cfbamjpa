@@ -89,7 +89,7 @@ public class CFBamJpaNmTokenType extends CFBamJpaNmTokenDef
 
 	public CFBamJpaNmTokenType() {
 		super();
-		requiredSchemaDefId = CFLibDbKeyHash256.fromHex( ICFBamNmTokenType.SCHEMADEFID_INIT_VALUE.toString() );
+		requiredSchemaDefId = CFLibDbKeyHash256.fromHex( ICFBamPubNmTokenType.SCHEMADEFID_INIT_VALUE.toString() );
 	}
 
 	@Override

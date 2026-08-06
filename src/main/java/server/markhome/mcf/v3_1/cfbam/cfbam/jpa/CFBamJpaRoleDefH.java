@@ -98,7 +98,12 @@ public class CFBamJpaRoleDefH
 	@AttributeOverrides({
 		@AttributeOverride( name="bytes", column = @Column( name="CreatedByUserId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 createdByUserId = CFLibDbKeyHash256.fromHex(ICFBam$emitScopingMidfix$RoleDef.S_INIT_CREATED_BY);
+	protected CFLibDbKeyHash256 createdByUserId = CFLibDbKeyHash256.fromHex(ICFBamPubSecUser.S_INIT_CREATED_BY);
+
+	@AttributeOverrides({
+		@AttributeOverride( name="bytes", column = @Column( name="CreatedBySessionId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
+	})
+	protected CFLibDbKeyHash256 createdBySessionId = CFLibDbKeyHash256.fromHex(ICFBamPubSecSession.S_SECSESSIONID_INIT_VALUE);
 
 	@Column(name="CreatedAt", nullable=false)
 	protected LocalDateTime createdAt = LocalDateTime.now();
@@ -106,7 +111,12 @@ public class CFBamJpaRoleDefH
 	@AttributeOverrides({
 		@AttributeOverride( name="bytes", column= @Column( name="UpdatedByUserId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 updatedByUserId = CFLibDbKeyHash256.fromHex(ICFBam$emitScopingMidfix$RoleDef.S_INIT_UPDATED_BY);
+	protected CFLibDbKeyHash256 updatedByUserId = CFLibDbKeyHash256.fromHex(ICFBamPubSecUser.S_INIT_UPDATED_BY);
+
+	@AttributeOverrides({
+		@AttributeOverride( name="bytes", column= @Column( name="UpdatedBySessionId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
+	})
+	protected CFLibDbKeyHash256 updatedBySessionId = CFLibDbKeyHash256.fromHex(ICFBamPubSecSession.S_SECSESSIONID_INIT_VALUE);
 
 	@Column(name="UpdatedAt", nullable=false)
 	protected LocalDateTime updatedAt = LocalDateTime.now();
@@ -128,11 +138,11 @@ public class CFBamJpaRoleDefH
     public CFBamJpaRoleDefH() {
             // The primary key member attributes are initialized on construction
             pkey = new CFBamJpaRoleDefHPKey();
-		requiredScopeId = CFLibDbKeyHash256.fromHex( ICFBamRoleDef.SCOPEID_INIT_VALUE.toString() );
+		requiredScopeId = CFLibDbKeyHash256.fromHex( ICFBamPubRoleDef.SCOPEID_INIT_VALUE.toString() );
 		optionalDefSchemaId = CFLibDbKeyHash256.nullGet();
-		requiredName = ICFBamRoleDef.NAME_INIT_VALUE;
-		requiredEnables = ICFBamRoleDef.ENABLES_INIT_VALUE;
-		requiredIncludes = ICFBamRoleDef.INCLUDES_INIT_VALUE;
+		requiredName = ICFBamPubRoleDef.NAME_INIT_VALUE;
+		requiredEnables = ICFBamPubRoleDef.ENABLES_INIT_VALUE;
+		requiredIncludes = ICFBamPubRoleDef.INCLUDES_INIT_VALUE;
     }
 
     @Override

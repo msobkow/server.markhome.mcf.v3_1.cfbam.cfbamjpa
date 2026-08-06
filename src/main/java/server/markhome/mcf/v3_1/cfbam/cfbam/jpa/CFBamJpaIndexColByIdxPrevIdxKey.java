@@ -68,7 +68,7 @@ public class CFBamJpaIndexColByIdxPrevIdxKey
 	protected CFLibDbKeyHash256 requiredIndexId;
 	protected CFLibDbKeyHash256 optionalPrevId;
 	public CFBamJpaIndexColByIdxPrevIdxKey() {
-		requiredIndexId = CFLibDbKeyHash256.fromHex( ICFBamIndexCol.INDEXID_INIT_VALUE.toString() );
+		requiredIndexId = CFLibDbKeyHash256.fromHex( ICFBamPubIndexCol.INDEXID_INIT_VALUE.toString() );
 		optionalPrevId = CFLibDbKeyHash256.nullGet();
 	}
 

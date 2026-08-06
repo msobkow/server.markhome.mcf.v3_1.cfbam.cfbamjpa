@@ -67,7 +67,7 @@ public class CFBamJpaNmTokensColByTableIdxKey
 {
 	protected CFLibDbKeyHash256 requiredTableId;
 	public CFBamJpaNmTokensColByTableIdxKey() {
-		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamNmTokensCol.TABLEID_INIT_VALUE.toString() );
+		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamPubNmTokensCol.TABLEID_INIT_VALUE.toString() );
 	}
 
 	@Override

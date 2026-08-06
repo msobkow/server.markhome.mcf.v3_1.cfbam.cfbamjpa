@@ -67,7 +67,7 @@ public class CFBamJpaRelationByRelCodeVisIdxKey
 {
 	protected ICFBamPubSchema.CodeVisibilityEnum requiredCodeVis;
 	public CFBamJpaRelationByRelCodeVisIdxKey() {
-		requiredCodeVis = ICFBamRelation.CODEVIS_INIT_VALUE;
+		requiredCodeVis = ICFBamPubRelation.CODEVIS_INIT_VALUE;
 	}
 
 	@Override

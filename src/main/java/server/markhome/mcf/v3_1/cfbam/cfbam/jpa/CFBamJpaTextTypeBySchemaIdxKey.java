@@ -67,7 +67,7 @@ public class CFBamJpaTextTypeBySchemaIdxKey
 {
 	protected CFLibDbKeyHash256 requiredSchemaDefId;
 	public CFBamJpaTextTypeBySchemaIdxKey() {
-		requiredSchemaDefId = CFLibDbKeyHash256.fromHex( ICFBamTextType.SCHEMADEFID_INIT_VALUE.toString() );
+		requiredSchemaDefId = CFLibDbKeyHash256.fromHex( ICFBamPubTextType.SCHEMADEFID_INIT_VALUE.toString() );
 	}
 
 	@Override

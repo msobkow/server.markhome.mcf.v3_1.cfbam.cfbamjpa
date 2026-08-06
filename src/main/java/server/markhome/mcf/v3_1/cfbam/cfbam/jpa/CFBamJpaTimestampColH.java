@@ -88,7 +88,7 @@ public class CFBamJpaTimestampColH extends CFBamJpaTimestampDefH
 
     public CFBamJpaTimestampColH() {
             super();
-		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamTimestampCol.TABLEID_INIT_VALUE.toString() );
+		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamPubTimestampCol.TABLEID_INIT_VALUE.toString() );
     }
 
     @Override

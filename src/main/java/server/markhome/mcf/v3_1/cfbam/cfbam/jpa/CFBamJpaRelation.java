@@ -167,25 +167,25 @@ public class CFBamJpaRelation extends CFBamJpaScope
 
 	public CFBamJpaRelation() {
 		super();
-		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamRelation.TABLEID_INIT_VALUE.toString() );
+		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamPubRelation.TABLEID_INIT_VALUE.toString() );
 		optionalDefSchemaId = CFLibDbKeyHash256.nullGet();
-		requiredName = ICFBamRelation.NAME_INIT_VALUE;
+		requiredName = ICFBamPubRelation.NAME_INIT_VALUE;
 		optionalShortName = null;
 		optionalLabel = null;
 		optionalShortDescription = null;
 		optionalDescription = null;
-		requiredRelationType = ICFBamRelation.RELATIONTYPE_INIT_VALUE;
+		requiredRelationType = ICFBamPubRelation.RELATIONTYPE_INIT_VALUE;
 		optionalDbName = null;
 		optionalSuffix = null;
-		requiredFromIndexId = CFLibDbKeyHash256.fromHex( ICFBamRelation.FROMINDEXID_INIT_VALUE.toString() );
-		requiredToTableId = CFLibDbKeyHash256.fromHex( ICFBamRelation.TOTABLEID_INIT_VALUE.toString() );
-		requiredToIndexId = CFLibDbKeyHash256.fromHex( ICFBamRelation.TOINDEXID_INIT_VALUE.toString() );
-		requiredIsRequired = ICFBamRelation.ISREQUIRED_INIT_VALUE;
-		requiredIsXsdContainer = ICFBamRelation.ISXSDCONTAINER_INIT_VALUE;
-		requiredIsLateResolver = ICFBamRelation.ISLATERESOLVER_INIT_VALUE;
-		requiredAllowAddendum = ICFBamRelation.ALLOWADDENDUM_INIT_VALUE;
+		requiredFromIndexId = CFLibDbKeyHash256.fromHex( ICFBamPubRelation.FROMINDEXID_INIT_VALUE.toString() );
+		requiredToTableId = CFLibDbKeyHash256.fromHex( ICFBamPubRelation.TOTABLEID_INIT_VALUE.toString() );
+		requiredToIndexId = CFLibDbKeyHash256.fromHex( ICFBamPubRelation.TOINDEXID_INIT_VALUE.toString() );
+		requiredIsRequired = ICFBamPubRelation.ISREQUIRED_INIT_VALUE;
+		requiredIsXsdContainer = ICFBamPubRelation.ISXSDCONTAINER_INIT_VALUE;
+		requiredIsLateResolver = ICFBamPubRelation.ISLATERESOLVER_INIT_VALUE;
+		requiredAllowAddendum = ICFBamPubRelation.ALLOWADDENDUM_INIT_VALUE;
 		optionalNarrowedId = CFLibDbKeyHash256.nullGet();
-		requiredCodeVis = ICFBamRelation.CODEVIS_INIT_VALUE;
+		requiredCodeVis = ICFBamPubRelation.CODEVIS_INIT_VALUE;
 	}
 
 	@Override

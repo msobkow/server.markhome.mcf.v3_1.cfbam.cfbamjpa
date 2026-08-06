@@ -67,7 +67,7 @@ public class CFBamJpaIndexTweakByIndexIdxKey
 {
 	protected CFLibDbKeyHash256 requiredIndexId;
 	public CFBamJpaIndexTweakByIndexIdxKey() {
-		requiredIndexId = CFLibDbKeyHash256.fromHex( ICFBamIndexTweak.INDEXID_INIT_VALUE.toString() );
+		requiredIndexId = CFLibDbKeyHash256.fromHex( ICFBamPubIndexTweak.INDEXID_INIT_VALUE.toString() );
 	}
 
 	@Override

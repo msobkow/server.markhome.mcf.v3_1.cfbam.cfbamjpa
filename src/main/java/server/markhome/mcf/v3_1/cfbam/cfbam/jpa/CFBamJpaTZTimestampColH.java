@@ -88,7 +88,7 @@ public class CFBamJpaTZTimestampColH extends CFBamJpaTZTimestampDefH
 
     public CFBamJpaTZTimestampColH() {
             super();
-		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamTZTimestampCol.TABLEID_INIT_VALUE.toString() );
+		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamPubTZTimestampCol.TABLEID_INIT_VALUE.toString() );
     }
 
     @Override

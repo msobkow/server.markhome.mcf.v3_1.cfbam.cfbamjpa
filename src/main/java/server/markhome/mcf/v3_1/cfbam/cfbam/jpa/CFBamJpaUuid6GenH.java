@@ -87,8 +87,8 @@ public class CFBamJpaUuid6GenH extends CFBamJpaUuid6TypeH
 
     public CFBamJpaUuid6GenH() {
             super();
-		requiredSlice = ICFBamUuid6Gen.SLICE_INIT_VALUE;
-		requiredBlockSize = ICFBamUuid6Gen.BLOCKSIZE_INIT_VALUE;
+		requiredSlice = ICFBamPubUuid6Gen.SLICE_INIT_VALUE;
+		requiredBlockSize = ICFBamPubUuid6Gen.BLOCKSIZE_INIT_VALUE;
     }
 
     @Override

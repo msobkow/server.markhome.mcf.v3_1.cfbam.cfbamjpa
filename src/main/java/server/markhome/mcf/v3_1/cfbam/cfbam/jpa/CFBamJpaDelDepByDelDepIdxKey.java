@@ -67,7 +67,7 @@ public class CFBamJpaDelDepByDelDepIdxKey
 {
 	protected CFLibDbKeyHash256 requiredRelationId;
 	public CFBamJpaDelDepByDelDepIdxKey() {
-		requiredRelationId = CFLibDbKeyHash256.fromHex( ICFBamDelDep.RELATIONID_INIT_VALUE.toString() );
+		requiredRelationId = CFLibDbKeyHash256.fromHex( ICFBamPubDelDep.RELATIONID_INIT_VALUE.toString() );
 	}
 
 	@Override

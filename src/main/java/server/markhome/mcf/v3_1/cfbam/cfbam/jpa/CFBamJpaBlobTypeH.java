@@ -88,7 +88,7 @@ public class CFBamJpaBlobTypeH extends CFBamJpaBlobDefH
 
     public CFBamJpaBlobTypeH() {
             super();
-		requiredSchemaDefId = CFLibDbKeyHash256.fromHex( ICFBamBlobType.SCHEMADEFID_INIT_VALUE.toString() );
+		requiredSchemaDefId = CFLibDbKeyHash256.fromHex( ICFBamPubBlobType.SCHEMADEFID_INIT_VALUE.toString() );
     }
 
     @Override

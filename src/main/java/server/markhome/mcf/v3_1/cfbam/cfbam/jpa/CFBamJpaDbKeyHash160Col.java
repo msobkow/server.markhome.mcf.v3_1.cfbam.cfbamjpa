@@ -89,7 +89,7 @@ public class CFBamJpaDbKeyHash160Col extends CFBamJpaDbKeyHash160Def
 
 	public CFBamJpaDbKeyHash160Col() {
 		super();
-		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamDbKeyHash160Col.TABLEID_INIT_VALUE.toString() );
+		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamPubDbKeyHash160Col.TABLEID_INIT_VALUE.toString() );
 	}
 
 	@Override

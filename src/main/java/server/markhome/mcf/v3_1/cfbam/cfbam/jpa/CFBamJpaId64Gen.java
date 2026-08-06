@@ -84,8 +84,8 @@ public class CFBamJpaId64Gen extends CFBamJpaInt64Type
 
 	public CFBamJpaId64Gen() {
 		super();
-		requiredSlice = ICFBamId64Gen.SLICE_INIT_VALUE;
-		requiredBlockSize = ICFBamId64Gen.BLOCKSIZE_INIT_VALUE;
+		requiredSlice = ICFBamPubId64Gen.SLICE_INIT_VALUE;
+		requiredBlockSize = ICFBamPubId64Gen.BLOCKSIZE_INIT_VALUE;
 	}
 
 	@Override

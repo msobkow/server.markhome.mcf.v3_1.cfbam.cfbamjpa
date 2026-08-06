@@ -67,7 +67,7 @@ public class CFBamJpaIndexColByColIdxKey
 {
 	protected CFLibDbKeyHash256 requiredColumnId;
 	public CFBamJpaIndexColByColIdxKey() {
-		requiredColumnId = CFLibDbKeyHash256.fromHex( ICFBamIndexCol.COLUMNID_INIT_VALUE.toString() );
+		requiredColumnId = CFLibDbKeyHash256.fromHex( ICFBamPubIndexCol.COLUMNID_INIT_VALUE.toString() );
 	}
 
 	@Override

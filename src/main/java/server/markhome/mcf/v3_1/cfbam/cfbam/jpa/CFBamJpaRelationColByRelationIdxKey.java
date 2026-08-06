@@ -67,7 +67,7 @@ public class CFBamJpaRelationColByRelationIdxKey
 {
 	protected CFLibDbKeyHash256 requiredRelationId;
 	public CFBamJpaRelationColByRelationIdxKey() {
-		requiredRelationId = CFLibDbKeyHash256.fromHex( ICFBamRelationCol.RELATIONID_INIT_VALUE.toString() );
+		requiredRelationId = CFLibDbKeyHash256.fromHex( ICFBamPubRelationCol.RELATIONID_INIT_VALUE.toString() );
 	}
 
 	@Override

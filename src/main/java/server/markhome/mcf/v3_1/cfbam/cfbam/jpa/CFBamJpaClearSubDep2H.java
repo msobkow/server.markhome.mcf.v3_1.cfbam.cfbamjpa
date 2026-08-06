@@ -91,8 +91,8 @@ public class CFBamJpaClearSubDep2H extends CFBamJpaClearDepH
 
     public CFBamJpaClearSubDep2H() {
             super();
-		requiredClearSubDep1Id = CFLibDbKeyHash256.fromHex( ICFBamClearSubDep2.CLEARSUBDEP1ID_INIT_VALUE.toString() );
-		requiredName = ICFBamClearSubDep2.NAME_INIT_VALUE;
+		requiredClearSubDep1Id = CFLibDbKeyHash256.fromHex( ICFBamPubClearSubDep2.CLEARSUBDEP1ID_INIT_VALUE.toString() );
+		requiredName = ICFBamPubClearSubDep2.NAME_INIT_VALUE;
     }
 
     @Override

@@ -67,7 +67,7 @@ public class CFBamJpaEnumTagByEnumIdxKey
 {
 	protected CFLibDbKeyHash256 requiredEnumId;
 	public CFBamJpaEnumTagByEnumIdxKey() {
-		requiredEnumId = CFLibDbKeyHash256.fromHex( ICFBamEnumTag.ENUMID_INIT_VALUE.toString() );
+		requiredEnumId = CFLibDbKeyHash256.fromHex( ICFBamPubEnumTag.ENUMID_INIT_VALUE.toString() );
 	}
 
 	@Override

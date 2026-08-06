@@ -68,8 +68,8 @@ public class CFBamJpaSchemaDefByUNameIdxKey
 	protected CFLibDbKeyHash256 requiredMinorVersionId;
 	protected String requiredName;
 	public CFBamJpaSchemaDefByUNameIdxKey() {
-		requiredMinorVersionId = CFLibDbKeyHash256.fromHex( ICFBamSchemaDef.MINORVERSIONID_INIT_VALUE.toString() );
-		requiredName = ICFBamSchemaDef.NAME_INIT_VALUE;
+		requiredMinorVersionId = CFLibDbKeyHash256.fromHex( ICFBamPubSchemaDef.MINORVERSIONID_INIT_VALUE.toString() );
+		requiredName = ICFBamPubSchemaDef.NAME_INIT_VALUE;
 	}
 
 	@Override

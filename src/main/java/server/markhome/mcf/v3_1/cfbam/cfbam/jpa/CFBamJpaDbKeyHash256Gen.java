@@ -84,8 +84,8 @@ public class CFBamJpaDbKeyHash256Gen extends CFBamJpaDbKeyHash256Type
 
 	public CFBamJpaDbKeyHash256Gen() {
 		super();
-		requiredSlice = ICFBamDbKeyHash256Gen.SLICE_INIT_VALUE;
-		requiredBlockSize = ICFBamDbKeyHash256Gen.BLOCKSIZE_INIT_VALUE;
+		requiredSlice = ICFBamPubDbKeyHash256Gen.SLICE_INIT_VALUE;
+		requiredBlockSize = ICFBamPubDbKeyHash256Gen.BLOCKSIZE_INIT_VALUE;
 	}
 
 	@Override

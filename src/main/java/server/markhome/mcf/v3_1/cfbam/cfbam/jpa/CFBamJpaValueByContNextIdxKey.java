@@ -68,7 +68,7 @@ public class CFBamJpaValueByContNextIdxKey
 	protected CFLibDbKeyHash256 requiredScopeId;
 	protected CFLibDbKeyHash256 optionalNextId;
 	public CFBamJpaValueByContNextIdxKey() {
-		requiredScopeId = CFLibDbKeyHash256.fromHex( ICFBamValue.SCOPEID_INIT_VALUE.toString() );
+		requiredScopeId = CFLibDbKeyHash256.fromHex( ICFBamPubValue.SCOPEID_INIT_VALUE.toString() );
 		optionalNextId = CFLibDbKeyHash256.nullGet();
 	}
 

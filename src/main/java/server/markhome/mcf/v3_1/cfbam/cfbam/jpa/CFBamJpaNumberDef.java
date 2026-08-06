@@ -90,8 +90,8 @@ public class CFBamJpaNumberDef extends CFBamJpaAtom
 
 	public CFBamJpaNumberDef() {
 		super();
-		requiredDigits = ICFBamNumberDef.DIGITS_INIT_VALUE;
-		requiredPrecis = ICFBamNumberDef.PRECIS_INIT_VALUE;
+		requiredDigits = ICFBamPubNumberDef.DIGITS_INIT_VALUE;
+		requiredPrecis = ICFBamPubNumberDef.PRECIS_INIT_VALUE;
 		optionalInitValue = null;
 		optionalMinValue = null;
 		optionalMaxValue = null;

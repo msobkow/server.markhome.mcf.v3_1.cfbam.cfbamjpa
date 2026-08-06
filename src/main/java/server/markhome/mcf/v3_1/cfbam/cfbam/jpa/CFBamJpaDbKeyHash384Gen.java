@@ -84,8 +84,8 @@ public class CFBamJpaDbKeyHash384Gen extends CFBamJpaDbKeyHash384Type
 
 	public CFBamJpaDbKeyHash384Gen() {
 		super();
-		requiredSlice = ICFBamDbKeyHash384Gen.SLICE_INIT_VALUE;
-		requiredBlockSize = ICFBamDbKeyHash384Gen.BLOCKSIZE_INIT_VALUE;
+		requiredSlice = ICFBamPubDbKeyHash384Gen.SLICE_INIT_VALUE;
+		requiredBlockSize = ICFBamPubDbKeyHash384Gen.BLOCKSIZE_INIT_VALUE;
 	}
 
 	@Override

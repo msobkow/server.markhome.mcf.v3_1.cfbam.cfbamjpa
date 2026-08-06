@@ -67,7 +67,7 @@ public class CFBamJpaRelationByFromKeyIdxKey
 {
 	protected CFLibDbKeyHash256 requiredFromIndexId;
 	public CFBamJpaRelationByFromKeyIdxKey() {
-		requiredFromIndexId = CFLibDbKeyHash256.fromHex( ICFBamRelation.FROMINDEXID_INIT_VALUE.toString() );
+		requiredFromIndexId = CFLibDbKeyHash256.fromHex( ICFBamPubRelation.FROMINDEXID_INIT_VALUE.toString() );
 	}
 
 	@Override

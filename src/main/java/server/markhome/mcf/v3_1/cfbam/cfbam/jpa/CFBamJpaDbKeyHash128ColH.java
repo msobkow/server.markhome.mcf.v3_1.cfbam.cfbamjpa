@@ -88,7 +88,7 @@ public class CFBamJpaDbKeyHash128ColH extends CFBamJpaDbKeyHash128DefH
 
     public CFBamJpaDbKeyHash128ColH() {
             super();
-		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamDbKeyHash128Col.TABLEID_INIT_VALUE.toString() );
+		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamPubDbKeyHash128Col.TABLEID_INIT_VALUE.toString() );
     }
 
     @Override

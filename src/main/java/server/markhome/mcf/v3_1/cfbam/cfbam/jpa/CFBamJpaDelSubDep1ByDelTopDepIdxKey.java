@@ -67,7 +67,7 @@ public class CFBamJpaDelSubDep1ByDelTopDepIdxKey
 {
 	protected CFLibDbKeyHash256 requiredDelTopDepId;
 	public CFBamJpaDelSubDep1ByDelTopDepIdxKey() {
-		requiredDelTopDepId = CFLibDbKeyHash256.fromHex( ICFBamDelSubDep1.DELTOPDEPID_INIT_VALUE.toString() );
+		requiredDelTopDepId = CFLibDbKeyHash256.fromHex( ICFBamPubDelSubDep1.DELTOPDEPID_INIT_VALUE.toString() );
 	}
 
 	@Override

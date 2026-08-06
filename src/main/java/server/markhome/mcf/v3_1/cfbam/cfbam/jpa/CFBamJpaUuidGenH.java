@@ -87,8 +87,8 @@ public class CFBamJpaUuidGenH extends CFBamJpaUuidTypeH
 
     public CFBamJpaUuidGenH() {
             super();
-		requiredSlice = ICFBamUuidGen.SLICE_INIT_VALUE;
-		requiredBlockSize = ICFBamUuidGen.BLOCKSIZE_INIT_VALUE;
+		requiredSlice = ICFBamPubUuidGen.SLICE_INIT_VALUE;
+		requiredBlockSize = ICFBamPubUuidGen.BLOCKSIZE_INIT_VALUE;
     }
 
     @Override

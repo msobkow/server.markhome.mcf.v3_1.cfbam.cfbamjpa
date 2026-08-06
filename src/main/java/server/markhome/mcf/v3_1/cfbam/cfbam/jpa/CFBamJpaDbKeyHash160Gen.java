@@ -84,8 +84,8 @@ public class CFBamJpaDbKeyHash160Gen extends CFBamJpaDbKeyHash160Type
 
 	public CFBamJpaDbKeyHash160Gen() {
 		super();
-		requiredSlice = ICFBamDbKeyHash160Gen.SLICE_INIT_VALUE;
-		requiredBlockSize = ICFBamDbKeyHash160Gen.BLOCKSIZE_INIT_VALUE;
+		requiredSlice = ICFBamPubDbKeyHash160Gen.SLICE_INIT_VALUE;
+		requiredBlockSize = ICFBamPubDbKeyHash160Gen.BLOCKSIZE_INIT_VALUE;
 	}
 
 	@Override

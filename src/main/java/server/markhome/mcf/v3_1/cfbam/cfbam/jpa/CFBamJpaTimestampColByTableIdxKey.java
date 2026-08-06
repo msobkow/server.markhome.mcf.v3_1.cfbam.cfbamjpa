@@ -67,7 +67,7 @@ public class CFBamJpaTimestampColByTableIdxKey
 {
 	protected CFLibDbKeyHash256 requiredTableId;
 	public CFBamJpaTimestampColByTableIdxKey() {
-		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamTimestampCol.TABLEID_INIT_VALUE.toString() );
+		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamPubTimestampCol.TABLEID_INIT_VALUE.toString() );
 	}
 
 	@Override

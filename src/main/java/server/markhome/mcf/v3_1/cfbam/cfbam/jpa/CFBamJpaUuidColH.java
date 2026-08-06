@@ -88,7 +88,7 @@ public class CFBamJpaUuidColH extends CFBamJpaUuidDefH
 
     public CFBamJpaUuidColH() {
             super();
-		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamUuidCol.TABLEID_INIT_VALUE.toString() );
+		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamPubUuidCol.TABLEID_INIT_VALUE.toString() );
     }
 
     @Override

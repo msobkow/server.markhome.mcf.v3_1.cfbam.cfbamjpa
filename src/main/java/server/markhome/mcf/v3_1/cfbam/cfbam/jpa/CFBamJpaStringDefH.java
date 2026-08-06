@@ -89,8 +89,8 @@ public class CFBamJpaStringDefH extends CFBamJpaAtomH
 
     public CFBamJpaStringDefH() {
             super();
-		requiredMaxLen = ICFBamStringDef.MAXLEN_INIT_VALUE;
-		requiredIsPolymorph = ICFBamStringDef.ISPOLYMORPH_INIT_VALUE;
+		requiredMaxLen = ICFBamPubStringDef.MAXLEN_INIT_VALUE;
+		requiredIsPolymorph = ICFBamPubStringDef.ISPOLYMORPH_INIT_VALUE;
 		optionalInitValue = null;
     }
 

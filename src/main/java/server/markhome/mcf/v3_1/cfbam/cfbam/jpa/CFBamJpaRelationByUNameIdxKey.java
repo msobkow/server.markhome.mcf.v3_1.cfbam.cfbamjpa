@@ -68,8 +68,8 @@ public class CFBamJpaRelationByUNameIdxKey
 	protected CFLibDbKeyHash256 requiredTableId;
 	protected String requiredName;
 	public CFBamJpaRelationByUNameIdxKey() {
-		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamRelation.TABLEID_INIT_VALUE.toString() );
-		requiredName = ICFBamRelation.NAME_INIT_VALUE;
+		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamPubRelation.TABLEID_INIT_VALUE.toString() );
+		requiredName = ICFBamPubRelation.NAME_INIT_VALUE;
 	}
 
 	@Override

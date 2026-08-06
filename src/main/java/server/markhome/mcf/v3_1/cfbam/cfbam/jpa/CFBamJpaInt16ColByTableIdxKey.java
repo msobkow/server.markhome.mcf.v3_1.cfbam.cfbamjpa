@@ -67,7 +67,7 @@ public class CFBamJpaInt16ColByTableIdxKey
 {
 	protected CFLibDbKeyHash256 requiredTableId;
 	public CFBamJpaInt16ColByTableIdxKey() {
-		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamInt16Col.TABLEID_INIT_VALUE.toString() );
+		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamPubInt16Col.TABLEID_INIT_VALUE.toString() );
 	}
 
 	@Override

@@ -67,7 +67,7 @@ public class CFBamJpaUInt16TypeBySchemaIdxKey
 {
 	protected CFLibDbKeyHash256 requiredSchemaDefId;
 	public CFBamJpaUInt16TypeBySchemaIdxKey() {
-		requiredSchemaDefId = CFLibDbKeyHash256.fromHex( ICFBamUInt16Type.SCHEMADEFID_INIT_VALUE.toString() );
+		requiredSchemaDefId = CFLibDbKeyHash256.fromHex( ICFBamPubUInt16Type.SCHEMADEFID_INIT_VALUE.toString() );
 	}
 
 	@Override

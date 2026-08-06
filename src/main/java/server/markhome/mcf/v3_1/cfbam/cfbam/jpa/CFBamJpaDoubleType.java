@@ -89,7 +89,7 @@ public class CFBamJpaDoubleType extends CFBamJpaDoubleDef
 
 	public CFBamJpaDoubleType() {
 		super();
-		requiredSchemaDefId = CFLibDbKeyHash256.fromHex( ICFBamDoubleType.SCHEMADEFID_INIT_VALUE.toString() );
+		requiredSchemaDefId = CFLibDbKeyHash256.fromHex( ICFBamPubDoubleType.SCHEMADEFID_INIT_VALUE.toString() );
 	}
 
 	@Override

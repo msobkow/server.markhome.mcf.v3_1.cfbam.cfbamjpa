@@ -93,7 +93,7 @@ public class CFBamJpaClearDepH extends CFBamJpaScopeH
 
     public CFBamJpaClearDepH() {
             super();
-		requiredRelationId = CFLibDbKeyHash256.fromHex( ICFBamClearDep.RELATIONID_INIT_VALUE.toString() );
+		requiredRelationId = CFLibDbKeyHash256.fromHex( ICFBamPubClearDep.RELATIONID_INIT_VALUE.toString() );
 		optionalDefSchemaId = CFLibDbKeyHash256.nullGet();
     }
 

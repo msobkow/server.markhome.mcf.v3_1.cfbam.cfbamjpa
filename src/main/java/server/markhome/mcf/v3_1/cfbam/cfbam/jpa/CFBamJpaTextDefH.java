@@ -89,7 +89,7 @@ public class CFBamJpaTextDefH extends CFBamJpaAtomH
 
     public CFBamJpaTextDefH() {
             super();
-		requiredMaxLen = ICFBamTextDef.MAXLEN_INIT_VALUE;
+		requiredMaxLen = ICFBamPubTextDef.MAXLEN_INIT_VALUE;
 		optionalInitValue = null;
 		optionalXmlElementName = null;
     }

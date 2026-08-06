@@ -89,7 +89,7 @@ public class CFBamJpaDbKeyHash224Col extends CFBamJpaDbKeyHash224Def
 
 	public CFBamJpaDbKeyHash224Col() {
 		super();
-		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamDbKeyHash224Col.TABLEID_INIT_VALUE.toString() );
+		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamPubDbKeyHash224Col.TABLEID_INIT_VALUE.toString() );
 	}
 
 	@Override

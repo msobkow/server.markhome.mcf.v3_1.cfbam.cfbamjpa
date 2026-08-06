@@ -84,8 +84,8 @@ public class CFBamJpaDbKeyHash512Gen extends CFBamJpaDbKeyHash512Type
 
 	public CFBamJpaDbKeyHash512Gen() {
 		super();
-		requiredSlice = ICFBamDbKeyHash512Gen.SLICE_INIT_VALUE;
-		requiredBlockSize = ICFBamDbKeyHash512Gen.BLOCKSIZE_INIT_VALUE;
+		requiredSlice = ICFBamPubDbKeyHash512Gen.SLICE_INIT_VALUE;
+		requiredBlockSize = ICFBamPubDbKeyHash512Gen.BLOCKSIZE_INIT_VALUE;
 	}
 
 	@Override

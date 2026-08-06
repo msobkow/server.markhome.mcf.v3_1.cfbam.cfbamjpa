@@ -93,8 +93,8 @@ public class CFBamJpaSchemaRole extends CFBamJpaRoleDef
 
 	public CFBamJpaSchemaRole() {
 		super();
-		requiredSchemaDefId = CFLibDbKeyHash256.fromHex( ICFBamSchemaRole.SCHEMADEFID_INIT_VALUE.toString() );
-		requiredRoleScope = ICFBamSchemaRole.ROLESCOPE_INIT_VALUE;
+		requiredSchemaDefId = CFLibDbKeyHash256.fromHex( ICFBamPubSchemaRole.SCHEMADEFID_INIT_VALUE.toString() );
+		requiredRoleScope = ICFBamPubSchemaRole.ROLESCOPE_INIT_VALUE;
 	}
 
 	@Override

@@ -88,7 +88,7 @@ public class CFBamJpaTextTypeH extends CFBamJpaTextDefH
 
     public CFBamJpaTextTypeH() {
             super();
-		requiredSchemaDefId = CFLibDbKeyHash256.fromHex( ICFBamTextType.SCHEMADEFID_INIT_VALUE.toString() );
+		requiredSchemaDefId = CFLibDbKeyHash256.fromHex( ICFBamPubTextType.SCHEMADEFID_INIT_VALUE.toString() );
     }
 
     @Override

@@ -88,7 +88,7 @@ public class CFBamJpaStringColH extends CFBamJpaStringDefH
 
     public CFBamJpaStringColH() {
             super();
-		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamStringCol.TABLEID_INIT_VALUE.toString() );
+		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamPubStringCol.TABLEID_INIT_VALUE.toString() );
     }
 
     @Override

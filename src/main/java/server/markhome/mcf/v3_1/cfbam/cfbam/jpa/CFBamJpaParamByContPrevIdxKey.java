@@ -68,7 +68,7 @@ public class CFBamJpaParamByContPrevIdxKey
 	protected CFLibDbKeyHash256 requiredServerMethodId;
 	protected CFLibDbKeyHash256 optionalPrevId;
 	public CFBamJpaParamByContPrevIdxKey() {
-		requiredServerMethodId = CFLibDbKeyHash256.fromHex( ICFBamParam.SERVERMETHODID_INIT_VALUE.toString() );
+		requiredServerMethodId = CFLibDbKeyHash256.fromHex( ICFBamPubParam.SERVERMETHODID_INIT_VALUE.toString() );
 		optionalPrevId = CFLibDbKeyHash256.nullGet();
 	}
 

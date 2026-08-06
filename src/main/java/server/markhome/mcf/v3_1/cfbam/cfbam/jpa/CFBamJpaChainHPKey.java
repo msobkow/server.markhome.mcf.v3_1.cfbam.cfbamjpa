@@ -99,7 +99,7 @@ public class CFBamJpaChainHPKey
 		auditActionId = 0;
 		requiredRevision = 1;
 		auditSessionId = CFLibDbKeyHash256.nullGet();
-		requiredId = CFLibDbKeyHash256.fromHex( ICFBamChain.ID_INIT_VALUE.toString() );
+		requiredId = CFLibDbKeyHash256.fromHex( ICFBamPubChain.ID_INIT_VALUE.toString() );
 	}
 
 	@Override

@@ -89,7 +89,7 @@ public class CFBamJpaUInt32Type extends CFBamJpaUInt32Def
 
 	public CFBamJpaUInt32Type() {
 		super();
-		requiredSchemaDefId = CFLibDbKeyHash256.fromHex( ICFBamUInt32Type.SCHEMADEFID_INIT_VALUE.toString() );
+		requiredSchemaDefId = CFLibDbKeyHash256.fromHex( ICFBamPubUInt32Type.SCHEMADEFID_INIT_VALUE.toString() );
 	}
 
 	@Override

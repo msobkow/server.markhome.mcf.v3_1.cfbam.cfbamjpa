@@ -67,7 +67,7 @@ public class CFBamJpaRelationColByFromColIdxKey
 {
 	protected CFLibDbKeyHash256 requiredFromColId;
 	public CFBamJpaRelationColByFromColIdxKey() {
-		requiredFromColId = CFLibDbKeyHash256.fromHex( ICFBamRelationCol.FROMCOLID_INIT_VALUE.toString() );
+		requiredFromColId = CFLibDbKeyHash256.fromHex( ICFBamPubRelationCol.FROMCOLID_INIT_VALUE.toString() );
 	}
 
 	@Override

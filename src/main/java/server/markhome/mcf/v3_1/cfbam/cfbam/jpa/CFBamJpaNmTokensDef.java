@@ -84,7 +84,7 @@ public class CFBamJpaNmTokensDef extends CFBamJpaAtom
 
 	public CFBamJpaNmTokensDef() {
 		super();
-		requiredMaxLen = ICFBamNmTokensDef.MAXLEN_INIT_VALUE;
+		requiredMaxLen = ICFBamPubNmTokensDef.MAXLEN_INIT_VALUE;
 		optionalInitValue = null;
 	}
 

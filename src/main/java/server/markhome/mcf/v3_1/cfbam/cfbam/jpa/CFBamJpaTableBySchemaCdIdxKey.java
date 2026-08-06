@@ -68,8 +68,8 @@ public class CFBamJpaTableBySchemaCdIdxKey
 	protected CFLibDbKeyHash256 requiredSchemaDefId;
 	protected String requiredTableClassCode;
 	public CFBamJpaTableBySchemaCdIdxKey() {
-		requiredSchemaDefId = CFLibDbKeyHash256.fromHex( ICFBamTable.SCHEMADEFID_INIT_VALUE.toString() );
-		requiredTableClassCode = ICFBamTable.TABLECLASSCODE_INIT_VALUE;
+		requiredSchemaDefId = CFLibDbKeyHash256.fromHex( ICFBamPubTable.SCHEMADEFID_INIT_VALUE.toString() );
+		requiredTableClassCode = ICFBamPubTable.TABLECLASSCODE_INIT_VALUE;
 	}
 
 	@Override

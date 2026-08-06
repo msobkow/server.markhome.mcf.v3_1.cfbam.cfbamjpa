@@ -88,7 +88,7 @@ public class CFBamJpaTZTimeColH extends CFBamJpaTZTimeDefH
 
     public CFBamJpaTZTimeColH() {
             super();
-		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamTZTimeCol.TABLEID_INIT_VALUE.toString() );
+		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamPubTZTimeCol.TABLEID_INIT_VALUE.toString() );
     }
 
     @Override

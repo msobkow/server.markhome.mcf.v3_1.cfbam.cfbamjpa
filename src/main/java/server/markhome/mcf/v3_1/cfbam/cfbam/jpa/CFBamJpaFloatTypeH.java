@@ -88,7 +88,7 @@ public class CFBamJpaFloatTypeH extends CFBamJpaFloatDefH
 
     public CFBamJpaFloatTypeH() {
             super();
-		requiredSchemaDefId = CFLibDbKeyHash256.fromHex( ICFBamFloatType.SCHEMADEFID_INIT_VALUE.toString() );
+		requiredSchemaDefId = CFLibDbKeyHash256.fromHex( ICFBamPubFloatType.SCHEMADEFID_INIT_VALUE.toString() );
     }
 
     @Override

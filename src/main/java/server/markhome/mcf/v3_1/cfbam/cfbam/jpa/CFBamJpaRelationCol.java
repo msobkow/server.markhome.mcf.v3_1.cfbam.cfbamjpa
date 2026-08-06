@@ -120,7 +120,12 @@ public class CFBamJpaRelationCol
 	@AttributeOverrides({
 		@AttributeOverride( name="bytes", column = @Column( name="CreatedByUserId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 createdByUserId = CFLibDbKeyHash256.fromHex(ICFBam$emitScopingMidfix$RelationCol.S_INIT_CREATED_BY);
+	protected CFLibDbKeyHash256 createdByUserId = CFLibDbKeyHash256.fromHex(ICFBamPubSecUser.S_INIT_CREATED_BY);
+
+	@AttributeOverrides({
+		@AttributeOverride( name="bytes", column = @Column( name="CreatedBySessionId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
+	})
+	protected CFLibDbKeyHash256 createdBySessionId = CFLibDbKeyHash256.fromHex(ICFBamPubSecSession.S_SECSESSIONID_INIT_VALUE);
 
 	@Column(name="CreatedAt", nullable=false)
 	protected LocalDateTime createdAt = LocalDateTime.now();
@@ -128,7 +133,12 @@ public class CFBamJpaRelationCol
 	@AttributeOverrides({
 		@AttributeOverride( name="bytes", column= @Column( name="UpdatedByUserId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 updatedByUserId = CFLibDbKeyHash256.fromHex(ICFBam$emitScopingMidfix$RelationCol.S_INIT_UPDATED_BY);
+	protected CFLibDbKeyHash256 updatedByUserId = CFLibDbKeyHash256.fromHex(ICFBamPubSecUser.S_INIT_UPDATED_BY);
+
+	@AttributeOverrides({
+		@AttributeOverride( name="bytes", column= @Column( name="UpdatedBySessionId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
+	})
+	protected CFLibDbKeyHash256 updatedBySessionId = CFLibDbKeyHash256.fromHex(ICFBamPubSecSession.S_SECSESSIONID_INIT_VALUE);
 
 	@Column(name="UpdatedAt", nullable=false)
 	protected LocalDateTime updatedAt = LocalDateTime.now();
@@ -168,16 +178,16 @@ public class CFBamJpaRelationCol
 	protected CFLibDbKeyHash256 optionalNextId;
 
 	public CFBamJpaRelationCol() {
-		requiredId = CFLibDbKeyHash256.fromHex( ICFBamRelationCol.ID_INIT_VALUE.toString() );
-		requiredRelationId = CFLibDbKeyHash256.fromHex( ICFBamRelationCol.RELATIONID_INIT_VALUE.toString() );
+		requiredId = CFLibDbKeyHash256.fromHex( ICFBamPubRelationCol.ID_INIT_VALUE.toString() );
+		requiredRelationId = CFLibDbKeyHash256.fromHex( ICFBamPubRelationCol.RELATIONID_INIT_VALUE.toString() );
 		optionalDefSchemaId = CFLibDbKeyHash256.nullGet();
-		requiredName = ICFBamRelationCol.NAME_INIT_VALUE;
+		requiredName = ICFBamPubRelationCol.NAME_INIT_VALUE;
 		optionalShortName = null;
 		optionalLabel = null;
 		optionalShortDescription = null;
 		optionalDescription = null;
-		requiredFromColId = CFLibDbKeyHash256.fromHex( ICFBamRelationCol.FROMCOLID_INIT_VALUE.toString() );
-		requiredToColId = CFLibDbKeyHash256.fromHex( ICFBamRelationCol.TOCOLID_INIT_VALUE.toString() );
+		requiredFromColId = CFLibDbKeyHash256.fromHex( ICFBamPubRelationCol.FROMCOLID_INIT_VALUE.toString() );
+		requiredToColId = CFLibDbKeyHash256.fromHex( ICFBamPubRelationCol.TOCOLID_INIT_VALUE.toString() );
 		optionalPrevId = CFLibDbKeyHash256.nullGet();
 		optionalNextId = CFLibDbKeyHash256.nullGet();
 	}

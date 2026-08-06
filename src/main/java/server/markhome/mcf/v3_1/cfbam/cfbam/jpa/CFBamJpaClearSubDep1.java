@@ -94,8 +94,8 @@ public class CFBamJpaClearSubDep1 extends CFBamJpaClearDep
 
 	public CFBamJpaClearSubDep1() {
 		super();
-		requiredClearTopDepId = CFLibDbKeyHash256.fromHex( ICFBamClearSubDep1.CLEARTOPDEPID_INIT_VALUE.toString() );
-		requiredName = ICFBamClearSubDep1.NAME_INIT_VALUE;
+		requiredClearTopDepId = CFLibDbKeyHash256.fromHex( ICFBamPubClearSubDep1.CLEARTOPDEPID_INIT_VALUE.toString() );
+		requiredName = ICFBamPubClearSubDep1.NAME_INIT_VALUE;
 	}
 
 	@Override

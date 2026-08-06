@@ -101,8 +101,8 @@ public class CFBamJpaDelTopDepH extends CFBamJpaDelDepH
 
     public CFBamJpaDelTopDepH() {
             super();
-		requiredName = ICFBamDelTopDep.NAME_INIT_VALUE;
-		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamDelTopDep.TABLEID_INIT_VALUE.toString() );
+		requiredName = ICFBamPubDelTopDep.NAME_INIT_VALUE;
+		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamPubDelTopDep.TABLEID_INIT_VALUE.toString() );
 		optionalPrevId = CFLibDbKeyHash256.nullGet();
 		optionalNextId = CFLibDbKeyHash256.nullGet();
     }

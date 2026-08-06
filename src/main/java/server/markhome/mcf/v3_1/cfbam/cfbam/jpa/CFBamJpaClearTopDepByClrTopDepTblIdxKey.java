@@ -67,7 +67,7 @@ public class CFBamJpaClearTopDepByClrTopDepTblIdxKey
 {
 	protected CFLibDbKeyHash256 requiredTableId;
 	public CFBamJpaClearTopDepByClrTopDepTblIdxKey() {
-		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamClearTopDep.TABLEID_INIT_VALUE.toString() );
+		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamPubClearTopDep.TABLEID_INIT_VALUE.toString() );
 	}
 
 	@Override

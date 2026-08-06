@@ -68,8 +68,8 @@ public class CFBamJpaIndexByIdxTblCdVisXKey
 	protected CFLibDbKeyHash256 requiredTableId;
 	protected ICFBamPubSchema.CodeVisibilityEnum requiredCodeVis;
 	public CFBamJpaIndexByIdxTblCdVisXKey() {
-		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamIndex.TABLEID_INIT_VALUE.toString() );
-		requiredCodeVis = ICFBamIndex.CODEVIS_INIT_VALUE;
+		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamPubIndex.TABLEID_INIT_VALUE.toString() );
+		requiredCodeVis = ICFBamPubIndex.CODEVIS_INIT_VALUE;
 	}
 
 	@Override

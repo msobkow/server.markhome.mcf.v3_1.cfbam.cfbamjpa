@@ -88,7 +88,7 @@ public class CFBamJpaBlobColH extends CFBamJpaBlobDefH
 
     public CFBamJpaBlobColH() {
             super();
-		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamBlobCol.TABLEID_INIT_VALUE.toString() );
+		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamPubBlobCol.TABLEID_INIT_VALUE.toString() );
     }
 
     @Override

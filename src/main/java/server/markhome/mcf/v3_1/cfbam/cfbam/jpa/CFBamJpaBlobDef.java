@@ -84,7 +84,7 @@ public class CFBamJpaBlobDef extends CFBamJpaAtom
 
 	public CFBamJpaBlobDef() {
 		super();
-		requiredMaxLen = ICFBamBlobDef.MAXLEN_INIT_VALUE;
+		requiredMaxLen = ICFBamPubBlobDef.MAXLEN_INIT_VALUE;
 		optionalInitValue = null;
 	}
 

@@ -67,7 +67,7 @@ public class CFBamJpaSchemaRoleByRoleScopeIdxKey
 {
 	protected ICFBamPubSchema.RoleScopeEnum requiredRoleScope;
 	public CFBamJpaSchemaRoleByRoleScopeIdxKey() {
-		requiredRoleScope = ICFBamSchemaRole.ROLESCOPE_INIT_VALUE;
+		requiredRoleScope = ICFBamPubSchemaRole.ROLESCOPE_INIT_VALUE;
 	}
 
 	@Override

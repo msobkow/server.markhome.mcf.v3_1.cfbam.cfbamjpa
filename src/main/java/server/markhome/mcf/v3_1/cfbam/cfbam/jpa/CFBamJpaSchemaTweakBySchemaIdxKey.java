@@ -67,7 +67,7 @@ public class CFBamJpaSchemaTweakBySchemaIdxKey
 {
 	protected CFLibDbKeyHash256 requiredSchemaDefId;
 	public CFBamJpaSchemaTweakBySchemaIdxKey() {
-		requiredSchemaDefId = CFLibDbKeyHash256.fromHex( ICFBamSchemaTweak.SCHEMADEFID_INIT_VALUE.toString() );
+		requiredSchemaDefId = CFLibDbKeyHash256.fromHex( ICFBamPubSchemaTweak.SCHEMADEFID_INIT_VALUE.toString() );
 	}
 
 	@Override

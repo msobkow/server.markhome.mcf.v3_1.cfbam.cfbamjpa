@@ -119,19 +119,19 @@ public class CFBamJpaSchemaDefH extends CFBamJpaScopeH
 
     public CFBamJpaSchemaDefH() {
             super();
-		requiredCTenantId = CFLibDbKeyHash256.fromHex( ICFBamSchemaDef.CTENANTID_INIT_VALUE.toString() );
-		requiredMinorVersionId = CFLibDbKeyHash256.fromHex( ICFBamSchemaDef.MINORVERSIONID_INIT_VALUE.toString() );
-		requiredName = ICFBamSchemaDef.NAME_INIT_VALUE;
+		requiredCTenantId = CFLibDbKeyHash256.fromHex( ICFBamPubSchemaDef.CTENANTID_INIT_VALUE.toString() );
+		requiredMinorVersionId = CFLibDbKeyHash256.fromHex( ICFBamPubSchemaDef.MINORVERSIONID_INIT_VALUE.toString() );
+		requiredName = ICFBamPubSchemaDef.NAME_INIT_VALUE;
 		optionalDbName = null;
 		optionalShortName = null;
 		optionalLabel = null;
 		optionalShortDescription = null;
 		optionalDescription = null;
-		requiredCopyrightPeriod = ICFBamSchemaDef.COPYRIGHTPERIOD_INIT_VALUE;
-		requiredCopyrightHolder = ICFBamSchemaDef.COPYRIGHTHOLDER_INIT_VALUE;
-		requiredAuthorEMail = ICFBamSchemaDef.AUTHOREMAIL_INIT_VALUE;
-		requiredProjectURL = ICFBamSchemaDef.PROJECTURL_INIT_VALUE;
-		requiredPublishURI = ICFBamSchemaDef.PUBLISHURI_INIT_VALUE;
+		requiredCopyrightPeriod = ICFBamPubSchemaDef.COPYRIGHTPERIOD_INIT_VALUE;
+		requiredCopyrightHolder = ICFBamPubSchemaDef.COPYRIGHTHOLDER_INIT_VALUE;
+		requiredAuthorEMail = ICFBamPubSchemaDef.AUTHOREMAIL_INIT_VALUE;
+		requiredProjectURL = ICFBamPubSchemaDef.PROJECTURL_INIT_VALUE;
+		requiredPublishURI = ICFBamPubSchemaDef.PUBLISHURI_INIT_VALUE;
     }
 
     @Override

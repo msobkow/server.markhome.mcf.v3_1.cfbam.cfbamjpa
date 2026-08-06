@@ -120,20 +120,20 @@ public class CFBamJpaServerMethodH extends CFBamJpaScopeH
 
     public CFBamJpaServerMethodH() {
             super();
-		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamServerMethod.TABLEID_INIT_VALUE.toString() );
+		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamPubServerMethod.TABLEID_INIT_VALUE.toString() );
 		optionalDefSchemaId = CFLibDbKeyHash256.nullGet();
-		requiredName = ICFBamServerMethod.NAME_INIT_VALUE;
+		requiredName = ICFBamPubServerMethod.NAME_INIT_VALUE;
 		optionalShortName = null;
 		optionalLabel = null;
 		optionalShortDescription = null;
 		optionalDescription = null;
 		optionalSuffix = null;
-		requiredIsInstanceMethod = ICFBamServerMethod.ISINSTANCEMETHOD_INIT_VALUE;
-		requiredIsServerOnly = ICFBamServerMethod.ISSERVERONLY_INIT_VALUE;
-		requiredCodeVis = ICFBamServerMethod.CODEVIS_INIT_VALUE;
-		requiredJMethodBody = ICFBamServerMethod.JMETHODBODY_INIT_VALUE;
-		requiredCppMethodBody = ICFBamServerMethod.CPPMETHODBODY_INIT_VALUE;
-		requiredCsMethodBody = ICFBamServerMethod.CSMETHODBODY_INIT_VALUE;
+		requiredIsInstanceMethod = ICFBamPubServerMethod.ISINSTANCEMETHOD_INIT_VALUE;
+		requiredIsServerOnly = ICFBamPubServerMethod.ISSERVERONLY_INIT_VALUE;
+		requiredCodeVis = ICFBamPubServerMethod.CODEVIS_INIT_VALUE;
+		requiredJMethodBody = ICFBamPubServerMethod.JMETHODBODY_INIT_VALUE;
+		requiredCppMethodBody = ICFBamPubServerMethod.CPPMETHODBODY_INIT_VALUE;
+		requiredCsMethodBody = ICFBamPubServerMethod.CSMETHODBODY_INIT_VALUE;
     }
 
     @Override

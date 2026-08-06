@@ -67,7 +67,7 @@ public class CFBamJpaServerMethodByMethCodeVisIdxKey
 {
 	protected ICFBamPubSchema.CodeVisibilityEnum requiredCodeVis;
 	public CFBamJpaServerMethodByMethCodeVisIdxKey() {
-		requiredCodeVis = ICFBamServerMethod.CODEVIS_INIT_VALUE;
+		requiredCodeVis = ICFBamPubServerMethod.CODEVIS_INIT_VALUE;
 	}
 
 	@Override

@@ -116,18 +116,18 @@ public class CFBamJpaIndexH extends CFBamJpaScopeH
 
     public CFBamJpaIndexH() {
             super();
-		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamIndex.TABLEID_INIT_VALUE.toString() );
+		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamPubIndex.TABLEID_INIT_VALUE.toString() );
 		optionalDefSchemaId = CFLibDbKeyHash256.nullGet();
-		requiredName = ICFBamIndex.NAME_INIT_VALUE;
+		requiredName = ICFBamPubIndex.NAME_INIT_VALUE;
 		optionalShortName = null;
 		optionalLabel = null;
 		optionalShortDescription = null;
 		optionalDescription = null;
 		optionalDbName = null;
 		optionalSuffix = null;
-		requiredIsUnique = ICFBamIndex.ISUNIQUE_INIT_VALUE;
-		requiredIsDbMapped = ICFBamIndex.ISDBMAPPED_INIT_VALUE;
-		requiredCodeVis = ICFBamIndex.CODEVIS_INIT_VALUE;
+		requiredIsUnique = ICFBamPubIndex.ISUNIQUE_INIT_VALUE;
+		requiredIsDbMapped = ICFBamPubIndex.ISDBMAPPED_INIT_VALUE;
+		requiredCodeVis = ICFBamPubIndex.CODEVIS_INIT_VALUE;
     }
 
     @Override

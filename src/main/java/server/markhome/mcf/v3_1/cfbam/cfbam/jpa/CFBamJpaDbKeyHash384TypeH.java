@@ -88,7 +88,7 @@ public class CFBamJpaDbKeyHash384TypeH extends CFBamJpaDbKeyHash384DefH
 
     public CFBamJpaDbKeyHash384TypeH() {
             super();
-		requiredSchemaDefId = CFLibDbKeyHash256.fromHex( ICFBamDbKeyHash384Type.SCHEMADEFID_INIT_VALUE.toString() );
+		requiredSchemaDefId = CFLibDbKeyHash256.fromHex( ICFBamPubDbKeyHash384Type.SCHEMADEFID_INIT_VALUE.toString() );
     }
 
     @Override

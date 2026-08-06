@@ -67,7 +67,7 @@ public class CFBamJpaTweakByScopeIdxKey
 {
 	protected CFLibDbKeyHash256 requiredScopeId;
 	public CFBamJpaTweakByScopeIdxKey() {
-		requiredScopeId = CFLibDbKeyHash256.fromHex( ICFBamTweak.SCOPEID_INIT_VALUE.toString() );
+		requiredScopeId = CFLibDbKeyHash256.fromHex( ICFBamPubTweak.SCOPEID_INIT_VALUE.toString() );
 	}
 
 	@Override

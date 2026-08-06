@@ -67,7 +67,7 @@ public class CFBamJpaEnumTypeBySchemaIdxKey
 {
 	protected CFLibDbKeyHash256 requiredSchemaDefId;
 	public CFBamJpaEnumTypeBySchemaIdxKey() {
-		requiredSchemaDefId = CFLibDbKeyHash256.fromHex( ICFBamEnumType.SCHEMADEFID_INIT_VALUE.toString() );
+		requiredSchemaDefId = CFLibDbKeyHash256.fromHex( ICFBamPubEnumType.SCHEMADEFID_INIT_VALUE.toString() );
 	}
 
 	@Override

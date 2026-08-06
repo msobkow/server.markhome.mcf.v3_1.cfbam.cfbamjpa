@@ -67,7 +67,7 @@ public class CFBamJpaClearDepByClearDepIdxKey
 {
 	protected CFLibDbKeyHash256 requiredRelationId;
 	public CFBamJpaClearDepByClearDepIdxKey() {
-		requiredRelationId = CFLibDbKeyHash256.fromHex( ICFBamClearDep.RELATIONID_INIT_VALUE.toString() );
+		requiredRelationId = CFLibDbKeyHash256.fromHex( ICFBamPubClearDep.RELATIONID_INIT_VALUE.toString() );
 	}
 
 	@Override

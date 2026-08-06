@@ -89,7 +89,7 @@ public class CFBamJpaDateCol extends CFBamJpaDateDef
 
 	public CFBamJpaDateCol() {
 		super();
-		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamDateCol.TABLEID_INIT_VALUE.toString() );
+		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamPubDateCol.TABLEID_INIT_VALUE.toString() );
 	}
 
 	@Override

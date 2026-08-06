@@ -89,7 +89,7 @@ public class CFBamJpaTimeCol extends CFBamJpaTimeDef
 
 	public CFBamJpaTimeCol() {
 		super();
-		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamTimeCol.TABLEID_INIT_VALUE.toString() );
+		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamPubTimeCol.TABLEID_INIT_VALUE.toString() );
 	}
 
 	@Override

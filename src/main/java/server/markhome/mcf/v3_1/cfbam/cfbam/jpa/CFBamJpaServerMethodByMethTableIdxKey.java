@@ -67,7 +67,7 @@ public class CFBamJpaServerMethodByMethTableIdxKey
 {
 	protected CFLibDbKeyHash256 requiredTableId;
 	public CFBamJpaServerMethodByMethTableIdxKey() {
-		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamServerMethod.TABLEID_INIT_VALUE.toString() );
+		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamPubServerMethod.TABLEID_INIT_VALUE.toString() );
 	}
 
 	@Override

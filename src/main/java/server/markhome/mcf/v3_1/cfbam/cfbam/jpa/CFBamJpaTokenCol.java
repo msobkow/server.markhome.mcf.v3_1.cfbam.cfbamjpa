@@ -89,7 +89,7 @@ public class CFBamJpaTokenCol extends CFBamJpaTokenDef
 
 	public CFBamJpaTokenCol() {
 		super();
-		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamTokenCol.TABLEID_INIT_VALUE.toString() );
+		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamPubTokenCol.TABLEID_INIT_VALUE.toString() );
 	}
 
 	@Override

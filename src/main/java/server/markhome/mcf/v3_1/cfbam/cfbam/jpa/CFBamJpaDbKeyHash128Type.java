@@ -89,7 +89,7 @@ public class CFBamJpaDbKeyHash128Type extends CFBamJpaDbKeyHash128Def
 
 	public CFBamJpaDbKeyHash128Type() {
 		super();
-		requiredSchemaDefId = CFLibDbKeyHash256.fromHex( ICFBamDbKeyHash128Type.SCHEMADEFID_INIT_VALUE.toString() );
+		requiredSchemaDefId = CFLibDbKeyHash256.fromHex( ICFBamPubDbKeyHash128Type.SCHEMADEFID_INIT_VALUE.toString() );
 	}
 
 	@Override

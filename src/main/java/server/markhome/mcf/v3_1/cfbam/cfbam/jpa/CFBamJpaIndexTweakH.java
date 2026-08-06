@@ -88,7 +88,7 @@ public class CFBamJpaIndexTweakH extends CFBamJpaTweakH
 
     public CFBamJpaIndexTweakH() {
             super();
-		requiredIndexId = CFLibDbKeyHash256.fromHex( ICFBamIndexTweak.INDEXID_INIT_VALUE.toString() );
+		requiredIndexId = CFLibDbKeyHash256.fromHex( ICFBamPubIndexTweak.INDEXID_INIT_VALUE.toString() );
     }
 
     @Override

@@ -99,7 +99,7 @@ public class CFBamJpaEnumTagHPKey
 		auditActionId = 0;
 		requiredRevision = 1;
 		auditSessionId = CFLibDbKeyHash256.nullGet();
-		requiredId = CFLibDbKeyHash256.fromHex( ICFBamEnumTag.ID_INIT_VALUE.toString() );
+		requiredId = CFLibDbKeyHash256.fromHex( ICFBamPubEnumTag.ID_INIT_VALUE.toString() );
 	}
 
 	@Override

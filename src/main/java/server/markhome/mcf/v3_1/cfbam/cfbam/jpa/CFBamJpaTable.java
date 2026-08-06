@@ -188,28 +188,28 @@ public class CFBamJpaTable extends CFBamJpaScope
 
 	public CFBamJpaTable() {
 		super();
-		requiredSchemaDefId = CFLibDbKeyHash256.fromHex( ICFBamTable.SCHEMADEFID_INIT_VALUE.toString() );
+		requiredSchemaDefId = CFLibDbKeyHash256.fromHex( ICFBamPubTable.SCHEMADEFID_INIT_VALUE.toString() );
 		optionalDefSchemaId = CFLibDbKeyHash256.nullGet();
-		requiredName = ICFBamTable.NAME_INIT_VALUE;
+		requiredName = ICFBamPubTable.NAME_INIT_VALUE;
 		optionalDbName = null;
 		optionalShortName = null;
 		optionalLabel = null;
 		optionalShortDescription = null;
 		optionalDescription = null;
-		requiredPageData = ICFBamTable.PAGEDATA_INIT_VALUE;
+		requiredPageData = ICFBamPubTable.PAGEDATA_INIT_VALUE;
 		optionalPrimaryIndexId = CFLibDbKeyHash256.nullGet();
-		requiredTableClassCode = ICFBamTable.TABLECLASSCODE_INIT_VALUE;
+		requiredTableClassCode = ICFBamPubTable.TABLECLASSCODE_INIT_VALUE;
 		optionalLookupIndexId = CFLibDbKeyHash256.nullGet();
 		optionalAltIndexId = CFLibDbKeyHash256.nullGet();
 		optionalQualifyingTableId = CFLibDbKeyHash256.nullGet();
-		requiredIsInstantiable = ICFBamTable.ISINSTANTIABLE_INIT_VALUE;
-		requiredHasHistory = ICFBamTable.HASHISTORY_INIT_VALUE;
-		requiredHasAuditColumns = ICFBamTable.HASAUDITCOLUMNS_INIT_VALUE;
-		requiredIsMutable = ICFBamTable.ISMUTABLE_INIT_VALUE;
-		requiredIsServerOnly = ICFBamTable.ISSERVERONLY_INIT_VALUE;
-		requiredLoaderBehaviour = ICFBamTable.LOADERBEHAVIOUR_INIT_VALUE;
-		requiredSecScope = ICFBamTable.SECSCOPE_INIT_VALUE;
-		requiredCodeVis = ICFBamTable.CODEVIS_INIT_VALUE;
+		requiredIsInstantiable = ICFBamPubTable.ISINSTANTIABLE_INIT_VALUE;
+		requiredHasHistory = ICFBamPubTable.HASHISTORY_INIT_VALUE;
+		requiredHasAuditColumns = ICFBamPubTable.HASAUDITCOLUMNS_INIT_VALUE;
+		requiredIsMutable = ICFBamPubTable.ISMUTABLE_INIT_VALUE;
+		requiredIsServerOnly = ICFBamPubTable.ISSERVERONLY_INIT_VALUE;
+		requiredLoaderBehaviour = ICFBamPubTable.LOADERBEHAVIOUR_INIT_VALUE;
+		requiredSecScope = ICFBamPubTable.SECSCOPE_INIT_VALUE;
+		requiredCodeVis = ICFBamPubTable.CODEVIS_INIT_VALUE;
 	}
 
 	@Override

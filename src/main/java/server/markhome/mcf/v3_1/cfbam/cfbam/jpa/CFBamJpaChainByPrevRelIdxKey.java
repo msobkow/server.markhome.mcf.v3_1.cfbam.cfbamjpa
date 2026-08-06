@@ -67,7 +67,7 @@ public class CFBamJpaChainByPrevRelIdxKey
 {
 	protected CFLibDbKeyHash256 requiredPrevRelationId;
 	public CFBamJpaChainByPrevRelIdxKey() {
-		requiredPrevRelationId = CFLibDbKeyHash256.fromHex( ICFBamChain.PREVRELATIONID_INIT_VALUE.toString() );
+		requiredPrevRelationId = CFLibDbKeyHash256.fromHex( ICFBamPubChain.PREVRELATIONID_INIT_VALUE.toString() );
 	}
 
 	@Override

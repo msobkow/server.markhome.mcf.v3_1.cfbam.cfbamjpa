@@ -67,7 +67,7 @@ public class CFBamJpaRoleDefByScopeIdxKey
 {
 	protected CFLibDbKeyHash256 requiredScopeId;
 	public CFBamJpaRoleDefByScopeIdxKey() {
-		requiredScopeId = CFLibDbKeyHash256.fromHex( ICFBamRoleDef.SCOPEID_INIT_VALUE.toString() );
+		requiredScopeId = CFLibDbKeyHash256.fromHex( ICFBamPubRoleDef.SCOPEID_INIT_VALUE.toString() );
 	}
 
 	@Override

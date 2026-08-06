@@ -68,8 +68,8 @@ public class CFBamJpaPopTopDepByUNameIdxKey
 	protected CFLibDbKeyHash256 requiredContRelationId;
 	protected String requiredName;
 	public CFBamJpaPopTopDepByUNameIdxKey() {
-		requiredContRelationId = CFLibDbKeyHash256.fromHex( ICFBamPopTopDep.CONTRELATIONID_INIT_VALUE.toString() );
-		requiredName = ICFBamPopTopDep.NAME_INIT_VALUE;
+		requiredContRelationId = CFLibDbKeyHash256.fromHex( ICFBamPubPopTopDep.CONTRELATIONID_INIT_VALUE.toString() );
+		requiredName = ICFBamPubPopTopDep.NAME_INIT_VALUE;
 	}
 
 	@Override

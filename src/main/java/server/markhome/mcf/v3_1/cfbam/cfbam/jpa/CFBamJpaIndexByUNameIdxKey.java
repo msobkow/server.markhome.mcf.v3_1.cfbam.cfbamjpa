@@ -68,8 +68,8 @@ public class CFBamJpaIndexByUNameIdxKey
 	protected CFLibDbKeyHash256 requiredTableId;
 	protected String requiredName;
 	public CFBamJpaIndexByUNameIdxKey() {
-		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamIndex.TABLEID_INIT_VALUE.toString() );
-		requiredName = ICFBamIndex.NAME_INIT_VALUE;
+		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamPubIndex.TABLEID_INIT_VALUE.toString() );
+		requiredName = ICFBamPubIndex.NAME_INIT_VALUE;
 	}
 
 	@Override

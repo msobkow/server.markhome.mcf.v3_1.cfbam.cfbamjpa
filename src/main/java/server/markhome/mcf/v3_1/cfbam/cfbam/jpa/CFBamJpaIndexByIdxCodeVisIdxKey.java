@@ -67,7 +67,7 @@ public class CFBamJpaIndexByIdxCodeVisIdxKey
 {
 	protected ICFBamPubSchema.CodeVisibilityEnum requiredCodeVis;
 	public CFBamJpaIndexByIdxCodeVisIdxKey() {
-		requiredCodeVis = ICFBamIndex.CODEVIS_INIT_VALUE;
+		requiredCodeVis = ICFBamPubIndex.CODEVIS_INIT_VALUE;
 	}
 
 	@Override

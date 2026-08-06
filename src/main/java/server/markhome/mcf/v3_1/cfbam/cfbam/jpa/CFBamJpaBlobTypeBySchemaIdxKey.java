@@ -67,7 +67,7 @@ public class CFBamJpaBlobTypeBySchemaIdxKey
 {
 	protected CFLibDbKeyHash256 requiredSchemaDefId;
 	public CFBamJpaBlobTypeBySchemaIdxKey() {
-		requiredSchemaDefId = CFLibDbKeyHash256.fromHex( ICFBamBlobType.SCHEMADEFID_INIT_VALUE.toString() );
+		requiredSchemaDefId = CFLibDbKeyHash256.fromHex( ICFBamPubBlobType.SCHEMADEFID_INIT_VALUE.toString() );
 	}
 
 	@Override

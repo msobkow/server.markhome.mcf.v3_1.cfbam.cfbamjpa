@@ -94,8 +94,8 @@ public class CFBamJpaPopTopDep extends CFBamJpaPopDep
 
 	public CFBamJpaPopTopDep() {
 		super();
-		requiredContRelationId = CFLibDbKeyHash256.fromHex( ICFBamPopTopDep.CONTRELATIONID_INIT_VALUE.toString() );
-		requiredName = ICFBamPopTopDep.NAME_INIT_VALUE;
+		requiredContRelationId = CFLibDbKeyHash256.fromHex( ICFBamPubPopTopDep.CONTRELATIONID_INIT_VALUE.toString() );
+		requiredName = ICFBamPubPopTopDep.NAME_INIT_VALUE;
 	}
 
 	@Override

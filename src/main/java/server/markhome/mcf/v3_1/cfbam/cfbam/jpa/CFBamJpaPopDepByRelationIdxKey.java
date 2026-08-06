@@ -67,7 +67,7 @@ public class CFBamJpaPopDepByRelationIdxKey
 {
 	protected CFLibDbKeyHash256 requiredRelationId;
 	public CFBamJpaPopDepByRelationIdxKey() {
-		requiredRelationId = CFLibDbKeyHash256.fromHex( ICFBamPopDep.RELATIONID_INIT_VALUE.toString() );
+		requiredRelationId = CFLibDbKeyHash256.fromHex( ICFBamPubPopDep.RELATIONID_INIT_VALUE.toString() );
 	}
 
 	@Override

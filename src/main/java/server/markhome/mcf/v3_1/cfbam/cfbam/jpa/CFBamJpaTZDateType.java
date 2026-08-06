@@ -89,7 +89,7 @@ public class CFBamJpaTZDateType extends CFBamJpaTZDateDef
 
 	public CFBamJpaTZDateType() {
 		super();
-		requiredSchemaDefId = CFLibDbKeyHash256.fromHex( ICFBamTZDateType.SCHEMADEFID_INIT_VALUE.toString() );
+		requiredSchemaDefId = CFLibDbKeyHash256.fromHex( ICFBamPubTZDateType.SCHEMADEFID_INIT_VALUE.toString() );
 	}
 
 	@Override

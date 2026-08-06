@@ -89,7 +89,7 @@ public class CFBamJpaDoubleCol extends CFBamJpaDoubleDef
 
 	public CFBamJpaDoubleCol() {
 		super();
-		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamDoubleCol.TABLEID_INIT_VALUE.toString() );
+		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamPubDoubleCol.TABLEID_INIT_VALUE.toString() );
 	}
 
 	@Override

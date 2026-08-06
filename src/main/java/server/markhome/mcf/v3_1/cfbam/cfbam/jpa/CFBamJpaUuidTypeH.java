@@ -88,7 +88,7 @@ public class CFBamJpaUuidTypeH extends CFBamJpaUuidDefH
 
     public CFBamJpaUuidTypeH() {
             super();
-		requiredSchemaDefId = CFLibDbKeyHash256.fromHex( ICFBamUuidType.SCHEMADEFID_INIT_VALUE.toString() );
+		requiredSchemaDefId = CFLibDbKeyHash256.fromHex( ICFBamPubUuidType.SCHEMADEFID_INIT_VALUE.toString() );
     }
 
     @Override

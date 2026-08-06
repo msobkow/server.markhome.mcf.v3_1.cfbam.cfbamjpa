@@ -88,7 +88,7 @@ public class CFBamJpaTZTimeTypeH extends CFBamJpaTZTimeDefH
 
     public CFBamJpaTZTimeTypeH() {
             super();
-		requiredSchemaDefId = CFLibDbKeyHash256.fromHex( ICFBamTZTimeType.SCHEMADEFID_INIT_VALUE.toString() );
+		requiredSchemaDefId = CFLibDbKeyHash256.fromHex( ICFBamPubTZTimeType.SCHEMADEFID_INIT_VALUE.toString() );
     }
 
     @Override

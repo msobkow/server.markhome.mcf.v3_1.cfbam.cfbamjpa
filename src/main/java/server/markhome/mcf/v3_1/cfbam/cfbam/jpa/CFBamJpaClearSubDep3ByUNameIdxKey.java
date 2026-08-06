@@ -68,8 +68,8 @@ public class CFBamJpaClearSubDep3ByUNameIdxKey
 	protected CFLibDbKeyHash256 requiredClearSubDep2Id;
 	protected String requiredName;
 	public CFBamJpaClearSubDep3ByUNameIdxKey() {
-		requiredClearSubDep2Id = CFLibDbKeyHash256.fromHex( ICFBamClearSubDep3.CLEARSUBDEP2ID_INIT_VALUE.toString() );
-		requiredName = ICFBamClearSubDep3.NAME_INIT_VALUE;
+		requiredClearSubDep2Id = CFLibDbKeyHash256.fromHex( ICFBamPubClearSubDep3.CLEARSUBDEP2ID_INIT_VALUE.toString() );
+		requiredName = ICFBamPubClearSubDep3.NAME_INIT_VALUE;
 	}
 
 	@Override

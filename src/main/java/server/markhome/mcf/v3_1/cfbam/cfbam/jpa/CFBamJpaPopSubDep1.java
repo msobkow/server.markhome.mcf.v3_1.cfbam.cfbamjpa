@@ -94,8 +94,8 @@ public class CFBamJpaPopSubDep1 extends CFBamJpaPopDep
 
 	public CFBamJpaPopSubDep1() {
 		super();
-		requiredPopTopDepId = CFLibDbKeyHash256.fromHex( ICFBamPopSubDep1.POPTOPDEPID_INIT_VALUE.toString() );
-		requiredName = ICFBamPopSubDep1.NAME_INIT_VALUE;
+		requiredPopTopDepId = CFLibDbKeyHash256.fromHex( ICFBamPubPopSubDep1.POPTOPDEPID_INIT_VALUE.toString() );
+		requiredName = ICFBamPubPopSubDep1.NAME_INIT_VALUE;
 	}
 
 	@Override

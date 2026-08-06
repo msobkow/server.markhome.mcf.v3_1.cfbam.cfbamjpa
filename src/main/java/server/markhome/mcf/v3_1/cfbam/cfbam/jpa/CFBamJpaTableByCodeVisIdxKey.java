@@ -67,7 +67,7 @@ public class CFBamJpaTableByCodeVisIdxKey
 {
 	protected ICFBamPubSchema.CodeVisibilityEnum requiredCodeVis;
 	public CFBamJpaTableByCodeVisIdxKey() {
-		requiredCodeVis = ICFBamTable.CODEVIS_INIT_VALUE;
+		requiredCodeVis = ICFBamPubTable.CODEVIS_INIT_VALUE;
 	}
 
 	@Override

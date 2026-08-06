@@ -87,8 +87,8 @@ public class CFBamJpaId16GenH extends CFBamJpaInt16TypeH
 
     public CFBamJpaId16GenH() {
             super();
-		requiredSlice = ICFBamId16Gen.SLICE_INIT_VALUE;
-		requiredBlockSize = ICFBamId16Gen.BLOCKSIZE_INIT_VALUE;
+		requiredSlice = ICFBamPubId16Gen.SLICE_INIT_VALUE;
+		requiredBlockSize = ICFBamPubId16Gen.BLOCKSIZE_INIT_VALUE;
     }
 
     @Override

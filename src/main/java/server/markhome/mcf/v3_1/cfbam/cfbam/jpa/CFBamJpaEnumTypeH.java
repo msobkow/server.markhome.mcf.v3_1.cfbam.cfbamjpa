@@ -88,7 +88,7 @@ public class CFBamJpaEnumTypeH extends CFBamJpaEnumDefH
 
     public CFBamJpaEnumTypeH() {
             super();
-		requiredSchemaDefId = CFLibDbKeyHash256.fromHex( ICFBamEnumType.SCHEMADEFID_INIT_VALUE.toString() );
+		requiredSchemaDefId = CFLibDbKeyHash256.fromHex( ICFBamPubEnumType.SCHEMADEFID_INIT_VALUE.toString() );
     }
 
     @Override
