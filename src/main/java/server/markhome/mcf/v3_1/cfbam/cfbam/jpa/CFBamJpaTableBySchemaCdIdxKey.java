@@ -73,44 +73,6 @@ public class CFBamJpaTableBySchemaCdIdxKey
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getRequiredSchemaDefId() {
-		return(requiredSchemaDefId);
-	}
-
-	public void setRequiredSchemaDefId( CFLibDbKeyHash256 value ) {
-		if( value == null || value.isNull() ) {
-			throw new CFLibNullArgumentException( getClass(),
-				"setRequiredSchemaDefId",
-				1,
-				"value" );
-		}
-		requiredSchemaDefId = value;
-	}
-
-	@Override
-	public String getRequiredTableClassCode() {
-		return(requiredTableClassCode);
-	}
-
-	public void setRequiredTableClassCode( String value ) {
-		if( value == null ) {
-			throw new CFLibNullArgumentException( getClass(),
-				"setRequiredTableClassCode",
-				1,
-				"value" );
-		}
-		else if( value.length() > 4 ) {
-			throw new CFLibArgumentOverflowException( getClass(),
-				"setRequiredTableClassCode",
-				1,
-				"value.length()",
-				value.length(),
-				4 );
-		}
-		requiredTableClassCode = value;
-	}
-
-	@Override
 	public boolean equals( Object obj ) {
 		if (obj == null) {
 			return( false );

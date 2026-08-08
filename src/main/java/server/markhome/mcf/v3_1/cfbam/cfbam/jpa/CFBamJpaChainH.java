@@ -306,29 +306,6 @@ public class CFBamJpaChainH
 	}
 
 	@Override
-	public String getRequiredName() {
-		return(requiredName);
-	}
-
-	public void setRequiredName( String value ) {
-		if( value == null ) {
-			throw new CFLibNullArgumentException( getClass(),
-				"setRequiredName",
-				1,
-				"value" );
-		}
-		else if( value.length() > 192 ) {
-			throw new CFLibArgumentOverflowException( getClass(),
-				"setRequiredName",
-				1,
-				"value.length()",
-				value.length(),
-				192 );
-		}
-		requiredName = value;
-	}
-
-	@Override
 	public String getOptionalShortName() {
 		return(optionalShortName);
 	}
@@ -397,21 +374,6 @@ public class CFBamJpaChainH
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getRequiredTableId() {
-		return(requiredTableId);
-	}
-
-	public void setRequiredTableId( CFLibDbKeyHash256 value ) {
-		if( value == null || value.isNull() ) {
-			throw new CFLibNullArgumentException( getClass(),
-				"setRequiredTableId",
-				1,
-				"value" );
-		}
-		requiredTableId = value;
-	}
-
-	@Override
 	public String getOptionalSuffix() {
 		return(optionalSuffix);
 	}
@@ -426,36 +388,6 @@ public class CFBamJpaChainH
 				16 );
 		}
 		optionalSuffix = value;
-	}
-
-	@Override
-	public CFLibDbKeyHash256 getRequiredPrevRelationId() {
-		return(requiredPrevRelationId);
-	}
-
-	public void setRequiredPrevRelationId( CFLibDbKeyHash256 value ) {
-		if( value == null || value.isNull() ) {
-			throw new CFLibNullArgumentException( getClass(),
-				"setRequiredPrevRelationId",
-				1,
-				"value" );
-		}
-		requiredPrevRelationId = value;
-	}
-
-	@Override
-	public CFLibDbKeyHash256 getRequiredNextRelationId() {
-		return(requiredNextRelationId);
-	}
-
-	public void setRequiredNextRelationId( CFLibDbKeyHash256 value ) {
-		if( value == null || value.isNull() ) {
-			throw new CFLibNullArgumentException( getClass(),
-				"setRequiredNextRelationId",
-				1,
-				"value" );
-		}
-		requiredNextRelationId = value;
 	}
 
     @Override

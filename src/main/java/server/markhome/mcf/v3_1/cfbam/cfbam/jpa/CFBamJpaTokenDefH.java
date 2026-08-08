@@ -97,32 +97,6 @@ public class CFBamJpaTokenDefH extends CFBamJpaAtomH
     }
 
 	@Override
-	public int getRequiredMaxLen() {
-		return(requiredMaxLen);
-	}
-
-	@Override
-	public void setRequiredMaxLen( int value ) {
-		if( value < ICFBamPubTokenDef.MAXLEN_MIN_VALUE ) {
-			throw new CFLibArgumentUnderflowException( getClass(),
-				"setRequiredMaxLen",
-				1,
-				"value",
-				value,
-				ICFBamPubTokenDef.MAXLEN_MIN_VALUE );
-		}
-		if( value > ICFBamPubTokenDef.MAXLEN_MAX_VALUE ) {
-			throw new CFLibArgumentOverflowException( getClass(),
-				"setRequiredMaxLen",
-				1,
-				"value",
-				value,
-				ICFBamPubTokenDef.MAXLEN_MAX_VALUE );
-		}
-		requiredMaxLen = value;
-	}
-
-	@Override
 	public String getOptionalInitValue() {
 		return(optionalInitValue);
 	}

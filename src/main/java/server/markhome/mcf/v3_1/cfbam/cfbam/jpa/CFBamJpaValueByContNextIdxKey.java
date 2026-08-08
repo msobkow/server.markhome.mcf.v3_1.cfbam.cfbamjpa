@@ -73,21 +73,6 @@ public class CFBamJpaValueByContNextIdxKey
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getRequiredScopeId() {
-		return(requiredScopeId);
-	}
-
-	public void setRequiredScopeId( CFLibDbKeyHash256 value ) {
-		if( value == null || value.isNull() ) {
-			throw new CFLibNullArgumentException( getClass(),
-				"setRequiredScopeId",
-				1,
-				"value" );
-		}
-		requiredScopeId = value;
-	}
-
-	@Override
 	public CFLibDbKeyHash256 getOptionalNextId() {
 		return(optionalNextId);
 	}

@@ -142,50 +142,12 @@ public class CFBamJpaServerMethodH extends CFBamJpaScopeH
     }
 
 	@Override
-	public CFLibDbKeyHash256 getRequiredTableId() {
-		return(requiredTableId);
-	}
-
-	public void setRequiredTableId( CFLibDbKeyHash256 value ) {
-		if( value == null || value.isNull() ) {
-			throw new CFLibNullArgumentException( getClass(),
-				"setRequiredTableId",
-				1,
-				"value" );
-		}
-		requiredTableId = value;
-	}
-
-	@Override
 	public CFLibDbKeyHash256 getOptionalDefSchemaId() {
 		return(optionalDefSchemaId);
 	}
 
 	public void setOptionalDefSchemaId( CFLibDbKeyHash256 value ) {
 		optionalDefSchemaId = value;
-	}
-
-	@Override
-	public String getRequiredName() {
-		return(requiredName);
-	}
-
-	public void setRequiredName( String value ) {
-		if( value == null ) {
-			throw new CFLibNullArgumentException( getClass(),
-				"setRequiredName",
-				1,
-				"value" );
-		}
-		else if( value.length() > 192 ) {
-			throw new CFLibArgumentOverflowException( getClass(),
-				"setRequiredName",
-				1,
-				"value.length()",
-				value.length(),
-				192 );
-		}
-		requiredName = value;
 	}
 
 	@Override
@@ -271,108 +233,6 @@ public class CFBamJpaServerMethodH extends CFBamJpaScopeH
 				16 );
 		}
 		optionalSuffix = value;
-	}
-
-	@Override
-	public boolean getRequiredIsInstanceMethod() {
-		return(requiredIsInstanceMethod);
-	}
-
-	public void setRequiredIsInstanceMethod( boolean value ) {
-		requiredIsInstanceMethod = value;
-	}
-
-	@Override
-	public boolean getRequiredIsServerOnly() {
-		return(requiredIsServerOnly);
-	}
-
-	public void setRequiredIsServerOnly( boolean value ) {
-		requiredIsServerOnly = value;
-	}
-
-	@Override
-	public ICFBamPubSchema.CodeVisibilityEnum getRequiredCodeVis() {
-		return(requiredCodeVis);
-	}
-
-	public void setRequiredCodeVis( ICFBamPubSchema.CodeVisibilityEnum value ) {
-		if( value == null ) {
-			throw new CFLibNullArgumentException( getClass(),
-				"setRequiredCodeVis",
-				1,
-				"value" );
-		}
-		requiredCodeVis = value;
-	}
-
-	@Override
-	public String getRequiredJMethodBody() {
-		return(requiredJMethodBody);
-	}
-
-	public void setRequiredJMethodBody( String value ) {
-		if( value == null ) {
-			throw new CFLibNullArgumentException( getClass(),
-				"setRequiredJMethodBody",
-				1,
-				"value" );
-		}
-		else if( value.length() > 2000000 ) {
-			throw new CFLibArgumentOverflowException( getClass(),
-				"setRequiredJMethodBody",
-				1,
-				"value.length()",
-				value.length(),
-				2000000 );
-		}
-		requiredJMethodBody = value;
-	}
-
-	@Override
-	public String getRequiredCppMethodBody() {
-		return(requiredCppMethodBody);
-	}
-
-	public void setRequiredCppMethodBody( String value ) {
-		if( value == null ) {
-			throw new CFLibNullArgumentException( getClass(),
-				"setRequiredCppMethodBody",
-				1,
-				"value" );
-		}
-		else if( value.length() > 2000000 ) {
-			throw new CFLibArgumentOverflowException( getClass(),
-				"setRequiredCppMethodBody",
-				1,
-				"value.length()",
-				value.length(),
-				2000000 );
-		}
-		requiredCppMethodBody = value;
-	}
-
-	@Override
-	public String getRequiredCsMethodBody() {
-		return(requiredCsMethodBody);
-	}
-
-	public void setRequiredCsMethodBody( String value ) {
-		if( value == null ) {
-			throw new CFLibNullArgumentException( getClass(),
-				"setRequiredCsMethodBody",
-				1,
-				"value" );
-		}
-		else if( value.length() > 2000000 ) {
-			throw new CFLibArgumentOverflowException( getClass(),
-				"setRequiredCsMethodBody",
-				1,
-				"value.length()",
-				value.length(),
-				2000000 );
-		}
-		requiredCsMethodBody = value;
 	}
 
     @Override

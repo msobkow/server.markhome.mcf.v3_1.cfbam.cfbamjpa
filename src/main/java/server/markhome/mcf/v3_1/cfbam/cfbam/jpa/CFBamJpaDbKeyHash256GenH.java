@@ -96,58 +96,6 @@ public class CFBamJpaDbKeyHash256GenH extends CFBamJpaDbKeyHash256TypeH
             return( ICFBamDbKeyHash256Gen.CLASS_CODE );
     }
 
-	@Override
-	public short getRequiredSlice() {
-		return(requiredSlice);
-	}
-
-	@Override
-	public void setRequiredSlice( short value ) {
-		if( value < ICFBamPubDbKeyHash256Gen.SLICE_MIN_VALUE ) {
-			throw new CFLibArgumentUnderflowException( getClass(),
-				"setRequiredSlice",
-				1,
-				"value",
-				value,
-				ICFBamPubDbKeyHash256Gen.SLICE_MIN_VALUE );
-		}
-		if( value > ICFBamPubDbKeyHash256Gen.SLICE_MAX_VALUE ) {
-			throw new CFLibArgumentOverflowException( getClass(),
-				"setRequiredSlice",
-				1,
-				"value",
-				value,
-				ICFBamPubDbKeyHash256Gen.SLICE_MAX_VALUE );
-		}
-		requiredSlice = value;
-	}
-
-	@Override
-	public int getRequiredBlockSize() {
-		return(requiredBlockSize);
-	}
-
-	@Override
-	public void setRequiredBlockSize( int value ) {
-		if( value < ICFBamPubDbKeyHash256Gen.BLOCKSIZE_MIN_VALUE ) {
-			throw new CFLibArgumentUnderflowException( getClass(),
-				"setRequiredBlockSize",
-				1,
-				"value",
-				value,
-				ICFBamPubDbKeyHash256Gen.BLOCKSIZE_MIN_VALUE );
-		}
-		if( value > ICFBamPubDbKeyHash256Gen.BLOCKSIZE_MAX_VALUE ) {
-			throw new CFLibArgumentOverflowException( getClass(),
-				"setRequiredBlockSize",
-				1,
-				"value",
-				value,
-				ICFBamPubDbKeyHash256Gen.BLOCKSIZE_MAX_VALUE );
-		}
-		requiredBlockSize = value;
-	}
-
     @Override
     public boolean equals( Object obj ) {
         if (obj == null) {

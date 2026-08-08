@@ -71,21 +71,6 @@ public class CFBamJpaEnumTagByEnumIdxKey
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getRequiredEnumId() {
-		return(requiredEnumId);
-	}
-
-	public void setRequiredEnumId( CFLibDbKeyHash256 value ) {
-		if( value == null || value.isNull() ) {
-			throw new CFLibNullArgumentException( getClass(),
-				"setRequiredEnumId",
-				1,
-				"value" );
-		}
-		requiredEnumId = value;
-	}
-
-	@Override
 	public boolean equals( Object obj ) {
 		if (obj == null) {
 			return( false );

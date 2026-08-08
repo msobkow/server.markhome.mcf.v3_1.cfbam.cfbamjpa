@@ -103,58 +103,6 @@ public class CFBamJpaNumberDef extends CFBamJpaAtom
 	}
 
 	@Override
-	public short getRequiredDigits() {
-		return(requiredDigits);
-	}
-
-	@Override
-	public void setRequiredDigits( short value ) {
-		if( value < ICFBamPubNumberDef.DIGITS_MIN_VALUE ) {
-			throw new CFLibArgumentUnderflowException( getClass(),
-				"setRequiredDigits",
-				1,
-				"value",
-				value,
-				ICFBamPubNumberDef.DIGITS_MIN_VALUE );
-		}
-		if( value > ICFBamPubNumberDef.DIGITS_MAX_VALUE ) {
-			throw new CFLibArgumentOverflowException( getClass(),
-				"setRequiredDigits",
-				1,
-				"value",
-				value,
-				ICFBamPubNumberDef.DIGITS_MAX_VALUE );
-		}
-		requiredDigits = value;
-	}
-
-	@Override
-	public short getRequiredPrecis() {
-		return(requiredPrecis);
-	}
-
-	@Override
-	public void setRequiredPrecis( short value ) {
-		if( value < ICFBamPubNumberDef.PRECIS_MIN_VALUE ) {
-			throw new CFLibArgumentUnderflowException( getClass(),
-				"setRequiredPrecis",
-				1,
-				"value",
-				value,
-				ICFBamPubNumberDef.PRECIS_MIN_VALUE );
-		}
-		if( value > ICFBamPubNumberDef.PRECIS_MAX_VALUE ) {
-			throw new CFLibArgumentOverflowException( getClass(),
-				"setRequiredPrecis",
-				1,
-				"value",
-				value,
-				ICFBamPubNumberDef.PRECIS_MAX_VALUE );
-		}
-		requiredPrecis = value;
-	}
-
-	@Override
 	public BigDecimal getOptionalInitValue() {
 		return(optionalInitValue);
 	}

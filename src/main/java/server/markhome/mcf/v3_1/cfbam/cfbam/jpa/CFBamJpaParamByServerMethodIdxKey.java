@@ -71,21 +71,6 @@ public class CFBamJpaParamByServerMethodIdxKey
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getRequiredServerMethodId() {
-		return(requiredServerMethodId);
-	}
-
-	public void setRequiredServerMethodId( CFLibDbKeyHash256 value ) {
-		if( value == null || value.isNull() ) {
-			throw new CFLibNullArgumentException( getClass(),
-				"setRequiredServerMethodId",
-				1,
-				"value" );
-		}
-		requiredServerMethodId = value;
-	}
-
-	@Override
 	public boolean equals( Object obj ) {
 		if (obj == null) {
 			return( false );

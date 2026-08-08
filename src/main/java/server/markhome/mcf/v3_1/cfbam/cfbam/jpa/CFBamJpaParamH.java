@@ -299,50 +299,12 @@ public class CFBamJpaParamH
     }
 
 	@Override
-	public CFLibDbKeyHash256 getRequiredServerMethodId() {
-		return(requiredServerMethodId);
-	}
-
-	public void setRequiredServerMethodId( CFLibDbKeyHash256 value ) {
-		if( value == null || value.isNull() ) {
-			throw new CFLibNullArgumentException( getClass(),
-				"setRequiredServerMethodId",
-				1,
-				"value" );
-		}
-		requiredServerMethodId = value;
-	}
-
-	@Override
 	public CFLibDbKeyHash256 getOptionalDefSchemaId() {
 		return(optionalDefSchemaId);
 	}
 
 	public void setOptionalDefSchemaId( CFLibDbKeyHash256 value ) {
 		optionalDefSchemaId = value;
-	}
-
-	@Override
-	public String getRequiredName() {
-		return(requiredName);
-	}
-
-	public void setRequiredName( String value ) {
-		if( value == null ) {
-			throw new CFLibNullArgumentException( getClass(),
-				"setRequiredName",
-				1,
-				"value" );
-		}
-		else if( value.length() > 192 ) {
-			throw new CFLibArgumentOverflowException( getClass(),
-				"setRequiredName",
-				1,
-				"value.length()",
-				value.length(),
-				192 );
-		}
-		requiredName = value;
 	}
 
 	@Override
@@ -377,15 +339,6 @@ public class CFBamJpaParamH
 				1023 );
 		}
 		optionalDescription = value;
-	}
-
-	@Override
-	public boolean getRequiredIsNullable() {
-		return(requiredIsNullable);
-	}
-
-	public void setRequiredIsNullable( boolean value ) {
-		requiredIsNullable = value;
 	}
 
 	@Override

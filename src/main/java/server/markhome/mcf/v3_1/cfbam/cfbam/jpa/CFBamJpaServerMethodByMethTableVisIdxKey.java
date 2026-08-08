@@ -73,36 +73,6 @@ public class CFBamJpaServerMethodByMethTableVisIdxKey
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getRequiredTableId() {
-		return(requiredTableId);
-	}
-
-	public void setRequiredTableId( CFLibDbKeyHash256 value ) {
-		if( value == null || value.isNull() ) {
-			throw new CFLibNullArgumentException( getClass(),
-				"setRequiredTableId",
-				1,
-				"value" );
-		}
-		requiredTableId = value;
-	}
-
-	@Override
-	public ICFBamPubSchema.CodeVisibilityEnum getRequiredCodeVis() {
-		return(requiredCodeVis);
-	}
-
-	public void setRequiredCodeVis( ICFBamPubSchema.CodeVisibilityEnum value ) {
-		if( value == null ) {
-			throw new CFLibNullArgumentException( getClass(),
-				"setRequiredCodeVis",
-				1,
-				"value" );
-		}
-		requiredCodeVis = value;
-	}
-
-	@Override
 	public boolean equals( Object obj ) {
 		if (obj == null) {
 			return( false );

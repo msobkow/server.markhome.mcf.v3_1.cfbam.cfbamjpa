@@ -73,44 +73,6 @@ public class CFBamJpaSchemaDefByPubURIIdxKey
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getRequiredCTenantId() {
-		return(requiredCTenantId);
-	}
-
-	public void setRequiredCTenantId( CFLibDbKeyHash256 value ) {
-		if( value == null || value.isNull() ) {
-			throw new CFLibNullArgumentException( getClass(),
-				"setRequiredCTenantId",
-				1,
-				"value" );
-		}
-		requiredCTenantId = value;
-	}
-
-	@Override
-	public String getRequiredPublishURI() {
-		return(requiredPublishURI);
-	}
-
-	public void setRequiredPublishURI( String value ) {
-		if( value == null ) {
-			throw new CFLibNullArgumentException( getClass(),
-				"setRequiredPublishURI",
-				1,
-				"value" );
-		}
-		else if( value.length() > 512 ) {
-			throw new CFLibArgumentOverflowException( getClass(),
-				"setRequiredPublishURI",
-				1,
-				"value.length()",
-				value.length(),
-				512 );
-		}
-		requiredPublishURI = value;
-	}
-
-	@Override
 	public boolean equals( Object obj ) {
 		if (obj == null) {
 			return( false );

@@ -169,50 +169,12 @@ public class CFBamJpaRelationH extends CFBamJpaScopeH
     }
 
 	@Override
-	public CFLibDbKeyHash256 getRequiredTableId() {
-		return(requiredTableId);
-	}
-
-	public void setRequiredTableId( CFLibDbKeyHash256 value ) {
-		if( value == null || value.isNull() ) {
-			throw new CFLibNullArgumentException( getClass(),
-				"setRequiredTableId",
-				1,
-				"value" );
-		}
-		requiredTableId = value;
-	}
-
-	@Override
 	public CFLibDbKeyHash256 getOptionalDefSchemaId() {
 		return(optionalDefSchemaId);
 	}
 
 	public void setOptionalDefSchemaId( CFLibDbKeyHash256 value ) {
 		optionalDefSchemaId = value;
-	}
-
-	@Override
-	public String getRequiredName() {
-		return(requiredName);
-	}
-
-	public void setRequiredName( String value ) {
-		if( value == null ) {
-			throw new CFLibNullArgumentException( getClass(),
-				"setRequiredName",
-				1,
-				"value" );
-		}
-		else if( value.length() > 192 ) {
-			throw new CFLibArgumentOverflowException( getClass(),
-				"setRequiredName",
-				1,
-				"value.length()",
-				value.length(),
-				192 );
-		}
-		requiredName = value;
 	}
 
 	@Override
@@ -284,21 +246,6 @@ public class CFBamJpaRelationH extends CFBamJpaScopeH
 	}
 
 	@Override
-	public ICFBamPubSchema.RelationTypeEnum getRequiredRelationType() {
-		return(requiredRelationType);
-	}
-
-	public void setRequiredRelationType( ICFBamPubSchema.RelationTypeEnum value ) {
-		if( value == null ) {
-			throw new CFLibNullArgumentException( getClass(),
-				"setRequiredRelationType",
-				1,
-				"value" );
-		}
-		requiredRelationType = value;
-	}
-
-	@Override
 	public String getOptionalDbName() {
 		return(optionalDbName);
 	}
@@ -333,108 +280,12 @@ public class CFBamJpaRelationH extends CFBamJpaScopeH
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getRequiredFromIndexId() {
-		return(requiredFromIndexId);
-	}
-
-	public void setRequiredFromIndexId( CFLibDbKeyHash256 value ) {
-		if( value == null || value.isNull() ) {
-			throw new CFLibNullArgumentException( getClass(),
-				"setRequiredFromIndexId",
-				1,
-				"value" );
-		}
-		requiredFromIndexId = value;
-	}
-
-	@Override
-	public CFLibDbKeyHash256 getRequiredToTableId() {
-		return(requiredToTableId);
-	}
-
-	public void setRequiredToTableId( CFLibDbKeyHash256 value ) {
-		if( value == null || value.isNull() ) {
-			throw new CFLibNullArgumentException( getClass(),
-				"setRequiredToTableId",
-				1,
-				"value" );
-		}
-		requiredToTableId = value;
-	}
-
-	@Override
-	public CFLibDbKeyHash256 getRequiredToIndexId() {
-		return(requiredToIndexId);
-	}
-
-	public void setRequiredToIndexId( CFLibDbKeyHash256 value ) {
-		if( value == null || value.isNull() ) {
-			throw new CFLibNullArgumentException( getClass(),
-				"setRequiredToIndexId",
-				1,
-				"value" );
-		}
-		requiredToIndexId = value;
-	}
-
-	@Override
-	public boolean getRequiredIsRequired() {
-		return(requiredIsRequired);
-	}
-
-	public void setRequiredIsRequired( boolean value ) {
-		requiredIsRequired = value;
-	}
-
-	@Override
-	public boolean getRequiredIsXsdContainer() {
-		return(requiredIsXsdContainer);
-	}
-
-	public void setRequiredIsXsdContainer( boolean value ) {
-		requiredIsXsdContainer = value;
-	}
-
-	@Override
-	public boolean getRequiredIsLateResolver() {
-		return(requiredIsLateResolver);
-	}
-
-	public void setRequiredIsLateResolver( boolean value ) {
-		requiredIsLateResolver = value;
-	}
-
-	@Override
-	public boolean getRequiredAllowAddendum() {
-		return(requiredAllowAddendum);
-	}
-
-	public void setRequiredAllowAddendum( boolean value ) {
-		requiredAllowAddendum = value;
-	}
-
-	@Override
 	public CFLibDbKeyHash256 getOptionalNarrowedId() {
 		return(optionalNarrowedId);
 	}
 
 	public void setOptionalNarrowedId( CFLibDbKeyHash256 value ) {
 		optionalNarrowedId = value;
-	}
-
-	@Override
-	public ICFBamPubSchema.CodeVisibilityEnum getRequiredCodeVis() {
-		return(requiredCodeVis);
-	}
-
-	public void setRequiredCodeVis( ICFBamPubSchema.CodeVisibilityEnum value ) {
-		if( value == null ) {
-			throw new CFLibNullArgumentException( getClass(),
-				"setRequiredCodeVis",
-				1,
-				"value" );
-		}
-		requiredCodeVis = value;
 	}
 
     @Override

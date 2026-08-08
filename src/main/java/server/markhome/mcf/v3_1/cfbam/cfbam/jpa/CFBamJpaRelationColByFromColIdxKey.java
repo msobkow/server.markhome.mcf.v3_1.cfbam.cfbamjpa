@@ -71,21 +71,6 @@ public class CFBamJpaRelationColByFromColIdxKey
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getRequiredFromColId() {
-		return(requiredFromColId);
-	}
-
-	public void setRequiredFromColId( CFLibDbKeyHash256 value ) {
-		if( value == null || value.isNull() ) {
-			throw new CFLibNullArgumentException( getClass(),
-				"setRequiredFromColId",
-				1,
-				"value" );
-		}
-		requiredFromColId = value;
-	}
-
-	@Override
 	public boolean equals( Object obj ) {
 		if (obj == null) {
 			return( false );

@@ -71,21 +71,6 @@ public class CFBamJpaClearSubDep1ByClearTopDepIdxKey
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getRequiredClearTopDepId() {
-		return(requiredClearTopDepId);
-	}
-
-	public void setRequiredClearTopDepId( CFLibDbKeyHash256 value ) {
-		if( value == null || value.isNull() ) {
-			throw new CFLibNullArgumentException( getClass(),
-				"setRequiredClearTopDepId",
-				1,
-				"value" );
-		}
-		requiredClearTopDepId = value;
-	}
-
-	@Override
 	public boolean equals( Object obj ) {
 		if (obj == null) {
 			return( false );

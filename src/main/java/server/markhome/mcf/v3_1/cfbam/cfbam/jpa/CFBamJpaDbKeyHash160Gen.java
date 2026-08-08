@@ -94,58 +94,6 @@ public class CFBamJpaDbKeyHash160Gen extends CFBamJpaDbKeyHash160Type
 	}
 
 	@Override
-	public short getRequiredSlice() {
-		return(requiredSlice);
-	}
-
-	@Override
-	public void setRequiredSlice( short value ) {
-		if( value < ICFBamPubDbKeyHash160Gen.SLICE_MIN_VALUE ) {
-			throw new CFLibArgumentUnderflowException( getClass(),
-				"setRequiredSlice",
-				1,
-				"value",
-				value,
-				ICFBamPubDbKeyHash160Gen.SLICE_MIN_VALUE );
-		}
-		if( value > ICFBamPubDbKeyHash160Gen.SLICE_MAX_VALUE ) {
-			throw new CFLibArgumentOverflowException( getClass(),
-				"setRequiredSlice",
-				1,
-				"value",
-				value,
-				ICFBamPubDbKeyHash160Gen.SLICE_MAX_VALUE );
-		}
-		requiredSlice = value;
-	}
-
-	@Override
-	public int getRequiredBlockSize() {
-		return(requiredBlockSize);
-	}
-
-	@Override
-	public void setRequiredBlockSize( int value ) {
-		if( value < ICFBamPubDbKeyHash160Gen.BLOCKSIZE_MIN_VALUE ) {
-			throw new CFLibArgumentUnderflowException( getClass(),
-				"setRequiredBlockSize",
-				1,
-				"value",
-				value,
-				ICFBamPubDbKeyHash160Gen.BLOCKSIZE_MIN_VALUE );
-		}
-		if( value > ICFBamPubDbKeyHash160Gen.BLOCKSIZE_MAX_VALUE ) {
-			throw new CFLibArgumentOverflowException( getClass(),
-				"setRequiredBlockSize",
-				1,
-				"value",
-				value,
-				ICFBamPubDbKeyHash160Gen.BLOCKSIZE_MAX_VALUE );
-		}
-		requiredBlockSize = value;
-	}
-
-	@Override
 	public boolean equals( Object obj ) {
 		if (obj == null) {
 			return( false );

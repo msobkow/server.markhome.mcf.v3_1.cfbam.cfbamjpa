@@ -294,21 +294,6 @@ public class CFBamJpaEnumTagH
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getRequiredEnumId() {
-		return(requiredEnumId);
-	}
-
-	public void setRequiredEnumId( CFLibDbKeyHash256 value ) {
-		if( value == null || value.isNull() ) {
-			throw new CFLibNullArgumentException( getClass(),
-				"setRequiredEnumId",
-				1,
-				"value" );
-		}
-		requiredEnumId = value;
-	}
-
-	@Override
 	public Short getOptionalEnumCode() {
 		return(optionalEnumCode);
 	}
@@ -332,29 +317,6 @@ public class CFBamJpaEnumTagH
 				ICFBamPubEnumTag.ENUMCODE_MAX_VALUE );
 		}
 		optionalEnumCode = value;
-	}
-
-	@Override
-	public String getRequiredName() {
-		return(requiredName);
-	}
-
-	public void setRequiredName( String value ) {
-		if( value == null ) {
-			throw new CFLibNullArgumentException( getClass(),
-				"setRequiredName",
-				1,
-				"value" );
-		}
-		else if( value.length() > 64 ) {
-			throw new CFLibArgumentOverflowException( getClass(),
-				"setRequiredName",
-				1,
-				"value.length()",
-				value.length(),
-				64 );
-		}
-		requiredName = value;
 	}
 
 	@Override

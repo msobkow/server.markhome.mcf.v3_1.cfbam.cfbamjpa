@@ -71,21 +71,6 @@ public class CFBamJpaSchemaRoleByRoleScopeIdxKey
 	}
 
 	@Override
-	public ICFBamPubSchema.RoleScopeEnum getRequiredRoleScope() {
-		return(requiredRoleScope);
-	}
-
-	public void setRequiredRoleScope( ICFBamPubSchema.RoleScopeEnum value ) {
-		if( value == null ) {
-			throw new CFLibNullArgumentException( getClass(),
-				"setRequiredRoleScope",
-				1,
-				"value" );
-		}
-		requiredRoleScope = value;
-	}
-
-	@Override
 	public boolean equals( Object obj ) {
 		if (obj == null) {
 			return( false );

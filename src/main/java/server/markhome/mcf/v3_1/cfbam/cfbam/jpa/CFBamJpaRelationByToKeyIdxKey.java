@@ -71,21 +71,6 @@ public class CFBamJpaRelationByToKeyIdxKey
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getRequiredToIndexId() {
-		return(requiredToIndexId);
-	}
-
-	public void setRequiredToIndexId( CFLibDbKeyHash256 value ) {
-		if( value == null || value.isNull() ) {
-			throw new CFLibNullArgumentException( getClass(),
-				"setRequiredToIndexId",
-				1,
-				"value" );
-		}
-		requiredToIndexId = value;
-	}
-
-	@Override
 	public boolean equals( Object obj ) {
 		if (obj == null) {
 			return( false );

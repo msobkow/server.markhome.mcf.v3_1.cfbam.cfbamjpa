@@ -71,21 +71,6 @@ public class CFBamJpaSchemaRefBySchemaIdxKey
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getRequiredSchemaId() {
-		return(requiredSchemaId);
-	}
-
-	public void setRequiredSchemaId( CFLibDbKeyHash256 value ) {
-		if( value == null || value.isNull() ) {
-			throw new CFLibNullArgumentException( getClass(),
-				"setRequiredSchemaId",
-				1,
-				"value" );
-		}
-		requiredSchemaId = value;
-	}
-
-	@Override
 	public boolean equals( Object obj ) {
 		if (obj == null) {
 			return( false );

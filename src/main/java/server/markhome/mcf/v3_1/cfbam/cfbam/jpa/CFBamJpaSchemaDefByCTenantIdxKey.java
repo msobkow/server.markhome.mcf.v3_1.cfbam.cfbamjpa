@@ -71,21 +71,6 @@ public class CFBamJpaSchemaDefByCTenantIdxKey
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getRequiredCTenantId() {
-		return(requiredCTenantId);
-	}
-
-	public void setRequiredCTenantId( CFLibDbKeyHash256 value ) {
-		if( value == null || value.isNull() ) {
-			throw new CFLibNullArgumentException( getClass(),
-				"setRequiredCTenantId",
-				1,
-				"value" );
-		}
-		requiredCTenantId = value;
-	}
-
-	@Override
 	public boolean equals( Object obj ) {
 		if (obj == null) {
 			return( false );
