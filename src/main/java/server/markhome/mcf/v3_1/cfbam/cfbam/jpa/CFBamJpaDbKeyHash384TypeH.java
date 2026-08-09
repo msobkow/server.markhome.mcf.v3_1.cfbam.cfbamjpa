@@ -96,6 +96,21 @@ public class CFBamJpaDbKeyHash384TypeH extends CFBamJpaDbKeyHash384DefH
             return( ICFBamDbKeyHash384Type.CLASS_CODE );
     }
 
+	@Override
+	public CFLibDbKeyHash256 getRequiredSchemaDefId() {
+		return(requiredSchemaDefId);
+	}
+
+	public void setRequiredSchemaDefId( CFLibDbKeyHash256 value ) {
+		if( value == null || value.isNull() ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredSchemaDefId",
+				1,
+				"value" );
+		}
+		requiredSchemaDefId = value;
+	}
+
     @Override
     public boolean equals( Object obj ) {
         if (obj == null) {

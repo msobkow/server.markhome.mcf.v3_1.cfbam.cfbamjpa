@@ -73,6 +73,44 @@ public class CFBamJpaSchemaDefByAuthEMailIdxKey
 	}
 
 	@Override
+	public CFLibDbKeyHash256 getRequiredCTenantId() {
+		return(requiredCTenantId);
+	}
+
+	public void setRequiredCTenantId( CFLibDbKeyHash256 value ) {
+		if( value == null || value.isNull() ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredCTenantId",
+				1,
+				"value" );
+		}
+		requiredCTenantId = value;
+	}
+
+	@Override
+	public String getRequiredAuthorEMail() {
+		return(requiredAuthorEMail);
+	}
+
+	public void setRequiredAuthorEMail( String value ) {
+		if( value == null ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredAuthorEMail",
+				1,
+				"value" );
+		}
+		else if( value.length() > 512 ) {
+			throw new CFLibArgumentOverflowException( getClass(),
+				"setRequiredAuthorEMail",
+				1,
+				"value.length()",
+				value.length(),
+				512 );
+		}
+		requiredAuthorEMail = value;
+	}
+
+	@Override
 	public boolean equals( Object obj ) {
 		if (obj == null) {
 			return( false );

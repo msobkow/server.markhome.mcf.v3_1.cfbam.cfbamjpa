@@ -100,6 +100,44 @@ public class CFBamJpaPopSubDep2H extends CFBamJpaPopDepH
             return( ICFBamPopSubDep2.CLASS_CODE );
     }
 
+	@Override
+	public CFLibDbKeyHash256 getRequiredPopSubDep1Id() {
+		return(requiredPopSubDep1Id);
+	}
+
+	public void setRequiredPopSubDep1Id( CFLibDbKeyHash256 value ) {
+		if( value == null || value.isNull() ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredPopSubDep1Id",
+				1,
+				"value" );
+		}
+		requiredPopSubDep1Id = value;
+	}
+
+	@Override
+	public String getRequiredName() {
+		return(requiredName);
+	}
+
+	public void setRequiredName( String value ) {
+		if( value == null ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredName",
+				1,
+				"value" );
+		}
+		else if( value.length() > 192 ) {
+			throw new CFLibArgumentOverflowException( getClass(),
+				"setRequiredName",
+				1,
+				"value.length()",
+				value.length(),
+				192 );
+		}
+		requiredName = value;
+	}
+
     @Override
     public boolean equals( Object obj ) {
         if (obj == null) {

@@ -73,6 +73,44 @@ public class CFBamJpaDelSubDep2ByUNameIdxKey
 	}
 
 	@Override
+	public CFLibDbKeyHash256 getRequiredDelSubDep1Id() {
+		return(requiredDelSubDep1Id);
+	}
+
+	public void setRequiredDelSubDep1Id( CFLibDbKeyHash256 value ) {
+		if( value == null || value.isNull() ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredDelSubDep1Id",
+				1,
+				"value" );
+		}
+		requiredDelSubDep1Id = value;
+	}
+
+	@Override
+	public String getRequiredName() {
+		return(requiredName);
+	}
+
+	public void setRequiredName( String value ) {
+		if( value == null ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredName",
+				1,
+				"value" );
+		}
+		else if( value.length() > 192 ) {
+			throw new CFLibArgumentOverflowException( getClass(),
+				"setRequiredName",
+				1,
+				"value.length()",
+				value.length(),
+				192 );
+		}
+		requiredName = value;
+	}
+
+	@Override
 	public boolean equals( Object obj ) {
 		if (obj == null) {
 			return( false );

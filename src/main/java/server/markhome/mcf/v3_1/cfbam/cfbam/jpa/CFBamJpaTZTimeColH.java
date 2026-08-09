@@ -96,6 +96,21 @@ public class CFBamJpaTZTimeColH extends CFBamJpaTZTimeDefH
             return( ICFBamTZTimeCol.CLASS_CODE );
     }
 
+	@Override
+	public CFLibDbKeyHash256 getRequiredTableId() {
+		return(requiredTableId);
+	}
+
+	public void setRequiredTableId( CFLibDbKeyHash256 value ) {
+		if( value == null || value.isNull() ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredTableId",
+				1,
+				"value" );
+		}
+		requiredTableId = value;
+	}
+
     @Override
     public boolean equals( Object obj ) {
         if (obj == null) {

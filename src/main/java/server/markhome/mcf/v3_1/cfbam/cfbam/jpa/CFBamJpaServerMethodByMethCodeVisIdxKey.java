@@ -71,6 +71,21 @@ public class CFBamJpaServerMethodByMethCodeVisIdxKey
 	}
 
 	@Override
+	public ICFBamPubSchema.CodeVisibilityEnum getRequiredCodeVis() {
+		return(requiredCodeVis);
+	}
+
+	public void setRequiredCodeVis( ICFBamPubSchema.CodeVisibilityEnum value ) {
+		if( value == null ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredCodeVis",
+				1,
+				"value" );
+		}
+		requiredCodeVis = value;
+	}
+
+	@Override
 	public boolean equals( Object obj ) {
 		if (obj == null) {
 			return( false );

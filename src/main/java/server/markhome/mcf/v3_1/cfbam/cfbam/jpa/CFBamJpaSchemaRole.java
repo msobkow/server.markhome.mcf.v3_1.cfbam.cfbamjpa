@@ -150,6 +150,36 @@ public class CFBamJpaSchemaRole extends CFBamJpaRoleDef
 	}
 
 	@Override
+	public CFLibDbKeyHash256 getRequiredSchemaDefId() {
+		return(requiredSchemaDefId);
+	}
+
+	public void setRequiredSchemaDefId( CFLibDbKeyHash256 value ) {
+		if( value == null || value.isNull() ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredSchemaDefId",
+				1,
+				"value" );
+		}
+		requiredSchemaDefId = value;
+	}
+
+	@Override
+	public ICFBamPubSchema.RoleScopeEnum getRequiredRoleScope() {
+		return(requiredRoleScope);
+	}
+
+	public void setRequiredRoleScope( ICFBamPubSchema.RoleScopeEnum value ) {
+		if( value == null ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredRoleScope",
+				1,
+				"value" );
+		}
+		requiredRoleScope = value;
+	}
+
+	@Override
 	public boolean equals( Object obj ) {
 		if (obj == null) {
 			return( false );

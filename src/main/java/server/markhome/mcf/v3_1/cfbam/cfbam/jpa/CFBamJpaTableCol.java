@@ -209,6 +209,21 @@ public class CFBamJpaTableCol extends CFBamJpaValue
 	}
 
 	@Override
+	public CFLibDbKeyHash256 getRequiredTableId() {
+		return(requiredTableId);
+	}
+
+	public void setRequiredTableId( CFLibDbKeyHash256 value ) {
+		if( value == null || value.isNull() ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredTableId",
+				1,
+				"value" );
+		}
+		requiredTableId = value;
+	}
+
+	@Override
 	public String getOptionalDbName() {
 		return(optionalDbName);
 	}

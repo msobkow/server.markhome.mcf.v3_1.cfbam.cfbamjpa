@@ -140,6 +140,59 @@ public class CFBamJpaSchemaDefH extends CFBamJpaScopeH
     }
 
 	@Override
+	public CFLibDbKeyHash256 getRequiredCTenantId() {
+		return(requiredCTenantId);
+	}
+
+	public void setRequiredCTenantId( CFLibDbKeyHash256 value ) {
+		if( value == null || value.isNull() ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredCTenantId",
+				1,
+				"value" );
+		}
+		requiredCTenantId = value;
+	}
+
+	@Override
+	public CFLibDbKeyHash256 getRequiredMinorVersionId() {
+		return(requiredMinorVersionId);
+	}
+
+	public void setRequiredMinorVersionId( CFLibDbKeyHash256 value ) {
+		if( value == null || value.isNull() ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredMinorVersionId",
+				1,
+				"value" );
+		}
+		requiredMinorVersionId = value;
+	}
+
+	@Override
+	public String getRequiredName() {
+		return(requiredName);
+	}
+
+	public void setRequiredName( String value ) {
+		if( value == null ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredName",
+				1,
+				"value" );
+		}
+		else if( value.length() > 192 ) {
+			throw new CFLibArgumentOverflowException( getClass(),
+				"setRequiredName",
+				1,
+				"value.length()",
+				value.length(),
+				192 );
+		}
+		requiredName = value;
+	}
+
+	@Override
 	public String getOptionalDbName() {
 		return(optionalDbName);
 	}
@@ -222,6 +275,121 @@ public class CFBamJpaSchemaDefH extends CFBamJpaScopeH
 				1023 );
 		}
 		optionalDescription = value;
+	}
+
+	@Override
+	public String getRequiredCopyrightPeriod() {
+		return(requiredCopyrightPeriod);
+	}
+
+	public void setRequiredCopyrightPeriod( String value ) {
+		if( value == null ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredCopyrightPeriod",
+				1,
+				"value" );
+		}
+		else if( value.length() > 10 ) {
+			throw new CFLibArgumentOverflowException( getClass(),
+				"setRequiredCopyrightPeriod",
+				1,
+				"value.length()",
+				value.length(),
+				10 );
+		}
+		requiredCopyrightPeriod = value;
+	}
+
+	@Override
+	public String getRequiredCopyrightHolder() {
+		return(requiredCopyrightHolder);
+	}
+
+	public void setRequiredCopyrightHolder( String value ) {
+		if( value == null ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredCopyrightHolder",
+				1,
+				"value" );
+		}
+		else if( value.length() > 511 ) {
+			throw new CFLibArgumentOverflowException( getClass(),
+				"setRequiredCopyrightHolder",
+				1,
+				"value.length()",
+				value.length(),
+				511 );
+		}
+		requiredCopyrightHolder = value;
+	}
+
+	@Override
+	public String getRequiredAuthorEMail() {
+		return(requiredAuthorEMail);
+	}
+
+	public void setRequiredAuthorEMail( String value ) {
+		if( value == null ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredAuthorEMail",
+				1,
+				"value" );
+		}
+		else if( value.length() > 512 ) {
+			throw new CFLibArgumentOverflowException( getClass(),
+				"setRequiredAuthorEMail",
+				1,
+				"value.length()",
+				value.length(),
+				512 );
+		}
+		requiredAuthorEMail = value;
+	}
+
+	@Override
+	public String getRequiredProjectURL() {
+		return(requiredProjectURL);
+	}
+
+	public void setRequiredProjectURL( String value ) {
+		if( value == null ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredProjectURL",
+				1,
+				"value" );
+		}
+		else if( value.length() > 1024 ) {
+			throw new CFLibArgumentOverflowException( getClass(),
+				"setRequiredProjectURL",
+				1,
+				"value.length()",
+				value.length(),
+				1024 );
+		}
+		requiredProjectURL = value;
+	}
+
+	@Override
+	public String getRequiredPublishURI() {
+		return(requiredPublishURI);
+	}
+
+	public void setRequiredPublishURI( String value ) {
+		if( value == null ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredPublishURI",
+				1,
+				"value" );
+		}
+		else if( value.length() > 512 ) {
+			throw new CFLibArgumentOverflowException( getClass(),
+				"setRequiredPublishURI",
+				1,
+				"value.length()",
+				value.length(),
+				512 );
+		}
+		requiredPublishURI = value;
 	}
 
     @Override

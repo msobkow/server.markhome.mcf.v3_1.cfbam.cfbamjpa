@@ -308,12 +308,50 @@ public class CFBamJpaRelationColH
     }
 
 	@Override
+	public CFLibDbKeyHash256 getRequiredRelationId() {
+		return(requiredRelationId);
+	}
+
+	public void setRequiredRelationId( CFLibDbKeyHash256 value ) {
+		if( value == null || value.isNull() ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredRelationId",
+				1,
+				"value" );
+		}
+		requiredRelationId = value;
+	}
+
+	@Override
 	public CFLibDbKeyHash256 getOptionalDefSchemaId() {
 		return(optionalDefSchemaId);
 	}
 
 	public void setOptionalDefSchemaId( CFLibDbKeyHash256 value ) {
 		optionalDefSchemaId = value;
+	}
+
+	@Override
+	public String getRequiredName() {
+		return(requiredName);
+	}
+
+	public void setRequiredName( String value ) {
+		if( value == null ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredName",
+				1,
+				"value" );
+		}
+		else if( value.length() > 192 ) {
+			throw new CFLibArgumentOverflowException( getClass(),
+				"setRequiredName",
+				1,
+				"value.length()",
+				value.length(),
+				192 );
+		}
+		requiredName = value;
 	}
 
 	@Override
@@ -382,6 +420,36 @@ public class CFBamJpaRelationColH
 				1023 );
 		}
 		optionalDescription = value;
+	}
+
+	@Override
+	public CFLibDbKeyHash256 getRequiredFromColId() {
+		return(requiredFromColId);
+	}
+
+	public void setRequiredFromColId( CFLibDbKeyHash256 value ) {
+		if( value == null || value.isNull() ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredFromColId",
+				1,
+				"value" );
+		}
+		requiredFromColId = value;
+	}
+
+	@Override
+	public CFLibDbKeyHash256 getRequiredToColId() {
+		return(requiredToColId);
+	}
+
+	public void setRequiredToColId( CFLibDbKeyHash256 value ) {
+		if( value == null || value.isNull() ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredToColId",
+				1,
+				"value" );
+		}
+		requiredToColId = value;
 	}
 
 	@Override

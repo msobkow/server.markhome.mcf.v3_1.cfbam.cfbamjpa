@@ -71,6 +71,21 @@ public class CFBamJpaIndexColByColIdxKey
 	}
 
 	@Override
+	public CFLibDbKeyHash256 getRequiredColumnId() {
+		return(requiredColumnId);
+	}
+
+	public void setRequiredColumnId( CFLibDbKeyHash256 value ) {
+		if( value == null || value.isNull() ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredColumnId",
+				1,
+				"value" );
+		}
+		requiredColumnId = value;
+	}
+
+	@Override
 	public boolean equals( Object obj ) {
 		if (obj == null) {
 			return( false );

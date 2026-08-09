@@ -73,6 +73,44 @@ public class CFBamJpaSchemaDefByProjectURLIdxKey
 	}
 
 	@Override
+	public CFLibDbKeyHash256 getRequiredCTenantId() {
+		return(requiredCTenantId);
+	}
+
+	public void setRequiredCTenantId( CFLibDbKeyHash256 value ) {
+		if( value == null || value.isNull() ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredCTenantId",
+				1,
+				"value" );
+		}
+		requiredCTenantId = value;
+	}
+
+	@Override
+	public String getRequiredProjectURL() {
+		return(requiredProjectURL);
+	}
+
+	public void setRequiredProjectURL( String value ) {
+		if( value == null ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredProjectURL",
+				1,
+				"value" );
+		}
+		else if( value.length() > 1024 ) {
+			throw new CFLibArgumentOverflowException( getClass(),
+				"setRequiredProjectURL",
+				1,
+				"value.length()",
+				value.length(),
+				1024 );
+		}
+		requiredProjectURL = value;
+	}
+
+	@Override
 	public boolean equals( Object obj ) {
 		if (obj == null) {
 			return( false );

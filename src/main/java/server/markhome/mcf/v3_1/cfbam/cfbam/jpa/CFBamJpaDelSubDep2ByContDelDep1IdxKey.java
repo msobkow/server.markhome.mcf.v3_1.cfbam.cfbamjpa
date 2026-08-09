@@ -71,6 +71,21 @@ public class CFBamJpaDelSubDep2ByContDelDep1IdxKey
 	}
 
 	@Override
+	public CFLibDbKeyHash256 getRequiredDelSubDep1Id() {
+		return(requiredDelSubDep1Id);
+	}
+
+	public void setRequiredDelSubDep1Id( CFLibDbKeyHash256 value ) {
+		if( value == null || value.isNull() ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredDelSubDep1Id",
+				1,
+				"value" );
+		}
+		requiredDelSubDep1Id = value;
+	}
+
+	@Override
 	public boolean equals( Object obj ) {
 		if (obj == null) {
 			return( false );

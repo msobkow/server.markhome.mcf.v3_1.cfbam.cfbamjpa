@@ -559,12 +559,50 @@ public class CFBamJpaTable extends CFBamJpaScope
 	}
 
 	@Override
+	public CFLibDbKeyHash256 getRequiredSchemaDefId() {
+		return(requiredSchemaDefId);
+	}
+
+	public void setRequiredSchemaDefId( CFLibDbKeyHash256 value ) {
+		if( value == null || value.isNull() ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredSchemaDefId",
+				1,
+				"value" );
+		}
+		requiredSchemaDefId = value;
+	}
+
+	@Override
 	public CFLibDbKeyHash256 getOptionalDefSchemaId() {
 		return(optionalDefSchemaId);
 	}
 
 	public void setOptionalDefSchemaId( CFLibDbKeyHash256 value ) {
 		optionalDefSchemaId = value;
+	}
+
+	@Override
+	public String getRequiredName() {
+		return(requiredName);
+	}
+
+	public void setRequiredName( String value ) {
+		if( value == null ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredName",
+				1,
+				"value" );
+		}
+		else if( value.length() > 192 ) {
+			throw new CFLibArgumentOverflowException( getClass(),
+				"setRequiredName",
+				1,
+				"value.length()",
+				value.length(),
+				192 );
+		}
+		requiredName = value;
 	}
 
 	@Override
@@ -653,12 +691,44 @@ public class CFBamJpaTable extends CFBamJpaScope
 	}
 
 	@Override
+	public boolean getRequiredPageData() {
+		return(requiredPageData);
+	}
+
+	public void setRequiredPageData( boolean value ) {
+		requiredPageData = value;
+	}
+
+	@Override
 	public CFLibDbKeyHash256 getOptionalPrimaryIndexId() {
 		return(optionalPrimaryIndexId);
 	}
 
 	public void setOptionalPrimaryIndexId( CFLibDbKeyHash256 value ) {
 		optionalPrimaryIndexId = value;
+	}
+
+	@Override
+	public String getRequiredTableClassCode() {
+		return(requiredTableClassCode);
+	}
+
+	public void setRequiredTableClassCode( String value ) {
+		if( value == null ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredTableClassCode",
+				1,
+				"value" );
+		}
+		else if( value.length() > 4 ) {
+			throw new CFLibArgumentOverflowException( getClass(),
+				"setRequiredTableClassCode",
+				1,
+				"value.length()",
+				value.length(),
+				4 );
+		}
+		requiredTableClassCode = value;
 	}
 
 	@Override
@@ -686,6 +756,96 @@ public class CFBamJpaTable extends CFBamJpaScope
 
 	public void setOptionalQualifyingTableId( CFLibDbKeyHash256 value ) {
 		optionalQualifyingTableId = value;
+	}
+
+	@Override
+	public boolean getRequiredIsInstantiable() {
+		return(requiredIsInstantiable);
+	}
+
+	public void setRequiredIsInstantiable( boolean value ) {
+		requiredIsInstantiable = value;
+	}
+
+	@Override
+	public boolean getRequiredHasHistory() {
+		return(requiredHasHistory);
+	}
+
+	public void setRequiredHasHistory( boolean value ) {
+		requiredHasHistory = value;
+	}
+
+	@Override
+	public boolean getRequiredHasAuditColumns() {
+		return(requiredHasAuditColumns);
+	}
+
+	public void setRequiredHasAuditColumns( boolean value ) {
+		requiredHasAuditColumns = value;
+	}
+
+	@Override
+	public boolean getRequiredIsMutable() {
+		return(requiredIsMutable);
+	}
+
+	public void setRequiredIsMutable( boolean value ) {
+		requiredIsMutable = value;
+	}
+
+	@Override
+	public boolean getRequiredIsServerOnly() {
+		return(requiredIsServerOnly);
+	}
+
+	public void setRequiredIsServerOnly( boolean value ) {
+		requiredIsServerOnly = value;
+	}
+
+	@Override
+	public ICFBamPubSchema.LoaderBehaviourEnum getRequiredLoaderBehaviour() {
+		return(requiredLoaderBehaviour);
+	}
+
+	public void setRequiredLoaderBehaviour( ICFBamPubSchema.LoaderBehaviourEnum value ) {
+		if( value == null ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredLoaderBehaviour",
+				1,
+				"value" );
+		}
+		requiredLoaderBehaviour = value;
+	}
+
+	@Override
+	public ICFBamPubSchema.SecScopeEnum getRequiredSecScope() {
+		return(requiredSecScope);
+	}
+
+	public void setRequiredSecScope( ICFBamPubSchema.SecScopeEnum value ) {
+		if( value == null ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredSecScope",
+				1,
+				"value" );
+		}
+		requiredSecScope = value;
+	}
+
+	@Override
+	public ICFBamPubSchema.CodeVisibilityEnum getRequiredCodeVis() {
+		return(requiredCodeVis);
+	}
+
+	public void setRequiredCodeVis( ICFBamPubSchema.CodeVisibilityEnum value ) {
+		if( value == null ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredCodeVis",
+				1,
+				"value" );
+		}
+		requiredCodeVis = value;
 	}
 
 	@Override
