@@ -322,7 +322,7 @@ public class CFBamJpaRoleDef
 				1,
 				"value" );
 		}
-		getPKey().setRequiredId(value);
+		requiredId = value;
 	}
 
 	@Override

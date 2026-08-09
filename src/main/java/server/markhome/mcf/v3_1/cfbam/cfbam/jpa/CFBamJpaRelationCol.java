@@ -556,7 +556,7 @@ public class CFBamJpaRelationCol
 				1,
 				"value" );
 		}
-		getPKey().setRequiredId(value);
+		requiredId = value;
 	}
 
 	@Override
