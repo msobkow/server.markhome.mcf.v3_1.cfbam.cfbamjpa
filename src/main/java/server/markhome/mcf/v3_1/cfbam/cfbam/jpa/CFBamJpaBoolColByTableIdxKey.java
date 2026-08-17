@@ -65,7 +65,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 public class CFBamJpaBoolColByTableIdxKey
 	implements ICFBamBoolColByTableIdxKey, Comparable<Object>, Serializable
 {
-	protected CFLibDbKeyHash256 requiredTableId;
+	protected $implJavaAtomType$ requiredTableId;
 	public CFBamJpaBoolColByTableIdxKey() {
 		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamPubBoolCol.TABLEID_INIT_VALUE.toString() );
 	}

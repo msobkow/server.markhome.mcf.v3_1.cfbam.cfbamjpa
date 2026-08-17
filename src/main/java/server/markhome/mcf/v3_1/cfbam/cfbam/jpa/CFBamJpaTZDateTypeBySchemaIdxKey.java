@@ -65,7 +65,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 public class CFBamJpaTZDateTypeBySchemaIdxKey
 	implements ICFBamTZDateTypeBySchemaIdxKey, Comparable<Object>, Serializable
 {
-	protected CFLibDbKeyHash256 requiredSchemaDefId;
+	protected $implJavaAtomType$ requiredSchemaDefId;
 	public CFBamJpaTZDateTypeBySchemaIdxKey() {
 		requiredSchemaDefId = CFLibDbKeyHash256.fromHex( ICFBamPubTZDateType.SCHEMADEFID_INIT_VALUE.toString() );
 	}

@@ -65,8 +65,8 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 public class CFBamJpaSchemaRoleBySchRoleScpIdxKey
 	implements ICFBamSchemaRoleBySchRoleScpIdxKey, Comparable<Object>, Serializable
 {
-	protected CFLibDbKeyHash256 requiredSchemaDefId;
-	protected ICFBamPubSchema.RoleScopeEnum requiredRoleScope;
+	protected $implJavaAtomType$ requiredSchemaDefId;
+	protected $implJavaAtomType$ requiredRoleScope;
 	public CFBamJpaSchemaRoleBySchRoleScpIdxKey() {
 		requiredSchemaDefId = CFLibDbKeyHash256.fromHex( ICFBamPubSchemaRole.SCHEMADEFID_INIT_VALUE.toString() );
 		requiredRoleScope = ICFBamPubSchemaRole.ROLESCOPE_INIT_VALUE;

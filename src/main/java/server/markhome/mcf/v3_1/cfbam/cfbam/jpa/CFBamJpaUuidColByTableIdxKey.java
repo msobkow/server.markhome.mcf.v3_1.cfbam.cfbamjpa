@@ -65,7 +65,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 public class CFBamJpaUuidColByTableIdxKey
 	implements ICFBamUuidColByTableIdxKey, Comparable<Object>, Serializable
 {
-	protected CFLibDbKeyHash256 requiredTableId;
+	protected $implJavaAtomType$ requiredTableId;
 	public CFBamJpaUuidColByTableIdxKey() {
 		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamPubUuidCol.TABLEID_INIT_VALUE.toString() );
 	}

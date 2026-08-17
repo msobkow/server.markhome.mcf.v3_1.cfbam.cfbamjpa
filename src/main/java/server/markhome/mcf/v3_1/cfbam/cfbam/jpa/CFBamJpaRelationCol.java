@@ -95,7 +95,7 @@ public class CFBamJpaRelationCol
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="Id", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 requiredId;
+	protected $implJavaAtomType$ requiredId;
 	protected int requiredRevision;
 
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
@@ -145,37 +145,37 @@ public class CFBamJpaRelationCol
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="RelationId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 requiredRelationId;
+	protected $implJavaAtomType$ requiredRelationId;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="defschid", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 optionalDefSchemaId;
+	protected $implJavaAtomType$ optionalDefSchemaId;
 	@Column( name="safe_name", nullable=false, length=192 )
-	protected String requiredName;
+	protected $implJavaAtomType$ requiredName;
 	@Column( name="short_name", nullable=true, length=16 )
-	protected String optionalShortName;
+	protected $implJavaAtomType$ optionalShortName;
 	@Column( name="Label", nullable=true, length=64 )
-	protected String optionalLabel;
+	protected $implJavaAtomType$ optionalLabel;
 	@Column( name="short_descr", nullable=true, length=128 )
-	protected String optionalShortDescription;
+	protected $implJavaAtomType$ optionalShortDescription;
 	@Column( name="descr", nullable=true, length=1023 )
-	protected String optionalDescription;
+	protected $implJavaAtomType$ optionalDescription;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="FromColId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 requiredFromColId;
+	protected $implJavaAtomType$ requiredFromColId;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="ToColId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 requiredToColId;
+	protected $implJavaAtomType$ requiredToColId;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="PrevId", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 optionalPrevId;
+	protected $implJavaAtomType$ optionalPrevId;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="NextId", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 optionalNextId;
+	protected $implJavaAtomType$ optionalNextId;
 
 	public CFBamJpaRelationCol() {
 		requiredId = CFLibDbKeyHash256.fromHex( ICFBamPubRelationCol.ID_INIT_VALUE.toString() );
@@ -231,7 +231,7 @@ public class CFBamJpaRelationCol
 	}
 
 	@Override
-	public void setRequiredContainerRelation(CFLibDbKeyHash256 argRelationId) {
+	public void setRequiredContainerRelation(ICFLibKeyHash256 argRelationId) {
 		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
 		if (targetBackingSchema == null) {
 			throw new CFLibNullArgumentException(getClass(), "setRequiredContainerRelation", 0, "ICFBamSchema.getBackingCFBam()");
@@ -279,7 +279,7 @@ public class CFBamJpaRelationCol
 	}
 
 	@Override
-	public void setOptionalLookupDefSchema(CFLibDbKeyHash256 argDefSchemaId) {
+	public void setOptionalLookupDefSchema(ICFLibKeyHash256 argDefSchemaId) {
 		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
 		if (targetBackingSchema == null) {
 			throw new CFLibNullArgumentException(getClass(), "setOptionalLookupDefSchema", 0, "ICFBamSchema.getBackingCFBam()");
@@ -327,7 +327,7 @@ public class CFBamJpaRelationCol
 	}
 
 	@Override
-	public void setOptionalLookupPrev(CFLibDbKeyHash256 argPrevId) {
+	public void setOptionalLookupPrev(ICFLibKeyHash256 argPrevId) {
 		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
 		if (targetBackingSchema == null) {
 			throw new CFLibNullArgumentException(getClass(), "setOptionalLookupPrev", 0, "ICFBamSchema.getBackingCFBam()");
@@ -375,7 +375,7 @@ public class CFBamJpaRelationCol
 	}
 
 	@Override
-	public void setOptionalLookupNext(CFLibDbKeyHash256 argNextId) {
+	public void setOptionalLookupNext(ICFLibKeyHash256 argNextId) {
 		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
 		if (targetBackingSchema == null) {
 			throw new CFLibNullArgumentException(getClass(), "setOptionalLookupNext", 0, "ICFBamSchema.getBackingCFBam()");
@@ -422,7 +422,7 @@ public class CFBamJpaRelationCol
 	}
 
 	@Override
-	public void setRequiredLookupFromCol(CFLibDbKeyHash256 argFromColId) {
+	public void setRequiredLookupFromCol(ICFLibKeyHash256 argFromColId) {
 		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
 		if (targetBackingSchema == null) {
 			throw new CFLibNullArgumentException(getClass(), "setRequiredLookupFromCol", 0, "ICFBamSchema.getBackingCFBam()");
@@ -469,7 +469,7 @@ public class CFBamJpaRelationCol
 	}
 
 	@Override
-	public void setRequiredLookupToCol(CFLibDbKeyHash256 argToColId) {
+	public void setRequiredLookupToCol(ICFLibKeyHash256 argToColId) {
 		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
 		if (targetBackingSchema == null) {
 			throw new CFLibNullArgumentException(getClass(), "setRequiredLookupToCol", 0, "ICFBamSchema.getBackingCFBam()");
@@ -535,12 +535,12 @@ public class CFBamJpaRelationCol
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getPKey() {
+	public $implJavaOptAtomType$ getPKey() {
 		return getRequiredId();
 	}
 
 	@Override
-	public void setPKey(CFLibDbKeyHash256 requiredId) {
+	public void setPKey($implJavaOptAtomType$ requiredId) {
 		this.requiredId = requiredId;
 	}
 

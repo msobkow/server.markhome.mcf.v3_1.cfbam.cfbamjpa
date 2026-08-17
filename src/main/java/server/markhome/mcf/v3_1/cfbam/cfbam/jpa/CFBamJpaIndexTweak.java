@@ -85,7 +85,7 @@ public class CFBamJpaIndexTweak extends CFBamJpaTweak
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="IndexId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 requiredIndexId;
+	protected $implJavaAtomType$ requiredIndexId;
 
 	public CFBamJpaIndexTweak() {
 		super();
@@ -131,7 +131,7 @@ public class CFBamJpaIndexTweak extends CFBamJpaTweak
 	}
 
 	@Override
-	public void setRequiredContainerIndexDef(CFLibDbKeyHash256 argIndexId) {
+	public void setRequiredContainerIndexDef(ICFLibKeyHash256 argIndexId) {
 		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
 		if (targetBackingSchema == null) {
 			throw new CFLibNullArgumentException(getClass(), "setRequiredContainerIndexDef", 0, "ICFBamSchema.getBackingCFBam()");

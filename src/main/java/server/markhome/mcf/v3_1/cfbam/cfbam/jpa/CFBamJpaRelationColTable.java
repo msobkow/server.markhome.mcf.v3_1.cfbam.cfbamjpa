@@ -298,7 +298,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 	 */
 	@Override
 	public void deleteRelationColByIdIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argKey )
+		ICFLibKeyHash256 argKey )
 	{
 		final String S_ProcName = "deleteRelationColByIdIdx";
 		boolean permissionGranted = canDeleteRelationCol(S_ProcName, Authorization);
@@ -320,8 +320,8 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 	 */
 	@Override
 	public void deleteRelationColByUNameIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argRelationId,
-		String argName )
+		$implJavaAtomType$ argRelationId,
+		$implJavaAtomType$ argName )
 	{
 		final String S_ProcName = "deleteRelationColByUNameIdx";
 		boolean permissionGranted = canDeleteRelationCol(S_ProcName, Authorization);
@@ -364,7 +364,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 	 */
 	@Override
 	public void deleteRelationColByRelationIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argRelationId )
+		$implJavaAtomType$ argRelationId )
 	{
 		final String S_ProcName = "deleteRelationColByRelationIdx";
 		boolean permissionGranted = canDeleteRelationCol(S_ProcName, Authorization);
@@ -405,7 +405,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 	 */
 	@Override
 	public void deleteRelationColByDefSchemaIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argDefSchemaId )
+		$implJavaAtomType$ argDefSchemaId )
 	{
 		final String S_ProcName = "deleteRelationColByDefSchemaIdx";
 		boolean permissionGranted = canDeleteRelationCol(S_ProcName, Authorization);
@@ -446,7 +446,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 	 */
 	@Override
 	public void deleteRelationColByFromColIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argFromColId )
+		$implJavaAtomType$ argFromColId )
 	{
 		final String S_ProcName = "deleteRelationColByFromColIdx";
 		boolean permissionGranted = canDeleteRelationCol(S_ProcName, Authorization);
@@ -487,7 +487,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 	 */
 	@Override
 	public void deleteRelationColByToColIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argToColId )
+		$implJavaAtomType$ argToColId )
 	{
 		final String S_ProcName = "deleteRelationColByToColIdx";
 		boolean permissionGranted = canDeleteRelationCol(S_ProcName, Authorization);
@@ -528,7 +528,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 	 */
 	@Override
 	public void deleteRelationColByPrevIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argPrevId )
+		$implJavaAtomType$ argPrevId )
 	{
 		final String S_ProcName = "deleteRelationColByPrevIdx";
 		boolean permissionGranted = canDeleteRelationCol(S_ProcName, Authorization);
@@ -569,7 +569,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 	 */
 	@Override
 	public void deleteRelationColByNextIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argNextId )
+		$implJavaAtomType$ argNextId )
 	{
 		final String S_ProcName = "deleteRelationColByNextIdx";
 		boolean permissionGranted = canDeleteRelationCol(S_ProcName, Authorization);
@@ -612,8 +612,8 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 	 */
 	@Override
 	public void deleteRelationColByRelPrevIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argRelationId,
-		CFLibDbKeyHash256 argPrevId )
+		$implJavaAtomType$ argRelationId,
+		$implJavaAtomType$ argPrevId )
 	{
 		final String S_ProcName = "deleteRelationColByRelPrevIdx";
 		boolean permissionGranted = canDeleteRelationCol(S_ProcName, Authorization);
@@ -658,8 +658,8 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 	 */
 	@Override
 	public void deleteRelationColByRelNextIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argRelationId,
-		CFLibDbKeyHash256 argNextId )
+		$implJavaAtomType$ argRelationId,
+		$implJavaAtomType$ argNextId )
 	{
 		final String S_ProcName = "deleteRelationColByRelNextIdx";
 		boolean permissionGranted = canDeleteRelationCol(S_ProcName, Authorization);
@@ -706,7 +706,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 	 */
 	@Override
 	public ICFBamRelationCol readDerived( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 PKey )
+		ICFLibKeyHash256 PKey )
 	{
 		final String S_ProcName = "readDerived";
 		boolean permissionGranted = canReadRelationCol(S_ProcName, Authorization);
@@ -730,7 +730,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 	 */
 	@Override
 	public ICFBamRelationCol lockDerived( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 PKey )
+		ICFLibKeyHash256 PKey )
 	{
 		final String S_ProcName = "lockDerived";
 		boolean permissionGranted = canUpdateRelationCol(S_ProcName, Authorization);
@@ -778,7 +778,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 	 */
 	@Override
 	public ICFBamRelationCol readDerivedByIdIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argId )
+		$implJavaAtomType$ argId )
 	{
 		final String S_ProcName = "readDerivedByIdIdx";
 		boolean permissionGranted = false;
@@ -815,8 +815,8 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 	 */
 	@Override
 	public ICFBamRelationCol readDerivedByUNameIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argRelationId,
-		String argName )
+		$implJavaAtomType$ argRelationId,
+		$implJavaAtomType$ argName )
 	{
 		final String S_ProcName = "readDerivedByUNameIdx";
 		boolean permissionGranted = false;
@@ -851,7 +851,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 	 */
 	@Override
 	public ICFBamRelationCol[] readDerivedByRelationIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argRelationId )
+		$implJavaAtomType$ argRelationId )
 	{
 		final String S_ProcName = "readDerivedByRelationIdx";
 		boolean permissionGranted = false;
@@ -881,7 +881,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 	 */
 	@Override
 	public ICFBamRelationCol[] readDerivedByDefSchemaIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argDefSchemaId )
+		$implJavaAtomType$ argDefSchemaId )
 	{
 		final String S_ProcName = "readDerivedByDefSchemaIdx";
 		boolean permissionGranted = false;
@@ -911,7 +911,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 	 */
 	@Override
 	public ICFBamRelationCol[] readDerivedByFromColIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argFromColId )
+		$implJavaAtomType$ argFromColId )
 	{
 		final String S_ProcName = "readDerivedByFromColIdx";
 		boolean permissionGranted = false;
@@ -941,7 +941,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 	 */
 	@Override
 	public ICFBamRelationCol[] readDerivedByToColIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argToColId )
+		$implJavaAtomType$ argToColId )
 	{
 		final String S_ProcName = "readDerivedByToColIdx";
 		boolean permissionGranted = false;
@@ -971,7 +971,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 	 */
 	@Override
 	public ICFBamRelationCol[] readDerivedByPrevIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argPrevId )
+		$implJavaAtomType$ argPrevId )
 	{
 		final String S_ProcName = "readDerivedByPrevIdx";
 		boolean permissionGranted = false;
@@ -1001,7 +1001,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 	 */
 	@Override
 	public ICFBamRelationCol[] readDerivedByNextIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argNextId )
+		$implJavaAtomType$ argNextId )
 	{
 		final String S_ProcName = "readDerivedByNextIdx";
 		boolean permissionGranted = false;
@@ -1033,8 +1033,8 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 	 */
 	@Override
 	public ICFBamRelationCol[] readDerivedByRelPrevIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argRelationId,
-		CFLibDbKeyHash256 argPrevId )
+		$implJavaAtomType$ argRelationId,
+		$implJavaAtomType$ argPrevId )
 	{
 		final String S_ProcName = "readDerivedByRelPrevIdx";
 		boolean permissionGranted = false;
@@ -1067,8 +1067,8 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 	 */
 	@Override
 	public ICFBamRelationCol[] readDerivedByRelNextIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argRelationId,
-		CFLibDbKeyHash256 argNextId )
+		$implJavaAtomType$ argRelationId,
+		$implJavaAtomType$ argNextId )
 	{
 		final String S_ProcName = "readDerivedByRelNextIdx";
 		boolean permissionGranted = false;
@@ -1102,7 +1102,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 	 */
 	@Override
 	public ICFBamRelationCol readRec( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 PKey )
+		ICFLibKeyHash256 PKey )
 	{
 		final String S_ProcName = "readRec";
 		boolean permissionGranted = canReadRelationCol(S_ProcName, Authorization);
@@ -1127,7 +1127,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 	 */
 	@Override
 	public ICFBamRelationCol lockRec( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 PKey )
+		ICFLibKeyHash256 PKey )
 	{
 		final String S_ProcName = "lockRec";
 		boolean permissionGranted = canUpdateRelationCol(S_ProcName, Authorization);
@@ -1171,7 +1171,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 	 */
 	@Override
 	public ICFBamRelationCol readRecByIdIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argId )
+		$implJavaAtomType$ argId )
 	{
 		final String S_ProcName = "readRecByIdIdx";
 		boolean permissionGranted = false;
@@ -1200,8 +1200,8 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 	 */
 	@Override
 	public ICFBamRelationCol readRecByUNameIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argRelationId,
-		String argName )
+		$implJavaAtomType$ argRelationId,
+		$implJavaAtomType$ argName )
 	{
 		final String S_ProcName = "readRecByUNameIdx";
 		boolean permissionGranted = false;
@@ -1227,7 +1227,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 	 */
 	@Override
 	public ICFBamRelationCol[] readRecByRelationIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argRelationId )
+		$implJavaAtomType$ argRelationId )
 	{
 		final String S_ProcName = "readRecByRelationIdx";
 		boolean permissionGranted = false;
@@ -1253,7 +1253,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 	 */
 	@Override
 	public ICFBamRelationCol[] readRecByDefSchemaIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argDefSchemaId )
+		$implJavaAtomType$ argDefSchemaId )
 	{
 		final String S_ProcName = "readRecByDefSchemaIdx";
 		boolean permissionGranted = false;
@@ -1279,7 +1279,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 	 */
 	@Override
 	public ICFBamRelationCol[] readRecByFromColIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argFromColId )
+		$implJavaAtomType$ argFromColId )
 	{
 		final String S_ProcName = "readRecByFromColIdx";
 		boolean permissionGranted = false;
@@ -1305,7 +1305,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 	 */
 	@Override
 	public ICFBamRelationCol[] readRecByToColIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argToColId )
+		$implJavaAtomType$ argToColId )
 	{
 		final String S_ProcName = "readRecByToColIdx";
 		boolean permissionGranted = false;
@@ -1331,7 +1331,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 	 */
 	@Override
 	public ICFBamRelationCol[] readRecByPrevIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argPrevId )
+		$implJavaAtomType$ argPrevId )
 	{
 		final String S_ProcName = "readRecByPrevIdx";
 		boolean permissionGranted = false;
@@ -1357,7 +1357,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 	 */
 	@Override
 	public ICFBamRelationCol[] readRecByNextIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argNextId )
+		$implJavaAtomType$ argNextId )
 	{
 		final String S_ProcName = "readRecByNextIdx";
 		boolean permissionGranted = false;
@@ -1385,8 +1385,8 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 	 */
 	@Override
 	public ICFBamRelationCol[] readRecByRelPrevIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argRelationId,
-		CFLibDbKeyHash256 argPrevId )
+		$implJavaAtomType$ argRelationId,
+		$implJavaAtomType$ argPrevId )
 	{
 		final String S_ProcName = "readRecByRelPrevIdx";
 		boolean permissionGranted = false;
@@ -1414,8 +1414,8 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 	 */
 	@Override
 	public ICFBamRelationCol[] readRecByRelNextIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argRelationId,
-		CFLibDbKeyHash256 argNextId )
+		$implJavaAtomType$ argRelationId,
+		$implJavaAtomType$ argNextId )
 	{
 		final String S_ProcName = "readRecByRelNextIdx";
 		boolean permissionGranted = false;
@@ -1435,7 +1435,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 	 */
 	@Override
 	public ICFBamRelationCol moveRecUp( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argId,
+		$implJavaAtomType$ argId,
 		int revision )
 	{
 		final String S_ProcName = "moveRecUp";
@@ -1454,7 +1454,7 @@ public class CFBamJpaRelationColTable implements ICFBamRelationColTable
 	 */
 	@Override
 	public ICFBamRelationCol moveRecDown( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argId,
+		$implJavaAtomType$ argId,
 		int revision )
 	{
 		final String S_ProcName = "moveRecDown";

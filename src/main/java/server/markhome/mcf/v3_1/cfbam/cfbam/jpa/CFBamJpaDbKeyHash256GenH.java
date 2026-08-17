@@ -81,9 +81,9 @@ public class CFBamJpaDbKeyHash256GenH extends CFBamJpaDbKeyHash256TypeH
     implements ICFBamDbKeyHash256GenH
 {
 	@Column( name="Slice", nullable=false )
-	protected short requiredSlice;
+	protected $implJavaAtomType$ requiredSlice;
 	@Column( name="BlockSize", nullable=false )
-	protected int requiredBlockSize;
+	protected $implJavaAtomType$ requiredBlockSize;
 
     public CFBamJpaDbKeyHash256GenH() {
             super();

@@ -85,7 +85,7 @@ public class CFBamJpaNmTokensCol extends CFBamJpaNmTokensDef
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="TableId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 requiredTableId;
+	protected $implJavaAtomType$ requiredTableId;
 
 	public CFBamJpaNmTokensCol() {
 		super();
@@ -131,7 +131,7 @@ public class CFBamJpaNmTokensCol extends CFBamJpaNmTokensDef
 	}
 
 	@Override
-	public void setRequiredContainerTable(CFLibDbKeyHash256 argTableId) {
+	public void setRequiredContainerTable(ICFLibKeyHash256 argTableId) {
 		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
 		if (targetBackingSchema == null) {
 			throw new CFLibNullArgumentException(getClass(), "setRequiredContainerTable", 0, "ICFBamSchema.getBackingCFBam()");

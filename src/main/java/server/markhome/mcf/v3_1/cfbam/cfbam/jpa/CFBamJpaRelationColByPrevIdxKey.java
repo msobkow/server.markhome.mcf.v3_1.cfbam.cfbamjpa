@@ -65,7 +65,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 public class CFBamJpaRelationColByPrevIdxKey
 	implements ICFBamRelationColByPrevIdxKey, Comparable<Object>, Serializable
 {
-	protected CFLibDbKeyHash256 optionalPrevId;
+	protected $implJavaAtomType$ optionalPrevId;
 	public CFBamJpaRelationColByPrevIdxKey() {
 		optionalPrevId = CFLibDbKeyHash256.nullGet();
 	}

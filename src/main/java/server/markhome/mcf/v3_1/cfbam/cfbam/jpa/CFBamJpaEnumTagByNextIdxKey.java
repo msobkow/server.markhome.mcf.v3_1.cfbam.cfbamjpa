@@ -65,7 +65,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 public class CFBamJpaEnumTagByNextIdxKey
 	implements ICFBamEnumTagByNextIdxKey, Comparable<Object>, Serializable
 {
-	protected CFLibDbKeyHash256 optionalNextId;
+	protected $implJavaAtomType$ optionalNextId;
 	public CFBamJpaEnumTagByNextIdxKey() {
 		optionalNextId = CFLibDbKeyHash256.nullGet();
 	}

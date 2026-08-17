@@ -124,31 +124,31 @@ public class CFBamJpaParamH
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="srvmeth_id", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 requiredServerMethodId;
+	protected $implJavaAtomType$ requiredServerMethodId;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="defschid", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 optionalDefSchemaId;
+	protected $implJavaAtomType$ optionalDefSchemaId;
 	@Column( name="safe_name", nullable=false, length=192 )
-	protected String requiredName;
+	protected $implJavaAtomType$ requiredName;
 	@Column( name="short_descr", nullable=true, length=128 )
-	protected String optionalShortDescription;
+	protected $implJavaAtomType$ optionalShortDescription;
 	@Column( name="descr", nullable=true, length=1023 )
-	protected String optionalDescription;
+	protected $implJavaAtomType$ optionalDescription;
 	@Column( name="IsNullable", nullable=false )
-	protected boolean requiredIsNullable;
+	protected $implJavaAtomType$ requiredIsNullable;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="TpId", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 optionalTypeId;
+	protected $implJavaAtomType$ optionalTypeId;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="PrevId", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 optionalPrevId;
+	protected $implJavaAtomType$ optionalPrevId;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="NextId", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 optionalNextId;
+	protected $implJavaAtomType$ optionalNextId;
 
     public CFBamJpaParamH() {
             // The primary key member attributes are initialized on construction
@@ -289,12 +289,12 @@ public class CFBamJpaParamH
     }
 
     @Override
-    public CFLibDbKeyHash256 getRequiredId() {
+    public $implJavaAtomType$ getRequiredId() {
         return( pkey.getRequiredId() );
     }
 
     @Override
-    public void setRequiredId( CFLibDbKeyHash256 requiredId ) {
+    public void setRequiredId( $implJavaAtomType$ requiredId ) {
         pkey.setRequiredId( requiredId );
     }
 

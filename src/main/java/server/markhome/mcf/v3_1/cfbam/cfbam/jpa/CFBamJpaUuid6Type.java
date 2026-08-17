@@ -85,7 +85,7 @@ public class CFBamJpaUuid6Type extends CFBamJpaUuid6Def
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="SchemaDefId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 requiredSchemaDefId;
+	protected $implJavaAtomType$ requiredSchemaDefId;
 
 	public CFBamJpaUuid6Type() {
 		super();
@@ -131,7 +131,7 @@ public class CFBamJpaUuid6Type extends CFBamJpaUuid6Def
 	}
 
 	@Override
-	public void setRequiredContainerSchemaDef(CFLibDbKeyHash256 argSchemaDefId) {
+	public void setRequiredContainerSchemaDef(ICFLibKeyHash256 argSchemaDefId) {
 		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
 		if (targetBackingSchema == null) {
 			throw new CFLibNullArgumentException(getClass(), "setRequiredContainerSchemaDef", 0, "ICFBamSchema.getBackingCFBam()");

@@ -96,19 +96,19 @@ public class CFBamJpaDelTopDep extends CFBamJpaDelDep
 	protected Set<CFBamJpaDelSubDep1> optionalComponentsDelDep;
 
 	@Column( name="safe_name", nullable=false, length=192 )
-	protected String requiredName;
+	protected $implJavaAtomType$ requiredName;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="TableId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 requiredTableId;
+	protected $implJavaAtomType$ requiredTableId;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="PrevId", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 optionalPrevId;
+	protected $implJavaAtomType$ optionalPrevId;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="NextId", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 optionalNextId;
+	protected $implJavaAtomType$ optionalNextId;
 
 	public CFBamJpaDelTopDep() {
 		super();
@@ -157,7 +157,7 @@ public class CFBamJpaDelTopDep extends CFBamJpaDelDep
 	}
 
 	@Override
-	public void setRequiredContainerTable(CFLibDbKeyHash256 argTableId) {
+	public void setRequiredContainerTable(ICFLibKeyHash256 argTableId) {
 		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
 		if (targetBackingSchema == null) {
 			throw new CFLibNullArgumentException(getClass(), "setRequiredContainerTable", 0, "ICFBamSchema.getBackingCFBam()");
@@ -205,7 +205,7 @@ public class CFBamJpaDelTopDep extends CFBamJpaDelDep
 	}
 
 	@Override
-	public void setOptionalLookupPrev(CFLibDbKeyHash256 argPrevId) {
+	public void setOptionalLookupPrev(ICFLibKeyHash256 argPrevId) {
 		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
 		if (targetBackingSchema == null) {
 			throw new CFLibNullArgumentException(getClass(), "setOptionalLookupPrev", 0, "ICFBamSchema.getBackingCFBam()");
@@ -253,7 +253,7 @@ public class CFBamJpaDelTopDep extends CFBamJpaDelDep
 	}
 
 	@Override
-	public void setOptionalLookupNext(CFLibDbKeyHash256 argNextId) {
+	public void setOptionalLookupNext(ICFLibKeyHash256 argNextId) {
 		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
 		if (targetBackingSchema == null) {
 			throw new CFLibNullArgumentException(getClass(), "setOptionalLookupNext", 0, "ICFBamSchema.getBackingCFBam()");

@@ -65,7 +65,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 public class CFBamJpaTweakByDefSchemaIdxKey
 	implements ICFBamTweakByDefSchemaIdxKey, Comparable<Object>, Serializable
 {
-	protected CFLibDbKeyHash256 optionalDefSchemaId;
+	protected $implJavaAtomType$ optionalDefSchemaId;
 	public CFBamJpaTweakByDefSchemaIdxKey() {
 		optionalDefSchemaId = CFLibDbKeyHash256.nullGet();
 	}

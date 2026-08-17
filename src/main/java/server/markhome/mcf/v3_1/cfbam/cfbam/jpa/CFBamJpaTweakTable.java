@@ -298,7 +298,7 @@ public class CFBamJpaTweakTable implements ICFBamTweakTable
 	 */
 	@Override
 	public void deleteTweakByIdIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argKey )
+		ICFLibKeyHash256 argKey )
 	{
 		final String S_ProcName = "deleteTweakByIdIdx";
 		boolean permissionGranted = canDeleteTweak(S_ProcName, Authorization);
@@ -320,8 +320,8 @@ public class CFBamJpaTweakTable implements ICFBamTweakTable
 	 */
 	@Override
 	public void deleteTweakByUNameIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId,
-		String argName )
+		$implJavaAtomType$ argScopeId,
+		$implJavaAtomType$ argName )
 	{
 		final String S_ProcName = "deleteTweakByUNameIdx";
 		boolean permissionGranted = canDeleteTweak(S_ProcName, Authorization);
@@ -364,7 +364,7 @@ public class CFBamJpaTweakTable implements ICFBamTweakTable
 	 */
 	@Override
 	public void deleteTweakByValTentIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argTenantId )
+		$implJavaAtomType$ argTenantId )
 	{
 		final String S_ProcName = "deleteTweakByValTentIdx";
 		boolean permissionGranted = canDeleteTweak(S_ProcName, Authorization);
@@ -405,7 +405,7 @@ public class CFBamJpaTweakTable implements ICFBamTweakTable
 	 */
 	@Override
 	public void deleteTweakByScopeIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId )
+		$implJavaAtomType$ argScopeId )
 	{
 		final String S_ProcName = "deleteTweakByScopeIdx";
 		boolean permissionGranted = canDeleteTweak(S_ProcName, Authorization);
@@ -446,7 +446,7 @@ public class CFBamJpaTweakTable implements ICFBamTweakTable
 	 */
 	@Override
 	public void deleteTweakByDefSchemaIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argDefSchemaId )
+		$implJavaAtomType$ argDefSchemaId )
 	{
 		final String S_ProcName = "deleteTweakByDefSchemaIdx";
 		boolean permissionGranted = canDeleteTweak(S_ProcName, Authorization);
@@ -495,11 +495,11 @@ public class CFBamJpaTweakTable implements ICFBamTweakTable
 	 */
 	@Override
 	public void deleteTweakByUDefIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argTenantId,
-		CFLibDbKeyHash256 argScopeId,
-		CFLibDbKeyHash256 argDefSchemaTenantId,
-		CFLibDbKeyHash256 argDefSchemaId,
-		String argName )
+		$implJavaAtomType$ argTenantId,
+		$implJavaAtomType$ argScopeId,
+		$implJavaAtomType$ argDefSchemaTenantId,
+		$implJavaAtomType$ argDefSchemaId,
+		$implJavaAtomType$ argName )
 	{
 		final String S_ProcName = "deleteTweakByUDefIdx";
 		boolean permissionGranted = canDeleteTweak(S_ProcName, Authorization);
@@ -552,7 +552,7 @@ public class CFBamJpaTweakTable implements ICFBamTweakTable
 	 */
 	@Override
 	public ICFBamTweak readDerived( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 PKey )
+		ICFLibKeyHash256 PKey )
 	{
 		final String S_ProcName = "readDerived";
 		boolean permissionGranted = canReadTweak(S_ProcName, Authorization);
@@ -576,7 +576,7 @@ public class CFBamJpaTweakTable implements ICFBamTweakTable
 	 */
 	@Override
 	public ICFBamTweak lockDerived( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 PKey )
+		ICFLibKeyHash256 PKey )
 	{
 		final String S_ProcName = "lockDerived";
 		boolean permissionGranted = canUpdateTweak(S_ProcName, Authorization);
@@ -624,7 +624,7 @@ public class CFBamJpaTweakTable implements ICFBamTweakTable
 	 */
 	@Override
 	public ICFBamTweak readDerivedByIdIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argId )
+		$implJavaAtomType$ argId )
 	{
 		final String S_ProcName = "readDerivedByIdIdx";
 		boolean permissionGranted = false;
@@ -661,8 +661,8 @@ public class CFBamJpaTweakTable implements ICFBamTweakTable
 	 */
 	@Override
 	public ICFBamTweak readDerivedByUNameIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId,
-		String argName )
+		$implJavaAtomType$ argScopeId,
+		$implJavaAtomType$ argName )
 	{
 		final String S_ProcName = "readDerivedByUNameIdx";
 		boolean permissionGranted = false;
@@ -697,7 +697,7 @@ public class CFBamJpaTweakTable implements ICFBamTweakTable
 	 */
 	@Override
 	public ICFBamTweak[] readDerivedByValTentIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argTenantId )
+		$implJavaAtomType$ argTenantId )
 	{
 		final String S_ProcName = "readDerivedByValTentIdx";
 		boolean permissionGranted = false;
@@ -727,7 +727,7 @@ public class CFBamJpaTweakTable implements ICFBamTweakTable
 	 */
 	@Override
 	public ICFBamTweak[] readDerivedByScopeIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId )
+		$implJavaAtomType$ argScopeId )
 	{
 		final String S_ProcName = "readDerivedByScopeIdx";
 		boolean permissionGranted = false;
@@ -757,7 +757,7 @@ public class CFBamJpaTweakTable implements ICFBamTweakTable
 	 */
 	@Override
 	public ICFBamTweak[] readDerivedByDefSchemaIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argDefSchemaId )
+		$implJavaAtomType$ argDefSchemaId )
 	{
 		final String S_ProcName = "readDerivedByDefSchemaIdx";
 		boolean permissionGranted = false;
@@ -796,11 +796,11 @@ public class CFBamJpaTweakTable implements ICFBamTweakTable
 	 */
 	@Override
 	public ICFBamTweak readDerivedByUDefIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argTenantId,
-		CFLibDbKeyHash256 argScopeId,
-		CFLibDbKeyHash256 argDefSchemaTenantId,
-		CFLibDbKeyHash256 argDefSchemaId,
-		String argName )
+		$implJavaAtomType$ argTenantId,
+		$implJavaAtomType$ argScopeId,
+		$implJavaAtomType$ argDefSchemaTenantId,
+		$implJavaAtomType$ argDefSchemaId,
+		$implJavaAtomType$ argName )
 	{
 		final String S_ProcName = "readDerivedByUDefIdx";
 		boolean permissionGranted = false;
@@ -841,7 +841,7 @@ public class CFBamJpaTweakTable implements ICFBamTweakTable
 	 */
 	@Override
 	public ICFBamTweak readRec( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 PKey )
+		ICFLibKeyHash256 PKey )
 	{
 		final String S_ProcName = "readRec";
 		boolean permissionGranted = canReadTweak(S_ProcName, Authorization);
@@ -866,7 +866,7 @@ public class CFBamJpaTweakTable implements ICFBamTweakTable
 	 */
 	@Override
 	public ICFBamTweak lockRec( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 PKey )
+		ICFLibKeyHash256 PKey )
 	{
 		final String S_ProcName = "lockRec";
 		boolean permissionGranted = canUpdateTweak(S_ProcName, Authorization);
@@ -910,7 +910,7 @@ public class CFBamJpaTweakTable implements ICFBamTweakTable
 	 */
 	@Override
 	public ICFBamTweak readRecByIdIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argId )
+		$implJavaAtomType$ argId )
 	{
 		final String S_ProcName = "readRecByIdIdx";
 		boolean permissionGranted = false;
@@ -939,8 +939,8 @@ public class CFBamJpaTweakTable implements ICFBamTweakTable
 	 */
 	@Override
 	public ICFBamTweak readRecByUNameIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId,
-		String argName )
+		$implJavaAtomType$ argScopeId,
+		$implJavaAtomType$ argName )
 	{
 		final String S_ProcName = "readRecByUNameIdx";
 		boolean permissionGranted = false;
@@ -966,7 +966,7 @@ public class CFBamJpaTweakTable implements ICFBamTweakTable
 	 */
 	@Override
 	public ICFBamTweak[] readRecByValTentIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argTenantId )
+		$implJavaAtomType$ argTenantId )
 	{
 		final String S_ProcName = "readRecByValTentIdx";
 		boolean permissionGranted = false;
@@ -992,7 +992,7 @@ public class CFBamJpaTweakTable implements ICFBamTweakTable
 	 */
 	@Override
 	public ICFBamTweak[] readRecByScopeIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId )
+		$implJavaAtomType$ argScopeId )
 	{
 		final String S_ProcName = "readRecByScopeIdx";
 		boolean permissionGranted = false;
@@ -1018,7 +1018,7 @@ public class CFBamJpaTweakTable implements ICFBamTweakTable
 	 */
 	@Override
 	public ICFBamTweak[] readRecByDefSchemaIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argDefSchemaId )
+		$implJavaAtomType$ argDefSchemaId )
 	{
 		final String S_ProcName = "readRecByDefSchemaIdx";
 		boolean permissionGranted = false;
@@ -1053,11 +1053,11 @@ public class CFBamJpaTweakTable implements ICFBamTweakTable
 	 */
 	@Override
 	public ICFBamTweak readRecByUDefIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argTenantId,
-		CFLibDbKeyHash256 argScopeId,
-		CFLibDbKeyHash256 argDefSchemaTenantId,
-		CFLibDbKeyHash256 argDefSchemaId,
-		String argName )
+		$implJavaAtomType$ argTenantId,
+		$implJavaAtomType$ argScopeId,
+		$implJavaAtomType$ argDefSchemaTenantId,
+		$implJavaAtomType$ argDefSchemaId,
+		$implJavaAtomType$ argName )
 	{
 		final String S_ProcName = "readRecByUDefIdx";
 		boolean permissionGranted = false;

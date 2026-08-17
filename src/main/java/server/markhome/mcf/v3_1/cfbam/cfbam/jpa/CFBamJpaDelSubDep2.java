@@ -88,9 +88,9 @@ public class CFBamJpaDelSubDep2 extends CFBamJpaDelDep
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="contdeldep1id", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 requiredDelSubDep1Id;
+	protected $implJavaAtomType$ requiredDelSubDep1Id;
 	@Column( name="safe_name", nullable=false, length=192 )
-	protected String requiredName;
+	protected $implJavaAtomType$ requiredName;
 
 	public CFBamJpaDelSubDep2() {
 		super();
@@ -137,7 +137,7 @@ public class CFBamJpaDelSubDep2 extends CFBamJpaDelDep
 	}
 
 	@Override
-	public void setRequiredContainerDelSubDep1(CFLibDbKeyHash256 argDelSubDep1Id) {
+	public void setRequiredContainerDelSubDep1(ICFLibKeyHash256 argDelSubDep1Id) {
 		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
 		if (targetBackingSchema == null) {
 			throw new CFLibNullArgumentException(getClass(), "setRequiredContainerDelSubDep1", 0, "ICFBamSchema.getBackingCFBam()");

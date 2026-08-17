@@ -298,7 +298,7 @@ public class CFBamJpaUInt64DefTable implements ICFBamUInt64DefTable
 	 */
 	@Override
 	public void deleteUInt64DefByIdIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argKey )
+		ICFLibKeyHash256 argKey )
 	{
 		final String S_ProcName = "deleteUInt64DefByIdIdx";
 		boolean permissionGranted = canDeleteUInt64Def(S_ProcName, Authorization);
@@ -320,8 +320,8 @@ public class CFBamJpaUInt64DefTable implements ICFBamUInt64DefTable
 	 */
 	@Override
 	public void deleteUInt64DefByUNameIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId,
-		String argName )
+		$implJavaAtomType$ argScopeId,
+		$implJavaAtomType$ argName )
 	{
 		final String S_ProcName = "deleteUInt64DefByUNameIdx";
 		boolean permissionGranted = canDeleteUInt64Def(S_ProcName, Authorization);
@@ -364,7 +364,7 @@ public class CFBamJpaUInt64DefTable implements ICFBamUInt64DefTable
 	 */
 	@Override
 	public void deleteUInt64DefByScopeIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId )
+		$implJavaAtomType$ argScopeId )
 	{
 		final String S_ProcName = "deleteUInt64DefByScopeIdx";
 		boolean permissionGranted = canDeleteUInt64Def(S_ProcName, Authorization);
@@ -405,7 +405,7 @@ public class CFBamJpaUInt64DefTable implements ICFBamUInt64DefTable
 	 */
 	@Override
 	public void deleteUInt64DefByDefSchemaIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argDefSchemaId )
+		$implJavaAtomType$ argDefSchemaId )
 	{
 		final String S_ProcName = "deleteUInt64DefByDefSchemaIdx";
 		boolean permissionGranted = canDeleteUInt64Def(S_ProcName, Authorization);
@@ -446,7 +446,7 @@ public class CFBamJpaUInt64DefTable implements ICFBamUInt64DefTable
 	 */
 	@Override
 	public void deleteUInt64DefByPrevIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argPrevId )
+		$implJavaAtomType$ argPrevId )
 	{
 		final String S_ProcName = "deleteUInt64DefByPrevIdx";
 		boolean permissionGranted = canDeleteUInt64Def(S_ProcName, Authorization);
@@ -487,7 +487,7 @@ public class CFBamJpaUInt64DefTable implements ICFBamUInt64DefTable
 	 */
 	@Override
 	public void deleteUInt64DefByNextIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argNextId )
+		$implJavaAtomType$ argNextId )
 	{
 		final String S_ProcName = "deleteUInt64DefByNextIdx";
 		boolean permissionGranted = canDeleteUInt64Def(S_ProcName, Authorization);
@@ -530,8 +530,8 @@ public class CFBamJpaUInt64DefTable implements ICFBamUInt64DefTable
 	 */
 	@Override
 	public void deleteUInt64DefByContPrevIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId,
-		CFLibDbKeyHash256 argPrevId )
+		$implJavaAtomType$ argScopeId,
+		$implJavaAtomType$ argPrevId )
 	{
 		final String S_ProcName = "deleteUInt64DefByContPrevIdx";
 		boolean permissionGranted = canDeleteUInt64Def(S_ProcName, Authorization);
@@ -576,8 +576,8 @@ public class CFBamJpaUInt64DefTable implements ICFBamUInt64DefTable
 	 */
 	@Override
 	public void deleteUInt64DefByContNextIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId,
-		CFLibDbKeyHash256 argNextId )
+		$implJavaAtomType$ argScopeId,
+		$implJavaAtomType$ argNextId )
 	{
 		final String S_ProcName = "deleteUInt64DefByContNextIdx";
 		boolean permissionGranted = canDeleteUInt64Def(S_ProcName, Authorization);
@@ -624,7 +624,7 @@ public class CFBamJpaUInt64DefTable implements ICFBamUInt64DefTable
 	 */
 	@Override
 	public ICFBamUInt64Def readDerived( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 PKey )
+		ICFLibKeyHash256 PKey )
 	{
 		final String S_ProcName = "readDerived";
 		boolean permissionGranted = canReadUInt64Def(S_ProcName, Authorization);
@@ -648,7 +648,7 @@ public class CFBamJpaUInt64DefTable implements ICFBamUInt64DefTable
 	 */
 	@Override
 	public ICFBamUInt64Def lockDerived( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 PKey )
+		ICFLibKeyHash256 PKey )
 	{
 		final String S_ProcName = "lockDerived";
 		boolean permissionGranted = canUpdateUInt64Def(S_ProcName, Authorization);
@@ -696,7 +696,7 @@ public class CFBamJpaUInt64DefTable implements ICFBamUInt64DefTable
 	 */
 	@Override
 	public ICFBamUInt64Def readDerivedByIdIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argId )
+		$implJavaAtomType$ argId )
 	{
 		final String S_ProcName = "readDerivedByIdIdx";
 		boolean permissionGranted = false;
@@ -733,8 +733,8 @@ public class CFBamJpaUInt64DefTable implements ICFBamUInt64DefTable
 	 */
 	@Override
 	public ICFBamUInt64Def readDerivedByUNameIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId,
-		String argName )
+		$implJavaAtomType$ argScopeId,
+		$implJavaAtomType$ argName )
 	{
 		final String S_ProcName = "readDerivedByUNameIdx";
 		boolean permissionGranted = false;
@@ -769,7 +769,7 @@ public class CFBamJpaUInt64DefTable implements ICFBamUInt64DefTable
 	 */
 	@Override
 	public ICFBamUInt64Def[] readDerivedByScopeIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId )
+		$implJavaAtomType$ argScopeId )
 	{
 		final String S_ProcName = "readDerivedByScopeIdx";
 		boolean permissionGranted = false;
@@ -799,7 +799,7 @@ public class CFBamJpaUInt64DefTable implements ICFBamUInt64DefTable
 	 */
 	@Override
 	public ICFBamUInt64Def[] readDerivedByDefSchemaIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argDefSchemaId )
+		$implJavaAtomType$ argDefSchemaId )
 	{
 		final String S_ProcName = "readDerivedByDefSchemaIdx";
 		boolean permissionGranted = false;
@@ -829,7 +829,7 @@ public class CFBamJpaUInt64DefTable implements ICFBamUInt64DefTable
 	 */
 	@Override
 	public ICFBamUInt64Def[] readDerivedByPrevIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argPrevId )
+		$implJavaAtomType$ argPrevId )
 	{
 		final String S_ProcName = "readDerivedByPrevIdx";
 		boolean permissionGranted = false;
@@ -859,7 +859,7 @@ public class CFBamJpaUInt64DefTable implements ICFBamUInt64DefTable
 	 */
 	@Override
 	public ICFBamUInt64Def[] readDerivedByNextIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argNextId )
+		$implJavaAtomType$ argNextId )
 	{
 		final String S_ProcName = "readDerivedByNextIdx";
 		boolean permissionGranted = false;
@@ -891,8 +891,8 @@ public class CFBamJpaUInt64DefTable implements ICFBamUInt64DefTable
 	 */
 	@Override
 	public ICFBamUInt64Def[] readDerivedByContPrevIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId,
-		CFLibDbKeyHash256 argPrevId )
+		$implJavaAtomType$ argScopeId,
+		$implJavaAtomType$ argPrevId )
 	{
 		final String S_ProcName = "readDerivedByContPrevIdx";
 		boolean permissionGranted = false;
@@ -925,8 +925,8 @@ public class CFBamJpaUInt64DefTable implements ICFBamUInt64DefTable
 	 */
 	@Override
 	public ICFBamUInt64Def[] readDerivedByContNextIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId,
-		CFLibDbKeyHash256 argNextId )
+		$implJavaAtomType$ argScopeId,
+		$implJavaAtomType$ argNextId )
 	{
 		final String S_ProcName = "readDerivedByContNextIdx";
 		boolean permissionGranted = false;
@@ -960,7 +960,7 @@ public class CFBamJpaUInt64DefTable implements ICFBamUInt64DefTable
 	 */
 	@Override
 	public ICFBamUInt64Def readRec( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 PKey )
+		ICFLibKeyHash256 PKey )
 	{
 		final String S_ProcName = "readRec";
 		boolean permissionGranted = canReadUInt64Def(S_ProcName, Authorization);
@@ -985,7 +985,7 @@ public class CFBamJpaUInt64DefTable implements ICFBamUInt64DefTable
 	 */
 	@Override
 	public ICFBamUInt64Def lockRec( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 PKey )
+		ICFLibKeyHash256 PKey )
 	{
 		final String S_ProcName = "lockRec";
 		boolean permissionGranted = canUpdateUInt64Def(S_ProcName, Authorization);
@@ -1029,7 +1029,7 @@ public class CFBamJpaUInt64DefTable implements ICFBamUInt64DefTable
 	 */
 	@Override
 	public ICFBamUInt64Def readRecByIdIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argId )
+		$implJavaAtomType$ argId )
 	{
 		final String S_ProcName = "readRecByIdIdx";
 		boolean permissionGranted = false;
@@ -1058,8 +1058,8 @@ public class CFBamJpaUInt64DefTable implements ICFBamUInt64DefTable
 	 */
 	@Override
 	public ICFBamUInt64Def readRecByUNameIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId,
-		String argName )
+		$implJavaAtomType$ argScopeId,
+		$implJavaAtomType$ argName )
 	{
 		final String S_ProcName = "readRecByUNameIdx";
 		boolean permissionGranted = false;
@@ -1085,7 +1085,7 @@ public class CFBamJpaUInt64DefTable implements ICFBamUInt64DefTable
 	 */
 	@Override
 	public ICFBamUInt64Def[] readRecByScopeIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId )
+		$implJavaAtomType$ argScopeId )
 	{
 		final String S_ProcName = "readRecByScopeIdx";
 		boolean permissionGranted = false;
@@ -1111,7 +1111,7 @@ public class CFBamJpaUInt64DefTable implements ICFBamUInt64DefTable
 	 */
 	@Override
 	public ICFBamUInt64Def[] readRecByDefSchemaIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argDefSchemaId )
+		$implJavaAtomType$ argDefSchemaId )
 	{
 		final String S_ProcName = "readRecByDefSchemaIdx";
 		boolean permissionGranted = false;
@@ -1137,7 +1137,7 @@ public class CFBamJpaUInt64DefTable implements ICFBamUInt64DefTable
 	 */
 	@Override
 	public ICFBamUInt64Def[] readRecByPrevIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argPrevId )
+		$implJavaAtomType$ argPrevId )
 	{
 		final String S_ProcName = "readRecByPrevIdx";
 		boolean permissionGranted = false;
@@ -1163,7 +1163,7 @@ public class CFBamJpaUInt64DefTable implements ICFBamUInt64DefTable
 	 */
 	@Override
 	public ICFBamUInt64Def[] readRecByNextIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argNextId )
+		$implJavaAtomType$ argNextId )
 	{
 		final String S_ProcName = "readRecByNextIdx";
 		boolean permissionGranted = false;
@@ -1191,8 +1191,8 @@ public class CFBamJpaUInt64DefTable implements ICFBamUInt64DefTable
 	 */
 	@Override
 	public ICFBamUInt64Def[] readRecByContPrevIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId,
-		CFLibDbKeyHash256 argPrevId )
+		$implJavaAtomType$ argScopeId,
+		$implJavaAtomType$ argPrevId )
 	{
 		final String S_ProcName = "readRecByContPrevIdx";
 		boolean permissionGranted = false;
@@ -1220,8 +1220,8 @@ public class CFBamJpaUInt64DefTable implements ICFBamUInt64DefTable
 	 */
 	@Override
 	public ICFBamUInt64Def[] readRecByContNextIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId,
-		CFLibDbKeyHash256 argNextId )
+		$implJavaAtomType$ argScopeId,
+		$implJavaAtomType$ argNextId )
 	{
 		final String S_ProcName = "readRecByContNextIdx";
 		boolean permissionGranted = false;
@@ -1241,7 +1241,7 @@ public class CFBamJpaUInt64DefTable implements ICFBamUInt64DefTable
 	 */
 	@Override
 	public ICFBamUInt64Def moveRecUp( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argId,
+		$implJavaAtomType$ argId,
 		int revision )
 	{
 		final String S_ProcName = "moveRecUp";
@@ -1260,7 +1260,7 @@ public class CFBamJpaUInt64DefTable implements ICFBamUInt64DefTable
 	 */
 	@Override
 	public ICFBamUInt64Def moveRecDown( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argId,
+		$implJavaAtomType$ argId,
 		int revision )
 	{
 		final String S_ProcName = "moveRecDown";

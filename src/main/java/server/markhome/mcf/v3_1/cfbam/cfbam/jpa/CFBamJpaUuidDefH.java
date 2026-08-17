@@ -81,7 +81,7 @@ public class CFBamJpaUuidDefH extends CFBamJpaAtomH
     implements ICFBamUuidDefH
 {
 	@Column( name="InitVal", nullable=true, length=16 )
-	protected UUID optionalInitValue;
+	protected $implJavaAtomType$ optionalInitValue;
 
     public CFBamJpaUuidDefH() {
             super();

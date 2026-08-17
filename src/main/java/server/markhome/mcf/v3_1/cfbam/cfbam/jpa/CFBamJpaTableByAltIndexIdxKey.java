@@ -65,7 +65,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 public class CFBamJpaTableByAltIndexIdxKey
 	implements ICFBamTableByAltIndexIdxKey, Comparable<Object>, Serializable
 {
-	protected CFLibDbKeyHash256 optionalAltIndexId;
+	protected $implJavaAtomType$ optionalAltIndexId;
 	public CFBamJpaTableByAltIndexIdxKey() {
 		optionalAltIndexId = CFLibDbKeyHash256.nullGet();
 	}

@@ -298,7 +298,7 @@ public class CFBamJpaIndexColTable implements ICFBamIndexColTable
 	 */
 	@Override
 	public void deleteIndexColByIdIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argKey )
+		ICFLibKeyHash256 argKey )
 	{
 		final String S_ProcName = "deleteIndexColByIdIdx";
 		boolean permissionGranted = canDeleteIndexCol(S_ProcName, Authorization);
@@ -320,8 +320,8 @@ public class CFBamJpaIndexColTable implements ICFBamIndexColTable
 	 */
 	@Override
 	public void deleteIndexColByUNameIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argIndexId,
-		String argName )
+		$implJavaAtomType$ argIndexId,
+		$implJavaAtomType$ argName )
 	{
 		final String S_ProcName = "deleteIndexColByUNameIdx";
 		boolean permissionGranted = canDeleteIndexCol(S_ProcName, Authorization);
@@ -364,7 +364,7 @@ public class CFBamJpaIndexColTable implements ICFBamIndexColTable
 	 */
 	@Override
 	public void deleteIndexColByIndexIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argIndexId )
+		$implJavaAtomType$ argIndexId )
 	{
 		final String S_ProcName = "deleteIndexColByIndexIdx";
 		boolean permissionGranted = canDeleteIndexCol(S_ProcName, Authorization);
@@ -405,7 +405,7 @@ public class CFBamJpaIndexColTable implements ICFBamIndexColTable
 	 */
 	@Override
 	public void deleteIndexColByDefSchemaIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argDefSchemaId )
+		$implJavaAtomType$ argDefSchemaId )
 	{
 		final String S_ProcName = "deleteIndexColByDefSchemaIdx";
 		boolean permissionGranted = canDeleteIndexCol(S_ProcName, Authorization);
@@ -446,7 +446,7 @@ public class CFBamJpaIndexColTable implements ICFBamIndexColTable
 	 */
 	@Override
 	public void deleteIndexColByColIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argColumnId )
+		$implJavaAtomType$ argColumnId )
 	{
 		final String S_ProcName = "deleteIndexColByColIdx";
 		boolean permissionGranted = canDeleteIndexCol(S_ProcName, Authorization);
@@ -487,7 +487,7 @@ public class CFBamJpaIndexColTable implements ICFBamIndexColTable
 	 */
 	@Override
 	public void deleteIndexColByPrevIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argPrevId )
+		$implJavaAtomType$ argPrevId )
 	{
 		final String S_ProcName = "deleteIndexColByPrevIdx";
 		boolean permissionGranted = canDeleteIndexCol(S_ProcName, Authorization);
@@ -528,7 +528,7 @@ public class CFBamJpaIndexColTable implements ICFBamIndexColTable
 	 */
 	@Override
 	public void deleteIndexColByNextIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argNextId )
+		$implJavaAtomType$ argNextId )
 	{
 		final String S_ProcName = "deleteIndexColByNextIdx";
 		boolean permissionGranted = canDeleteIndexCol(S_ProcName, Authorization);
@@ -571,8 +571,8 @@ public class CFBamJpaIndexColTable implements ICFBamIndexColTable
 	 */
 	@Override
 	public void deleteIndexColByIdxPrevIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argIndexId,
-		CFLibDbKeyHash256 argPrevId )
+		$implJavaAtomType$ argIndexId,
+		$implJavaAtomType$ argPrevId )
 	{
 		final String S_ProcName = "deleteIndexColByIdxPrevIdx";
 		boolean permissionGranted = canDeleteIndexCol(S_ProcName, Authorization);
@@ -617,8 +617,8 @@ public class CFBamJpaIndexColTable implements ICFBamIndexColTable
 	 */
 	@Override
 	public void deleteIndexColByIdxNextIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argIndexId,
-		CFLibDbKeyHash256 argNextId )
+		$implJavaAtomType$ argIndexId,
+		$implJavaAtomType$ argNextId )
 	{
 		final String S_ProcName = "deleteIndexColByIdxNextIdx";
 		boolean permissionGranted = canDeleteIndexCol(S_ProcName, Authorization);
@@ -665,7 +665,7 @@ public class CFBamJpaIndexColTable implements ICFBamIndexColTable
 	 */
 	@Override
 	public ICFBamIndexCol readDerived( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 PKey )
+		ICFLibKeyHash256 PKey )
 	{
 		final String S_ProcName = "readDerived";
 		boolean permissionGranted = canReadIndexCol(S_ProcName, Authorization);
@@ -689,7 +689,7 @@ public class CFBamJpaIndexColTable implements ICFBamIndexColTable
 	 */
 	@Override
 	public ICFBamIndexCol lockDerived( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 PKey )
+		ICFLibKeyHash256 PKey )
 	{
 		final String S_ProcName = "lockDerived";
 		boolean permissionGranted = canUpdateIndexCol(S_ProcName, Authorization);
@@ -737,7 +737,7 @@ public class CFBamJpaIndexColTable implements ICFBamIndexColTable
 	 */
 	@Override
 	public ICFBamIndexCol readDerivedByIdIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argId )
+		$implJavaAtomType$ argId )
 	{
 		final String S_ProcName = "readDerivedByIdIdx";
 		boolean permissionGranted = false;
@@ -774,8 +774,8 @@ public class CFBamJpaIndexColTable implements ICFBamIndexColTable
 	 */
 	@Override
 	public ICFBamIndexCol readDerivedByUNameIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argIndexId,
-		String argName )
+		$implJavaAtomType$ argIndexId,
+		$implJavaAtomType$ argName )
 	{
 		final String S_ProcName = "readDerivedByUNameIdx";
 		boolean permissionGranted = false;
@@ -810,7 +810,7 @@ public class CFBamJpaIndexColTable implements ICFBamIndexColTable
 	 */
 	@Override
 	public ICFBamIndexCol[] readDerivedByIndexIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argIndexId )
+		$implJavaAtomType$ argIndexId )
 	{
 		final String S_ProcName = "readDerivedByIndexIdx";
 		boolean permissionGranted = false;
@@ -840,7 +840,7 @@ public class CFBamJpaIndexColTable implements ICFBamIndexColTable
 	 */
 	@Override
 	public ICFBamIndexCol[] readDerivedByDefSchemaIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argDefSchemaId )
+		$implJavaAtomType$ argDefSchemaId )
 	{
 		final String S_ProcName = "readDerivedByDefSchemaIdx";
 		boolean permissionGranted = false;
@@ -870,7 +870,7 @@ public class CFBamJpaIndexColTable implements ICFBamIndexColTable
 	 */
 	@Override
 	public ICFBamIndexCol[] readDerivedByColIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argColumnId )
+		$implJavaAtomType$ argColumnId )
 	{
 		final String S_ProcName = "readDerivedByColIdx";
 		boolean permissionGranted = false;
@@ -900,7 +900,7 @@ public class CFBamJpaIndexColTable implements ICFBamIndexColTable
 	 */
 	@Override
 	public ICFBamIndexCol[] readDerivedByPrevIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argPrevId )
+		$implJavaAtomType$ argPrevId )
 	{
 		final String S_ProcName = "readDerivedByPrevIdx";
 		boolean permissionGranted = false;
@@ -930,7 +930,7 @@ public class CFBamJpaIndexColTable implements ICFBamIndexColTable
 	 */
 	@Override
 	public ICFBamIndexCol[] readDerivedByNextIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argNextId )
+		$implJavaAtomType$ argNextId )
 	{
 		final String S_ProcName = "readDerivedByNextIdx";
 		boolean permissionGranted = false;
@@ -962,8 +962,8 @@ public class CFBamJpaIndexColTable implements ICFBamIndexColTable
 	 */
 	@Override
 	public ICFBamIndexCol[] readDerivedByIdxPrevIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argIndexId,
-		CFLibDbKeyHash256 argPrevId )
+		$implJavaAtomType$ argIndexId,
+		$implJavaAtomType$ argPrevId )
 	{
 		final String S_ProcName = "readDerivedByIdxPrevIdx";
 		boolean permissionGranted = false;
@@ -996,8 +996,8 @@ public class CFBamJpaIndexColTable implements ICFBamIndexColTable
 	 */
 	@Override
 	public ICFBamIndexCol[] readDerivedByIdxNextIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argIndexId,
-		CFLibDbKeyHash256 argNextId )
+		$implJavaAtomType$ argIndexId,
+		$implJavaAtomType$ argNextId )
 	{
 		final String S_ProcName = "readDerivedByIdxNextIdx";
 		boolean permissionGranted = false;
@@ -1031,7 +1031,7 @@ public class CFBamJpaIndexColTable implements ICFBamIndexColTable
 	 */
 	@Override
 	public ICFBamIndexCol readRec( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 PKey )
+		ICFLibKeyHash256 PKey )
 	{
 		final String S_ProcName = "readRec";
 		boolean permissionGranted = canReadIndexCol(S_ProcName, Authorization);
@@ -1056,7 +1056,7 @@ public class CFBamJpaIndexColTable implements ICFBamIndexColTable
 	 */
 	@Override
 	public ICFBamIndexCol lockRec( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 PKey )
+		ICFLibKeyHash256 PKey )
 	{
 		final String S_ProcName = "lockRec";
 		boolean permissionGranted = canUpdateIndexCol(S_ProcName, Authorization);
@@ -1100,7 +1100,7 @@ public class CFBamJpaIndexColTable implements ICFBamIndexColTable
 	 */
 	@Override
 	public ICFBamIndexCol readRecByIdIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argId )
+		$implJavaAtomType$ argId )
 	{
 		final String S_ProcName = "readRecByIdIdx";
 		boolean permissionGranted = false;
@@ -1129,8 +1129,8 @@ public class CFBamJpaIndexColTable implements ICFBamIndexColTable
 	 */
 	@Override
 	public ICFBamIndexCol readRecByUNameIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argIndexId,
-		String argName )
+		$implJavaAtomType$ argIndexId,
+		$implJavaAtomType$ argName )
 	{
 		final String S_ProcName = "readRecByUNameIdx";
 		boolean permissionGranted = false;
@@ -1156,7 +1156,7 @@ public class CFBamJpaIndexColTable implements ICFBamIndexColTable
 	 */
 	@Override
 	public ICFBamIndexCol[] readRecByIndexIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argIndexId )
+		$implJavaAtomType$ argIndexId )
 	{
 		final String S_ProcName = "readRecByIndexIdx";
 		boolean permissionGranted = false;
@@ -1182,7 +1182,7 @@ public class CFBamJpaIndexColTable implements ICFBamIndexColTable
 	 */
 	@Override
 	public ICFBamIndexCol[] readRecByDefSchemaIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argDefSchemaId )
+		$implJavaAtomType$ argDefSchemaId )
 	{
 		final String S_ProcName = "readRecByDefSchemaIdx";
 		boolean permissionGranted = false;
@@ -1208,7 +1208,7 @@ public class CFBamJpaIndexColTable implements ICFBamIndexColTable
 	 */
 	@Override
 	public ICFBamIndexCol[] readRecByColIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argColumnId )
+		$implJavaAtomType$ argColumnId )
 	{
 		final String S_ProcName = "readRecByColIdx";
 		boolean permissionGranted = false;
@@ -1234,7 +1234,7 @@ public class CFBamJpaIndexColTable implements ICFBamIndexColTable
 	 */
 	@Override
 	public ICFBamIndexCol[] readRecByPrevIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argPrevId )
+		$implJavaAtomType$ argPrevId )
 	{
 		final String S_ProcName = "readRecByPrevIdx";
 		boolean permissionGranted = false;
@@ -1260,7 +1260,7 @@ public class CFBamJpaIndexColTable implements ICFBamIndexColTable
 	 */
 	@Override
 	public ICFBamIndexCol[] readRecByNextIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argNextId )
+		$implJavaAtomType$ argNextId )
 	{
 		final String S_ProcName = "readRecByNextIdx";
 		boolean permissionGranted = false;
@@ -1288,8 +1288,8 @@ public class CFBamJpaIndexColTable implements ICFBamIndexColTable
 	 */
 	@Override
 	public ICFBamIndexCol[] readRecByIdxPrevIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argIndexId,
-		CFLibDbKeyHash256 argPrevId )
+		$implJavaAtomType$ argIndexId,
+		$implJavaAtomType$ argPrevId )
 	{
 		final String S_ProcName = "readRecByIdxPrevIdx";
 		boolean permissionGranted = false;
@@ -1317,8 +1317,8 @@ public class CFBamJpaIndexColTable implements ICFBamIndexColTable
 	 */
 	@Override
 	public ICFBamIndexCol[] readRecByIdxNextIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argIndexId,
-		CFLibDbKeyHash256 argNextId )
+		$implJavaAtomType$ argIndexId,
+		$implJavaAtomType$ argNextId )
 	{
 		final String S_ProcName = "readRecByIdxNextIdx";
 		boolean permissionGranted = false;
@@ -1338,7 +1338,7 @@ public class CFBamJpaIndexColTable implements ICFBamIndexColTable
 	 */
 	@Override
 	public ICFBamIndexCol moveRecUp( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argId,
+		$implJavaAtomType$ argId,
 		int revision )
 	{
 		final String S_ProcName = "moveRecUp";
@@ -1357,7 +1357,7 @@ public class CFBamJpaIndexColTable implements ICFBamIndexColTable
 	 */
 	@Override
 	public ICFBamIndexCol moveRecDown( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argId,
+		$implJavaAtomType$ argId,
 		int revision )
 	{
 		final String S_ProcName = "moveRecDown";

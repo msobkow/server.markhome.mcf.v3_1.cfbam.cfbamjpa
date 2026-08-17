@@ -88,9 +88,9 @@ public class CFBamJpaPopSubDep1 extends CFBamJpaPopDep
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="contpopdepid", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 requiredPopTopDepId;
+	protected $implJavaAtomType$ requiredPopTopDepId;
 	@Column( name="safe_name", nullable=false, length=192 )
-	protected String requiredName;
+	protected $implJavaAtomType$ requiredName;
 
 	public CFBamJpaPopSubDep1() {
 		super();
@@ -137,7 +137,7 @@ public class CFBamJpaPopSubDep1 extends CFBamJpaPopDep
 	}
 
 	@Override
-	public void setRequiredContainerContPopTopDep(CFLibDbKeyHash256 argPopTopDepId) {
+	public void setRequiredContainerContPopTopDep(ICFLibKeyHash256 argPopTopDepId) {
 		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
 		if (targetBackingSchema == null) {
 			throw new CFLibNullArgumentException(getClass(), "setRequiredContainerContPopTopDep", 0, "ICFBamSchema.getBackingCFBam()");

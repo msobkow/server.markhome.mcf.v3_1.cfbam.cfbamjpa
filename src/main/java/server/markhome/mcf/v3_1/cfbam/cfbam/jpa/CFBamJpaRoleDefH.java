@@ -123,17 +123,17 @@ public class CFBamJpaRoleDefH
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="ScopeId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 requiredScopeId;
+	protected $implJavaAtomType$ requiredScopeId;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="defschid", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 optionalDefSchemaId;
+	protected $implJavaAtomType$ optionalDefSchemaId;
 	@Column( name="safe_name", nullable=false, length=192 )
-	protected String requiredName;
+	protected $implJavaAtomType$ requiredName;
 	@Column( name="enables_str", nullable=false, length=2000000 )
-	protected String requiredEnables;
+	protected $implJavaAtomType$ requiredEnables;
 	@Column( name="includes_str", nullable=false, length=2000000 )
-	protected String requiredIncludes;
+	protected $implJavaAtomType$ requiredIncludes;
 
     public CFBamJpaRoleDefH() {
             // The primary key member attributes are initialized on construction
@@ -270,12 +270,12 @@ public class CFBamJpaRoleDefH
     }
 
     @Override
-    public CFLibDbKeyHash256 getRequiredId() {
+    public $implJavaAtomType$ getRequiredId() {
         return( pkey.getRequiredId() );
     }
 
     @Override
-    public void setRequiredId( CFLibDbKeyHash256 requiredId ) {
+    public void setRequiredId( $implJavaAtomType$ requiredId ) {
         pkey.setRequiredId( requiredId );
     }
 

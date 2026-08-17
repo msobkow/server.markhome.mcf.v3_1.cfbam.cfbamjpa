@@ -65,7 +65,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 public class CFBamJpaTweakByValTentIdxKey
 	implements ICFBamTweakByValTentIdxKey, Comparable<Object>, Serializable
 {
-	protected CFLibDbKeyHash256 requiredTenantId;
+	protected $implJavaAtomType$ requiredTenantId;
 	public CFBamJpaTweakByValTentIdxKey() {
 		requiredTenantId = CFLibDbKeyHash256.fromHex( ICFBamPubTweak.TENANTID_INIT_VALUE.toString() );
 	}

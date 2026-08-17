@@ -78,9 +78,9 @@ public class CFBamJpaUuid6Gen extends CFBamJpaUuid6Type
 {
 
 	@Column( name="Slice", nullable=false )
-	protected short requiredSlice;
+	protected $implJavaAtomType$ requiredSlice;
 	@Column( name="BlockSize", nullable=false )
-	protected int requiredBlockSize;
+	protected $implJavaAtomType$ requiredBlockSize;
 
 	public CFBamJpaUuid6Gen() {
 		super();

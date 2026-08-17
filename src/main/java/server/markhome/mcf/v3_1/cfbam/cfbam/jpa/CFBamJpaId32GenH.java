@@ -81,9 +81,9 @@ public class CFBamJpaId32GenH extends CFBamJpaInt32TypeH
     implements ICFBamId32GenH
 {
 	@Column( name="Slice", nullable=false )
-	protected short requiredSlice;
+	protected $implJavaAtomType$ requiredSlice;
 	@Column( name="BlockSize", nullable=false )
-	protected int requiredBlockSize;
+	protected $implJavaAtomType$ requiredBlockSize;
 
     public CFBamJpaId32GenH() {
             super();

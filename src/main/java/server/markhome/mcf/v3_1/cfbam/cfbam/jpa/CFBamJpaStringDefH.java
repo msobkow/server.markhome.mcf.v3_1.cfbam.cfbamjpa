@@ -81,11 +81,11 @@ public class CFBamJpaStringDefH extends CFBamJpaAtomH
     implements ICFBamStringDefH
 {
 	@Column( name="db_max_len", nullable=false )
-	protected int requiredMaxLen;
+	protected $implJavaAtomType$ requiredMaxLen;
 	@Column( name="is_polymorph", nullable=false )
-	protected boolean requiredIsPolymorph;
+	protected $implJavaAtomType$ requiredIsPolymorph;
 	@Column( name="InitVal", nullable=true, length=500 )
-	protected String optionalInitValue;
+	protected $implJavaAtomType$ optionalInitValue;
 
     public CFBamJpaStringDefH() {
             super();

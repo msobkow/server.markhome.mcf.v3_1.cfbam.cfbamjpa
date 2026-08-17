@@ -84,7 +84,7 @@ public class CFBamJpaTimestampColH extends CFBamJpaTimestampDefH
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="TableId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 requiredTableId;
+	protected $implJavaAtomType$ requiredTableId;
 
     public CFBamJpaTimestampColH() {
             super();

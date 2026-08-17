@@ -126,37 +126,37 @@ public class CFBamJpaValueH
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="ScopeId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 requiredScopeId;
+	protected $implJavaAtomType$ requiredScopeId;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="defschid", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 optionalDefSchemaId;
+	protected $implJavaAtomType$ optionalDefSchemaId;
 	@Column( name="safe_name", nullable=false, length=192 )
-	protected String requiredName;
+	protected $implJavaAtomType$ requiredName;
 	@Column( name="short_name", nullable=true, length=16 )
-	protected String optionalShortName;
+	protected $implJavaAtomType$ optionalShortName;
 	@Column( name="Label", nullable=true, length=64 )
-	protected String optionalLabel;
+	protected $implJavaAtomType$ optionalLabel;
 	@Column( name="short_descr", nullable=true, length=128 )
-	protected String optionalShortDescription;
+	protected $implJavaAtomType$ optionalShortDescription;
 	@Column( name="descr", nullable=true, length=1023 )
-	protected String optionalDescription;
+	protected $implJavaAtomType$ optionalDescription;
 	@Column( name="dflt_xml_val", nullable=true, length=1023 )
-	protected String optionalDefaultXmlValue;
+	protected $implJavaAtomType$ optionalDefaultXmlValue;
 	@Column( name="IsNullable", nullable=false )
-	protected boolean requiredIsNullable;
+	protected $implJavaAtomType$ requiredIsNullable;
 	@Column( name="GenerateId", nullable=true )
-	protected Boolean optionalGenerateId;
+	protected $implJavaAtomType$ optionalGenerateId;
 	@Column( name="ImplementsPolymorph", nullable=false )
-	protected boolean requiredImplementsPolymorph;
+	protected $implJavaAtomType$ requiredImplementsPolymorph;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="PrevId", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 optionalPrevId;
+	protected $implJavaAtomType$ optionalPrevId;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="NextId", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 optionalNextId;
+	protected $implJavaAtomType$ optionalNextId;
 
     public CFBamJpaValueH() {
             // The primary key member attributes are initialized on construction
@@ -301,12 +301,12 @@ public class CFBamJpaValueH
     }
 
     @Override
-    public CFLibDbKeyHash256 getRequiredId() {
+    public $implJavaAtomType$ getRequiredId() {
         return( pkey.getRequiredId() );
     }
 
     @Override
-    public void setRequiredId( CFLibDbKeyHash256 requiredId ) {
+    public void setRequiredId( $implJavaAtomType$ requiredId ) {
         pkey.setRequiredId( requiredId );
     }
 
@@ -1288,9 +1288,9 @@ public class CFBamJpaValueH
 				}
 			}
 			if( getOptionalGenerateId() != null ) {
-				Boolean lhsGenerateId = getOptionalGenerateId();
+				$implJavaAtomType$ lhsGenerateId = getOptionalGenerateId();
 				if( rhs.getOptionalGenerateId() ) {
-					Boolean rhsGenerateId = rhs.getOptionalGenerateId();
+					$implJavaAtomType$ rhsGenerateId = rhs.getOptionalGenerateId();
 					if( lhsGenerateId ) {
 						if( ! rhsGenerateId ) {
 							return( 1 );
@@ -1516,9 +1516,9 @@ public class CFBamJpaValueH
 				}
 			}
 			if( getOptionalGenerateId() != null ) {
-				Boolean lhsGenerateId = getOptionalGenerateId();
+				$implJavaAtomType$ lhsGenerateId = getOptionalGenerateId();
 				if( rhs.getOptionalGenerateId() ) {
-					Boolean rhsGenerateId = rhs.getOptionalGenerateId();
+					$implJavaAtomType$ rhsGenerateId = rhs.getOptionalGenerateId();
 					if( lhsGenerateId ) {
 						if( ! rhsGenerateId ) {
 							return( 1 );

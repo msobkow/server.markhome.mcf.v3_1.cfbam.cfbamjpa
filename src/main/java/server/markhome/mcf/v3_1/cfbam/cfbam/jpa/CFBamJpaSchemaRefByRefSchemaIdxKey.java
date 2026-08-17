@@ -65,7 +65,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 public class CFBamJpaSchemaRefByRefSchemaIdxKey
 	implements ICFBamSchemaRefByRefSchemaIdxKey, Comparable<Object>, Serializable
 {
-	protected CFLibDbKeyHash256 optionalRefSchemaId;
+	protected $implJavaAtomType$ optionalRefSchemaId;
 	public CFBamJpaSchemaRefByRefSchemaIdxKey() {
 		optionalRefSchemaId = CFLibDbKeyHash256.nullGet();
 	}

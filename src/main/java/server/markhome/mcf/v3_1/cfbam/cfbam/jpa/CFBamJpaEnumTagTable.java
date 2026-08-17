@@ -298,7 +298,7 @@ public class CFBamJpaEnumTagTable implements ICFBamEnumTagTable
 	 */
 	@Override
 	public void deleteEnumTagByIdIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argKey )
+		ICFLibKeyHash256 argKey )
 	{
 		final String S_ProcName = "deleteEnumTagByIdIdx";
 		boolean permissionGranted = canDeleteEnumTag(S_ProcName, Authorization);
@@ -318,7 +318,7 @@ public class CFBamJpaEnumTagTable implements ICFBamEnumTagTable
 	 */
 	@Override
 	public void deleteEnumTagByEnumIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argEnumId )
+		$implJavaAtomType$ argEnumId )
 	{
 		final String S_ProcName = "deleteEnumTagByEnumIdx";
 		boolean permissionGranted = canDeleteEnumTag(S_ProcName, Authorization);
@@ -359,7 +359,7 @@ public class CFBamJpaEnumTagTable implements ICFBamEnumTagTable
 	 */
 	@Override
 	public void deleteEnumTagByDefSchemaIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argDefSchemaId )
+		$implJavaAtomType$ argDefSchemaId )
 	{
 		final String S_ProcName = "deleteEnumTagByDefSchemaIdx";
 		boolean permissionGranted = canDeleteEnumTag(S_ProcName, Authorization);
@@ -402,8 +402,8 @@ public class CFBamJpaEnumTagTable implements ICFBamEnumTagTable
 	 */
 	@Override
 	public void deleteEnumTagByEnumNameIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argEnumId,
-		String argName )
+		$implJavaAtomType$ argEnumId,
+		$implJavaAtomType$ argName )
 	{
 		final String S_ProcName = "deleteEnumTagByEnumNameIdx";
 		boolean permissionGranted = canDeleteEnumTag(S_ProcName, Authorization);
@@ -446,7 +446,7 @@ public class CFBamJpaEnumTagTable implements ICFBamEnumTagTable
 	 */
 	@Override
 	public void deleteEnumTagByPrevIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argPrevId )
+		$implJavaAtomType$ argPrevId )
 	{
 		final String S_ProcName = "deleteEnumTagByPrevIdx";
 		boolean permissionGranted = canDeleteEnumTag(S_ProcName, Authorization);
@@ -487,7 +487,7 @@ public class CFBamJpaEnumTagTable implements ICFBamEnumTagTable
 	 */
 	@Override
 	public void deleteEnumTagByNextIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argNextId )
+		$implJavaAtomType$ argNextId )
 	{
 		final String S_ProcName = "deleteEnumTagByNextIdx";
 		boolean permissionGranted = canDeleteEnumTag(S_ProcName, Authorization);
@@ -532,7 +532,7 @@ public class CFBamJpaEnumTagTable implements ICFBamEnumTagTable
 	 */
 	@Override
 	public ICFBamEnumTag readDerived( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 PKey )
+		ICFLibKeyHash256 PKey )
 	{
 		final String S_ProcName = "readDerived";
 		boolean permissionGranted = canReadEnumTag(S_ProcName, Authorization);
@@ -556,7 +556,7 @@ public class CFBamJpaEnumTagTable implements ICFBamEnumTagTable
 	 */
 	@Override
 	public ICFBamEnumTag lockDerived( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 PKey )
+		ICFLibKeyHash256 PKey )
 	{
 		final String S_ProcName = "lockDerived";
 		boolean permissionGranted = canUpdateEnumTag(S_ProcName, Authorization);
@@ -604,7 +604,7 @@ public class CFBamJpaEnumTagTable implements ICFBamEnumTagTable
 	 */
 	@Override
 	public ICFBamEnumTag readDerivedByIdIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argId )
+		$implJavaAtomType$ argId )
 	{
 		final String S_ProcName = "readDerivedByIdIdx";
 		boolean permissionGranted = false;
@@ -638,7 +638,7 @@ public class CFBamJpaEnumTagTable implements ICFBamEnumTagTable
 	 */
 	@Override
 	public ICFBamEnumTag[] readDerivedByEnumIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argEnumId )
+		$implJavaAtomType$ argEnumId )
 	{
 		final String S_ProcName = "readDerivedByEnumIdx";
 		boolean permissionGranted = false;
@@ -668,7 +668,7 @@ public class CFBamJpaEnumTagTable implements ICFBamEnumTagTable
 	 */
 	@Override
 	public ICFBamEnumTag[] readDerivedByDefSchemaIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argDefSchemaId )
+		$implJavaAtomType$ argDefSchemaId )
 	{
 		final String S_ProcName = "readDerivedByDefSchemaIdx";
 		boolean permissionGranted = false;
@@ -701,8 +701,8 @@ public class CFBamJpaEnumTagTable implements ICFBamEnumTagTable
 	 */
 	@Override
 	public ICFBamEnumTag readDerivedByEnumNameIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argEnumId,
-		String argName )
+		$implJavaAtomType$ argEnumId,
+		$implJavaAtomType$ argName )
 	{
 		final String S_ProcName = "readDerivedByEnumNameIdx";
 		boolean permissionGranted = false;
@@ -737,7 +737,7 @@ public class CFBamJpaEnumTagTable implements ICFBamEnumTagTable
 	 */
 	@Override
 	public ICFBamEnumTag[] readDerivedByPrevIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argPrevId )
+		$implJavaAtomType$ argPrevId )
 	{
 		final String S_ProcName = "readDerivedByPrevIdx";
 		boolean permissionGranted = false;
@@ -767,7 +767,7 @@ public class CFBamJpaEnumTagTable implements ICFBamEnumTagTable
 	 */
 	@Override
 	public ICFBamEnumTag[] readDerivedByNextIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argNextId )
+		$implJavaAtomType$ argNextId )
 	{
 		final String S_ProcName = "readDerivedByNextIdx";
 		boolean permissionGranted = false;
@@ -800,7 +800,7 @@ public class CFBamJpaEnumTagTable implements ICFBamEnumTagTable
 	 */
 	@Override
 	public ICFBamEnumTag readRec( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 PKey )
+		ICFLibKeyHash256 PKey )
 	{
 		final String S_ProcName = "readRec";
 		boolean permissionGranted = canReadEnumTag(S_ProcName, Authorization);
@@ -825,7 +825,7 @@ public class CFBamJpaEnumTagTable implements ICFBamEnumTagTable
 	 */
 	@Override
 	public ICFBamEnumTag lockRec( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 PKey )
+		ICFLibKeyHash256 PKey )
 	{
 		final String S_ProcName = "lockRec";
 		boolean permissionGranted = canUpdateEnumTag(S_ProcName, Authorization);
@@ -869,7 +869,7 @@ public class CFBamJpaEnumTagTable implements ICFBamEnumTagTable
 	 */
 	@Override
 	public ICFBamEnumTag readRecByIdIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argId )
+		$implJavaAtomType$ argId )
 	{
 		final String S_ProcName = "readRecByIdIdx";
 		boolean permissionGranted = false;
@@ -895,7 +895,7 @@ public class CFBamJpaEnumTagTable implements ICFBamEnumTagTable
 	 */
 	@Override
 	public ICFBamEnumTag[] readRecByEnumIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argEnumId )
+		$implJavaAtomType$ argEnumId )
 	{
 		final String S_ProcName = "readRecByEnumIdx";
 		boolean permissionGranted = false;
@@ -921,7 +921,7 @@ public class CFBamJpaEnumTagTable implements ICFBamEnumTagTable
 	 */
 	@Override
 	public ICFBamEnumTag[] readRecByDefSchemaIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argDefSchemaId )
+		$implJavaAtomType$ argDefSchemaId )
 	{
 		final String S_ProcName = "readRecByDefSchemaIdx";
 		boolean permissionGranted = false;
@@ -950,8 +950,8 @@ public class CFBamJpaEnumTagTable implements ICFBamEnumTagTable
 	 */
 	@Override
 	public ICFBamEnumTag readRecByEnumNameIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argEnumId,
-		String argName )
+		$implJavaAtomType$ argEnumId,
+		$implJavaAtomType$ argName )
 	{
 		final String S_ProcName = "readRecByEnumNameIdx";
 		boolean permissionGranted = false;
@@ -977,7 +977,7 @@ public class CFBamJpaEnumTagTable implements ICFBamEnumTagTable
 	 */
 	@Override
 	public ICFBamEnumTag[] readRecByPrevIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argPrevId )
+		$implJavaAtomType$ argPrevId )
 	{
 		final String S_ProcName = "readRecByPrevIdx";
 		boolean permissionGranted = false;
@@ -1003,7 +1003,7 @@ public class CFBamJpaEnumTagTable implements ICFBamEnumTagTable
 	 */
 	@Override
 	public ICFBamEnumTag[] readRecByNextIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argNextId )
+		$implJavaAtomType$ argNextId )
 	{
 		final String S_ProcName = "readRecByNextIdx";
 		boolean permissionGranted = false;
@@ -1023,7 +1023,7 @@ public class CFBamJpaEnumTagTable implements ICFBamEnumTagTable
 	 */
 	@Override
 	public ICFBamEnumTag moveRecUp( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argId,
+		$implJavaAtomType$ argId,
 		int revision )
 	{
 		final String S_ProcName = "moveRecUp";
@@ -1042,7 +1042,7 @@ public class CFBamJpaEnumTagTable implements ICFBamEnumTagTable
 	 */
 	@Override
 	public ICFBamEnumTag moveRecDown( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argId,
+		$implJavaAtomType$ argId,
 		int revision )
 	{
 		final String S_ProcName = "moveRecDown";

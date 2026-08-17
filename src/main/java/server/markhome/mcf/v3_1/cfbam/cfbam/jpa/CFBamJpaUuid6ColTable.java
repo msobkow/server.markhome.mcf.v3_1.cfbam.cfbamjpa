@@ -298,7 +298,7 @@ public class CFBamJpaUuid6ColTable implements ICFBamUuid6ColTable
 	 */
 	@Override
 	public void deleteUuid6ColByTableIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argTableId )
+		$implJavaAtomType$ argTableId )
 	{
 		final String S_ProcName = "deleteUuid6ColByTableIdx";
 		boolean permissionGranted = canDeleteUuid6Col(S_ProcName, Authorization);
@@ -339,7 +339,7 @@ public class CFBamJpaUuid6ColTable implements ICFBamUuid6ColTable
 	 */
 	@Override
 	public void deleteUuid6ColByIdIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argKey )
+		ICFLibKeyHash256 argKey )
 	{
 		final String S_ProcName = "deleteUuid6ColByIdIdx";
 		boolean permissionGranted = canDeleteUuid6Col(S_ProcName, Authorization);
@@ -361,8 +361,8 @@ public class CFBamJpaUuid6ColTable implements ICFBamUuid6ColTable
 	 */
 	@Override
 	public void deleteUuid6ColByUNameIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId,
-		String argName )
+		$implJavaAtomType$ argScopeId,
+		$implJavaAtomType$ argName )
 	{
 		final String S_ProcName = "deleteUuid6ColByUNameIdx";
 		boolean permissionGranted = canDeleteUuid6Col(S_ProcName, Authorization);
@@ -405,7 +405,7 @@ public class CFBamJpaUuid6ColTable implements ICFBamUuid6ColTable
 	 */
 	@Override
 	public void deleteUuid6ColByScopeIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId )
+		$implJavaAtomType$ argScopeId )
 	{
 		final String S_ProcName = "deleteUuid6ColByScopeIdx";
 		boolean permissionGranted = canDeleteUuid6Col(S_ProcName, Authorization);
@@ -446,7 +446,7 @@ public class CFBamJpaUuid6ColTable implements ICFBamUuid6ColTable
 	 */
 	@Override
 	public void deleteUuid6ColByDefSchemaIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argDefSchemaId )
+		$implJavaAtomType$ argDefSchemaId )
 	{
 		final String S_ProcName = "deleteUuid6ColByDefSchemaIdx";
 		boolean permissionGranted = canDeleteUuid6Col(S_ProcName, Authorization);
@@ -487,7 +487,7 @@ public class CFBamJpaUuid6ColTable implements ICFBamUuid6ColTable
 	 */
 	@Override
 	public void deleteUuid6ColByPrevIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argPrevId )
+		$implJavaAtomType$ argPrevId )
 	{
 		final String S_ProcName = "deleteUuid6ColByPrevIdx";
 		boolean permissionGranted = canDeleteUuid6Col(S_ProcName, Authorization);
@@ -528,7 +528,7 @@ public class CFBamJpaUuid6ColTable implements ICFBamUuid6ColTable
 	 */
 	@Override
 	public void deleteUuid6ColByNextIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argNextId )
+		$implJavaAtomType$ argNextId )
 	{
 		final String S_ProcName = "deleteUuid6ColByNextIdx";
 		boolean permissionGranted = canDeleteUuid6Col(S_ProcName, Authorization);
@@ -571,8 +571,8 @@ public class CFBamJpaUuid6ColTable implements ICFBamUuid6ColTable
 	 */
 	@Override
 	public void deleteUuid6ColByContPrevIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId,
-		CFLibDbKeyHash256 argPrevId )
+		$implJavaAtomType$ argScopeId,
+		$implJavaAtomType$ argPrevId )
 	{
 		final String S_ProcName = "deleteUuid6ColByContPrevIdx";
 		boolean permissionGranted = canDeleteUuid6Col(S_ProcName, Authorization);
@@ -617,8 +617,8 @@ public class CFBamJpaUuid6ColTable implements ICFBamUuid6ColTable
 	 */
 	@Override
 	public void deleteUuid6ColByContNextIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId,
-		CFLibDbKeyHash256 argNextId )
+		$implJavaAtomType$ argScopeId,
+		$implJavaAtomType$ argNextId )
 	{
 		final String S_ProcName = "deleteUuid6ColByContNextIdx";
 		boolean permissionGranted = canDeleteUuid6Col(S_ProcName, Authorization);
@@ -665,7 +665,7 @@ public class CFBamJpaUuid6ColTable implements ICFBamUuid6ColTable
 	 */
 	@Override
 	public ICFBamUuid6Col readDerived( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 PKey )
+		ICFLibKeyHash256 PKey )
 	{
 		final String S_ProcName = "readDerived";
 		boolean permissionGranted = canReadUuid6Col(S_ProcName, Authorization);
@@ -689,7 +689,7 @@ public class CFBamJpaUuid6ColTable implements ICFBamUuid6ColTable
 	 */
 	@Override
 	public ICFBamUuid6Col lockDerived( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 PKey )
+		ICFLibKeyHash256 PKey )
 	{
 		final String S_ProcName = "lockDerived";
 		boolean permissionGranted = canUpdateUuid6Col(S_ProcName, Authorization);
@@ -737,7 +737,7 @@ public class CFBamJpaUuid6ColTable implements ICFBamUuid6ColTable
 	 */
 	@Override
 	public ICFBamUuid6Col readDerivedByIdIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argId )
+		$implJavaAtomType$ argId )
 	{
 		final String S_ProcName = "readDerivedByIdIdx";
 		boolean permissionGranted = false;
@@ -774,8 +774,8 @@ public class CFBamJpaUuid6ColTable implements ICFBamUuid6ColTable
 	 */
 	@Override
 	public ICFBamUuid6Col readDerivedByUNameIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId,
-		String argName )
+		$implJavaAtomType$ argScopeId,
+		$implJavaAtomType$ argName )
 	{
 		final String S_ProcName = "readDerivedByUNameIdx";
 		boolean permissionGranted = false;
@@ -810,7 +810,7 @@ public class CFBamJpaUuid6ColTable implements ICFBamUuid6ColTable
 	 */
 	@Override
 	public ICFBamUuid6Col[] readDerivedByScopeIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId )
+		$implJavaAtomType$ argScopeId )
 	{
 		final String S_ProcName = "readDerivedByScopeIdx";
 		boolean permissionGranted = false;
@@ -840,7 +840,7 @@ public class CFBamJpaUuid6ColTable implements ICFBamUuid6ColTable
 	 */
 	@Override
 	public ICFBamUuid6Col[] readDerivedByDefSchemaIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argDefSchemaId )
+		$implJavaAtomType$ argDefSchemaId )
 	{
 		final String S_ProcName = "readDerivedByDefSchemaIdx";
 		boolean permissionGranted = false;
@@ -870,7 +870,7 @@ public class CFBamJpaUuid6ColTable implements ICFBamUuid6ColTable
 	 */
 	@Override
 	public ICFBamUuid6Col[] readDerivedByPrevIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argPrevId )
+		$implJavaAtomType$ argPrevId )
 	{
 		final String S_ProcName = "readDerivedByPrevIdx";
 		boolean permissionGranted = false;
@@ -900,7 +900,7 @@ public class CFBamJpaUuid6ColTable implements ICFBamUuid6ColTable
 	 */
 	@Override
 	public ICFBamUuid6Col[] readDerivedByNextIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argNextId )
+		$implJavaAtomType$ argNextId )
 	{
 		final String S_ProcName = "readDerivedByNextIdx";
 		boolean permissionGranted = false;
@@ -932,8 +932,8 @@ public class CFBamJpaUuid6ColTable implements ICFBamUuid6ColTable
 	 */
 	@Override
 	public ICFBamUuid6Col[] readDerivedByContPrevIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId,
-		CFLibDbKeyHash256 argPrevId )
+		$implJavaAtomType$ argScopeId,
+		$implJavaAtomType$ argPrevId )
 	{
 		final String S_ProcName = "readDerivedByContPrevIdx";
 		boolean permissionGranted = false;
@@ -966,8 +966,8 @@ public class CFBamJpaUuid6ColTable implements ICFBamUuid6ColTable
 	 */
 	@Override
 	public ICFBamUuid6Col[] readDerivedByContNextIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId,
-		CFLibDbKeyHash256 argNextId )
+		$implJavaAtomType$ argScopeId,
+		$implJavaAtomType$ argNextId )
 	{
 		final String S_ProcName = "readDerivedByContNextIdx";
 		boolean permissionGranted = false;
@@ -998,7 +998,7 @@ public class CFBamJpaUuid6ColTable implements ICFBamUuid6ColTable
 	 */
 	@Override
 	public ICFBamUuid6Col[] readDerivedByTableIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argTableId )
+		$implJavaAtomType$ argTableId )
 	{
 		final String S_ProcName = "readDerivedByTableIdx";
 		boolean permissionGranted = false;
@@ -1031,7 +1031,7 @@ public class CFBamJpaUuid6ColTable implements ICFBamUuid6ColTable
 	 */
 	@Override
 	public ICFBamUuid6Col readRec( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 PKey )
+		ICFLibKeyHash256 PKey )
 	{
 		final String S_ProcName = "readRec";
 		boolean permissionGranted = canReadUuid6Col(S_ProcName, Authorization);
@@ -1056,7 +1056,7 @@ public class CFBamJpaUuid6ColTable implements ICFBamUuid6ColTable
 	 */
 	@Override
 	public ICFBamUuid6Col lockRec( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 PKey )
+		ICFLibKeyHash256 PKey )
 	{
 		final String S_ProcName = "lockRec";
 		boolean permissionGranted = canUpdateUuid6Col(S_ProcName, Authorization);
@@ -1100,7 +1100,7 @@ public class CFBamJpaUuid6ColTable implements ICFBamUuid6ColTable
 	 */
 	@Override
 	public ICFBamUuid6Col readRecByIdIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argId )
+		$implJavaAtomType$ argId )
 	{
 		final String S_ProcName = "readRecByIdIdx";
 		boolean permissionGranted = false;
@@ -1129,8 +1129,8 @@ public class CFBamJpaUuid6ColTable implements ICFBamUuid6ColTable
 	 */
 	@Override
 	public ICFBamUuid6Col readRecByUNameIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId,
-		String argName )
+		$implJavaAtomType$ argScopeId,
+		$implJavaAtomType$ argName )
 	{
 		final String S_ProcName = "readRecByUNameIdx";
 		boolean permissionGranted = false;
@@ -1156,7 +1156,7 @@ public class CFBamJpaUuid6ColTable implements ICFBamUuid6ColTable
 	 */
 	@Override
 	public ICFBamUuid6Col[] readRecByScopeIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId )
+		$implJavaAtomType$ argScopeId )
 	{
 		final String S_ProcName = "readRecByScopeIdx";
 		boolean permissionGranted = false;
@@ -1182,7 +1182,7 @@ public class CFBamJpaUuid6ColTable implements ICFBamUuid6ColTable
 	 */
 	@Override
 	public ICFBamUuid6Col[] readRecByDefSchemaIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argDefSchemaId )
+		$implJavaAtomType$ argDefSchemaId )
 	{
 		final String S_ProcName = "readRecByDefSchemaIdx";
 		boolean permissionGranted = false;
@@ -1208,7 +1208,7 @@ public class CFBamJpaUuid6ColTable implements ICFBamUuid6ColTable
 	 */
 	@Override
 	public ICFBamUuid6Col[] readRecByPrevIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argPrevId )
+		$implJavaAtomType$ argPrevId )
 	{
 		final String S_ProcName = "readRecByPrevIdx";
 		boolean permissionGranted = false;
@@ -1234,7 +1234,7 @@ public class CFBamJpaUuid6ColTable implements ICFBamUuid6ColTable
 	 */
 	@Override
 	public ICFBamUuid6Col[] readRecByNextIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argNextId )
+		$implJavaAtomType$ argNextId )
 	{
 		final String S_ProcName = "readRecByNextIdx";
 		boolean permissionGranted = false;
@@ -1262,8 +1262,8 @@ public class CFBamJpaUuid6ColTable implements ICFBamUuid6ColTable
 	 */
 	@Override
 	public ICFBamUuid6Col[] readRecByContPrevIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId,
-		CFLibDbKeyHash256 argPrevId )
+		$implJavaAtomType$ argScopeId,
+		$implJavaAtomType$ argPrevId )
 	{
 		final String S_ProcName = "readRecByContPrevIdx";
 		boolean permissionGranted = false;
@@ -1291,8 +1291,8 @@ public class CFBamJpaUuid6ColTable implements ICFBamUuid6ColTable
 	 */
 	@Override
 	public ICFBamUuid6Col[] readRecByContNextIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId,
-		CFLibDbKeyHash256 argNextId )
+		$implJavaAtomType$ argScopeId,
+		$implJavaAtomType$ argNextId )
 	{
 		final String S_ProcName = "readRecByContNextIdx";
 		boolean permissionGranted = false;
@@ -1318,7 +1318,7 @@ public class CFBamJpaUuid6ColTable implements ICFBamUuid6ColTable
 	 */
 	@Override
 	public ICFBamUuid6Col[] readRecByTableIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argTableId )
+		$implJavaAtomType$ argTableId )
 	{
 		final String S_ProcName = "readRecByTableIdx";
 		boolean permissionGranted = false;
@@ -1338,7 +1338,7 @@ public class CFBamJpaUuid6ColTable implements ICFBamUuid6ColTable
 	 */
 	@Override
 	public ICFBamUuid6Col moveRecUp( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argId,
+		$implJavaAtomType$ argId,
 		int revision )
 	{
 		final String S_ProcName = "moveRecUp";
@@ -1357,7 +1357,7 @@ public class CFBamJpaUuid6ColTable implements ICFBamUuid6ColTable
 	 */
 	@Override
 	public ICFBamUuid6Col moveRecDown( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argId,
+		$implJavaAtomType$ argId,
 		int revision )
 	{
 		final String S_ProcName = "moveRecDown";

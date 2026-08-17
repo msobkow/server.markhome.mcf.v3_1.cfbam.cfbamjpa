@@ -85,7 +85,7 @@ public class CFBamJpaTableTweak extends CFBamJpaTweak
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="TableId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 requiredTableId;
+	protected $implJavaAtomType$ requiredTableId;
 
 	public CFBamJpaTableTweak() {
 		super();
@@ -131,7 +131,7 @@ public class CFBamJpaTableTweak extends CFBamJpaTweak
 	}
 
 	@Override
-	public void setRequiredContainerTableDef(CFLibDbKeyHash256 argTableId) {
+	public void setRequiredContainerTableDef(ICFLibKeyHash256 argTableId) {
 		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
 		if (targetBackingSchema == null) {
 			throw new CFLibNullArgumentException(getClass(), "setRequiredContainerTableDef", 0, "ICFBamSchema.getBackingCFBam()");

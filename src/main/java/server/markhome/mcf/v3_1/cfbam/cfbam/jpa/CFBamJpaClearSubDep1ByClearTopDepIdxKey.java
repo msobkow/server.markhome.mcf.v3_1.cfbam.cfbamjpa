@@ -65,7 +65,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 public class CFBamJpaClearSubDep1ByClearTopDepIdxKey
 	implements ICFBamClearSubDep1ByClearTopDepIdxKey, Comparable<Object>, Serializable
 {
-	protected CFLibDbKeyHash256 requiredClearTopDepId;
+	protected $implJavaAtomType$ requiredClearTopDepId;
 	public CFBamJpaClearSubDep1ByClearTopDepIdxKey() {
 		requiredClearTopDepId = CFLibDbKeyHash256.fromHex( ICFBamPubClearSubDep1.CLEARTOPDEPID_INIT_VALUE.toString() );
 	}

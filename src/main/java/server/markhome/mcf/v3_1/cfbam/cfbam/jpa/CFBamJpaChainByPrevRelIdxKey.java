@@ -65,7 +65,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 public class CFBamJpaChainByPrevRelIdxKey
 	implements ICFBamChainByPrevRelIdxKey, Comparable<Object>, Serializable
 {
-	protected CFLibDbKeyHash256 requiredPrevRelationId;
+	protected $implJavaAtomType$ requiredPrevRelationId;
 	public CFBamJpaChainByPrevRelIdxKey() {
 		requiredPrevRelationId = CFLibDbKeyHash256.fromHex( ICFBamPubChain.PREVRELATIONID_INIT_VALUE.toString() );
 	}

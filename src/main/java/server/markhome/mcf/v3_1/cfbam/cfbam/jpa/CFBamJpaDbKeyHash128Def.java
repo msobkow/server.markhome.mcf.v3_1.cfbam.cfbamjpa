@@ -78,7 +78,7 @@ public class CFBamJpaDbKeyHash128Def extends CFBamJpaAtom
 {
 
 	@Column( name="InitVal", nullable=true, length=32 )
-	protected String optionalInitValue;
+	protected $implJavaAtomType$ optionalInitValue;
 
 	public CFBamJpaDbKeyHash128Def() {
 		super();

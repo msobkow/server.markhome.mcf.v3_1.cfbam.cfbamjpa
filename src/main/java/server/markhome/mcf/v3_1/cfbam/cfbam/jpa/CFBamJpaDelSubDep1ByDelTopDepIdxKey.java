@@ -65,7 +65,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 public class CFBamJpaDelSubDep1ByDelTopDepIdxKey
 	implements ICFBamDelSubDep1ByDelTopDepIdxKey, Comparable<Object>, Serializable
 {
-	protected CFLibDbKeyHash256 requiredDelTopDepId;
+	protected $implJavaAtomType$ requiredDelTopDepId;
 	public CFBamJpaDelSubDep1ByDelTopDepIdxKey() {
 		requiredDelTopDepId = CFLibDbKeyHash256.fromHex( ICFBamPubDelSubDep1.DELTOPDEPID_INIT_VALUE.toString() );
 	}

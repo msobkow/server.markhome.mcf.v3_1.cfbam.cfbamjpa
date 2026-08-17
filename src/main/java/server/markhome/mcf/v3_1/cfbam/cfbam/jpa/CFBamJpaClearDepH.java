@@ -85,11 +85,11 @@ public class CFBamJpaClearDepH extends CFBamJpaScopeH
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="RelationId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 requiredRelationId;
+	protected $implJavaAtomType$ requiredRelationId;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="defschid", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 optionalDefSchemaId;
+	protected $implJavaAtomType$ optionalDefSchemaId;
 
     public CFBamJpaClearDepH() {
             super();

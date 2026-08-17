@@ -65,8 +65,8 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 public class CFBamJpaChainByUNameIdxKey
 	implements ICFBamChainByUNameIdxKey, Comparable<Object>, Serializable
 {
-	protected CFLibDbKeyHash256 requiredTableId;
-	protected String requiredName;
+	protected $implJavaAtomType$ requiredTableId;
+	protected $implJavaAtomType$ requiredName;
 	public CFBamJpaChainByUNameIdxKey() {
 		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamPubChain.TABLEID_INIT_VALUE.toString() );
 		requiredName = ICFBamPubChain.NAME_INIT_VALUE;

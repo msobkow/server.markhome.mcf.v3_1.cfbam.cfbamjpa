@@ -78,9 +78,9 @@ public class CFBamJpaId64Gen extends CFBamJpaInt64Type
 {
 
 	@Column( name="Slice", nullable=false )
-	protected short requiredSlice;
+	protected $implJavaAtomType$ requiredSlice;
 	@Column( name="BlockSize", nullable=false )
-	protected long requiredBlockSize;
+	protected $implJavaAtomType$ requiredBlockSize;
 
 	public CFBamJpaId64Gen() {
 		super();

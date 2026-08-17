@@ -298,7 +298,7 @@ public class CFBamJpaTokenDefTable implements ICFBamTokenDefTable
 	 */
 	@Override
 	public void deleteTokenDefByIdIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argKey )
+		ICFLibKeyHash256 argKey )
 	{
 		final String S_ProcName = "deleteTokenDefByIdIdx";
 		boolean permissionGranted = canDeleteTokenDef(S_ProcName, Authorization);
@@ -320,8 +320,8 @@ public class CFBamJpaTokenDefTable implements ICFBamTokenDefTable
 	 */
 	@Override
 	public void deleteTokenDefByUNameIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId,
-		String argName )
+		$implJavaAtomType$ argScopeId,
+		$implJavaAtomType$ argName )
 	{
 		final String S_ProcName = "deleteTokenDefByUNameIdx";
 		boolean permissionGranted = canDeleteTokenDef(S_ProcName, Authorization);
@@ -364,7 +364,7 @@ public class CFBamJpaTokenDefTable implements ICFBamTokenDefTable
 	 */
 	@Override
 	public void deleteTokenDefByScopeIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId )
+		$implJavaAtomType$ argScopeId )
 	{
 		final String S_ProcName = "deleteTokenDefByScopeIdx";
 		boolean permissionGranted = canDeleteTokenDef(S_ProcName, Authorization);
@@ -405,7 +405,7 @@ public class CFBamJpaTokenDefTable implements ICFBamTokenDefTable
 	 */
 	@Override
 	public void deleteTokenDefByDefSchemaIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argDefSchemaId )
+		$implJavaAtomType$ argDefSchemaId )
 	{
 		final String S_ProcName = "deleteTokenDefByDefSchemaIdx";
 		boolean permissionGranted = canDeleteTokenDef(S_ProcName, Authorization);
@@ -446,7 +446,7 @@ public class CFBamJpaTokenDefTable implements ICFBamTokenDefTable
 	 */
 	@Override
 	public void deleteTokenDefByPrevIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argPrevId )
+		$implJavaAtomType$ argPrevId )
 	{
 		final String S_ProcName = "deleteTokenDefByPrevIdx";
 		boolean permissionGranted = canDeleteTokenDef(S_ProcName, Authorization);
@@ -487,7 +487,7 @@ public class CFBamJpaTokenDefTable implements ICFBamTokenDefTable
 	 */
 	@Override
 	public void deleteTokenDefByNextIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argNextId )
+		$implJavaAtomType$ argNextId )
 	{
 		final String S_ProcName = "deleteTokenDefByNextIdx";
 		boolean permissionGranted = canDeleteTokenDef(S_ProcName, Authorization);
@@ -530,8 +530,8 @@ public class CFBamJpaTokenDefTable implements ICFBamTokenDefTable
 	 */
 	@Override
 	public void deleteTokenDefByContPrevIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId,
-		CFLibDbKeyHash256 argPrevId )
+		$implJavaAtomType$ argScopeId,
+		$implJavaAtomType$ argPrevId )
 	{
 		final String S_ProcName = "deleteTokenDefByContPrevIdx";
 		boolean permissionGranted = canDeleteTokenDef(S_ProcName, Authorization);
@@ -576,8 +576,8 @@ public class CFBamJpaTokenDefTable implements ICFBamTokenDefTable
 	 */
 	@Override
 	public void deleteTokenDefByContNextIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId,
-		CFLibDbKeyHash256 argNextId )
+		$implJavaAtomType$ argScopeId,
+		$implJavaAtomType$ argNextId )
 	{
 		final String S_ProcName = "deleteTokenDefByContNextIdx";
 		boolean permissionGranted = canDeleteTokenDef(S_ProcName, Authorization);
@@ -624,7 +624,7 @@ public class CFBamJpaTokenDefTable implements ICFBamTokenDefTable
 	 */
 	@Override
 	public ICFBamTokenDef readDerived( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 PKey )
+		ICFLibKeyHash256 PKey )
 	{
 		final String S_ProcName = "readDerived";
 		boolean permissionGranted = canReadTokenDef(S_ProcName, Authorization);
@@ -648,7 +648,7 @@ public class CFBamJpaTokenDefTable implements ICFBamTokenDefTable
 	 */
 	@Override
 	public ICFBamTokenDef lockDerived( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 PKey )
+		ICFLibKeyHash256 PKey )
 	{
 		final String S_ProcName = "lockDerived";
 		boolean permissionGranted = canUpdateTokenDef(S_ProcName, Authorization);
@@ -696,7 +696,7 @@ public class CFBamJpaTokenDefTable implements ICFBamTokenDefTable
 	 */
 	@Override
 	public ICFBamTokenDef readDerivedByIdIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argId )
+		$implJavaAtomType$ argId )
 	{
 		final String S_ProcName = "readDerivedByIdIdx";
 		boolean permissionGranted = false;
@@ -733,8 +733,8 @@ public class CFBamJpaTokenDefTable implements ICFBamTokenDefTable
 	 */
 	@Override
 	public ICFBamTokenDef readDerivedByUNameIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId,
-		String argName )
+		$implJavaAtomType$ argScopeId,
+		$implJavaAtomType$ argName )
 	{
 		final String S_ProcName = "readDerivedByUNameIdx";
 		boolean permissionGranted = false;
@@ -769,7 +769,7 @@ public class CFBamJpaTokenDefTable implements ICFBamTokenDefTable
 	 */
 	@Override
 	public ICFBamTokenDef[] readDerivedByScopeIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId )
+		$implJavaAtomType$ argScopeId )
 	{
 		final String S_ProcName = "readDerivedByScopeIdx";
 		boolean permissionGranted = false;
@@ -799,7 +799,7 @@ public class CFBamJpaTokenDefTable implements ICFBamTokenDefTable
 	 */
 	@Override
 	public ICFBamTokenDef[] readDerivedByDefSchemaIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argDefSchemaId )
+		$implJavaAtomType$ argDefSchemaId )
 	{
 		final String S_ProcName = "readDerivedByDefSchemaIdx";
 		boolean permissionGranted = false;
@@ -829,7 +829,7 @@ public class CFBamJpaTokenDefTable implements ICFBamTokenDefTable
 	 */
 	@Override
 	public ICFBamTokenDef[] readDerivedByPrevIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argPrevId )
+		$implJavaAtomType$ argPrevId )
 	{
 		final String S_ProcName = "readDerivedByPrevIdx";
 		boolean permissionGranted = false;
@@ -859,7 +859,7 @@ public class CFBamJpaTokenDefTable implements ICFBamTokenDefTable
 	 */
 	@Override
 	public ICFBamTokenDef[] readDerivedByNextIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argNextId )
+		$implJavaAtomType$ argNextId )
 	{
 		final String S_ProcName = "readDerivedByNextIdx";
 		boolean permissionGranted = false;
@@ -891,8 +891,8 @@ public class CFBamJpaTokenDefTable implements ICFBamTokenDefTable
 	 */
 	@Override
 	public ICFBamTokenDef[] readDerivedByContPrevIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId,
-		CFLibDbKeyHash256 argPrevId )
+		$implJavaAtomType$ argScopeId,
+		$implJavaAtomType$ argPrevId )
 	{
 		final String S_ProcName = "readDerivedByContPrevIdx";
 		boolean permissionGranted = false;
@@ -925,8 +925,8 @@ public class CFBamJpaTokenDefTable implements ICFBamTokenDefTable
 	 */
 	@Override
 	public ICFBamTokenDef[] readDerivedByContNextIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId,
-		CFLibDbKeyHash256 argNextId )
+		$implJavaAtomType$ argScopeId,
+		$implJavaAtomType$ argNextId )
 	{
 		final String S_ProcName = "readDerivedByContNextIdx";
 		boolean permissionGranted = false;
@@ -960,7 +960,7 @@ public class CFBamJpaTokenDefTable implements ICFBamTokenDefTable
 	 */
 	@Override
 	public ICFBamTokenDef readRec( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 PKey )
+		ICFLibKeyHash256 PKey )
 	{
 		final String S_ProcName = "readRec";
 		boolean permissionGranted = canReadTokenDef(S_ProcName, Authorization);
@@ -985,7 +985,7 @@ public class CFBamJpaTokenDefTable implements ICFBamTokenDefTable
 	 */
 	@Override
 	public ICFBamTokenDef lockRec( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 PKey )
+		ICFLibKeyHash256 PKey )
 	{
 		final String S_ProcName = "lockRec";
 		boolean permissionGranted = canUpdateTokenDef(S_ProcName, Authorization);
@@ -1029,7 +1029,7 @@ public class CFBamJpaTokenDefTable implements ICFBamTokenDefTable
 	 */
 	@Override
 	public ICFBamTokenDef readRecByIdIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argId )
+		$implJavaAtomType$ argId )
 	{
 		final String S_ProcName = "readRecByIdIdx";
 		boolean permissionGranted = false;
@@ -1058,8 +1058,8 @@ public class CFBamJpaTokenDefTable implements ICFBamTokenDefTable
 	 */
 	@Override
 	public ICFBamTokenDef readRecByUNameIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId,
-		String argName )
+		$implJavaAtomType$ argScopeId,
+		$implJavaAtomType$ argName )
 	{
 		final String S_ProcName = "readRecByUNameIdx";
 		boolean permissionGranted = false;
@@ -1085,7 +1085,7 @@ public class CFBamJpaTokenDefTable implements ICFBamTokenDefTable
 	 */
 	@Override
 	public ICFBamTokenDef[] readRecByScopeIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId )
+		$implJavaAtomType$ argScopeId )
 	{
 		final String S_ProcName = "readRecByScopeIdx";
 		boolean permissionGranted = false;
@@ -1111,7 +1111,7 @@ public class CFBamJpaTokenDefTable implements ICFBamTokenDefTable
 	 */
 	@Override
 	public ICFBamTokenDef[] readRecByDefSchemaIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argDefSchemaId )
+		$implJavaAtomType$ argDefSchemaId )
 	{
 		final String S_ProcName = "readRecByDefSchemaIdx";
 		boolean permissionGranted = false;
@@ -1137,7 +1137,7 @@ public class CFBamJpaTokenDefTable implements ICFBamTokenDefTable
 	 */
 	@Override
 	public ICFBamTokenDef[] readRecByPrevIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argPrevId )
+		$implJavaAtomType$ argPrevId )
 	{
 		final String S_ProcName = "readRecByPrevIdx";
 		boolean permissionGranted = false;
@@ -1163,7 +1163,7 @@ public class CFBamJpaTokenDefTable implements ICFBamTokenDefTable
 	 */
 	@Override
 	public ICFBamTokenDef[] readRecByNextIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argNextId )
+		$implJavaAtomType$ argNextId )
 	{
 		final String S_ProcName = "readRecByNextIdx";
 		boolean permissionGranted = false;
@@ -1191,8 +1191,8 @@ public class CFBamJpaTokenDefTable implements ICFBamTokenDefTable
 	 */
 	@Override
 	public ICFBamTokenDef[] readRecByContPrevIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId,
-		CFLibDbKeyHash256 argPrevId )
+		$implJavaAtomType$ argScopeId,
+		$implJavaAtomType$ argPrevId )
 	{
 		final String S_ProcName = "readRecByContPrevIdx";
 		boolean permissionGranted = false;
@@ -1220,8 +1220,8 @@ public class CFBamJpaTokenDefTable implements ICFBamTokenDefTable
 	 */
 	@Override
 	public ICFBamTokenDef[] readRecByContNextIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId,
-		CFLibDbKeyHash256 argNextId )
+		$implJavaAtomType$ argScopeId,
+		$implJavaAtomType$ argNextId )
 	{
 		final String S_ProcName = "readRecByContNextIdx";
 		boolean permissionGranted = false;
@@ -1241,7 +1241,7 @@ public class CFBamJpaTokenDefTable implements ICFBamTokenDefTable
 	 */
 	@Override
 	public ICFBamTokenDef moveRecUp( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argId,
+		$implJavaAtomType$ argId,
 		int revision )
 	{
 		final String S_ProcName = "moveRecUp";
@@ -1260,7 +1260,7 @@ public class CFBamJpaTokenDefTable implements ICFBamTokenDefTable
 	 */
 	@Override
 	public ICFBamTokenDef moveRecDown( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argId,
+		$implJavaAtomType$ argId,
 		int revision )
 	{
 		final String S_ProcName = "moveRecDown";

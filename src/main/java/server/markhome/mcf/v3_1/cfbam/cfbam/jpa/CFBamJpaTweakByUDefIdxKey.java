@@ -65,11 +65,11 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 public class CFBamJpaTweakByUDefIdxKey
 	implements ICFBamTweakByUDefIdxKey, Comparable<Object>, Serializable
 {
-	protected CFLibDbKeyHash256 requiredTenantId;
-	protected CFLibDbKeyHash256 requiredScopeId;
-	protected CFLibDbKeyHash256 optionalDefSchemaTenantId;
-	protected CFLibDbKeyHash256 optionalDefSchemaId;
-	protected String requiredName;
+	protected $implJavaAtomType$ requiredTenantId;
+	protected $implJavaAtomType$ requiredScopeId;
+	protected $implJavaAtomType$ optionalDefSchemaTenantId;
+	protected $implJavaAtomType$ optionalDefSchemaId;
+	protected $implJavaAtomType$ requiredName;
 	public CFBamJpaTweakByUDefIdxKey() {
 		requiredTenantId = CFLibDbKeyHash256.fromHex( ICFBamPubTweak.TENANTID_INIT_VALUE.toString() );
 		requiredScopeId = CFLibDbKeyHash256.fromHex( ICFBamPubTweak.SCOPEID_INIT_VALUE.toString() );

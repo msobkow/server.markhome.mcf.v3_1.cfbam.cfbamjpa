@@ -65,7 +65,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 public class CFBamJpaRelationByToTblIdxKey
 	implements ICFBamRelationByToTblIdxKey, Comparable<Object>, Serializable
 {
-	protected CFLibDbKeyHash256 requiredToTableId;
+	protected $implJavaAtomType$ requiredToTableId;
 	public CFBamJpaRelationByToTblIdxKey() {
 		requiredToTableId = CFLibDbKeyHash256.fromHex( ICFBamPubRelation.TOTABLEID_INIT_VALUE.toString() );
 	}

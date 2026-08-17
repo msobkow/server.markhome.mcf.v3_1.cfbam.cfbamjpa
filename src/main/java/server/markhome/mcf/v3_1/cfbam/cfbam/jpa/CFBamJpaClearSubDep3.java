@@ -86,9 +86,9 @@ public class CFBamJpaClearSubDep3 extends CFBamJpaClearDep
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="contclrdep2id", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 requiredClearSubDep2Id;
+	protected $implJavaAtomType$ requiredClearSubDep2Id;
 	@Column( name="safe_name", nullable=false, length=192 )
-	protected String requiredName;
+	protected $implJavaAtomType$ requiredName;
 
 	public CFBamJpaClearSubDep3() {
 		super();
@@ -135,7 +135,7 @@ public class CFBamJpaClearSubDep3 extends CFBamJpaClearDep
 	}
 
 	@Override
-	public void setRequiredContainerClearSubDep2(CFLibDbKeyHash256 argClearSubDep2Id) {
+	public void setRequiredContainerClearSubDep2(ICFLibKeyHash256 argClearSubDep2Id) {
 		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
 		if (targetBackingSchema == null) {
 			throw new CFLibNullArgumentException(getClass(), "setRequiredContainerClearSubDep2", 0, "ICFBamSchema.getBackingCFBam()");

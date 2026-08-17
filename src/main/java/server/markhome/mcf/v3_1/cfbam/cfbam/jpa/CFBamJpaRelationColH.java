@@ -125,37 +125,37 @@ public class CFBamJpaRelationColH
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="RelationId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 requiredRelationId;
+	protected $implJavaAtomType$ requiredRelationId;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="defschid", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 optionalDefSchemaId;
+	protected $implJavaAtomType$ optionalDefSchemaId;
 	@Column( name="safe_name", nullable=false, length=192 )
-	protected String requiredName;
+	protected $implJavaAtomType$ requiredName;
 	@Column( name="short_name", nullable=true, length=16 )
-	protected String optionalShortName;
+	protected $implJavaAtomType$ optionalShortName;
 	@Column( name="Label", nullable=true, length=64 )
-	protected String optionalLabel;
+	protected $implJavaAtomType$ optionalLabel;
 	@Column( name="short_descr", nullable=true, length=128 )
-	protected String optionalShortDescription;
+	protected $implJavaAtomType$ optionalShortDescription;
 	@Column( name="descr", nullable=true, length=1023 )
-	protected String optionalDescription;
+	protected $implJavaAtomType$ optionalDescription;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="FromColId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 requiredFromColId;
+	protected $implJavaAtomType$ requiredFromColId;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="ToColId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 requiredToColId;
+	protected $implJavaAtomType$ requiredToColId;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="PrevId", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 optionalPrevId;
+	protected $implJavaAtomType$ optionalPrevId;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="NextId", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 optionalNextId;
+	protected $implJavaAtomType$ optionalNextId;
 
     public CFBamJpaRelationColH() {
             // The primary key member attributes are initialized on construction
@@ -298,12 +298,12 @@ public class CFBamJpaRelationColH
     }
 
     @Override
-    public CFLibDbKeyHash256 getRequiredId() {
+    public $implJavaAtomType$ getRequiredId() {
         return( pkey.getRequiredId() );
     }
 
     @Override
-    public void setRequiredId( CFLibDbKeyHash256 requiredId ) {
+    public void setRequiredId( $implJavaAtomType$ requiredId ) {
         pkey.setRequiredId( requiredId );
     }
 

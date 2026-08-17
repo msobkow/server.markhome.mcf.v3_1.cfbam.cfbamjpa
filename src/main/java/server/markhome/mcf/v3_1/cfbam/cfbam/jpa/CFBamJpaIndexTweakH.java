@@ -84,7 +84,7 @@ public class CFBamJpaIndexTweakH extends CFBamJpaTweakH
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="IndexId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 requiredIndexId;
+	protected $implJavaAtomType$ requiredIndexId;
 
     public CFBamJpaIndexTweakH() {
             super();

@@ -132,59 +132,59 @@ public class CFBamJpaTable extends CFBamJpaScope
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="SchemaDefId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 requiredSchemaDefId;
+	protected $implJavaAtomType$ requiredSchemaDefId;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="defschid", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 optionalDefSchemaId;
+	protected $implJavaAtomType$ optionalDefSchemaId;
 	@Column( name="safe_name", nullable=false, length=192 )
-	protected String requiredName;
+	protected $implJavaAtomType$ requiredName;
 	@Column( name="DbName", nullable=true, length=32 )
-	protected String optionalDbName;
+	protected $implJavaAtomType$ optionalDbName;
 	@Column( name="short_name", nullable=true, length=16 )
-	protected String optionalShortName;
+	protected $implJavaAtomType$ optionalShortName;
 	@Column( name="Label", nullable=true, length=64 )
-	protected String optionalLabel;
+	protected $implJavaAtomType$ optionalLabel;
 	@Column( name="short_descr", nullable=true, length=50 )
-	protected String optionalShortDescription;
+	protected $implJavaAtomType$ optionalShortDescription;
 	@Column( name="descr", nullable=true, length=100 )
-	protected String optionalDescription;
+	protected $implJavaAtomType$ optionalDescription;
 	@Column( name="PageData", nullable=false )
-	protected boolean requiredPageData;
+	protected $implJavaAtomType$ requiredPageData;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="PrimIdxId", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 optionalPrimaryIndexId;
+	protected $implJavaAtomType$ optionalPrimaryIndexId;
 	@Column( name="TblClsCd", nullable=false, length=4 )
-	protected String requiredTableClassCode;
+	protected $implJavaAtomType$ requiredTableClassCode;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="LookIdxId", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 optionalLookupIndexId;
+	protected $implJavaAtomType$ optionalLookupIndexId;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="AltIdxId", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 optionalAltIndexId;
+	protected $implJavaAtomType$ optionalAltIndexId;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="QualTblId", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 optionalQualifyingTableId;
+	protected $implJavaAtomType$ optionalQualifyingTableId;
 	@Column( name="IsInstantiable", nullable=false )
-	protected boolean requiredIsInstantiable;
+	protected $implJavaAtomType$ requiredIsInstantiable;
 	@Column( name="HasHistory", nullable=false )
-	protected boolean requiredHasHistory;
+	protected $implJavaAtomType$ requiredHasHistory;
 	@Column( name="HasAuditColumns", nullable=false )
-	protected boolean requiredHasAuditColumns;
+	protected $implJavaAtomType$ requiredHasAuditColumns;
 	@Column( name="IsMutable", nullable=false )
-	protected boolean requiredIsMutable;
+	protected $implJavaAtomType$ requiredIsMutable;
 	@Column( name="IsServerOnly", nullable=false )
-	protected boolean requiredIsServerOnly;
+	protected $implJavaAtomType$ requiredIsServerOnly;
 	@Column( name="LoadBehavId", nullable=false )
-	protected ICFBamPubSchema.LoaderBehaviourEnum requiredLoaderBehaviour;
+	protected $implJavaAtomType$ requiredLoaderBehaviour;
 	@Column( name="SecScopeId", nullable=false )
-	protected ICFBamPubSchema.SecScopeEnum requiredSecScope;
+	protected $implJavaAtomType$ requiredSecScope;
 	@Column( name="codevis", nullable=false )
-	protected ICFBamPubSchema.CodeVisibilityEnum requiredCodeVis;
+	protected $implJavaAtomType$ requiredCodeVis;
 
 	public CFBamJpaTable() {
 		super();
@@ -251,7 +251,7 @@ public class CFBamJpaTable extends CFBamJpaScope
 	}
 
 	@Override
-	public void setRequiredContainerSchemaDef(CFLibDbKeyHash256 argSchemaDefId) {
+	public void setRequiredContainerSchemaDef(ICFLibKeyHash256 argSchemaDefId) {
 		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
 		if (targetBackingSchema == null) {
 			throw new CFLibNullArgumentException(getClass(), "setRequiredContainerSchemaDef", 0, "ICFBamSchema.getBackingCFBam()");
@@ -299,7 +299,7 @@ public class CFBamJpaTable extends CFBamJpaScope
 	}
 
 	@Override
-	public void setOptionalLookupDefSchema(CFLibDbKeyHash256 argDefSchemaId) {
+	public void setOptionalLookupDefSchema(ICFLibKeyHash256 argDefSchemaId) {
 		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
 		if (targetBackingSchema == null) {
 			throw new CFLibNullArgumentException(getClass(), "setOptionalLookupDefSchema", 0, "ICFBamSchema.getBackingCFBam()");
@@ -347,7 +347,7 @@ public class CFBamJpaTable extends CFBamJpaScope
 	}
 
 	@Override
-	public void setOptionalLookupLookupIndex(CFLibDbKeyHash256 argLookupIndexId) {
+	public void setOptionalLookupLookupIndex(ICFLibKeyHash256 argLookupIndexId) {
 		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
 		if (targetBackingSchema == null) {
 			throw new CFLibNullArgumentException(getClass(), "setOptionalLookupLookupIndex", 0, "ICFBamSchema.getBackingCFBam()");
@@ -395,7 +395,7 @@ public class CFBamJpaTable extends CFBamJpaScope
 	}
 
 	@Override
-	public void setOptionalLookupAltIndex(CFLibDbKeyHash256 argAltIndexId) {
+	public void setOptionalLookupAltIndex(ICFLibKeyHash256 argAltIndexId) {
 		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
 		if (targetBackingSchema == null) {
 			throw new CFLibNullArgumentException(getClass(), "setOptionalLookupAltIndex", 0, "ICFBamSchema.getBackingCFBam()");
@@ -443,7 +443,7 @@ public class CFBamJpaTable extends CFBamJpaScope
 	}
 
 	@Override
-	public void setOptionalLookupQualTable(CFLibDbKeyHash256 argQualifyingTableId) {
+	public void setOptionalLookupQualTable(ICFLibKeyHash256 argQualifyingTableId) {
 		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
 		if (targetBackingSchema == null) {
 			throw new CFLibNullArgumentException(getClass(), "setOptionalLookupQualTable", 0, "ICFBamSchema.getBackingCFBam()");
@@ -491,7 +491,7 @@ public class CFBamJpaTable extends CFBamJpaScope
 	}
 
 	@Override
-	public void setOptionalLookupPrimaryIndex(CFLibDbKeyHash256 argPrimaryIndexId) {
+	public void setOptionalLookupPrimaryIndex(ICFLibKeyHash256 argPrimaryIndexId) {
 		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
 		if (targetBackingSchema == null) {
 			throw new CFLibNullArgumentException(getClass(), "setOptionalLookupPrimaryIndex", 0, "ICFBamSchema.getBackingCFBam()");

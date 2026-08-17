@@ -86,9 +86,9 @@ public class CFBamJpaSchemaRoleH extends CFBamJpaRoleDefH
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="SchemaDefId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 requiredSchemaDefId;
+	protected $implJavaAtomType$ requiredSchemaDefId;
 	@Column( name="RoleScopeId", nullable=false )
-	protected ICFBamPubSchema.RoleScopeEnum requiredRoleScope;
+	protected $implJavaAtomType$ requiredRoleScope;
 
     public CFBamJpaSchemaRoleH() {
             super();

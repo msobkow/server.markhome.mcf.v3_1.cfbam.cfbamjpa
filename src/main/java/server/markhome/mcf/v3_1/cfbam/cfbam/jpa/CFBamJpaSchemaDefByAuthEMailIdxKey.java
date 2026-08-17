@@ -65,8 +65,8 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 public class CFBamJpaSchemaDefByAuthEMailIdxKey
 	implements ICFBamSchemaDefByAuthEMailIdxKey, Comparable<Object>, Serializable
 {
-	protected CFLibDbKeyHash256 requiredCTenantId;
-	protected String requiredAuthorEMail;
+	protected $implJavaAtomType$ requiredCTenantId;
+	protected $implJavaAtomType$ requiredAuthorEMail;
 	public CFBamJpaSchemaDefByAuthEMailIdxKey() {
 		requiredCTenantId = CFLibDbKeyHash256.fromHex( ICFBamPubSchemaDef.CTENANTID_INIT_VALUE.toString() );
 		requiredAuthorEMail = ICFBamPubSchemaDef.AUTHOREMAIL_INIT_VALUE;

@@ -65,7 +65,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 public class CFBamJpaTweakByScopeIdxKey
 	implements ICFBamTweakByScopeIdxKey, Comparable<Object>, Serializable
 {
-	protected CFLibDbKeyHash256 requiredScopeId;
+	protected $implJavaAtomType$ requiredScopeId;
 	public CFBamJpaTweakByScopeIdxKey() {
 		requiredScopeId = CFLibDbKeyHash256.fromHex( ICFBamPubTweak.SCOPEID_INIT_VALUE.toString() );
 	}

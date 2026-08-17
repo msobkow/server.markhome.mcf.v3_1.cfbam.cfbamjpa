@@ -84,7 +84,7 @@ public class CFBamJpaNmTokensColH extends CFBamJpaNmTokensDefH
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="TableId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 requiredTableId;
+	protected $implJavaAtomType$ requiredTableId;
 
     public CFBamJpaNmTokensColH() {
             super();

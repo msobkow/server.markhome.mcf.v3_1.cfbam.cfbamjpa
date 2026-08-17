@@ -298,7 +298,7 @@ public class CFBamJpaTimestampTypeTable implements ICFBamTimestampTypeTable
 	 */
 	@Override
 	public void deleteTimestampTypeBySchemaIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argSchemaDefId )
+		$implJavaAtomType$ argSchemaDefId )
 	{
 		final String S_ProcName = "deleteTimestampTypeBySchemaIdx";
 		boolean permissionGranted = canDeleteTimestampType(S_ProcName, Authorization);
@@ -339,7 +339,7 @@ public class CFBamJpaTimestampTypeTable implements ICFBamTimestampTypeTable
 	 */
 	@Override
 	public void deleteTimestampTypeByIdIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argKey )
+		ICFLibKeyHash256 argKey )
 	{
 		final String S_ProcName = "deleteTimestampTypeByIdIdx";
 		boolean permissionGranted = canDeleteTimestampType(S_ProcName, Authorization);
@@ -361,8 +361,8 @@ public class CFBamJpaTimestampTypeTable implements ICFBamTimestampTypeTable
 	 */
 	@Override
 	public void deleteTimestampTypeByUNameIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId,
-		String argName )
+		$implJavaAtomType$ argScopeId,
+		$implJavaAtomType$ argName )
 	{
 		final String S_ProcName = "deleteTimestampTypeByUNameIdx";
 		boolean permissionGranted = canDeleteTimestampType(S_ProcName, Authorization);
@@ -405,7 +405,7 @@ public class CFBamJpaTimestampTypeTable implements ICFBamTimestampTypeTable
 	 */
 	@Override
 	public void deleteTimestampTypeByScopeIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId )
+		$implJavaAtomType$ argScopeId )
 	{
 		final String S_ProcName = "deleteTimestampTypeByScopeIdx";
 		boolean permissionGranted = canDeleteTimestampType(S_ProcName, Authorization);
@@ -446,7 +446,7 @@ public class CFBamJpaTimestampTypeTable implements ICFBamTimestampTypeTable
 	 */
 	@Override
 	public void deleteTimestampTypeByDefSchemaIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argDefSchemaId )
+		$implJavaAtomType$ argDefSchemaId )
 	{
 		final String S_ProcName = "deleteTimestampTypeByDefSchemaIdx";
 		boolean permissionGranted = canDeleteTimestampType(S_ProcName, Authorization);
@@ -487,7 +487,7 @@ public class CFBamJpaTimestampTypeTable implements ICFBamTimestampTypeTable
 	 */
 	@Override
 	public void deleteTimestampTypeByPrevIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argPrevId )
+		$implJavaAtomType$ argPrevId )
 	{
 		final String S_ProcName = "deleteTimestampTypeByPrevIdx";
 		boolean permissionGranted = canDeleteTimestampType(S_ProcName, Authorization);
@@ -528,7 +528,7 @@ public class CFBamJpaTimestampTypeTable implements ICFBamTimestampTypeTable
 	 */
 	@Override
 	public void deleteTimestampTypeByNextIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argNextId )
+		$implJavaAtomType$ argNextId )
 	{
 		final String S_ProcName = "deleteTimestampTypeByNextIdx";
 		boolean permissionGranted = canDeleteTimestampType(S_ProcName, Authorization);
@@ -571,8 +571,8 @@ public class CFBamJpaTimestampTypeTable implements ICFBamTimestampTypeTable
 	 */
 	@Override
 	public void deleteTimestampTypeByContPrevIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId,
-		CFLibDbKeyHash256 argPrevId )
+		$implJavaAtomType$ argScopeId,
+		$implJavaAtomType$ argPrevId )
 	{
 		final String S_ProcName = "deleteTimestampTypeByContPrevIdx";
 		boolean permissionGranted = canDeleteTimestampType(S_ProcName, Authorization);
@@ -617,8 +617,8 @@ public class CFBamJpaTimestampTypeTable implements ICFBamTimestampTypeTable
 	 */
 	@Override
 	public void deleteTimestampTypeByContNextIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId,
-		CFLibDbKeyHash256 argNextId )
+		$implJavaAtomType$ argScopeId,
+		$implJavaAtomType$ argNextId )
 	{
 		final String S_ProcName = "deleteTimestampTypeByContNextIdx";
 		boolean permissionGranted = canDeleteTimestampType(S_ProcName, Authorization);
@@ -665,7 +665,7 @@ public class CFBamJpaTimestampTypeTable implements ICFBamTimestampTypeTable
 	 */
 	@Override
 	public ICFBamTimestampType readDerived( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 PKey )
+		ICFLibKeyHash256 PKey )
 	{
 		final String S_ProcName = "readDerived";
 		boolean permissionGranted = canReadTimestampType(S_ProcName, Authorization);
@@ -689,7 +689,7 @@ public class CFBamJpaTimestampTypeTable implements ICFBamTimestampTypeTable
 	 */
 	@Override
 	public ICFBamTimestampType lockDerived( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 PKey )
+		ICFLibKeyHash256 PKey )
 	{
 		final String S_ProcName = "lockDerived";
 		boolean permissionGranted = canUpdateTimestampType(S_ProcName, Authorization);
@@ -737,7 +737,7 @@ public class CFBamJpaTimestampTypeTable implements ICFBamTimestampTypeTable
 	 */
 	@Override
 	public ICFBamTimestampType readDerivedByIdIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argId )
+		$implJavaAtomType$ argId )
 	{
 		final String S_ProcName = "readDerivedByIdIdx";
 		boolean permissionGranted = false;
@@ -774,8 +774,8 @@ public class CFBamJpaTimestampTypeTable implements ICFBamTimestampTypeTable
 	 */
 	@Override
 	public ICFBamTimestampType readDerivedByUNameIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId,
-		String argName )
+		$implJavaAtomType$ argScopeId,
+		$implJavaAtomType$ argName )
 	{
 		final String S_ProcName = "readDerivedByUNameIdx";
 		boolean permissionGranted = false;
@@ -810,7 +810,7 @@ public class CFBamJpaTimestampTypeTable implements ICFBamTimestampTypeTable
 	 */
 	@Override
 	public ICFBamTimestampType[] readDerivedByScopeIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId )
+		$implJavaAtomType$ argScopeId )
 	{
 		final String S_ProcName = "readDerivedByScopeIdx";
 		boolean permissionGranted = false;
@@ -840,7 +840,7 @@ public class CFBamJpaTimestampTypeTable implements ICFBamTimestampTypeTable
 	 */
 	@Override
 	public ICFBamTimestampType[] readDerivedByDefSchemaIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argDefSchemaId )
+		$implJavaAtomType$ argDefSchemaId )
 	{
 		final String S_ProcName = "readDerivedByDefSchemaIdx";
 		boolean permissionGranted = false;
@@ -870,7 +870,7 @@ public class CFBamJpaTimestampTypeTable implements ICFBamTimestampTypeTable
 	 */
 	@Override
 	public ICFBamTimestampType[] readDerivedByPrevIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argPrevId )
+		$implJavaAtomType$ argPrevId )
 	{
 		final String S_ProcName = "readDerivedByPrevIdx";
 		boolean permissionGranted = false;
@@ -900,7 +900,7 @@ public class CFBamJpaTimestampTypeTable implements ICFBamTimestampTypeTable
 	 */
 	@Override
 	public ICFBamTimestampType[] readDerivedByNextIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argNextId )
+		$implJavaAtomType$ argNextId )
 	{
 		final String S_ProcName = "readDerivedByNextIdx";
 		boolean permissionGranted = false;
@@ -932,8 +932,8 @@ public class CFBamJpaTimestampTypeTable implements ICFBamTimestampTypeTable
 	 */
 	@Override
 	public ICFBamTimestampType[] readDerivedByContPrevIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId,
-		CFLibDbKeyHash256 argPrevId )
+		$implJavaAtomType$ argScopeId,
+		$implJavaAtomType$ argPrevId )
 	{
 		final String S_ProcName = "readDerivedByContPrevIdx";
 		boolean permissionGranted = false;
@@ -966,8 +966,8 @@ public class CFBamJpaTimestampTypeTable implements ICFBamTimestampTypeTable
 	 */
 	@Override
 	public ICFBamTimestampType[] readDerivedByContNextIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId,
-		CFLibDbKeyHash256 argNextId )
+		$implJavaAtomType$ argScopeId,
+		$implJavaAtomType$ argNextId )
 	{
 		final String S_ProcName = "readDerivedByContNextIdx";
 		boolean permissionGranted = false;
@@ -998,7 +998,7 @@ public class CFBamJpaTimestampTypeTable implements ICFBamTimestampTypeTable
 	 */
 	@Override
 	public ICFBamTimestampType[] readDerivedBySchemaIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argSchemaDefId )
+		$implJavaAtomType$ argSchemaDefId )
 	{
 		final String S_ProcName = "readDerivedBySchemaIdx";
 		boolean permissionGranted = false;
@@ -1031,7 +1031,7 @@ public class CFBamJpaTimestampTypeTable implements ICFBamTimestampTypeTable
 	 */
 	@Override
 	public ICFBamTimestampType readRec( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 PKey )
+		ICFLibKeyHash256 PKey )
 	{
 		final String S_ProcName = "readRec";
 		boolean permissionGranted = canReadTimestampType(S_ProcName, Authorization);
@@ -1056,7 +1056,7 @@ public class CFBamJpaTimestampTypeTable implements ICFBamTimestampTypeTable
 	 */
 	@Override
 	public ICFBamTimestampType lockRec( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 PKey )
+		ICFLibKeyHash256 PKey )
 	{
 		final String S_ProcName = "lockRec";
 		boolean permissionGranted = canUpdateTimestampType(S_ProcName, Authorization);
@@ -1100,7 +1100,7 @@ public class CFBamJpaTimestampTypeTable implements ICFBamTimestampTypeTable
 	 */
 	@Override
 	public ICFBamTimestampType readRecByIdIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argId )
+		$implJavaAtomType$ argId )
 	{
 		final String S_ProcName = "readRecByIdIdx";
 		boolean permissionGranted = false;
@@ -1129,8 +1129,8 @@ public class CFBamJpaTimestampTypeTable implements ICFBamTimestampTypeTable
 	 */
 	@Override
 	public ICFBamTimestampType readRecByUNameIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId,
-		String argName )
+		$implJavaAtomType$ argScopeId,
+		$implJavaAtomType$ argName )
 	{
 		final String S_ProcName = "readRecByUNameIdx";
 		boolean permissionGranted = false;
@@ -1156,7 +1156,7 @@ public class CFBamJpaTimestampTypeTable implements ICFBamTimestampTypeTable
 	 */
 	@Override
 	public ICFBamTimestampType[] readRecByScopeIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId )
+		$implJavaAtomType$ argScopeId )
 	{
 		final String S_ProcName = "readRecByScopeIdx";
 		boolean permissionGranted = false;
@@ -1182,7 +1182,7 @@ public class CFBamJpaTimestampTypeTable implements ICFBamTimestampTypeTable
 	 */
 	@Override
 	public ICFBamTimestampType[] readRecByDefSchemaIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argDefSchemaId )
+		$implJavaAtomType$ argDefSchemaId )
 	{
 		final String S_ProcName = "readRecByDefSchemaIdx";
 		boolean permissionGranted = false;
@@ -1208,7 +1208,7 @@ public class CFBamJpaTimestampTypeTable implements ICFBamTimestampTypeTable
 	 */
 	@Override
 	public ICFBamTimestampType[] readRecByPrevIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argPrevId )
+		$implJavaAtomType$ argPrevId )
 	{
 		final String S_ProcName = "readRecByPrevIdx";
 		boolean permissionGranted = false;
@@ -1234,7 +1234,7 @@ public class CFBamJpaTimestampTypeTable implements ICFBamTimestampTypeTable
 	 */
 	@Override
 	public ICFBamTimestampType[] readRecByNextIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argNextId )
+		$implJavaAtomType$ argNextId )
 	{
 		final String S_ProcName = "readRecByNextIdx";
 		boolean permissionGranted = false;
@@ -1262,8 +1262,8 @@ public class CFBamJpaTimestampTypeTable implements ICFBamTimestampTypeTable
 	 */
 	@Override
 	public ICFBamTimestampType[] readRecByContPrevIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId,
-		CFLibDbKeyHash256 argPrevId )
+		$implJavaAtomType$ argScopeId,
+		$implJavaAtomType$ argPrevId )
 	{
 		final String S_ProcName = "readRecByContPrevIdx";
 		boolean permissionGranted = false;
@@ -1291,8 +1291,8 @@ public class CFBamJpaTimestampTypeTable implements ICFBamTimestampTypeTable
 	 */
 	@Override
 	public ICFBamTimestampType[] readRecByContNextIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId,
-		CFLibDbKeyHash256 argNextId )
+		$implJavaAtomType$ argScopeId,
+		$implJavaAtomType$ argNextId )
 	{
 		final String S_ProcName = "readRecByContNextIdx";
 		boolean permissionGranted = false;
@@ -1318,7 +1318,7 @@ public class CFBamJpaTimestampTypeTable implements ICFBamTimestampTypeTable
 	 */
 	@Override
 	public ICFBamTimestampType[] readRecBySchemaIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argSchemaDefId )
+		$implJavaAtomType$ argSchemaDefId )
 	{
 		final String S_ProcName = "readRecBySchemaIdx";
 		boolean permissionGranted = false;
@@ -1338,7 +1338,7 @@ public class CFBamJpaTimestampTypeTable implements ICFBamTimestampTypeTable
 	 */
 	@Override
 	public ICFBamTimestampType moveRecUp( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argId,
+		$implJavaAtomType$ argId,
 		int revision )
 	{
 		final String S_ProcName = "moveRecUp";
@@ -1357,7 +1357,7 @@ public class CFBamJpaTimestampTypeTable implements ICFBamTimestampTypeTable
 	 */
 	@Override
 	public ICFBamTimestampType moveRecDown( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argId,
+		$implJavaAtomType$ argId,
 		int revision )
 	{
 		final String S_ProcName = "moveRecDown";

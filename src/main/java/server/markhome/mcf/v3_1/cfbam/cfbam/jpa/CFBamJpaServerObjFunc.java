@@ -85,7 +85,7 @@ public class CFBamJpaServerObjFunc extends CFBamJpaServerMethod
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="rettblid", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 optionalRetTableId;
+	protected $implJavaAtomType$ optionalRetTableId;
 
 	public CFBamJpaServerObjFunc() {
 		super();
@@ -132,7 +132,7 @@ public class CFBamJpaServerObjFunc extends CFBamJpaServerMethod
 	}
 
 	@Override
-	public void setOptionalLookupRetTable(CFLibDbKeyHash256 argRetTableId) {
+	public void setOptionalLookupRetTable(ICFLibKeyHash256 argRetTableId) {
 		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
 		if (targetBackingSchema == null) {
 			throw new CFLibNullArgumentException(getClass(), "setOptionalLookupRetTable", 0, "ICFBamSchema.getBackingCFBam()");

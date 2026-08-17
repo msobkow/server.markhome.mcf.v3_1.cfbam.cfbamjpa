@@ -96,33 +96,33 @@ public class CFBamJpaSchemaDef extends CFBamJpaScope
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="CTenantId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 requiredCTenantId;
+	protected $implJavaAtomType$ requiredCTenantId;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="MinorVersionId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 requiredMinorVersionId;
+	protected $implJavaAtomType$ requiredMinorVersionId;
 	@Column( name="safe_name", nullable=false, length=192 )
-	protected String requiredName;
+	protected $implJavaAtomType$ requiredName;
 	@Column( name="DbName", nullable=true, length=12 )
-	protected String optionalDbName;
+	protected $implJavaAtomType$ optionalDbName;
 	@Column( name="short_name", nullable=true, length=16 )
-	protected String optionalShortName;
+	protected $implJavaAtomType$ optionalShortName;
 	@Column( name="Label", nullable=true, length=64 )
-	protected String optionalLabel;
+	protected $implJavaAtomType$ optionalLabel;
 	@Column( name="short_descr", nullable=true, length=128 )
-	protected String optionalShortDescription;
+	protected $implJavaAtomType$ optionalShortDescription;
 	@Column( name="descr", nullable=true, length=1023 )
-	protected String optionalDescription;
+	protected $implJavaAtomType$ optionalDescription;
 	@Column( name="CopyPerd", nullable=false, length=10 )
-	protected String requiredCopyrightPeriod;
+	protected $implJavaAtomType$ requiredCopyrightPeriod;
 	@Column( name="CopyHold", nullable=false, length=511 )
-	protected String requiredCopyrightHolder;
+	protected $implJavaAtomType$ requiredCopyrightHolder;
 	@Column( name="AuthEMail", nullable=false, length=512 )
-	protected String requiredAuthorEMail;
+	protected $implJavaAtomType$ requiredAuthorEMail;
 	@Column( name="ProjURL", nullable=false, length=1024 )
-	protected String requiredProjectURL;
+	protected $implJavaAtomType$ requiredProjectURL;
 	@Column( name="PubURI", nullable=false, length=512 )
-	protected String requiredPublishURI;
+	protected $implJavaAtomType$ requiredPublishURI;
 
 	public CFBamJpaSchemaDef() {
 		super();
@@ -171,7 +171,7 @@ public class CFBamJpaSchemaDef extends CFBamJpaScope
 	}
 
 	@Override
-	public void setRequiredContainerMinorVersion(CFLibDbKeyHash256 argMinorVersionId) {
+	public void setRequiredContainerMinorVersion(ICFLibKeyHash256 argMinorVersionId) {
 		requiredMinorVersionId = argMinorVersionId;
 	}
 
@@ -200,7 +200,7 @@ public class CFBamJpaSchemaDef extends CFBamJpaScope
 	}
 
 	@Override
-	public void setRequiredOwnerCTenant(CFLibDbKeyHash256 argCTenantId) {
+	public void setRequiredOwnerCTenant(ICFLibKeyHash256 argCTenantId) {
 		requiredCTenantId = argCTenantId;
 	}
 

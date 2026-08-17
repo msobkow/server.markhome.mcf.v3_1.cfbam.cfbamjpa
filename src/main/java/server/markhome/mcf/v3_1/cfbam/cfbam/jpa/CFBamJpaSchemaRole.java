@@ -87,9 +87,9 @@ public class CFBamJpaSchemaRole extends CFBamJpaRoleDef
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="SchemaDefId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 requiredSchemaDefId;
+	protected $implJavaAtomType$ requiredSchemaDefId;
 	@Column( name="RoleScopeId", nullable=false )
-	protected ICFBamPubSchema.RoleScopeEnum requiredRoleScope;
+	protected $implJavaAtomType$ requiredRoleScope;
 
 	public CFBamJpaSchemaRole() {
 		super();
@@ -136,7 +136,7 @@ public class CFBamJpaSchemaRole extends CFBamJpaRoleDef
 	}
 
 	@Override
-	public void setRequiredContainerSchemaDef(CFLibDbKeyHash256 argSchemaDefId) {
+	public void setRequiredContainerSchemaDef(ICFLibKeyHash256 argSchemaDefId) {
 		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
 		if (targetBackingSchema == null) {
 			throw new CFLibNullArgumentException(getClass(), "setRequiredContainerSchemaDef", 0, "ICFBamSchema.getBackingCFBam()");

@@ -90,15 +90,15 @@ public class CFBamJpaTableCol extends CFBamJpaValue
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="TableId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 requiredTableId;
+	protected $implJavaAtomType$ requiredTableId;
 	@Column( name="DbName", nullable=true, length=32 )
-	protected String optionalDbName;
+	protected $implJavaAtomType$ optionalDbName;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="DataId", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 optionalDataId;
+	protected $implJavaAtomType$ optionalDataId;
 	@Column( name="xml_elt_name", nullable=true, length=192 )
-	protected String optionalXmlElementName;
+	protected $implJavaAtomType$ optionalXmlElementName;
 
 	public CFBamJpaTableCol() {
 		super();
@@ -147,7 +147,7 @@ public class CFBamJpaTableCol extends CFBamJpaValue
 	}
 
 	@Override
-	public void setRequiredContainerTable(CFLibDbKeyHash256 argTableId) {
+	public void setRequiredContainerTable(ICFLibKeyHash256 argTableId) {
 		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
 		if (targetBackingSchema == null) {
 			throw new CFLibNullArgumentException(getClass(), "setRequiredContainerTable", 0, "ICFBamSchema.getBackingCFBam()");
@@ -195,7 +195,7 @@ public class CFBamJpaTableCol extends CFBamJpaValue
 	}
 
 	@Override
-	public void setRequiredParentDataType(CFLibDbKeyHash256 argDataId) {
+	public void setRequiredParentDataType(ICFLibKeyHash256 argDataId) {
 		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
 		if (targetBackingSchema == null) {
 			throw new CFLibNullArgumentException(getClass(), "setRequiredParentDataType", 0, "ICFBamSchema.getBackingCFBam()");

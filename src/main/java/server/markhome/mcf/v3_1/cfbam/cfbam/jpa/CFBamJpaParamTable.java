@@ -298,7 +298,7 @@ public class CFBamJpaParamTable implements ICFBamParamTable
 	 */
 	@Override
 	public void deleteParamByIdIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argKey )
+		ICFLibKeyHash256 argKey )
 	{
 		final String S_ProcName = "deleteParamByIdIdx";
 		boolean permissionGranted = canDeleteParam(S_ProcName, Authorization);
@@ -320,8 +320,8 @@ public class CFBamJpaParamTable implements ICFBamParamTable
 	 */
 	@Override
 	public void deleteParamByUNameIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argServerMethodId,
-		String argName )
+		$implJavaAtomType$ argServerMethodId,
+		$implJavaAtomType$ argName )
 	{
 		final String S_ProcName = "deleteParamByUNameIdx";
 		boolean permissionGranted = canDeleteParam(S_ProcName, Authorization);
@@ -364,7 +364,7 @@ public class CFBamJpaParamTable implements ICFBamParamTable
 	 */
 	@Override
 	public void deleteParamByServerMethodIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argServerMethodId )
+		$implJavaAtomType$ argServerMethodId )
 	{
 		final String S_ProcName = "deleteParamByServerMethodIdx";
 		boolean permissionGranted = canDeleteParam(S_ProcName, Authorization);
@@ -405,7 +405,7 @@ public class CFBamJpaParamTable implements ICFBamParamTable
 	 */
 	@Override
 	public void deleteParamByDefSchemaIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argDefSchemaId )
+		$implJavaAtomType$ argDefSchemaId )
 	{
 		final String S_ProcName = "deleteParamByDefSchemaIdx";
 		boolean permissionGranted = canDeleteParam(S_ProcName, Authorization);
@@ -446,7 +446,7 @@ public class CFBamJpaParamTable implements ICFBamParamTable
 	 */
 	@Override
 	public void deleteParamByServerTypeIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argTypeId )
+		$implJavaAtomType$ argTypeId )
 	{
 		final String S_ProcName = "deleteParamByServerTypeIdx";
 		boolean permissionGranted = canDeleteParam(S_ProcName, Authorization);
@@ -487,7 +487,7 @@ public class CFBamJpaParamTable implements ICFBamParamTable
 	 */
 	@Override
 	public void deleteParamByPrevIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argPrevId )
+		$implJavaAtomType$ argPrevId )
 	{
 		final String S_ProcName = "deleteParamByPrevIdx";
 		boolean permissionGranted = canDeleteParam(S_ProcName, Authorization);
@@ -528,7 +528,7 @@ public class CFBamJpaParamTable implements ICFBamParamTable
 	 */
 	@Override
 	public void deleteParamByNextIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argNextId )
+		$implJavaAtomType$ argNextId )
 	{
 		final String S_ProcName = "deleteParamByNextIdx";
 		boolean permissionGranted = canDeleteParam(S_ProcName, Authorization);
@@ -571,8 +571,8 @@ public class CFBamJpaParamTable implements ICFBamParamTable
 	 */
 	@Override
 	public void deleteParamByContPrevIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argServerMethodId,
-		CFLibDbKeyHash256 argPrevId )
+		$implJavaAtomType$ argServerMethodId,
+		$implJavaAtomType$ argPrevId )
 	{
 		final String S_ProcName = "deleteParamByContPrevIdx";
 		boolean permissionGranted = canDeleteParam(S_ProcName, Authorization);
@@ -617,8 +617,8 @@ public class CFBamJpaParamTable implements ICFBamParamTable
 	 */
 	@Override
 	public void deleteParamByContNextIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argServerMethodId,
-		CFLibDbKeyHash256 argNextId )
+		$implJavaAtomType$ argServerMethodId,
+		$implJavaAtomType$ argNextId )
 	{
 		final String S_ProcName = "deleteParamByContNextIdx";
 		boolean permissionGranted = canDeleteParam(S_ProcName, Authorization);
@@ -665,7 +665,7 @@ public class CFBamJpaParamTable implements ICFBamParamTable
 	 */
 	@Override
 	public ICFBamParam readDerived( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 PKey )
+		ICFLibKeyHash256 PKey )
 	{
 		final String S_ProcName = "readDerived";
 		boolean permissionGranted = canReadParam(S_ProcName, Authorization);
@@ -689,7 +689,7 @@ public class CFBamJpaParamTable implements ICFBamParamTable
 	 */
 	@Override
 	public ICFBamParam lockDerived( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 PKey )
+		ICFLibKeyHash256 PKey )
 	{
 		final String S_ProcName = "lockDerived";
 		boolean permissionGranted = canUpdateParam(S_ProcName, Authorization);
@@ -737,7 +737,7 @@ public class CFBamJpaParamTable implements ICFBamParamTable
 	 */
 	@Override
 	public ICFBamParam readDerivedByIdIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argId )
+		$implJavaAtomType$ argId )
 	{
 		final String S_ProcName = "readDerivedByIdIdx";
 		boolean permissionGranted = false;
@@ -774,8 +774,8 @@ public class CFBamJpaParamTable implements ICFBamParamTable
 	 */
 	@Override
 	public ICFBamParam readDerivedByUNameIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argServerMethodId,
-		String argName )
+		$implJavaAtomType$ argServerMethodId,
+		$implJavaAtomType$ argName )
 	{
 		final String S_ProcName = "readDerivedByUNameIdx";
 		boolean permissionGranted = false;
@@ -810,7 +810,7 @@ public class CFBamJpaParamTable implements ICFBamParamTable
 	 */
 	@Override
 	public ICFBamParam[] readDerivedByServerMethodIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argServerMethodId )
+		$implJavaAtomType$ argServerMethodId )
 	{
 		final String S_ProcName = "readDerivedByServerMethodIdx";
 		boolean permissionGranted = false;
@@ -840,7 +840,7 @@ public class CFBamJpaParamTable implements ICFBamParamTable
 	 */
 	@Override
 	public ICFBamParam[] readDerivedByDefSchemaIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argDefSchemaId )
+		$implJavaAtomType$ argDefSchemaId )
 	{
 		final String S_ProcName = "readDerivedByDefSchemaIdx";
 		boolean permissionGranted = false;
@@ -870,7 +870,7 @@ public class CFBamJpaParamTable implements ICFBamParamTable
 	 */
 	@Override
 	public ICFBamParam[] readDerivedByServerTypeIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argTypeId )
+		$implJavaAtomType$ argTypeId )
 	{
 		final String S_ProcName = "readDerivedByServerTypeIdx";
 		boolean permissionGranted = false;
@@ -900,7 +900,7 @@ public class CFBamJpaParamTable implements ICFBamParamTable
 	 */
 	@Override
 	public ICFBamParam[] readDerivedByPrevIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argPrevId )
+		$implJavaAtomType$ argPrevId )
 	{
 		final String S_ProcName = "readDerivedByPrevIdx";
 		boolean permissionGranted = false;
@@ -930,7 +930,7 @@ public class CFBamJpaParamTable implements ICFBamParamTable
 	 */
 	@Override
 	public ICFBamParam[] readDerivedByNextIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argNextId )
+		$implJavaAtomType$ argNextId )
 	{
 		final String S_ProcName = "readDerivedByNextIdx";
 		boolean permissionGranted = false;
@@ -962,8 +962,8 @@ public class CFBamJpaParamTable implements ICFBamParamTable
 	 */
 	@Override
 	public ICFBamParam[] readDerivedByContPrevIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argServerMethodId,
-		CFLibDbKeyHash256 argPrevId )
+		$implJavaAtomType$ argServerMethodId,
+		$implJavaAtomType$ argPrevId )
 	{
 		final String S_ProcName = "readDerivedByContPrevIdx";
 		boolean permissionGranted = false;
@@ -996,8 +996,8 @@ public class CFBamJpaParamTable implements ICFBamParamTable
 	 */
 	@Override
 	public ICFBamParam[] readDerivedByContNextIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argServerMethodId,
-		CFLibDbKeyHash256 argNextId )
+		$implJavaAtomType$ argServerMethodId,
+		$implJavaAtomType$ argNextId )
 	{
 		final String S_ProcName = "readDerivedByContNextIdx";
 		boolean permissionGranted = false;
@@ -1031,7 +1031,7 @@ public class CFBamJpaParamTable implements ICFBamParamTable
 	 */
 	@Override
 	public ICFBamParam readRec( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 PKey )
+		ICFLibKeyHash256 PKey )
 	{
 		final String S_ProcName = "readRec";
 		boolean permissionGranted = canReadParam(S_ProcName, Authorization);
@@ -1056,7 +1056,7 @@ public class CFBamJpaParamTable implements ICFBamParamTable
 	 */
 	@Override
 	public ICFBamParam lockRec( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 PKey )
+		ICFLibKeyHash256 PKey )
 	{
 		final String S_ProcName = "lockRec";
 		boolean permissionGranted = canUpdateParam(S_ProcName, Authorization);
@@ -1100,7 +1100,7 @@ public class CFBamJpaParamTable implements ICFBamParamTable
 	 */
 	@Override
 	public ICFBamParam readRecByIdIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argId )
+		$implJavaAtomType$ argId )
 	{
 		final String S_ProcName = "readRecByIdIdx";
 		boolean permissionGranted = false;
@@ -1129,8 +1129,8 @@ public class CFBamJpaParamTable implements ICFBamParamTable
 	 */
 	@Override
 	public ICFBamParam readRecByUNameIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argServerMethodId,
-		String argName )
+		$implJavaAtomType$ argServerMethodId,
+		$implJavaAtomType$ argName )
 	{
 		final String S_ProcName = "readRecByUNameIdx";
 		boolean permissionGranted = false;
@@ -1156,7 +1156,7 @@ public class CFBamJpaParamTable implements ICFBamParamTable
 	 */
 	@Override
 	public ICFBamParam[] readRecByServerMethodIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argServerMethodId )
+		$implJavaAtomType$ argServerMethodId )
 	{
 		final String S_ProcName = "readRecByServerMethodIdx";
 		boolean permissionGranted = false;
@@ -1182,7 +1182,7 @@ public class CFBamJpaParamTable implements ICFBamParamTable
 	 */
 	@Override
 	public ICFBamParam[] readRecByDefSchemaIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argDefSchemaId )
+		$implJavaAtomType$ argDefSchemaId )
 	{
 		final String S_ProcName = "readRecByDefSchemaIdx";
 		boolean permissionGranted = false;
@@ -1208,7 +1208,7 @@ public class CFBamJpaParamTable implements ICFBamParamTable
 	 */
 	@Override
 	public ICFBamParam[] readRecByServerTypeIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argTypeId )
+		$implJavaAtomType$ argTypeId )
 	{
 		final String S_ProcName = "readRecByServerTypeIdx";
 		boolean permissionGranted = false;
@@ -1234,7 +1234,7 @@ public class CFBamJpaParamTable implements ICFBamParamTable
 	 */
 	@Override
 	public ICFBamParam[] readRecByPrevIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argPrevId )
+		$implJavaAtomType$ argPrevId )
 	{
 		final String S_ProcName = "readRecByPrevIdx";
 		boolean permissionGranted = false;
@@ -1260,7 +1260,7 @@ public class CFBamJpaParamTable implements ICFBamParamTable
 	 */
 	@Override
 	public ICFBamParam[] readRecByNextIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argNextId )
+		$implJavaAtomType$ argNextId )
 	{
 		final String S_ProcName = "readRecByNextIdx";
 		boolean permissionGranted = false;
@@ -1288,8 +1288,8 @@ public class CFBamJpaParamTable implements ICFBamParamTable
 	 */
 	@Override
 	public ICFBamParam[] readRecByContPrevIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argServerMethodId,
-		CFLibDbKeyHash256 argPrevId )
+		$implJavaAtomType$ argServerMethodId,
+		$implJavaAtomType$ argPrevId )
 	{
 		final String S_ProcName = "readRecByContPrevIdx";
 		boolean permissionGranted = false;
@@ -1317,8 +1317,8 @@ public class CFBamJpaParamTable implements ICFBamParamTable
 	 */
 	@Override
 	public ICFBamParam[] readRecByContNextIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argServerMethodId,
-		CFLibDbKeyHash256 argNextId )
+		$implJavaAtomType$ argServerMethodId,
+		$implJavaAtomType$ argNextId )
 	{
 		final String S_ProcName = "readRecByContNextIdx";
 		boolean permissionGranted = false;
@@ -1338,7 +1338,7 @@ public class CFBamJpaParamTable implements ICFBamParamTable
 	 */
 	@Override
 	public ICFBamParam moveRecUp( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argId,
+		$implJavaAtomType$ argId,
 		int revision )
 	{
 		final String S_ProcName = "moveRecUp";
@@ -1357,7 +1357,7 @@ public class CFBamJpaParamTable implements ICFBamParamTable
 	 */
 	@Override
 	public ICFBamParam moveRecDown( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argId,
+		$implJavaAtomType$ argId,
 		int revision )
 	{
 		final String S_ProcName = "moveRecDown";

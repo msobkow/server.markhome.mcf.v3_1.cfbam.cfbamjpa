@@ -65,7 +65,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 public class CFBamJpaTableByLookupIndexIdxKey
 	implements ICFBamTableByLookupIndexIdxKey, Comparable<Object>, Serializable
 {
-	protected CFLibDbKeyHash256 optionalLookupIndexId;
+	protected $implJavaAtomType$ optionalLookupIndexId;
 	public CFBamJpaTableByLookupIndexIdxKey() {
 		optionalLookupIndexId = CFLibDbKeyHash256.nullGet();
 	}

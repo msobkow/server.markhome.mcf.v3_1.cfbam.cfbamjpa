@@ -81,7 +81,7 @@ public class CFBamJpaAtomH extends CFBamJpaValueH
     implements ICFBamAtomH
 {
 	@Column( name="DbName", nullable=true, length=32 )
-	protected String optionalDbName;
+	protected $implJavaAtomType$ optionalDbName;
 
     public CFBamJpaAtomH() {
             super();

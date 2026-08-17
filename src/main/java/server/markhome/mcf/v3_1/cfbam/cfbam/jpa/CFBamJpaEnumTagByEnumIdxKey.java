@@ -65,7 +65,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 public class CFBamJpaEnumTagByEnumIdxKey
 	implements ICFBamEnumTagByEnumIdxKey, Comparable<Object>, Serializable
 {
-	protected CFLibDbKeyHash256 requiredEnumId;
+	protected $implJavaAtomType$ requiredEnumId;
 	public CFBamJpaEnumTagByEnumIdxKey() {
 		requiredEnumId = CFLibDbKeyHash256.fromHex( ICFBamPubEnumTag.ENUMID_INIT_VALUE.toString() );
 	}

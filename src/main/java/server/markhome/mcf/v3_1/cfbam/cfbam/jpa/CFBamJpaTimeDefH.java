@@ -81,7 +81,7 @@ public class CFBamJpaTimeDefH extends CFBamJpaAtomH
     implements ICFBamTimeDefH
 {
 	@Column( name="Dummy", nullable=true, length=4 )
-	protected String optionalDummy;
+	protected $implJavaAtomType$ optionalDummy;
 
     public CFBamJpaTimeDefH() {
             super();

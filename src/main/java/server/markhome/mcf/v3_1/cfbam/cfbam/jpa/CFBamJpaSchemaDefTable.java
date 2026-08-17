@@ -298,7 +298,7 @@ public class CFBamJpaSchemaDefTable implements ICFBamSchemaDefTable
 	 */
 	@Override
 	public void deleteSchemaDefByCTenantIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argCTenantId )
+		$implJavaAtomType$ argCTenantId )
 	{
 		final String S_ProcName = "deleteSchemaDefByCTenantIdx";
 		boolean permissionGranted = canDeleteSchemaDef(S_ProcName, Authorization);
@@ -339,7 +339,7 @@ public class CFBamJpaSchemaDefTable implements ICFBamSchemaDefTable
 	 */
 	@Override
 	public void deleteSchemaDefByMinorVersionIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argMinorVersionId )
+		$implJavaAtomType$ argMinorVersionId )
 	{
 		final String S_ProcName = "deleteSchemaDefByMinorVersionIdx";
 		boolean permissionGranted = canDeleteSchemaDef(S_ProcName, Authorization);
@@ -382,8 +382,8 @@ public class CFBamJpaSchemaDefTable implements ICFBamSchemaDefTable
 	 */
 	@Override
 	public void deleteSchemaDefByUNameIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argMinorVersionId,
-		String argName )
+		$implJavaAtomType$ argMinorVersionId,
+		$implJavaAtomType$ argName )
 	{
 		final String S_ProcName = "deleteSchemaDefByUNameIdx";
 		boolean permissionGranted = canDeleteSchemaDef(S_ProcName, Authorization);
@@ -428,8 +428,8 @@ public class CFBamJpaSchemaDefTable implements ICFBamSchemaDefTable
 	 */
 	@Override
 	public void deleteSchemaDefByAuthEMailIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argCTenantId,
-		String argAuthorEMail )
+		$implJavaAtomType$ argCTenantId,
+		$implJavaAtomType$ argAuthorEMail )
 	{
 		final String S_ProcName = "deleteSchemaDefByAuthEMailIdx";
 		boolean permissionGranted = canDeleteSchemaDef(S_ProcName, Authorization);
@@ -474,8 +474,8 @@ public class CFBamJpaSchemaDefTable implements ICFBamSchemaDefTable
 	 */
 	@Override
 	public void deleteSchemaDefByProjectURLIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argCTenantId,
-		String argProjectURL )
+		$implJavaAtomType$ argCTenantId,
+		$implJavaAtomType$ argProjectURL )
 	{
 		final String S_ProcName = "deleteSchemaDefByProjectURLIdx";
 		boolean permissionGranted = canDeleteSchemaDef(S_ProcName, Authorization);
@@ -520,8 +520,8 @@ public class CFBamJpaSchemaDefTable implements ICFBamSchemaDefTable
 	 */
 	@Override
 	public void deleteSchemaDefByPubURIIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argCTenantId,
-		String argPublishURI )
+		$implJavaAtomType$ argCTenantId,
+		$implJavaAtomType$ argPublishURI )
 	{
 		final String S_ProcName = "deleteSchemaDefByPubURIIdx";
 		boolean permissionGranted = canDeleteSchemaDef(S_ProcName, Authorization);
@@ -564,7 +564,7 @@ public class CFBamJpaSchemaDefTable implements ICFBamSchemaDefTable
 	 */
 	@Override
 	public void deleteSchemaDefByIdIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argKey )
+		ICFLibKeyHash256 argKey )
 	{
 		final String S_ProcName = "deleteSchemaDefByIdIdx";
 		boolean permissionGranted = canDeleteSchemaDef(S_ProcName, Authorization);
@@ -584,7 +584,7 @@ public class CFBamJpaSchemaDefTable implements ICFBamSchemaDefTable
 	 */
 	@Override
 	public void deleteSchemaDefByTenantIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argTenantId )
+		$implJavaAtomType$ argTenantId )
 	{
 		final String S_ProcName = "deleteSchemaDefByTenantIdx";
 		boolean permissionGranted = canDeleteSchemaDef(S_ProcName, Authorization);
@@ -629,7 +629,7 @@ public class CFBamJpaSchemaDefTable implements ICFBamSchemaDefTable
 	 */
 	@Override
 	public ICFBamSchemaDef readDerived( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 PKey )
+		ICFLibKeyHash256 PKey )
 	{
 		final String S_ProcName = "readDerived";
 		boolean permissionGranted = canReadSchemaDef(S_ProcName, Authorization);
@@ -653,7 +653,7 @@ public class CFBamJpaSchemaDefTable implements ICFBamSchemaDefTable
 	 */
 	@Override
 	public ICFBamSchemaDef lockDerived( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 PKey )
+		ICFLibKeyHash256 PKey )
 	{
 		final String S_ProcName = "lockDerived";
 		boolean permissionGranted = canUpdateSchemaDef(S_ProcName, Authorization);
@@ -701,7 +701,7 @@ public class CFBamJpaSchemaDefTable implements ICFBamSchemaDefTable
 	 */
 	@Override
 	public ICFBamSchemaDef readDerivedByIdIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argId )
+		$implJavaAtomType$ argId )
 	{
 		final String S_ProcName = "readDerivedByIdIdx";
 		boolean permissionGranted = false;
@@ -735,7 +735,7 @@ public class CFBamJpaSchemaDefTable implements ICFBamSchemaDefTable
 	 */
 	@Override
 	public ICFBamSchemaDef[] readDerivedByTenantIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argTenantId )
+		$implJavaAtomType$ argTenantId )
 	{
 		final String S_ProcName = "readDerivedByTenantIdx";
 		boolean permissionGranted = false;
@@ -765,7 +765,7 @@ public class CFBamJpaSchemaDefTable implements ICFBamSchemaDefTable
 	 */
 	@Override
 	public ICFBamSchemaDef[] readDerivedByCTenantIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argCTenantId )
+		$implJavaAtomType$ argCTenantId )
 	{
 		final String S_ProcName = "readDerivedByCTenantIdx";
 		boolean permissionGranted = false;
@@ -795,7 +795,7 @@ public class CFBamJpaSchemaDefTable implements ICFBamSchemaDefTable
 	 */
 	@Override
 	public ICFBamSchemaDef[] readDerivedByMinorVersionIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argMinorVersionId )
+		$implJavaAtomType$ argMinorVersionId )
 	{
 		final String S_ProcName = "readDerivedByMinorVersionIdx";
 		boolean permissionGranted = false;
@@ -828,8 +828,8 @@ public class CFBamJpaSchemaDefTable implements ICFBamSchemaDefTable
 	 */
 	@Override
 	public ICFBamSchemaDef readDerivedByUNameIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argMinorVersionId,
-		String argName )
+		$implJavaAtomType$ argMinorVersionId,
+		$implJavaAtomType$ argName )
 	{
 		final String S_ProcName = "readDerivedByUNameIdx";
 		boolean permissionGranted = false;
@@ -866,8 +866,8 @@ public class CFBamJpaSchemaDefTable implements ICFBamSchemaDefTable
 	 */
 	@Override
 	public ICFBamSchemaDef[] readDerivedByAuthEMailIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argCTenantId,
-		String argAuthorEMail )
+		$implJavaAtomType$ argCTenantId,
+		$implJavaAtomType$ argAuthorEMail )
 	{
 		final String S_ProcName = "readDerivedByAuthEMailIdx";
 		boolean permissionGranted = false;
@@ -900,8 +900,8 @@ public class CFBamJpaSchemaDefTable implements ICFBamSchemaDefTable
 	 */
 	@Override
 	public ICFBamSchemaDef[] readDerivedByProjectURLIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argCTenantId,
-		String argProjectURL )
+		$implJavaAtomType$ argCTenantId,
+		$implJavaAtomType$ argProjectURL )
 	{
 		final String S_ProcName = "readDerivedByProjectURLIdx";
 		boolean permissionGranted = false;
@@ -935,8 +935,8 @@ public class CFBamJpaSchemaDefTable implements ICFBamSchemaDefTable
 	 */
 	@Override
 	public ICFBamSchemaDef readDerivedByPubURIIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argCTenantId,
-		String argPublishURI )
+		$implJavaAtomType$ argCTenantId,
+		$implJavaAtomType$ argPublishURI )
 	{
 		final String S_ProcName = "readDerivedByPubURIIdx";
 		boolean permissionGranted = false;
@@ -974,7 +974,7 @@ public class CFBamJpaSchemaDefTable implements ICFBamSchemaDefTable
 	 */
 	@Override
 	public ICFBamSchemaDef readRec( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 PKey )
+		ICFLibKeyHash256 PKey )
 	{
 		final String S_ProcName = "readRec";
 		boolean permissionGranted = canReadSchemaDef(S_ProcName, Authorization);
@@ -999,7 +999,7 @@ public class CFBamJpaSchemaDefTable implements ICFBamSchemaDefTable
 	 */
 	@Override
 	public ICFBamSchemaDef lockRec( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 PKey )
+		ICFLibKeyHash256 PKey )
 	{
 		final String S_ProcName = "lockRec";
 		boolean permissionGranted = canUpdateSchemaDef(S_ProcName, Authorization);
@@ -1043,7 +1043,7 @@ public class CFBamJpaSchemaDefTable implements ICFBamSchemaDefTable
 	 */
 	@Override
 	public ICFBamSchemaDef readRecByIdIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argId )
+		$implJavaAtomType$ argId )
 	{
 		final String S_ProcName = "readRecByIdIdx";
 		boolean permissionGranted = false;
@@ -1069,7 +1069,7 @@ public class CFBamJpaSchemaDefTable implements ICFBamSchemaDefTable
 	 */
 	@Override
 	public ICFBamSchemaDef[] readRecByTenantIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argTenantId )
+		$implJavaAtomType$ argTenantId )
 	{
 		final String S_ProcName = "readRecByTenantIdx";
 		boolean permissionGranted = false;
@@ -1095,7 +1095,7 @@ public class CFBamJpaSchemaDefTable implements ICFBamSchemaDefTable
 	 */
 	@Override
 	public ICFBamSchemaDef[] readRecByCTenantIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argCTenantId )
+		$implJavaAtomType$ argCTenantId )
 	{
 		final String S_ProcName = "readRecByCTenantIdx";
 		boolean permissionGranted = false;
@@ -1121,7 +1121,7 @@ public class CFBamJpaSchemaDefTable implements ICFBamSchemaDefTable
 	 */
 	@Override
 	public ICFBamSchemaDef[] readRecByMinorVersionIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argMinorVersionId )
+		$implJavaAtomType$ argMinorVersionId )
 	{
 		final String S_ProcName = "readRecByMinorVersionIdx";
 		boolean permissionGranted = false;
@@ -1150,8 +1150,8 @@ public class CFBamJpaSchemaDefTable implements ICFBamSchemaDefTable
 	 */
 	@Override
 	public ICFBamSchemaDef readRecByUNameIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argMinorVersionId,
-		String argName )
+		$implJavaAtomType$ argMinorVersionId,
+		$implJavaAtomType$ argName )
 	{
 		final String S_ProcName = "readRecByUNameIdx";
 		boolean permissionGranted = false;
@@ -1179,8 +1179,8 @@ public class CFBamJpaSchemaDefTable implements ICFBamSchemaDefTable
 	 */
 	@Override
 	public ICFBamSchemaDef[] readRecByAuthEMailIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argCTenantId,
-		String argAuthorEMail )
+		$implJavaAtomType$ argCTenantId,
+		$implJavaAtomType$ argAuthorEMail )
 	{
 		final String S_ProcName = "readRecByAuthEMailIdx";
 		boolean permissionGranted = false;
@@ -1208,8 +1208,8 @@ public class CFBamJpaSchemaDefTable implements ICFBamSchemaDefTable
 	 */
 	@Override
 	public ICFBamSchemaDef[] readRecByProjectURLIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argCTenantId,
-		String argProjectURL )
+		$implJavaAtomType$ argCTenantId,
+		$implJavaAtomType$ argProjectURL )
 	{
 		final String S_ProcName = "readRecByProjectURLIdx";
 		boolean permissionGranted = false;
@@ -1238,8 +1238,8 @@ public class CFBamJpaSchemaDefTable implements ICFBamSchemaDefTable
 	 */
 	@Override
 	public ICFBamSchemaDef readRecByPubURIIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argCTenantId,
-		String argPublishURI )
+		$implJavaAtomType$ argCTenantId,
+		$implJavaAtomType$ argPublishURI )
 	{
 		final String S_ProcName = "readRecByPubURIIdx";
 		boolean permissionGranted = false;

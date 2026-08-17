@@ -65,8 +65,8 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 public class CFBamJpaPopTopDepByUNameIdxKey
 	implements ICFBamPopTopDepByUNameIdxKey, Comparable<Object>, Serializable
 {
-	protected CFLibDbKeyHash256 requiredContRelationId;
-	protected String requiredName;
+	protected $implJavaAtomType$ requiredContRelationId;
+	protected $implJavaAtomType$ requiredName;
 	public CFBamJpaPopTopDepByUNameIdxKey() {
 		requiredContRelationId = CFLibDbKeyHash256.fromHex( ICFBamPubPopTopDep.CONTRELATIONID_INIT_VALUE.toString() );
 		requiredName = ICFBamPubPopTopDep.NAME_INIT_VALUE;

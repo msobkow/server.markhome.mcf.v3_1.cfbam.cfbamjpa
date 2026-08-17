@@ -78,7 +78,7 @@ public class CFBamJpaDateDef extends CFBamJpaAtom
 {
 
 	@Column( name="Dummy", nullable=true, length=4 )
-	protected String optionalDummy;
+	protected $implJavaAtomType$ optionalDummy;
 
 	public CFBamJpaDateDef() {
 		super();

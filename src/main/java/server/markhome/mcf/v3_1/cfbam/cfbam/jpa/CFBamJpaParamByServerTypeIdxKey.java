@@ -65,7 +65,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 public class CFBamJpaParamByServerTypeIdxKey
 	implements ICFBamParamByServerTypeIdxKey, Comparable<Object>, Serializable
 {
-	protected CFLibDbKeyHash256 optionalTypeId;
+	protected $implJavaAtomType$ optionalTypeId;
 	public CFBamJpaParamByServerTypeIdxKey() {
 		optionalTypeId = CFLibDbKeyHash256.nullGet();
 	}

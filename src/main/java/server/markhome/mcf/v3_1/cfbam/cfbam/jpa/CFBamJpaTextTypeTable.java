@@ -298,7 +298,7 @@ public class CFBamJpaTextTypeTable implements ICFBamTextTypeTable
 	 */
 	@Override
 	public void deleteTextTypeBySchemaIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argSchemaDefId )
+		$implJavaAtomType$ argSchemaDefId )
 	{
 		final String S_ProcName = "deleteTextTypeBySchemaIdx";
 		boolean permissionGranted = canDeleteTextType(S_ProcName, Authorization);
@@ -339,7 +339,7 @@ public class CFBamJpaTextTypeTable implements ICFBamTextTypeTable
 	 */
 	@Override
 	public void deleteTextTypeByIdIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argKey )
+		ICFLibKeyHash256 argKey )
 	{
 		final String S_ProcName = "deleteTextTypeByIdIdx";
 		boolean permissionGranted = canDeleteTextType(S_ProcName, Authorization);
@@ -361,8 +361,8 @@ public class CFBamJpaTextTypeTable implements ICFBamTextTypeTable
 	 */
 	@Override
 	public void deleteTextTypeByUNameIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId,
-		String argName )
+		$implJavaAtomType$ argScopeId,
+		$implJavaAtomType$ argName )
 	{
 		final String S_ProcName = "deleteTextTypeByUNameIdx";
 		boolean permissionGranted = canDeleteTextType(S_ProcName, Authorization);
@@ -405,7 +405,7 @@ public class CFBamJpaTextTypeTable implements ICFBamTextTypeTable
 	 */
 	@Override
 	public void deleteTextTypeByScopeIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId )
+		$implJavaAtomType$ argScopeId )
 	{
 		final String S_ProcName = "deleteTextTypeByScopeIdx";
 		boolean permissionGranted = canDeleteTextType(S_ProcName, Authorization);
@@ -446,7 +446,7 @@ public class CFBamJpaTextTypeTable implements ICFBamTextTypeTable
 	 */
 	@Override
 	public void deleteTextTypeByDefSchemaIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argDefSchemaId )
+		$implJavaAtomType$ argDefSchemaId )
 	{
 		final String S_ProcName = "deleteTextTypeByDefSchemaIdx";
 		boolean permissionGranted = canDeleteTextType(S_ProcName, Authorization);
@@ -487,7 +487,7 @@ public class CFBamJpaTextTypeTable implements ICFBamTextTypeTable
 	 */
 	@Override
 	public void deleteTextTypeByPrevIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argPrevId )
+		$implJavaAtomType$ argPrevId )
 	{
 		final String S_ProcName = "deleteTextTypeByPrevIdx";
 		boolean permissionGranted = canDeleteTextType(S_ProcName, Authorization);
@@ -528,7 +528,7 @@ public class CFBamJpaTextTypeTable implements ICFBamTextTypeTable
 	 */
 	@Override
 	public void deleteTextTypeByNextIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argNextId )
+		$implJavaAtomType$ argNextId )
 	{
 		final String S_ProcName = "deleteTextTypeByNextIdx";
 		boolean permissionGranted = canDeleteTextType(S_ProcName, Authorization);
@@ -571,8 +571,8 @@ public class CFBamJpaTextTypeTable implements ICFBamTextTypeTable
 	 */
 	@Override
 	public void deleteTextTypeByContPrevIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId,
-		CFLibDbKeyHash256 argPrevId )
+		$implJavaAtomType$ argScopeId,
+		$implJavaAtomType$ argPrevId )
 	{
 		final String S_ProcName = "deleteTextTypeByContPrevIdx";
 		boolean permissionGranted = canDeleteTextType(S_ProcName, Authorization);
@@ -617,8 +617,8 @@ public class CFBamJpaTextTypeTable implements ICFBamTextTypeTable
 	 */
 	@Override
 	public void deleteTextTypeByContNextIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId,
-		CFLibDbKeyHash256 argNextId )
+		$implJavaAtomType$ argScopeId,
+		$implJavaAtomType$ argNextId )
 	{
 		final String S_ProcName = "deleteTextTypeByContNextIdx";
 		boolean permissionGranted = canDeleteTextType(S_ProcName, Authorization);
@@ -665,7 +665,7 @@ public class CFBamJpaTextTypeTable implements ICFBamTextTypeTable
 	 */
 	@Override
 	public ICFBamTextType readDerived( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 PKey )
+		ICFLibKeyHash256 PKey )
 	{
 		final String S_ProcName = "readDerived";
 		boolean permissionGranted = canReadTextType(S_ProcName, Authorization);
@@ -689,7 +689,7 @@ public class CFBamJpaTextTypeTable implements ICFBamTextTypeTable
 	 */
 	@Override
 	public ICFBamTextType lockDerived( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 PKey )
+		ICFLibKeyHash256 PKey )
 	{
 		final String S_ProcName = "lockDerived";
 		boolean permissionGranted = canUpdateTextType(S_ProcName, Authorization);
@@ -737,7 +737,7 @@ public class CFBamJpaTextTypeTable implements ICFBamTextTypeTable
 	 */
 	@Override
 	public ICFBamTextType readDerivedByIdIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argId )
+		$implJavaAtomType$ argId )
 	{
 		final String S_ProcName = "readDerivedByIdIdx";
 		boolean permissionGranted = false;
@@ -774,8 +774,8 @@ public class CFBamJpaTextTypeTable implements ICFBamTextTypeTable
 	 */
 	@Override
 	public ICFBamTextType readDerivedByUNameIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId,
-		String argName )
+		$implJavaAtomType$ argScopeId,
+		$implJavaAtomType$ argName )
 	{
 		final String S_ProcName = "readDerivedByUNameIdx";
 		boolean permissionGranted = false;
@@ -810,7 +810,7 @@ public class CFBamJpaTextTypeTable implements ICFBamTextTypeTable
 	 */
 	@Override
 	public ICFBamTextType[] readDerivedByScopeIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId )
+		$implJavaAtomType$ argScopeId )
 	{
 		final String S_ProcName = "readDerivedByScopeIdx";
 		boolean permissionGranted = false;
@@ -840,7 +840,7 @@ public class CFBamJpaTextTypeTable implements ICFBamTextTypeTable
 	 */
 	@Override
 	public ICFBamTextType[] readDerivedByDefSchemaIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argDefSchemaId )
+		$implJavaAtomType$ argDefSchemaId )
 	{
 		final String S_ProcName = "readDerivedByDefSchemaIdx";
 		boolean permissionGranted = false;
@@ -870,7 +870,7 @@ public class CFBamJpaTextTypeTable implements ICFBamTextTypeTable
 	 */
 	@Override
 	public ICFBamTextType[] readDerivedByPrevIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argPrevId )
+		$implJavaAtomType$ argPrevId )
 	{
 		final String S_ProcName = "readDerivedByPrevIdx";
 		boolean permissionGranted = false;
@@ -900,7 +900,7 @@ public class CFBamJpaTextTypeTable implements ICFBamTextTypeTable
 	 */
 	@Override
 	public ICFBamTextType[] readDerivedByNextIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argNextId )
+		$implJavaAtomType$ argNextId )
 	{
 		final String S_ProcName = "readDerivedByNextIdx";
 		boolean permissionGranted = false;
@@ -932,8 +932,8 @@ public class CFBamJpaTextTypeTable implements ICFBamTextTypeTable
 	 */
 	@Override
 	public ICFBamTextType[] readDerivedByContPrevIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId,
-		CFLibDbKeyHash256 argPrevId )
+		$implJavaAtomType$ argScopeId,
+		$implJavaAtomType$ argPrevId )
 	{
 		final String S_ProcName = "readDerivedByContPrevIdx";
 		boolean permissionGranted = false;
@@ -966,8 +966,8 @@ public class CFBamJpaTextTypeTable implements ICFBamTextTypeTable
 	 */
 	@Override
 	public ICFBamTextType[] readDerivedByContNextIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId,
-		CFLibDbKeyHash256 argNextId )
+		$implJavaAtomType$ argScopeId,
+		$implJavaAtomType$ argNextId )
 	{
 		final String S_ProcName = "readDerivedByContNextIdx";
 		boolean permissionGranted = false;
@@ -998,7 +998,7 @@ public class CFBamJpaTextTypeTable implements ICFBamTextTypeTable
 	 */
 	@Override
 	public ICFBamTextType[] readDerivedBySchemaIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argSchemaDefId )
+		$implJavaAtomType$ argSchemaDefId )
 	{
 		final String S_ProcName = "readDerivedBySchemaIdx";
 		boolean permissionGranted = false;
@@ -1031,7 +1031,7 @@ public class CFBamJpaTextTypeTable implements ICFBamTextTypeTable
 	 */
 	@Override
 	public ICFBamTextType readRec( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 PKey )
+		ICFLibKeyHash256 PKey )
 	{
 		final String S_ProcName = "readRec";
 		boolean permissionGranted = canReadTextType(S_ProcName, Authorization);
@@ -1056,7 +1056,7 @@ public class CFBamJpaTextTypeTable implements ICFBamTextTypeTable
 	 */
 	@Override
 	public ICFBamTextType lockRec( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 PKey )
+		ICFLibKeyHash256 PKey )
 	{
 		final String S_ProcName = "lockRec";
 		boolean permissionGranted = canUpdateTextType(S_ProcName, Authorization);
@@ -1100,7 +1100,7 @@ public class CFBamJpaTextTypeTable implements ICFBamTextTypeTable
 	 */
 	@Override
 	public ICFBamTextType readRecByIdIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argId )
+		$implJavaAtomType$ argId )
 	{
 		final String S_ProcName = "readRecByIdIdx";
 		boolean permissionGranted = false;
@@ -1129,8 +1129,8 @@ public class CFBamJpaTextTypeTable implements ICFBamTextTypeTable
 	 */
 	@Override
 	public ICFBamTextType readRecByUNameIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId,
-		String argName )
+		$implJavaAtomType$ argScopeId,
+		$implJavaAtomType$ argName )
 	{
 		final String S_ProcName = "readRecByUNameIdx";
 		boolean permissionGranted = false;
@@ -1156,7 +1156,7 @@ public class CFBamJpaTextTypeTable implements ICFBamTextTypeTable
 	 */
 	@Override
 	public ICFBamTextType[] readRecByScopeIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId )
+		$implJavaAtomType$ argScopeId )
 	{
 		final String S_ProcName = "readRecByScopeIdx";
 		boolean permissionGranted = false;
@@ -1182,7 +1182,7 @@ public class CFBamJpaTextTypeTable implements ICFBamTextTypeTable
 	 */
 	@Override
 	public ICFBamTextType[] readRecByDefSchemaIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argDefSchemaId )
+		$implJavaAtomType$ argDefSchemaId )
 	{
 		final String S_ProcName = "readRecByDefSchemaIdx";
 		boolean permissionGranted = false;
@@ -1208,7 +1208,7 @@ public class CFBamJpaTextTypeTable implements ICFBamTextTypeTable
 	 */
 	@Override
 	public ICFBamTextType[] readRecByPrevIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argPrevId )
+		$implJavaAtomType$ argPrevId )
 	{
 		final String S_ProcName = "readRecByPrevIdx";
 		boolean permissionGranted = false;
@@ -1234,7 +1234,7 @@ public class CFBamJpaTextTypeTable implements ICFBamTextTypeTable
 	 */
 	@Override
 	public ICFBamTextType[] readRecByNextIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argNextId )
+		$implJavaAtomType$ argNextId )
 	{
 		final String S_ProcName = "readRecByNextIdx";
 		boolean permissionGranted = false;
@@ -1262,8 +1262,8 @@ public class CFBamJpaTextTypeTable implements ICFBamTextTypeTable
 	 */
 	@Override
 	public ICFBamTextType[] readRecByContPrevIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId,
-		CFLibDbKeyHash256 argPrevId )
+		$implJavaAtomType$ argScopeId,
+		$implJavaAtomType$ argPrevId )
 	{
 		final String S_ProcName = "readRecByContPrevIdx";
 		boolean permissionGranted = false;
@@ -1291,8 +1291,8 @@ public class CFBamJpaTextTypeTable implements ICFBamTextTypeTable
 	 */
 	@Override
 	public ICFBamTextType[] readRecByContNextIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argScopeId,
-		CFLibDbKeyHash256 argNextId )
+		$implJavaAtomType$ argScopeId,
+		$implJavaAtomType$ argNextId )
 	{
 		final String S_ProcName = "readRecByContNextIdx";
 		boolean permissionGranted = false;
@@ -1318,7 +1318,7 @@ public class CFBamJpaTextTypeTable implements ICFBamTextTypeTable
 	 */
 	@Override
 	public ICFBamTextType[] readRecBySchemaIdx( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argSchemaDefId )
+		$implJavaAtomType$ argSchemaDefId )
 	{
 		final String S_ProcName = "readRecBySchemaIdx";
 		boolean permissionGranted = false;
@@ -1338,7 +1338,7 @@ public class CFBamJpaTextTypeTable implements ICFBamTextTypeTable
 	 */
 	@Override
 	public ICFBamTextType moveRecUp( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argId,
+		$implJavaAtomType$ argId,
 		int revision )
 	{
 		final String S_ProcName = "moveRecUp";
@@ -1357,7 +1357,7 @@ public class CFBamJpaTextTypeTable implements ICFBamTextTypeTable
 	 */
 	@Override
 	public ICFBamTextType moveRecDown( ICFSecAuthorization Authorization,
-		CFLibDbKeyHash256 argId,
+		$implJavaAtomType$ argId,
 		int revision )
 	{
 		final String S_ProcName = "moveRecDown";

@@ -65,7 +65,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 public class CFBamJpaRelationByRelCodeVisIdxKey
 	implements ICFBamRelationByRelCodeVisIdxKey, Comparable<Object>, Serializable
 {
-	protected ICFBamPubSchema.CodeVisibilityEnum requiredCodeVis;
+	protected $implJavaAtomType$ requiredCodeVis;
 	public CFBamJpaRelationByRelCodeVisIdxKey() {
 		requiredCodeVis = ICFBamPubRelation.CODEVIS_INIT_VALUE;
 	}

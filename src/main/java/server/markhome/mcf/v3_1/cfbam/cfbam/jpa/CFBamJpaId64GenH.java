@@ -81,9 +81,9 @@ public class CFBamJpaId64GenH extends CFBamJpaInt64TypeH
     implements ICFBamId64GenH
 {
 	@Column( name="Slice", nullable=false )
-	protected short requiredSlice;
+	protected $implJavaAtomType$ requiredSlice;
 	@Column( name="BlockSize", nullable=false )
-	protected long requiredBlockSize;
+	protected $implJavaAtomType$ requiredBlockSize;
 
     public CFBamJpaId64GenH() {
             super();

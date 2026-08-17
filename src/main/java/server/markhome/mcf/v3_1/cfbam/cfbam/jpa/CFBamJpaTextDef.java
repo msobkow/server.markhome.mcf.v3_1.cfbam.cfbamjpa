@@ -78,11 +78,11 @@ public class CFBamJpaTextDef extends CFBamJpaAtom
 {
 
 	@Column( name="db_max_len", nullable=false )
-	protected int requiredMaxLen;
+	protected $implJavaAtomType$ requiredMaxLen;
 	@Column( name="InitVal", nullable=true, length=65535 )
-	protected String optionalInitValue;
+	protected $implJavaAtomType$ optionalInitValue;
 	@Column( name="xml_elt_name", nullable=true, length=192 )
-	protected String optionalXmlElementName;
+	protected $implJavaAtomType$ optionalXmlElementName;
 
 	public CFBamJpaTextDef() {
 		super();

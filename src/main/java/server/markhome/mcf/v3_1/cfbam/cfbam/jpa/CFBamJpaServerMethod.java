@@ -95,35 +95,35 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="TableId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 requiredTableId;
+	protected $implJavaAtomType$ requiredTableId;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="defschid", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 optionalDefSchemaId;
+	protected $implJavaAtomType$ optionalDefSchemaId;
 	@Column( name="safe_name", nullable=false, length=192 )
-	protected String requiredName;
+	protected $implJavaAtomType$ requiredName;
 	@Column( name="short_name", nullable=true, length=16 )
-	protected String optionalShortName;
+	protected $implJavaAtomType$ optionalShortName;
 	@Column( name="Label", nullable=true, length=64 )
-	protected String optionalLabel;
+	protected $implJavaAtomType$ optionalLabel;
 	@Column( name="short_descr", nullable=true, length=128 )
-	protected String optionalShortDescription;
+	protected $implJavaAtomType$ optionalShortDescription;
 	@Column( name="descr", nullable=true, length=1023 )
-	protected String optionalDescription;
+	protected $implJavaAtomType$ optionalDescription;
 	@Column( name="Suffix", nullable=true, length=16 )
-	protected String optionalSuffix;
+	protected $implJavaAtomType$ optionalSuffix;
 	@Column( name="inst_meth", nullable=false )
-	protected boolean requiredIsInstanceMethod;
+	protected $implJavaAtomType$ requiredIsInstanceMethod;
 	@Column( name="srv_only", nullable=false )
-	protected boolean requiredIsServerOnly;
+	protected $implJavaAtomType$ requiredIsServerOnly;
 	@Column( name="codevis", nullable=false )
-	protected ICFBamPubSchema.CodeVisibilityEnum requiredCodeVis;
+	protected $implJavaAtomType$ requiredCodeVis;
 	@Column( name="jmeth_body", nullable=false, length=2000000 )
-	protected String requiredJMethodBody;
+	protected $implJavaAtomType$ requiredJMethodBody;
 	@Column( name="cppmeth_body", nullable=false, length=2000000 )
-	protected String requiredCppMethodBody;
+	protected $implJavaAtomType$ requiredCppMethodBody;
 	@Column( name="csmeth_body", nullable=false, length=2000000 )
-	protected String requiredCsMethodBody;
+	protected $implJavaAtomType$ requiredCsMethodBody;
 
 	public CFBamJpaServerMethod() {
 		super();
@@ -183,7 +183,7 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 	}
 
 	@Override
-	public void setOptionalLookupDefSchema(CFLibDbKeyHash256 argDefSchemaId) {
+	public void setOptionalLookupDefSchema(ICFLibKeyHash256 argDefSchemaId) {
 		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
 		if (targetBackingSchema == null) {
 			throw new CFLibNullArgumentException(getClass(), "setOptionalLookupDefSchema", 0, "ICFBamSchema.getBackingCFBam()");
@@ -230,7 +230,7 @@ public class CFBamJpaServerMethod extends CFBamJpaScope
 	}
 
 	@Override
-	public void setRequiredContainerForTable(CFLibDbKeyHash256 argTableId) {
+	public void setRequiredContainerForTable(ICFLibKeyHash256 argTableId) {
 		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
 		if (targetBackingSchema == null) {
 			throw new CFLibNullArgumentException(getClass(), "setRequiredContainerForTable", 0, "ICFBamSchema.getBackingCFBam()");

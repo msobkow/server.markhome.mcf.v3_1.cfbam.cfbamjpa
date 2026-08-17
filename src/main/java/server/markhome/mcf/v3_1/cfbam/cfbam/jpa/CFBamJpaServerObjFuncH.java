@@ -84,7 +84,7 @@ public class CFBamJpaServerObjFuncH extends CFBamJpaServerMethodH
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="rettblid", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected CFLibDbKeyHash256 optionalRetTableId;
+	protected $implJavaAtomType$ optionalRetTableId;
 
     public CFBamJpaServerObjFuncH() {
             super();
