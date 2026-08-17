@@ -72,11 +72,11 @@ public class CFBamJpaTableByAltIndexIdxKey
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getOptionalAltIndexId() {
+	public ICFLibKeyHash256 getOptionalAltIndexId() {
 		return(optionalAltIndexId);
 	}
 
-	public void setOptionalAltIndexId( CFLibDbKeyHash256 value ) {
+	public void setOptionalAltIndexId( ICFLibKeyHash256 value ) {
 		optionalAltIndexId = value;
 	}
 

@@ -180,11 +180,11 @@ public class CFBamJpaTableH extends CFBamJpaScopeH
     }
 
 	@Override
-	public CFLibDbKeyHash256 getRequiredSchemaDefId() {
+	public ICFLibKeyHash256 getRequiredSchemaDefId() {
 		return(requiredSchemaDefId);
 	}
 
-	public void setRequiredSchemaDefId( CFLibDbKeyHash256 value ) {
+	public void setRequiredSchemaDefId( ICFLibKeyHash256 value ) {
 		if( value == null || value.isNull() ) {
 			throw new CFLibNullArgumentException( getClass(),
 				"setRequiredSchemaDefId",
@@ -195,11 +195,11 @@ public class CFBamJpaTableH extends CFBamJpaScopeH
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getOptionalDefSchemaId() {
+	public ICFLibKeyHash256 getOptionalDefSchemaId() {
 		return(optionalDefSchemaId);
 	}
 
-	public void setOptionalDefSchemaId( CFLibDbKeyHash256 value ) {
+	public void setOptionalDefSchemaId( ICFLibKeyHash256 value ) {
 		optionalDefSchemaId = value;
 	}
 
@@ -321,11 +321,11 @@ public class CFBamJpaTableH extends CFBamJpaScopeH
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getOptionalPrimaryIndexId() {
+	public ICFLibKeyHash256 getOptionalPrimaryIndexId() {
 		return(optionalPrimaryIndexId);
 	}
 
-	public void setOptionalPrimaryIndexId( CFLibDbKeyHash256 value ) {
+	public void setOptionalPrimaryIndexId( ICFLibKeyHash256 value ) {
 		optionalPrimaryIndexId = value;
 	}
 
@@ -353,29 +353,29 @@ public class CFBamJpaTableH extends CFBamJpaScopeH
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getOptionalLookupIndexId() {
+	public ICFLibKeyHash256 getOptionalLookupIndexId() {
 		return(optionalLookupIndexId);
 	}
 
-	public void setOptionalLookupIndexId( CFLibDbKeyHash256 value ) {
+	public void setOptionalLookupIndexId( ICFLibKeyHash256 value ) {
 		optionalLookupIndexId = value;
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getOptionalAltIndexId() {
+	public ICFLibKeyHash256 getOptionalAltIndexId() {
 		return(optionalAltIndexId);
 	}
 
-	public void setOptionalAltIndexId( CFLibDbKeyHash256 value ) {
+	public void setOptionalAltIndexId( ICFLibKeyHash256 value ) {
 		optionalAltIndexId = value;
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getOptionalQualifyingTableId() {
+	public ICFLibKeyHash256 getOptionalQualifyingTableId() {
 		return(optionalQualifyingTableId);
 	}
 
-	public void setOptionalQualifyingTableId( CFLibDbKeyHash256 value ) {
+	public void setOptionalQualifyingTableId( ICFLibKeyHash256 value ) {
 		optionalQualifyingTableId = value;
 	}
 

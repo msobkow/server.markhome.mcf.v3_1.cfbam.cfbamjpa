@@ -72,11 +72,11 @@ public class CFBamJpaNmTokensColByTableIdxKey
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getRequiredTableId() {
+	public ICFLibKeyHash256 getRequiredTableId() {
 		return(requiredTableId);
 	}
 
-	public void setRequiredTableId( CFLibDbKeyHash256 value ) {
+	public void setRequiredTableId( ICFLibKeyHash256 value ) {
 		if( value == null || value.isNull() ) {
 			throw new CFLibNullArgumentException( getClass(),
 				"setRequiredTableId",

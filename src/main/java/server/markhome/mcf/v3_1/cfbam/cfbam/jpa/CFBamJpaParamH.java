@@ -300,11 +300,11 @@ public class CFBamJpaParamH
     }
 
 	@Override
-	public CFLibDbKeyHash256 getRequiredServerMethodId() {
+	public ICFLibKeyHash256 getRequiredServerMethodId() {
 		return(requiredServerMethodId);
 	}
 
-	public void setRequiredServerMethodId( CFLibDbKeyHash256 value ) {
+	public void setRequiredServerMethodId( ICFLibKeyHash256 value ) {
 		if( value == null || value.isNull() ) {
 			throw new CFLibNullArgumentException( getClass(),
 				"setRequiredServerMethodId",
@@ -315,11 +315,11 @@ public class CFBamJpaParamH
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getOptionalDefSchemaId() {
+	public ICFLibKeyHash256 getOptionalDefSchemaId() {
 		return(optionalDefSchemaId);
 	}
 
-	public void setOptionalDefSchemaId( CFLibDbKeyHash256 value ) {
+	public void setOptionalDefSchemaId( ICFLibKeyHash256 value ) {
 		optionalDefSchemaId = value;
 	}
 
@@ -390,29 +390,29 @@ public class CFBamJpaParamH
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getOptionalTypeId() {
+	public ICFLibKeyHash256 getOptionalTypeId() {
 		return(optionalTypeId);
 	}
 
-	public void setOptionalTypeId( CFLibDbKeyHash256 value ) {
+	public void setOptionalTypeId( ICFLibKeyHash256 value ) {
 		optionalTypeId = value;
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getOptionalPrevId() {
+	public ICFLibKeyHash256 getOptionalPrevId() {
 		return(optionalPrevId);
 	}
 
-	public void setOptionalPrevId( CFLibDbKeyHash256 value ) {
+	public void setOptionalPrevId( ICFLibKeyHash256 value ) {
 		optionalPrevId = value;
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getOptionalNextId() {
+	public ICFLibKeyHash256 getOptionalNextId() {
 		return(optionalNextId);
 	}
 
-	public void setOptionalNextId( CFLibDbKeyHash256 value ) {
+	public void setOptionalNextId( ICFLibKeyHash256 value ) {
 		optionalNextId = value;
 	}
 

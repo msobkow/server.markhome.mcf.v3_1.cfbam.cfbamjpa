@@ -104,11 +104,11 @@ public class CFBamJpaClearDepH extends CFBamJpaScopeH
     }
 
 	@Override
-	public CFLibDbKeyHash256 getRequiredRelationId() {
+	public ICFLibKeyHash256 getRequiredRelationId() {
 		return(requiredRelationId);
 	}
 
-	public void setRequiredRelationId( CFLibDbKeyHash256 value ) {
+	public void setRequiredRelationId( ICFLibKeyHash256 value ) {
 		if( value == null || value.isNull() ) {
 			throw new CFLibNullArgumentException( getClass(),
 				"setRequiredRelationId",
@@ -119,11 +119,11 @@ public class CFBamJpaClearDepH extends CFBamJpaScopeH
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getOptionalDefSchemaId() {
+	public ICFLibKeyHash256 getOptionalDefSchemaId() {
 		return(optionalDefSchemaId);
 	}
 
-	public void setOptionalDefSchemaId( CFLibDbKeyHash256 value ) {
+	public void setOptionalDefSchemaId( ICFLibKeyHash256 value ) {
 		optionalDefSchemaId = value;
 	}
 

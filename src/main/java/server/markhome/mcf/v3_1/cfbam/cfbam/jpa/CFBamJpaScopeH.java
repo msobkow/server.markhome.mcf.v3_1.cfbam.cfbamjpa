@@ -264,11 +264,11 @@ public class CFBamJpaScopeH
     }
 
 	@Override
-	public CFLibDbKeyHash256 getRequiredTenantId() {
+	public ICFLibKeyHash256 getRequiredTenantId() {
 		return(requiredTenantId);
 	}
 
-	public void setRequiredTenantId( CFLibDbKeyHash256 value ) {
+	public void setRequiredTenantId( ICFLibKeyHash256 value ) {
 		if( value == null || value.isNull() ) {
 			throw new CFLibNullArgumentException( getClass(),
 				"setRequiredTenantId",

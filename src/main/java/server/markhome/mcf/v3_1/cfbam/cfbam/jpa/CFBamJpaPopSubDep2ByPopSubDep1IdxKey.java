@@ -72,11 +72,11 @@ public class CFBamJpaPopSubDep2ByPopSubDep1IdxKey
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getRequiredPopSubDep1Id() {
+	public ICFLibKeyHash256 getRequiredPopSubDep1Id() {
 		return(requiredPopSubDep1Id);
 	}
 
-	public void setRequiredPopSubDep1Id( CFLibDbKeyHash256 value ) {
+	public void setRequiredPopSubDep1Id( ICFLibKeyHash256 value ) {
 		if( value == null || value.isNull() ) {
 			throw new CFLibNullArgumentException( getClass(),
 				"setRequiredPopSubDep1Id",

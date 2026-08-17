@@ -74,11 +74,11 @@ public class CFBamJpaSchemaDefByAuthEMailIdxKey
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getRequiredCTenantId() {
+	public ICFLibKeyHash256 getRequiredCTenantId() {
 		return(requiredCTenantId);
 	}
 
-	public void setRequiredCTenantId( CFLibDbKeyHash256 value ) {
+	public void setRequiredCTenantId( ICFLibKeyHash256 value ) {
 		if( value == null || value.isNull() ) {
 			throw new CFLibNullArgumentException( getClass(),
 				"setRequiredCTenantId",

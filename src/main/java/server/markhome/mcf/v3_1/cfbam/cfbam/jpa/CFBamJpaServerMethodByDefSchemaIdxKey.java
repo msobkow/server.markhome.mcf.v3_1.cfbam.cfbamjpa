@@ -72,11 +72,11 @@ public class CFBamJpaServerMethodByDefSchemaIdxKey
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getOptionalDefSchemaId() {
+	public ICFLibKeyHash256 getOptionalDefSchemaId() {
 		return(optionalDefSchemaId);
 	}
 
-	public void setOptionalDefSchemaId( CFLibDbKeyHash256 value ) {
+	public void setOptionalDefSchemaId( ICFLibKeyHash256 value ) {
 		optionalDefSchemaId = value;
 	}
 

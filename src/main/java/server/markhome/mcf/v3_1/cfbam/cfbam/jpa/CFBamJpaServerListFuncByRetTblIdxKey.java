@@ -72,11 +72,11 @@ public class CFBamJpaServerListFuncByRetTblIdxKey
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getOptionalRetTableId() {
+	public ICFLibKeyHash256 getOptionalRetTableId() {
 		return(optionalRetTableId);
 	}
 
-	public void setOptionalRetTableId( CFLibDbKeyHash256 value ) {
+	public void setOptionalRetTableId( ICFLibKeyHash256 value ) {
 		optionalRetTableId = value;
 	}
 

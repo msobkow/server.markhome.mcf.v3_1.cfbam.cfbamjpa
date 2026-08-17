@@ -274,11 +274,11 @@ public class CFBamJpaClearTopDep extends CFBamJpaClearDep
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getRequiredTableId() {
+	public ICFLibKeyHash256 getRequiredTableId() {
 		return(requiredTableId);
 	}
 
-	public void setRequiredTableId( CFLibDbKeyHash256 value ) {
+	public void setRequiredTableId( ICFLibKeyHash256 value ) {
 		if( value == null || value.isNull() ) {
 			throw new CFLibNullArgumentException( getClass(),
 				"setRequiredTableId",
@@ -312,20 +312,20 @@ public class CFBamJpaClearTopDep extends CFBamJpaClearDep
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getOptionalPrevId() {
+	public ICFLibKeyHash256 getOptionalPrevId() {
 		return(optionalPrevId);
 	}
 
-	public void setOptionalPrevId( CFLibDbKeyHash256 value ) {
+	public void setOptionalPrevId( ICFLibKeyHash256 value ) {
 		optionalPrevId = value;
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getOptionalNextId() {
+	public ICFLibKeyHash256 getOptionalNextId() {
 		return(optionalNextId);
 	}
 
-	public void setOptionalNextId( CFLibDbKeyHash256 value ) {
+	public void setOptionalNextId( ICFLibKeyHash256 value ) {
 		optionalNextId = value;
 	}
 

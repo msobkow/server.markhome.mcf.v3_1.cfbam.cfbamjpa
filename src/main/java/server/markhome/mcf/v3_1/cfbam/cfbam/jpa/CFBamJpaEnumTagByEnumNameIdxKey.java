@@ -74,11 +74,11 @@ public class CFBamJpaEnumTagByEnumNameIdxKey
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getRequiredEnumId() {
+	public ICFLibKeyHash256 getRequiredEnumId() {
 		return(requiredEnumId);
 	}
 
-	public void setRequiredEnumId( CFLibDbKeyHash256 value ) {
+	public void setRequiredEnumId( ICFLibKeyHash256 value ) {
 		if( value == null || value.isNull() ) {
 			throw new CFLibNullArgumentException( getClass(),
 				"setRequiredEnumId",

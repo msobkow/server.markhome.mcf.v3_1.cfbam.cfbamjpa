@@ -72,11 +72,11 @@ public class CFBamJpaChainByNextRelIdxKey
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getRequiredNextRelationId() {
+	public ICFLibKeyHash256 getRequiredNextRelationId() {
 		return(requiredNextRelationId);
 	}
 
-	public void setRequiredNextRelationId( CFLibDbKeyHash256 value ) {
+	public void setRequiredNextRelationId( ICFLibKeyHash256 value ) {
 		if( value == null || value.isNull() ) {
 			throw new CFLibNullArgumentException( getClass(),
 				"setRequiredNextRelationId",

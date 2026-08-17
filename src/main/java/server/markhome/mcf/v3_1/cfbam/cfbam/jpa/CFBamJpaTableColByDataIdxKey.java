@@ -72,11 +72,11 @@ public class CFBamJpaTableColByDataIdxKey
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getOptionalDataId() {
+	public ICFLibKeyHash256 getOptionalDataId() {
 		return(optionalDataId);
 	}
 
-	public void setOptionalDataId( CFLibDbKeyHash256 value ) {
+	public void setOptionalDataId( ICFLibKeyHash256 value ) {
 		optionalDataId = value;
 	}
 

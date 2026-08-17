@@ -72,11 +72,11 @@ public class CFBamJpaRelationColByToColIdxKey
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getRequiredToColId() {
+	public ICFLibKeyHash256 getRequiredToColId() {
 		return(requiredToColId);
 	}
 
-	public void setRequiredToColId( CFLibDbKeyHash256 value ) {
+	public void setRequiredToColId( ICFLibKeyHash256 value ) {
 		if( value == null || value.isNull() ) {
 			throw new CFLibNullArgumentException( getClass(),
 				"setRequiredToColId",

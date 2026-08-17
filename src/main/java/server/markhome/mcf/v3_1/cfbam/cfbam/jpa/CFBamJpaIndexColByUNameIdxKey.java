@@ -74,11 +74,11 @@ public class CFBamJpaIndexColByUNameIdxKey
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getRequiredIndexId() {
+	public ICFLibKeyHash256 getRequiredIndexId() {
 		return(requiredIndexId);
 	}
 
-	public void setRequiredIndexId( CFLibDbKeyHash256 value ) {
+	public void setRequiredIndexId( ICFLibKeyHash256 value ) {
 		if( value == null || value.isNull() ) {
 			throw new CFLibNullArgumentException( getClass(),
 				"setRequiredIndexId",

@@ -150,11 +150,11 @@ public class CFBamJpaClearSubDep3 extends CFBamJpaClearDep
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getRequiredClearSubDep2Id() {
+	public ICFLibKeyHash256 getRequiredClearSubDep2Id() {
 		return(requiredClearSubDep2Id);
 	}
 
-	public void setRequiredClearSubDep2Id( CFLibDbKeyHash256 value ) {
+	public void setRequiredClearSubDep2Id( ICFLibKeyHash256 value ) {
 		if( value == null || value.isNull() ) {
 			throw new CFLibNullArgumentException( getClass(),
 				"setRequiredClearSubDep2Id",

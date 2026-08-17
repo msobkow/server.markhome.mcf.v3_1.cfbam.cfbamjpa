@@ -170,11 +170,11 @@ public class CFBamJpaRelationH extends CFBamJpaScopeH
     }
 
 	@Override
-	public CFLibDbKeyHash256 getRequiredTableId() {
+	public ICFLibKeyHash256 getRequiredTableId() {
 		return(requiredTableId);
 	}
 
-	public void setRequiredTableId( CFLibDbKeyHash256 value ) {
+	public void setRequiredTableId( ICFLibKeyHash256 value ) {
 		if( value == null || value.isNull() ) {
 			throw new CFLibNullArgumentException( getClass(),
 				"setRequiredTableId",
@@ -185,11 +185,11 @@ public class CFBamJpaRelationH extends CFBamJpaScopeH
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getOptionalDefSchemaId() {
+	public ICFLibKeyHash256 getOptionalDefSchemaId() {
 		return(optionalDefSchemaId);
 	}
 
-	public void setOptionalDefSchemaId( CFLibDbKeyHash256 value ) {
+	public void setOptionalDefSchemaId( ICFLibKeyHash256 value ) {
 		optionalDefSchemaId = value;
 	}
 
@@ -334,11 +334,11 @@ public class CFBamJpaRelationH extends CFBamJpaScopeH
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getRequiredFromIndexId() {
+	public ICFLibKeyHash256 getRequiredFromIndexId() {
 		return(requiredFromIndexId);
 	}
 
-	public void setRequiredFromIndexId( CFLibDbKeyHash256 value ) {
+	public void setRequiredFromIndexId( ICFLibKeyHash256 value ) {
 		if( value == null || value.isNull() ) {
 			throw new CFLibNullArgumentException( getClass(),
 				"setRequiredFromIndexId",
@@ -349,11 +349,11 @@ public class CFBamJpaRelationH extends CFBamJpaScopeH
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getRequiredToTableId() {
+	public ICFLibKeyHash256 getRequiredToTableId() {
 		return(requiredToTableId);
 	}
 
-	public void setRequiredToTableId( CFLibDbKeyHash256 value ) {
+	public void setRequiredToTableId( ICFLibKeyHash256 value ) {
 		if( value == null || value.isNull() ) {
 			throw new CFLibNullArgumentException( getClass(),
 				"setRequiredToTableId",
@@ -364,11 +364,11 @@ public class CFBamJpaRelationH extends CFBamJpaScopeH
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getRequiredToIndexId() {
+	public ICFLibKeyHash256 getRequiredToIndexId() {
 		return(requiredToIndexId);
 	}
 
-	public void setRequiredToIndexId( CFLibDbKeyHash256 value ) {
+	public void setRequiredToIndexId( ICFLibKeyHash256 value ) {
 		if( value == null || value.isNull() ) {
 			throw new CFLibNullArgumentException( getClass(),
 				"setRequiredToIndexId",
@@ -415,11 +415,11 @@ public class CFBamJpaRelationH extends CFBamJpaScopeH
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getOptionalNarrowedId() {
+	public ICFLibKeyHash256 getOptionalNarrowedId() {
 		return(optionalNarrowedId);
 	}
 
-	public void setOptionalNarrowedId( CFLibDbKeyHash256 value ) {
+	public void setOptionalNarrowedId( ICFLibKeyHash256 value ) {
 		optionalNarrowedId = value;
 	}
 

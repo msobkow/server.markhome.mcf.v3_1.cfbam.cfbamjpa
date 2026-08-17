@@ -309,11 +309,11 @@ public class CFBamJpaRelationColH
     }
 
 	@Override
-	public CFLibDbKeyHash256 getRequiredRelationId() {
+	public ICFLibKeyHash256 getRequiredRelationId() {
 		return(requiredRelationId);
 	}
 
-	public void setRequiredRelationId( CFLibDbKeyHash256 value ) {
+	public void setRequiredRelationId( ICFLibKeyHash256 value ) {
 		if( value == null || value.isNull() ) {
 			throw new CFLibNullArgumentException( getClass(),
 				"setRequiredRelationId",
@@ -324,11 +324,11 @@ public class CFBamJpaRelationColH
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getOptionalDefSchemaId() {
+	public ICFLibKeyHash256 getOptionalDefSchemaId() {
 		return(optionalDefSchemaId);
 	}
 
-	public void setOptionalDefSchemaId( CFLibDbKeyHash256 value ) {
+	public void setOptionalDefSchemaId( ICFLibKeyHash256 value ) {
 		optionalDefSchemaId = value;
 	}
 
@@ -424,11 +424,11 @@ public class CFBamJpaRelationColH
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getRequiredFromColId() {
+	public ICFLibKeyHash256 getRequiredFromColId() {
 		return(requiredFromColId);
 	}
 
-	public void setRequiredFromColId( CFLibDbKeyHash256 value ) {
+	public void setRequiredFromColId( ICFLibKeyHash256 value ) {
 		if( value == null || value.isNull() ) {
 			throw new CFLibNullArgumentException( getClass(),
 				"setRequiredFromColId",
@@ -439,11 +439,11 @@ public class CFBamJpaRelationColH
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getRequiredToColId() {
+	public ICFLibKeyHash256 getRequiredToColId() {
 		return(requiredToColId);
 	}
 
-	public void setRequiredToColId( CFLibDbKeyHash256 value ) {
+	public void setRequiredToColId( ICFLibKeyHash256 value ) {
 		if( value == null || value.isNull() ) {
 			throw new CFLibNullArgumentException( getClass(),
 				"setRequiredToColId",
@@ -454,20 +454,20 @@ public class CFBamJpaRelationColH
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getOptionalPrevId() {
+	public ICFLibKeyHash256 getOptionalPrevId() {
 		return(optionalPrevId);
 	}
 
-	public void setOptionalPrevId( CFLibDbKeyHash256 value ) {
+	public void setOptionalPrevId( ICFLibKeyHash256 value ) {
 		optionalPrevId = value;
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getOptionalNextId() {
+	public ICFLibKeyHash256 getOptionalNextId() {
 		return(optionalNextId);
 	}
 
-	public void setOptionalNextId( CFLibDbKeyHash256 value ) {
+	public void setOptionalNextId( ICFLibKeyHash256 value ) {
 		optionalNextId = value;
 	}
 

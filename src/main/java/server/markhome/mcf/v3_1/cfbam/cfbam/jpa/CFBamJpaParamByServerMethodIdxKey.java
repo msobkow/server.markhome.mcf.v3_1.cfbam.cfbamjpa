@@ -72,11 +72,11 @@ public class CFBamJpaParamByServerMethodIdxKey
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getRequiredServerMethodId() {
+	public ICFLibKeyHash256 getRequiredServerMethodId() {
 		return(requiredServerMethodId);
 	}
 
-	public void setRequiredServerMethodId( CFLibDbKeyHash256 value ) {
+	public void setRequiredServerMethodId( ICFLibKeyHash256 value ) {
 		if( value == null || value.isNull() ) {
 			throw new CFLibNullArgumentException( getClass(),
 				"setRequiredServerMethodId",

@@ -76,11 +76,11 @@ public class CFBamJpaRoleDefByUDefIdxKey
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getRequiredScopeId() {
+	public ICFLibKeyHash256 getRequiredScopeId() {
 		return(requiredScopeId);
 	}
 
-	public void setRequiredScopeId( CFLibDbKeyHash256 value ) {
+	public void setRequiredScopeId( ICFLibKeyHash256 value ) {
 		if( value == null || value.isNull() ) {
 			throw new CFLibNullArgumentException( getClass(),
 				"setRequiredScopeId",
@@ -91,11 +91,11 @@ public class CFBamJpaRoleDefByUDefIdxKey
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getOptionalDefSchemaId() {
+	public ICFLibKeyHash256 getOptionalDefSchemaId() {
 		return(optionalDefSchemaId);
 	}
 
-	public void setOptionalDefSchemaId( CFLibDbKeyHash256 value ) {
+	public void setOptionalDefSchemaId( ICFLibKeyHash256 value ) {
 		optionalDefSchemaId = value;
 	}
 

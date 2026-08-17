@@ -72,11 +72,11 @@ public class CFBamJpaTableByPrimaryIndexIdxKey
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getOptionalPrimaryIndexId() {
+	public ICFLibKeyHash256 getOptionalPrimaryIndexId() {
 		return(optionalPrimaryIndexId);
 	}
 
-	public void setOptionalPrimaryIndexId( CFLibDbKeyHash256 value ) {
+	public void setOptionalPrimaryIndexId( ICFLibKeyHash256 value ) {
 		optionalPrimaryIndexId = value;
 	}
 

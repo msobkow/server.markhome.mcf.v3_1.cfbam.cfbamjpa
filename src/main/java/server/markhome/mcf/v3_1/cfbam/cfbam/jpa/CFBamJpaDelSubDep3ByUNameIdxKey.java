@@ -74,11 +74,11 @@ public class CFBamJpaDelSubDep3ByUNameIdxKey
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getRequiredDelSubDep2Id() {
+	public ICFLibKeyHash256 getRequiredDelSubDep2Id() {
 		return(requiredDelSubDep2Id);
 	}
 
-	public void setRequiredDelSubDep2Id( CFLibDbKeyHash256 value ) {
+	public void setRequiredDelSubDep2Id( ICFLibKeyHash256 value ) {
 		if( value == null || value.isNull() ) {
 			throw new CFLibNullArgumentException( getClass(),
 				"setRequiredDelSubDep2Id",

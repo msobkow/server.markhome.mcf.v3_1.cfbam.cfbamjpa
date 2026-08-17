@@ -150,11 +150,11 @@ public class CFBamJpaPopSubDep3 extends CFBamJpaPopDep
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getRequiredPopSubDep2Id() {
+	public ICFLibKeyHash256 getRequiredPopSubDep2Id() {
 		return(requiredPopSubDep2Id);
 	}
 
-	public void setRequiredPopSubDep2Id( CFLibDbKeyHash256 value ) {
+	public void setRequiredPopSubDep2Id( ICFLibKeyHash256 value ) {
 		if( value == null || value.isNull() ) {
 			throw new CFLibNullArgumentException( getClass(),
 				"setRequiredPopSubDep2Id",

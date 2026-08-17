@@ -80,11 +80,11 @@ public class CFBamJpaTweakByUDefIdxKey
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getRequiredTenantId() {
+	public ICFLibKeyHash256 getRequiredTenantId() {
 		return(requiredTenantId);
 	}
 
-	public void setRequiredTenantId( CFLibDbKeyHash256 value ) {
+	public void setRequiredTenantId( ICFLibKeyHash256 value ) {
 		if( value == null || value.isNull() ) {
 			throw new CFLibNullArgumentException( getClass(),
 				"setRequiredTenantId",
@@ -95,11 +95,11 @@ public class CFBamJpaTweakByUDefIdxKey
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getRequiredScopeId() {
+	public ICFLibKeyHash256 getRequiredScopeId() {
 		return(requiredScopeId);
 	}
 
-	public void setRequiredScopeId( CFLibDbKeyHash256 value ) {
+	public void setRequiredScopeId( ICFLibKeyHash256 value ) {
 		if( value == null || value.isNull() ) {
 			throw new CFLibNullArgumentException( getClass(),
 				"setRequiredScopeId",
@@ -110,20 +110,20 @@ public class CFBamJpaTweakByUDefIdxKey
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getOptionalDefSchemaTenantId() {
+	public ICFLibKeyHash256 getOptionalDefSchemaTenantId() {
 		return(optionalDefSchemaTenantId);
 	}
 
-	public void setOptionalDefSchemaTenantId( CFLibDbKeyHash256 value ) {
+	public void setOptionalDefSchemaTenantId( ICFLibKeyHash256 value ) {
 		optionalDefSchemaTenantId = value;
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getOptionalDefSchemaId() {
+	public ICFLibKeyHash256 getOptionalDefSchemaId() {
 		return(optionalDefSchemaId);
 	}
 
-	public void setOptionalDefSchemaId( CFLibDbKeyHash256 value ) {
+	public void setOptionalDefSchemaId( ICFLibKeyHash256 value ) {
 		optionalDefSchemaId = value;
 	}
 

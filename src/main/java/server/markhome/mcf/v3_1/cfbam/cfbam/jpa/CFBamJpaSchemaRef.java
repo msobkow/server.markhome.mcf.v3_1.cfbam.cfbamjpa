@@ -330,11 +330,11 @@ public class CFBamJpaSchemaRef extends CFBamJpaScope
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getRequiredSchemaId() {
+	public ICFLibKeyHash256 getRequiredSchemaId() {
 		return(requiredSchemaId);
 	}
 
-	public void setRequiredSchemaId( CFLibDbKeyHash256 value ) {
+	public void setRequiredSchemaId( ICFLibKeyHash256 value ) {
 		if( value == null || value.isNull() ) {
 			throw new CFLibNullArgumentException( getClass(),
 				"setRequiredSchemaId",
@@ -414,29 +414,29 @@ public class CFBamJpaSchemaRef extends CFBamJpaScope
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getOptionalRefSchemaId() {
+	public ICFLibKeyHash256 getOptionalRefSchemaId() {
 		return(optionalRefSchemaId);
 	}
 
-	public void setOptionalRefSchemaId( CFLibDbKeyHash256 value ) {
+	public void setOptionalRefSchemaId( ICFLibKeyHash256 value ) {
 		optionalRefSchemaId = value;
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getOptionalPrevId() {
+	public ICFLibKeyHash256 getOptionalPrevId() {
 		return(optionalPrevId);
 	}
 
-	public void setOptionalPrevId( CFLibDbKeyHash256 value ) {
+	public void setOptionalPrevId( ICFLibKeyHash256 value ) {
 		optionalPrevId = value;
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getOptionalNextId() {
+	public ICFLibKeyHash256 getOptionalNextId() {
 		return(optionalNextId);
 	}
 
-	public void setOptionalNextId( CFLibDbKeyHash256 value ) {
+	public void setOptionalNextId( ICFLibKeyHash256 value ) {
 		optionalNextId = value;
 	}
 

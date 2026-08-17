@@ -74,11 +74,11 @@ public class CFBamJpaIndexColByIdxPrevIdxKey
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getRequiredIndexId() {
+	public ICFLibKeyHash256 getRequiredIndexId() {
 		return(requiredIndexId);
 	}
 
-	public void setRequiredIndexId( CFLibDbKeyHash256 value ) {
+	public void setRequiredIndexId( ICFLibKeyHash256 value ) {
 		if( value == null || value.isNull() ) {
 			throw new CFLibNullArgumentException( getClass(),
 				"setRequiredIndexId",
@@ -89,11 +89,11 @@ public class CFBamJpaIndexColByIdxPrevIdxKey
 	}
 
 	@Override
-	public CFLibDbKeyHash256 getOptionalPrevId() {
+	public ICFLibKeyHash256 getOptionalPrevId() {
 		return(optionalPrevId);
 	}
 
-	public void setOptionalPrevId( CFLibDbKeyHash256 value ) {
+	public void setOptionalPrevId( ICFLibKeyHash256 value ) {
 		optionalPrevId = value;
 	}
 

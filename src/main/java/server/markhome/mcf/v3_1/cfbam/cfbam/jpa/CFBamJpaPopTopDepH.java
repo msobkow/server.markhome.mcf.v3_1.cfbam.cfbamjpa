@@ -102,11 +102,11 @@ public class CFBamJpaPopTopDepH extends CFBamJpaPopDepH
     }
 
 	@Override
-	public CFLibDbKeyHash256 getRequiredContRelationId() {
+	public ICFLibKeyHash256 getRequiredContRelationId() {
 		return(requiredContRelationId);
 	}
 
-	public void setRequiredContRelationId( CFLibDbKeyHash256 value ) {
+	public void setRequiredContRelationId( ICFLibKeyHash256 value ) {
 		if( value == null || value.isNull() ) {
 			throw new CFLibNullArgumentException( getClass(),
 				"setRequiredContRelationId",
