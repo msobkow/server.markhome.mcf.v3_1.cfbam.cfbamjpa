@@ -65,7 +65,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 public class CFBamJpaTableByQualTableIdxKey
 	implements ICFBamTableByQualTableIdxKey, Comparable<Object>, Serializable
 {
-	protected $implJavaAtomType$ optionalQualifyingTableId;
+	protected ICFLibKeyHash256 optionalQualifyingTableId;
 	public CFBamJpaTableByQualTableIdxKey() {
 		optionalQualifyingTableId = CFLibDbKeyHash256.nullGet();
 	}

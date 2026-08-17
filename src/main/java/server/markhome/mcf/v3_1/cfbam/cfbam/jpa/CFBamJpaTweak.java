@@ -90,7 +90,7 @@ public class CFBamJpaTweak
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="Id", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ requiredId;
+	protected ICFLibKeyHash256 requiredId;
 	protected int requiredRevision;
 
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
@@ -128,25 +128,25 @@ public class CFBamJpaTweak
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="TenantId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ requiredTenantId;
+	protected ICFLibKeyHash256 requiredTenantId;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="ScopeId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ requiredScopeId;
+	protected ICFLibKeyHash256 requiredScopeId;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="defschtentid", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ optionalDefSchemaTenantId;
+	protected ICFLibKeyHash256 optionalDefSchemaTenantId;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="defschid", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ optionalDefSchemaId;
+	protected ICFLibKeyHash256 optionalDefSchemaId;
 	@Column( name="safe_name", nullable=false, length=192 )
-	protected $implJavaAtomType$ requiredName;
+	protected String requiredName;
 	@Column( name="repl_inh", nullable=false )
-	protected $implJavaAtomType$ requiredReplacesInherited;
+	protected boolean requiredReplacesInherited;
 	@Column( name="twk_gel_txt", nullable=false, length=2000000 )
-	protected $implJavaAtomType$ requiredTweakGelText;
+	protected String requiredTweakGelText;
 
 	public CFBamJpaTweak() {
 		requiredId = CFLibDbKeyHash256.fromHex( ICFBamPubTweak.ID_INIT_VALUE.toString() );
@@ -312,12 +312,12 @@ public class CFBamJpaTweak
 	}
 
 	@Override
-	public $implJavaOptAtomType$ getPKey() {
+	public ICFLibKeyHash256 getPKey() {
 		return getRequiredId();
 	}
 
 	@Override
-	public void setPKey($implJavaOptAtomType$ requiredId) {
+	public void setPKey(ICFLibKeyHash256 requiredId) {
 		this.requiredId = requiredId;
 	}
 

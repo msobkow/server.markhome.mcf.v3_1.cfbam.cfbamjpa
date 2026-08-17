@@ -65,7 +65,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 public class CFBamJpaDbKeyHash128TypeBySchemaIdxKey
 	implements ICFBamDbKeyHash128TypeBySchemaIdxKey, Comparable<Object>, Serializable
 {
-	protected $implJavaAtomType$ requiredSchemaDefId;
+	protected ICFLibKeyHash256 requiredSchemaDefId;
 	public CFBamJpaDbKeyHash128TypeBySchemaIdxKey() {
 		requiredSchemaDefId = CFLibDbKeyHash256.fromHex( ICFBamPubDbKeyHash128Type.SCHEMADEFID_INIT_VALUE.toString() );
 	}

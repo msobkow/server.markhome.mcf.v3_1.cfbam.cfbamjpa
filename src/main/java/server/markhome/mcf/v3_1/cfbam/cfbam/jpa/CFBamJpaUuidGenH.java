@@ -81,9 +81,9 @@ public class CFBamJpaUuidGenH extends CFBamJpaUuidTypeH
     implements ICFBamUuidGenH
 {
 	@Column( name="Slice", nullable=false )
-	protected $implJavaAtomType$ requiredSlice;
+	protected short requiredSlice;
 	@Column( name="BlockSize", nullable=false )
-	protected $implJavaAtomType$ requiredBlockSize;
+	protected int requiredBlockSize;
 
     public CFBamJpaUuidGenH() {
             super();

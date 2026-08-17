@@ -88,9 +88,9 @@ public class CFBamJpaPopSubDep2 extends CFBamJpaPopDep
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="contpopdep1id", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ requiredPopSubDep1Id;
+	protected ICFLibKeyHash256 requiredPopSubDep1Id;
 	@Column( name="safe_name", nullable=false, length=192 )
-	protected $implJavaAtomType$ requiredName;
+	protected String requiredName;
 
 	public CFBamJpaPopSubDep2() {
 		super();

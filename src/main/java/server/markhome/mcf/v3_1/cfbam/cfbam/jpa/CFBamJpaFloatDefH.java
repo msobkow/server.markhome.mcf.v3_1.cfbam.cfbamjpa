@@ -81,11 +81,11 @@ public class CFBamJpaFloatDefH extends CFBamJpaAtomH
     implements ICFBamFloatDefH
 {
 	@Column( name="InitVal", nullable=true )
-	protected $implJavaAtomType$ optionalInitValue;
+	protected Float optionalInitValue;
 	@Column( name="MinVal", nullable=true )
-	protected $implJavaAtomType$ optionalMinValue;
+	protected Float optionalMinValue;
 	@Column( name="MaxVal", nullable=true )
-	protected $implJavaAtomType$ optionalMaxValue;
+	protected Float optionalMaxValue;
 
     public CFBamJpaFloatDefH() {
             super();
@@ -322,9 +322,9 @@ public class CFBamJpaFloatDefH extends CFBamJpaAtomH
         }
         ICFBamFloatDef rhs = (ICFBamFloatDef)obj;
 			if( getOptionalInitValue() != null ) {
-				$implJavaAtomType$ lhsInitValue = getOptionalInitValue();
+				Float lhsInitValue = getOptionalInitValue();
 				if( rhs.getOptionalInitValue() != null ) {
-					$implJavaAtomType$ rhsInitValue = rhs.getOptionalInitValue();
+					Float rhsInitValue = rhs.getOptionalInitValue();
 					cmp = lhsInitValue.compareTo( rhsInitValue );
 					if( cmp != 0 ) {
 						return( cmp );
@@ -340,9 +340,9 @@ public class CFBamJpaFloatDefH extends CFBamJpaAtomH
 				}
 			}
 			if( getOptionalMinValue() != null ) {
-				$implJavaAtomType$ lhsMinValue = getOptionalMinValue();
+				Float lhsMinValue = getOptionalMinValue();
 				if( rhs.getOptionalMinValue() != null ) {
-					$implJavaAtomType$ rhsMinValue = rhs.getOptionalMinValue();
+					Float rhsMinValue = rhs.getOptionalMinValue();
 					cmp = lhsMinValue.compareTo( rhsMinValue );
 					if( cmp != 0 ) {
 						return( cmp );
@@ -358,9 +358,9 @@ public class CFBamJpaFloatDefH extends CFBamJpaAtomH
 				}
 			}
 			if( getOptionalMaxValue() != null ) {
-				$implJavaAtomType$ lhsMaxValue = getOptionalMaxValue();
+				Float lhsMaxValue = getOptionalMaxValue();
 				if( rhs.getOptionalMaxValue() != null ) {
-					$implJavaAtomType$ rhsMaxValue = rhs.getOptionalMaxValue();
+					Float rhsMaxValue = rhs.getOptionalMaxValue();
 					cmp = lhsMaxValue.compareTo( rhsMaxValue );
 					if( cmp != 0 ) {
 						return( cmp );
@@ -387,9 +387,9 @@ public class CFBamJpaFloatDefH extends CFBamJpaAtomH
         }
         ICFBamFloatDefH rhs = (ICFBamFloatDefH)obj;
 			if( getOptionalInitValue() != null ) {
-				$implJavaAtomType$ lhsInitValue = getOptionalInitValue();
+				Float lhsInitValue = getOptionalInitValue();
 				if( rhs.getOptionalInitValue() != null ) {
-					$implJavaAtomType$ rhsInitValue = rhs.getOptionalInitValue();
+					Float rhsInitValue = rhs.getOptionalInitValue();
 					cmp = lhsInitValue.compareTo( rhsInitValue );
 					if( cmp != 0 ) {
 						return( cmp );
@@ -405,9 +405,9 @@ public class CFBamJpaFloatDefH extends CFBamJpaAtomH
 				}
 			}
 			if( getOptionalMinValue() != null ) {
-				$implJavaAtomType$ lhsMinValue = getOptionalMinValue();
+				Float lhsMinValue = getOptionalMinValue();
 				if( rhs.getOptionalMinValue() != null ) {
-					$implJavaAtomType$ rhsMinValue = rhs.getOptionalMinValue();
+					Float rhsMinValue = rhs.getOptionalMinValue();
 					cmp = lhsMinValue.compareTo( rhsMinValue );
 					if( cmp != 0 ) {
 						return( cmp );
@@ -423,9 +423,9 @@ public class CFBamJpaFloatDefH extends CFBamJpaAtomH
 				}
 			}
 			if( getOptionalMaxValue() != null ) {
-				$implJavaAtomType$ lhsMaxValue = getOptionalMaxValue();
+				Float lhsMaxValue = getOptionalMaxValue();
 				if( rhs.getOptionalMaxValue() != null ) {
-					$implJavaAtomType$ rhsMaxValue = rhs.getOptionalMaxValue();
+					Float rhsMaxValue = rhs.getOptionalMaxValue();
 					cmp = lhsMaxValue.compareTo( rhsMaxValue );
 					if( cmp != 0 ) {
 						return( cmp );

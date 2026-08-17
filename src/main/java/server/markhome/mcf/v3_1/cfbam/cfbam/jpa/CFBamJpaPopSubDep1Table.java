@@ -298,7 +298,7 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 	 */
 	@Override
 	public void deletePopSubDep1ByPopTopDepIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argPopTopDepId )
+		ICFLibKeyHash256 argPopTopDepId )
 	{
 		final String S_ProcName = "deletePopSubDep1ByPopTopDepIdx";
 		boolean permissionGranted = canDeletePopSubDep1(S_ProcName, Authorization);
@@ -341,8 +341,8 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 	 */
 	@Override
 	public void deletePopSubDep1ByUNameIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argPopTopDepId,
-		$implJavaAtomType$ argName )
+		ICFLibKeyHash256 argPopTopDepId,
+		String argName )
 	{
 		final String S_ProcName = "deletePopSubDep1ByUNameIdx";
 		boolean permissionGranted = canDeletePopSubDep1(S_ProcName, Authorization);
@@ -385,7 +385,7 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 	 */
 	@Override
 	public void deletePopSubDep1ByRelationIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argRelationId )
+		ICFLibKeyHash256 argRelationId )
 	{
 		final String S_ProcName = "deletePopSubDep1ByRelationIdx";
 		boolean permissionGranted = canDeletePopSubDep1(S_ProcName, Authorization);
@@ -426,7 +426,7 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 	 */
 	@Override
 	public void deletePopSubDep1ByDefSchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argDefSchemaId )
+		ICFLibKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "deletePopSubDep1ByDefSchemaIdx";
 		boolean permissionGranted = canDeletePopSubDep1(S_ProcName, Authorization);
@@ -487,7 +487,7 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 	 */
 	@Override
 	public void deletePopSubDep1ByTenantIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTenantId )
+		ICFLibKeyHash256 argTenantId )
 	{
 		final String S_ProcName = "deletePopSubDep1ByTenantIdx";
 		boolean permissionGranted = canDeletePopSubDep1(S_ProcName, Authorization);
@@ -604,7 +604,7 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 	 */
 	@Override
 	public ICFBamPopSubDep1 readDerivedByIdIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argId )
+		ICFLibKeyHash256 argId )
 	{
 		final String S_ProcName = "readDerivedByIdIdx";
 		boolean permissionGranted = false;
@@ -638,7 +638,7 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 	 */
 	@Override
 	public ICFBamPopSubDep1[] readDerivedByTenantIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTenantId )
+		ICFLibKeyHash256 argTenantId )
 	{
 		final String S_ProcName = "readDerivedByTenantIdx";
 		boolean permissionGranted = false;
@@ -668,7 +668,7 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 	 */
 	@Override
 	public ICFBamPopSubDep1[] readDerivedByRelationIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argRelationId )
+		ICFLibKeyHash256 argRelationId )
 	{
 		final String S_ProcName = "readDerivedByRelationIdx";
 		boolean permissionGranted = false;
@@ -698,7 +698,7 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 	 */
 	@Override
 	public ICFBamPopSubDep1[] readDerivedByDefSchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argDefSchemaId )
+		ICFLibKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "readDerivedByDefSchemaIdx";
 		boolean permissionGranted = false;
@@ -728,7 +728,7 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 	 */
 	@Override
 	public ICFBamPopSubDep1[] readDerivedByPopTopDepIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argPopTopDepId )
+		ICFLibKeyHash256 argPopTopDepId )
 	{
 		final String S_ProcName = "readDerivedByPopTopDepIdx";
 		boolean permissionGranted = false;
@@ -761,8 +761,8 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 	 */
 	@Override
 	public ICFBamPopSubDep1 readDerivedByUNameIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argPopTopDepId,
-		$implJavaAtomType$ argName )
+		ICFLibKeyHash256 argPopTopDepId,
+		String argName )
 	{
 		final String S_ProcName = "readDerivedByUNameIdx";
 		boolean permissionGranted = false;
@@ -869,7 +869,7 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 	 */
 	@Override
 	public ICFBamPopSubDep1 readRecByIdIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argId )
+		ICFLibKeyHash256 argId )
 	{
 		final String S_ProcName = "readRecByIdIdx";
 		boolean permissionGranted = false;
@@ -895,7 +895,7 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 	 */
 	@Override
 	public ICFBamPopSubDep1[] readRecByTenantIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTenantId )
+		ICFLibKeyHash256 argTenantId )
 	{
 		final String S_ProcName = "readRecByTenantIdx";
 		boolean permissionGranted = false;
@@ -921,7 +921,7 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 	 */
 	@Override
 	public ICFBamPopSubDep1[] readRecByRelationIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argRelationId )
+		ICFLibKeyHash256 argRelationId )
 	{
 		final String S_ProcName = "readRecByRelationIdx";
 		boolean permissionGranted = false;
@@ -947,7 +947,7 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 	 */
 	@Override
 	public ICFBamPopSubDep1[] readRecByDefSchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argDefSchemaId )
+		ICFLibKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "readRecByDefSchemaIdx";
 		boolean permissionGranted = false;
@@ -973,7 +973,7 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 	 */
 	@Override
 	public ICFBamPopSubDep1[] readRecByPopTopDepIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argPopTopDepId )
+		ICFLibKeyHash256 argPopTopDepId )
 	{
 		final String S_ProcName = "readRecByPopTopDepIdx";
 		boolean permissionGranted = false;
@@ -1002,8 +1002,8 @@ public class CFBamJpaPopSubDep1Table implements ICFBamPopSubDep1Table
 	 */
 	@Override
 	public ICFBamPopSubDep1 readRecByUNameIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argPopTopDepId,
-		$implJavaAtomType$ argName )
+		ICFLibKeyHash256 argPopTopDepId,
+		String argName )
 	{
 		final String S_ProcName = "readRecByUNameIdx";
 		boolean permissionGranted = false;

@@ -78,7 +78,7 @@ public class CFBamJpaAtom extends CFBamJpaValue
 {
 
 	@Column( name="DbName", nullable=true, length=32 )
-	protected $implJavaAtomType$ optionalDbName;
+	protected String optionalDbName;
 
 	public CFBamJpaAtom() {
 		super();

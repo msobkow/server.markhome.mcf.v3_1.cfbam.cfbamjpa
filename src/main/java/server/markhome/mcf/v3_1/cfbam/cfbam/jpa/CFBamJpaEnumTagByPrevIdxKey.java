@@ -65,7 +65,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 public class CFBamJpaEnumTagByPrevIdxKey
 	implements ICFBamEnumTagByPrevIdxKey, Comparable<Object>, Serializable
 {
-	protected $implJavaAtomType$ optionalPrevId;
+	protected ICFLibKeyHash256 optionalPrevId;
 	public CFBamJpaEnumTagByPrevIdxKey() {
 		optionalPrevId = CFLibDbKeyHash256.nullGet();
 	}

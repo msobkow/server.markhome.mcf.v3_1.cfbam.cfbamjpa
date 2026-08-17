@@ -320,8 +320,8 @@ public class CFBamJpaTZDateDefTable implements ICFBamTZDateDefTable
 	 */
 	@Override
 	public void deleteTZDateDefByUNameIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argName )
+		ICFLibKeyHash256 argScopeId,
+		String argName )
 	{
 		final String S_ProcName = "deleteTZDateDefByUNameIdx";
 		boolean permissionGranted = canDeleteTZDateDef(S_ProcName, Authorization);
@@ -364,7 +364,7 @@ public class CFBamJpaTZDateDefTable implements ICFBamTZDateDefTable
 	 */
 	@Override
 	public void deleteTZDateDefByScopeIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId )
+		ICFLibKeyHash256 argScopeId )
 	{
 		final String S_ProcName = "deleteTZDateDefByScopeIdx";
 		boolean permissionGranted = canDeleteTZDateDef(S_ProcName, Authorization);
@@ -405,7 +405,7 @@ public class CFBamJpaTZDateDefTable implements ICFBamTZDateDefTable
 	 */
 	@Override
 	public void deleteTZDateDefByDefSchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argDefSchemaId )
+		ICFLibKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "deleteTZDateDefByDefSchemaIdx";
 		boolean permissionGranted = canDeleteTZDateDef(S_ProcName, Authorization);
@@ -446,7 +446,7 @@ public class CFBamJpaTZDateDefTable implements ICFBamTZDateDefTable
 	 */
 	@Override
 	public void deleteTZDateDefByPrevIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argPrevId )
+		ICFLibKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "deleteTZDateDefByPrevIdx";
 		boolean permissionGranted = canDeleteTZDateDef(S_ProcName, Authorization);
@@ -487,7 +487,7 @@ public class CFBamJpaTZDateDefTable implements ICFBamTZDateDefTable
 	 */
 	@Override
 	public void deleteTZDateDefByNextIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argNextId )
+		ICFLibKeyHash256 argNextId )
 	{
 		final String S_ProcName = "deleteTZDateDefByNextIdx";
 		boolean permissionGranted = canDeleteTZDateDef(S_ProcName, Authorization);
@@ -530,8 +530,8 @@ public class CFBamJpaTZDateDefTable implements ICFBamTZDateDefTable
 	 */
 	@Override
 	public void deleteTZDateDefByContPrevIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argPrevId )
+		ICFLibKeyHash256 argScopeId,
+		ICFLibKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "deleteTZDateDefByContPrevIdx";
 		boolean permissionGranted = canDeleteTZDateDef(S_ProcName, Authorization);
@@ -576,8 +576,8 @@ public class CFBamJpaTZDateDefTable implements ICFBamTZDateDefTable
 	 */
 	@Override
 	public void deleteTZDateDefByContNextIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argNextId )
+		ICFLibKeyHash256 argScopeId,
+		ICFLibKeyHash256 argNextId )
 	{
 		final String S_ProcName = "deleteTZDateDefByContNextIdx";
 		boolean permissionGranted = canDeleteTZDateDef(S_ProcName, Authorization);
@@ -696,7 +696,7 @@ public class CFBamJpaTZDateDefTable implements ICFBamTZDateDefTable
 	 */
 	@Override
 	public ICFBamTZDateDef readDerivedByIdIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argId )
+		ICFLibKeyHash256 argId )
 	{
 		final String S_ProcName = "readDerivedByIdIdx";
 		boolean permissionGranted = false;
@@ -733,8 +733,8 @@ public class CFBamJpaTZDateDefTable implements ICFBamTZDateDefTable
 	 */
 	@Override
 	public ICFBamTZDateDef readDerivedByUNameIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argName )
+		ICFLibKeyHash256 argScopeId,
+		String argName )
 	{
 		final String S_ProcName = "readDerivedByUNameIdx";
 		boolean permissionGranted = false;
@@ -769,7 +769,7 @@ public class CFBamJpaTZDateDefTable implements ICFBamTZDateDefTable
 	 */
 	@Override
 	public ICFBamTZDateDef[] readDerivedByScopeIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId )
+		ICFLibKeyHash256 argScopeId )
 	{
 		final String S_ProcName = "readDerivedByScopeIdx";
 		boolean permissionGranted = false;
@@ -799,7 +799,7 @@ public class CFBamJpaTZDateDefTable implements ICFBamTZDateDefTable
 	 */
 	@Override
 	public ICFBamTZDateDef[] readDerivedByDefSchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argDefSchemaId )
+		ICFLibKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "readDerivedByDefSchemaIdx";
 		boolean permissionGranted = false;
@@ -829,7 +829,7 @@ public class CFBamJpaTZDateDefTable implements ICFBamTZDateDefTable
 	 */
 	@Override
 	public ICFBamTZDateDef[] readDerivedByPrevIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argPrevId )
+		ICFLibKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "readDerivedByPrevIdx";
 		boolean permissionGranted = false;
@@ -859,7 +859,7 @@ public class CFBamJpaTZDateDefTable implements ICFBamTZDateDefTable
 	 */
 	@Override
 	public ICFBamTZDateDef[] readDerivedByNextIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argNextId )
+		ICFLibKeyHash256 argNextId )
 	{
 		final String S_ProcName = "readDerivedByNextIdx";
 		boolean permissionGranted = false;
@@ -891,8 +891,8 @@ public class CFBamJpaTZDateDefTable implements ICFBamTZDateDefTable
 	 */
 	@Override
 	public ICFBamTZDateDef[] readDerivedByContPrevIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argPrevId )
+		ICFLibKeyHash256 argScopeId,
+		ICFLibKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "readDerivedByContPrevIdx";
 		boolean permissionGranted = false;
@@ -925,8 +925,8 @@ public class CFBamJpaTZDateDefTable implements ICFBamTZDateDefTable
 	 */
 	@Override
 	public ICFBamTZDateDef[] readDerivedByContNextIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argNextId )
+		ICFLibKeyHash256 argScopeId,
+		ICFLibKeyHash256 argNextId )
 	{
 		final String S_ProcName = "readDerivedByContNextIdx";
 		boolean permissionGranted = false;
@@ -1029,7 +1029,7 @@ public class CFBamJpaTZDateDefTable implements ICFBamTZDateDefTable
 	 */
 	@Override
 	public ICFBamTZDateDef readRecByIdIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argId )
+		ICFLibKeyHash256 argId )
 	{
 		final String S_ProcName = "readRecByIdIdx";
 		boolean permissionGranted = false;
@@ -1058,8 +1058,8 @@ public class CFBamJpaTZDateDefTable implements ICFBamTZDateDefTable
 	 */
 	@Override
 	public ICFBamTZDateDef readRecByUNameIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argName )
+		ICFLibKeyHash256 argScopeId,
+		String argName )
 	{
 		final String S_ProcName = "readRecByUNameIdx";
 		boolean permissionGranted = false;
@@ -1085,7 +1085,7 @@ public class CFBamJpaTZDateDefTable implements ICFBamTZDateDefTable
 	 */
 	@Override
 	public ICFBamTZDateDef[] readRecByScopeIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId )
+		ICFLibKeyHash256 argScopeId )
 	{
 		final String S_ProcName = "readRecByScopeIdx";
 		boolean permissionGranted = false;
@@ -1111,7 +1111,7 @@ public class CFBamJpaTZDateDefTable implements ICFBamTZDateDefTable
 	 */
 	@Override
 	public ICFBamTZDateDef[] readRecByDefSchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argDefSchemaId )
+		ICFLibKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "readRecByDefSchemaIdx";
 		boolean permissionGranted = false;
@@ -1137,7 +1137,7 @@ public class CFBamJpaTZDateDefTable implements ICFBamTZDateDefTable
 	 */
 	@Override
 	public ICFBamTZDateDef[] readRecByPrevIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argPrevId )
+		ICFLibKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "readRecByPrevIdx";
 		boolean permissionGranted = false;
@@ -1163,7 +1163,7 @@ public class CFBamJpaTZDateDefTable implements ICFBamTZDateDefTable
 	 */
 	@Override
 	public ICFBamTZDateDef[] readRecByNextIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argNextId )
+		ICFLibKeyHash256 argNextId )
 	{
 		final String S_ProcName = "readRecByNextIdx";
 		boolean permissionGranted = false;
@@ -1191,8 +1191,8 @@ public class CFBamJpaTZDateDefTable implements ICFBamTZDateDefTable
 	 */
 	@Override
 	public ICFBamTZDateDef[] readRecByContPrevIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argPrevId )
+		ICFLibKeyHash256 argScopeId,
+		ICFLibKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "readRecByContPrevIdx";
 		boolean permissionGranted = false;
@@ -1220,8 +1220,8 @@ public class CFBamJpaTZDateDefTable implements ICFBamTZDateDefTable
 	 */
 	@Override
 	public ICFBamTZDateDef[] readRecByContNextIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argNextId )
+		ICFLibKeyHash256 argScopeId,
+		ICFLibKeyHash256 argNextId )
 	{
 		final String S_ProcName = "readRecByContNextIdx";
 		boolean permissionGranted = false;
@@ -1241,7 +1241,7 @@ public class CFBamJpaTZDateDefTable implements ICFBamTZDateDefTable
 	 */
 	@Override
 	public ICFBamTZDateDef moveRecUp( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argId,
+		ICFLibKeyHash256 argId,
 		int revision )
 	{
 		final String S_ProcName = "moveRecUp";
@@ -1260,7 +1260,7 @@ public class CFBamJpaTZDateDefTable implements ICFBamTZDateDefTable
 	 */
 	@Override
 	public ICFBamTZDateDef moveRecDown( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argId,
+		ICFLibKeyHash256 argId,
 		int revision )
 	{
 		final String S_ProcName = "moveRecDown";

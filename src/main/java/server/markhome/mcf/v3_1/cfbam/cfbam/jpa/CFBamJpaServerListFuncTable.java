@@ -298,7 +298,7 @@ public class CFBamJpaServerListFuncTable implements ICFBamServerListFuncTable
 	 */
 	@Override
 	public void deleteServerListFuncByRetTblIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argRetTableId )
+		ICFLibKeyHash256 argRetTableId )
 	{
 		final String S_ProcName = "deleteServerListFuncByRetTblIdx";
 		boolean permissionGranted = canDeleteServerListFunc(S_ProcName, Authorization);
@@ -341,8 +341,8 @@ public class CFBamJpaServerListFuncTable implements ICFBamServerListFuncTable
 	 */
 	@Override
 	public void deleteServerListFuncByUNameIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTableId,
-		$implJavaAtomType$ argName )
+		ICFLibKeyHash256 argTableId,
+		String argName )
 	{
 		final String S_ProcName = "deleteServerListFuncByUNameIdx";
 		boolean permissionGranted = canDeleteServerListFunc(S_ProcName, Authorization);
@@ -385,7 +385,7 @@ public class CFBamJpaServerListFuncTable implements ICFBamServerListFuncTable
 	 */
 	@Override
 	public void deleteServerListFuncByMethTableIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTableId )
+		ICFLibKeyHash256 argTableId )
 	{
 		final String S_ProcName = "deleteServerListFuncByMethTableIdx";
 		boolean permissionGranted = canDeleteServerListFunc(S_ProcName, Authorization);
@@ -426,7 +426,7 @@ public class CFBamJpaServerListFuncTable implements ICFBamServerListFuncTable
 	 */
 	@Override
 	public void deleteServerListFuncByMethCodeVisIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argCodeVis )
+		ICFBamPubSchema.CodeVisibilityEnum argCodeVis )
 	{
 		final String S_ProcName = "deleteServerListFuncByMethCodeVisIdx";
 		boolean permissionGranted = canDeleteServerListFunc(S_ProcName, Authorization);
@@ -469,8 +469,8 @@ public class CFBamJpaServerListFuncTable implements ICFBamServerListFuncTable
 	 */
 	@Override
 	public void deleteServerListFuncByMethTableVisIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTableId,
-		$implJavaAtomType$ argCodeVis )
+		ICFLibKeyHash256 argTableId,
+		ICFBamPubSchema.CodeVisibilityEnum argCodeVis )
 	{
 		final String S_ProcName = "deleteServerListFuncByMethTableVisIdx";
 		boolean permissionGranted = canDeleteServerListFunc(S_ProcName, Authorization);
@@ -513,7 +513,7 @@ public class CFBamJpaServerListFuncTable implements ICFBamServerListFuncTable
 	 */
 	@Override
 	public void deleteServerListFuncByDefSchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argDefSchemaId )
+		ICFLibKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "deleteServerListFuncByDefSchemaIdx";
 		boolean permissionGranted = canDeleteServerListFunc(S_ProcName, Authorization);
@@ -574,7 +574,7 @@ public class CFBamJpaServerListFuncTable implements ICFBamServerListFuncTable
 	 */
 	@Override
 	public void deleteServerListFuncByTenantIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTenantId )
+		ICFLibKeyHash256 argTenantId )
 	{
 		final String S_ProcName = "deleteServerListFuncByTenantIdx";
 		boolean permissionGranted = canDeleteServerListFunc(S_ProcName, Authorization);
@@ -691,7 +691,7 @@ public class CFBamJpaServerListFuncTable implements ICFBamServerListFuncTable
 	 */
 	@Override
 	public ICFBamServerListFunc readDerivedByIdIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argId )
+		ICFLibKeyHash256 argId )
 	{
 		final String S_ProcName = "readDerivedByIdIdx";
 		boolean permissionGranted = false;
@@ -725,7 +725,7 @@ public class CFBamJpaServerListFuncTable implements ICFBamServerListFuncTable
 	 */
 	@Override
 	public ICFBamServerListFunc[] readDerivedByTenantIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTenantId )
+		ICFLibKeyHash256 argTenantId )
 	{
 		final String S_ProcName = "readDerivedByTenantIdx";
 		boolean permissionGranted = false;
@@ -758,8 +758,8 @@ public class CFBamJpaServerListFuncTable implements ICFBamServerListFuncTable
 	 */
 	@Override
 	public ICFBamServerListFunc readDerivedByUNameIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTableId,
-		$implJavaAtomType$ argName )
+		ICFLibKeyHash256 argTableId,
+		String argName )
 	{
 		final String S_ProcName = "readDerivedByUNameIdx";
 		boolean permissionGranted = false;
@@ -794,7 +794,7 @@ public class CFBamJpaServerListFuncTable implements ICFBamServerListFuncTable
 	 */
 	@Override
 	public ICFBamServerListFunc[] readDerivedByMethTableIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTableId )
+		ICFLibKeyHash256 argTableId )
 	{
 		final String S_ProcName = "readDerivedByMethTableIdx";
 		boolean permissionGranted = false;
@@ -824,7 +824,7 @@ public class CFBamJpaServerListFuncTable implements ICFBamServerListFuncTable
 	 */
 	@Override
 	public ICFBamServerListFunc[] readDerivedByMethCodeVisIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argCodeVis )
+		ICFBamPubSchema.CodeVisibilityEnum argCodeVis )
 	{
 		final String S_ProcName = "readDerivedByMethCodeVisIdx";
 		boolean permissionGranted = false;
@@ -856,8 +856,8 @@ public class CFBamJpaServerListFuncTable implements ICFBamServerListFuncTable
 	 */
 	@Override
 	public ICFBamServerListFunc[] readDerivedByMethTableVisIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTableId,
-		$implJavaAtomType$ argCodeVis )
+		ICFLibKeyHash256 argTableId,
+		ICFBamPubSchema.CodeVisibilityEnum argCodeVis )
 	{
 		final String S_ProcName = "readDerivedByMethTableVisIdx";
 		boolean permissionGranted = false;
@@ -888,7 +888,7 @@ public class CFBamJpaServerListFuncTable implements ICFBamServerListFuncTable
 	 */
 	@Override
 	public ICFBamServerListFunc[] readDerivedByDefSchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argDefSchemaId )
+		ICFLibKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "readDerivedByDefSchemaIdx";
 		boolean permissionGranted = false;
@@ -918,7 +918,7 @@ public class CFBamJpaServerListFuncTable implements ICFBamServerListFuncTable
 	 */
 	@Override
 	public ICFBamServerListFunc[] readDerivedByRetTblIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argRetTableId )
+		ICFLibKeyHash256 argRetTableId )
 	{
 		final String S_ProcName = "readDerivedByRetTblIdx";
 		boolean permissionGranted = false;
@@ -1020,7 +1020,7 @@ public class CFBamJpaServerListFuncTable implements ICFBamServerListFuncTable
 	 */
 	@Override
 	public ICFBamServerListFunc readRecByIdIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argId )
+		ICFLibKeyHash256 argId )
 	{
 		final String S_ProcName = "readRecByIdIdx";
 		boolean permissionGranted = false;
@@ -1046,7 +1046,7 @@ public class CFBamJpaServerListFuncTable implements ICFBamServerListFuncTable
 	 */
 	@Override
 	public ICFBamServerListFunc[] readRecByTenantIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTenantId )
+		ICFLibKeyHash256 argTenantId )
 	{
 		final String S_ProcName = "readRecByTenantIdx";
 		boolean permissionGranted = false;
@@ -1075,8 +1075,8 @@ public class CFBamJpaServerListFuncTable implements ICFBamServerListFuncTable
 	 */
 	@Override
 	public ICFBamServerListFunc readRecByUNameIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTableId,
-		$implJavaAtomType$ argName )
+		ICFLibKeyHash256 argTableId,
+		String argName )
 	{
 		final String S_ProcName = "readRecByUNameIdx";
 		boolean permissionGranted = false;
@@ -1102,7 +1102,7 @@ public class CFBamJpaServerListFuncTable implements ICFBamServerListFuncTable
 	 */
 	@Override
 	public ICFBamServerListFunc[] readRecByMethTableIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTableId )
+		ICFLibKeyHash256 argTableId )
 	{
 		final String S_ProcName = "readRecByMethTableIdx";
 		boolean permissionGranted = false;
@@ -1128,7 +1128,7 @@ public class CFBamJpaServerListFuncTable implements ICFBamServerListFuncTable
 	 */
 	@Override
 	public ICFBamServerListFunc[] readRecByMethCodeVisIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argCodeVis )
+		ICFBamPubSchema.CodeVisibilityEnum argCodeVis )
 	{
 		final String S_ProcName = "readRecByMethCodeVisIdx";
 		boolean permissionGranted = false;
@@ -1156,8 +1156,8 @@ public class CFBamJpaServerListFuncTable implements ICFBamServerListFuncTable
 	 */
 	@Override
 	public ICFBamServerListFunc[] readRecByMethTableVisIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTableId,
-		$implJavaAtomType$ argCodeVis )
+		ICFLibKeyHash256 argTableId,
+		ICFBamPubSchema.CodeVisibilityEnum argCodeVis )
 	{
 		final String S_ProcName = "readRecByMethTableVisIdx";
 		boolean permissionGranted = false;
@@ -1183,7 +1183,7 @@ public class CFBamJpaServerListFuncTable implements ICFBamServerListFuncTable
 	 */
 	@Override
 	public ICFBamServerListFunc[] readRecByDefSchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argDefSchemaId )
+		ICFLibKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "readRecByDefSchemaIdx";
 		boolean permissionGranted = false;
@@ -1209,7 +1209,7 @@ public class CFBamJpaServerListFuncTable implements ICFBamServerListFuncTable
 	 */
 	@Override
 	public ICFBamServerListFunc[] readRecByRetTblIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argRetTableId )
+		ICFLibKeyHash256 argRetTableId )
 	{
 		final String S_ProcName = "readRecByRetTblIdx";
 		boolean permissionGranted = false;

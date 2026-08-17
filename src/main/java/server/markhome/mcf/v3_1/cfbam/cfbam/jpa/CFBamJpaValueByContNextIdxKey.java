@@ -65,8 +65,8 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 public class CFBamJpaValueByContNextIdxKey
 	implements ICFBamValueByContNextIdxKey, Comparable<Object>, Serializable
 {
-	protected $implJavaAtomType$ requiredScopeId;
-	protected $implJavaAtomType$ optionalNextId;
+	protected ICFLibKeyHash256 requiredScopeId;
+	protected ICFLibKeyHash256 optionalNextId;
 	public CFBamJpaValueByContNextIdxKey() {
 		requiredScopeId = CFLibDbKeyHash256.fromHex( ICFBamPubValue.SCOPEID_INIT_VALUE.toString() );
 		optionalNextId = CFLibDbKeyHash256.nullGet();

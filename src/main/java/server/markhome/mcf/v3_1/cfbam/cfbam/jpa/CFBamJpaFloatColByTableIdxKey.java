@@ -65,7 +65,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 public class CFBamJpaFloatColByTableIdxKey
 	implements ICFBamFloatColByTableIdxKey, Comparable<Object>, Serializable
 {
-	protected $implJavaAtomType$ requiredTableId;
+	protected ICFLibKeyHash256 requiredTableId;
 	public CFBamJpaFloatColByTableIdxKey() {
 		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamPubFloatCol.TABLEID_INIT_VALUE.toString() );
 	}

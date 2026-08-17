@@ -117,53 +117,53 @@ public class CFBamJpaRelation extends CFBamJpaScope
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="TableId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ requiredTableId;
+	protected ICFLibKeyHash256 requiredTableId;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="defschid", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ optionalDefSchemaId;
+	protected ICFLibKeyHash256 optionalDefSchemaId;
 	@Column( name="safe_name", nullable=false, length=192 )
-	protected $implJavaAtomType$ requiredName;
+	protected String requiredName;
 	@Column( name="short_name", nullable=true, length=16 )
-	protected $implJavaAtomType$ optionalShortName;
+	protected String optionalShortName;
 	@Column( name="Label", nullable=true, length=64 )
-	protected $implJavaAtomType$ optionalLabel;
+	protected String optionalLabel;
 	@Column( name="short_descr", nullable=true, length=128 )
-	protected $implJavaAtomType$ optionalShortDescription;
+	protected String optionalShortDescription;
 	@Column( name="descr", nullable=true, length=1023 )
-	protected $implJavaAtomType$ optionalDescription;
+	protected String optionalDescription;
 	@Column( name="RelationType", nullable=false )
-	protected $implJavaAtomType$ requiredRelationType;
+	protected ICFBamPubSchema.RelationTypeEnum requiredRelationType;
 	@Column( name="DbName", nullable=true, length=32 )
-	protected $implJavaAtomType$ optionalDbName;
+	protected String optionalDbName;
 	@Column( name="Suffix", nullable=true, length=16 )
-	protected $implJavaAtomType$ optionalSuffix;
+	protected String optionalSuffix;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="FromIndexId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ requiredFromIndexId;
+	protected ICFLibKeyHash256 requiredFromIndexId;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="ToTableId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ requiredToTableId;
+	protected ICFLibKeyHash256 requiredToTableId;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="ToIndexId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ requiredToIndexId;
+	protected ICFLibKeyHash256 requiredToIndexId;
 	@Column( name="IsRequired", nullable=false )
-	protected $implJavaAtomType$ requiredIsRequired;
+	protected boolean requiredIsRequired;
 	@Column( name="IsXsdContainer", nullable=false )
-	protected $implJavaAtomType$ requiredIsXsdContainer;
+	protected boolean requiredIsXsdContainer;
 	@Column( name="IsLateResolver", nullable=false )
-	protected $implJavaAtomType$ requiredIsLateResolver;
+	protected boolean requiredIsLateResolver;
 	@Column( name="AllowAddendum", nullable=false )
-	protected $implJavaAtomType$ requiredAllowAddendum;
+	protected boolean requiredAllowAddendum;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="NarrowedId", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ optionalNarrowedId;
+	protected ICFLibKeyHash256 optionalNarrowedId;
 	@Column( name="codevis", nullable=false )
-	protected $implJavaAtomType$ requiredCodeVis;
+	protected ICFBamPubSchema.CodeVisibilityEnum requiredCodeVis;
 
 	public CFBamJpaRelation() {
 		super();

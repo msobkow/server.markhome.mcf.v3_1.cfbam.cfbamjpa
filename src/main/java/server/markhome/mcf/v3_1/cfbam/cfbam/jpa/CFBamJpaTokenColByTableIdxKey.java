@@ -65,7 +65,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 public class CFBamJpaTokenColByTableIdxKey
 	implements ICFBamTokenColByTableIdxKey, Comparable<Object>, Serializable
 {
-	protected $implJavaAtomType$ requiredTableId;
+	protected ICFLibKeyHash256 requiredTableId;
 	public CFBamJpaTokenColByTableIdxKey() {
 		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamPubTokenCol.TABLEID_INIT_VALUE.toString() );
 	}

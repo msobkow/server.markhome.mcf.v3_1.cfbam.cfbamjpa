@@ -78,15 +78,15 @@ public class CFBamJpaNumberDef extends CFBamJpaAtom
 {
 
 	@Column( name="Digits", nullable=false )
-	protected $implJavaAtomType$ requiredDigits;
+	protected short requiredDigits;
 	@Column( name="Precis", nullable=false )
-	protected $implJavaAtomType$ requiredPrecis;
+	protected short requiredPrecis;
 	@Column( name="InitVal", nullable=true, scale=31, precision=5 )
-	protected $implJavaAtomType$ optionalInitValue;
+	protected BigDecimal optionalInitValue;
 	@Column( name="MinVal", nullable=true, scale=31, precision=5 )
-	protected $implJavaAtomType$ optionalMinValue;
+	protected BigDecimal optionalMinValue;
 	@Column( name="MaxVal", nullable=true, scale=31, precision=5 )
-	protected $implJavaAtomType$ optionalMaxValue;
+	protected BigDecimal optionalMaxValue;
 
 	public CFBamJpaNumberDef() {
 		super();

@@ -65,7 +65,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 public class CFBamJpaTimeColByTableIdxKey
 	implements ICFBamTimeColByTableIdxKey, Comparable<Object>, Serializable
 {
-	protected $implJavaAtomType$ requiredTableId;
+	protected ICFLibKeyHash256 requiredTableId;
 	public CFBamJpaTimeColByTableIdxKey() {
 		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamPubTimeCol.TABLEID_INIT_VALUE.toString() );
 	}

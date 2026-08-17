@@ -65,7 +65,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 public class CFBamJpaServerObjFuncByRetTblIdxKey
 	implements ICFBamServerObjFuncByRetTblIdxKey, Comparable<Object>, Serializable
 {
-	protected $implJavaAtomType$ optionalRetTableId;
+	protected ICFLibKeyHash256 optionalRetTableId;
 	public CFBamJpaServerObjFuncByRetTblIdxKey() {
 		optionalRetTableId = CFLibDbKeyHash256.nullGet();
 	}

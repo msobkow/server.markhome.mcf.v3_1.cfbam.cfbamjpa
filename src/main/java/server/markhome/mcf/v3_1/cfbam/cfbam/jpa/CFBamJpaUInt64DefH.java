@@ -81,11 +81,11 @@ public class CFBamJpaUInt64DefH extends CFBamJpaAtomH
     implements ICFBamUInt64DefH
 {
 	@Column( name="InitVal", nullable=true )
-	protected $implJavaAtomType$ optionalInitValue;
+	protected BigDecimal optionalInitValue;
 	@Column( name="MinVal", nullable=true )
-	protected $implJavaAtomType$ optionalMinValue;
+	protected BigDecimal optionalMinValue;
 	@Column( name="MaxVal", nullable=true )
-	protected $implJavaAtomType$ optionalMaxValue;
+	protected BigDecimal optionalMaxValue;
 
     public CFBamJpaUInt64DefH() {
             super();

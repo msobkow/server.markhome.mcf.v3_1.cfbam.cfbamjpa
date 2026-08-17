@@ -84,7 +84,7 @@ public class CFBamJpaUuid6ColH extends CFBamJpaUuid6DefH
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="TableId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ requiredTableId;
+	protected ICFLibKeyHash256 requiredTableId;
 
     public CFBamJpaUuid6ColH() {
             super();

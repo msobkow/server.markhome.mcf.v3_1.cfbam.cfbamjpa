@@ -81,11 +81,11 @@ public class CFBamJpaTextDefH extends CFBamJpaAtomH
     implements ICFBamTextDefH
 {
 	@Column( name="db_max_len", nullable=false )
-	protected $implJavaAtomType$ requiredMaxLen;
+	protected int requiredMaxLen;
 	@Column( name="InitVal", nullable=true, length=65535 )
-	protected $implJavaAtomType$ optionalInitValue;
+	protected String optionalInitValue;
 	@Column( name="xml_elt_name", nullable=true, length=192 )
-	protected $implJavaAtomType$ optionalXmlElementName;
+	protected String optionalXmlElementName;
 
     public CFBamJpaTextDefH() {
             super();

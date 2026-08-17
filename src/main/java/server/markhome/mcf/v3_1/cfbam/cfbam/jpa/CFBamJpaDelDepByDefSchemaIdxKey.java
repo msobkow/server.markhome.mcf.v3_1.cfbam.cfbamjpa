@@ -65,7 +65,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 public class CFBamJpaDelDepByDefSchemaIdxKey
 	implements ICFBamDelDepByDefSchemaIdxKey, Comparable<Object>, Serializable
 {
-	protected $implJavaAtomType$ optionalDefSchemaId;
+	protected ICFLibKeyHash256 optionalDefSchemaId;
 	public CFBamJpaDelDepByDefSchemaIdxKey() {
 		optionalDefSchemaId = CFLibDbKeyHash256.nullGet();
 	}

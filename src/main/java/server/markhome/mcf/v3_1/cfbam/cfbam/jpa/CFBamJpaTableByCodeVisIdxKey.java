@@ -65,7 +65,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 public class CFBamJpaTableByCodeVisIdxKey
 	implements ICFBamTableByCodeVisIdxKey, Comparable<Object>, Serializable
 {
-	protected $implJavaAtomType$ requiredCodeVis;
+	protected ICFBamPubSchema.CodeVisibilityEnum requiredCodeVis;
 	public CFBamJpaTableByCodeVisIdxKey() {
 		requiredCodeVis = ICFBamPubTable.CODEVIS_INIT_VALUE;
 	}

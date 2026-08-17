@@ -298,7 +298,7 @@ public class CFBamJpaFloatTypeTable implements ICFBamFloatTypeTable
 	 */
 	@Override
 	public void deleteFloatTypeBySchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argSchemaDefId )
+		ICFLibKeyHash256 argSchemaDefId )
 	{
 		final String S_ProcName = "deleteFloatTypeBySchemaIdx";
 		boolean permissionGranted = canDeleteFloatType(S_ProcName, Authorization);
@@ -361,8 +361,8 @@ public class CFBamJpaFloatTypeTable implements ICFBamFloatTypeTable
 	 */
 	@Override
 	public void deleteFloatTypeByUNameIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argName )
+		ICFLibKeyHash256 argScopeId,
+		String argName )
 	{
 		final String S_ProcName = "deleteFloatTypeByUNameIdx";
 		boolean permissionGranted = canDeleteFloatType(S_ProcName, Authorization);
@@ -405,7 +405,7 @@ public class CFBamJpaFloatTypeTable implements ICFBamFloatTypeTable
 	 */
 	@Override
 	public void deleteFloatTypeByScopeIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId )
+		ICFLibKeyHash256 argScopeId )
 	{
 		final String S_ProcName = "deleteFloatTypeByScopeIdx";
 		boolean permissionGranted = canDeleteFloatType(S_ProcName, Authorization);
@@ -446,7 +446,7 @@ public class CFBamJpaFloatTypeTable implements ICFBamFloatTypeTable
 	 */
 	@Override
 	public void deleteFloatTypeByDefSchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argDefSchemaId )
+		ICFLibKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "deleteFloatTypeByDefSchemaIdx";
 		boolean permissionGranted = canDeleteFloatType(S_ProcName, Authorization);
@@ -487,7 +487,7 @@ public class CFBamJpaFloatTypeTable implements ICFBamFloatTypeTable
 	 */
 	@Override
 	public void deleteFloatTypeByPrevIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argPrevId )
+		ICFLibKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "deleteFloatTypeByPrevIdx";
 		boolean permissionGranted = canDeleteFloatType(S_ProcName, Authorization);
@@ -528,7 +528,7 @@ public class CFBamJpaFloatTypeTable implements ICFBamFloatTypeTable
 	 */
 	@Override
 	public void deleteFloatTypeByNextIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argNextId )
+		ICFLibKeyHash256 argNextId )
 	{
 		final String S_ProcName = "deleteFloatTypeByNextIdx";
 		boolean permissionGranted = canDeleteFloatType(S_ProcName, Authorization);
@@ -571,8 +571,8 @@ public class CFBamJpaFloatTypeTable implements ICFBamFloatTypeTable
 	 */
 	@Override
 	public void deleteFloatTypeByContPrevIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argPrevId )
+		ICFLibKeyHash256 argScopeId,
+		ICFLibKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "deleteFloatTypeByContPrevIdx";
 		boolean permissionGranted = canDeleteFloatType(S_ProcName, Authorization);
@@ -617,8 +617,8 @@ public class CFBamJpaFloatTypeTable implements ICFBamFloatTypeTable
 	 */
 	@Override
 	public void deleteFloatTypeByContNextIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argNextId )
+		ICFLibKeyHash256 argScopeId,
+		ICFLibKeyHash256 argNextId )
 	{
 		final String S_ProcName = "deleteFloatTypeByContNextIdx";
 		boolean permissionGranted = canDeleteFloatType(S_ProcName, Authorization);
@@ -737,7 +737,7 @@ public class CFBamJpaFloatTypeTable implements ICFBamFloatTypeTable
 	 */
 	@Override
 	public ICFBamFloatType readDerivedByIdIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argId )
+		ICFLibKeyHash256 argId )
 	{
 		final String S_ProcName = "readDerivedByIdIdx";
 		boolean permissionGranted = false;
@@ -774,8 +774,8 @@ public class CFBamJpaFloatTypeTable implements ICFBamFloatTypeTable
 	 */
 	@Override
 	public ICFBamFloatType readDerivedByUNameIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argName )
+		ICFLibKeyHash256 argScopeId,
+		String argName )
 	{
 		final String S_ProcName = "readDerivedByUNameIdx";
 		boolean permissionGranted = false;
@@ -810,7 +810,7 @@ public class CFBamJpaFloatTypeTable implements ICFBamFloatTypeTable
 	 */
 	@Override
 	public ICFBamFloatType[] readDerivedByScopeIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId )
+		ICFLibKeyHash256 argScopeId )
 	{
 		final String S_ProcName = "readDerivedByScopeIdx";
 		boolean permissionGranted = false;
@@ -840,7 +840,7 @@ public class CFBamJpaFloatTypeTable implements ICFBamFloatTypeTable
 	 */
 	@Override
 	public ICFBamFloatType[] readDerivedByDefSchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argDefSchemaId )
+		ICFLibKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "readDerivedByDefSchemaIdx";
 		boolean permissionGranted = false;
@@ -870,7 +870,7 @@ public class CFBamJpaFloatTypeTable implements ICFBamFloatTypeTable
 	 */
 	@Override
 	public ICFBamFloatType[] readDerivedByPrevIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argPrevId )
+		ICFLibKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "readDerivedByPrevIdx";
 		boolean permissionGranted = false;
@@ -900,7 +900,7 @@ public class CFBamJpaFloatTypeTable implements ICFBamFloatTypeTable
 	 */
 	@Override
 	public ICFBamFloatType[] readDerivedByNextIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argNextId )
+		ICFLibKeyHash256 argNextId )
 	{
 		final String S_ProcName = "readDerivedByNextIdx";
 		boolean permissionGranted = false;
@@ -932,8 +932,8 @@ public class CFBamJpaFloatTypeTable implements ICFBamFloatTypeTable
 	 */
 	@Override
 	public ICFBamFloatType[] readDerivedByContPrevIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argPrevId )
+		ICFLibKeyHash256 argScopeId,
+		ICFLibKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "readDerivedByContPrevIdx";
 		boolean permissionGranted = false;
@@ -966,8 +966,8 @@ public class CFBamJpaFloatTypeTable implements ICFBamFloatTypeTable
 	 */
 	@Override
 	public ICFBamFloatType[] readDerivedByContNextIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argNextId )
+		ICFLibKeyHash256 argScopeId,
+		ICFLibKeyHash256 argNextId )
 	{
 		final String S_ProcName = "readDerivedByContNextIdx";
 		boolean permissionGranted = false;
@@ -998,7 +998,7 @@ public class CFBamJpaFloatTypeTable implements ICFBamFloatTypeTable
 	 */
 	@Override
 	public ICFBamFloatType[] readDerivedBySchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argSchemaDefId )
+		ICFLibKeyHash256 argSchemaDefId )
 	{
 		final String S_ProcName = "readDerivedBySchemaIdx";
 		boolean permissionGranted = false;
@@ -1100,7 +1100,7 @@ public class CFBamJpaFloatTypeTable implements ICFBamFloatTypeTable
 	 */
 	@Override
 	public ICFBamFloatType readRecByIdIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argId )
+		ICFLibKeyHash256 argId )
 	{
 		final String S_ProcName = "readRecByIdIdx";
 		boolean permissionGranted = false;
@@ -1129,8 +1129,8 @@ public class CFBamJpaFloatTypeTable implements ICFBamFloatTypeTable
 	 */
 	@Override
 	public ICFBamFloatType readRecByUNameIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argName )
+		ICFLibKeyHash256 argScopeId,
+		String argName )
 	{
 		final String S_ProcName = "readRecByUNameIdx";
 		boolean permissionGranted = false;
@@ -1156,7 +1156,7 @@ public class CFBamJpaFloatTypeTable implements ICFBamFloatTypeTable
 	 */
 	@Override
 	public ICFBamFloatType[] readRecByScopeIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId )
+		ICFLibKeyHash256 argScopeId )
 	{
 		final String S_ProcName = "readRecByScopeIdx";
 		boolean permissionGranted = false;
@@ -1182,7 +1182,7 @@ public class CFBamJpaFloatTypeTable implements ICFBamFloatTypeTable
 	 */
 	@Override
 	public ICFBamFloatType[] readRecByDefSchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argDefSchemaId )
+		ICFLibKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "readRecByDefSchemaIdx";
 		boolean permissionGranted = false;
@@ -1208,7 +1208,7 @@ public class CFBamJpaFloatTypeTable implements ICFBamFloatTypeTable
 	 */
 	@Override
 	public ICFBamFloatType[] readRecByPrevIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argPrevId )
+		ICFLibKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "readRecByPrevIdx";
 		boolean permissionGranted = false;
@@ -1234,7 +1234,7 @@ public class CFBamJpaFloatTypeTable implements ICFBamFloatTypeTable
 	 */
 	@Override
 	public ICFBamFloatType[] readRecByNextIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argNextId )
+		ICFLibKeyHash256 argNextId )
 	{
 		final String S_ProcName = "readRecByNextIdx";
 		boolean permissionGranted = false;
@@ -1262,8 +1262,8 @@ public class CFBamJpaFloatTypeTable implements ICFBamFloatTypeTable
 	 */
 	@Override
 	public ICFBamFloatType[] readRecByContPrevIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argPrevId )
+		ICFLibKeyHash256 argScopeId,
+		ICFLibKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "readRecByContPrevIdx";
 		boolean permissionGranted = false;
@@ -1291,8 +1291,8 @@ public class CFBamJpaFloatTypeTable implements ICFBamFloatTypeTable
 	 */
 	@Override
 	public ICFBamFloatType[] readRecByContNextIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argNextId )
+		ICFLibKeyHash256 argScopeId,
+		ICFLibKeyHash256 argNextId )
 	{
 		final String S_ProcName = "readRecByContNextIdx";
 		boolean permissionGranted = false;
@@ -1318,7 +1318,7 @@ public class CFBamJpaFloatTypeTable implements ICFBamFloatTypeTable
 	 */
 	@Override
 	public ICFBamFloatType[] readRecBySchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argSchemaDefId )
+		ICFLibKeyHash256 argSchemaDefId )
 	{
 		final String S_ProcName = "readRecBySchemaIdx";
 		boolean permissionGranted = false;
@@ -1338,7 +1338,7 @@ public class CFBamJpaFloatTypeTable implements ICFBamFloatTypeTable
 	 */
 	@Override
 	public ICFBamFloatType moveRecUp( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argId,
+		ICFLibKeyHash256 argId,
 		int revision )
 	{
 		final String S_ProcName = "moveRecUp";
@@ -1357,7 +1357,7 @@ public class CFBamJpaFloatTypeTable implements ICFBamFloatTypeTable
 	 */
 	@Override
 	public ICFBamFloatType moveRecDown( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argId,
+		ICFLibKeyHash256 argId,
 		int revision )
 	{
 		final String S_ProcName = "moveRecDown";

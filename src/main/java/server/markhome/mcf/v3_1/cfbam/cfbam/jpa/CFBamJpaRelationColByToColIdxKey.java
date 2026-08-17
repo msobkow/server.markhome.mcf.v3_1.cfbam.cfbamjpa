@@ -65,7 +65,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 public class CFBamJpaRelationColByToColIdxKey
 	implements ICFBamRelationColByToColIdxKey, Comparable<Object>, Serializable
 {
-	protected $implJavaAtomType$ requiredToColId;
+	protected ICFLibKeyHash256 requiredToColId;
 	public CFBamJpaRelationColByToColIdxKey() {
 		requiredToColId = CFLibDbKeyHash256.fromHex( ICFBamPubRelationCol.TOCOLID_INIT_VALUE.toString() );
 	}

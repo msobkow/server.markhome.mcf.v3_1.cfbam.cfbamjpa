@@ -85,7 +85,7 @@ public class CFBamJpaDbKeyHash384Col extends CFBamJpaDbKeyHash384Def
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="TableId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ requiredTableId;
+	protected ICFLibKeyHash256 requiredTableId;
 
 	public CFBamJpaDbKeyHash384Col() {
 		super();

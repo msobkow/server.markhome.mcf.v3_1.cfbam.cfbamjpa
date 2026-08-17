@@ -81,9 +81,9 @@ public class CFBamJpaDbKeyHash224GenH extends CFBamJpaDbKeyHash224TypeH
     implements ICFBamDbKeyHash224GenH
 {
 	@Column( name="Slice", nullable=false )
-	protected $implJavaAtomType$ requiredSlice;
+	protected short requiredSlice;
 	@Column( name="BlockSize", nullable=false )
-	protected $implJavaAtomType$ requiredBlockSize;
+	protected int requiredBlockSize;
 
     public CFBamJpaDbKeyHash224GenH() {
             super();

@@ -84,7 +84,7 @@ public class CFBamJpaScope
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="Id", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ requiredId;
+	protected ICFLibKeyHash256 requiredId;
 	protected int requiredRevision;
 
 
@@ -116,7 +116,7 @@ public class CFBamJpaScope
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="TenantId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ requiredTenantId;
+	protected ICFLibKeyHash256 requiredTenantId;
 
 	public CFBamJpaScope() {
 		requiredId = CFLibDbKeyHash256.fromHex( ICFBamPubScope.ID_INIT_VALUE.toString() );
@@ -210,12 +210,12 @@ public class CFBamJpaScope
 	}
 
 	@Override
-	public $implJavaOptAtomType$ getPKey() {
+	public ICFLibKeyHash256 getPKey() {
 		return getRequiredId();
 	}
 
 	@Override
-	public void setPKey($implJavaOptAtomType$ requiredId) {
+	public void setPKey(ICFLibKeyHash256 requiredId) {
 		this.requiredId = requiredId;
 	}
 

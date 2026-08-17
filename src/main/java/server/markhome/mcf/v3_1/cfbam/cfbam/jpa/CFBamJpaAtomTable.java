@@ -320,8 +320,8 @@ public class CFBamJpaAtomTable implements ICFBamAtomTable
 	 */
 	@Override
 	public void deleteAtomByUNameIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argName )
+		ICFLibKeyHash256 argScopeId,
+		String argName )
 	{
 		final String S_ProcName = "deleteAtomByUNameIdx";
 		boolean permissionGranted = canDeleteAtom(S_ProcName, Authorization);
@@ -364,7 +364,7 @@ public class CFBamJpaAtomTable implements ICFBamAtomTable
 	 */
 	@Override
 	public void deleteAtomByScopeIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId )
+		ICFLibKeyHash256 argScopeId )
 	{
 		final String S_ProcName = "deleteAtomByScopeIdx";
 		boolean permissionGranted = canDeleteAtom(S_ProcName, Authorization);
@@ -405,7 +405,7 @@ public class CFBamJpaAtomTable implements ICFBamAtomTable
 	 */
 	@Override
 	public void deleteAtomByDefSchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argDefSchemaId )
+		ICFLibKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "deleteAtomByDefSchemaIdx";
 		boolean permissionGranted = canDeleteAtom(S_ProcName, Authorization);
@@ -446,7 +446,7 @@ public class CFBamJpaAtomTable implements ICFBamAtomTable
 	 */
 	@Override
 	public void deleteAtomByPrevIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argPrevId )
+		ICFLibKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "deleteAtomByPrevIdx";
 		boolean permissionGranted = canDeleteAtom(S_ProcName, Authorization);
@@ -487,7 +487,7 @@ public class CFBamJpaAtomTable implements ICFBamAtomTable
 	 */
 	@Override
 	public void deleteAtomByNextIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argNextId )
+		ICFLibKeyHash256 argNextId )
 	{
 		final String S_ProcName = "deleteAtomByNextIdx";
 		boolean permissionGranted = canDeleteAtom(S_ProcName, Authorization);
@@ -530,8 +530,8 @@ public class CFBamJpaAtomTable implements ICFBamAtomTable
 	 */
 	@Override
 	public void deleteAtomByContPrevIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argPrevId )
+		ICFLibKeyHash256 argScopeId,
+		ICFLibKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "deleteAtomByContPrevIdx";
 		boolean permissionGranted = canDeleteAtom(S_ProcName, Authorization);
@@ -576,8 +576,8 @@ public class CFBamJpaAtomTable implements ICFBamAtomTable
 	 */
 	@Override
 	public void deleteAtomByContNextIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argNextId )
+		ICFLibKeyHash256 argScopeId,
+		ICFLibKeyHash256 argNextId )
 	{
 		final String S_ProcName = "deleteAtomByContNextIdx";
 		boolean permissionGranted = canDeleteAtom(S_ProcName, Authorization);
@@ -696,7 +696,7 @@ public class CFBamJpaAtomTable implements ICFBamAtomTable
 	 */
 	@Override
 	public ICFBamAtom readDerivedByIdIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argId )
+		ICFLibKeyHash256 argId )
 	{
 		final String S_ProcName = "readDerivedByIdIdx";
 		boolean permissionGranted = false;
@@ -733,8 +733,8 @@ public class CFBamJpaAtomTable implements ICFBamAtomTable
 	 */
 	@Override
 	public ICFBamAtom readDerivedByUNameIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argName )
+		ICFLibKeyHash256 argScopeId,
+		String argName )
 	{
 		final String S_ProcName = "readDerivedByUNameIdx";
 		boolean permissionGranted = false;
@@ -769,7 +769,7 @@ public class CFBamJpaAtomTable implements ICFBamAtomTable
 	 */
 	@Override
 	public ICFBamAtom[] readDerivedByScopeIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId )
+		ICFLibKeyHash256 argScopeId )
 	{
 		final String S_ProcName = "readDerivedByScopeIdx";
 		boolean permissionGranted = false;
@@ -799,7 +799,7 @@ public class CFBamJpaAtomTable implements ICFBamAtomTable
 	 */
 	@Override
 	public ICFBamAtom[] readDerivedByDefSchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argDefSchemaId )
+		ICFLibKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "readDerivedByDefSchemaIdx";
 		boolean permissionGranted = false;
@@ -829,7 +829,7 @@ public class CFBamJpaAtomTable implements ICFBamAtomTable
 	 */
 	@Override
 	public ICFBamAtom[] readDerivedByPrevIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argPrevId )
+		ICFLibKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "readDerivedByPrevIdx";
 		boolean permissionGranted = false;
@@ -859,7 +859,7 @@ public class CFBamJpaAtomTable implements ICFBamAtomTable
 	 */
 	@Override
 	public ICFBamAtom[] readDerivedByNextIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argNextId )
+		ICFLibKeyHash256 argNextId )
 	{
 		final String S_ProcName = "readDerivedByNextIdx";
 		boolean permissionGranted = false;
@@ -891,8 +891,8 @@ public class CFBamJpaAtomTable implements ICFBamAtomTable
 	 */
 	@Override
 	public ICFBamAtom[] readDerivedByContPrevIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argPrevId )
+		ICFLibKeyHash256 argScopeId,
+		ICFLibKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "readDerivedByContPrevIdx";
 		boolean permissionGranted = false;
@@ -925,8 +925,8 @@ public class CFBamJpaAtomTable implements ICFBamAtomTable
 	 */
 	@Override
 	public ICFBamAtom[] readDerivedByContNextIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argNextId )
+		ICFLibKeyHash256 argScopeId,
+		ICFLibKeyHash256 argNextId )
 	{
 		final String S_ProcName = "readDerivedByContNextIdx";
 		boolean permissionGranted = false;
@@ -1029,7 +1029,7 @@ public class CFBamJpaAtomTable implements ICFBamAtomTable
 	 */
 	@Override
 	public ICFBamAtom readRecByIdIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argId )
+		ICFLibKeyHash256 argId )
 	{
 		final String S_ProcName = "readRecByIdIdx";
 		boolean permissionGranted = false;
@@ -1058,8 +1058,8 @@ public class CFBamJpaAtomTable implements ICFBamAtomTable
 	 */
 	@Override
 	public ICFBamAtom readRecByUNameIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argName )
+		ICFLibKeyHash256 argScopeId,
+		String argName )
 	{
 		final String S_ProcName = "readRecByUNameIdx";
 		boolean permissionGranted = false;
@@ -1085,7 +1085,7 @@ public class CFBamJpaAtomTable implements ICFBamAtomTable
 	 */
 	@Override
 	public ICFBamAtom[] readRecByScopeIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId )
+		ICFLibKeyHash256 argScopeId )
 	{
 		final String S_ProcName = "readRecByScopeIdx";
 		boolean permissionGranted = false;
@@ -1111,7 +1111,7 @@ public class CFBamJpaAtomTable implements ICFBamAtomTable
 	 */
 	@Override
 	public ICFBamAtom[] readRecByDefSchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argDefSchemaId )
+		ICFLibKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "readRecByDefSchemaIdx";
 		boolean permissionGranted = false;
@@ -1137,7 +1137,7 @@ public class CFBamJpaAtomTable implements ICFBamAtomTable
 	 */
 	@Override
 	public ICFBamAtom[] readRecByPrevIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argPrevId )
+		ICFLibKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "readRecByPrevIdx";
 		boolean permissionGranted = false;
@@ -1163,7 +1163,7 @@ public class CFBamJpaAtomTable implements ICFBamAtomTable
 	 */
 	@Override
 	public ICFBamAtom[] readRecByNextIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argNextId )
+		ICFLibKeyHash256 argNextId )
 	{
 		final String S_ProcName = "readRecByNextIdx";
 		boolean permissionGranted = false;
@@ -1191,8 +1191,8 @@ public class CFBamJpaAtomTable implements ICFBamAtomTable
 	 */
 	@Override
 	public ICFBamAtom[] readRecByContPrevIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argPrevId )
+		ICFLibKeyHash256 argScopeId,
+		ICFLibKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "readRecByContPrevIdx";
 		boolean permissionGranted = false;
@@ -1220,8 +1220,8 @@ public class CFBamJpaAtomTable implements ICFBamAtomTable
 	 */
 	@Override
 	public ICFBamAtom[] readRecByContNextIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argNextId )
+		ICFLibKeyHash256 argScopeId,
+		ICFLibKeyHash256 argNextId )
 	{
 		final String S_ProcName = "readRecByContNextIdx";
 		boolean permissionGranted = false;
@@ -1241,7 +1241,7 @@ public class CFBamJpaAtomTable implements ICFBamAtomTable
 	 */
 	@Override
 	public ICFBamAtom moveRecUp( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argId,
+		ICFLibKeyHash256 argId,
 		int revision )
 	{
 		final String S_ProcName = "moveRecUp";
@@ -1260,7 +1260,7 @@ public class CFBamJpaAtomTable implements ICFBamAtomTable
 	 */
 	@Override
 	public ICFBamAtom moveRecDown( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argId,
+		ICFLibKeyHash256 argId,
 		int revision )
 	{
 		final String S_ProcName = "moveRecDown";

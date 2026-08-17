@@ -65,7 +65,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 public class CFBamJpaScopeByTenantIdxKey
 	implements ICFBamScopeByTenantIdxKey, Comparable<Object>, Serializable
 {
-	protected $implJavaAtomType$ requiredTenantId;
+	protected ICFLibKeyHash256 requiredTenantId;
 	public CFBamJpaScopeByTenantIdxKey() {
 		requiredTenantId = CFLibDbKeyHash256.fromHex( ICFBamPubScope.TENANTID_INIT_VALUE.toString() );
 	}

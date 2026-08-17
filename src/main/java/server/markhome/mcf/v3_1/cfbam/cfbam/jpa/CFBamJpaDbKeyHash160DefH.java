@@ -81,7 +81,7 @@ public class CFBamJpaDbKeyHash160DefH extends CFBamJpaAtomH
     implements ICFBamDbKeyHash160DefH
 {
 	@Column( name="InitVal", nullable=true, length=40 )
-	protected $implJavaAtomType$ optionalInitValue;
+	protected String optionalInitValue;
 
     public CFBamJpaDbKeyHash160DefH() {
             super();

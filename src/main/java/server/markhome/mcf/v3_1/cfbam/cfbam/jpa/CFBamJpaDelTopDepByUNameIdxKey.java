@@ -65,8 +65,8 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 public class CFBamJpaDelTopDepByUNameIdxKey
 	implements ICFBamDelTopDepByUNameIdxKey, Comparable<Object>, Serializable
 {
-	protected $implJavaAtomType$ requiredTableId;
-	protected $implJavaAtomType$ requiredName;
+	protected ICFLibKeyHash256 requiredTableId;
+	protected String requiredName;
 	public CFBamJpaDelTopDepByUNameIdxKey() {
 		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamPubDelTopDep.TABLEID_INIT_VALUE.toString() );
 		requiredName = ICFBamPubDelTopDep.NAME_INIT_VALUE;

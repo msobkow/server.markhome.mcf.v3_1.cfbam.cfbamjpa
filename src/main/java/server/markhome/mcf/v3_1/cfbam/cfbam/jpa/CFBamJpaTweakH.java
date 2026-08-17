@@ -124,25 +124,25 @@ public class CFBamJpaTweakH
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="TenantId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ requiredTenantId;
+	protected ICFLibKeyHash256 requiredTenantId;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="ScopeId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ requiredScopeId;
+	protected ICFLibKeyHash256 requiredScopeId;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="defschtentid", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ optionalDefSchemaTenantId;
+	protected ICFLibKeyHash256 optionalDefSchemaTenantId;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="defschid", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ optionalDefSchemaId;
+	protected ICFLibKeyHash256 optionalDefSchemaId;
 	@Column( name="safe_name", nullable=false, length=192 )
-	protected $implJavaAtomType$ requiredName;
+	protected String requiredName;
 	@Column( name="repl_inh", nullable=false )
-	protected $implJavaAtomType$ requiredReplacesInherited;
+	protected boolean requiredReplacesInherited;
 	@Column( name="twk_gel_txt", nullable=false, length=2000000 )
-	protected $implJavaAtomType$ requiredTweakGelText;
+	protected String requiredTweakGelText;
 
     public CFBamJpaTweakH() {
             // The primary key member attributes are initialized on construction
@@ -281,12 +281,12 @@ public class CFBamJpaTweakH
     }
 
     @Override
-    public $implJavaAtomType$ getRequiredId() {
+    public ICFLibKeyHash256 getRequiredId() {
         return( pkey.getRequiredId() );
     }
 
     @Override
-    public void setRequiredId( $implJavaAtomType$ requiredId ) {
+    public void setRequiredId( ICFLibKeyHash256 requiredId ) {
         pkey.setRequiredId( requiredId );
     }
 

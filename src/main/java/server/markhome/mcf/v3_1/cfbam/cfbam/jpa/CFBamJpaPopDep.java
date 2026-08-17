@@ -90,11 +90,11 @@ public class CFBamJpaPopDep extends CFBamJpaScope
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="defschid", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ optionalDefSchemaId;
+	protected ICFLibKeyHash256 optionalDefSchemaId;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="RelationId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ requiredRelationId;
+	protected ICFLibKeyHash256 requiredRelationId;
 
 	public CFBamJpaPopDep() {
 		super();

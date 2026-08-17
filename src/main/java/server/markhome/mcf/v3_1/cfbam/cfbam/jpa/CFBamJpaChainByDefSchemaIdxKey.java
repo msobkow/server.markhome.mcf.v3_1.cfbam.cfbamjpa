@@ -65,7 +65,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 public class CFBamJpaChainByDefSchemaIdxKey
 	implements ICFBamChainByDefSchemaIdxKey, Comparable<Object>, Serializable
 {
-	protected $implJavaAtomType$ optionalDefSchemaId;
+	protected ICFLibKeyHash256 optionalDefSchemaId;
 	public CFBamJpaChainByDefSchemaIdxKey() {
 		optionalDefSchemaId = CFLibDbKeyHash256.nullGet();
 	}

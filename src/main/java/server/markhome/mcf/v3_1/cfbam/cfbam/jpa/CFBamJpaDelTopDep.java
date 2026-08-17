@@ -96,19 +96,19 @@ public class CFBamJpaDelTopDep extends CFBamJpaDelDep
 	protected Set<CFBamJpaDelSubDep1> optionalComponentsDelDep;
 
 	@Column( name="safe_name", nullable=false, length=192 )
-	protected $implJavaAtomType$ requiredName;
+	protected String requiredName;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="TableId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ requiredTableId;
+	protected ICFLibKeyHash256 requiredTableId;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="PrevId", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ optionalPrevId;
+	protected ICFLibKeyHash256 optionalPrevId;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="NextId", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ optionalNextId;
+	protected ICFLibKeyHash256 optionalNextId;
 
 	public CFBamJpaDelTopDep() {
 		super();

@@ -81,9 +81,9 @@ public class CFBamJpaDbKeyHash384GenH extends CFBamJpaDbKeyHash384TypeH
     implements ICFBamDbKeyHash384GenH
 {
 	@Column( name="Slice", nullable=false )
-	protected $implJavaAtomType$ requiredSlice;
+	protected short requiredSlice;
 	@Column( name="BlockSize", nullable=false )
-	protected $implJavaAtomType$ requiredBlockSize;
+	protected int requiredBlockSize;
 
     public CFBamJpaDbKeyHash384GenH() {
             super();

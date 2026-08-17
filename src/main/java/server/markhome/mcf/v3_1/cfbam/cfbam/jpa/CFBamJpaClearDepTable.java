@@ -298,7 +298,7 @@ public class CFBamJpaClearDepTable implements ICFBamClearDepTable
 	 */
 	@Override
 	public void deleteClearDepByClearDepIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argRelationId )
+		ICFLibKeyHash256 argRelationId )
 	{
 		final String S_ProcName = "deleteClearDepByClearDepIdx";
 		boolean permissionGranted = canDeleteClearDep(S_ProcName, Authorization);
@@ -339,7 +339,7 @@ public class CFBamJpaClearDepTable implements ICFBamClearDepTable
 	 */
 	@Override
 	public void deleteClearDepByDefSchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argDefSchemaId )
+		ICFLibKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "deleteClearDepByDefSchemaIdx";
 		boolean permissionGranted = canDeleteClearDep(S_ProcName, Authorization);
@@ -400,7 +400,7 @@ public class CFBamJpaClearDepTable implements ICFBamClearDepTable
 	 */
 	@Override
 	public void deleteClearDepByTenantIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTenantId )
+		ICFLibKeyHash256 argTenantId )
 	{
 		final String S_ProcName = "deleteClearDepByTenantIdx";
 		boolean permissionGranted = canDeleteClearDep(S_ProcName, Authorization);
@@ -517,7 +517,7 @@ public class CFBamJpaClearDepTable implements ICFBamClearDepTable
 	 */
 	@Override
 	public ICFBamClearDep readDerivedByIdIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argId )
+		ICFLibKeyHash256 argId )
 	{
 		final String S_ProcName = "readDerivedByIdIdx";
 		boolean permissionGranted = false;
@@ -551,7 +551,7 @@ public class CFBamJpaClearDepTable implements ICFBamClearDepTable
 	 */
 	@Override
 	public ICFBamClearDep[] readDerivedByTenantIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTenantId )
+		ICFLibKeyHash256 argTenantId )
 	{
 		final String S_ProcName = "readDerivedByTenantIdx";
 		boolean permissionGranted = false;
@@ -581,7 +581,7 @@ public class CFBamJpaClearDepTable implements ICFBamClearDepTable
 	 */
 	@Override
 	public ICFBamClearDep[] readDerivedByClearDepIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argRelationId )
+		ICFLibKeyHash256 argRelationId )
 	{
 		final String S_ProcName = "readDerivedByClearDepIdx";
 		boolean permissionGranted = false;
@@ -611,7 +611,7 @@ public class CFBamJpaClearDepTable implements ICFBamClearDepTable
 	 */
 	@Override
 	public ICFBamClearDep[] readDerivedByDefSchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argDefSchemaId )
+		ICFLibKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "readDerivedByDefSchemaIdx";
 		boolean permissionGranted = false;
@@ -713,7 +713,7 @@ public class CFBamJpaClearDepTable implements ICFBamClearDepTable
 	 */
 	@Override
 	public ICFBamClearDep readRecByIdIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argId )
+		ICFLibKeyHash256 argId )
 	{
 		final String S_ProcName = "readRecByIdIdx";
 		boolean permissionGranted = false;
@@ -739,7 +739,7 @@ public class CFBamJpaClearDepTable implements ICFBamClearDepTable
 	 */
 	@Override
 	public ICFBamClearDep[] readRecByTenantIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTenantId )
+		ICFLibKeyHash256 argTenantId )
 	{
 		final String S_ProcName = "readRecByTenantIdx";
 		boolean permissionGranted = false;
@@ -765,7 +765,7 @@ public class CFBamJpaClearDepTable implements ICFBamClearDepTable
 	 */
 	@Override
 	public ICFBamClearDep[] readRecByClearDepIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argRelationId )
+		ICFLibKeyHash256 argRelationId )
 	{
 		final String S_ProcName = "readRecByClearDepIdx";
 		boolean permissionGranted = false;
@@ -791,7 +791,7 @@ public class CFBamJpaClearDepTable implements ICFBamClearDepTable
 	 */
 	@Override
 	public ICFBamClearDep[] readRecByDefSchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argDefSchemaId )
+		ICFLibKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "readRecByDefSchemaIdx";
 		boolean permissionGranted = false;

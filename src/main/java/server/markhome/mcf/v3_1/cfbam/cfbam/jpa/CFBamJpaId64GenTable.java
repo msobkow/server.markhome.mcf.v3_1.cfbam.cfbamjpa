@@ -298,7 +298,7 @@ public class CFBamJpaId64GenTable implements ICFBamId64GenTable
 	 */
 	@Override
 	public void deleteId64GenBySchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argSchemaDefId )
+		ICFLibKeyHash256 argSchemaDefId )
 	{
 		final String S_ProcName = "deleteId64GenBySchemaIdx";
 		boolean permissionGranted = canDeleteId64Gen(S_ProcName, Authorization);
@@ -361,8 +361,8 @@ public class CFBamJpaId64GenTable implements ICFBamId64GenTable
 	 */
 	@Override
 	public void deleteId64GenByUNameIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argName )
+		ICFLibKeyHash256 argScopeId,
+		String argName )
 	{
 		final String S_ProcName = "deleteId64GenByUNameIdx";
 		boolean permissionGranted = canDeleteId64Gen(S_ProcName, Authorization);
@@ -405,7 +405,7 @@ public class CFBamJpaId64GenTable implements ICFBamId64GenTable
 	 */
 	@Override
 	public void deleteId64GenByScopeIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId )
+		ICFLibKeyHash256 argScopeId )
 	{
 		final String S_ProcName = "deleteId64GenByScopeIdx";
 		boolean permissionGranted = canDeleteId64Gen(S_ProcName, Authorization);
@@ -446,7 +446,7 @@ public class CFBamJpaId64GenTable implements ICFBamId64GenTable
 	 */
 	@Override
 	public void deleteId64GenByDefSchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argDefSchemaId )
+		ICFLibKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "deleteId64GenByDefSchemaIdx";
 		boolean permissionGranted = canDeleteId64Gen(S_ProcName, Authorization);
@@ -487,7 +487,7 @@ public class CFBamJpaId64GenTable implements ICFBamId64GenTable
 	 */
 	@Override
 	public void deleteId64GenByPrevIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argPrevId )
+		ICFLibKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "deleteId64GenByPrevIdx";
 		boolean permissionGranted = canDeleteId64Gen(S_ProcName, Authorization);
@@ -528,7 +528,7 @@ public class CFBamJpaId64GenTable implements ICFBamId64GenTable
 	 */
 	@Override
 	public void deleteId64GenByNextIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argNextId )
+		ICFLibKeyHash256 argNextId )
 	{
 		final String S_ProcName = "deleteId64GenByNextIdx";
 		boolean permissionGranted = canDeleteId64Gen(S_ProcName, Authorization);
@@ -571,8 +571,8 @@ public class CFBamJpaId64GenTable implements ICFBamId64GenTable
 	 */
 	@Override
 	public void deleteId64GenByContPrevIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argPrevId )
+		ICFLibKeyHash256 argScopeId,
+		ICFLibKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "deleteId64GenByContPrevIdx";
 		boolean permissionGranted = canDeleteId64Gen(S_ProcName, Authorization);
@@ -617,8 +617,8 @@ public class CFBamJpaId64GenTable implements ICFBamId64GenTable
 	 */
 	@Override
 	public void deleteId64GenByContNextIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argNextId )
+		ICFLibKeyHash256 argScopeId,
+		ICFLibKeyHash256 argNextId )
 	{
 		final String S_ProcName = "deleteId64GenByContNextIdx";
 		boolean permissionGranted = canDeleteId64Gen(S_ProcName, Authorization);
@@ -737,7 +737,7 @@ public class CFBamJpaId64GenTable implements ICFBamId64GenTable
 	 */
 	@Override
 	public ICFBamId64Gen readDerivedByIdIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argId )
+		ICFLibKeyHash256 argId )
 	{
 		final String S_ProcName = "readDerivedByIdIdx";
 		boolean permissionGranted = false;
@@ -774,8 +774,8 @@ public class CFBamJpaId64GenTable implements ICFBamId64GenTable
 	 */
 	@Override
 	public ICFBamId64Gen readDerivedByUNameIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argName )
+		ICFLibKeyHash256 argScopeId,
+		String argName )
 	{
 		final String S_ProcName = "readDerivedByUNameIdx";
 		boolean permissionGranted = false;
@@ -810,7 +810,7 @@ public class CFBamJpaId64GenTable implements ICFBamId64GenTable
 	 */
 	@Override
 	public ICFBamId64Gen[] readDerivedByScopeIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId )
+		ICFLibKeyHash256 argScopeId )
 	{
 		final String S_ProcName = "readDerivedByScopeIdx";
 		boolean permissionGranted = false;
@@ -840,7 +840,7 @@ public class CFBamJpaId64GenTable implements ICFBamId64GenTable
 	 */
 	@Override
 	public ICFBamId64Gen[] readDerivedByDefSchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argDefSchemaId )
+		ICFLibKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "readDerivedByDefSchemaIdx";
 		boolean permissionGranted = false;
@@ -870,7 +870,7 @@ public class CFBamJpaId64GenTable implements ICFBamId64GenTable
 	 */
 	@Override
 	public ICFBamId64Gen[] readDerivedByPrevIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argPrevId )
+		ICFLibKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "readDerivedByPrevIdx";
 		boolean permissionGranted = false;
@@ -900,7 +900,7 @@ public class CFBamJpaId64GenTable implements ICFBamId64GenTable
 	 */
 	@Override
 	public ICFBamId64Gen[] readDerivedByNextIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argNextId )
+		ICFLibKeyHash256 argNextId )
 	{
 		final String S_ProcName = "readDerivedByNextIdx";
 		boolean permissionGranted = false;
@@ -932,8 +932,8 @@ public class CFBamJpaId64GenTable implements ICFBamId64GenTable
 	 */
 	@Override
 	public ICFBamId64Gen[] readDerivedByContPrevIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argPrevId )
+		ICFLibKeyHash256 argScopeId,
+		ICFLibKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "readDerivedByContPrevIdx";
 		boolean permissionGranted = false;
@@ -966,8 +966,8 @@ public class CFBamJpaId64GenTable implements ICFBamId64GenTable
 	 */
 	@Override
 	public ICFBamId64Gen[] readDerivedByContNextIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argNextId )
+		ICFLibKeyHash256 argScopeId,
+		ICFLibKeyHash256 argNextId )
 	{
 		final String S_ProcName = "readDerivedByContNextIdx";
 		boolean permissionGranted = false;
@@ -998,7 +998,7 @@ public class CFBamJpaId64GenTable implements ICFBamId64GenTable
 	 */
 	@Override
 	public ICFBamId64Gen[] readDerivedBySchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argSchemaDefId )
+		ICFLibKeyHash256 argSchemaDefId )
 	{
 		final String S_ProcName = "readDerivedBySchemaIdx";
 		boolean permissionGranted = false;
@@ -1100,7 +1100,7 @@ public class CFBamJpaId64GenTable implements ICFBamId64GenTable
 	 */
 	@Override
 	public ICFBamId64Gen readRecByIdIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argId )
+		ICFLibKeyHash256 argId )
 	{
 		final String S_ProcName = "readRecByIdIdx";
 		boolean permissionGranted = false;
@@ -1129,8 +1129,8 @@ public class CFBamJpaId64GenTable implements ICFBamId64GenTable
 	 */
 	@Override
 	public ICFBamId64Gen readRecByUNameIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argName )
+		ICFLibKeyHash256 argScopeId,
+		String argName )
 	{
 		final String S_ProcName = "readRecByUNameIdx";
 		boolean permissionGranted = false;
@@ -1156,7 +1156,7 @@ public class CFBamJpaId64GenTable implements ICFBamId64GenTable
 	 */
 	@Override
 	public ICFBamId64Gen[] readRecByScopeIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId )
+		ICFLibKeyHash256 argScopeId )
 	{
 		final String S_ProcName = "readRecByScopeIdx";
 		boolean permissionGranted = false;
@@ -1182,7 +1182,7 @@ public class CFBamJpaId64GenTable implements ICFBamId64GenTable
 	 */
 	@Override
 	public ICFBamId64Gen[] readRecByDefSchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argDefSchemaId )
+		ICFLibKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "readRecByDefSchemaIdx";
 		boolean permissionGranted = false;
@@ -1208,7 +1208,7 @@ public class CFBamJpaId64GenTable implements ICFBamId64GenTable
 	 */
 	@Override
 	public ICFBamId64Gen[] readRecByPrevIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argPrevId )
+		ICFLibKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "readRecByPrevIdx";
 		boolean permissionGranted = false;
@@ -1234,7 +1234,7 @@ public class CFBamJpaId64GenTable implements ICFBamId64GenTable
 	 */
 	@Override
 	public ICFBamId64Gen[] readRecByNextIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argNextId )
+		ICFLibKeyHash256 argNextId )
 	{
 		final String S_ProcName = "readRecByNextIdx";
 		boolean permissionGranted = false;
@@ -1262,8 +1262,8 @@ public class CFBamJpaId64GenTable implements ICFBamId64GenTable
 	 */
 	@Override
 	public ICFBamId64Gen[] readRecByContPrevIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argPrevId )
+		ICFLibKeyHash256 argScopeId,
+		ICFLibKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "readRecByContPrevIdx";
 		boolean permissionGranted = false;
@@ -1291,8 +1291,8 @@ public class CFBamJpaId64GenTable implements ICFBamId64GenTable
 	 */
 	@Override
 	public ICFBamId64Gen[] readRecByContNextIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argNextId )
+		ICFLibKeyHash256 argScopeId,
+		ICFLibKeyHash256 argNextId )
 	{
 		final String S_ProcName = "readRecByContNextIdx";
 		boolean permissionGranted = false;
@@ -1318,7 +1318,7 @@ public class CFBamJpaId64GenTable implements ICFBamId64GenTable
 	 */
 	@Override
 	public ICFBamId64Gen[] readRecBySchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argSchemaDefId )
+		ICFLibKeyHash256 argSchemaDefId )
 	{
 		final String S_ProcName = "readRecBySchemaIdx";
 		boolean permissionGranted = false;
@@ -1338,7 +1338,7 @@ public class CFBamJpaId64GenTable implements ICFBamId64GenTable
 	 */
 	@Override
 	public ICFBamId64Gen moveRecUp( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argId,
+		ICFLibKeyHash256 argId,
 		int revision )
 	{
 		final String S_ProcName = "moveRecUp";
@@ -1357,7 +1357,7 @@ public class CFBamJpaId64GenTable implements ICFBamId64GenTable
 	 */
 	@Override
 	public ICFBamId64Gen moveRecDown( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argId,
+		ICFLibKeyHash256 argId,
 		int revision )
 	{
 		final String S_ProcName = "moveRecDown";

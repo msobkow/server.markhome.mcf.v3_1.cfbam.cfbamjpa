@@ -65,7 +65,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 public class CFBamJpaSchemaDefByCTenantIdxKey
 	implements ICFBamSchemaDefByCTenantIdxKey, Comparable<Object>, Serializable
 {
-	protected $implJavaAtomType$ requiredCTenantId;
+	protected ICFLibKeyHash256 requiredCTenantId;
 	public CFBamJpaSchemaDefByCTenantIdxKey() {
 		requiredCTenantId = CFLibDbKeyHash256.fromHex( ICFBamPubSchemaDef.CTENANTID_INIT_VALUE.toString() );
 	}

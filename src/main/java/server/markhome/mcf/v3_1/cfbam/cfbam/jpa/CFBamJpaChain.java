@@ -89,7 +89,7 @@ public class CFBamJpaChain
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="Id", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ requiredId;
+	protected ICFLibKeyHash256 requiredId;
 	protected int requiredRevision;
 
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
@@ -133,31 +133,31 @@ public class CFBamJpaChain
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="defschid", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ optionalDefSchemaId;
+	protected ICFLibKeyHash256 optionalDefSchemaId;
 	@Column( name="safe_name", nullable=false, length=192 )
-	protected $implJavaAtomType$ requiredName;
+	protected String requiredName;
 	@Column( name="short_name", nullable=true, length=16 )
-	protected $implJavaAtomType$ optionalShortName;
+	protected String optionalShortName;
 	@Column( name="Label", nullable=true, length=64 )
-	protected $implJavaAtomType$ optionalLabel;
+	protected String optionalLabel;
 	@Column( name="short_descr", nullable=true, length=128 )
-	protected $implJavaAtomType$ optionalShortDescription;
+	protected String optionalShortDescription;
 	@Column( name="descr", nullable=true, length=1023 )
-	protected $implJavaAtomType$ optionalDescription;
+	protected String optionalDescription;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="TableId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ requiredTableId;
+	protected ICFLibKeyHash256 requiredTableId;
 	@Column( name="Suffix", nullable=true, length=16 )
-	protected $implJavaAtomType$ optionalSuffix;
+	protected String optionalSuffix;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="PrevRelationId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ requiredPrevRelationId;
+	protected ICFLibKeyHash256 requiredPrevRelationId;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="NextRelationId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ requiredNextRelationId;
+	protected ICFLibKeyHash256 requiredNextRelationId;
 
 	public CFBamJpaChain() {
 		requiredId = CFLibDbKeyHash256.fromHex( ICFBamPubChain.ID_INIT_VALUE.toString() );
@@ -420,12 +420,12 @@ public class CFBamJpaChain
 	}
 
 	@Override
-	public $implJavaOptAtomType$ getPKey() {
+	public ICFLibKeyHash256 getPKey() {
 		return getRequiredId();
 	}
 
 	@Override
-	public void setPKey($implJavaOptAtomType$ requiredId) {
+	public void setPKey(ICFLibKeyHash256 requiredId) {
 		this.requiredId = requiredId;
 	}
 

@@ -298,7 +298,7 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 	 */
 	@Override
 	public void deleteIndexTweakByIndexIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argIndexId )
+		ICFLibKeyHash256 argIndexId )
 	{
 		final String S_ProcName = "deleteIndexTweakByIndexIdx";
 		boolean permissionGranted = canDeleteIndexTweak(S_ProcName, Authorization);
@@ -361,8 +361,8 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 	 */
 	@Override
 	public void deleteIndexTweakByUNameIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argName )
+		ICFLibKeyHash256 argScopeId,
+		String argName )
 	{
 		final String S_ProcName = "deleteIndexTweakByUNameIdx";
 		boolean permissionGranted = canDeleteIndexTweak(S_ProcName, Authorization);
@@ -405,7 +405,7 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 	 */
 	@Override
 	public void deleteIndexTweakByValTentIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTenantId )
+		ICFLibKeyHash256 argTenantId )
 	{
 		final String S_ProcName = "deleteIndexTweakByValTentIdx";
 		boolean permissionGranted = canDeleteIndexTweak(S_ProcName, Authorization);
@@ -446,7 +446,7 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 	 */
 	@Override
 	public void deleteIndexTweakByScopeIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId )
+		ICFLibKeyHash256 argScopeId )
 	{
 		final String S_ProcName = "deleteIndexTweakByScopeIdx";
 		boolean permissionGranted = canDeleteIndexTweak(S_ProcName, Authorization);
@@ -487,7 +487,7 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 	 */
 	@Override
 	public void deleteIndexTweakByDefSchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argDefSchemaId )
+		ICFLibKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "deleteIndexTweakByDefSchemaIdx";
 		boolean permissionGranted = canDeleteIndexTweak(S_ProcName, Authorization);
@@ -536,11 +536,11 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 	 */
 	@Override
 	public void deleteIndexTweakByUDefIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTenantId,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argDefSchemaTenantId,
-		$implJavaAtomType$ argDefSchemaId,
-		$implJavaAtomType$ argName )
+		ICFLibKeyHash256 argTenantId,
+		ICFLibKeyHash256 argScopeId,
+		ICFLibKeyHash256 argDefSchemaTenantId,
+		ICFLibKeyHash256 argDefSchemaId,
+		String argName )
 	{
 		final String S_ProcName = "deleteIndexTweakByUDefIdx";
 		boolean permissionGranted = canDeleteIndexTweak(S_ProcName, Authorization);
@@ -665,7 +665,7 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 	 */
 	@Override
 	public ICFBamIndexTweak readDerivedByIdIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argId )
+		ICFLibKeyHash256 argId )
 	{
 		final String S_ProcName = "readDerivedByIdIdx";
 		boolean permissionGranted = false;
@@ -702,8 +702,8 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 	 */
 	@Override
 	public ICFBamIndexTweak readDerivedByUNameIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argName )
+		ICFLibKeyHash256 argScopeId,
+		String argName )
 	{
 		final String S_ProcName = "readDerivedByUNameIdx";
 		boolean permissionGranted = false;
@@ -738,7 +738,7 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 	 */
 	@Override
 	public ICFBamIndexTweak[] readDerivedByValTentIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTenantId )
+		ICFLibKeyHash256 argTenantId )
 	{
 		final String S_ProcName = "readDerivedByValTentIdx";
 		boolean permissionGranted = false;
@@ -768,7 +768,7 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 	 */
 	@Override
 	public ICFBamIndexTweak[] readDerivedByScopeIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId )
+		ICFLibKeyHash256 argScopeId )
 	{
 		final String S_ProcName = "readDerivedByScopeIdx";
 		boolean permissionGranted = false;
@@ -798,7 +798,7 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 	 */
 	@Override
 	public ICFBamIndexTweak[] readDerivedByDefSchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argDefSchemaId )
+		ICFLibKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "readDerivedByDefSchemaIdx";
 		boolean permissionGranted = false;
@@ -837,11 +837,11 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 	 */
 	@Override
 	public ICFBamIndexTweak readDerivedByUDefIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTenantId,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argDefSchemaTenantId,
-		$implJavaAtomType$ argDefSchemaId,
-		$implJavaAtomType$ argName )
+		ICFLibKeyHash256 argTenantId,
+		ICFLibKeyHash256 argScopeId,
+		ICFLibKeyHash256 argDefSchemaTenantId,
+		ICFLibKeyHash256 argDefSchemaId,
+		String argName )
 	{
 		final String S_ProcName = "readDerivedByUDefIdx";
 		boolean permissionGranted = false;
@@ -879,7 +879,7 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 	 */
 	@Override
 	public ICFBamIndexTweak[] readDerivedByIndexIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argIndexId )
+		ICFLibKeyHash256 argIndexId )
 	{
 		final String S_ProcName = "readDerivedByIndexIdx";
 		boolean permissionGranted = false;
@@ -981,7 +981,7 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 	 */
 	@Override
 	public ICFBamIndexTweak readRecByIdIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argId )
+		ICFLibKeyHash256 argId )
 	{
 		final String S_ProcName = "readRecByIdIdx";
 		boolean permissionGranted = false;
@@ -1010,8 +1010,8 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 	 */
 	@Override
 	public ICFBamIndexTweak readRecByUNameIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argName )
+		ICFLibKeyHash256 argScopeId,
+		String argName )
 	{
 		final String S_ProcName = "readRecByUNameIdx";
 		boolean permissionGranted = false;
@@ -1037,7 +1037,7 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 	 */
 	@Override
 	public ICFBamIndexTweak[] readRecByValTentIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTenantId )
+		ICFLibKeyHash256 argTenantId )
 	{
 		final String S_ProcName = "readRecByValTentIdx";
 		boolean permissionGranted = false;
@@ -1063,7 +1063,7 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 	 */
 	@Override
 	public ICFBamIndexTweak[] readRecByScopeIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId )
+		ICFLibKeyHash256 argScopeId )
 	{
 		final String S_ProcName = "readRecByScopeIdx";
 		boolean permissionGranted = false;
@@ -1089,7 +1089,7 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 	 */
 	@Override
 	public ICFBamIndexTweak[] readRecByDefSchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argDefSchemaId )
+		ICFLibKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "readRecByDefSchemaIdx";
 		boolean permissionGranted = false;
@@ -1124,11 +1124,11 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 	 */
 	@Override
 	public ICFBamIndexTweak readRecByUDefIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTenantId,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argDefSchemaTenantId,
-		$implJavaAtomType$ argDefSchemaId,
-		$implJavaAtomType$ argName )
+		ICFLibKeyHash256 argTenantId,
+		ICFLibKeyHash256 argScopeId,
+		ICFLibKeyHash256 argDefSchemaTenantId,
+		ICFLibKeyHash256 argDefSchemaId,
+		String argName )
 	{
 		final String S_ProcName = "readRecByUDefIdx";
 		boolean permissionGranted = false;
@@ -1154,7 +1154,7 @@ public class CFBamJpaIndexTweakTable implements ICFBamIndexTweakTable
 	 */
 	@Override
 	public ICFBamIndexTweak[] readRecByIndexIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argIndexId )
+		ICFLibKeyHash256 argIndexId )
 	{
 		final String S_ProcName = "readRecByIndexIdx";
 		boolean permissionGranted = false;

@@ -84,7 +84,7 @@ public class CFBamJpaUInt64ColH extends CFBamJpaUInt64DefH
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="TableId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ requiredTableId;
+	protected ICFLibKeyHash256 requiredTableId;
 
     public CFBamJpaUInt64ColH() {
             super();

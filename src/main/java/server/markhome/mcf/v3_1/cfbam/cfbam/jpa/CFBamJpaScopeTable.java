@@ -318,7 +318,7 @@ public class CFBamJpaScopeTable implements ICFBamScopeTable
 	 */
 	@Override
 	public void deleteScopeByTenantIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTenantId )
+		ICFLibKeyHash256 argTenantId )
 	{
 		final String S_ProcName = "deleteScopeByTenantIdx";
 		boolean permissionGranted = canDeleteScope(S_ProcName, Authorization);
@@ -435,7 +435,7 @@ public class CFBamJpaScopeTable implements ICFBamScopeTable
 	 */
 	@Override
 	public ICFBamScope readDerivedByIdIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argId )
+		ICFLibKeyHash256 argId )
 	{
 		final String S_ProcName = "readDerivedByIdIdx";
 		boolean permissionGranted = false;
@@ -469,7 +469,7 @@ public class CFBamJpaScopeTable implements ICFBamScopeTable
 	 */
 	@Override
 	public ICFBamScope[] readDerivedByTenantIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTenantId )
+		ICFLibKeyHash256 argTenantId )
 	{
 		final String S_ProcName = "readDerivedByTenantIdx";
 		boolean permissionGranted = false;
@@ -571,7 +571,7 @@ public class CFBamJpaScopeTable implements ICFBamScopeTable
 	 */
 	@Override
 	public ICFBamScope readRecByIdIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argId )
+		ICFLibKeyHash256 argId )
 	{
 		final String S_ProcName = "readRecByIdIdx";
 		boolean permissionGranted = false;
@@ -597,7 +597,7 @@ public class CFBamJpaScopeTable implements ICFBamScopeTable
 	 */
 	@Override
 	public ICFBamScope[] readRecByTenantIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTenantId )
+		ICFLibKeyHash256 argTenantId )
 	{
 		final String S_ProcName = "readRecByTenantIdx";
 		boolean permissionGranted = false;

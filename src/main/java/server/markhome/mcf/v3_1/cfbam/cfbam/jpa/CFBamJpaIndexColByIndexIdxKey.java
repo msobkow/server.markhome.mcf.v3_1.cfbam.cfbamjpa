@@ -65,7 +65,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 public class CFBamJpaIndexColByIndexIdxKey
 	implements ICFBamIndexColByIndexIdxKey, Comparable<Object>, Serializable
 {
-	protected $implJavaAtomType$ requiredIndexId;
+	protected ICFLibKeyHash256 requiredIndexId;
 	public CFBamJpaIndexColByIndexIdxKey() {
 		requiredIndexId = CFLibDbKeyHash256.fromHex( ICFBamPubIndexCol.INDEXID_INIT_VALUE.toString() );
 	}

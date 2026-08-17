@@ -65,8 +65,8 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 public class CFBamJpaSchemaDefByPubURIIdxKey
 	implements ICFBamSchemaDefByPubURIIdxKey, Comparable<Object>, Serializable
 {
-	protected $implJavaAtomType$ requiredCTenantId;
-	protected $implJavaAtomType$ requiredPublishURI;
+	protected ICFLibKeyHash256 requiredCTenantId;
+	protected String requiredPublishURI;
 	public CFBamJpaSchemaDefByPubURIIdxKey() {
 		requiredCTenantId = CFLibDbKeyHash256.fromHex( ICFBamPubSchemaDef.CTENANTID_INIT_VALUE.toString() );
 		requiredPublishURI = ICFBamPubSchemaDef.PUBLISHURI_INIT_VALUE;

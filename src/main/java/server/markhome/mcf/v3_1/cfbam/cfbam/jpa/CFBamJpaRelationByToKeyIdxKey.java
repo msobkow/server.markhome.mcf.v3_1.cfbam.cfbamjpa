@@ -65,7 +65,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 public class CFBamJpaRelationByToKeyIdxKey
 	implements ICFBamRelationByToKeyIdxKey, Comparable<Object>, Serializable
 {
-	protected $implJavaAtomType$ requiredToIndexId;
+	protected ICFLibKeyHash256 requiredToIndexId;
 	public CFBamJpaRelationByToKeyIdxKey() {
 		requiredToIndexId = CFLibDbKeyHash256.fromHex( ICFBamPubRelation.TOINDEXID_INIT_VALUE.toString() );
 	}

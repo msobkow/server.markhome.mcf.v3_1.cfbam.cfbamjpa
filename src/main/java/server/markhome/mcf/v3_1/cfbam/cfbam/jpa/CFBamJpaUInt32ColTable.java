@@ -298,7 +298,7 @@ public class CFBamJpaUInt32ColTable implements ICFBamUInt32ColTable
 	 */
 	@Override
 	public void deleteUInt32ColByTableIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTableId )
+		ICFLibKeyHash256 argTableId )
 	{
 		final String S_ProcName = "deleteUInt32ColByTableIdx";
 		boolean permissionGranted = canDeleteUInt32Col(S_ProcName, Authorization);
@@ -361,8 +361,8 @@ public class CFBamJpaUInt32ColTable implements ICFBamUInt32ColTable
 	 */
 	@Override
 	public void deleteUInt32ColByUNameIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argName )
+		ICFLibKeyHash256 argScopeId,
+		String argName )
 	{
 		final String S_ProcName = "deleteUInt32ColByUNameIdx";
 		boolean permissionGranted = canDeleteUInt32Col(S_ProcName, Authorization);
@@ -405,7 +405,7 @@ public class CFBamJpaUInt32ColTable implements ICFBamUInt32ColTable
 	 */
 	@Override
 	public void deleteUInt32ColByScopeIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId )
+		ICFLibKeyHash256 argScopeId )
 	{
 		final String S_ProcName = "deleteUInt32ColByScopeIdx";
 		boolean permissionGranted = canDeleteUInt32Col(S_ProcName, Authorization);
@@ -446,7 +446,7 @@ public class CFBamJpaUInt32ColTable implements ICFBamUInt32ColTable
 	 */
 	@Override
 	public void deleteUInt32ColByDefSchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argDefSchemaId )
+		ICFLibKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "deleteUInt32ColByDefSchemaIdx";
 		boolean permissionGranted = canDeleteUInt32Col(S_ProcName, Authorization);
@@ -487,7 +487,7 @@ public class CFBamJpaUInt32ColTable implements ICFBamUInt32ColTable
 	 */
 	@Override
 	public void deleteUInt32ColByPrevIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argPrevId )
+		ICFLibKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "deleteUInt32ColByPrevIdx";
 		boolean permissionGranted = canDeleteUInt32Col(S_ProcName, Authorization);
@@ -528,7 +528,7 @@ public class CFBamJpaUInt32ColTable implements ICFBamUInt32ColTable
 	 */
 	@Override
 	public void deleteUInt32ColByNextIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argNextId )
+		ICFLibKeyHash256 argNextId )
 	{
 		final String S_ProcName = "deleteUInt32ColByNextIdx";
 		boolean permissionGranted = canDeleteUInt32Col(S_ProcName, Authorization);
@@ -571,8 +571,8 @@ public class CFBamJpaUInt32ColTable implements ICFBamUInt32ColTable
 	 */
 	@Override
 	public void deleteUInt32ColByContPrevIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argPrevId )
+		ICFLibKeyHash256 argScopeId,
+		ICFLibKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "deleteUInt32ColByContPrevIdx";
 		boolean permissionGranted = canDeleteUInt32Col(S_ProcName, Authorization);
@@ -617,8 +617,8 @@ public class CFBamJpaUInt32ColTable implements ICFBamUInt32ColTable
 	 */
 	@Override
 	public void deleteUInt32ColByContNextIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argNextId )
+		ICFLibKeyHash256 argScopeId,
+		ICFLibKeyHash256 argNextId )
 	{
 		final String S_ProcName = "deleteUInt32ColByContNextIdx";
 		boolean permissionGranted = canDeleteUInt32Col(S_ProcName, Authorization);
@@ -737,7 +737,7 @@ public class CFBamJpaUInt32ColTable implements ICFBamUInt32ColTable
 	 */
 	@Override
 	public ICFBamUInt32Col readDerivedByIdIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argId )
+		ICFLibKeyHash256 argId )
 	{
 		final String S_ProcName = "readDerivedByIdIdx";
 		boolean permissionGranted = false;
@@ -774,8 +774,8 @@ public class CFBamJpaUInt32ColTable implements ICFBamUInt32ColTable
 	 */
 	@Override
 	public ICFBamUInt32Col readDerivedByUNameIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argName )
+		ICFLibKeyHash256 argScopeId,
+		String argName )
 	{
 		final String S_ProcName = "readDerivedByUNameIdx";
 		boolean permissionGranted = false;
@@ -810,7 +810,7 @@ public class CFBamJpaUInt32ColTable implements ICFBamUInt32ColTable
 	 */
 	@Override
 	public ICFBamUInt32Col[] readDerivedByScopeIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId )
+		ICFLibKeyHash256 argScopeId )
 	{
 		final String S_ProcName = "readDerivedByScopeIdx";
 		boolean permissionGranted = false;
@@ -840,7 +840,7 @@ public class CFBamJpaUInt32ColTable implements ICFBamUInt32ColTable
 	 */
 	@Override
 	public ICFBamUInt32Col[] readDerivedByDefSchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argDefSchemaId )
+		ICFLibKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "readDerivedByDefSchemaIdx";
 		boolean permissionGranted = false;
@@ -870,7 +870,7 @@ public class CFBamJpaUInt32ColTable implements ICFBamUInt32ColTable
 	 */
 	@Override
 	public ICFBamUInt32Col[] readDerivedByPrevIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argPrevId )
+		ICFLibKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "readDerivedByPrevIdx";
 		boolean permissionGranted = false;
@@ -900,7 +900,7 @@ public class CFBamJpaUInt32ColTable implements ICFBamUInt32ColTable
 	 */
 	@Override
 	public ICFBamUInt32Col[] readDerivedByNextIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argNextId )
+		ICFLibKeyHash256 argNextId )
 	{
 		final String S_ProcName = "readDerivedByNextIdx";
 		boolean permissionGranted = false;
@@ -932,8 +932,8 @@ public class CFBamJpaUInt32ColTable implements ICFBamUInt32ColTable
 	 */
 	@Override
 	public ICFBamUInt32Col[] readDerivedByContPrevIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argPrevId )
+		ICFLibKeyHash256 argScopeId,
+		ICFLibKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "readDerivedByContPrevIdx";
 		boolean permissionGranted = false;
@@ -966,8 +966,8 @@ public class CFBamJpaUInt32ColTable implements ICFBamUInt32ColTable
 	 */
 	@Override
 	public ICFBamUInt32Col[] readDerivedByContNextIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argNextId )
+		ICFLibKeyHash256 argScopeId,
+		ICFLibKeyHash256 argNextId )
 	{
 		final String S_ProcName = "readDerivedByContNextIdx";
 		boolean permissionGranted = false;
@@ -998,7 +998,7 @@ public class CFBamJpaUInt32ColTable implements ICFBamUInt32ColTable
 	 */
 	@Override
 	public ICFBamUInt32Col[] readDerivedByTableIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTableId )
+		ICFLibKeyHash256 argTableId )
 	{
 		final String S_ProcName = "readDerivedByTableIdx";
 		boolean permissionGranted = false;
@@ -1100,7 +1100,7 @@ public class CFBamJpaUInt32ColTable implements ICFBamUInt32ColTable
 	 */
 	@Override
 	public ICFBamUInt32Col readRecByIdIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argId )
+		ICFLibKeyHash256 argId )
 	{
 		final String S_ProcName = "readRecByIdIdx";
 		boolean permissionGranted = false;
@@ -1129,8 +1129,8 @@ public class CFBamJpaUInt32ColTable implements ICFBamUInt32ColTable
 	 */
 	@Override
 	public ICFBamUInt32Col readRecByUNameIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argName )
+		ICFLibKeyHash256 argScopeId,
+		String argName )
 	{
 		final String S_ProcName = "readRecByUNameIdx";
 		boolean permissionGranted = false;
@@ -1156,7 +1156,7 @@ public class CFBamJpaUInt32ColTable implements ICFBamUInt32ColTable
 	 */
 	@Override
 	public ICFBamUInt32Col[] readRecByScopeIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId )
+		ICFLibKeyHash256 argScopeId )
 	{
 		final String S_ProcName = "readRecByScopeIdx";
 		boolean permissionGranted = false;
@@ -1182,7 +1182,7 @@ public class CFBamJpaUInt32ColTable implements ICFBamUInt32ColTable
 	 */
 	@Override
 	public ICFBamUInt32Col[] readRecByDefSchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argDefSchemaId )
+		ICFLibKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "readRecByDefSchemaIdx";
 		boolean permissionGranted = false;
@@ -1208,7 +1208,7 @@ public class CFBamJpaUInt32ColTable implements ICFBamUInt32ColTable
 	 */
 	@Override
 	public ICFBamUInt32Col[] readRecByPrevIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argPrevId )
+		ICFLibKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "readRecByPrevIdx";
 		boolean permissionGranted = false;
@@ -1234,7 +1234,7 @@ public class CFBamJpaUInt32ColTable implements ICFBamUInt32ColTable
 	 */
 	@Override
 	public ICFBamUInt32Col[] readRecByNextIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argNextId )
+		ICFLibKeyHash256 argNextId )
 	{
 		final String S_ProcName = "readRecByNextIdx";
 		boolean permissionGranted = false;
@@ -1262,8 +1262,8 @@ public class CFBamJpaUInt32ColTable implements ICFBamUInt32ColTable
 	 */
 	@Override
 	public ICFBamUInt32Col[] readRecByContPrevIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argPrevId )
+		ICFLibKeyHash256 argScopeId,
+		ICFLibKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "readRecByContPrevIdx";
 		boolean permissionGranted = false;
@@ -1291,8 +1291,8 @@ public class CFBamJpaUInt32ColTable implements ICFBamUInt32ColTable
 	 */
 	@Override
 	public ICFBamUInt32Col[] readRecByContNextIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argNextId )
+		ICFLibKeyHash256 argScopeId,
+		ICFLibKeyHash256 argNextId )
 	{
 		final String S_ProcName = "readRecByContNextIdx";
 		boolean permissionGranted = false;
@@ -1318,7 +1318,7 @@ public class CFBamJpaUInt32ColTable implements ICFBamUInt32ColTable
 	 */
 	@Override
 	public ICFBamUInt32Col[] readRecByTableIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTableId )
+		ICFLibKeyHash256 argTableId )
 	{
 		final String S_ProcName = "readRecByTableIdx";
 		boolean permissionGranted = false;
@@ -1338,7 +1338,7 @@ public class CFBamJpaUInt32ColTable implements ICFBamUInt32ColTable
 	 */
 	@Override
 	public ICFBamUInt32Col moveRecUp( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argId,
+		ICFLibKeyHash256 argId,
 		int revision )
 	{
 		final String S_ProcName = "moveRecUp";
@@ -1357,7 +1357,7 @@ public class CFBamJpaUInt32ColTable implements ICFBamUInt32ColTable
 	 */
 	@Override
 	public ICFBamUInt32Col moveRecDown( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argId,
+		ICFLibKeyHash256 argId,
 		int revision )
 	{
 		final String S_ProcName = "moveRecDown";

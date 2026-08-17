@@ -78,11 +78,11 @@ public class CFBamJpaUInt64Def extends CFBamJpaAtom
 {
 
 	@Column( name="InitVal", nullable=true )
-	protected $implJavaAtomType$ optionalInitValue;
+	protected BigDecimal optionalInitValue;
 	@Column( name="MinVal", nullable=true )
-	protected $implJavaAtomType$ optionalMinValue;
+	protected BigDecimal optionalMinValue;
 	@Column( name="MaxVal", nullable=true )
-	protected $implJavaAtomType$ optionalMaxValue;
+	protected BigDecimal optionalMaxValue;
 
 	public CFBamJpaUInt64Def() {
 		super();

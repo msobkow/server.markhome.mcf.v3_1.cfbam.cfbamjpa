@@ -84,7 +84,7 @@ public class CFBamJpaInt16ColH extends CFBamJpaInt16DefH
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="TableId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ requiredTableId;
+	protected ICFLibKeyHash256 requiredTableId;
 
     public CFBamJpaInt16ColH() {
             super();

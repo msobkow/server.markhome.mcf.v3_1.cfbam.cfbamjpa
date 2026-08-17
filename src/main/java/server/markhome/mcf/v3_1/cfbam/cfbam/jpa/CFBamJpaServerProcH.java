@@ -81,7 +81,7 @@ public class CFBamJpaServerProcH extends CFBamJpaServerMethodH
     implements ICFBamServerProcH
 {
 	@Column( name="dmy", nullable=true, length=16 )
-	protected $implJavaAtomType$ optionalDummy;
+	protected String optionalDummy;
 
     public CFBamJpaServerProcH() {
             super();

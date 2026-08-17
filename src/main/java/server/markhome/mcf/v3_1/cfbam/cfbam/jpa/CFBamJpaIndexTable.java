@@ -300,8 +300,8 @@ public class CFBamJpaIndexTable implements ICFBamIndexTable
 	 */
 	@Override
 	public void deleteIndexByUNameIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTableId,
-		$implJavaAtomType$ argName )
+		ICFLibKeyHash256 argTableId,
+		String argName )
 	{
 		final String S_ProcName = "deleteIndexByUNameIdx";
 		boolean permissionGranted = canDeleteIndex(S_ProcName, Authorization);
@@ -344,7 +344,7 @@ public class CFBamJpaIndexTable implements ICFBamIndexTable
 	 */
 	@Override
 	public void deleteIndexByIdxTableIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTableId )
+		ICFLibKeyHash256 argTableId )
 	{
 		final String S_ProcName = "deleteIndexByIdxTableIdx";
 		boolean permissionGranted = canDeleteIndex(S_ProcName, Authorization);
@@ -385,7 +385,7 @@ public class CFBamJpaIndexTable implements ICFBamIndexTable
 	 */
 	@Override
 	public void deleteIndexByIdxCodeVisIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argCodeVis )
+		ICFBamPubSchema.CodeVisibilityEnum argCodeVis )
 	{
 		final String S_ProcName = "deleteIndexByIdxCodeVisIdx";
 		boolean permissionGranted = canDeleteIndex(S_ProcName, Authorization);
@@ -428,8 +428,8 @@ public class CFBamJpaIndexTable implements ICFBamIndexTable
 	 */
 	@Override
 	public void deleteIndexByIdxTblCdVisX( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTableId,
-		$implJavaAtomType$ argCodeVis )
+		ICFLibKeyHash256 argTableId,
+		ICFBamPubSchema.CodeVisibilityEnum argCodeVis )
 	{
 		final String S_ProcName = "deleteIndexByIdxTblCdVisX";
 		boolean permissionGranted = canDeleteIndex(S_ProcName, Authorization);
@@ -472,7 +472,7 @@ public class CFBamJpaIndexTable implements ICFBamIndexTable
 	 */
 	@Override
 	public void deleteIndexByDefSchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argDefSchemaId )
+		ICFLibKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "deleteIndexByDefSchemaIdx";
 		boolean permissionGranted = canDeleteIndex(S_ProcName, Authorization);
@@ -533,7 +533,7 @@ public class CFBamJpaIndexTable implements ICFBamIndexTable
 	 */
 	@Override
 	public void deleteIndexByTenantIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTenantId )
+		ICFLibKeyHash256 argTenantId )
 	{
 		final String S_ProcName = "deleteIndexByTenantIdx";
 		boolean permissionGranted = canDeleteIndex(S_ProcName, Authorization);
@@ -650,7 +650,7 @@ public class CFBamJpaIndexTable implements ICFBamIndexTable
 	 */
 	@Override
 	public ICFBamIndex readDerivedByIdIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argId )
+		ICFLibKeyHash256 argId )
 	{
 		final String S_ProcName = "readDerivedByIdIdx";
 		boolean permissionGranted = false;
@@ -684,7 +684,7 @@ public class CFBamJpaIndexTable implements ICFBamIndexTable
 	 */
 	@Override
 	public ICFBamIndex[] readDerivedByTenantIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTenantId )
+		ICFLibKeyHash256 argTenantId )
 	{
 		final String S_ProcName = "readDerivedByTenantIdx";
 		boolean permissionGranted = false;
@@ -717,8 +717,8 @@ public class CFBamJpaIndexTable implements ICFBamIndexTable
 	 */
 	@Override
 	public ICFBamIndex readDerivedByUNameIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTableId,
-		$implJavaAtomType$ argName )
+		ICFLibKeyHash256 argTableId,
+		String argName )
 	{
 		final String S_ProcName = "readDerivedByUNameIdx";
 		boolean permissionGranted = false;
@@ -753,7 +753,7 @@ public class CFBamJpaIndexTable implements ICFBamIndexTable
 	 */
 	@Override
 	public ICFBamIndex[] readDerivedByIdxTableIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTableId )
+		ICFLibKeyHash256 argTableId )
 	{
 		final String S_ProcName = "readDerivedByIdxTableIdx";
 		boolean permissionGranted = false;
@@ -783,7 +783,7 @@ public class CFBamJpaIndexTable implements ICFBamIndexTable
 	 */
 	@Override
 	public ICFBamIndex[] readDerivedByIdxCodeVisIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argCodeVis )
+		ICFBamPubSchema.CodeVisibilityEnum argCodeVis )
 	{
 		final String S_ProcName = "readDerivedByIdxCodeVisIdx";
 		boolean permissionGranted = false;
@@ -815,8 +815,8 @@ public class CFBamJpaIndexTable implements ICFBamIndexTable
 	 */
 	@Override
 	public ICFBamIndex[] readDerivedByIdxTblCdVisX( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTableId,
-		$implJavaAtomType$ argCodeVis )
+		ICFLibKeyHash256 argTableId,
+		ICFBamPubSchema.CodeVisibilityEnum argCodeVis )
 	{
 		final String S_ProcName = "readDerivedByIdxTblCdVisX";
 		boolean permissionGranted = false;
@@ -847,7 +847,7 @@ public class CFBamJpaIndexTable implements ICFBamIndexTable
 	 */
 	@Override
 	public ICFBamIndex[] readDerivedByDefSchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argDefSchemaId )
+		ICFLibKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "readDerivedByDefSchemaIdx";
 		boolean permissionGranted = false;
@@ -949,7 +949,7 @@ public class CFBamJpaIndexTable implements ICFBamIndexTable
 	 */
 	@Override
 	public ICFBamIndex readRecByIdIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argId )
+		ICFLibKeyHash256 argId )
 	{
 		final String S_ProcName = "readRecByIdIdx";
 		boolean permissionGranted = false;
@@ -975,7 +975,7 @@ public class CFBamJpaIndexTable implements ICFBamIndexTable
 	 */
 	@Override
 	public ICFBamIndex[] readRecByTenantIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTenantId )
+		ICFLibKeyHash256 argTenantId )
 	{
 		final String S_ProcName = "readRecByTenantIdx";
 		boolean permissionGranted = false;
@@ -1004,8 +1004,8 @@ public class CFBamJpaIndexTable implements ICFBamIndexTable
 	 */
 	@Override
 	public ICFBamIndex readRecByUNameIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTableId,
-		$implJavaAtomType$ argName )
+		ICFLibKeyHash256 argTableId,
+		String argName )
 	{
 		final String S_ProcName = "readRecByUNameIdx";
 		boolean permissionGranted = false;
@@ -1031,7 +1031,7 @@ public class CFBamJpaIndexTable implements ICFBamIndexTable
 	 */
 	@Override
 	public ICFBamIndex[] readRecByIdxTableIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTableId )
+		ICFLibKeyHash256 argTableId )
 	{
 		final String S_ProcName = "readRecByIdxTableIdx";
 		boolean permissionGranted = false;
@@ -1057,7 +1057,7 @@ public class CFBamJpaIndexTable implements ICFBamIndexTable
 	 */
 	@Override
 	public ICFBamIndex[] readRecByIdxCodeVisIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argCodeVis )
+		ICFBamPubSchema.CodeVisibilityEnum argCodeVis )
 	{
 		final String S_ProcName = "readRecByIdxCodeVisIdx";
 		boolean permissionGranted = false;
@@ -1085,8 +1085,8 @@ public class CFBamJpaIndexTable implements ICFBamIndexTable
 	 */
 	@Override
 	public ICFBamIndex[] readRecByIdxTblCdVisX( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTableId,
-		$implJavaAtomType$ argCodeVis )
+		ICFLibKeyHash256 argTableId,
+		ICFBamPubSchema.CodeVisibilityEnum argCodeVis )
 	{
 		final String S_ProcName = "readRecByIdxTblCdVisX";
 		boolean permissionGranted = false;
@@ -1112,7 +1112,7 @@ public class CFBamJpaIndexTable implements ICFBamIndexTable
 	 */
 	@Override
 	public ICFBamIndex[] readRecByDefSchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argDefSchemaId )
+		ICFLibKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "readRecByDefSchemaIdx";
 		boolean permissionGranted = false;

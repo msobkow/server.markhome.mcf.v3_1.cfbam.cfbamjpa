@@ -65,7 +65,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 public class CFBamJpaIndexColByNextIdxKey
 	implements ICFBamIndexColByNextIdxKey, Comparable<Object>, Serializable
 {
-	protected $implJavaAtomType$ optionalNextId;
+	protected ICFLibKeyHash256 optionalNextId;
 	public CFBamJpaIndexColByNextIdxKey() {
 		optionalNextId = CFLibDbKeyHash256.nullGet();
 	}

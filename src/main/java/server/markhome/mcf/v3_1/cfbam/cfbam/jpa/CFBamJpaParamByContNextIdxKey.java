@@ -65,8 +65,8 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 public class CFBamJpaParamByContNextIdxKey
 	implements ICFBamParamByContNextIdxKey, Comparable<Object>, Serializable
 {
-	protected $implJavaAtomType$ requiredServerMethodId;
-	protected $implJavaAtomType$ optionalNextId;
+	protected ICFLibKeyHash256 requiredServerMethodId;
+	protected ICFLibKeyHash256 optionalNextId;
 	public CFBamJpaParamByContNextIdxKey() {
 		requiredServerMethodId = CFLibDbKeyHash256.fromHex( ICFBamPubParam.SERVERMETHODID_INIT_VALUE.toString() );
 		optionalNextId = CFLibDbKeyHash256.nullGet();

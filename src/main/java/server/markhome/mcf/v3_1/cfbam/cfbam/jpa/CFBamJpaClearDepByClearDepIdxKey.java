@@ -65,7 +65,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 public class CFBamJpaClearDepByClearDepIdxKey
 	implements ICFBamClearDepByClearDepIdxKey, Comparable<Object>, Serializable
 {
-	protected $implJavaAtomType$ requiredRelationId;
+	protected ICFLibKeyHash256 requiredRelationId;
 	public CFBamJpaClearDepByClearDepIdxKey() {
 		requiredRelationId = CFLibDbKeyHash256.fromHex( ICFBamPubClearDep.RELATIONID_INIT_VALUE.toString() );
 	}

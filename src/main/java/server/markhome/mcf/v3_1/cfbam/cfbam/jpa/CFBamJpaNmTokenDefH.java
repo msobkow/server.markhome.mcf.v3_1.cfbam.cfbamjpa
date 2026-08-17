@@ -81,9 +81,9 @@ public class CFBamJpaNmTokenDefH extends CFBamJpaAtomH
     implements ICFBamNmTokenDefH
 {
 	@Column( name="db_max_len", nullable=false )
-	protected $implJavaAtomType$ requiredMaxLen;
+	protected int requiredMaxLen;
 	@Column( name="InitVal", nullable=true, length=64 )
-	protected $implJavaAtomType$ optionalInitValue;
+	protected String optionalInitValue;
 
     public CFBamJpaNmTokenDefH() {
             super();

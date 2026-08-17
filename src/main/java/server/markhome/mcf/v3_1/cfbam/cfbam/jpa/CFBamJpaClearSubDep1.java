@@ -88,9 +88,9 @@ public class CFBamJpaClearSubDep1 extends CFBamJpaClearDep
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="contclrdepid", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ requiredClearTopDepId;
+	protected ICFLibKeyHash256 requiredClearTopDepId;
 	@Column( name="safe_name", nullable=false, length=192 )
-	protected $implJavaAtomType$ requiredName;
+	protected String requiredName;
 
 	public CFBamJpaClearSubDep1() {
 		super();

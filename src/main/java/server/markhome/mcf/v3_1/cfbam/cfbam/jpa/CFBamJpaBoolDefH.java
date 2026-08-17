@@ -81,13 +81,13 @@ public class CFBamJpaBoolDefH extends CFBamJpaAtomH
     implements ICFBamBoolDefH
 {
 	@Column( name="InitVal", nullable=true )
-	protected $implJavaAtomType$ optionalInitValue;
+	protected Boolean optionalInitValue;
 	@Column( name="FalseString", nullable=true, length=32 )
-	protected $implJavaAtomType$ optionalFalseString;
+	protected String optionalFalseString;
 	@Column( name="TrueString", nullable=true, length=32 )
-	protected $implJavaAtomType$ optionalTrueString;
+	protected String optionalTrueString;
 	@Column( name="NullString", nullable=true, length=32 )
-	protected $implJavaAtomType$ optionalNullString;
+	protected String optionalNullString;
 
     public CFBamJpaBoolDefH() {
             super();
@@ -351,9 +351,9 @@ public class CFBamJpaBoolDefH extends CFBamJpaAtomH
         }
         ICFBamBoolDef rhs = (ICFBamBoolDef)obj;
 			if( getOptionalInitValue() != null ) {
-				$implJavaAtomType$ lhsInitValue = getOptionalInitValue();
+				Boolean lhsInitValue = getOptionalInitValue();
 				if( rhs.getOptionalInitValue() ) {
-					$implJavaAtomType$ rhsInitValue = rhs.getOptionalInitValue();
+					Boolean rhsInitValue = rhs.getOptionalInitValue();
 					if( lhsInitValue ) {
 						if( ! rhsInitValue ) {
 							return( 1 );
@@ -434,9 +434,9 @@ public class CFBamJpaBoolDefH extends CFBamJpaAtomH
         }
         ICFBamBoolDefH rhs = (ICFBamBoolDefH)obj;
 			if( getOptionalInitValue() != null ) {
-				$implJavaAtomType$ lhsInitValue = getOptionalInitValue();
+				Boolean lhsInitValue = getOptionalInitValue();
 				if( rhs.getOptionalInitValue() ) {
-					$implJavaAtomType$ rhsInitValue = rhs.getOptionalInitValue();
+					Boolean rhsInitValue = rhs.getOptionalInitValue();
 					if( lhsInitValue ) {
 						if( ! rhsInitValue ) {
 							return( 1 );

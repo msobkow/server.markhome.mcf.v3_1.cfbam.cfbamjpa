@@ -101,25 +101,25 @@ public class CFBamJpaSchemaRef extends CFBamJpaScope
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="SchemaId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ requiredSchemaId;
+	protected ICFLibKeyHash256 requiredSchemaId;
 	@Column( name="safe_name", nullable=false, length=192 )
-	protected $implJavaAtomType$ requiredName;
+	protected String requiredName;
 	@Column( name="RefModelName", nullable=false, length=1024 )
-	protected $implJavaAtomType$ requiredRefModelName;
+	protected String requiredRefModelName;
 	@Column( name="IncludeRoot", nullable=false, length=1024 )
-	protected $implJavaAtomType$ requiredIncludeRoot;
+	protected String requiredIncludeRoot;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="RefSchId", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ optionalRefSchemaId;
+	protected ICFLibKeyHash256 optionalRefSchemaId;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="PrevId", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ optionalPrevId;
+	protected ICFLibKeyHash256 optionalPrevId;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="NextId", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ optionalNextId;
+	protected ICFLibKeyHash256 optionalNextId;
 
 	public CFBamJpaSchemaRef() {
 		super();

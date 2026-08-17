@@ -85,9 +85,9 @@ public class CFBamJpaDelSubDep2H extends CFBamJpaDelDepH
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="contdeldep1id", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ requiredDelSubDep1Id;
+	protected ICFLibKeyHash256 requiredDelSubDep1Id;
 	@Column( name="safe_name", nullable=false, length=192 )
-	protected $implJavaAtomType$ requiredName;
+	protected String requiredName;
 
     public CFBamJpaDelSubDep2H() {
             super();

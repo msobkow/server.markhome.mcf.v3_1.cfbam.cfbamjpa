@@ -90,15 +90,15 @@ public class CFBamJpaTableCol extends CFBamJpaValue
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="TableId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ requiredTableId;
+	protected ICFLibKeyHash256 requiredTableId;
 	@Column( name="DbName", nullable=true, length=32 )
-	protected $implJavaAtomType$ optionalDbName;
+	protected String optionalDbName;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="DataId", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ optionalDataId;
+	protected ICFLibKeyHash256 optionalDataId;
 	@Column( name="xml_elt_name", nullable=true, length=192 )
-	protected $implJavaAtomType$ optionalXmlElementName;
+	protected String optionalXmlElementName;
 
 	public CFBamJpaTableCol() {
 		super();

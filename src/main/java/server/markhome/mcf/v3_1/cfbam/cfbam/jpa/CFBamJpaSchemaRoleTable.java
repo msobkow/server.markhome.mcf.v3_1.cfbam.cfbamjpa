@@ -298,7 +298,7 @@ public class CFBamJpaSchemaRoleTable implements ICFBamSchemaRoleTable
 	 */
 	@Override
 	public void deleteSchemaRoleBySchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argSchemaDefId )
+		ICFLibKeyHash256 argSchemaDefId )
 	{
 		final String S_ProcName = "deleteSchemaRoleBySchemaIdx";
 		boolean permissionGranted = canDeleteSchemaRole(S_ProcName, Authorization);
@@ -339,7 +339,7 @@ public class CFBamJpaSchemaRoleTable implements ICFBamSchemaRoleTable
 	 */
 	@Override
 	public void deleteSchemaRoleByRoleScopeIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argRoleScope )
+		ICFBamPubSchema.RoleScopeEnum argRoleScope )
 	{
 		final String S_ProcName = "deleteSchemaRoleByRoleScopeIdx";
 		boolean permissionGranted = canDeleteSchemaRole(S_ProcName, Authorization);
@@ -382,8 +382,8 @@ public class CFBamJpaSchemaRoleTable implements ICFBamSchemaRoleTable
 	 */
 	@Override
 	public void deleteSchemaRoleBySchRoleScpIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argSchemaDefId,
-		$implJavaAtomType$ argRoleScope )
+		ICFLibKeyHash256 argSchemaDefId,
+		ICFBamPubSchema.RoleScopeEnum argRoleScope )
 	{
 		final String S_ProcName = "deleteSchemaRoleBySchRoleScpIdx";
 		boolean permissionGranted = canDeleteSchemaRole(S_ProcName, Authorization);
@@ -448,8 +448,8 @@ public class CFBamJpaSchemaRoleTable implements ICFBamSchemaRoleTable
 	 */
 	@Override
 	public void deleteSchemaRoleByUNameIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argName )
+		ICFLibKeyHash256 argScopeId,
+		String argName )
 	{
 		final String S_ProcName = "deleteSchemaRoleByUNameIdx";
 		boolean permissionGranted = canDeleteSchemaRole(S_ProcName, Authorization);
@@ -492,7 +492,7 @@ public class CFBamJpaSchemaRoleTable implements ICFBamSchemaRoleTable
 	 */
 	@Override
 	public void deleteSchemaRoleByScopeIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId )
+		ICFLibKeyHash256 argScopeId )
 	{
 		final String S_ProcName = "deleteSchemaRoleByScopeIdx";
 		boolean permissionGranted = canDeleteSchemaRole(S_ProcName, Authorization);
@@ -533,7 +533,7 @@ public class CFBamJpaSchemaRoleTable implements ICFBamSchemaRoleTable
 	 */
 	@Override
 	public void deleteSchemaRoleByDefSchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argDefSchemaId )
+		ICFLibKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "deleteSchemaRoleByDefSchemaIdx";
 		boolean permissionGranted = canDeleteSchemaRole(S_ProcName, Authorization);
@@ -578,9 +578,9 @@ public class CFBamJpaSchemaRoleTable implements ICFBamSchemaRoleTable
 	 */
 	@Override
 	public void deleteSchemaRoleByUDefIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argDefSchemaId,
-		$implJavaAtomType$ argName )
+		ICFLibKeyHash256 argScopeId,
+		ICFLibKeyHash256 argDefSchemaId,
+		String argName )
 	{
 		final String S_ProcName = "deleteSchemaRoleByUDefIdx";
 		boolean permissionGranted = canDeleteSchemaRole(S_ProcName, Authorization);
@@ -701,7 +701,7 @@ public class CFBamJpaSchemaRoleTable implements ICFBamSchemaRoleTable
 	 */
 	@Override
 	public ICFBamSchemaRole readDerivedByIdIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argId )
+		ICFLibKeyHash256 argId )
 	{
 		final String S_ProcName = "readDerivedByIdIdx";
 		boolean permissionGranted = false;
@@ -738,8 +738,8 @@ public class CFBamJpaSchemaRoleTable implements ICFBamSchemaRoleTable
 	 */
 	@Override
 	public ICFBamSchemaRole readDerivedByUNameIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argName )
+		ICFLibKeyHash256 argScopeId,
+		String argName )
 	{
 		final String S_ProcName = "readDerivedByUNameIdx";
 		boolean permissionGranted = false;
@@ -774,7 +774,7 @@ public class CFBamJpaSchemaRoleTable implements ICFBamSchemaRoleTable
 	 */
 	@Override
 	public ICFBamSchemaRole[] readDerivedByScopeIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId )
+		ICFLibKeyHash256 argScopeId )
 	{
 		final String S_ProcName = "readDerivedByScopeIdx";
 		boolean permissionGranted = false;
@@ -804,7 +804,7 @@ public class CFBamJpaSchemaRoleTable implements ICFBamSchemaRoleTable
 	 */
 	@Override
 	public ICFBamSchemaRole[] readDerivedByDefSchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argDefSchemaId )
+		ICFLibKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "readDerivedByDefSchemaIdx";
 		boolean permissionGranted = false;
@@ -839,9 +839,9 @@ public class CFBamJpaSchemaRoleTable implements ICFBamSchemaRoleTable
 	 */
 	@Override
 	public ICFBamSchemaRole readDerivedByUDefIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argDefSchemaId,
-		$implJavaAtomType$ argName )
+		ICFLibKeyHash256 argScopeId,
+		ICFLibKeyHash256 argDefSchemaId,
+		String argName )
 	{
 		final String S_ProcName = "readDerivedByUDefIdx";
 		boolean permissionGranted = false;
@@ -877,7 +877,7 @@ public class CFBamJpaSchemaRoleTable implements ICFBamSchemaRoleTable
 	 */
 	@Override
 	public ICFBamSchemaRole[] readDerivedBySchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argSchemaDefId )
+		ICFLibKeyHash256 argSchemaDefId )
 	{
 		final String S_ProcName = "readDerivedBySchemaIdx";
 		boolean permissionGranted = false;
@@ -907,7 +907,7 @@ public class CFBamJpaSchemaRoleTable implements ICFBamSchemaRoleTable
 	 */
 	@Override
 	public ICFBamSchemaRole[] readDerivedByRoleScopeIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argRoleScope )
+		ICFBamPubSchema.RoleScopeEnum argRoleScope )
 	{
 		final String S_ProcName = "readDerivedByRoleScopeIdx";
 		boolean permissionGranted = false;
@@ -939,8 +939,8 @@ public class CFBamJpaSchemaRoleTable implements ICFBamSchemaRoleTable
 	 */
 	@Override
 	public ICFBamSchemaRole[] readDerivedBySchRoleScpIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argSchemaDefId,
-		$implJavaAtomType$ argRoleScope )
+		ICFLibKeyHash256 argSchemaDefId,
+		ICFBamPubSchema.RoleScopeEnum argRoleScope )
 	{
 		final String S_ProcName = "readDerivedBySchRoleScpIdx";
 		boolean permissionGranted = false;
@@ -1043,7 +1043,7 @@ public class CFBamJpaSchemaRoleTable implements ICFBamSchemaRoleTable
 	 */
 	@Override
 	public ICFBamSchemaRole readRecByIdIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argId )
+		ICFLibKeyHash256 argId )
 	{
 		final String S_ProcName = "readRecByIdIdx";
 		boolean permissionGranted = false;
@@ -1072,8 +1072,8 @@ public class CFBamJpaSchemaRoleTable implements ICFBamSchemaRoleTable
 	 */
 	@Override
 	public ICFBamSchemaRole readRecByUNameIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argName )
+		ICFLibKeyHash256 argScopeId,
+		String argName )
 	{
 		final String S_ProcName = "readRecByUNameIdx";
 		boolean permissionGranted = false;
@@ -1099,7 +1099,7 @@ public class CFBamJpaSchemaRoleTable implements ICFBamSchemaRoleTable
 	 */
 	@Override
 	public ICFBamSchemaRole[] readRecByScopeIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId )
+		ICFLibKeyHash256 argScopeId )
 	{
 		final String S_ProcName = "readRecByScopeIdx";
 		boolean permissionGranted = false;
@@ -1125,7 +1125,7 @@ public class CFBamJpaSchemaRoleTable implements ICFBamSchemaRoleTable
 	 */
 	@Override
 	public ICFBamSchemaRole[] readRecByDefSchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argDefSchemaId )
+		ICFLibKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "readRecByDefSchemaIdx";
 		boolean permissionGranted = false;
@@ -1156,9 +1156,9 @@ public class CFBamJpaSchemaRoleTable implements ICFBamSchemaRoleTable
 	 */
 	@Override
 	public ICFBamSchemaRole readRecByUDefIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argDefSchemaId,
-		$implJavaAtomType$ argName )
+		ICFLibKeyHash256 argScopeId,
+		ICFLibKeyHash256 argDefSchemaId,
+		String argName )
 	{
 		final String S_ProcName = "readRecByUDefIdx";
 		boolean permissionGranted = false;
@@ -1184,7 +1184,7 @@ public class CFBamJpaSchemaRoleTable implements ICFBamSchemaRoleTable
 	 */
 	@Override
 	public ICFBamSchemaRole[] readRecBySchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argSchemaDefId )
+		ICFLibKeyHash256 argSchemaDefId )
 	{
 		final String S_ProcName = "readRecBySchemaIdx";
 		boolean permissionGranted = false;
@@ -1210,7 +1210,7 @@ public class CFBamJpaSchemaRoleTable implements ICFBamSchemaRoleTable
 	 */
 	@Override
 	public ICFBamSchemaRole[] readRecByRoleScopeIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argRoleScope )
+		ICFBamPubSchema.RoleScopeEnum argRoleScope )
 	{
 		final String S_ProcName = "readRecByRoleScopeIdx";
 		boolean permissionGranted = false;
@@ -1238,8 +1238,8 @@ public class CFBamJpaSchemaRoleTable implements ICFBamSchemaRoleTable
 	 */
 	@Override
 	public ICFBamSchemaRole[] readRecBySchRoleScpIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argSchemaDefId,
-		$implJavaAtomType$ argRoleScope )
+		ICFLibKeyHash256 argSchemaDefId,
+		ICFBamPubSchema.RoleScopeEnum argRoleScope )
 	{
 		final String S_ProcName = "readRecBySchRoleScpIdx";
 		boolean permissionGranted = false;

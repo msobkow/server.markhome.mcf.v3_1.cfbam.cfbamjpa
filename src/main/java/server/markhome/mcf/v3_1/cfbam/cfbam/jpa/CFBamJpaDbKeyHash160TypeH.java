@@ -84,7 +84,7 @@ public class CFBamJpaDbKeyHash160TypeH extends CFBamJpaDbKeyHash160DefH
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="SchemaDefId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ requiredSchemaDefId;
+	protected ICFLibKeyHash256 requiredSchemaDefId;
 
     public CFBamJpaDbKeyHash160TypeH() {
             super();

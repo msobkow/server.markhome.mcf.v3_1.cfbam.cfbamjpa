@@ -94,7 +94,7 @@ public class CFBamJpaValue
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="Id", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ requiredId;
+	protected ICFLibKeyHash256 requiredId;
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="requiredParentDataType")
 	protected Set<CFBamJpaTableCol> optionalChildrenRefTableCol;
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="requiredLookupColumn")
@@ -142,37 +142,37 @@ public class CFBamJpaValue
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="ScopeId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ requiredScopeId;
+	protected ICFLibKeyHash256 requiredScopeId;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="defschid", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ optionalDefSchemaId;
+	protected ICFLibKeyHash256 optionalDefSchemaId;
 	@Column( name="safe_name", nullable=false, length=192 )
-	protected $implJavaAtomType$ requiredName;
+	protected String requiredName;
 	@Column( name="short_name", nullable=true, length=16 )
-	protected $implJavaAtomType$ optionalShortName;
+	protected String optionalShortName;
 	@Column( name="Label", nullable=true, length=64 )
-	protected $implJavaAtomType$ optionalLabel;
+	protected String optionalLabel;
 	@Column( name="short_descr", nullable=true, length=128 )
-	protected $implJavaAtomType$ optionalShortDescription;
+	protected String optionalShortDescription;
 	@Column( name="descr", nullable=true, length=1023 )
-	protected $implJavaAtomType$ optionalDescription;
+	protected String optionalDescription;
 	@Column( name="dflt_xml_val", nullable=true, length=1023 )
-	protected $implJavaAtomType$ optionalDefaultXmlValue;
+	protected String optionalDefaultXmlValue;
 	@Column( name="IsNullable", nullable=false )
-	protected $implJavaAtomType$ requiredIsNullable;
+	protected boolean requiredIsNullable;
 	@Column( name="GenerateId", nullable=true )
-	protected $implJavaAtomType$ optionalGenerateId;
+	protected Boolean optionalGenerateId;
 	@Column( name="ImplementsPolymorph", nullable=false )
-	protected $implJavaAtomType$ requiredImplementsPolymorph;
+	protected boolean requiredImplementsPolymorph;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="PrevId", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ optionalPrevId;
+	protected ICFLibKeyHash256 optionalPrevId;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="NextId", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ optionalNextId;
+	protected ICFLibKeyHash256 optionalNextId;
 
 	public CFBamJpaValue() {
 		requiredId = CFLibDbKeyHash256.fromHex( ICFBamPubValue.ID_INIT_VALUE.toString() );
@@ -452,12 +452,12 @@ public class CFBamJpaValue
 	}
 
 	@Override
-	public $implJavaOptAtomType$ getPKey() {
+	public ICFLibKeyHash256 getPKey() {
 		return getRequiredId();
 	}
 
 	@Override
-	public void setPKey($implJavaOptAtomType$ requiredId) {
+	public void setPKey(ICFLibKeyHash256 requiredId) {
 		this.requiredId = requiredId;
 	}
 
@@ -1511,9 +1511,9 @@ public class CFBamJpaValue
 				}
 			}
 			if( getOptionalGenerateId() != null ) {
-				$implJavaAtomType$ lhsGenerateId = getOptionalGenerateId();
+				Boolean lhsGenerateId = getOptionalGenerateId();
 				if( rhs.getOptionalGenerateId() ) {
-					$implJavaAtomType$ rhsGenerateId = rhs.getOptionalGenerateId();
+					Boolean rhsGenerateId = rhs.getOptionalGenerateId();
 					if( lhsGenerateId ) {
 						if( ! rhsGenerateId ) {
 							return( 1 );
@@ -1763,9 +1763,9 @@ public class CFBamJpaValue
 				}
 			}
 			if( getOptionalGenerateId() != null ) {
-				$implJavaAtomType$ lhsGenerateId = getOptionalGenerateId();
+				Boolean lhsGenerateId = getOptionalGenerateId();
 				if( rhs.getOptionalGenerateId() ) {
-					$implJavaAtomType$ rhsGenerateId = rhs.getOptionalGenerateId();
+					Boolean rhsGenerateId = rhs.getOptionalGenerateId();
 					if( lhsGenerateId ) {
 						if( ! rhsGenerateId ) {
 							return( 1 );

@@ -89,7 +89,7 @@ public class CFBamJpaRoleDef
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="Id", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ requiredId;
+	protected ICFLibKeyHash256 requiredId;
 	protected int requiredRevision;
 
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
@@ -127,17 +127,17 @@ public class CFBamJpaRoleDef
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="ScopeId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ requiredScopeId;
+	protected ICFLibKeyHash256 requiredScopeId;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="defschid", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ optionalDefSchemaId;
+	protected ICFLibKeyHash256 optionalDefSchemaId;
 	@Column( name="safe_name", nullable=false, length=192 )
-	protected $implJavaAtomType$ requiredName;
+	protected String requiredName;
 	@Column( name="enables_str", nullable=false, length=2000000 )
-	protected $implJavaAtomType$ requiredEnables;
+	protected String requiredEnables;
 	@Column( name="includes_str", nullable=false, length=2000000 )
-	protected $implJavaAtomType$ requiredIncludes;
+	protected String requiredIncludes;
 
 	public CFBamJpaRoleDef() {
 		requiredId = CFLibDbKeyHash256.fromHex( ICFBamPubRoleDef.ID_INIT_VALUE.toString() );
@@ -301,12 +301,12 @@ public class CFBamJpaRoleDef
 	}
 
 	@Override
-	public $implJavaOptAtomType$ getPKey() {
+	public ICFLibKeyHash256 getPKey() {
 		return getRequiredId();
 	}
 
 	@Override
-	public void setPKey($implJavaOptAtomType$ requiredId) {
+	public void setPKey(ICFLibKeyHash256 requiredId) {
 		this.requiredId = requiredId;
 	}
 

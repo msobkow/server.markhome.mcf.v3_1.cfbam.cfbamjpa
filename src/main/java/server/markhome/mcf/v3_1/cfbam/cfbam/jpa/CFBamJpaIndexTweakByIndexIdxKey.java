@@ -65,7 +65,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 public class CFBamJpaIndexTweakByIndexIdxKey
 	implements ICFBamIndexTweakByIndexIdxKey, Comparable<Object>, Serializable
 {
-	protected $implJavaAtomType$ requiredIndexId;
+	protected ICFLibKeyHash256 requiredIndexId;
 	public CFBamJpaIndexTweakByIndexIdxKey() {
 		requiredIndexId = CFLibDbKeyHash256.fromHex( ICFBamPubIndexTweak.INDEXID_INIT_VALUE.toString() );
 	}

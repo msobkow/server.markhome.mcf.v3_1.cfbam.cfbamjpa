@@ -78,7 +78,7 @@ public class CFBamJpaServerProc extends CFBamJpaServerMethod
 {
 
 	@Column( name="dmy", nullable=true, length=16 )
-	protected $implJavaAtomType$ optionalDummy;
+	protected String optionalDummy;
 
 	public CFBamJpaServerProc() {
 		super();

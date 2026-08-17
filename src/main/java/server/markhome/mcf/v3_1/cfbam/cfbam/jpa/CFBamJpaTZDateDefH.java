@@ -81,7 +81,7 @@ public class CFBamJpaTZDateDefH extends CFBamJpaAtomH
     implements ICFBamTZDateDefH
 {
 	@Column( name="Dummy", nullable=true, length=4 )
-	protected $implJavaAtomType$ optionalDummy;
+	protected String optionalDummy;
 
     public CFBamJpaTZDateDefH() {
             super();

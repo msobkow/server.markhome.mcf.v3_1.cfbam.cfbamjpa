@@ -65,7 +65,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 public class CFBamJpaPopDepByRelationIdxKey
 	implements ICFBamPopDepByRelationIdxKey, Comparable<Object>, Serializable
 {
-	protected $implJavaAtomType$ requiredRelationId;
+	protected ICFLibKeyHash256 requiredRelationId;
 	public CFBamJpaPopDepByRelationIdxKey() {
 		requiredRelationId = CFLibDbKeyHash256.fromHex( ICFBamPubPopDep.RELATIONID_INIT_VALUE.toString() );
 	}

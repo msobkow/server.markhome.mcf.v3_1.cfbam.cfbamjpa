@@ -65,8 +65,8 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 public class CFBamJpaSchemaDefByProjectURLIdxKey
 	implements ICFBamSchemaDefByProjectURLIdxKey, Comparable<Object>, Serializable
 {
-	protected $implJavaAtomType$ requiredCTenantId;
-	protected $implJavaAtomType$ requiredProjectURL;
+	protected ICFLibKeyHash256 requiredCTenantId;
+	protected String requiredProjectURL;
 	public CFBamJpaSchemaDefByProjectURLIdxKey() {
 		requiredCTenantId = CFLibDbKeyHash256.fromHex( ICFBamPubSchemaDef.CTENANTID_INIT_VALUE.toString() );
 		requiredProjectURL = ICFBamPubSchemaDef.PROJECTURL_INIT_VALUE;

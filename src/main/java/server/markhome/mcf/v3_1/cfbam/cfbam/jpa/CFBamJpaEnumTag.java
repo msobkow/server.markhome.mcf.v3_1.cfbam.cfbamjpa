@@ -89,7 +89,7 @@ public class CFBamJpaEnumTag
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="Id", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ requiredId;
+	protected ICFLibKeyHash256 requiredId;
 	protected int requiredRevision;
 
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
@@ -133,23 +133,23 @@ public class CFBamJpaEnumTag
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="defschid", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ optionalDefSchemaId;
+	protected ICFLibKeyHash256 optionalDefSchemaId;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="EnumId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ requiredEnumId;
+	protected ICFLibKeyHash256 requiredEnumId;
 	@Column( name="EnumCode", nullable=true )
-	protected $implJavaAtomType$ optionalEnumCode;
+	protected Short optionalEnumCode;
 	@Column( name="safe_name", nullable=false, length=64 )
-	protected $implJavaAtomType$ requiredName;
+	protected String requiredName;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="PrevId", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ optionalPrevId;
+	protected ICFLibKeyHash256 optionalPrevId;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="NextId", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ optionalNextId;
+	protected ICFLibKeyHash256 optionalNextId;
 
 	public CFBamJpaEnumTag() {
 		requiredId = CFLibDbKeyHash256.fromHex( ICFBamPubEnumTag.ID_INIT_VALUE.toString() );
@@ -410,12 +410,12 @@ public class CFBamJpaEnumTag
 	}
 
 	@Override
-	public $implJavaOptAtomType$ getPKey() {
+	public ICFLibKeyHash256 getPKey() {
 		return getRequiredId();
 	}
 
 	@Override
-	public void setPKey($implJavaOptAtomType$ requiredId) {
+	public void setPKey(ICFLibKeyHash256 requiredId) {
 		this.requiredId = requiredId;
 	}
 
@@ -1017,9 +1017,9 @@ public class CFBamJpaEnumTag
 				return( -1 );
 			}
 			if( getOptionalEnumCode() != null ) {
-				$implJavaAtomType$ lhsEnumCode = getOptionalEnumCode();
+				Short lhsEnumCode = getOptionalEnumCode();
 				if( rhs.getOptionalEnumCode() != null ) {
-					$implJavaAtomType$ rhsEnumCode = rhs.getOptionalEnumCode();
+					Short rhsEnumCode = rhs.getOptionalEnumCode();
 					cmp = lhsEnumCode.compareTo( rhsEnumCode );
 					if( cmp != 0 ) {
 						return( cmp );
@@ -1163,9 +1163,9 @@ public class CFBamJpaEnumTag
 				return( -1 );
 			}
 			if( getOptionalEnumCode() != null ) {
-				$implJavaAtomType$ lhsEnumCode = getOptionalEnumCode();
+				Short lhsEnumCode = getOptionalEnumCode();
 				if( rhs.getOptionalEnumCode() != null ) {
-					$implJavaAtomType$ rhsEnumCode = rhs.getOptionalEnumCode();
+					Short rhsEnumCode = rhs.getOptionalEnumCode();
 					cmp = lhsEnumCode.compareTo( rhsEnumCode );
 					if( cmp != 0 ) {
 						return( cmp );

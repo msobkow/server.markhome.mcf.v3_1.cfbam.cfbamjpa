@@ -89,33 +89,33 @@ public class CFBamJpaSchemaDefH extends CFBamJpaScopeH
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="CTenantId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ requiredCTenantId;
+	protected ICFLibKeyHash256 requiredCTenantId;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="MinorVersionId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ requiredMinorVersionId;
+	protected ICFLibKeyHash256 requiredMinorVersionId;
 	@Column( name="safe_name", nullable=false, length=192 )
-	protected $implJavaAtomType$ requiredName;
+	protected String requiredName;
 	@Column( name="DbName", nullable=true, length=12 )
-	protected $implJavaAtomType$ optionalDbName;
+	protected String optionalDbName;
 	@Column( name="short_name", nullable=true, length=16 )
-	protected $implJavaAtomType$ optionalShortName;
+	protected String optionalShortName;
 	@Column( name="Label", nullable=true, length=64 )
-	protected $implJavaAtomType$ optionalLabel;
+	protected String optionalLabel;
 	@Column( name="short_descr", nullable=true, length=128 )
-	protected $implJavaAtomType$ optionalShortDescription;
+	protected String optionalShortDescription;
 	@Column( name="descr", nullable=true, length=1023 )
-	protected $implJavaAtomType$ optionalDescription;
+	protected String optionalDescription;
 	@Column( name="CopyPerd", nullable=false, length=10 )
-	protected $implJavaAtomType$ requiredCopyrightPeriod;
+	protected String requiredCopyrightPeriod;
 	@Column( name="CopyHold", nullable=false, length=511 )
-	protected $implJavaAtomType$ requiredCopyrightHolder;
+	protected String requiredCopyrightHolder;
 	@Column( name="AuthEMail", nullable=false, length=512 )
-	protected $implJavaAtomType$ requiredAuthorEMail;
+	protected String requiredAuthorEMail;
 	@Column( name="ProjURL", nullable=false, length=1024 )
-	protected $implJavaAtomType$ requiredProjectURL;
+	protected String requiredProjectURL;
 	@Column( name="PubURI", nullable=false, length=512 )
-	protected $implJavaAtomType$ requiredPublishURI;
+	protected String requiredPublishURI;
 
     public CFBamJpaSchemaDefH() {
             super();

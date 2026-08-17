@@ -78,9 +78,9 @@ public class CFBamJpaBlobDef extends CFBamJpaAtom
 {
 
 	@Column( name="db_max_len", nullable=false )
-	protected $implJavaAtomType$ requiredMaxLen;
+	protected int requiredMaxLen;
 	@Column( name="InitVal", nullable=true, length=16384 )
-	protected $implJavaAtomType$ optionalInitValue;
+	protected byte[] optionalInitValue;
 
 	public CFBamJpaBlobDef() {
 		super();

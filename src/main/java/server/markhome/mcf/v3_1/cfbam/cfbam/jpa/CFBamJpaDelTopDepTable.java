@@ -298,7 +298,7 @@ public class CFBamJpaDelTopDepTable implements ICFBamDelTopDepTable
 	 */
 	@Override
 	public void deleteDelTopDepByDelTopDepTblIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTableId )
+		ICFLibKeyHash256 argTableId )
 	{
 		final String S_ProcName = "deleteDelTopDepByDelTopDepTblIdx";
 		boolean permissionGranted = canDeleteDelTopDep(S_ProcName, Authorization);
@@ -341,8 +341,8 @@ public class CFBamJpaDelTopDepTable implements ICFBamDelTopDepTable
 	 */
 	@Override
 	public void deleteDelTopDepByUNameIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTableId,
-		$implJavaAtomType$ argName )
+		ICFLibKeyHash256 argTableId,
+		String argName )
 	{
 		final String S_ProcName = "deleteDelTopDepByUNameIdx";
 		boolean permissionGranted = canDeleteDelTopDep(S_ProcName, Authorization);
@@ -385,7 +385,7 @@ public class CFBamJpaDelTopDepTable implements ICFBamDelTopDepTable
 	 */
 	@Override
 	public void deleteDelTopDepByPrevIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argPrevId )
+		ICFLibKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "deleteDelTopDepByPrevIdx";
 		boolean permissionGranted = canDeleteDelTopDep(S_ProcName, Authorization);
@@ -426,7 +426,7 @@ public class CFBamJpaDelTopDepTable implements ICFBamDelTopDepTable
 	 */
 	@Override
 	public void deleteDelTopDepByNextIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argNextId )
+		ICFLibKeyHash256 argNextId )
 	{
 		final String S_ProcName = "deleteDelTopDepByNextIdx";
 		boolean permissionGranted = canDeleteDelTopDep(S_ProcName, Authorization);
@@ -467,7 +467,7 @@ public class CFBamJpaDelTopDepTable implements ICFBamDelTopDepTable
 	 */
 	@Override
 	public void deleteDelTopDepByDefSchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argDefSchemaId )
+		ICFLibKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "deleteDelTopDepByDefSchemaIdx";
 		boolean permissionGranted = canDeleteDelTopDep(S_ProcName, Authorization);
@@ -508,7 +508,7 @@ public class CFBamJpaDelTopDepTable implements ICFBamDelTopDepTable
 	 */
 	@Override
 	public void deleteDelTopDepByDelDepIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argRelationId )
+		ICFLibKeyHash256 argRelationId )
 	{
 		final String S_ProcName = "deleteDelTopDepByDelDepIdx";
 		boolean permissionGranted = canDeleteDelTopDep(S_ProcName, Authorization);
@@ -569,7 +569,7 @@ public class CFBamJpaDelTopDepTable implements ICFBamDelTopDepTable
 	 */
 	@Override
 	public void deleteDelTopDepByTenantIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTenantId )
+		ICFLibKeyHash256 argTenantId )
 	{
 		final String S_ProcName = "deleteDelTopDepByTenantIdx";
 		boolean permissionGranted = canDeleteDelTopDep(S_ProcName, Authorization);
@@ -686,7 +686,7 @@ public class CFBamJpaDelTopDepTable implements ICFBamDelTopDepTable
 	 */
 	@Override
 	public ICFBamDelTopDep readDerivedByIdIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argId )
+		ICFLibKeyHash256 argId )
 	{
 		final String S_ProcName = "readDerivedByIdIdx";
 		boolean permissionGranted = false;
@@ -720,7 +720,7 @@ public class CFBamJpaDelTopDepTable implements ICFBamDelTopDepTable
 	 */
 	@Override
 	public ICFBamDelTopDep[] readDerivedByTenantIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTenantId )
+		ICFLibKeyHash256 argTenantId )
 	{
 		final String S_ProcName = "readDerivedByTenantIdx";
 		boolean permissionGranted = false;
@@ -750,7 +750,7 @@ public class CFBamJpaDelTopDepTable implements ICFBamDelTopDepTable
 	 */
 	@Override
 	public ICFBamDelTopDep[] readDerivedByDefSchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argDefSchemaId )
+		ICFLibKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "readDerivedByDefSchemaIdx";
 		boolean permissionGranted = false;
@@ -780,7 +780,7 @@ public class CFBamJpaDelTopDepTable implements ICFBamDelTopDepTable
 	 */
 	@Override
 	public ICFBamDelTopDep[] readDerivedByDelDepIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argRelationId )
+		ICFLibKeyHash256 argRelationId )
 	{
 		final String S_ProcName = "readDerivedByDelDepIdx";
 		boolean permissionGranted = false;
@@ -810,7 +810,7 @@ public class CFBamJpaDelTopDepTable implements ICFBamDelTopDepTable
 	 */
 	@Override
 	public ICFBamDelTopDep[] readDerivedByDelTopDepTblIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTableId )
+		ICFLibKeyHash256 argTableId )
 	{
 		final String S_ProcName = "readDerivedByDelTopDepTblIdx";
 		boolean permissionGranted = false;
@@ -843,8 +843,8 @@ public class CFBamJpaDelTopDepTable implements ICFBamDelTopDepTable
 	 */
 	@Override
 	public ICFBamDelTopDep readDerivedByUNameIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTableId,
-		$implJavaAtomType$ argName )
+		ICFLibKeyHash256 argTableId,
+		String argName )
 	{
 		final String S_ProcName = "readDerivedByUNameIdx";
 		boolean permissionGranted = false;
@@ -879,7 +879,7 @@ public class CFBamJpaDelTopDepTable implements ICFBamDelTopDepTable
 	 */
 	@Override
 	public ICFBamDelTopDep[] readDerivedByPrevIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argPrevId )
+		ICFLibKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "readDerivedByPrevIdx";
 		boolean permissionGranted = false;
@@ -909,7 +909,7 @@ public class CFBamJpaDelTopDepTable implements ICFBamDelTopDepTable
 	 */
 	@Override
 	public ICFBamDelTopDep[] readDerivedByNextIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argNextId )
+		ICFLibKeyHash256 argNextId )
 	{
 		final String S_ProcName = "readDerivedByNextIdx";
 		boolean permissionGranted = false;
@@ -1011,7 +1011,7 @@ public class CFBamJpaDelTopDepTable implements ICFBamDelTopDepTable
 	 */
 	@Override
 	public ICFBamDelTopDep readRecByIdIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argId )
+		ICFLibKeyHash256 argId )
 	{
 		final String S_ProcName = "readRecByIdIdx";
 		boolean permissionGranted = false;
@@ -1037,7 +1037,7 @@ public class CFBamJpaDelTopDepTable implements ICFBamDelTopDepTable
 	 */
 	@Override
 	public ICFBamDelTopDep[] readRecByTenantIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTenantId )
+		ICFLibKeyHash256 argTenantId )
 	{
 		final String S_ProcName = "readRecByTenantIdx";
 		boolean permissionGranted = false;
@@ -1063,7 +1063,7 @@ public class CFBamJpaDelTopDepTable implements ICFBamDelTopDepTable
 	 */
 	@Override
 	public ICFBamDelTopDep[] readRecByDefSchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argDefSchemaId )
+		ICFLibKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "readRecByDefSchemaIdx";
 		boolean permissionGranted = false;
@@ -1089,7 +1089,7 @@ public class CFBamJpaDelTopDepTable implements ICFBamDelTopDepTable
 	 */
 	@Override
 	public ICFBamDelTopDep[] readRecByDelDepIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argRelationId )
+		ICFLibKeyHash256 argRelationId )
 	{
 		final String S_ProcName = "readRecByDelDepIdx";
 		boolean permissionGranted = false;
@@ -1115,7 +1115,7 @@ public class CFBamJpaDelTopDepTable implements ICFBamDelTopDepTable
 	 */
 	@Override
 	public ICFBamDelTopDep[] readRecByDelTopDepTblIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTableId )
+		ICFLibKeyHash256 argTableId )
 	{
 		final String S_ProcName = "readRecByDelTopDepTblIdx";
 		boolean permissionGranted = false;
@@ -1144,8 +1144,8 @@ public class CFBamJpaDelTopDepTable implements ICFBamDelTopDepTable
 	 */
 	@Override
 	public ICFBamDelTopDep readRecByUNameIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTableId,
-		$implJavaAtomType$ argName )
+		ICFLibKeyHash256 argTableId,
+		String argName )
 	{
 		final String S_ProcName = "readRecByUNameIdx";
 		boolean permissionGranted = false;
@@ -1171,7 +1171,7 @@ public class CFBamJpaDelTopDepTable implements ICFBamDelTopDepTable
 	 */
 	@Override
 	public ICFBamDelTopDep[] readRecByPrevIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argPrevId )
+		ICFLibKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "readRecByPrevIdx";
 		boolean permissionGranted = false;
@@ -1197,7 +1197,7 @@ public class CFBamJpaDelTopDepTable implements ICFBamDelTopDepTable
 	 */
 	@Override
 	public ICFBamDelTopDep[] readRecByNextIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argNextId )
+		ICFLibKeyHash256 argNextId )
 	{
 		final String S_ProcName = "readRecByNextIdx";
 		boolean permissionGranted = false;
@@ -1217,7 +1217,7 @@ public class CFBamJpaDelTopDepTable implements ICFBamDelTopDepTable
 	 */
 	@Override
 	public ICFBamDelTopDep moveRecUp( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argId,
+		ICFLibKeyHash256 argId,
 		int revision )
 	{
 		final String S_ProcName = "moveRecUp";
@@ -1236,7 +1236,7 @@ public class CFBamJpaDelTopDepTable implements ICFBamDelTopDepTable
 	 */
 	@Override
 	public ICFBamDelTopDep moveRecDown( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argId,
+		ICFLibKeyHash256 argId,
 		int revision )
 	{
 		final String S_ProcName = "moveRecDown";

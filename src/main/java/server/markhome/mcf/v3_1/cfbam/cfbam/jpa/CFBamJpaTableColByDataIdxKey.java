@@ -65,7 +65,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 public class CFBamJpaTableColByDataIdxKey
 	implements ICFBamTableColByDataIdxKey, Comparable<Object>, Serializable
 {
-	protected $implJavaAtomType$ optionalDataId;
+	protected ICFLibKeyHash256 optionalDataId;
 	public CFBamJpaTableColByDataIdxKey() {
 		optionalDataId = CFLibDbKeyHash256.nullGet();
 	}

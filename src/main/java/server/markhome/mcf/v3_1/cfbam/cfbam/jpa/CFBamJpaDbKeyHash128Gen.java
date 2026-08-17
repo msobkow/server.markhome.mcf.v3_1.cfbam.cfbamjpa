@@ -78,9 +78,9 @@ public class CFBamJpaDbKeyHash128Gen extends CFBamJpaDbKeyHash128Type
 {
 
 	@Column( name="Slice", nullable=false )
-	protected $implJavaAtomType$ requiredSlice;
+	protected short requiredSlice;
 	@Column( name="BlockSize", nullable=false )
-	protected $implJavaAtomType$ requiredBlockSize;
+	protected int requiredBlockSize;
 
 	public CFBamJpaDbKeyHash128Gen() {
 		super();

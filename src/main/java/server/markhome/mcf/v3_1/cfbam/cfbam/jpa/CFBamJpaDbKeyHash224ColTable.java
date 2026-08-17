@@ -298,7 +298,7 @@ public class CFBamJpaDbKeyHash224ColTable implements ICFBamDbKeyHash224ColTable
 	 */
 	@Override
 	public void deleteDbKeyHash224ColByTableIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTableId )
+		ICFLibKeyHash256 argTableId )
 	{
 		final String S_ProcName = "deleteDbKeyHash224ColByTableIdx";
 		boolean permissionGranted = canDeleteDbKeyHash224Col(S_ProcName, Authorization);
@@ -361,8 +361,8 @@ public class CFBamJpaDbKeyHash224ColTable implements ICFBamDbKeyHash224ColTable
 	 */
 	@Override
 	public void deleteDbKeyHash224ColByUNameIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argName )
+		ICFLibKeyHash256 argScopeId,
+		String argName )
 	{
 		final String S_ProcName = "deleteDbKeyHash224ColByUNameIdx";
 		boolean permissionGranted = canDeleteDbKeyHash224Col(S_ProcName, Authorization);
@@ -405,7 +405,7 @@ public class CFBamJpaDbKeyHash224ColTable implements ICFBamDbKeyHash224ColTable
 	 */
 	@Override
 	public void deleteDbKeyHash224ColByScopeIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId )
+		ICFLibKeyHash256 argScopeId )
 	{
 		final String S_ProcName = "deleteDbKeyHash224ColByScopeIdx";
 		boolean permissionGranted = canDeleteDbKeyHash224Col(S_ProcName, Authorization);
@@ -446,7 +446,7 @@ public class CFBamJpaDbKeyHash224ColTable implements ICFBamDbKeyHash224ColTable
 	 */
 	@Override
 	public void deleteDbKeyHash224ColByDefSchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argDefSchemaId )
+		ICFLibKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "deleteDbKeyHash224ColByDefSchemaIdx";
 		boolean permissionGranted = canDeleteDbKeyHash224Col(S_ProcName, Authorization);
@@ -487,7 +487,7 @@ public class CFBamJpaDbKeyHash224ColTable implements ICFBamDbKeyHash224ColTable
 	 */
 	@Override
 	public void deleteDbKeyHash224ColByPrevIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argPrevId )
+		ICFLibKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "deleteDbKeyHash224ColByPrevIdx";
 		boolean permissionGranted = canDeleteDbKeyHash224Col(S_ProcName, Authorization);
@@ -528,7 +528,7 @@ public class CFBamJpaDbKeyHash224ColTable implements ICFBamDbKeyHash224ColTable
 	 */
 	@Override
 	public void deleteDbKeyHash224ColByNextIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argNextId )
+		ICFLibKeyHash256 argNextId )
 	{
 		final String S_ProcName = "deleteDbKeyHash224ColByNextIdx";
 		boolean permissionGranted = canDeleteDbKeyHash224Col(S_ProcName, Authorization);
@@ -571,8 +571,8 @@ public class CFBamJpaDbKeyHash224ColTable implements ICFBamDbKeyHash224ColTable
 	 */
 	@Override
 	public void deleteDbKeyHash224ColByContPrevIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argPrevId )
+		ICFLibKeyHash256 argScopeId,
+		ICFLibKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "deleteDbKeyHash224ColByContPrevIdx";
 		boolean permissionGranted = canDeleteDbKeyHash224Col(S_ProcName, Authorization);
@@ -617,8 +617,8 @@ public class CFBamJpaDbKeyHash224ColTable implements ICFBamDbKeyHash224ColTable
 	 */
 	@Override
 	public void deleteDbKeyHash224ColByContNextIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argNextId )
+		ICFLibKeyHash256 argScopeId,
+		ICFLibKeyHash256 argNextId )
 	{
 		final String S_ProcName = "deleteDbKeyHash224ColByContNextIdx";
 		boolean permissionGranted = canDeleteDbKeyHash224Col(S_ProcName, Authorization);
@@ -737,7 +737,7 @@ public class CFBamJpaDbKeyHash224ColTable implements ICFBamDbKeyHash224ColTable
 	 */
 	@Override
 	public ICFBamDbKeyHash224Col readDerivedByIdIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argId )
+		ICFLibKeyHash256 argId )
 	{
 		final String S_ProcName = "readDerivedByIdIdx";
 		boolean permissionGranted = false;
@@ -774,8 +774,8 @@ public class CFBamJpaDbKeyHash224ColTable implements ICFBamDbKeyHash224ColTable
 	 */
 	@Override
 	public ICFBamDbKeyHash224Col readDerivedByUNameIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argName )
+		ICFLibKeyHash256 argScopeId,
+		String argName )
 	{
 		final String S_ProcName = "readDerivedByUNameIdx";
 		boolean permissionGranted = false;
@@ -810,7 +810,7 @@ public class CFBamJpaDbKeyHash224ColTable implements ICFBamDbKeyHash224ColTable
 	 */
 	@Override
 	public ICFBamDbKeyHash224Col[] readDerivedByScopeIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId )
+		ICFLibKeyHash256 argScopeId )
 	{
 		final String S_ProcName = "readDerivedByScopeIdx";
 		boolean permissionGranted = false;
@@ -840,7 +840,7 @@ public class CFBamJpaDbKeyHash224ColTable implements ICFBamDbKeyHash224ColTable
 	 */
 	@Override
 	public ICFBamDbKeyHash224Col[] readDerivedByDefSchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argDefSchemaId )
+		ICFLibKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "readDerivedByDefSchemaIdx";
 		boolean permissionGranted = false;
@@ -870,7 +870,7 @@ public class CFBamJpaDbKeyHash224ColTable implements ICFBamDbKeyHash224ColTable
 	 */
 	@Override
 	public ICFBamDbKeyHash224Col[] readDerivedByPrevIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argPrevId )
+		ICFLibKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "readDerivedByPrevIdx";
 		boolean permissionGranted = false;
@@ -900,7 +900,7 @@ public class CFBamJpaDbKeyHash224ColTable implements ICFBamDbKeyHash224ColTable
 	 */
 	@Override
 	public ICFBamDbKeyHash224Col[] readDerivedByNextIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argNextId )
+		ICFLibKeyHash256 argNextId )
 	{
 		final String S_ProcName = "readDerivedByNextIdx";
 		boolean permissionGranted = false;
@@ -932,8 +932,8 @@ public class CFBamJpaDbKeyHash224ColTable implements ICFBamDbKeyHash224ColTable
 	 */
 	@Override
 	public ICFBamDbKeyHash224Col[] readDerivedByContPrevIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argPrevId )
+		ICFLibKeyHash256 argScopeId,
+		ICFLibKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "readDerivedByContPrevIdx";
 		boolean permissionGranted = false;
@@ -966,8 +966,8 @@ public class CFBamJpaDbKeyHash224ColTable implements ICFBamDbKeyHash224ColTable
 	 */
 	@Override
 	public ICFBamDbKeyHash224Col[] readDerivedByContNextIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argNextId )
+		ICFLibKeyHash256 argScopeId,
+		ICFLibKeyHash256 argNextId )
 	{
 		final String S_ProcName = "readDerivedByContNextIdx";
 		boolean permissionGranted = false;
@@ -998,7 +998,7 @@ public class CFBamJpaDbKeyHash224ColTable implements ICFBamDbKeyHash224ColTable
 	 */
 	@Override
 	public ICFBamDbKeyHash224Col[] readDerivedByTableIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTableId )
+		ICFLibKeyHash256 argTableId )
 	{
 		final String S_ProcName = "readDerivedByTableIdx";
 		boolean permissionGranted = false;
@@ -1100,7 +1100,7 @@ public class CFBamJpaDbKeyHash224ColTable implements ICFBamDbKeyHash224ColTable
 	 */
 	@Override
 	public ICFBamDbKeyHash224Col readRecByIdIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argId )
+		ICFLibKeyHash256 argId )
 	{
 		final String S_ProcName = "readRecByIdIdx";
 		boolean permissionGranted = false;
@@ -1129,8 +1129,8 @@ public class CFBamJpaDbKeyHash224ColTable implements ICFBamDbKeyHash224ColTable
 	 */
 	@Override
 	public ICFBamDbKeyHash224Col readRecByUNameIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argName )
+		ICFLibKeyHash256 argScopeId,
+		String argName )
 	{
 		final String S_ProcName = "readRecByUNameIdx";
 		boolean permissionGranted = false;
@@ -1156,7 +1156,7 @@ public class CFBamJpaDbKeyHash224ColTable implements ICFBamDbKeyHash224ColTable
 	 */
 	@Override
 	public ICFBamDbKeyHash224Col[] readRecByScopeIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId )
+		ICFLibKeyHash256 argScopeId )
 	{
 		final String S_ProcName = "readRecByScopeIdx";
 		boolean permissionGranted = false;
@@ -1182,7 +1182,7 @@ public class CFBamJpaDbKeyHash224ColTable implements ICFBamDbKeyHash224ColTable
 	 */
 	@Override
 	public ICFBamDbKeyHash224Col[] readRecByDefSchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argDefSchemaId )
+		ICFLibKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "readRecByDefSchemaIdx";
 		boolean permissionGranted = false;
@@ -1208,7 +1208,7 @@ public class CFBamJpaDbKeyHash224ColTable implements ICFBamDbKeyHash224ColTable
 	 */
 	@Override
 	public ICFBamDbKeyHash224Col[] readRecByPrevIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argPrevId )
+		ICFLibKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "readRecByPrevIdx";
 		boolean permissionGranted = false;
@@ -1234,7 +1234,7 @@ public class CFBamJpaDbKeyHash224ColTable implements ICFBamDbKeyHash224ColTable
 	 */
 	@Override
 	public ICFBamDbKeyHash224Col[] readRecByNextIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argNextId )
+		ICFLibKeyHash256 argNextId )
 	{
 		final String S_ProcName = "readRecByNextIdx";
 		boolean permissionGranted = false;
@@ -1262,8 +1262,8 @@ public class CFBamJpaDbKeyHash224ColTable implements ICFBamDbKeyHash224ColTable
 	 */
 	@Override
 	public ICFBamDbKeyHash224Col[] readRecByContPrevIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argPrevId )
+		ICFLibKeyHash256 argScopeId,
+		ICFLibKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "readRecByContPrevIdx";
 		boolean permissionGranted = false;
@@ -1291,8 +1291,8 @@ public class CFBamJpaDbKeyHash224ColTable implements ICFBamDbKeyHash224ColTable
 	 */
 	@Override
 	public ICFBamDbKeyHash224Col[] readRecByContNextIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argNextId )
+		ICFLibKeyHash256 argScopeId,
+		ICFLibKeyHash256 argNextId )
 	{
 		final String S_ProcName = "readRecByContNextIdx";
 		boolean permissionGranted = false;
@@ -1318,7 +1318,7 @@ public class CFBamJpaDbKeyHash224ColTable implements ICFBamDbKeyHash224ColTable
 	 */
 	@Override
 	public ICFBamDbKeyHash224Col[] readRecByTableIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTableId )
+		ICFLibKeyHash256 argTableId )
 	{
 		final String S_ProcName = "readRecByTableIdx";
 		boolean permissionGranted = false;
@@ -1338,7 +1338,7 @@ public class CFBamJpaDbKeyHash224ColTable implements ICFBamDbKeyHash224ColTable
 	 */
 	@Override
 	public ICFBamDbKeyHash224Col moveRecUp( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argId,
+		ICFLibKeyHash256 argId,
 		int revision )
 	{
 		final String S_ProcName = "moveRecUp";
@@ -1357,7 +1357,7 @@ public class CFBamJpaDbKeyHash224ColTable implements ICFBamDbKeyHash224ColTable
 	 */
 	@Override
 	public ICFBamDbKeyHash224Col moveRecDown( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argId,
+		ICFLibKeyHash256 argId,
 		int revision )
 	{
 		final String S_ProcName = "moveRecDown";

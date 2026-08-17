@@ -65,7 +65,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 public class CFBamJpaClearTopDepByPrevIdxKey
 	implements ICFBamClearTopDepByPrevIdxKey, Comparable<Object>, Serializable
 {
-	protected $implJavaAtomType$ optionalPrevId;
+	protected ICFLibKeyHash256 optionalPrevId;
 	public CFBamJpaClearTopDepByPrevIdxKey() {
 		optionalPrevId = CFLibDbKeyHash256.nullGet();
 	}

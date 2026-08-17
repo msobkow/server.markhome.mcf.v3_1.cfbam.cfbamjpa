@@ -65,7 +65,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 public class CFBamJpaRelationByNarrowedIdxKey
 	implements ICFBamRelationByNarrowedIdxKey, Comparable<Object>, Serializable
 {
-	protected $implJavaAtomType$ optionalNarrowedId;
+	protected ICFLibKeyHash256 optionalNarrowedId;
 	public CFBamJpaRelationByNarrowedIdxKey() {
 		optionalNarrowedId = CFLibDbKeyHash256.nullGet();
 	}

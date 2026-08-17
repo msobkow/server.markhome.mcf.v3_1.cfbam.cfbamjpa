@@ -85,7 +85,7 @@ public class CFBamJpaTZDateCol extends CFBamJpaTZDateDef
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="TableId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ requiredTableId;
+	protected ICFLibKeyHash256 requiredTableId;
 
 	public CFBamJpaTZDateCol() {
 		super();

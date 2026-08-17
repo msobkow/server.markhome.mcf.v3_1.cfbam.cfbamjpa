@@ -93,7 +93,7 @@ public class CFBamJpaIndexCol
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="Id", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ requiredId;
+	protected ICFLibKeyHash256 requiredId;
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="requiredLookupFromCol")
 	protected Set<CFBamJpaRelationCol> optionalChildrenRefRelFromCol;
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="requiredLookupToCol")
@@ -144,35 +144,35 @@ public class CFBamJpaIndexCol
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="IndexId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ requiredIndexId;
+	protected ICFLibKeyHash256 requiredIndexId;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="defschid", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ optionalDefSchemaId;
+	protected ICFLibKeyHash256 optionalDefSchemaId;
 	@Column( name="safe_name", nullable=false, length=192 )
-	protected $implJavaAtomType$ requiredName;
+	protected String requiredName;
 	@Column( name="short_name", nullable=true, length=16 )
-	protected $implJavaAtomType$ optionalShortName;
+	protected String optionalShortName;
 	@Column( name="Label", nullable=true, length=64 )
-	protected $implJavaAtomType$ optionalLabel;
+	protected String optionalLabel;
 	@Column( name="short_descr", nullable=true, length=128 )
-	protected $implJavaAtomType$ optionalShortDescription;
+	protected String optionalShortDescription;
 	@Column( name="descr", nullable=true, length=1023 )
-	protected $implJavaAtomType$ optionalDescription;
+	protected String optionalDescription;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="ColumnId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ requiredColumnId;
+	protected ICFLibKeyHash256 requiredColumnId;
 	@Column( name="IsAscending", nullable=false )
-	protected $implJavaAtomType$ requiredIsAscending;
+	protected boolean requiredIsAscending;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="PrevId", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ optionalPrevId;
+	protected ICFLibKeyHash256 optionalPrevId;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="NextId", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ optionalNextId;
+	protected ICFLibKeyHash256 optionalNextId;
 
 	public CFBamJpaIndexCol() {
 		requiredId = CFLibDbKeyHash256.fromHex( ICFBamPubIndexCol.ID_INIT_VALUE.toString() );
@@ -497,12 +497,12 @@ public class CFBamJpaIndexCol
 	}
 
 	@Override
-	public $implJavaOptAtomType$ getPKey() {
+	public ICFLibKeyHash256 getPKey() {
 		return getRequiredId();
 	}
 
 	@Override
-	public void setPKey($implJavaOptAtomType$ requiredId) {
+	public void setPKey(ICFLibKeyHash256 requiredId) {
 		this.requiredId = requiredId;
 	}
 

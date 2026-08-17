@@ -298,7 +298,7 @@ public class CFBamJpaDbKeyHash384TypeTable implements ICFBamDbKeyHash384TypeTabl
 	 */
 	@Override
 	public void deleteDbKeyHash384TypeBySchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argSchemaDefId )
+		ICFLibKeyHash256 argSchemaDefId )
 	{
 		final String S_ProcName = "deleteDbKeyHash384TypeBySchemaIdx";
 		boolean permissionGranted = canDeleteDbKeyHash384Type(S_ProcName, Authorization);
@@ -361,8 +361,8 @@ public class CFBamJpaDbKeyHash384TypeTable implements ICFBamDbKeyHash384TypeTabl
 	 */
 	@Override
 	public void deleteDbKeyHash384TypeByUNameIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argName )
+		ICFLibKeyHash256 argScopeId,
+		String argName )
 	{
 		final String S_ProcName = "deleteDbKeyHash384TypeByUNameIdx";
 		boolean permissionGranted = canDeleteDbKeyHash384Type(S_ProcName, Authorization);
@@ -405,7 +405,7 @@ public class CFBamJpaDbKeyHash384TypeTable implements ICFBamDbKeyHash384TypeTabl
 	 */
 	@Override
 	public void deleteDbKeyHash384TypeByScopeIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId )
+		ICFLibKeyHash256 argScopeId )
 	{
 		final String S_ProcName = "deleteDbKeyHash384TypeByScopeIdx";
 		boolean permissionGranted = canDeleteDbKeyHash384Type(S_ProcName, Authorization);
@@ -446,7 +446,7 @@ public class CFBamJpaDbKeyHash384TypeTable implements ICFBamDbKeyHash384TypeTabl
 	 */
 	@Override
 	public void deleteDbKeyHash384TypeByDefSchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argDefSchemaId )
+		ICFLibKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "deleteDbKeyHash384TypeByDefSchemaIdx";
 		boolean permissionGranted = canDeleteDbKeyHash384Type(S_ProcName, Authorization);
@@ -487,7 +487,7 @@ public class CFBamJpaDbKeyHash384TypeTable implements ICFBamDbKeyHash384TypeTabl
 	 */
 	@Override
 	public void deleteDbKeyHash384TypeByPrevIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argPrevId )
+		ICFLibKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "deleteDbKeyHash384TypeByPrevIdx";
 		boolean permissionGranted = canDeleteDbKeyHash384Type(S_ProcName, Authorization);
@@ -528,7 +528,7 @@ public class CFBamJpaDbKeyHash384TypeTable implements ICFBamDbKeyHash384TypeTabl
 	 */
 	@Override
 	public void deleteDbKeyHash384TypeByNextIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argNextId )
+		ICFLibKeyHash256 argNextId )
 	{
 		final String S_ProcName = "deleteDbKeyHash384TypeByNextIdx";
 		boolean permissionGranted = canDeleteDbKeyHash384Type(S_ProcName, Authorization);
@@ -571,8 +571,8 @@ public class CFBamJpaDbKeyHash384TypeTable implements ICFBamDbKeyHash384TypeTabl
 	 */
 	@Override
 	public void deleteDbKeyHash384TypeByContPrevIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argPrevId )
+		ICFLibKeyHash256 argScopeId,
+		ICFLibKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "deleteDbKeyHash384TypeByContPrevIdx";
 		boolean permissionGranted = canDeleteDbKeyHash384Type(S_ProcName, Authorization);
@@ -617,8 +617,8 @@ public class CFBamJpaDbKeyHash384TypeTable implements ICFBamDbKeyHash384TypeTabl
 	 */
 	@Override
 	public void deleteDbKeyHash384TypeByContNextIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argNextId )
+		ICFLibKeyHash256 argScopeId,
+		ICFLibKeyHash256 argNextId )
 	{
 		final String S_ProcName = "deleteDbKeyHash384TypeByContNextIdx";
 		boolean permissionGranted = canDeleteDbKeyHash384Type(S_ProcName, Authorization);
@@ -737,7 +737,7 @@ public class CFBamJpaDbKeyHash384TypeTable implements ICFBamDbKeyHash384TypeTabl
 	 */
 	@Override
 	public ICFBamDbKeyHash384Type readDerivedByIdIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argId )
+		ICFLibKeyHash256 argId )
 	{
 		final String S_ProcName = "readDerivedByIdIdx";
 		boolean permissionGranted = false;
@@ -774,8 +774,8 @@ public class CFBamJpaDbKeyHash384TypeTable implements ICFBamDbKeyHash384TypeTabl
 	 */
 	@Override
 	public ICFBamDbKeyHash384Type readDerivedByUNameIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argName )
+		ICFLibKeyHash256 argScopeId,
+		String argName )
 	{
 		final String S_ProcName = "readDerivedByUNameIdx";
 		boolean permissionGranted = false;
@@ -810,7 +810,7 @@ public class CFBamJpaDbKeyHash384TypeTable implements ICFBamDbKeyHash384TypeTabl
 	 */
 	@Override
 	public ICFBamDbKeyHash384Type[] readDerivedByScopeIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId )
+		ICFLibKeyHash256 argScopeId )
 	{
 		final String S_ProcName = "readDerivedByScopeIdx";
 		boolean permissionGranted = false;
@@ -840,7 +840,7 @@ public class CFBamJpaDbKeyHash384TypeTable implements ICFBamDbKeyHash384TypeTabl
 	 */
 	@Override
 	public ICFBamDbKeyHash384Type[] readDerivedByDefSchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argDefSchemaId )
+		ICFLibKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "readDerivedByDefSchemaIdx";
 		boolean permissionGranted = false;
@@ -870,7 +870,7 @@ public class CFBamJpaDbKeyHash384TypeTable implements ICFBamDbKeyHash384TypeTabl
 	 */
 	@Override
 	public ICFBamDbKeyHash384Type[] readDerivedByPrevIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argPrevId )
+		ICFLibKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "readDerivedByPrevIdx";
 		boolean permissionGranted = false;
@@ -900,7 +900,7 @@ public class CFBamJpaDbKeyHash384TypeTable implements ICFBamDbKeyHash384TypeTabl
 	 */
 	@Override
 	public ICFBamDbKeyHash384Type[] readDerivedByNextIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argNextId )
+		ICFLibKeyHash256 argNextId )
 	{
 		final String S_ProcName = "readDerivedByNextIdx";
 		boolean permissionGranted = false;
@@ -932,8 +932,8 @@ public class CFBamJpaDbKeyHash384TypeTable implements ICFBamDbKeyHash384TypeTabl
 	 */
 	@Override
 	public ICFBamDbKeyHash384Type[] readDerivedByContPrevIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argPrevId )
+		ICFLibKeyHash256 argScopeId,
+		ICFLibKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "readDerivedByContPrevIdx";
 		boolean permissionGranted = false;
@@ -966,8 +966,8 @@ public class CFBamJpaDbKeyHash384TypeTable implements ICFBamDbKeyHash384TypeTabl
 	 */
 	@Override
 	public ICFBamDbKeyHash384Type[] readDerivedByContNextIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argNextId )
+		ICFLibKeyHash256 argScopeId,
+		ICFLibKeyHash256 argNextId )
 	{
 		final String S_ProcName = "readDerivedByContNextIdx";
 		boolean permissionGranted = false;
@@ -998,7 +998,7 @@ public class CFBamJpaDbKeyHash384TypeTable implements ICFBamDbKeyHash384TypeTabl
 	 */
 	@Override
 	public ICFBamDbKeyHash384Type[] readDerivedBySchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argSchemaDefId )
+		ICFLibKeyHash256 argSchemaDefId )
 	{
 		final String S_ProcName = "readDerivedBySchemaIdx";
 		boolean permissionGranted = false;
@@ -1100,7 +1100,7 @@ public class CFBamJpaDbKeyHash384TypeTable implements ICFBamDbKeyHash384TypeTabl
 	 */
 	@Override
 	public ICFBamDbKeyHash384Type readRecByIdIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argId )
+		ICFLibKeyHash256 argId )
 	{
 		final String S_ProcName = "readRecByIdIdx";
 		boolean permissionGranted = false;
@@ -1129,8 +1129,8 @@ public class CFBamJpaDbKeyHash384TypeTable implements ICFBamDbKeyHash384TypeTabl
 	 */
 	@Override
 	public ICFBamDbKeyHash384Type readRecByUNameIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argName )
+		ICFLibKeyHash256 argScopeId,
+		String argName )
 	{
 		final String S_ProcName = "readRecByUNameIdx";
 		boolean permissionGranted = false;
@@ -1156,7 +1156,7 @@ public class CFBamJpaDbKeyHash384TypeTable implements ICFBamDbKeyHash384TypeTabl
 	 */
 	@Override
 	public ICFBamDbKeyHash384Type[] readRecByScopeIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId )
+		ICFLibKeyHash256 argScopeId )
 	{
 		final String S_ProcName = "readRecByScopeIdx";
 		boolean permissionGranted = false;
@@ -1182,7 +1182,7 @@ public class CFBamJpaDbKeyHash384TypeTable implements ICFBamDbKeyHash384TypeTabl
 	 */
 	@Override
 	public ICFBamDbKeyHash384Type[] readRecByDefSchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argDefSchemaId )
+		ICFLibKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "readRecByDefSchemaIdx";
 		boolean permissionGranted = false;
@@ -1208,7 +1208,7 @@ public class CFBamJpaDbKeyHash384TypeTable implements ICFBamDbKeyHash384TypeTabl
 	 */
 	@Override
 	public ICFBamDbKeyHash384Type[] readRecByPrevIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argPrevId )
+		ICFLibKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "readRecByPrevIdx";
 		boolean permissionGranted = false;
@@ -1234,7 +1234,7 @@ public class CFBamJpaDbKeyHash384TypeTable implements ICFBamDbKeyHash384TypeTabl
 	 */
 	@Override
 	public ICFBamDbKeyHash384Type[] readRecByNextIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argNextId )
+		ICFLibKeyHash256 argNextId )
 	{
 		final String S_ProcName = "readRecByNextIdx";
 		boolean permissionGranted = false;
@@ -1262,8 +1262,8 @@ public class CFBamJpaDbKeyHash384TypeTable implements ICFBamDbKeyHash384TypeTabl
 	 */
 	@Override
 	public ICFBamDbKeyHash384Type[] readRecByContPrevIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argPrevId )
+		ICFLibKeyHash256 argScopeId,
+		ICFLibKeyHash256 argPrevId )
 	{
 		final String S_ProcName = "readRecByContPrevIdx";
 		boolean permissionGranted = false;
@@ -1291,8 +1291,8 @@ public class CFBamJpaDbKeyHash384TypeTable implements ICFBamDbKeyHash384TypeTabl
 	 */
 	@Override
 	public ICFBamDbKeyHash384Type[] readRecByContNextIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argScopeId,
-		$implJavaAtomType$ argNextId )
+		ICFLibKeyHash256 argScopeId,
+		ICFLibKeyHash256 argNextId )
 	{
 		final String S_ProcName = "readRecByContNextIdx";
 		boolean permissionGranted = false;
@@ -1318,7 +1318,7 @@ public class CFBamJpaDbKeyHash384TypeTable implements ICFBamDbKeyHash384TypeTabl
 	 */
 	@Override
 	public ICFBamDbKeyHash384Type[] readRecBySchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argSchemaDefId )
+		ICFLibKeyHash256 argSchemaDefId )
 	{
 		final String S_ProcName = "readRecBySchemaIdx";
 		boolean permissionGranted = false;
@@ -1338,7 +1338,7 @@ public class CFBamJpaDbKeyHash384TypeTable implements ICFBamDbKeyHash384TypeTabl
 	 */
 	@Override
 	public ICFBamDbKeyHash384Type moveRecUp( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argId,
+		ICFLibKeyHash256 argId,
 		int revision )
 	{
 		final String S_ProcName = "moveRecUp";
@@ -1357,7 +1357,7 @@ public class CFBamJpaDbKeyHash384TypeTable implements ICFBamDbKeyHash384TypeTabl
 	 */
 	@Override
 	public ICFBamDbKeyHash384Type moveRecDown( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argId,
+		ICFLibKeyHash256 argId,
 		int revision )
 	{
 		final String S_ProcName = "moveRecDown";

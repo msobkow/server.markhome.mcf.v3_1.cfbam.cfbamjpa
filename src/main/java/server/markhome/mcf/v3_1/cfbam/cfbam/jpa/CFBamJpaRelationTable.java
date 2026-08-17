@@ -300,8 +300,8 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 	 */
 	@Override
 	public void deleteRelationByUNameIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTableId,
-		$implJavaAtomType$ argName )
+		ICFLibKeyHash256 argTableId,
+		String argName )
 	{
 		final String S_ProcName = "deleteRelationByUNameIdx";
 		boolean permissionGranted = canDeleteRelation(S_ProcName, Authorization);
@@ -344,7 +344,7 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 	 */
 	@Override
 	public void deleteRelationByRelTableIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTableId )
+		ICFLibKeyHash256 argTableId )
 	{
 		final String S_ProcName = "deleteRelationByRelTableIdx";
 		boolean permissionGranted = canDeleteRelation(S_ProcName, Authorization);
@@ -385,7 +385,7 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 	 */
 	@Override
 	public void deleteRelationByRelCodeVisIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argCodeVis )
+		ICFBamPubSchema.CodeVisibilityEnum argCodeVis )
 	{
 		final String S_ProcName = "deleteRelationByRelCodeVisIdx";
 		boolean permissionGranted = canDeleteRelation(S_ProcName, Authorization);
@@ -428,8 +428,8 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 	 */
 	@Override
 	public void deleteRelationByRelTableCodeVisX( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTableId,
-		$implJavaAtomType$ argCodeVis )
+		ICFLibKeyHash256 argTableId,
+		ICFBamPubSchema.CodeVisibilityEnum argCodeVis )
 	{
 		final String S_ProcName = "deleteRelationByRelTableCodeVisX";
 		boolean permissionGranted = canDeleteRelation(S_ProcName, Authorization);
@@ -472,7 +472,7 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 	 */
 	@Override
 	public void deleteRelationByDefSchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argDefSchemaId )
+		ICFLibKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "deleteRelationByDefSchemaIdx";
 		boolean permissionGranted = canDeleteRelation(S_ProcName, Authorization);
@@ -513,7 +513,7 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 	 */
 	@Override
 	public void deleteRelationByFromKeyIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argFromIndexId )
+		ICFLibKeyHash256 argFromIndexId )
 	{
 		final String S_ProcName = "deleteRelationByFromKeyIdx";
 		boolean permissionGranted = canDeleteRelation(S_ProcName, Authorization);
@@ -554,7 +554,7 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 	 */
 	@Override
 	public void deleteRelationByToTblIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argToTableId )
+		ICFLibKeyHash256 argToTableId )
 	{
 		final String S_ProcName = "deleteRelationByToTblIdx";
 		boolean permissionGranted = canDeleteRelation(S_ProcName, Authorization);
@@ -595,7 +595,7 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 	 */
 	@Override
 	public void deleteRelationByToKeyIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argToIndexId )
+		ICFLibKeyHash256 argToIndexId )
 	{
 		final String S_ProcName = "deleteRelationByToKeyIdx";
 		boolean permissionGranted = canDeleteRelation(S_ProcName, Authorization);
@@ -636,7 +636,7 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 	 */
 	@Override
 	public void deleteRelationByNarrowedIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argNarrowedId )
+		ICFLibKeyHash256 argNarrowedId )
 	{
 		final String S_ProcName = "deleteRelationByNarrowedIdx";
 		boolean permissionGranted = canDeleteRelation(S_ProcName, Authorization);
@@ -697,7 +697,7 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 	 */
 	@Override
 	public void deleteRelationByTenantIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTenantId )
+		ICFLibKeyHash256 argTenantId )
 	{
 		final String S_ProcName = "deleteRelationByTenantIdx";
 		boolean permissionGranted = canDeleteRelation(S_ProcName, Authorization);
@@ -814,7 +814,7 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 	 */
 	@Override
 	public ICFBamRelation readDerivedByIdIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argId )
+		ICFLibKeyHash256 argId )
 	{
 		final String S_ProcName = "readDerivedByIdIdx";
 		boolean permissionGranted = false;
@@ -848,7 +848,7 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 	 */
 	@Override
 	public ICFBamRelation[] readDerivedByTenantIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTenantId )
+		ICFLibKeyHash256 argTenantId )
 	{
 		final String S_ProcName = "readDerivedByTenantIdx";
 		boolean permissionGranted = false;
@@ -881,8 +881,8 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 	 */
 	@Override
 	public ICFBamRelation readDerivedByUNameIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTableId,
-		$implJavaAtomType$ argName )
+		ICFLibKeyHash256 argTableId,
+		String argName )
 	{
 		final String S_ProcName = "readDerivedByUNameIdx";
 		boolean permissionGranted = false;
@@ -917,7 +917,7 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 	 */
 	@Override
 	public ICFBamRelation[] readDerivedByRelTableIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTableId )
+		ICFLibKeyHash256 argTableId )
 	{
 		final String S_ProcName = "readDerivedByRelTableIdx";
 		boolean permissionGranted = false;
@@ -947,7 +947,7 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 	 */
 	@Override
 	public ICFBamRelation[] readDerivedByRelCodeVisIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argCodeVis )
+		ICFBamPubSchema.CodeVisibilityEnum argCodeVis )
 	{
 		final String S_ProcName = "readDerivedByRelCodeVisIdx";
 		boolean permissionGranted = false;
@@ -979,8 +979,8 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 	 */
 	@Override
 	public ICFBamRelation[] readDerivedByRelTableCodeVisX( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTableId,
-		$implJavaAtomType$ argCodeVis )
+		ICFLibKeyHash256 argTableId,
+		ICFBamPubSchema.CodeVisibilityEnum argCodeVis )
 	{
 		final String S_ProcName = "readDerivedByRelTableCodeVisX";
 		boolean permissionGranted = false;
@@ -1011,7 +1011,7 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 	 */
 	@Override
 	public ICFBamRelation[] readDerivedByDefSchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argDefSchemaId )
+		ICFLibKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "readDerivedByDefSchemaIdx";
 		boolean permissionGranted = false;
@@ -1041,7 +1041,7 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 	 */
 	@Override
 	public ICFBamRelation[] readDerivedByFromKeyIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argFromIndexId )
+		ICFLibKeyHash256 argFromIndexId )
 	{
 		final String S_ProcName = "readDerivedByFromKeyIdx";
 		boolean permissionGranted = false;
@@ -1071,7 +1071,7 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 	 */
 	@Override
 	public ICFBamRelation[] readDerivedByToTblIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argToTableId )
+		ICFLibKeyHash256 argToTableId )
 	{
 		final String S_ProcName = "readDerivedByToTblIdx";
 		boolean permissionGranted = false;
@@ -1101,7 +1101,7 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 	 */
 	@Override
 	public ICFBamRelation[] readDerivedByToKeyIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argToIndexId )
+		ICFLibKeyHash256 argToIndexId )
 	{
 		final String S_ProcName = "readDerivedByToKeyIdx";
 		boolean permissionGranted = false;
@@ -1131,7 +1131,7 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 	 */
 	@Override
 	public ICFBamRelation[] readDerivedByNarrowedIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argNarrowedId )
+		ICFLibKeyHash256 argNarrowedId )
 	{
 		final String S_ProcName = "readDerivedByNarrowedIdx";
 		boolean permissionGranted = false;
@@ -1233,7 +1233,7 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 	 */
 	@Override
 	public ICFBamRelation readRecByIdIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argId )
+		ICFLibKeyHash256 argId )
 	{
 		final String S_ProcName = "readRecByIdIdx";
 		boolean permissionGranted = false;
@@ -1259,7 +1259,7 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 	 */
 	@Override
 	public ICFBamRelation[] readRecByTenantIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTenantId )
+		ICFLibKeyHash256 argTenantId )
 	{
 		final String S_ProcName = "readRecByTenantIdx";
 		boolean permissionGranted = false;
@@ -1288,8 +1288,8 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 	 */
 	@Override
 	public ICFBamRelation readRecByUNameIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTableId,
-		$implJavaAtomType$ argName )
+		ICFLibKeyHash256 argTableId,
+		String argName )
 	{
 		final String S_ProcName = "readRecByUNameIdx";
 		boolean permissionGranted = false;
@@ -1315,7 +1315,7 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 	 */
 	@Override
 	public ICFBamRelation[] readRecByRelTableIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTableId )
+		ICFLibKeyHash256 argTableId )
 	{
 		final String S_ProcName = "readRecByRelTableIdx";
 		boolean permissionGranted = false;
@@ -1341,7 +1341,7 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 	 */
 	@Override
 	public ICFBamRelation[] readRecByRelCodeVisIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argCodeVis )
+		ICFBamPubSchema.CodeVisibilityEnum argCodeVis )
 	{
 		final String S_ProcName = "readRecByRelCodeVisIdx";
 		boolean permissionGranted = false;
@@ -1369,8 +1369,8 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 	 */
 	@Override
 	public ICFBamRelation[] readRecByRelTableCodeVisX( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTableId,
-		$implJavaAtomType$ argCodeVis )
+		ICFLibKeyHash256 argTableId,
+		ICFBamPubSchema.CodeVisibilityEnum argCodeVis )
 	{
 		final String S_ProcName = "readRecByRelTableCodeVisX";
 		boolean permissionGranted = false;
@@ -1396,7 +1396,7 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 	 */
 	@Override
 	public ICFBamRelation[] readRecByDefSchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argDefSchemaId )
+		ICFLibKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "readRecByDefSchemaIdx";
 		boolean permissionGranted = false;
@@ -1422,7 +1422,7 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 	 */
 	@Override
 	public ICFBamRelation[] readRecByFromKeyIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argFromIndexId )
+		ICFLibKeyHash256 argFromIndexId )
 	{
 		final String S_ProcName = "readRecByFromKeyIdx";
 		boolean permissionGranted = false;
@@ -1448,7 +1448,7 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 	 */
 	@Override
 	public ICFBamRelation[] readRecByToTblIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argToTableId )
+		ICFLibKeyHash256 argToTableId )
 	{
 		final String S_ProcName = "readRecByToTblIdx";
 		boolean permissionGranted = false;
@@ -1474,7 +1474,7 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 	 */
 	@Override
 	public ICFBamRelation[] readRecByToKeyIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argToIndexId )
+		ICFLibKeyHash256 argToIndexId )
 	{
 		final String S_ProcName = "readRecByToKeyIdx";
 		boolean permissionGranted = false;
@@ -1500,7 +1500,7 @@ public class CFBamJpaRelationTable implements ICFBamRelationTable
 	 */
 	@Override
 	public ICFBamRelation[] readRecByNarrowedIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argNarrowedId )
+		ICFLibKeyHash256 argNarrowedId )
 	{
 		final String S_ProcName = "readRecByNarrowedIdx";
 		boolean permissionGranted = false;

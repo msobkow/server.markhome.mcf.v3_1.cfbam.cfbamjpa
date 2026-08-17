@@ -65,7 +65,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 public class CFBamJpaSchemaDefByMinorVersionIdxKey
 	implements ICFBamSchemaDefByMinorVersionIdxKey, Comparable<Object>, Serializable
 {
-	protected $implJavaAtomType$ requiredMinorVersionId;
+	protected ICFLibKeyHash256 requiredMinorVersionId;
 	public CFBamJpaSchemaDefByMinorVersionIdxKey() {
 		requiredMinorVersionId = CFLibDbKeyHash256.fromHex( ICFBamPubSchemaDef.MINORVERSIONID_INIT_VALUE.toString() );
 	}

@@ -93,59 +93,59 @@ public class CFBamJpaTableH extends CFBamJpaScopeH
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="SchemaDefId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ requiredSchemaDefId;
+	protected ICFLibKeyHash256 requiredSchemaDefId;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="defschid", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ optionalDefSchemaId;
+	protected ICFLibKeyHash256 optionalDefSchemaId;
 	@Column( name="safe_name", nullable=false, length=192 )
-	protected $implJavaAtomType$ requiredName;
+	protected String requiredName;
 	@Column( name="DbName", nullable=true, length=32 )
-	protected $implJavaAtomType$ optionalDbName;
+	protected String optionalDbName;
 	@Column( name="short_name", nullable=true, length=16 )
-	protected $implJavaAtomType$ optionalShortName;
+	protected String optionalShortName;
 	@Column( name="Label", nullable=true, length=64 )
-	protected $implJavaAtomType$ optionalLabel;
+	protected String optionalLabel;
 	@Column( name="short_descr", nullable=true, length=50 )
-	protected $implJavaAtomType$ optionalShortDescription;
+	protected String optionalShortDescription;
 	@Column( name="descr", nullable=true, length=100 )
-	protected $implJavaAtomType$ optionalDescription;
+	protected String optionalDescription;
 	@Column( name="PageData", nullable=false )
-	protected $implJavaAtomType$ requiredPageData;
+	protected boolean requiredPageData;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="PrimIdxId", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ optionalPrimaryIndexId;
+	protected ICFLibKeyHash256 optionalPrimaryIndexId;
 	@Column( name="TblClsCd", nullable=false, length=4 )
-	protected $implJavaAtomType$ requiredTableClassCode;
+	protected String requiredTableClassCode;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="LookIdxId", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ optionalLookupIndexId;
+	protected ICFLibKeyHash256 optionalLookupIndexId;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="AltIdxId", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ optionalAltIndexId;
+	protected ICFLibKeyHash256 optionalAltIndexId;
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="QualTblId", nullable=true, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implJavaAtomType$ optionalQualifyingTableId;
+	protected ICFLibKeyHash256 optionalQualifyingTableId;
 	@Column( name="IsInstantiable", nullable=false )
-	protected $implJavaAtomType$ requiredIsInstantiable;
+	protected boolean requiredIsInstantiable;
 	@Column( name="HasHistory", nullable=false )
-	protected $implJavaAtomType$ requiredHasHistory;
+	protected boolean requiredHasHistory;
 	@Column( name="HasAuditColumns", nullable=false )
-	protected $implJavaAtomType$ requiredHasAuditColumns;
+	protected boolean requiredHasAuditColumns;
 	@Column( name="IsMutable", nullable=false )
-	protected $implJavaAtomType$ requiredIsMutable;
+	protected boolean requiredIsMutable;
 	@Column( name="IsServerOnly", nullable=false )
-	protected $implJavaAtomType$ requiredIsServerOnly;
+	protected boolean requiredIsServerOnly;
 	@Column( name="LoadBehavId", nullable=false )
-	protected $implJavaAtomType$ requiredLoaderBehaviour;
+	protected ICFBamPubSchema.LoaderBehaviourEnum requiredLoaderBehaviour;
 	@Column( name="SecScopeId", nullable=false )
-	protected $implJavaAtomType$ requiredSecScope;
+	protected ICFBamPubSchema.SecScopeEnum requiredSecScope;
 	@Column( name="codevis", nullable=false )
-	protected $implJavaAtomType$ requiredCodeVis;
+	protected ICFBamPubSchema.CodeVisibilityEnum requiredCodeVis;
 
     public CFBamJpaTableH() {
             super();

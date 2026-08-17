@@ -318,7 +318,7 @@ public class CFBamJpaChainTable implements ICFBamChainTable
 	 */
 	@Override
 	public void deleteChainByChainTableIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTableId )
+		ICFLibKeyHash256 argTableId )
 	{
 		final String S_ProcName = "deleteChainByChainTableIdx";
 		boolean permissionGranted = canDeleteChain(S_ProcName, Authorization);
@@ -359,7 +359,7 @@ public class CFBamJpaChainTable implements ICFBamChainTable
 	 */
 	@Override
 	public void deleteChainByDefSchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argDefSchemaId )
+		ICFLibKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "deleteChainByDefSchemaIdx";
 		boolean permissionGranted = canDeleteChain(S_ProcName, Authorization);
@@ -402,8 +402,8 @@ public class CFBamJpaChainTable implements ICFBamChainTable
 	 */
 	@Override
 	public void deleteChainByUNameIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTableId,
-		$implJavaAtomType$ argName )
+		ICFLibKeyHash256 argTableId,
+		String argName )
 	{
 		final String S_ProcName = "deleteChainByUNameIdx";
 		boolean permissionGranted = canDeleteChain(S_ProcName, Authorization);
@@ -446,7 +446,7 @@ public class CFBamJpaChainTable implements ICFBamChainTable
 	 */
 	@Override
 	public void deleteChainByPrevRelIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argPrevRelationId )
+		ICFLibKeyHash256 argPrevRelationId )
 	{
 		final String S_ProcName = "deleteChainByPrevRelIdx";
 		boolean permissionGranted = canDeleteChain(S_ProcName, Authorization);
@@ -487,7 +487,7 @@ public class CFBamJpaChainTable implements ICFBamChainTable
 	 */
 	@Override
 	public void deleteChainByNextRelIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argNextRelationId )
+		ICFLibKeyHash256 argNextRelationId )
 	{
 		final String S_ProcName = "deleteChainByNextRelIdx";
 		boolean permissionGranted = canDeleteChain(S_ProcName, Authorization);
@@ -604,7 +604,7 @@ public class CFBamJpaChainTable implements ICFBamChainTable
 	 */
 	@Override
 	public ICFBamChain readDerivedByIdIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argId )
+		ICFLibKeyHash256 argId )
 	{
 		final String S_ProcName = "readDerivedByIdIdx";
 		boolean permissionGranted = false;
@@ -638,7 +638,7 @@ public class CFBamJpaChainTable implements ICFBamChainTable
 	 */
 	@Override
 	public ICFBamChain[] readDerivedByChainTableIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTableId )
+		ICFLibKeyHash256 argTableId )
 	{
 		final String S_ProcName = "readDerivedByChainTableIdx";
 		boolean permissionGranted = false;
@@ -668,7 +668,7 @@ public class CFBamJpaChainTable implements ICFBamChainTable
 	 */
 	@Override
 	public ICFBamChain[] readDerivedByDefSchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argDefSchemaId )
+		ICFLibKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "readDerivedByDefSchemaIdx";
 		boolean permissionGranted = false;
@@ -701,8 +701,8 @@ public class CFBamJpaChainTable implements ICFBamChainTable
 	 */
 	@Override
 	public ICFBamChain readDerivedByUNameIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTableId,
-		$implJavaAtomType$ argName )
+		ICFLibKeyHash256 argTableId,
+		String argName )
 	{
 		final String S_ProcName = "readDerivedByUNameIdx";
 		boolean permissionGranted = false;
@@ -737,7 +737,7 @@ public class CFBamJpaChainTable implements ICFBamChainTable
 	 */
 	@Override
 	public ICFBamChain[] readDerivedByPrevRelIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argPrevRelationId )
+		ICFLibKeyHash256 argPrevRelationId )
 	{
 		final String S_ProcName = "readDerivedByPrevRelIdx";
 		boolean permissionGranted = false;
@@ -767,7 +767,7 @@ public class CFBamJpaChainTable implements ICFBamChainTable
 	 */
 	@Override
 	public ICFBamChain[] readDerivedByNextRelIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argNextRelationId )
+		ICFLibKeyHash256 argNextRelationId )
 	{
 		final String S_ProcName = "readDerivedByNextRelIdx";
 		boolean permissionGranted = false;
@@ -869,7 +869,7 @@ public class CFBamJpaChainTable implements ICFBamChainTable
 	 */
 	@Override
 	public ICFBamChain readRecByIdIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argId )
+		ICFLibKeyHash256 argId )
 	{
 		final String S_ProcName = "readRecByIdIdx";
 		boolean permissionGranted = false;
@@ -895,7 +895,7 @@ public class CFBamJpaChainTable implements ICFBamChainTable
 	 */
 	@Override
 	public ICFBamChain[] readRecByChainTableIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTableId )
+		ICFLibKeyHash256 argTableId )
 	{
 		final String S_ProcName = "readRecByChainTableIdx";
 		boolean permissionGranted = false;
@@ -921,7 +921,7 @@ public class CFBamJpaChainTable implements ICFBamChainTable
 	 */
 	@Override
 	public ICFBamChain[] readRecByDefSchemaIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argDefSchemaId )
+		ICFLibKeyHash256 argDefSchemaId )
 	{
 		final String S_ProcName = "readRecByDefSchemaIdx";
 		boolean permissionGranted = false;
@@ -950,8 +950,8 @@ public class CFBamJpaChainTable implements ICFBamChainTable
 	 */
 	@Override
 	public ICFBamChain readRecByUNameIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argTableId,
-		$implJavaAtomType$ argName )
+		ICFLibKeyHash256 argTableId,
+		String argName )
 	{
 		final String S_ProcName = "readRecByUNameIdx";
 		boolean permissionGranted = false;
@@ -977,7 +977,7 @@ public class CFBamJpaChainTable implements ICFBamChainTable
 	 */
 	@Override
 	public ICFBamChain[] readRecByPrevRelIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argPrevRelationId )
+		ICFLibKeyHash256 argPrevRelationId )
 	{
 		final String S_ProcName = "readRecByPrevRelIdx";
 		boolean permissionGranted = false;
@@ -1003,7 +1003,7 @@ public class CFBamJpaChainTable implements ICFBamChainTable
 	 */
 	@Override
 	public ICFBamChain[] readRecByNextRelIdx( ICFSecAuthorization Authorization,
-		$implJavaAtomType$ argNextRelationId )
+		ICFLibKeyHash256 argNextRelationId )
 	{
 		final String S_ProcName = "readRecByNextRelIdx";
 		boolean permissionGranted = false;
