@@ -340,7 +340,7 @@ public class CFBamJpaPopSubDep2ByUNameIdxKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamPopSubDep2ByUNameIdxKey, ICFBamPopSubDep2$emitIndexKeyEqualsHistoryClass$");
+				"ICFBamPopSubDep2ByUNameIdxKey, ICFBamPopSubDep2, ICFBamPopSubDep2H");
 		}
 	}
 

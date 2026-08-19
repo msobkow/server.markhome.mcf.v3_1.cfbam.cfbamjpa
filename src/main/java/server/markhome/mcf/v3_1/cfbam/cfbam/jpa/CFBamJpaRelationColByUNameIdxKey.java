@@ -340,7 +340,7 @@ public class CFBamJpaRelationColByUNameIdxKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamRelationColByUNameIdxKey, ICFBamRelationCol$emitIndexKeyEqualsHistoryClass$");
+				"ICFBamRelationColByUNameIdxKey, ICFBamRelationCol, ICFBamRelationColH");
 		}
 	}
 

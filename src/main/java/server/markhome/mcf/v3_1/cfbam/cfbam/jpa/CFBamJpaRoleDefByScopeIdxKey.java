@@ -225,7 +225,7 @@ public class CFBamJpaRoleDefByScopeIdxKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamRoleDefByScopeIdxKey, ICFBamRoleDef$emitIndexKeyEqualsHistoryClass$");
+				"ICFBamRoleDefByScopeIdxKey, ICFBamRoleDef, ICFBamRoleDefH");
 		}
 	}
 

@@ -332,7 +332,7 @@ public class CFBamJpaValueByContNextIdxKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamValueByContNextIdxKey, ICFBamValue$emitIndexKeyEqualsHistoryClass$");
+				"ICFBamValueByContNextIdxKey, ICFBamValue, ICFBamValueH");
 		}
 	}
 

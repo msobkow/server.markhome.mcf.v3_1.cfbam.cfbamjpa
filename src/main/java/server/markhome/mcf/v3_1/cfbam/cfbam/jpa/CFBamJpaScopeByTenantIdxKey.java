@@ -225,7 +225,7 @@ public class CFBamJpaScopeByTenantIdxKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamScopeByTenantIdxKey, ICFBamScope$emitIndexKeyEqualsHistoryClass$");
+				"ICFBamScopeByTenantIdxKey, ICFBamScope, ICFBamScopeH");
 		}
 	}
 

@@ -227,7 +227,7 @@ public class CFBamJpaTweakByDefSchemaIdxKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamTweakByDefSchemaIdxKey, ICFBamTweak$emitIndexKeyEqualsHistoryClass$");
+				"ICFBamTweakByDefSchemaIdxKey, ICFBamTweak, ICFBamTweakH");
 		}
 	}
 

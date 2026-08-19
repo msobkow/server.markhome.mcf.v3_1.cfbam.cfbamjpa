@@ -225,7 +225,7 @@ public class CFBamJpaDoubleTypeBySchemaIdxKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamDoubleTypeBySchemaIdxKey, ICFBamDoubleType$emitIndexKeyEqualsHistoryClass$");
+				"ICFBamDoubleTypeBySchemaIdxKey, ICFBamDoubleType, ICFBamDoubleTypeH");
 		}
 	}
 

@@ -225,7 +225,7 @@ public class CFBamJpaTokenColByTableIdxKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamTokenColByTableIdxKey, ICFBamTokenCol$emitIndexKeyEqualsHistoryClass$");
+				"ICFBamTokenColByTableIdxKey, ICFBamTokenCol, ICFBamTokenColH");
 		}
 	}
 

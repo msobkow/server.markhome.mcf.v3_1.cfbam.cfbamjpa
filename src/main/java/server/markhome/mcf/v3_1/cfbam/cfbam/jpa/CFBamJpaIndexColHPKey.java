@@ -1123,7 +1123,7 @@ public class CFBamJpaIndexColHPKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamIndexColPKey, ICFBamIndexCol$emitHPKeyHistoryClassNames$" );
+				"ICFBamIndexColPKey, ICFBamIndexCol, CFBamIndexColHPKey, CFBamIndexColH" );
 		}
 	}
 

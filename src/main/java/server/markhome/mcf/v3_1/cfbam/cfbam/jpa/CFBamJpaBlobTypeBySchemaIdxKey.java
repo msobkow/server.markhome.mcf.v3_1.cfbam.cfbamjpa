@@ -225,7 +225,7 @@ public class CFBamJpaBlobTypeBySchemaIdxKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamBlobTypeBySchemaIdxKey, ICFBamBlobType$emitIndexKeyEqualsHistoryClass$");
+				"ICFBamBlobTypeBySchemaIdxKey, ICFBamBlobType, ICFBamBlobTypeH");
 		}
 	}
 

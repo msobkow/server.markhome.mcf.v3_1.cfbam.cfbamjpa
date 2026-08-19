@@ -340,7 +340,7 @@ public class CFBamJpaIndexByUNameIdxKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamIndexByUNameIdxKey, ICFBamIndex$emitIndexKeyEqualsHistoryClass$");
+				"ICFBamIndexByUNameIdxKey, ICFBamIndex, ICFBamIndexH");
 		}
 	}
 

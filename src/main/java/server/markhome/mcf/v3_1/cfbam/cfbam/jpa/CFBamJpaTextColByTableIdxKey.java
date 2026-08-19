@@ -225,7 +225,7 @@ public class CFBamJpaTextColByTableIdxKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamTextColByTableIdxKey, ICFBamTextCol$emitIndexKeyEqualsHistoryClass$");
+				"ICFBamTextColByTableIdxKey, ICFBamTextCol, ICFBamTextColH");
 		}
 	}
 

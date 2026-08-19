@@ -340,7 +340,7 @@ public class CFBamJpaSchemaDefByProjectURLIdxKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamSchemaDefByProjectURLIdxKey, ICFBamSchemaDef$emitIndexKeyEqualsHistoryClass$");
+				"ICFBamSchemaDefByProjectURLIdxKey, ICFBamSchemaDef, ICFBamSchemaDefH");
 		}
 	}
 

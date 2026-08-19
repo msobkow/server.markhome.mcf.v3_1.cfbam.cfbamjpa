@@ -340,7 +340,7 @@ public class CFBamJpaSchemaDefByAuthEMailIdxKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamSchemaDefByAuthEMailIdxKey, ICFBamSchemaDef$emitIndexKeyEqualsHistoryClass$");
+				"ICFBamSchemaDefByAuthEMailIdxKey, ICFBamSchemaDef, ICFBamSchemaDefH");
 		}
 	}
 

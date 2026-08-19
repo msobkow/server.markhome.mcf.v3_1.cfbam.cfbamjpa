@@ -225,7 +225,7 @@ public class CFBamJpaDbKeyHash160TypeBySchemaIdxKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamDbKeyHash160TypeBySchemaIdxKey, ICFBamDbKeyHash160Type$emitIndexKeyEqualsHistoryClass$");
+				"ICFBamDbKeyHash160TypeBySchemaIdxKey, ICFBamDbKeyHash160Type, ICFBamDbKeyHash160TypeH");
 		}
 	}
 

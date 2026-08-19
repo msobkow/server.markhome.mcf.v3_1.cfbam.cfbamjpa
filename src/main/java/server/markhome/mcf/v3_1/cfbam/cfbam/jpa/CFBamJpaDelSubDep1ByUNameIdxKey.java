@@ -340,7 +340,7 @@ public class CFBamJpaDelSubDep1ByUNameIdxKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamDelSubDep1ByUNameIdxKey, ICFBamDelSubDep1$emitIndexKeyEqualsHistoryClass$");
+				"ICFBamDelSubDep1ByUNameIdxKey, ICFBamDelSubDep1, ICFBamDelSubDep1H");
 		}
 	}
 

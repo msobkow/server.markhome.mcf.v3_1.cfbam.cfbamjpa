@@ -227,7 +227,7 @@ public class CFBamJpaTableByAltIndexIdxKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamTableByAltIndexIdxKey, ICFBamTable$emitIndexKeyEqualsHistoryClass$");
+				"ICFBamTableByAltIndexIdxKey, ICFBamTable, ICFBamTableH");
 		}
 	}
 

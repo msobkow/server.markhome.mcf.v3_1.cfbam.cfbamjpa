@@ -330,7 +330,7 @@ public class CFBamJpaIndexByIdxTblCdVisXKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamIndexByIdxTblCdVisXKey, ICFBamIndex$emitIndexKeyEqualsHistoryClass$");
+				"ICFBamIndexByIdxTblCdVisXKey, ICFBamIndex, ICFBamIndexH");
 		}
 	}
 

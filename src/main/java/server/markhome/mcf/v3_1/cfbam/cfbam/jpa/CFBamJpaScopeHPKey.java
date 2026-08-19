@@ -1123,7 +1123,7 @@ public class CFBamJpaScopeHPKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamScopePKey, ICFBamScope$emitHPKeyHistoryClassNames$" );
+				"ICFBamScopePKey, ICFBamScope, CFBamScopeHPKey, CFBamScopeH" );
 		}
 	}
 

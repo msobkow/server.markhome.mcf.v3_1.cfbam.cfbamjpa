@@ -225,7 +225,7 @@ public class CFBamJpaTokenTypeBySchemaIdxKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamTokenTypeBySchemaIdxKey, ICFBamTokenType$emitIndexKeyEqualsHistoryClass$");
+				"ICFBamTokenTypeBySchemaIdxKey, ICFBamTokenType, ICFBamTokenTypeH");
 		}
 	}
 

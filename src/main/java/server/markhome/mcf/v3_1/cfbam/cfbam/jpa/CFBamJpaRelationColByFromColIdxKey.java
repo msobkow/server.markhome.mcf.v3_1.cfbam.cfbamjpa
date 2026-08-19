@@ -225,7 +225,7 @@ public class CFBamJpaRelationColByFromColIdxKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamRelationColByFromColIdxKey, ICFBamRelationCol$emitIndexKeyEqualsHistoryClass$");
+				"ICFBamRelationColByFromColIdxKey, ICFBamRelationCol, ICFBamRelationColH");
 		}
 	}
 

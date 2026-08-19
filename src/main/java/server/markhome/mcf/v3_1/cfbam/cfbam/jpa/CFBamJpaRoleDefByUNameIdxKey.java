@@ -340,7 +340,7 @@ public class CFBamJpaRoleDefByUNameIdxKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamRoleDefByUNameIdxKey, ICFBamRoleDef$emitIndexKeyEqualsHistoryClass$");
+				"ICFBamRoleDefByUNameIdxKey, ICFBamRoleDef, ICFBamRoleDefH");
 		}
 	}
 

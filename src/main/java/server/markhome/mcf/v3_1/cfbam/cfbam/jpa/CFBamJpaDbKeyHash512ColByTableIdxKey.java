@@ -225,7 +225,7 @@ public class CFBamJpaDbKeyHash512ColByTableIdxKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamDbKeyHash512ColByTableIdxKey, ICFBamDbKeyHash512Col$emitIndexKeyEqualsHistoryClass$");
+				"ICFBamDbKeyHash512ColByTableIdxKey, ICFBamDbKeyHash512Col, ICFBamDbKeyHash512ColH");
 		}
 	}
 

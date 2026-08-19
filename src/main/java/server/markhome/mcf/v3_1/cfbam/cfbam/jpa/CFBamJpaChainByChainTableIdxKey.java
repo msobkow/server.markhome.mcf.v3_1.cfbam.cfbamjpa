@@ -225,7 +225,7 @@ public class CFBamJpaChainByChainTableIdxKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamChainByChainTableIdxKey, ICFBamChain$emitIndexKeyEqualsHistoryClass$");
+				"ICFBamChainByChainTableIdxKey, ICFBamChain, ICFBamChainH");
 		}
 	}
 

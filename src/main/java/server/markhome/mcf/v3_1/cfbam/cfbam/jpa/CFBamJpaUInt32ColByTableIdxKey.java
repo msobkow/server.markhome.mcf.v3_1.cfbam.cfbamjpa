@@ -225,7 +225,7 @@ public class CFBamJpaUInt32ColByTableIdxKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamUInt32ColByTableIdxKey, ICFBamUInt32Col$emitIndexKeyEqualsHistoryClass$");
+				"ICFBamUInt32ColByTableIdxKey, ICFBamUInt32Col, ICFBamUInt32ColH");
 		}
 	}
 

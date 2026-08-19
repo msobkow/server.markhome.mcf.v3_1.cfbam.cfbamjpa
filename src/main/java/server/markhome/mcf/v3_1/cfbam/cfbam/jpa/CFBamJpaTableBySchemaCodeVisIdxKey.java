@@ -330,7 +330,7 @@ public class CFBamJpaTableBySchemaCodeVisIdxKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamTableBySchemaCodeVisIdxKey, ICFBamTable$emitIndexKeyEqualsHistoryClass$");
+				"ICFBamTableBySchemaCodeVisIdxKey, ICFBamTable, ICFBamTableH");
 		}
 	}
 

@@ -659,7 +659,7 @@ public class CFBamJpaTweakByUDefIdxKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamTweakByUDefIdxKey, ICFBamTweak$emitIndexKeyEqualsHistoryClass$");
+				"ICFBamTweakByUDefIdxKey, ICFBamTweak, ICFBamTweakH");
 		}
 	}
 

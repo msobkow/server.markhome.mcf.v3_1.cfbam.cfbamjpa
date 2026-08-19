@@ -225,7 +225,7 @@ public class CFBamJpaNmTokenTypeBySchemaIdxKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamNmTokenTypeBySchemaIdxKey, ICFBamNmTokenType$emitIndexKeyEqualsHistoryClass$");
+				"ICFBamNmTokenTypeBySchemaIdxKey, ICFBamNmTokenType, ICFBamNmTokenTypeH");
 		}
 	}
 

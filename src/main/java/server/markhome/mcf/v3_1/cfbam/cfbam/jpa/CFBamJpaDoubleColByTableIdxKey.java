@@ -225,7 +225,7 @@ public class CFBamJpaDoubleColByTableIdxKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamDoubleColByTableIdxKey, ICFBamDoubleCol$emitIndexKeyEqualsHistoryClass$");
+				"ICFBamDoubleColByTableIdxKey, ICFBamDoubleCol, ICFBamDoubleColH");
 		}
 	}
 

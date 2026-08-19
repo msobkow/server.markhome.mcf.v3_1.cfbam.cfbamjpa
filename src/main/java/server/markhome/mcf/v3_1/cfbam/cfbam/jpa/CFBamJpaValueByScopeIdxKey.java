@@ -225,7 +225,7 @@ public class CFBamJpaValueByScopeIdxKey
 				"compareTo",
 				"obj",
 				obj,
-				"ICFBamValueByScopeIdxKey, ICFBamValue$emitIndexKeyEqualsHistoryClass$");
+				"ICFBamValueByScopeIdxKey, ICFBamValue, ICFBamValueH");
 		}
 	}
 
