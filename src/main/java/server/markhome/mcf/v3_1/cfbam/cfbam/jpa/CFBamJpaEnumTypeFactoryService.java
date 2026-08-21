@@ -75,11 +75,13 @@ public class CFBamJpaEnumTypeFactoryService
     public CFBamJpaEnumTypeFactoryService() { }
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamEnumTypeBySchemaIdxKey newBySchemaIdxKey() {
 		ICFBamEnumTypeBySchemaIdxKey key = new CFBamJpaEnumTypeBySchemaIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaEnumTypeBySchemaIdxKey ensureBySchemaIdxKey(ICFBamEnumTypeBySchemaIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -95,11 +97,13 @@ public class CFBamJpaEnumTypeFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamEnumType newRec() {
         ICFBamEnumType rec = new CFBamJpaEnumType();
         return( rec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaEnumType ensureRec(ICFBamEnumType rec) {
 		if( rec == null ) {
 			return( null );
@@ -127,6 +131,7 @@ public class CFBamJpaEnumTypeFactoryService
         return( hrec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaEnumTypeH ensureHRec(ICFBamEnumTypeH hrec) {
 		if( hrec == null ) {
 			return( null );

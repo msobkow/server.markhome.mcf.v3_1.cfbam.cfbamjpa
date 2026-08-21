@@ -75,11 +75,13 @@ public class CFBamJpaServerMethodFactoryService
     public CFBamJpaServerMethodFactoryService() { }
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamServerMethodByUNameIdxKey newByUNameIdxKey() {
 		ICFBamServerMethodByUNameIdxKey key = new CFBamJpaServerMethodByUNameIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaServerMethodByUNameIdxKey ensureByUNameIdxKey(ICFBamServerMethodByUNameIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -96,11 +98,13 @@ public class CFBamJpaServerMethodFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamServerMethodByMethTableIdxKey newByMethTableIdxKey() {
 		ICFBamServerMethodByMethTableIdxKey key = new CFBamJpaServerMethodByMethTableIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaServerMethodByMethTableIdxKey ensureByMethTableIdxKey(ICFBamServerMethodByMethTableIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -116,11 +120,13 @@ public class CFBamJpaServerMethodFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamServerMethodByMethCodeVisIdxKey newByMethCodeVisIdxKey() {
 		ICFBamServerMethodByMethCodeVisIdxKey key = new CFBamJpaServerMethodByMethCodeVisIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaServerMethodByMethCodeVisIdxKey ensureByMethCodeVisIdxKey(ICFBamServerMethodByMethCodeVisIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -136,11 +142,13 @@ public class CFBamJpaServerMethodFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamServerMethodByMethTableVisIdxKey newByMethTableVisIdxKey() {
 		ICFBamServerMethodByMethTableVisIdxKey key = new CFBamJpaServerMethodByMethTableVisIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaServerMethodByMethTableVisIdxKey ensureByMethTableVisIdxKey(ICFBamServerMethodByMethTableVisIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -157,11 +165,13 @@ public class CFBamJpaServerMethodFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamServerMethodByDefSchemaIdxKey newByDefSchemaIdxKey() {
 		ICFBamServerMethodByDefSchemaIdxKey key = new CFBamJpaServerMethodByDefSchemaIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaServerMethodByDefSchemaIdxKey ensureByDefSchemaIdxKey(ICFBamServerMethodByDefSchemaIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -177,11 +187,13 @@ public class CFBamJpaServerMethodFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamServerMethod newRec() {
         ICFBamServerMethod rec = new CFBamJpaServerMethod();
         return( rec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaServerMethod ensureRec(ICFBamServerMethod rec) {
 		if( rec == null ) {
 			return( null );
@@ -221,6 +233,7 @@ public class CFBamJpaServerMethodFactoryService
         return( hrec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaServerMethodH ensureHRec(ICFBamServerMethodH hrec) {
 		if( hrec == null ) {
 			return( null );

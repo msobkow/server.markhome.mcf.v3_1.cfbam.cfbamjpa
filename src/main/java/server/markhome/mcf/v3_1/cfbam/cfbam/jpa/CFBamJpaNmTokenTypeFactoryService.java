@@ -75,11 +75,13 @@ public class CFBamJpaNmTokenTypeFactoryService
     public CFBamJpaNmTokenTypeFactoryService() { }
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamNmTokenTypeBySchemaIdxKey newBySchemaIdxKey() {
 		ICFBamNmTokenTypeBySchemaIdxKey key = new CFBamJpaNmTokenTypeBySchemaIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaNmTokenTypeBySchemaIdxKey ensureBySchemaIdxKey(ICFBamNmTokenTypeBySchemaIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -95,11 +97,13 @@ public class CFBamJpaNmTokenTypeFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamNmTokenType newRec() {
         ICFBamNmTokenType rec = new CFBamJpaNmTokenType();
         return( rec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaNmTokenType ensureRec(ICFBamNmTokenType rec) {
 		if( rec == null ) {
 			return( null );
@@ -127,6 +131,7 @@ public class CFBamJpaNmTokenTypeFactoryService
         return( hrec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaNmTokenTypeH ensureHRec(ICFBamNmTokenTypeH hrec) {
 		if( hrec == null ) {
 			return( null );

@@ -516,14 +516,17 @@ public class CFBamJpaSchemaService {
 	private CFBamJpaSchemaRoleService schemaroleService;
 
 
+	@Transactional(propagation = Propagation.MANDATORY, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public void bootstrapSchema(CFSecPubTableData tableData[]) {
 		ICFSecSchema.getBackingCFSec().bootstrapSchema(tableData);
 	}
 
+	@Transactional(propagation = Propagation.MANDATORY, noRollbackFor = NoResultException.class, transactionManager = "cfsec31TransactionManager")
 	public void bootstrapAllTablesSecurity(CFSecPubTableData tableData[]) {
 		bootstrapAllTablesSecurity(ICFSecSchema.getSysClusterId(), ICFSecSchema.getSysTenantId(), tableData);
 	}
 
+	@Transactional(propagation = Propagation.MANDATORY, noRollbackFor = NoResultException.class, transactionManager = "cfsec31TransactionManager")
 	public void bootstrapAllTablesSecurity(CFLibDbKeyHash256 clusterId, CFLibDbKeyHash256 tenantId, CFSecPubTableData tableData[]) {
 		ICFSecSchema.getBackingCFSec().bootstrapAllTablesSecurity(clusterId, tenantId, tableData);
 	}

@@ -76,7 +76,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 )
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorValue("43103")
-@Transactional(Transactional.TxType.SUPPORTS)
+@Transactional(Transactional.TxType.REQUIRED)
 @PersistenceContext(unitName = "CFBamPU")
 public class CFBamJpaTimeDefH extends CFBamJpaAtomH
     implements ICFBamTimeDefH

@@ -75,11 +75,13 @@ public class CFBamJpaDbKeyHash256DefFactoryService
     public CFBamJpaDbKeyHash256DefFactoryService() { }
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamDbKeyHash256Def newRec() {
         ICFBamDbKeyHash256Def rec = new CFBamJpaDbKeyHash256Def();
         return( rec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaDbKeyHash256Def ensureRec(ICFBamDbKeyHash256Def rec) {
 		if( rec == null ) {
 			return( null );
@@ -119,6 +121,7 @@ public class CFBamJpaDbKeyHash256DefFactoryService
         return( hrec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaDbKeyHash256DefH ensureHRec(ICFBamDbKeyHash256DefH hrec) {
 		if( hrec == null ) {
 			return( null );

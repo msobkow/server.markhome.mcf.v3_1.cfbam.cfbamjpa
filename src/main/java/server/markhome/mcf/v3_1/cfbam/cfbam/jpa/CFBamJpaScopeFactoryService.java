@@ -75,11 +75,13 @@ public class CFBamJpaScopeFactoryService
     public CFBamJpaScopeFactoryService() { }
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamScopeHPKey newHPKey() {
         ICFBamScopeHPKey hpkey = new CFBamJpaScopeHPKey();
         return( hpkey );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaScopeHPKey ensureHPKey(ICFBamScopeHPKey key) {
 		if (key == null) {
 			return( null );
@@ -99,11 +101,13 @@ public class CFBamJpaScopeFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamScopeByTenantIdxKey newByTenantIdxKey() {
 		ICFBamScopeByTenantIdxKey key = new CFBamJpaScopeByTenantIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaScopeByTenantIdxKey ensureByTenantIdxKey(ICFBamScopeByTenantIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -119,11 +123,13 @@ public class CFBamJpaScopeFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamScope newRec() {
         ICFBamScope rec = new CFBamJpaScope();
         return( rec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaScope ensureRec(ICFBamScope rec) {
 		if( rec == null ) {
 			return( null );
@@ -247,6 +253,7 @@ public class CFBamJpaScopeFactoryService
         return( hrec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaScopeH ensureHRec(ICFBamScopeH hrec) {
 		if( hrec == null ) {
 			return( null );

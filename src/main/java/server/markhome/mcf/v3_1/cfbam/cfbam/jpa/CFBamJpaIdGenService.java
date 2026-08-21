@@ -82,6 +82,7 @@ public class CFBamJpaIdGenService {
 	 *
 	 *		@return A cryptographically-random generated CFLibDBKeyHash128 value
 	 */
+	@Transactional(propagation = Propagation.MANDATORY, noRollbackFor = NoResultException.class, transactionManager = "cfbamTransactionManager")
 	public CFLibDbKeyHash256 generateChainIdGen() {
 		return( new CFLibDbKeyHash256(0) );
 	}
@@ -91,6 +92,7 @@ public class CFBamJpaIdGenService {
 	 *
 	 *		@return A cryptographically-random generated CFLibDBKeyHash128 value
 	 */
+	@Transactional(propagation = Propagation.MANDATORY, noRollbackFor = NoResultException.class, transactionManager = "cfbamTransactionManager")
 	public CFLibDbKeyHash256 generateEnumTagIdGen() {
 		return( new CFLibDbKeyHash256(0) );
 	}
@@ -100,6 +102,7 @@ public class CFBamJpaIdGenService {
 	 *
 	 *		@return A cryptographically-random generated CFLibDBKeyHash128 value
 	 */
+	@Transactional(propagation = Propagation.MANDATORY, noRollbackFor = NoResultException.class, transactionManager = "cfbamTransactionManager")
 	public CFLibDbKeyHash256 generateIndexColIdGen() {
 		return( new CFLibDbKeyHash256(0) );
 	}
@@ -109,6 +112,7 @@ public class CFBamJpaIdGenService {
 	 *
 	 *		@return A cryptographically-random generated CFLibDBKeyHash128 value
 	 */
+	@Transactional(propagation = Propagation.MANDATORY, noRollbackFor = NoResultException.class, transactionManager = "cfbamTransactionManager")
 	public CFLibDbKeyHash256 generateParamIdGen() {
 		return( new CFLibDbKeyHash256(0) );
 	}
@@ -118,6 +122,7 @@ public class CFBamJpaIdGenService {
 	 *
 	 *		@return A cryptographically-random generated CFLibDBKeyHash128 value
 	 */
+	@Transactional(propagation = Propagation.MANDATORY, noRollbackFor = NoResultException.class, transactionManager = "cfbamTransactionManager")
 	public CFLibDbKeyHash256 generateRelationColIdGen() {
 		return( new CFLibDbKeyHash256(0) );
 	}
@@ -127,6 +132,7 @@ public class CFBamJpaIdGenService {
 	 *
 	 *		@return A cryptographically-random generated CFLibDBKeyHash128 value
 	 */
+	@Transactional(propagation = Propagation.MANDATORY, noRollbackFor = NoResultException.class, transactionManager = "cfbamTransactionManager")
 	public CFLibDbKeyHash256 generateTweakIdGen() {
 		return( new CFLibDbKeyHash256(0) );
 	}
@@ -136,6 +142,7 @@ public class CFBamJpaIdGenService {
 	 *
 	 *		@return A cryptographically-random generated CFLibDBKeyHash128 value
 	 */
+	@Transactional(propagation = Propagation.MANDATORY, noRollbackFor = NoResultException.class, transactionManager = "cfbamTransactionManager")
 	public CFLibDbKeyHash256 generateScopeIdGen() {
 		return( new CFLibDbKeyHash256(0) );
 	}
@@ -145,6 +152,7 @@ public class CFBamJpaIdGenService {
 	 *
 	 *		@return A cryptographically-random generated CFLibDBKeyHash128 value
 	 */
+	@Transactional(propagation = Propagation.MANDATORY, noRollbackFor = NoResultException.class, transactionManager = "cfbamTransactionManager")
 	public CFLibDbKeyHash256 generateValueIdGen() {
 		return( new CFLibDbKeyHash256(0) );
 	}
@@ -154,6 +162,7 @@ public class CFBamJpaIdGenService {
 	 *
 	 *		@return A cryptographically-random generated CFLibDBKeyHash128 value
 	 */
+	@Transactional(propagation = Propagation.MANDATORY, noRollbackFor = NoResultException.class, transactionManager = "cfbamTransactionManager")
 	public CFLibDbKeyHash256 generateRoleIdGen() {
 		return( new CFLibDbKeyHash256(0) );
 	}

@@ -72,7 +72,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 )
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorValue("43091")
-@Transactional(Transactional.TxType.SUPPORTS)
+@Transactional(Transactional.TxType.REQUIRED)
 @PersistenceContext(unitName = "CFBamPU")
 public class CFBamJpaDbKeyHash512Gen extends CFBamJpaDbKeyHash512Type
 	implements ICFBamDbKeyHash512Gen

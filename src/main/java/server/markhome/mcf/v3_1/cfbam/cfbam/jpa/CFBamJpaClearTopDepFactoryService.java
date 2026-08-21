@@ -75,11 +75,13 @@ public class CFBamJpaClearTopDepFactoryService
     public CFBamJpaClearTopDepFactoryService() { }
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamClearTopDepByClrTopDepTblIdxKey newByClrTopDepTblIdxKey() {
 		ICFBamClearTopDepByClrTopDepTblIdxKey key = new CFBamJpaClearTopDepByClrTopDepTblIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaClearTopDepByClrTopDepTblIdxKey ensureByClrTopDepTblIdxKey(ICFBamClearTopDepByClrTopDepTblIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -95,11 +97,13 @@ public class CFBamJpaClearTopDepFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamClearTopDepByUNameIdxKey newByUNameIdxKey() {
 		ICFBamClearTopDepByUNameIdxKey key = new CFBamJpaClearTopDepByUNameIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaClearTopDepByUNameIdxKey ensureByUNameIdxKey(ICFBamClearTopDepByUNameIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -116,11 +120,13 @@ public class CFBamJpaClearTopDepFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamClearTopDepByPrevIdxKey newByPrevIdxKey() {
 		ICFBamClearTopDepByPrevIdxKey key = new CFBamJpaClearTopDepByPrevIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaClearTopDepByPrevIdxKey ensureByPrevIdxKey(ICFBamClearTopDepByPrevIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -136,11 +142,13 @@ public class CFBamJpaClearTopDepFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamClearTopDepByNextIdxKey newByNextIdxKey() {
 		ICFBamClearTopDepByNextIdxKey key = new CFBamJpaClearTopDepByNextIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaClearTopDepByNextIdxKey ensureByNextIdxKey(ICFBamClearTopDepByNextIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -156,11 +164,13 @@ public class CFBamJpaClearTopDepFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamClearTopDep newRec() {
         ICFBamClearTopDep rec = new CFBamJpaClearTopDep();
         return( rec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaClearTopDep ensureRec(ICFBamClearTopDep rec) {
 		if( rec == null ) {
 			return( null );
@@ -188,6 +198,7 @@ public class CFBamJpaClearTopDepFactoryService
         return( hrec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaClearTopDepH ensureHRec(ICFBamClearTopDepH hrec) {
 		if( hrec == null ) {
 			return( null );

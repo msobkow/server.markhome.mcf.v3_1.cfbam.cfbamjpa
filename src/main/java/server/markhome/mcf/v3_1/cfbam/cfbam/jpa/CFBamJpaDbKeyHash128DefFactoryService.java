@@ -75,11 +75,13 @@ public class CFBamJpaDbKeyHash128DefFactoryService
     public CFBamJpaDbKeyHash128DefFactoryService() { }
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamDbKeyHash128Def newRec() {
         ICFBamDbKeyHash128Def rec = new CFBamJpaDbKeyHash128Def();
         return( rec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaDbKeyHash128Def ensureRec(ICFBamDbKeyHash128Def rec) {
 		if( rec == null ) {
 			return( null );
@@ -119,6 +121,7 @@ public class CFBamJpaDbKeyHash128DefFactoryService
         return( hrec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaDbKeyHash128DefH ensureHRec(ICFBamDbKeyHash128DefH hrec) {
 		if( hrec == null ) {
 			return( null );

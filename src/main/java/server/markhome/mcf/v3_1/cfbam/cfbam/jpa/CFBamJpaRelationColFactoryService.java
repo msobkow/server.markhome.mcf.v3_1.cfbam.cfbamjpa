@@ -75,11 +75,13 @@ public class CFBamJpaRelationColFactoryService
     public CFBamJpaRelationColFactoryService() { }
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamRelationColHPKey newHPKey() {
         ICFBamRelationColHPKey hpkey = new CFBamJpaRelationColHPKey();
         return( hpkey );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaRelationColHPKey ensureHPKey(ICFBamRelationColHPKey key) {
 		if (key == null) {
 			return( null );
@@ -99,11 +101,13 @@ public class CFBamJpaRelationColFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamRelationColByUNameIdxKey newByUNameIdxKey() {
 		ICFBamRelationColByUNameIdxKey key = new CFBamJpaRelationColByUNameIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaRelationColByUNameIdxKey ensureByUNameIdxKey(ICFBamRelationColByUNameIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -120,11 +124,13 @@ public class CFBamJpaRelationColFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamRelationColByRelationIdxKey newByRelationIdxKey() {
 		ICFBamRelationColByRelationIdxKey key = new CFBamJpaRelationColByRelationIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaRelationColByRelationIdxKey ensureByRelationIdxKey(ICFBamRelationColByRelationIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -140,11 +146,13 @@ public class CFBamJpaRelationColFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamRelationColByDefSchemaIdxKey newByDefSchemaIdxKey() {
 		ICFBamRelationColByDefSchemaIdxKey key = new CFBamJpaRelationColByDefSchemaIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaRelationColByDefSchemaIdxKey ensureByDefSchemaIdxKey(ICFBamRelationColByDefSchemaIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -160,11 +168,13 @@ public class CFBamJpaRelationColFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamRelationColByFromColIdxKey newByFromColIdxKey() {
 		ICFBamRelationColByFromColIdxKey key = new CFBamJpaRelationColByFromColIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaRelationColByFromColIdxKey ensureByFromColIdxKey(ICFBamRelationColByFromColIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -180,11 +190,13 @@ public class CFBamJpaRelationColFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamRelationColByToColIdxKey newByToColIdxKey() {
 		ICFBamRelationColByToColIdxKey key = new CFBamJpaRelationColByToColIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaRelationColByToColIdxKey ensureByToColIdxKey(ICFBamRelationColByToColIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -200,11 +212,13 @@ public class CFBamJpaRelationColFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamRelationColByPrevIdxKey newByPrevIdxKey() {
 		ICFBamRelationColByPrevIdxKey key = new CFBamJpaRelationColByPrevIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaRelationColByPrevIdxKey ensureByPrevIdxKey(ICFBamRelationColByPrevIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -220,11 +234,13 @@ public class CFBamJpaRelationColFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamRelationColByNextIdxKey newByNextIdxKey() {
 		ICFBamRelationColByNextIdxKey key = new CFBamJpaRelationColByNextIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaRelationColByNextIdxKey ensureByNextIdxKey(ICFBamRelationColByNextIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -240,11 +256,13 @@ public class CFBamJpaRelationColFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamRelationColByRelPrevIdxKey newByRelPrevIdxKey() {
 		ICFBamRelationColByRelPrevIdxKey key = new CFBamJpaRelationColByRelPrevIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaRelationColByRelPrevIdxKey ensureByRelPrevIdxKey(ICFBamRelationColByRelPrevIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -261,11 +279,13 @@ public class CFBamJpaRelationColFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamRelationColByRelNextIdxKey newByRelNextIdxKey() {
 		ICFBamRelationColByRelNextIdxKey key = new CFBamJpaRelationColByRelNextIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaRelationColByRelNextIdxKey ensureByRelNextIdxKey(ICFBamRelationColByRelNextIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -282,11 +302,13 @@ public class CFBamJpaRelationColFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamRelationCol newRec() {
         ICFBamRelationCol rec = new CFBamJpaRelationCol();
         return( rec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaRelationCol ensureRec(ICFBamRelationCol rec) {
 		if( rec == null ) {
 			return( null );
@@ -314,6 +336,7 @@ public class CFBamJpaRelationColFactoryService
         return( hrec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaRelationColH ensureHRec(ICFBamRelationColH hrec) {
 		if( hrec == null ) {
 			return( null );

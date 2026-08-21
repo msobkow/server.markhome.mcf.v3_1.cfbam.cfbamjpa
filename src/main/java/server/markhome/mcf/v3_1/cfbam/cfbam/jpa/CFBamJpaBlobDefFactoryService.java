@@ -75,11 +75,13 @@ public class CFBamJpaBlobDefFactoryService
     public CFBamJpaBlobDefFactoryService() { }
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamBlobDef newRec() {
         ICFBamBlobDef rec = new CFBamJpaBlobDef();
         return( rec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaBlobDef ensureRec(ICFBamBlobDef rec) {
 		if( rec == null ) {
 			return( null );
@@ -115,6 +117,7 @@ public class CFBamJpaBlobDefFactoryService
         return( hrec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaBlobDefH ensureHRec(ICFBamBlobDefH hrec) {
 		if( hrec == null ) {
 			return( null );

@@ -76,7 +76,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 )
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorValue("43149")
-@Transactional(Transactional.TxType.SUPPORTS)
+@Transactional(Transactional.TxType.REQUIRED)
 @PersistenceContext(unitName = "CFBamPU")
 public class CFBamJpaUuid6GenH extends CFBamJpaUuid6TypeH
     implements ICFBamUuid6GenH

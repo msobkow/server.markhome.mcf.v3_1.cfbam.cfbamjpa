@@ -75,11 +75,13 @@ public class CFBamJpaId16GenFactoryService
     public CFBamJpaId16GenFactoryService() { }
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamId16Gen newRec() {
         ICFBamId16Gen rec = new CFBamJpaId16Gen();
         return( rec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaId16Gen ensureRec(ICFBamId16Gen rec) {
 		if( rec == null ) {
 			return( null );
@@ -107,6 +109,7 @@ public class CFBamJpaId16GenFactoryService
         return( hrec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaId16GenH ensureHRec(ICFBamId16GenH hrec) {
 		if( hrec == null ) {
 			return( null );

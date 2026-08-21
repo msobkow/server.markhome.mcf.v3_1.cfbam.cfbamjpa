@@ -75,11 +75,13 @@ public class CFBamJpaAtomFactoryService
     public CFBamJpaAtomFactoryService() { }
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamAtom newRec() {
         ICFBamAtom rec = new CFBamJpaAtom();
         return( rec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaAtom ensureRec(ICFBamAtom rec) {
 		if( rec == null ) {
 			return( null );
@@ -519,6 +521,7 @@ public class CFBamJpaAtomFactoryService
         return( hrec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaAtomH ensureHRec(ICFBamAtomH hrec) {
 		if( hrec == null ) {
 			return( null );

@@ -75,11 +75,13 @@ public class CFBamJpaDbKeyHash160GenFactoryService
     public CFBamJpaDbKeyHash160GenFactoryService() { }
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamDbKeyHash160Gen newRec() {
         ICFBamDbKeyHash160Gen rec = new CFBamJpaDbKeyHash160Gen();
         return( rec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaDbKeyHash160Gen ensureRec(ICFBamDbKeyHash160Gen rec) {
 		if( rec == null ) {
 			return( null );
@@ -107,6 +109,7 @@ public class CFBamJpaDbKeyHash160GenFactoryService
         return( hrec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaDbKeyHash160GenH ensureHRec(ICFBamDbKeyHash160GenH hrec) {
 		if( hrec == null ) {
 			return( null );

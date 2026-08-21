@@ -75,11 +75,13 @@ public class CFBamJpaUInt32DefFactoryService
     public CFBamJpaUInt32DefFactoryService() { }
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamUInt32Def newRec() {
         ICFBamUInt32Def rec = new CFBamJpaUInt32Def();
         return( rec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaUInt32Def ensureRec(ICFBamUInt32Def rec) {
 		if( rec == null ) {
 			return( null );
@@ -115,6 +117,7 @@ public class CFBamJpaUInt32DefFactoryService
         return( hrec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaUInt32DefH ensureHRec(ICFBamUInt32DefH hrec) {
 		if( hrec == null ) {
 			return( null );

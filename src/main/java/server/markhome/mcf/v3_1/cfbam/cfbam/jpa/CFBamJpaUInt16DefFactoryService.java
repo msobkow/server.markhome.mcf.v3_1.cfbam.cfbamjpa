@@ -75,11 +75,13 @@ public class CFBamJpaUInt16DefFactoryService
     public CFBamJpaUInt16DefFactoryService() { }
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamUInt16Def newRec() {
         ICFBamUInt16Def rec = new CFBamJpaUInt16Def();
         return( rec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaUInt16Def ensureRec(ICFBamUInt16Def rec) {
 		if( rec == null ) {
 			return( null );
@@ -115,6 +117,7 @@ public class CFBamJpaUInt16DefFactoryService
         return( hrec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaUInt16DefH ensureHRec(ICFBamUInt16DefH hrec) {
 		if( hrec == null ) {
 			return( null );

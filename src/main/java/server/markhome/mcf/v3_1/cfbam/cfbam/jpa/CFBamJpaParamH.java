@@ -82,7 +82,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
         @Index(name = "ParamContNextIdx_h", columnList = "srvmeth_id, NextId", unique = false)
     }
 )
-@Transactional(Transactional.TxType.SUPPORTS)
+@Transactional(Transactional.TxType.REQUIRED)
 @PersistenceContext(unitName = "CFBamPU")
 public class CFBamJpaParamH
     implements ICFBamParamH, Comparable<Object>, Serializable

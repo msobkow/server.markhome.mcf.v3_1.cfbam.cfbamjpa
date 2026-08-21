@@ -75,11 +75,13 @@ public class CFBamJpaRoleDefFactoryService
     public CFBamJpaRoleDefFactoryService() { }
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamRoleDefHPKey newHPKey() {
         ICFBamRoleDefHPKey hpkey = new CFBamJpaRoleDefHPKey();
         return( hpkey );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaRoleDefHPKey ensureHPKey(ICFBamRoleDefHPKey key) {
 		if (key == null) {
 			return( null );
@@ -99,11 +101,13 @@ public class CFBamJpaRoleDefFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamRoleDefByUNameIdxKey newByUNameIdxKey() {
 		ICFBamRoleDefByUNameIdxKey key = new CFBamJpaRoleDefByUNameIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaRoleDefByUNameIdxKey ensureByUNameIdxKey(ICFBamRoleDefByUNameIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -120,11 +124,13 @@ public class CFBamJpaRoleDefFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamRoleDefByScopeIdxKey newByScopeIdxKey() {
 		ICFBamRoleDefByScopeIdxKey key = new CFBamJpaRoleDefByScopeIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaRoleDefByScopeIdxKey ensureByScopeIdxKey(ICFBamRoleDefByScopeIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -140,11 +146,13 @@ public class CFBamJpaRoleDefFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamRoleDefByDefSchemaIdxKey newByDefSchemaIdxKey() {
 		ICFBamRoleDefByDefSchemaIdxKey key = new CFBamJpaRoleDefByDefSchemaIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaRoleDefByDefSchemaIdxKey ensureByDefSchemaIdxKey(ICFBamRoleDefByDefSchemaIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -160,11 +168,13 @@ public class CFBamJpaRoleDefFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamRoleDefByUDefIdxKey newByUDefIdxKey() {
 		ICFBamRoleDefByUDefIdxKey key = new CFBamJpaRoleDefByUDefIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaRoleDefByUDefIdxKey ensureByUDefIdxKey(ICFBamRoleDefByUDefIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -182,11 +192,13 @@ public class CFBamJpaRoleDefFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamRoleDef newRec() {
         ICFBamRoleDef rec = new CFBamJpaRoleDef();
         return( rec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaRoleDef ensureRec(ICFBamRoleDef rec) {
 		if( rec == null ) {
 			return( null );
@@ -218,6 +230,7 @@ public class CFBamJpaRoleDefFactoryService
         return( hrec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaRoleDefH ensureHRec(ICFBamRoleDefH hrec) {
 		if( hrec == null ) {
 			return( null );

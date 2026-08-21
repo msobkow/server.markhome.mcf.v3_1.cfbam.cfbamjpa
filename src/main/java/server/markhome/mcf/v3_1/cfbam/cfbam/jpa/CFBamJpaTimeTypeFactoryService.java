@@ -75,11 +75,13 @@ public class CFBamJpaTimeTypeFactoryService
     public CFBamJpaTimeTypeFactoryService() { }
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamTimeTypeBySchemaIdxKey newBySchemaIdxKey() {
 		ICFBamTimeTypeBySchemaIdxKey key = new CFBamJpaTimeTypeBySchemaIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaTimeTypeBySchemaIdxKey ensureBySchemaIdxKey(ICFBamTimeTypeBySchemaIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -95,11 +97,13 @@ public class CFBamJpaTimeTypeFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamTimeType newRec() {
         ICFBamTimeType rec = new CFBamJpaTimeType();
         return( rec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaTimeType ensureRec(ICFBamTimeType rec) {
 		if( rec == null ) {
 			return( null );
@@ -127,6 +131,7 @@ public class CFBamJpaTimeTypeFactoryService
         return( hrec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaTimeTypeH ensureHRec(ICFBamTimeTypeH hrec) {
 		if( hrec == null ) {
 			return( null );

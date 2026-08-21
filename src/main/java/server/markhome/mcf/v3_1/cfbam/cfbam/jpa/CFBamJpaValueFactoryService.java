@@ -75,11 +75,13 @@ public class CFBamJpaValueFactoryService
     public CFBamJpaValueFactoryService() { }
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamValueHPKey newHPKey() {
         ICFBamValueHPKey hpkey = new CFBamJpaValueHPKey();
         return( hpkey );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaValueHPKey ensureHPKey(ICFBamValueHPKey key) {
 		if (key == null) {
 			return( null );
@@ -99,11 +101,13 @@ public class CFBamJpaValueFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamValueByUNameIdxKey newByUNameIdxKey() {
 		ICFBamValueByUNameIdxKey key = new CFBamJpaValueByUNameIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaValueByUNameIdxKey ensureByUNameIdxKey(ICFBamValueByUNameIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -120,11 +124,13 @@ public class CFBamJpaValueFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamValueByScopeIdxKey newByScopeIdxKey() {
 		ICFBamValueByScopeIdxKey key = new CFBamJpaValueByScopeIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaValueByScopeIdxKey ensureByScopeIdxKey(ICFBamValueByScopeIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -140,11 +146,13 @@ public class CFBamJpaValueFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamValueByDefSchemaIdxKey newByDefSchemaIdxKey() {
 		ICFBamValueByDefSchemaIdxKey key = new CFBamJpaValueByDefSchemaIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaValueByDefSchemaIdxKey ensureByDefSchemaIdxKey(ICFBamValueByDefSchemaIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -160,11 +168,13 @@ public class CFBamJpaValueFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamValueByPrevIdxKey newByPrevIdxKey() {
 		ICFBamValueByPrevIdxKey key = new CFBamJpaValueByPrevIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaValueByPrevIdxKey ensureByPrevIdxKey(ICFBamValueByPrevIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -180,11 +190,13 @@ public class CFBamJpaValueFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamValueByNextIdxKey newByNextIdxKey() {
 		ICFBamValueByNextIdxKey key = new CFBamJpaValueByNextIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaValueByNextIdxKey ensureByNextIdxKey(ICFBamValueByNextIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -200,11 +212,13 @@ public class CFBamJpaValueFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamValueByContPrevIdxKey newByContPrevIdxKey() {
 		ICFBamValueByContPrevIdxKey key = new CFBamJpaValueByContPrevIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaValueByContPrevIdxKey ensureByContPrevIdxKey(ICFBamValueByContPrevIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -221,11 +235,13 @@ public class CFBamJpaValueFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamValueByContNextIdxKey newByContNextIdxKey() {
 		ICFBamValueByContNextIdxKey key = new CFBamJpaValueByContNextIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaValueByContNextIdxKey ensureByContNextIdxKey(ICFBamValueByContNextIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -242,11 +258,13 @@ public class CFBamJpaValueFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamValue newRec() {
         ICFBamValue rec = new CFBamJpaValue();
         return( rec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaValue ensureRec(ICFBamValue rec) {
 		if( rec == null ) {
 			return( null );
@@ -694,6 +712,7 @@ public class CFBamJpaValueFactoryService
         return( hrec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaValueH ensureHRec(ICFBamValueH hrec) {
 		if( hrec == null ) {
 			return( null );

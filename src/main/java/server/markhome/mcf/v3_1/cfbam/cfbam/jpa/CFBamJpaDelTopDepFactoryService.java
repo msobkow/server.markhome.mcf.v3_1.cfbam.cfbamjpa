@@ -75,11 +75,13 @@ public class CFBamJpaDelTopDepFactoryService
     public CFBamJpaDelTopDepFactoryService() { }
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamDelTopDepByDelTopDepTblIdxKey newByDelTopDepTblIdxKey() {
 		ICFBamDelTopDepByDelTopDepTblIdxKey key = new CFBamJpaDelTopDepByDelTopDepTblIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaDelTopDepByDelTopDepTblIdxKey ensureByDelTopDepTblIdxKey(ICFBamDelTopDepByDelTopDepTblIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -95,11 +97,13 @@ public class CFBamJpaDelTopDepFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamDelTopDepByUNameIdxKey newByUNameIdxKey() {
 		ICFBamDelTopDepByUNameIdxKey key = new CFBamJpaDelTopDepByUNameIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaDelTopDepByUNameIdxKey ensureByUNameIdxKey(ICFBamDelTopDepByUNameIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -116,11 +120,13 @@ public class CFBamJpaDelTopDepFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamDelTopDepByPrevIdxKey newByPrevIdxKey() {
 		ICFBamDelTopDepByPrevIdxKey key = new CFBamJpaDelTopDepByPrevIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaDelTopDepByPrevIdxKey ensureByPrevIdxKey(ICFBamDelTopDepByPrevIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -136,11 +142,13 @@ public class CFBamJpaDelTopDepFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamDelTopDepByNextIdxKey newByNextIdxKey() {
 		ICFBamDelTopDepByNextIdxKey key = new CFBamJpaDelTopDepByNextIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaDelTopDepByNextIdxKey ensureByNextIdxKey(ICFBamDelTopDepByNextIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -156,11 +164,13 @@ public class CFBamJpaDelTopDepFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamDelTopDep newRec() {
         ICFBamDelTopDep rec = new CFBamJpaDelTopDep();
         return( rec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaDelTopDep ensureRec(ICFBamDelTopDep rec) {
 		if( rec == null ) {
 			return( null );
@@ -188,6 +198,7 @@ public class CFBamJpaDelTopDepFactoryService
         return( hrec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaDelTopDepH ensureHRec(ICFBamDelTopDepH hrec) {
 		if( hrec == null ) {
 			return( null );

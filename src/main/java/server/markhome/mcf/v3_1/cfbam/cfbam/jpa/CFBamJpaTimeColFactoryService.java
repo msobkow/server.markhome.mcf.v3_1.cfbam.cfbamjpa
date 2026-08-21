@@ -75,11 +75,13 @@ public class CFBamJpaTimeColFactoryService
     public CFBamJpaTimeColFactoryService() { }
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamTimeColByTableIdxKey newByTableIdxKey() {
 		ICFBamTimeColByTableIdxKey key = new CFBamJpaTimeColByTableIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaTimeColByTableIdxKey ensureByTableIdxKey(ICFBamTimeColByTableIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -95,11 +97,13 @@ public class CFBamJpaTimeColFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamTimeCol newRec() {
         ICFBamTimeCol rec = new CFBamJpaTimeCol();
         return( rec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaTimeCol ensureRec(ICFBamTimeCol rec) {
 		if( rec == null ) {
 			return( null );
@@ -127,6 +131,7 @@ public class CFBamJpaTimeColFactoryService
         return( hrec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaTimeColH ensureHRec(ICFBamTimeColH hrec) {
 		if( hrec == null ) {
 			return( null );

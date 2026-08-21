@@ -75,11 +75,13 @@ public class CFBamJpaSchemaRoleFactoryService
     public CFBamJpaSchemaRoleFactoryService() { }
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamSchemaRoleBySchemaIdxKey newBySchemaIdxKey() {
 		ICFBamSchemaRoleBySchemaIdxKey key = new CFBamJpaSchemaRoleBySchemaIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaSchemaRoleBySchemaIdxKey ensureBySchemaIdxKey(ICFBamSchemaRoleBySchemaIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -95,11 +97,13 @@ public class CFBamJpaSchemaRoleFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamSchemaRoleByRoleScopeIdxKey newByRoleScopeIdxKey() {
 		ICFBamSchemaRoleByRoleScopeIdxKey key = new CFBamJpaSchemaRoleByRoleScopeIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaSchemaRoleByRoleScopeIdxKey ensureByRoleScopeIdxKey(ICFBamSchemaRoleByRoleScopeIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -115,11 +119,13 @@ public class CFBamJpaSchemaRoleFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamSchemaRoleBySchRoleScpIdxKey newBySchRoleScpIdxKey() {
 		ICFBamSchemaRoleBySchRoleScpIdxKey key = new CFBamJpaSchemaRoleBySchRoleScpIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaSchemaRoleBySchRoleScpIdxKey ensureBySchRoleScpIdxKey(ICFBamSchemaRoleBySchRoleScpIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -136,11 +142,13 @@ public class CFBamJpaSchemaRoleFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamSchemaRole newRec() {
         ICFBamSchemaRole rec = new CFBamJpaSchemaRole();
         return( rec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaSchemaRole ensureRec(ICFBamSchemaRole rec) {
 		if( rec == null ) {
 			return( null );
@@ -168,6 +176,7 @@ public class CFBamJpaSchemaRoleFactoryService
         return( hrec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaSchemaRoleH ensureHRec(ICFBamSchemaRoleH hrec) {
 		if( hrec == null ) {
 			return( null );

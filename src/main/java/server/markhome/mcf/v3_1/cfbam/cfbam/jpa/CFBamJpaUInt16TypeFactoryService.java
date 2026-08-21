@@ -75,11 +75,13 @@ public class CFBamJpaUInt16TypeFactoryService
     public CFBamJpaUInt16TypeFactoryService() { }
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamUInt16TypeBySchemaIdxKey newBySchemaIdxKey() {
 		ICFBamUInt16TypeBySchemaIdxKey key = new CFBamJpaUInt16TypeBySchemaIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaUInt16TypeBySchemaIdxKey ensureBySchemaIdxKey(ICFBamUInt16TypeBySchemaIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -95,11 +97,13 @@ public class CFBamJpaUInt16TypeFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamUInt16Type newRec() {
         ICFBamUInt16Type rec = new CFBamJpaUInt16Type();
         return( rec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaUInt16Type ensureRec(ICFBamUInt16Type rec) {
 		if( rec == null ) {
 			return( null );
@@ -127,6 +131,7 @@ public class CFBamJpaUInt16TypeFactoryService
         return( hrec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaUInt16TypeH ensureHRec(ICFBamUInt16TypeH hrec) {
 		if( hrec == null ) {
 			return( null );

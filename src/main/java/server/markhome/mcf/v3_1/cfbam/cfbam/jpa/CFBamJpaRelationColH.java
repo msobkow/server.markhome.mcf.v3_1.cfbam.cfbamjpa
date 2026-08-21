@@ -83,7 +83,7 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
         @Index(name = "RelationColRelationNextIdx_h", columnList = "RelationId, NextId", unique = false)
     }
 )
-@Transactional(Transactional.TxType.SUPPORTS)
+@Transactional(Transactional.TxType.REQUIRED)
 @PersistenceContext(unitName = "CFBamPU")
 public class CFBamJpaRelationColH
     implements ICFBamRelationColH, Comparable<Object>, Serializable

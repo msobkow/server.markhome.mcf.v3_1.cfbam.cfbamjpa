@@ -75,11 +75,13 @@ public class CFBamJpaDateDefFactoryService
     public CFBamJpaDateDefFactoryService() { }
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamDateDef newRec() {
         ICFBamDateDef rec = new CFBamJpaDateDef();
         return( rec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaDateDef ensureRec(ICFBamDateDef rec) {
 		if( rec == null ) {
 			return( null );
@@ -115,6 +117,7 @@ public class CFBamJpaDateDefFactoryService
         return( hrec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaDateDefH ensureHRec(ICFBamDateDefH hrec) {
 		if( hrec == null ) {
 			return( null );

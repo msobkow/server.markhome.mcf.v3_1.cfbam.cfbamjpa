@@ -75,11 +75,13 @@ public class CFBamJpaTweakFactoryService
     public CFBamJpaTweakFactoryService() { }
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamTweakHPKey newHPKey() {
         ICFBamTweakHPKey hpkey = new CFBamJpaTweakHPKey();
         return( hpkey );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaTweakHPKey ensureHPKey(ICFBamTweakHPKey key) {
 		if (key == null) {
 			return( null );
@@ -99,11 +101,13 @@ public class CFBamJpaTweakFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamTweakByUNameIdxKey newByUNameIdxKey() {
 		ICFBamTweakByUNameIdxKey key = new CFBamJpaTweakByUNameIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaTweakByUNameIdxKey ensureByUNameIdxKey(ICFBamTweakByUNameIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -120,11 +124,13 @@ public class CFBamJpaTweakFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamTweakByValTentIdxKey newByValTentIdxKey() {
 		ICFBamTweakByValTentIdxKey key = new CFBamJpaTweakByValTentIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaTweakByValTentIdxKey ensureByValTentIdxKey(ICFBamTweakByValTentIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -140,11 +146,13 @@ public class CFBamJpaTweakFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamTweakByScopeIdxKey newByScopeIdxKey() {
 		ICFBamTweakByScopeIdxKey key = new CFBamJpaTweakByScopeIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaTweakByScopeIdxKey ensureByScopeIdxKey(ICFBamTweakByScopeIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -160,11 +168,13 @@ public class CFBamJpaTweakFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamTweakByDefSchemaIdxKey newByDefSchemaIdxKey() {
 		ICFBamTweakByDefSchemaIdxKey key = new CFBamJpaTweakByDefSchemaIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaTweakByDefSchemaIdxKey ensureByDefSchemaIdxKey(ICFBamTweakByDefSchemaIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -180,11 +190,13 @@ public class CFBamJpaTweakFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamTweakByUDefIdxKey newByUDefIdxKey() {
 		ICFBamTweakByUDefIdxKey key = new CFBamJpaTweakByUDefIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaTweakByUDefIdxKey ensureByUDefIdxKey(ICFBamTweakByUDefIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -204,11 +216,13 @@ public class CFBamJpaTweakFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamTweak newRec() {
         ICFBamTweak rec = new CFBamJpaTweak();
         return( rec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaTweak ensureRec(ICFBamTweak rec) {
 		if( rec == null ) {
 			return( null );
@@ -248,6 +262,7 @@ public class CFBamJpaTweakFactoryService
         return( hrec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaTweakH ensureHRec(ICFBamTweakH hrec) {
 		if( hrec == null ) {
 			return( null );

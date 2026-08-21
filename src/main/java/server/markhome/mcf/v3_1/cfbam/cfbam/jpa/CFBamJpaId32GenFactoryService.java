@@ -75,11 +75,13 @@ public class CFBamJpaId32GenFactoryService
     public CFBamJpaId32GenFactoryService() { }
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamId32Gen newRec() {
         ICFBamId32Gen rec = new CFBamJpaId32Gen();
         return( rec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaId32Gen ensureRec(ICFBamId32Gen rec) {
 		if( rec == null ) {
 			return( null );
@@ -107,6 +109,7 @@ public class CFBamJpaId32GenFactoryService
         return( hrec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaId32GenH ensureHRec(ICFBamId32GenH hrec) {
 		if( hrec == null ) {
 			return( null );

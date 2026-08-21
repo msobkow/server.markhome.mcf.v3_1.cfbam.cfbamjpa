@@ -75,11 +75,13 @@ public class CFBamJpaDelDepFactoryService
     public CFBamJpaDelDepFactoryService() { }
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamDelDepByDefSchemaIdxKey newByDefSchemaIdxKey() {
 		ICFBamDelDepByDefSchemaIdxKey key = new CFBamJpaDelDepByDefSchemaIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaDelDepByDefSchemaIdxKey ensureByDefSchemaIdxKey(ICFBamDelDepByDefSchemaIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -95,11 +97,13 @@ public class CFBamJpaDelDepFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamDelDepByDelDepIdxKey newByDelDepIdxKey() {
 		ICFBamDelDepByDelDepIdxKey key = new CFBamJpaDelDepByDelDepIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaDelDepByDelDepIdxKey ensureByDelDepIdxKey(ICFBamDelDepByDelDepIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -115,11 +119,13 @@ public class CFBamJpaDelDepFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamDelDep newRec() {
         ICFBamDelDep rec = new CFBamJpaDelDep();
         return( rec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaDelDep ensureRec(ICFBamDelDep rec) {
 		if( rec == null ) {
 			return( null );
@@ -163,6 +169,7 @@ public class CFBamJpaDelDepFactoryService
         return( hrec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaDelDepH ensureHRec(ICFBamDelDepH hrec) {
 		if( hrec == null ) {
 			return( null );

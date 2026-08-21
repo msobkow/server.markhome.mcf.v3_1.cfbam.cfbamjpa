@@ -75,11 +75,13 @@ public class CFBamJpaPopSubDep2FactoryService
     public CFBamJpaPopSubDep2FactoryService() { }
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamPopSubDep2ByPopSubDep1IdxKey newByPopSubDep1IdxKey() {
 		ICFBamPopSubDep2ByPopSubDep1IdxKey key = new CFBamJpaPopSubDep2ByPopSubDep1IdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaPopSubDep2ByPopSubDep1IdxKey ensureByPopSubDep1IdxKey(ICFBamPopSubDep2ByPopSubDep1IdxKey key) {
 		if (key == null) {
 			return( null );
@@ -95,11 +97,13 @@ public class CFBamJpaPopSubDep2FactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamPopSubDep2ByUNameIdxKey newByUNameIdxKey() {
 		ICFBamPopSubDep2ByUNameIdxKey key = new CFBamJpaPopSubDep2ByUNameIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaPopSubDep2ByUNameIdxKey ensureByUNameIdxKey(ICFBamPopSubDep2ByUNameIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -116,11 +120,13 @@ public class CFBamJpaPopSubDep2FactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamPopSubDep2 newRec() {
         ICFBamPopSubDep2 rec = new CFBamJpaPopSubDep2();
         return( rec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaPopSubDep2 ensureRec(ICFBamPopSubDep2 rec) {
 		if( rec == null ) {
 			return( null );
@@ -148,6 +154,7 @@ public class CFBamJpaPopSubDep2FactoryService
         return( hrec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaPopSubDep2H ensureHRec(ICFBamPopSubDep2H hrec) {
 		if( hrec == null ) {
 			return( null );

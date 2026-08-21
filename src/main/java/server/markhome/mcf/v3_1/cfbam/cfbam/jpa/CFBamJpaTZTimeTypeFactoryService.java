@@ -75,11 +75,13 @@ public class CFBamJpaTZTimeTypeFactoryService
     public CFBamJpaTZTimeTypeFactoryService() { }
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamTZTimeTypeBySchemaIdxKey newBySchemaIdxKey() {
 		ICFBamTZTimeTypeBySchemaIdxKey key = new CFBamJpaTZTimeTypeBySchemaIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaTZTimeTypeBySchemaIdxKey ensureBySchemaIdxKey(ICFBamTZTimeTypeBySchemaIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -95,11 +97,13 @@ public class CFBamJpaTZTimeTypeFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamTZTimeType newRec() {
         ICFBamTZTimeType rec = new CFBamJpaTZTimeType();
         return( rec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaTZTimeType ensureRec(ICFBamTZTimeType rec) {
 		if( rec == null ) {
 			return( null );
@@ -127,6 +131,7 @@ public class CFBamJpaTZTimeTypeFactoryService
         return( hrec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaTZTimeTypeH ensureHRec(ICFBamTZTimeTypeH hrec) {
 		if( hrec == null ) {
 			return( null );

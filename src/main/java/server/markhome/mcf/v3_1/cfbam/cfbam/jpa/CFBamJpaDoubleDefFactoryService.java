@@ -75,11 +75,13 @@ public class CFBamJpaDoubleDefFactoryService
     public CFBamJpaDoubleDefFactoryService() { }
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamDoubleDef newRec() {
         ICFBamDoubleDef rec = new CFBamJpaDoubleDef();
         return( rec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaDoubleDef ensureRec(ICFBamDoubleDef rec) {
 		if( rec == null ) {
 			return( null );
@@ -115,6 +117,7 @@ public class CFBamJpaDoubleDefFactoryService
         return( hrec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaDoubleDefH ensureHRec(ICFBamDoubleDefH hrec) {
 		if( hrec == null ) {
 			return( null );

@@ -75,11 +75,13 @@ public class CFBamJpaBlobTypeFactoryService
     public CFBamJpaBlobTypeFactoryService() { }
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamBlobTypeBySchemaIdxKey newBySchemaIdxKey() {
 		ICFBamBlobTypeBySchemaIdxKey key = new CFBamJpaBlobTypeBySchemaIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaBlobTypeBySchemaIdxKey ensureBySchemaIdxKey(ICFBamBlobTypeBySchemaIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -95,11 +97,13 @@ public class CFBamJpaBlobTypeFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamBlobType newRec() {
         ICFBamBlobType rec = new CFBamJpaBlobType();
         return( rec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaBlobType ensureRec(ICFBamBlobType rec) {
 		if( rec == null ) {
 			return( null );
@@ -127,6 +131,7 @@ public class CFBamJpaBlobTypeFactoryService
         return( hrec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaBlobTypeH ensureHRec(ICFBamBlobTypeH hrec) {
 		if( hrec == null ) {
 			return( null );

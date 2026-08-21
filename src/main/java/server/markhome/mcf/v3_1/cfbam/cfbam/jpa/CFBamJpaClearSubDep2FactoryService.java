@@ -75,11 +75,13 @@ public class CFBamJpaClearSubDep2FactoryService
     public CFBamJpaClearSubDep2FactoryService() { }
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamClearSubDep2ByClearSubDep1IdxKey newByClearSubDep1IdxKey() {
 		ICFBamClearSubDep2ByClearSubDep1IdxKey key = new CFBamJpaClearSubDep2ByClearSubDep1IdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaClearSubDep2ByClearSubDep1IdxKey ensureByClearSubDep1IdxKey(ICFBamClearSubDep2ByClearSubDep1IdxKey key) {
 		if (key == null) {
 			return( null );
@@ -95,11 +97,13 @@ public class CFBamJpaClearSubDep2FactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamClearSubDep2ByUNameIdxKey newByUNameIdxKey() {
 		ICFBamClearSubDep2ByUNameIdxKey key = new CFBamJpaClearSubDep2ByUNameIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaClearSubDep2ByUNameIdxKey ensureByUNameIdxKey(ICFBamClearSubDep2ByUNameIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -116,11 +120,13 @@ public class CFBamJpaClearSubDep2FactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamClearSubDep2 newRec() {
         ICFBamClearSubDep2 rec = new CFBamJpaClearSubDep2();
         return( rec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaClearSubDep2 ensureRec(ICFBamClearSubDep2 rec) {
 		if( rec == null ) {
 			return( null );
@@ -148,6 +154,7 @@ public class CFBamJpaClearSubDep2FactoryService
         return( hrec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaClearSubDep2H ensureHRec(ICFBamClearSubDep2H hrec) {
 		if( hrec == null ) {
 			return( null );

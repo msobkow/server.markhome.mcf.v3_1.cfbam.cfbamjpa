@@ -75,11 +75,13 @@ public class CFBamJpaClearDepFactoryService
     public CFBamJpaClearDepFactoryService() { }
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamClearDepByClearDepIdxKey newByClearDepIdxKey() {
 		ICFBamClearDepByClearDepIdxKey key = new CFBamJpaClearDepByClearDepIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaClearDepByClearDepIdxKey ensureByClearDepIdxKey(ICFBamClearDepByClearDepIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -95,11 +97,13 @@ public class CFBamJpaClearDepFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamClearDepByDefSchemaIdxKey newByDefSchemaIdxKey() {
 		ICFBamClearDepByDefSchemaIdxKey key = new CFBamJpaClearDepByDefSchemaIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaClearDepByDefSchemaIdxKey ensureByDefSchemaIdxKey(ICFBamClearDepByDefSchemaIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -115,11 +119,13 @@ public class CFBamJpaClearDepFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamClearDep newRec() {
         ICFBamClearDep rec = new CFBamJpaClearDep();
         return( rec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaClearDep ensureRec(ICFBamClearDep rec) {
 		if( rec == null ) {
 			return( null );
@@ -163,6 +169,7 @@ public class CFBamJpaClearDepFactoryService
         return( hrec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaClearDepH ensureHRec(ICFBamClearDepH hrec) {
 		if( hrec == null ) {
 			return( null );

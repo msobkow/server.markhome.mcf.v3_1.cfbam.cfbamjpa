@@ -75,11 +75,13 @@ public class CFBamJpaServerObjFuncFactoryService
     public CFBamJpaServerObjFuncFactoryService() { }
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamServerObjFuncByRetTblIdxKey newByRetTblIdxKey() {
 		ICFBamServerObjFuncByRetTblIdxKey key = new CFBamJpaServerObjFuncByRetTblIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaServerObjFuncByRetTblIdxKey ensureByRetTblIdxKey(ICFBamServerObjFuncByRetTblIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -95,11 +97,13 @@ public class CFBamJpaServerObjFuncFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamServerObjFunc newRec() {
         ICFBamServerObjFunc rec = new CFBamJpaServerObjFunc();
         return( rec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaServerObjFunc ensureRec(ICFBamServerObjFunc rec) {
 		if( rec == null ) {
 			return( null );
@@ -127,6 +131,7 @@ public class CFBamJpaServerObjFuncFactoryService
         return( hrec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaServerObjFuncH ensureHRec(ICFBamServerObjFuncH hrec) {
 		if( hrec == null ) {
 			return( null );

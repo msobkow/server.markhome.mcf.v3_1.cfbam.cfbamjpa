@@ -75,11 +75,13 @@ public class CFBamJpaServerProcFactoryService
     public CFBamJpaServerProcFactoryService() { }
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamServerProc newRec() {
         ICFBamServerProc rec = new CFBamJpaServerProc();
         return( rec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaServerProc ensureRec(ICFBamServerProc rec) {
 		if( rec == null ) {
 			return( null );
@@ -107,6 +109,7 @@ public class CFBamJpaServerProcFactoryService
         return( hrec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaServerProcH ensureHRec(ICFBamServerProcH hrec) {
 		if( hrec == null ) {
 			return( null );

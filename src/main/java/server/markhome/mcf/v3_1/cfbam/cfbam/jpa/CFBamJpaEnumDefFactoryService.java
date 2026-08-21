@@ -75,11 +75,13 @@ public class CFBamJpaEnumDefFactoryService
     public CFBamJpaEnumDefFactoryService() { }
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamEnumDef newRec() {
         ICFBamEnumDef rec = new CFBamJpaEnumDef();
         return( rec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaEnumDef ensureRec(ICFBamEnumDef rec) {
 		if( rec == null ) {
 			return( null );
@@ -111,6 +113,7 @@ public class CFBamJpaEnumDefFactoryService
         return( hrec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaEnumDefH ensureHRec(ICFBamEnumDefH hrec) {
 		if( hrec == null ) {
 			return( null );

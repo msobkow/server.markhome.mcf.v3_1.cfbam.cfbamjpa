@@ -75,11 +75,13 @@ public class CFBamJpaDbKeyHash512ColFactoryService
     public CFBamJpaDbKeyHash512ColFactoryService() { }
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamDbKeyHash512ColByTableIdxKey newByTableIdxKey() {
 		ICFBamDbKeyHash512ColByTableIdxKey key = new CFBamJpaDbKeyHash512ColByTableIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaDbKeyHash512ColByTableIdxKey ensureByTableIdxKey(ICFBamDbKeyHash512ColByTableIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -95,11 +97,13 @@ public class CFBamJpaDbKeyHash512ColFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamDbKeyHash512Col newRec() {
         ICFBamDbKeyHash512Col rec = new CFBamJpaDbKeyHash512Col();
         return( rec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaDbKeyHash512Col ensureRec(ICFBamDbKeyHash512Col rec) {
 		if( rec == null ) {
 			return( null );
@@ -127,6 +131,7 @@ public class CFBamJpaDbKeyHash512ColFactoryService
         return( hrec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaDbKeyHash512ColH ensureHRec(ICFBamDbKeyHash512ColH hrec) {
 		if( hrec == null ) {
 			return( null );

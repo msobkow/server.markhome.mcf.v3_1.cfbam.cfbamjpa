@@ -75,11 +75,13 @@ public class CFBamJpaNmTokensDefFactoryService
     public CFBamJpaNmTokensDefFactoryService() { }
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamNmTokensDef newRec() {
         ICFBamNmTokensDef rec = new CFBamJpaNmTokensDef();
         return( rec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaNmTokensDef ensureRec(ICFBamNmTokensDef rec) {
 		if( rec == null ) {
 			return( null );
@@ -115,6 +117,7 @@ public class CFBamJpaNmTokensDefFactoryService
         return( hrec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaNmTokensDefH ensureHRec(ICFBamNmTokensDefH hrec) {
 		if( hrec == null ) {
 			return( null );

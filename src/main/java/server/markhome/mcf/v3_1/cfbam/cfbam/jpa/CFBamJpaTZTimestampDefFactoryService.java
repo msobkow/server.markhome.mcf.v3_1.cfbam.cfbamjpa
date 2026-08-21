@@ -75,11 +75,13 @@ public class CFBamJpaTZTimestampDefFactoryService
     public CFBamJpaTZTimestampDefFactoryService() { }
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamTZTimestampDef newRec() {
         ICFBamTZTimestampDef rec = new CFBamJpaTZTimestampDef();
         return( rec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaTZTimestampDef ensureRec(ICFBamTZTimestampDef rec) {
 		if( rec == null ) {
 			return( null );
@@ -115,6 +117,7 @@ public class CFBamJpaTZTimestampDefFactoryService
         return( hrec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaTZTimestampDefH ensureHRec(ICFBamTZTimestampDefH hrec) {
 		if( hrec == null ) {
 			return( null );

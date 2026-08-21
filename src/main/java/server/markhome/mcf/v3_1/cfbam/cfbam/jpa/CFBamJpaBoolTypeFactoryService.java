@@ -75,11 +75,13 @@ public class CFBamJpaBoolTypeFactoryService
     public CFBamJpaBoolTypeFactoryService() { }
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamBoolTypeBySchemaIdxKey newBySchemaIdxKey() {
 		ICFBamBoolTypeBySchemaIdxKey key = new CFBamJpaBoolTypeBySchemaIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaBoolTypeBySchemaIdxKey ensureBySchemaIdxKey(ICFBamBoolTypeBySchemaIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -95,11 +97,13 @@ public class CFBamJpaBoolTypeFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamBoolType newRec() {
         ICFBamBoolType rec = new CFBamJpaBoolType();
         return( rec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaBoolType ensureRec(ICFBamBoolType rec) {
 		if( rec == null ) {
 			return( null );
@@ -127,6 +131,7 @@ public class CFBamJpaBoolTypeFactoryService
         return( hrec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaBoolTypeH ensureHRec(ICFBamBoolTypeH hrec) {
 		if( hrec == null ) {
 			return( null );

@@ -75,11 +75,13 @@ public class CFBamJpaTimeDefFactoryService
     public CFBamJpaTimeDefFactoryService() { }
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamTimeDef newRec() {
         ICFBamTimeDef rec = new CFBamJpaTimeDef();
         return( rec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaTimeDef ensureRec(ICFBamTimeDef rec) {
 		if( rec == null ) {
 			return( null );
@@ -115,6 +117,7 @@ public class CFBamJpaTimeDefFactoryService
         return( hrec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaTimeDefH ensureHRec(ICFBamTimeDefH hrec) {
 		if( hrec == null ) {
 			return( null );

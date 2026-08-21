@@ -75,11 +75,13 @@ public class CFBamJpaTZDateTypeFactoryService
     public CFBamJpaTZDateTypeFactoryService() { }
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamTZDateTypeBySchemaIdxKey newBySchemaIdxKey() {
 		ICFBamTZDateTypeBySchemaIdxKey key = new CFBamJpaTZDateTypeBySchemaIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaTZDateTypeBySchemaIdxKey ensureBySchemaIdxKey(ICFBamTZDateTypeBySchemaIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -95,11 +97,13 @@ public class CFBamJpaTZDateTypeFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamTZDateType newRec() {
         ICFBamTZDateType rec = new CFBamJpaTZDateType();
         return( rec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaTZDateType ensureRec(ICFBamTZDateType rec) {
 		if( rec == null ) {
 			return( null );
@@ -127,6 +131,7 @@ public class CFBamJpaTZDateTypeFactoryService
         return( hrec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaTZDateTypeH ensureHRec(ICFBamTZDateTypeH hrec) {
 		if( hrec == null ) {
 			return( null );

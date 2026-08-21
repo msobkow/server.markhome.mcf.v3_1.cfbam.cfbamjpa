@@ -75,11 +75,13 @@ public class CFBamJpaTimestampTypeFactoryService
     public CFBamJpaTimestampTypeFactoryService() { }
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamTimestampTypeBySchemaIdxKey newBySchemaIdxKey() {
 		ICFBamTimestampTypeBySchemaIdxKey key = new CFBamJpaTimestampTypeBySchemaIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaTimestampTypeBySchemaIdxKey ensureBySchemaIdxKey(ICFBamTimestampTypeBySchemaIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -95,11 +97,13 @@ public class CFBamJpaTimestampTypeFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamTimestampType newRec() {
         ICFBamTimestampType rec = new CFBamJpaTimestampType();
         return( rec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaTimestampType ensureRec(ICFBamTimestampType rec) {
 		if( rec == null ) {
 			return( null );
@@ -127,6 +131,7 @@ public class CFBamJpaTimestampTypeFactoryService
         return( hrec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaTimestampTypeH ensureHRec(ICFBamTimestampTypeH hrec) {
 		if( hrec == null ) {
 			return( null );

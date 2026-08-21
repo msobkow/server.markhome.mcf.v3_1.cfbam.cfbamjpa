@@ -75,11 +75,13 @@ public class CFBamJpaDbKeyHash224DefFactoryService
     public CFBamJpaDbKeyHash224DefFactoryService() { }
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamDbKeyHash224Def newRec() {
         ICFBamDbKeyHash224Def rec = new CFBamJpaDbKeyHash224Def();
         return( rec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaDbKeyHash224Def ensureRec(ICFBamDbKeyHash224Def rec) {
 		if( rec == null ) {
 			return( null );
@@ -119,6 +121,7 @@ public class CFBamJpaDbKeyHash224DefFactoryService
         return( hrec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaDbKeyHash224DefH ensureHRec(ICFBamDbKeyHash224DefH hrec) {
 		if( hrec == null ) {
 			return( null );

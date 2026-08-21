@@ -75,11 +75,13 @@ public class CFBamJpaChainFactoryService
     public CFBamJpaChainFactoryService() { }
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamChainHPKey newHPKey() {
         ICFBamChainHPKey hpkey = new CFBamJpaChainHPKey();
         return( hpkey );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaChainHPKey ensureHPKey(ICFBamChainHPKey key) {
 		if (key == null) {
 			return( null );
@@ -99,11 +101,13 @@ public class CFBamJpaChainFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamChainByChainTableIdxKey newByChainTableIdxKey() {
 		ICFBamChainByChainTableIdxKey key = new CFBamJpaChainByChainTableIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaChainByChainTableIdxKey ensureByChainTableIdxKey(ICFBamChainByChainTableIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -119,11 +123,13 @@ public class CFBamJpaChainFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamChainByDefSchemaIdxKey newByDefSchemaIdxKey() {
 		ICFBamChainByDefSchemaIdxKey key = new CFBamJpaChainByDefSchemaIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaChainByDefSchemaIdxKey ensureByDefSchemaIdxKey(ICFBamChainByDefSchemaIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -139,11 +145,13 @@ public class CFBamJpaChainFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamChainByUNameIdxKey newByUNameIdxKey() {
 		ICFBamChainByUNameIdxKey key = new CFBamJpaChainByUNameIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaChainByUNameIdxKey ensureByUNameIdxKey(ICFBamChainByUNameIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -160,11 +168,13 @@ public class CFBamJpaChainFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamChainByPrevRelIdxKey newByPrevRelIdxKey() {
 		ICFBamChainByPrevRelIdxKey key = new CFBamJpaChainByPrevRelIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaChainByPrevRelIdxKey ensureByPrevRelIdxKey(ICFBamChainByPrevRelIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -180,11 +190,13 @@ public class CFBamJpaChainFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamChainByNextRelIdxKey newByNextRelIdxKey() {
 		ICFBamChainByNextRelIdxKey key = new CFBamJpaChainByNextRelIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaChainByNextRelIdxKey ensureByNextRelIdxKey(ICFBamChainByNextRelIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -200,11 +212,13 @@ public class CFBamJpaChainFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamChain newRec() {
         ICFBamChain rec = new CFBamJpaChain();
         return( rec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaChain ensureRec(ICFBamChain rec) {
 		if( rec == null ) {
 			return( null );
@@ -232,6 +246,7 @@ public class CFBamJpaChainFactoryService
         return( hrec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaChainH ensureHRec(ICFBamChainH hrec) {
 		if( hrec == null ) {
 			return( null );

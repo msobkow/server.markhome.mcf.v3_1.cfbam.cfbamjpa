@@ -75,11 +75,13 @@ public class CFBamJpaEnumTagFactoryService
     public CFBamJpaEnumTagFactoryService() { }
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamEnumTagHPKey newHPKey() {
         ICFBamEnumTagHPKey hpkey = new CFBamJpaEnumTagHPKey();
         return( hpkey );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaEnumTagHPKey ensureHPKey(ICFBamEnumTagHPKey key) {
 		if (key == null) {
 			return( null );
@@ -99,11 +101,13 @@ public class CFBamJpaEnumTagFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamEnumTagByEnumIdxKey newByEnumIdxKey() {
 		ICFBamEnumTagByEnumIdxKey key = new CFBamJpaEnumTagByEnumIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaEnumTagByEnumIdxKey ensureByEnumIdxKey(ICFBamEnumTagByEnumIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -119,11 +123,13 @@ public class CFBamJpaEnumTagFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamEnumTagByDefSchemaIdxKey newByDefSchemaIdxKey() {
 		ICFBamEnumTagByDefSchemaIdxKey key = new CFBamJpaEnumTagByDefSchemaIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaEnumTagByDefSchemaIdxKey ensureByDefSchemaIdxKey(ICFBamEnumTagByDefSchemaIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -139,11 +145,13 @@ public class CFBamJpaEnumTagFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamEnumTagByEnumNameIdxKey newByEnumNameIdxKey() {
 		ICFBamEnumTagByEnumNameIdxKey key = new CFBamJpaEnumTagByEnumNameIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaEnumTagByEnumNameIdxKey ensureByEnumNameIdxKey(ICFBamEnumTagByEnumNameIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -160,11 +168,13 @@ public class CFBamJpaEnumTagFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamEnumTagByPrevIdxKey newByPrevIdxKey() {
 		ICFBamEnumTagByPrevIdxKey key = new CFBamJpaEnumTagByPrevIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaEnumTagByPrevIdxKey ensureByPrevIdxKey(ICFBamEnumTagByPrevIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -180,11 +190,13 @@ public class CFBamJpaEnumTagFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamEnumTagByNextIdxKey newByNextIdxKey() {
 		ICFBamEnumTagByNextIdxKey key = new CFBamJpaEnumTagByNextIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaEnumTagByNextIdxKey ensureByNextIdxKey(ICFBamEnumTagByNextIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -200,11 +212,13 @@ public class CFBamJpaEnumTagFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamEnumTag newRec() {
         ICFBamEnumTag rec = new CFBamJpaEnumTag();
         return( rec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaEnumTag ensureRec(ICFBamEnumTag rec) {
 		if( rec == null ) {
 			return( null );
@@ -232,6 +246,7 @@ public class CFBamJpaEnumTagFactoryService
         return( hrec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaEnumTagH ensureHRec(ICFBamEnumTagH hrec) {
 		if( hrec == null ) {
 			return( null );

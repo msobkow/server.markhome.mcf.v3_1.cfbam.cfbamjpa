@@ -75,11 +75,13 @@ public class CFBamJpaSchemaRefFactoryService
     public CFBamJpaSchemaRefFactoryService() { }
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamSchemaRefBySchemaIdxKey newBySchemaIdxKey() {
 		ICFBamSchemaRefBySchemaIdxKey key = new CFBamJpaSchemaRefBySchemaIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaSchemaRefBySchemaIdxKey ensureBySchemaIdxKey(ICFBamSchemaRefBySchemaIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -95,11 +97,13 @@ public class CFBamJpaSchemaRefFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamSchemaRefByUNameIdxKey newByUNameIdxKey() {
 		ICFBamSchemaRefByUNameIdxKey key = new CFBamJpaSchemaRefByUNameIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaSchemaRefByUNameIdxKey ensureByUNameIdxKey(ICFBamSchemaRefByUNameIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -116,11 +120,13 @@ public class CFBamJpaSchemaRefFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamSchemaRefByRefSchemaIdxKey newByRefSchemaIdxKey() {
 		ICFBamSchemaRefByRefSchemaIdxKey key = new CFBamJpaSchemaRefByRefSchemaIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaSchemaRefByRefSchemaIdxKey ensureByRefSchemaIdxKey(ICFBamSchemaRefByRefSchemaIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -136,11 +142,13 @@ public class CFBamJpaSchemaRefFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamSchemaRefByPrevIdxKey newByPrevIdxKey() {
 		ICFBamSchemaRefByPrevIdxKey key = new CFBamJpaSchemaRefByPrevIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaSchemaRefByPrevIdxKey ensureByPrevIdxKey(ICFBamSchemaRefByPrevIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -156,11 +164,13 @@ public class CFBamJpaSchemaRefFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamSchemaRefByNextIdxKey newByNextIdxKey() {
 		ICFBamSchemaRefByNextIdxKey key = new CFBamJpaSchemaRefByNextIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaSchemaRefByNextIdxKey ensureByNextIdxKey(ICFBamSchemaRefByNextIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -176,11 +186,13 @@ public class CFBamJpaSchemaRefFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamSchemaRef newRec() {
         ICFBamSchemaRef rec = new CFBamJpaSchemaRef();
         return( rec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaSchemaRef ensureRec(ICFBamSchemaRef rec) {
 		if( rec == null ) {
 			return( null );
@@ -208,6 +220,7 @@ public class CFBamJpaSchemaRefFactoryService
         return( hrec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaSchemaRefH ensureHRec(ICFBamSchemaRefH hrec) {
 		if( hrec == null ) {
 			return( null );

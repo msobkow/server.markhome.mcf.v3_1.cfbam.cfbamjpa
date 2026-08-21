@@ -75,11 +75,13 @@ public class CFBamJpaTableColFactoryService
     public CFBamJpaTableColFactoryService() { }
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamTableColByTableIdxKey newByTableIdxKey() {
 		ICFBamTableColByTableIdxKey key = new CFBamJpaTableColByTableIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaTableColByTableIdxKey ensureByTableIdxKey(ICFBamTableColByTableIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -95,11 +97,13 @@ public class CFBamJpaTableColFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamTableColByDataIdxKey newByDataIdxKey() {
 		ICFBamTableColByDataIdxKey key = new CFBamJpaTableColByDataIdxKey();
 	return( key );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaTableColByDataIdxKey ensureByDataIdxKey(ICFBamTableColByDataIdxKey key) {
 		if (key == null) {
 			return( null );
@@ -115,11 +119,13 @@ public class CFBamJpaTableColFactoryService
 	}
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamTableCol newRec() {
         ICFBamTableCol rec = new CFBamJpaTableCol();
         return( rec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaTableCol ensureRec(ICFBamTableCol rec) {
 		if( rec == null ) {
 			return( null );
@@ -147,6 +153,7 @@ public class CFBamJpaTableColFactoryService
         return( hrec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaTableColH ensureHRec(ICFBamTableColH hrec) {
 		if( hrec == null ) {
 			return( null );

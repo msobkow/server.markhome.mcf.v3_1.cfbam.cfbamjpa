@@ -75,11 +75,13 @@ public class CFBamJpaStringDefFactoryService
     public CFBamJpaStringDefFactoryService() { }
 
     @Override
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
     public ICFBamStringDef newRec() {
         ICFBamStringDef rec = new CFBamJpaStringDef();
         return( rec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaStringDef ensureRec(ICFBamStringDef rec) {
 		if( rec == null ) {
 			return( null );
@@ -115,6 +117,7 @@ public class CFBamJpaStringDefFactoryService
         return( hrec );
     }
 
+	@Transactional(propagation = Propagation.REQUIRED, noRollbackFor = NoResultException.class, transactionManager = "cfbam31TransactionManager")
 	public CFBamJpaStringDefH ensureHRec(ICFBamStringDefH hrec) {
 		if( hrec == null ) {
 			return( null );
