@@ -82,7 +82,7 @@ public class CFBamJpaAtomH extends CFBamJpaValueH
     implements ICFBamAtomH
 {
 	@Column( name="DbName", nullable=true, length=32 )
-	protected String optionalDbName;
+	protected $implIJavaAtomType$ optionalDbName;
 
     public CFBamJpaAtomH() {
             super();
@@ -95,11 +95,11 @@ public class CFBamJpaAtomH extends CFBamJpaValueH
     }
 
 	@Override
-	public String getOptionalDbName() {
+	public $implIJavaAtomType$ getOptionalDbName() {
 		return(optionalDbName);
 	}
 
-	public void setOptionalDbName( String value ) {
+	public void setOptionalDbName( $implIJavaAtomType$ value ) {
 		if( value != null && value.length() > 32 ) {
 			throw new CFLibArgumentOverflowException( getClass(),
 				"setOptionalDbName",
