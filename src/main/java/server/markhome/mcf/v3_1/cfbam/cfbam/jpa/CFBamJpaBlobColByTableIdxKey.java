@@ -66,17 +66,17 @@ import server.markhome.mcf.v3_1.cfint.cfint.jpa.*;
 public class CFBamJpaBlobColByTableIdxKey
 	implements ICFBamBlobColByTableIdxKey, Comparable<Object>, Serializable
 {
-	protected $implIJavaAtomType$ requiredTableId;
+	protected ICFLibKeyHash256 requiredTableId;
 	public CFBamJpaBlobColByTableIdxKey() {
-		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBam$emitScopingMidfix$BlobCol.TABLEID_INIT_VALUE.toString() );
+		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamPubBlobCol.TABLEID_INIT_VALUE.toString() );
 	}
 
 	@Override
-	public $implIJavaAtomType$ getRequiredTableId() {
+	public ICFLibKeyHash256 getRequiredTableId() {
 		return(requiredTableId);
 	}
 
-	public void setRequiredTableId( $implIJavaAtomType$ value ) {
+	public void setRequiredTableId( ICFLibKeyHash256 value ) {
 		if( value == null || value.isNull() ) {
 			throw new CFLibNullArgumentException( getClass(),
 				"setRequiredTableId",

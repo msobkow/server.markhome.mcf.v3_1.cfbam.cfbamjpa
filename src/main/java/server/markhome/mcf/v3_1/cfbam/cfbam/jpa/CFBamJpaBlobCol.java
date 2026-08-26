@@ -81,16 +81,16 @@ public class CFBamJpaBlobCol extends CFBamJpaBlobDef
 {
 	@ManyToOne(fetch=FetchType.LAZY, optional=false)
 	@JoinColumn( name="TableIdTable", referencedColumnName="Id" )
-	protected CFBamJpaTable $OptionalOrRequired$ContainerTable;
+	protected CFBamJpaTable requiredContainerTable;
 
 	@AttributeOverrides({
 		@AttributeOverride(name="bytes", column = @Column( name="TableId", nullable=false, length=CFLibDbKeyHash256.HASH_LENGTH ) )
 	})
-	protected $implIJavaAtomType$ requiredTableId;
+	protected ICFLibKeyHash256 requiredTableId;
 
 	public CFBamJpaBlobCol() {
 		super();
-		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBam$emitScopingMidfix$BlobCol.TABLEID_INIT_VALUE.toString() );
+		requiredTableId = CFLibDbKeyHash256.fromHex( ICFBamPubBlobCol.TABLEID_INIT_VALUE.toString() );
 	}
 
 	@Override
@@ -99,19 +99,19 @@ public class CFBamJpaBlobCol extends CFBamJpaBlobDef
 	}
 
 	@Override
-	public ICFBamTable get$OptionalOrRequired$ContainerTable() {
-		return($OptionalOrRequired$ContainerTable);
+	public ICFBamTable getRequiredContainerTable() {
+		return(requiredContainerTable);
 	}
 
 	@Override
-	public void set$OptionalOrRequired$ContainerTable(ICFBamTable argObj) {
+	public void setRequiredContainerTable(ICFBamTable argObj) {
 		if(argObj == null) {
 			throw new CFLibNullArgumentException(getClass(), "setContainerTable", 1, "argObj");
 		}
 		else if (argObj instanceof CFBamJpaTable) {
-			$OptionalOrRequired$ContainerTable = (CFBamJpaTable)argObj;
-			if ($OptionalOrRequired$ContainerTable != null) {
-				requiredTableId = $OptionalOrRequired$ContainerTable.getRequiredId();
+			requiredContainerTable = (CFBamJpaTable)argObj;
+			if (requiredContainerTable != null) {
+				requiredTableId = requiredContainerTable.getRequiredId();
 			}
 			else {
 			}
@@ -122,35 +122,35 @@ public class CFBamJpaBlobCol extends CFBamJpaBlobDef
 	}
 
 	@Override
-	public void set$OptionalOrRequired$ContainerTable(ICFBamProtTable argObj) {
-		set$OptionalOrRequired$ContainerTable(argObj.getRequiredId());
+	public void setRequiredContainerTable(ICFBamProtTable argObj) {
+		setRequiredContainerTable(argObj.getRequiredId());
 	}
 
 	@Override
-	public void set$OptionalOrRequired$ContainerTable(ICFBamPubTable argObj) {
-		set$OptionalOrRequired$ContainerTable(argObj.getRequiredId());
+	public void setRequiredContainerTable(ICFBamPubTable argObj) {
+		setRequiredContainerTable(argObj.getRequiredId());
 	}
 
 	@Override
-	public void set$OptionalOrRequired$ContainerTable($implIJavaAtomType$ argTableId) {
+	public void setRequiredContainerTable(ICFLibKeyHash256 argTableId) {
 		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
 		if (targetBackingSchema == null) {
-			throw new CFLibNullArgumentException(getClass(), "set$OptionalOrRequired$ContainerTable", 0, "ICFBamSchema.getBackingCFBam()");
+			throw new CFLibNullArgumentException(getClass(), "setRequiredContainerTable", 0, "ICFBamSchema.getBackingCFBam()");
 		}
 		ICFBamTableTable targetTable = targetBackingSchema.getTableTable();
 		if (targetTable == null) {
-			throw new CFLibNullArgumentException(getClass(), "set$OptionalOrRequired$ContainerTable", 0, "ICFBamSchema.getBackingCFBam().getTableTable()");
+			throw new CFLibNullArgumentException(getClass(), "setRequiredContainerTable", 0, "ICFBamSchema.getBackingCFBam().getTableTable()");
 		}
 		ICFBamTable targetRec = targetTable.readDerived(ICFSecSchema.getAuthorizationCallback().getEffectiveAuthorization(), argTableId);
-		set$OptionalOrRequired$ContainerTable(targetRec);
+		setRequiredContainerTable(targetRec);
 	}
 
 	@Override
-	public $implIJavaAtomType$ getRequiredTableId() {
+	public ICFLibKeyHash256 getRequiredTableId() {
 		return(requiredTableId);
 	}
 
-	public void setRequiredTableId( $implIJavaAtomType$ value ) {
+	public void setRequiredTableId( ICFLibKeyHash256 value ) {
 		if( value == null || value.isNull() ) {
 			throw new CFLibNullArgumentException( getClass(),
 				"setRequiredTableId",
@@ -334,7 +334,7 @@ public class CFBamJpaBlobCol extends CFBamJpaBlobDef
 	@Override
 	public void setBlobCol( ICFBamBlobCol src ) {
 		super.setBlobDef( src );
-		set$OptionalOrRequired$ContainerTable(src.get$OptionalOrRequired$ContainerTable());
+		setRequiredContainerTable(src.getRequiredContainerTable());
 		setRequiredTableId(src.getRequiredTableId());
 	}
 
@@ -355,7 +355,7 @@ public class CFBamJpaBlobCol extends CFBamJpaBlobDef
 	@Override
 	public void setBlobCol( ICFBamBlobColH src ) {
 		super.setBlobDef( src );
-		set$OptionalOrRequired$ContainerTable(src.getRequiredTableId());
+		setRequiredContainerTable(src.getRequiredTableId());
 		setRequiredTableId(src.getRequiredTableId());
 	}
 

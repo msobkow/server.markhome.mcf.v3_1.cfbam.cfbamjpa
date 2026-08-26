@@ -79,7 +79,7 @@ public class CFBamJpaAtom extends CFBamJpaValue
 {
 
 	@Column( name="DbName", nullable=true, length=32 )
-	protected $implIJavaAtomType$ optionalDbName;
+	protected String optionalDbName;
 
 	public CFBamJpaAtom() {
 		super();
@@ -92,11 +92,11 @@ public class CFBamJpaAtom extends CFBamJpaValue
 	}
 
 	@Override
-	public $implIJavaAtomType$ getOptionalDbName() {
+	public String getOptionalDbName() {
 		return(optionalDbName);
 	}
 
-	public void setOptionalDbName( $implIJavaAtomType$ value ) {
+	public void setOptionalDbName( String value ) {
 		if( value != null && value.length() > 32 ) {
 			throw new CFLibArgumentOverflowException( getClass(),
 				"setOptionalDbName",

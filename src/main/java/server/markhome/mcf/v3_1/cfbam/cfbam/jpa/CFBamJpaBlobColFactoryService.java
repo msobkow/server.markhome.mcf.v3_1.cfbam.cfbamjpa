@@ -90,7 +90,8 @@ public class CFBamJpaBlobColFactoryService
 			return( (CFBamJpaBlobColByTableIdxKey)key );
 		}
 		else {
-			CFBamJpaBlobColByTableIdxKey mapped = new CFBamJpaBlobColByTableIdxKey();$implBuffCopyKeyAttrToMapped$
+			CFBamJpaBlobColByTableIdxKey mapped = new CFBamJpaBlobColByTableIdxKey();
+			mapped.setRequiredTableId( key.getRequiredTableId() );
 			return( mapped );
 		}
 	}
