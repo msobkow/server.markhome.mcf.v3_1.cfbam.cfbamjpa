@@ -1085,7 +1085,7 @@ public class CFBamJpaRoleDefH
     }
 
     public String getXmlAttrFragment() {
-        String ret = pkey.getXmlAttrFragment() 
+        String ret = pkey.getXmlAttrFragment()
 			+ " classCode=\"" + getClassCode() + "\""
 			+ " RequiredRevision=\"" + Integer.toString( getRequiredRevision() ) + "\""
 			+ " RequiredScopeId=" + "\"" + getRequiredScopeId().toString() + "\""

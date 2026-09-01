@@ -532,7 +532,7 @@ public class CFBamJpaScopeH
     }
 
     public String getXmlAttrFragment() {
-        String ret = pkey.getXmlAttrFragment() 
+        String ret = pkey.getXmlAttrFragment()
 			+ " classCode=\"" + getClassCode() + "\""
 			+ " RequiredRevision=\"" + Integer.toString( getRequiredRevision() ) + "\""
 			+ " RequiredTenantId=" + "\"" + getRequiredTenantId().toString() + "\"";
